@@ -121,8 +121,9 @@ class DuolingoSpeakApp {
   async loadScenarios() {
     try {
       const res = await fetch('/api/scenarios');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      this.scenarios = data.scenarios;
+      this.scenarios = data.scenarios || [];
       this.renderScenarios();
     } catch (e) {
       console.error('Failed to load scenarios:', e);
