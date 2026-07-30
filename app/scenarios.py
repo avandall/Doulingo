@@ -1,163 +1,171 @@
 """
 Scenario definitions for Duolingo Speak
-10 Open-Topic Roleplay Scenarios featuring assigned AI Characters.
+10 Relatable, Everyday Life Topics (Bình dân cuộc sống).
+Merged with SQLite database custom topics.
 """
 
 from app.characters import get_character
+from app.db import get_custom_scenarios
 
-SCENARIOS = {
-    "travel_world": {
-        "id": "travel_world",
-        "title": "Planning a Dream World Tour",
-        "category": "Travel & Culture",
-        "icon": "✈️",
-        "color": "#138808",
-        "level": "Intermediate",
-        "level_code": "B1",
-        "default_character": "ananya",
-        "target_turns": 6,
-        "description": "Discuss dream destinations, backpacker tips, street foods, and unforgettable travel memories with Ananya from Mumbai.",
-        "objective": "Practice descriptive language, expressing travel preferences, and sharing personal stories.",
-        "suggested_vocabulary": ["Bucket list", "Off the beaten path", "Local delicacies", "Breathtaking view", "Cultural immersion"]
-    },
-    "tech_startup": {
-        "id": "tech_startup",
-        "title": "Pitching a Crazy Startup Idea",
-        "category": "Business & Tech",
-        "icon": "💡",
+DEFAULT_SCENARIOS = {
+    "cafe_order": {
+        "id": "cafe_order",
+        "title": "Ordering Coffee & Bakery Snacks",
+        "category": "Everyday Life ☕",
+        "icon": "☕",
         "color": "#FF9933",
-        "level": "Advanced",
-        "level_code": "B2",
-        "default_character": "rajesh",
-        "target_turns": 7,
-        "description": "Pitch an innovative app or business idea to Raj, an energetic tech mentor from Bangalore.",
-        "objective": "Practice persuasive speech, explaining value propositions, and answering investor questions.",
-        "suggested_vocabulary": ["Game-changer", "Target audience", "Scalability", "Revenue model", "Solve a real pain point"]
-    },
-    "movie_popculture": {
-        "id": "movie_popculture",
-        "title": "Movie & Pop Culture Debate",
-        "category": "Entertainment",
-        "icon": "🍿",
-        "color": "#FF2A85",
         "level": "Beginner",
-        "level_code": "A2-B1",
-        "default_character": "chloe",
-        "target_turns": 5,
-        "description": "Debate your favorite cinema blockbusters, binge-worthy series, and hot pop culture trends with Chloe.",
-        "objective": "Practice expressing opinions, agreeing/disagreeing casually, and talking about entertainment.",
-        "suggested_vocabulary": ["Plot twist", "Binge-watch", "Overrated", "Masterpiece", "Cinematography"]
+        "level_code": "A2",
+        "default_character": "rajesh",
+        "description": "Order coffee, ask for milk choices, customize sugar levels, and pick a freshly baked pastry.",
+        "objective": "Practice polite ordering, food vocabulary, and asking simple questions.",
+        "suggested_vocabulary": ["I'd like an iced latte", "Less sugar please", "With oat milk", "To go / For here", "Fresh pastry"]
     },
-    "mars_space": {
-        "id": "mars_space",
-        "title": "Living on Mars & Space Exploration",
-        "category": "Science & Future",
-        "icon": "🚀",
-        "color": "#DD0000",
-        "level": "Advanced",
-        "level_code": "B2-C1",
-        "default_character": "hans",
-        "target_turns": 6,
-        "description": "Explore the physics, engineering, and human challenges of colonizing Mars with Hans Gruber.",
-        "objective": "Practice technical vocabulary, discussing hypothetical scenarios, and logical reasoning.",
-        "suggested_vocabulary": ["Terraforming", "Space colonization", "Atmospheric pressure", "Sustainable habitat", "Interplanetary travel"]
-    },
-    "culinary_secrets": {
-        "id": "culinary_secrets",
-        "title": "World Culinary Showdown",
-        "category": "Food & Cooking",
-        "icon": "🍳",
-        "color": "#58CC02",
-        "default_character": "ananya",
-        "target_turns": 6,
-        "description": "Discuss secret spice recipes, street food markets vs fine dining, and cooking misadventures.",
-        "objective": "Practice sensory descriptors, recipe instructions, and food vocabulary.",
-        "suggested_vocabulary": ["Aromatic spices", "Crispy texture", "Savory flavor", "Comfort food", "Secret ingredient"]
-    },
-    "history_time_travel": {
-        "id": "history_time_travel",
-        "title": "Time Travel & Historical Mysteries",
-        "category": "History & Philosophy",
-        "icon": "⏳",
-        "color": "#00247D",
-        "level": "Advanced",
-        "level_code": "C1",
-        "default_character": "william",
-        "target_turns": 7,
-        "description": "Travel back in time with Sir William to witness historic events or solve ancient mysteries.",
-        "objective": "Practice past modal verbs (would have, could have), formal vocabulary, and storytelling.",
-        "suggested_vocabulary": ["Historical turning point", "If I were to visit...", "Ancient civilization", "Unsolved mystery", "Monumental era"]
-    },
-    "ai_robot_ethics": {
-        "id": "ai_robot_ethics",
-        "title": "AI Ethics: Should Robots Have Rights?",
-        "category": "Technology & Ethics",
-        "icon": "🤖",
-        "color": "#CE82FF",
-        "level": "Master",
-        "level_code": "C1",
-        "default_character": "hans",
-        "target_turns": 8,
-        "description": "Engage in an ethical discussion about artificial consciousness, robot rights, and human safety.",
-        "objective": "Practice structured debate, ethical terms, and counter-arguments.",
-        "suggested_vocabulary": ["Sentience", "Moral obligation", "Artificial general intelligence", "Automated decisions", "Ethical framework"]
-    },
-    "life_coaching": {
-        "id": "life_coaching",
-        "title": "Work-Life Balance & Finding Purpose",
-        "category": "Lifestyle & Wellness",
-        "icon": "🧘",
-        "color": "#D80621",
-        "level": "Intermediate",
-        "level_code": "B1-B2",
-        "default_character": "evelyn",
-        "target_turns": 6,
-        "description": "Have a soothing, deep conversation with Dr. Evelyn about career goals, stress management, and happiness.",
-        "objective": "Practice expressing emotions, personal reflections, and future aspirations.",
-        "suggested_vocabulary": ["Mindfulness", "Preventing burnout", "Inner peace", "Work-life harmony", "Core values"]
-    },
-    "wildlife_adventure": {
-        "id": "wildlife_adventure",
-        "title": "Wildest Outdoor Misadventures",
-        "category": "Sports & Adventure",
-        "icon": "🦈",
-        "color": "#00843D",
+    "grocery_market": {
+        "id": "grocery_market",
+        "title": "Grocery Shopping & Market Bargaining",
+        "category": "Everyday Life 🛒",
+        "icon": "🛒",
+        "color": "#4CAF50",
         "level": "Beginner-Intermediate",
         "level_code": "A2-B1",
-        "default_character": "brody",
-        "target_turns": 6,
-        "description": "Share crazy camping, surfing, or animal encounter stories with Captain Brody from Australia.",
-        "objective": "Practice casual narrative tenses, exclamation phrases, and outdoor vocabulary.",
-        "suggested_vocabulary": ["Close call", "In the wild", "Surfing the waves", "Unforgettable adrenaline", "Out in the bush"]
+        "default_character": "priya",
+        "description": "Buy fresh fruits, vegetables, and negotiate prices with dramatic Bollywood diva Priya.",
+        "objective": "Practice asking for prices, quantity, and bargaining politely.",
+        "suggested_vocabulary": ["How much is this?", "Is it fresh?", "Can you give a discount?", "Half a kilo", "Ripe mangoes"]
     },
-    "gaming_future": {
-        "id": "gaming_future",
-        "title": "VR, Metaverse & The Future of Gaming",
-        "category": "Gaming & Art",
-        "icon": "🎮",
-        "color": "#BC002D",
+    "dinner_choice": {
+        "id": "dinner_choice",
+        "title": "Deciding What to Eat for Dinner",
+        "category": "Food & Dining 🍕",
+        "icon": "🍕",
+        "color": "#E91E63",
+        "level": "Beginner",
+        "level_code": "A2",
+        "default_character": "marco",
+        "description": "Argue passionately with Italian Chef Marco about whether to eat pizza, sushi, or homecooked pasta.",
+        "objective": "Practice expressing food cravings, agreeing/disagreeing, and making plans.",
+        "suggested_vocabulary": ["I'm craving...", "What are you in the mood for?", "Homemade pasta", "Spicy food", "Let's order delivery"]
+    },
+    "taxi_directions": {
+        "id": "taxi_directions",
+        "title": "Asking for Directions & Taking a Taxi",
+        "category": "Travel & Transportation 🚕",
+        "icon": "🚕",
+        "color": "#1CB0F6",
+        "level": "Beginner",
+        "level_code": "A2",
+        "default_character": "brody",
+        "description": "Tell your taxi driver where to go, ask about the fastest route, and avoid traffic jams.",
+        "objective": "Practice giving directions, location prepositions, and asking about time.",
+        "suggested_vocabulary": ["Turn left at the light", "Take the highway", "How long will it take?", "Drop me off here", "Traffic is heavy"]
+    },
+    "weekend_movies": {
+        "id": "weekend_movies",
+        "title": "Talking About Movies & Weekend Plans",
+        "category": "Entertainment 🎬",
+        "icon": "🎬",
+        "color": "#FF2A85",
         "level": "Intermediate",
         "level_code": "B1",
-        "default_character": "yuki",
-        "target_turns": 6,
-        "description": "Discuss immersive virtual reality worlds, anime art styles, and game design with Yuki from Tokyo.",
-        "objective": "Practice expressing creative ideas, discussing virtual worlds, and technical gaming terms.",
-        "suggested_vocabulary": ["Immersive experience", "Virtual reality", "Game mechanics", "Artistic vision", "Player engagement"]
+        "default_character": "chloe",
+        "description": "Chat about the latest cinema releases, streaming series, and weekend hangout plans with Chloe.",
+        "objective": "Practice talking about entertainment, recommending movies, and weekend activities.",
+        "suggested_vocabulary": ["Binge-watch", "Have you seen...", "Popcorn movie", "Hang out", "Worth watching"]
+    },
+    "beach_vacation": {
+        "id": "beach_vacation",
+        "title": "Planning a Weekend Beach Trip",
+        "category": "Travel & Fun 🏖️",
+        "icon": "🏖️",
+        "color": "#00843D",
+        "level": "Intermediate",
+        "level_code": "B1",
+        "default_character": "brody",
+        "description": "Plan a sunny beach trip, discuss packing sunscreen, surfing, and outdoor barbecues with Captain Brody.",
+        "objective": "Practice future intentions, packing lists, and outdoor activities.",
+        "suggested_vocabulary": ["Sunscreen", "Beach resort", "Rent a surfboard", "Seafood barbecue", "Soak up the sun"]
+    },
+    "pets_routine": {
+        "id": "pets_routine",
+        "title": "Pets, Cute Animals & Daily Habits",
+        "category": "Daily Life 🐶",
+        "icon": "🐶",
+        "color": "#9C27B0",
+        "level": "Beginner",
+        "level_code": "A2",
+        "default_character": "evelyn",
+        "description": "Share stories about your pets, daily morning routines, and relaxing evening habits with Dr. Evelyn.",
+        "objective": "Practice simple present tense, daily routine verbs, and talking about pets.",
+        "suggested_vocabulary": ["Walk the dog", "Morning coffee", "Adoption", "Cute kitten", "Unwind after work"]
+    },
+    "apartment_chores": {
+        "id": "apartment_chores",
+        "title": "Apartment Life & House Chores",
+        "category": "Home & Life 🏠",
+        "icon": "🏠",
+        "color": "#DD0000",
+        "level": "Intermediate",
+        "level_code": "B1",
+        "default_character": "hans",
+        "description": "Complain or organize room cleaning, laundry schedules, and apartment maintenance with strict Hans Gruber.",
+        "objective": "Practice household vocabulary, schedules, and chore distribution.",
+        "suggested_vocabulary": ["Do the laundry", "Vacuum the carpet", "Fix the sink", "Noisy neighbors", "Rent payment"]
+    },
+    "apps_socialmedia": {
+        "id": "apps_socialmedia",
+        "title": "Chatting About Apps & Social Media",
+        "category": "Technology 📱",
+        "icon": "📱",
+        "color": "#CE82FF",
+        "level": "Intermediate",
+        "level_code": "B1",
+        "default_character": "chloe",
+        "description": "Discuss viral trends, useful smartphone apps, screen time, and funny videos with Gen-Z Chloe.",
+        "objective": "Practice tech vocabulary, describing trends, and opinion expressions.",
+        "suggested_vocabulary": ["Viral video", "Notification", "Scroll through feed", "Useful app", "Screen time limit"]
+    },
+    "traffic_weather": {
+        "id": "traffic_weather",
+        "title": "Complaining About Traffic & Rain",
+        "category": "Daily Life 🌧️",
+        "icon": "🌧️",
+        "color": "#00247D",
+        "level": "Beginner-Intermediate",
+        "level_code": "A2-B1",
+        "default_character": "william",
+        "description": "Complain about unexpected heavy rain, traffic gridlocks, and cancelled plans with Sir William.",
+        "objective": "Practice weather descriptors, expressing frustration politely, and small talk.",
+        "suggested_vocabulary": ["Pouring rain", "Gridlock traffic", "Stuck in traffic", "Soaked", "Weather forecast"]
     }
 }
 
 def get_scenario(scenario_id: str):
-    sc = SCENARIOS.get(scenario_id)
-    if sc:
-        sc_copy = sc.copy()
-        sc_copy["character_info"] = get_character(sc_copy["default_character"])
-        return sc_copy
+    if scenario_id in DEFAULT_SCENARIOS:
+        sc = DEFAULT_SCENARIOS[scenario_id].copy()
+        sc["character_info"] = get_character(sc["default_character"])
+        return sc
+    
+    customs = get_custom_scenarios()
+    for sc in customs:
+        if sc["id"] == scenario_id:
+            sc_copy = sc.copy()
+            sc_copy["character_info"] = get_character(sc["default_character"])
+            return sc_copy
+            
     return None
 
 def list_scenarios():
     res = []
-    for s in SCENARIOS.values():
+    for s in DEFAULT_SCENARIOS.values():
         item = s.copy()
         item["character_info"] = get_character(s["default_character"])
         res.append(item)
+    
+    customs = get_custom_scenarios()
+    for c in customs:
+        item = c.copy()
+        item["character_info"] = get_character(c["default_character"])
+        res.append(item)
+        
     return res

@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Duolingo Speak - Dynamic AI Roleplay & 8 Characters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DuoSpeak">
+  <meta name="theme-color" content="#58CC02">
+
+  <title>Duolingo Speak - Everyday Life Roleplays & Expressive AI Voices</title>
+  
+  <link rel="manifest" href="/static/manifest.json">
   <link rel="stylesheet" href="/static/css/duolingo.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+
+  <style>
+    /* Ensure transcript text is 100% selectable & copyable */
+    .scores-list, .score-turn-item, .score-turn-item * {
+      user-select: text !important;
+      -webkit-user-select: text !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,29 +35,56 @@
       </div>
 
       <div class="stats-bar">
+        <button class="btn-duo btn-orange" id="btn-open-vocab-modal" style="padding: 6px 10px; font-size: 12px;">
+          📖 SỔ TỪ (<span id="vocab-count-badge">0</span>)
+        </button>
+        <button class="btn-duo btn-secondary" id="btn-open-lang-modal" style="padding: 6px 10px; font-size: 12px;">
+          🌐 🇻🇳
+        </button>
         <div class="stat-item streak" title="Day Streak">
           🔥 <span id="stat-streak-count">5</span>
         </div>
         <div class="stat-item xp" title="Total XP">
           ⚡ <span id="stat-xp-count">150</span>
         </div>
-        <div class="stat-item hearts" title="Hearts">
-          ❤️ <span id="stat-hearts-count">5</span>
-        </div>
       </div>
     </header>
 
-    <!-- SCREEN 1: Character Selector & Topic Scenarios Grid -->
+    <!-- SCREEN 1: Scenario & Character Selection Grid -->
     <main id="scenario-screen" class="screen active">
       <div class="hero-banner">
-        <h1 class="hero-title">Continuous AI Speaking Practice 🦉</h1>
-        <p class="hero-subtitle">Chat naturally with 8 unique AI personas & explore 10 open-topic roleplays!</p>
+        <h1 class="hero-title">Continuous Everyday Life Practice 🦉</h1>
+        <p style="color: var(--text-muted); font-size: 14px; font-weight: 700;">
+          Practice real-life English conversation with 8 expressive Neural Voice AI partners!
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-duo btn-purple" id="btn-random-roleplay">
+            🎲 RANDOM ROLEPLAY
+          </button>
+          <button class="btn-duo btn-orange" id="btn-open-custom-modal">
+            ➕ CREATE CUSTOM TOPIC
+          </button>
+        </div>
+      </div>
+
+      <!-- LEVEL SLIDER (RANGE 1 - 20) -->
+      <div class="level-slider-box">
+        <div class="level-slider-header">
+          <span>🎚️ Difficulty Level</span>
+          <span class="level-badge" id="level-badge-display">Level 1: Elementary</span>
+        </div>
+        <input type="range" id="level-slider-input" class="level-slider-input" min="1" max="20" value="1" step="1" />
+        <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: var(--text-muted);">
+          <span>1: Elementary</span>
+          <span>10: Intermediate</span>
+          <span>20: Native Expert</span>
+        </div>
       </div>
 
       <!-- Character Selector Row -->
       <div class="section-title">
-        <span>🎭 Choose Your AI Speaking Partner</span>
-        <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);">(Select an accent/persona)</span>
+        <span>🎭 Choose Your AI Partner</span>
       </div>
       <div class="characters-scroll-row" id="characters-scroll-row">
         <!-- Rendered dynamically -->
@@ -49,23 +92,121 @@
 
       <!-- Scenarios Grid -->
       <div class="section-title">
-        <span>🗺️ Select an Open-Topic Roleplay</span>
+        <span>☕ Everyday Life Roleplays</span>
       </div>
       <div class="scenarios-grid" id="scenarios-grid">
         <!-- Rendered dynamically -->
       </div>
     </main>
 
+    <!-- MODAL 1: TARGET LANGUAGE SETTING -->
+    <div class="modal-overlay" id="modal-lang-setting">
+      <div class="modal-box">
+        <h2 style="font-weight: 900; font-size: 20px;">🌐 Select Target Translation Language</h2>
+        <p style="color: var(--text-muted); font-size: 14px; font-weight: 600;">
+          Choose your language for word lookup definition clicks!
+        </p>
+
+        <div class="form-group">
+          <label>Translation Language</label>
+          <select id="select-target-lang" class="form-input">
+            <option value="vi">English ➔ Vietnamese (Tiếng Việt 🇻🇳)</option>
+            <option value="en-def">English ➔ English Definition (🇬🇧)</option>
+            <option value="es">English ➔ Spanish (Español 🇪🇸)</option>
+            <option value="fr">English ➔ French (Français 🇫🇷)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button class="btn-duo" id="btn-save-lang-setting" style="flex:1;">SAVE SETTING</button>
+          <button class="btn-duo btn-secondary" id="btn-close-lang-modal">CANCEL</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 2: INTERACTIVE WORD LOOKUP -->
+    <div class="modal-overlay" id="modal-word-lookup">
+      <div class="modal-box" style="max-width: 400px; text-align: center;">
+        <h2 style="font-weight: 900; font-size: 26px; color: var(--duo-blue);" id="word-title">Bargain</h2>
+        <div style="font-size: 16px; font-weight: 800; color: var(--text-muted);" id="word-phonetic">/ˈbɑː.ɡɪn/</div>
+
+        <div style="background: rgba(0,0,0,0.03); border-radius: 14px; padding: 14px; margin: 10px 0;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--duo-blue); text-transform: uppercase;" id="word-translation-label">Tiếng Việt</div>
+          <div style="font-size: 18px; font-weight: 800; margin-top: 4px;" id="word-translation-text">Mặc cả, trả giá</div>
+        </div>
+
+        <button class="btn-duo" id="btn-close-word-modal" style="width: 100%;">CLOSE</button>
+      </div>
+    </div>
+
+    <!-- MODAL 3: CREATE CUSTOM TOPIC -->
+    <div class="modal-overlay" id="modal-custom-topic">
+      <div class="modal-box">
+        <h2 style="font-weight: 900; font-size: 22px;">➕ Create Your Custom Topic</h2>
+        <p style="color: var(--text-muted); font-size: 14px; font-weight: 600;">
+          Add an everyday topic you'd like to practice speaking!
+        </p>
+
+        <div class="form-group">
+          <label>Topic Title</label>
+          <input type="text" id="custom-topic-title" class="form-input" placeholder="e.g. Cooking Dinner with Friends..." />
+        </div>
+
+        <div class="form-group">
+          <label>Description / Scenario context</label>
+          <input type="text" id="custom-topic-desc" class="form-input" placeholder="e.g. Chatting about recipes & kitchen chaos..." />
+        </div>
+
+        <div class="form-group">
+          <label>Icon Emoji</label>
+          <input type="text" id="custom-topic-icon" class="form-input" placeholder="🍳" value="💬" />
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button class="btn-duo" id="btn-save-custom-topic" style="flex:1;">SAVE TOPIC</button>
+          <button class="btn-duo btn-secondary" id="btn-close-modal">CANCEL</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 4: SAVED VOCABULARY BOOK (SỔ TỪ VỰNG) -->
+    <div class="modal-overlay" id="modal-vocab-book">
+      <div class="modal-box" style="max-width: 550px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 10px;">
+          <h2 style="font-weight: 900; font-size: 20px; color: var(--duo-orange);">📖 Sổ Từ Vựng Đã Học (SQLite DB)</h2>
+          <button class="btn-close" id="btn-close-vocab-modal">✕</button>
+        </div>
+
+        <div style="margin: 10px 0;">
+          <input type="text" id="input-search-vocab" class="form-input" placeholder="🔍 Search saved words..." style="padding: 8px 12px; font-size: 13px;" />
+        </div>
+
+        <div id="vocab-words-list" style="max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <button class="btn-duo btn-secondary" id="btn-close-vocab-bottom" style="width:100%; margin-top: 14px;">
+          CLOSE VOCABULARY BOOK
+        </button>
+      </div>
+    </div>
+
     <!-- SCREEN 2: Practice Stage Room -->
     <main id="practice-screen" class="screen">
       <div class="practice-header">
         <button class="btn-close" id="btn-close-practice" title="Quit Scenario">✕</button>
-        <div class="progress-container">
-          <div class="progress-bar-fill" id="progress-bar-fill"></div>
-        </div>
-        <span id="scenario-stage-title" style="font-weight: 800; font-size: 14px; color: var(--text-muted);">
+        
+        <span id="scenario-stage-title" style="font-weight: 800; font-size: 14px; flex:1;">
           Roleplay Stage
         </span>
+
+        <span id="current-turns-count" style="font-weight: 800; font-size: 12px; color: var(--duo-blue); margin-right: 6px;">
+          Turns: 0 (Unlimited)
+        </span>
+
+        <button class="btn-duo btn-red" id="btn-finish-roleplay" style="padding: 6px 12px; font-size: 12px;">
+          🏁 FINISH
+        </button>
       </div>
 
       <div class="stage-area">
@@ -75,27 +216,33 @@
 
           <div class="speech-bubble">
             <div class="ai-character-name" id="ai-persona-name">Rajesh Kumar (Indian English)</div>
-            <div class="ai-text" id="ai-speech-text">
-              Welcome to our discussion! What would you like to share today?
+            
+            <!-- Interactive Word Token Container -->
+            <div class="ai-text word-token-container" id="ai-speech-text">
+              Generating AI opening question...
             </div>
-            <div class="ai-translation" id="ai-translation-text">
-              Chào mừng bạn đến với buổi trò chuyện!
+            
+            <!-- AI Sentence Vietnamese Translation -->
+            <div class="ai-translation" id="ai-translation-text" style="display: none; background: rgba(28,176,246,0.08); padding: 10px 14px; border-radius: 12px; margin-top: 10px; font-weight: 700; color: #00843D;">
+              Đang khởi tạo...
             </div>
 
-            <div class="bubble-actions">
+            <div class="bubble-actions" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
               <button class="btn-icon-sm" id="btn-tts-play" title="Listen to AI voice">
-                🔊 Listen Voice
+                🔊 Voice
               </button>
-              <button class="btn-icon-sm" id="btn-toggle-translate" title="Show/Hide Translation">
-                🌐 Translation
+              <button class="btn-icon-sm" id="btn-toggle-translate" title="Show/Hide Full Translation">
+                🌐 Translate
               </button>
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); align-self: center; margin-left: auto;">
+                💡 Tap word to translate!
+              </span>
             </div>
           </div>
         </div>
 
         <!-- User Speaking Input Area -->
         <div class="user-speaking-section">
-          <!-- Audio Waveform Visualizer -->
           <div class="waveform-container" id="waveform-anim">
             <div class="wave-bar"></div>
             <div class="wave-bar"></div>
@@ -113,43 +260,60 @@
 
           <!-- Live Transcript Preview -->
           <div class="transcript-preview" id="transcript-display">
-            Tap the microphone and speak continuously in English...
+            Tap mic and speak in English...
           </div>
 
-          <!-- Fallback Text Input (Accessibility) -->
+          <!-- Fallback Text Input -->
           <div class="text-input-fallback">
             <input type="text" id="input-manual-text" class="input-speak-text" placeholder="Or type your response here..." />
-            <button class="btn-duo btn-blue" id="btn-submit-text">SEND</button>
+            <button class="btn-duo btn-blue" id="btn-submit-text" style="padding: 8px 14px;">SEND</button>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- SCREEN 3: Victory Screen -->
-    <main id="victory-screen" class="screen victory-screen">
-      <div class="victory-mascot" id="victory-mascot"></div>
-      <h1 class="victory-title">ROLEPLAY COMPLETED! 🏆</h1>
-      <p style="font-size: 18px; font-weight: 700; color: var(--text-muted);">
-        Fantastic job maintaining continuous dialogue with your AI partner!
-      </p>
+    <!-- SCREEN 3: Victory & Full Conversation History Review -->
+    <main id="victory-screen" class="screen victory-screen" style="text-align: center; align-items: center;">
+      <div class="victory-mascot" id="victory-mascot" style="width: 110px; height: 110px;"></div>
+      <h1 style="font-size: 24px; font-weight: 900; color: var(--duo-green);">ROLEPLAY SUMMARY 🏆</h1>
 
-      <div class="victory-stats">
+      <div style="display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap; justify-content: center;">
         <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-yellow);" id="victory-xp-earned">+70 XP</div>
-          <div class="stat-label">TOTAL XP</div>
+          <div class="stat-value" style="color: var(--duo-green);" id="victory-overall-score">94/100</div>
+          <div class="stat-label">OVERALL</div>
         </div>
         <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-green);" id="victory-turns-completed">7 / 7</div>
-          <div class="stat-label">TURNS COMPLETED</div>
+          <div class="stat-value" style="color: var(--duo-blue);" id="victory-fluency-score">95/100</div>
+          <div class="stat-label">FLUENCY</div>
         </div>
         <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-blue);">98%</div>
-          <div class="stat-label">FLUENCY SCORE</div>
+          <div class="stat-value" style="color: var(--duo-purple);" id="victory-grammar-score">93/100</div>
+          <div class="stat-label">GRAMMAR</div>
+        </div>
+        <div class="victory-stat-card">
+          <div class="stat-value" style="color: var(--duo-yellow);" id="victory-turns-completed">5 Turns</div>
+          <div class="stat-label">TURNS</div>
         </div>
       </div>
 
-      <button class="btn-duo" id="btn-victory-continue" style="min-width: 250px;">
-        CONTINUE TO NEXT SCENARIO
+      <!-- FULL CONVERSATION TRANSCRIPT REVIEW LIST (SELECTABLE & COPYABLE) -->
+      <div style="width: 100%; max-width: 700px; text-align: left; margin: 10px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <h3 style="font-size: 15px; font-weight: 900; color: var(--text-dark);">
+            📜 Conversation Review
+          </h3>
+          <button class="btn-duo btn-secondary" id="btn-copy-transcript" style="padding: 6px 10px; font-size: 12px;">
+            📋 COPY TRANSCRIPT
+          </button>
+        </div>
+        
+        <div class="scores-list" id="victory-scores-breakdown" style="max-height: 260px; overflow-y: auto; user-select: text; -webkit-user-select: text;">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <button class="btn-duo" id="btn-victory-continue" style="min-width: 240px; margin-top: 10px;">
+        CONTINUE TO HOME
       </button>
     </main>
 
@@ -158,20 +322,20 @@
       <div class="feedback-header">
         <div class="feedback-title">
           <span>🎉</span>
-          <span id="feedback-title-text">EXCELLENT SPEAKING!</span>
+          <span id="feedback-title-text">GREAT CONTINUOUS SPEAKING!</span>
         </div>
-        <div class="score-badge" id="feedback-score-badge">Fluency: 95/100 🔥</div>
+        <div class="score-badge" id="feedback-score-badge">Turn Score: 95/100 🔥</div>
       </div>
 
       <div class="native-phrasing-box">
-        <div class="native-phrasing-label">💡 Duolingo Native Phrasing Tip</div>
+        <div class="native-phrasing-label">💡 Native Speaker Rewrite</div>
         <div id="native-phrasing-text">
-          "Kindly share your thoughts..."
+          "I'd like an iced oat latte with half sugar, please."
         </div>
       </div>
 
       <div style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="font-weight: 900; color: var(--duo-yellow); font-size: 20px;" id="feedback-xp-earned">
+        <div style="font-weight: 900; color: var(--duo-yellow); font-size: 18px;" id="feedback-xp-earned">
           +10 XP
         </div>
         <button class="btn-duo" id="btn-continue-feedback">CONTINUE</button>
@@ -185,5 +349,15 @@
   <script src="/static/js/duo_mascot.js"></script>
   <script src="/static/js/speech.js"></script>
   <script src="/static/js/app.js"></script>
+  <script>
+    // Register PWA Service Worker for Mobile App Installability
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/sw.js').catch(err => {
+          console.log('ServiceWorker registration skipped:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>

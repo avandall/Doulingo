@@ -12,3 +12,7 @@ wheels/
 # Environment variables & secrets
 .env
 *.env
+
+# SQLite Data files
+data/*.db
+data/
