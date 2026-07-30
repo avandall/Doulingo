@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duolingo Speak - Dynamic AI Roleplay & 8 Characters</title>
+  <link rel="stylesheet" href="/static/css/duolingo.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="brand-icon" id="brand-mascot"></div>
+        <span>duolingo <span style="color: var(--duo-blue);">speak</span></span>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item streak" title="Day Streak">
+          🔥 <span id="stat-streak-count">5</span>
+        </div>
+        <div class="stat-item xp" title="Total XP">
+          ⚡ <span id="stat-xp-count">150</span>
+        </div>
+        <div class="stat-item hearts" title="Hearts">
+          ❤️ <span id="stat-hearts-count">5</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SCREEN 1: Character Selector & Topic Scenarios Grid -->
+    <main id="scenario-screen" class="screen active">
+      <div class="hero-banner">
+        <h1 class="hero-title">Continuous AI Speaking Practice 🦉</h1>
+        <p class="hero-subtitle">Chat naturally with 8 unique AI personas & explore 10 open-topic roleplays!</p>
+      </div>
+
+      <!-- Character Selector Row -->
+      <div class="section-title">
+        <span>🎭 Choose Your AI Speaking Partner</span>
+        <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);">(Select an accent/persona)</span>
+      </div>
+      <div class="characters-scroll-row" id="characters-scroll-row">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Scenarios Grid -->
+      <div class="section-title">
+        <span>🗺️ Select an Open-Topic Roleplay</span>
+      </div>
+      <div class="scenarios-grid" id="scenarios-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </main>
+
+    <!-- SCREEN 2: Practice Stage Room -->
+    <main id="practice-screen" class="screen">
+      <div class="practice-header">
+        <button class="btn-close" id="btn-close-practice" title="Quit Scenario">✕</button>
+        <div class="progress-container">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <span id="scenario-stage-title" style="font-weight: 800; font-size: 14px; color: var(--text-muted);">
+          Roleplay Stage
+        </span>
+      </div>
+
+      <div class="stage-area">
+        <!-- AI Dialogue Bubble & Mascot -->
+        <div class="dialogue-section">
+          <div class="duo-mascot-box" id="practice-mascot"></div>
+
+          <div class="speech-bubble">
+            <div class="ai-character-name" id="ai-persona-name">Rajesh Kumar (Indian English)</div>
+            <div class="ai-text" id="ai-speech-text">
+              Welcome to our discussion! What would you like to share today?
+            </div>
+            <div class="ai-translation" id="ai-translation-text">
+              Chào mừng bạn đến với buổi trò chuyện!
+            </div>
+
+            <div class="bubble-actions">
+              <button class="btn-icon-sm" id="btn-tts-play" title="Listen to AI voice">
+                🔊 Listen Voice
+              </button>
+              <button class="btn-icon-sm" id="btn-toggle-translate" title="Show/Hide Translation">
+                🌐 Translation
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Speaking Input Area -->
+        <div class="user-speaking-section">
+          <!-- Audio Waveform Visualizer -->
+          <div class="waveform-container" id="waveform-anim">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+
+          <!-- Mic Button -->
+          <div class="mic-button-wrapper">
+            <button class="btn-mic" id="btn-mic-toggle" title="Press to speak">
+              🎙️
+            </button>
+          </div>
+
+          <!-- Live Transcript Preview -->
+          <div class="transcript-preview" id="transcript-display">
+            Tap the microphone and speak continuously in English...
+          </div>
+
+          <!-- Fallback Text Input (Accessibility) -->
+          <div class="text-input-fallback">
+            <input type="text" id="input-manual-text" class="input-speak-text" placeholder="Or type your response here..." />
+            <button class="btn-duo btn-blue" id="btn-submit-text">SEND</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- SCREEN 3: Victory Screen -->
+    <main id="victory-screen" class="screen victory-screen">
+      <div class="victory-mascot" id="victory-mascot"></div>
+      <h1 class="victory-title">ROLEPLAY COMPLETED! 🏆</h1>
+      <p style="font-size: 18px; font-weight: 700; color: var(--text-muted);">
+        Fantastic job maintaining continuous dialogue with your AI partner!
+      </p>
+
+      <div class="victory-stats">
+        <div class="victory-stat-card">
+          <div class="stat-value" style="color: var(--duo-yellow);" id="victory-xp-earned">+70 XP</div>
+          <div class="stat-label">TOTAL XP</div>
+        </div>
+        <div class="victory-stat-card">
+          <div class="stat-value" style="color: var(--duo-green);" id="victory-turns-completed">7 / 7</div>
+          <div class="stat-label">TURNS COMPLETED</div>
+        </div>
+        <div class="victory-stat-card">
+          <div class="stat-value" style="color: var(--duo-blue);">98%</div>
+          <div class="stat-label">FLUENCY SCORE</div>
+        </div>
+      </div>
+
+      <button class="btn-duo" id="btn-victory-continue" style="min-width: 250px;">
+        CONTINUE TO NEXT SCENARIO
+      </button>
+    </main>
+
+    <!-- DUOLINGO INSTANT FEEDBACK BOTTOM SHEET -->
+    <div class="feedback-sheet" id="feedback-sheet">
+      <div class="feedback-header">
+        <div class="feedback-title">
+          <span>🎉</span>
+          <span id="feedback-title-text">EXCELLENT SPEAKING!</span>
+        </div>
+        <div class="score-badge" id="feedback-score-badge">Fluency: 95/100 🔥</div>
+      </div>
+
+      <div class="native-phrasing-box">
+        <div class="native-phrasing-label">💡 Duolingo Native Phrasing Tip</div>
+        <div id="native-phrasing-text">
+          "Kindly share your thoughts..."
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-weight: 900; color: var(--duo-yellow); font-size: 20px;" id="feedback-xp-earned">
+          +10 XP
+        </div>
+        <button class="btn-duo" id="btn-continue-feedback">CONTINUE</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/audio_fx.js"></script>
+  <script src="/static/js/duo_mascot.js"></script>
+  <script src="/static/js/speech.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
