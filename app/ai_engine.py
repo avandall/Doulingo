@@ -1,7 +1,8 @@
 """
 AI Engine for Duolingo Speak
 Features:
-- Meaning-Preserving Grammatical Correction (LLM preserves user's exact opinion/intent in corrected_text).
+- Smart Fluent Conversational Vietnamese Translations (Natural, non-machine translation).
+- Meaning-Preserving Grammatical Correction.
 - Cleaned Punctuation & Contraction-Aware Deterministic Scoring.
 - High Conversational Creativity (temperature = 0.85 + Dynamic Scenario Angle Randomizer).
 - Single API Call Execution.
@@ -63,25 +64,15 @@ class AIEngine:
         ]
 
     def _normalize_text_for_comparison(self, text: str) -> str:
-        """
-        Normalize text by stripping punctuation, standardizing contractions, and case.
-        """
         if not text:
             return ""
         t = text.lower()
-        # Common contractions
         t = t.replace("can't", "cannot").replace("won't", "will not").replace("n't", " not")
         t = t.replace("'m", " am").replace("'re", " are").replace("'s", " is").replace("'ve", " have")
-        # Remove punctuation
         t = re.sub(r'[^\w\s]', '', t)
-        # Normalize spaces
         return re.sub(r'\s+', ' ', t).strip()
 
     def _compute_deterministic_score(self, user_transcript: str, corrected_text: str) -> Dict[str, int]:
-        """
-        Deterministic Mathematical Scoring algorithm based on Normalized Edit Distance.
-        Preserves user intent and ignores punctuation/contraction differences.
-        """
         u_clean = self._normalize_text_for_comparison(user_transcript)
         c_clean = self._normalize_text_for_comparison(corrected_text)
 
@@ -135,10 +126,13 @@ DIFFICULTY LEVEL: {level}/20 ({level_desc}).
 
 Task: Proactively START the roleplay conversation in a fresh, creative way! Jump DIRECTLY into an engaging, direct question or statement about "{scenario['title']}" focusing on the dynamic angle ({angle}).
 
+CRITICAL TRANSLATION MANDATE:
+"ai_response_vi" MUST BE A NATURAL, FLUENT, CONVERSATIONAL VIETNAMESE TRANSLATION. (Bản dịch tiếng Việt phải mượt mà, văn phong giao tiếp tự nhiên chuẩn Việt, tuyệt đối KHÔNG dịch thô máy móc).
+
 Output JSON ONLY:
 {{
   "ai_response": "Direct topic question or opening statement in 100% STANDARD ENGLISH",
-  "ai_response_vi": "Vietnamese translation of your English opening question"
+  "ai_response_vi": "Bản dịch tiếng Việt giao tiếp mượt mà tự nhiên"
 }}"""
 
         for key in self.groq_keys:
@@ -161,7 +155,7 @@ Output JSON ONLY:
 
         return {
             "ai_response": f"What is your favorite item on the menu for '{scenario['title']}'?",
-            "ai_response_vi": f"Món ăn yêu thích của bạn trong menu này là gì?"
+            "ai_response_vi": f"Món ăn yêu thích của bạn trong thực đơn này là gì?"
         }
 
     def process_turn(
@@ -280,11 +274,12 @@ Output JSON ONLY:
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF IN CONVERSATION.
 
+CRITICAL TRANSLATION MANDATE:
+"ai_response_vi" MUST BE A NATURAL, FLUENT, CONVERSATIONAL VIETNAMESE TRANSLATION OF YOUR RESPONSE. (Bản dịch tiếng Việt phải mượt mà, văn phong giao tiếp tự nhiên chuẩn Việt, tuyệt đối KHÔNG dịch thô máy móc).
+
 CRITICAL RULE FOR corrected_text:
 "corrected_text" MUST BE THE DIRECT GRAMMATICAL FIX OF THE USER'S EXACT SPOKEN SENTENCE ("{user_transcript}").
 PRESERVE THE USER'S EXACT MEANING, OPINION, AND DECISION 100%!
-- If the user says "No I cannot drink it", corrected_text MUST BE "No, I cannot drink it."
-- NEVER change "No" to "Yes" or alter what the user literally intended to say.
 
 SMART CONVERSATION DIRECTIVES:
 1. DYNAMIC & CREATIVE DIALOGUE: Advance the conversation in a fresh, creative, and engaging way! Never repeat questions or loop in circles.
@@ -307,7 +302,7 @@ TASK:
 Output JSON ONLY:
 {{
   "ai_response": "Response in 100% STANDARD NATURAL ENGLISH strictly on topic",
-  "ai_response_vi": "Vietnamese translation of your English response",
+  "ai_response_vi": "Bản dịch tiếng Việt giao tiếp mượt mà tự nhiên (không dịch máy móc)",
   "user_feedback": {{
     "grammar_status": "Clean & Clear" or brief fix,
     "corrected_text": "Grammatically corrected version of user's sentence preserving exact meaning",

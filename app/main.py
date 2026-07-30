@@ -1,11 +1,12 @@
 """
 Main FastAPI App for Duolingo Speak
 Features:
-- High-Quality Natural Dictionary Translation (dt=bd parameter for natural terms).
+- Smart Fluent Sentence Translation & High-Quality Natural Dictionary.
+- Mobile PWA Speech Recognition Fix (Full transcript capture).
 - Saved Vocabulary Book Endpoint (/api/saved_words).
 - Permanent SQLite Word Dictionary Storage & RAM Cache (0ms Instant Word Lookup).
 - Expressive Neural Voice TTS (/api/tts).
-- Mobile App & PWA Support.
+- Level 1-20 Difficulty Control & SQLite Custom Topics.
 """
 
 from fastapi import FastAPI, HTTPException, Query
@@ -64,7 +65,8 @@ def fetch_fallback_full_translation(text: str, target_lang: str = "vi") -> str:
         if res.status_code == 200:
             data = res.json()
             if data and data[0]:
-                return "".join([part[0] for part in data[0] if part and part[0]])
+                raw = "".join([part[0] for part in data[0] if part and part[0]])
+                return unicodedata.normalize('NFC', raw)
     except Exception:
         pass
     return ""
@@ -208,7 +210,6 @@ def api_translate_word(
                 terms.append(gt_data[0][0][0])
                 
             if terms:
-                # Deduplicate and normalize NFC Vietnamese characters
                 unique_terms = list(dict.fromkeys(terms))[:3]
                 raw_str = ", ".join(unique_terms)
                 real_translation = unicodedata.normalize('NFC', raw_str).capitalize()
