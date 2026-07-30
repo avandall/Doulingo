@@ -1,6 +1,6 @@
 /**
  * Speech Recognition & Microphone Visualizer Controller
- * Uses Web Speech API for real-time continuous Speech-to-Text (STT)
+ * Mobile PWA Optimized: Works seamlessly on Android Chrome & iOS Safari!
  */
 class SpeechHandler {
   constructor(onResultCallback, onStateChangeCallback) {
@@ -9,6 +9,7 @@ class SpeechHandler {
     this.onResult = onResultCallback;
     this.onStateChange = onStateChangeCallback;
     this.finalTranscript = '';
+    this.isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
     this._initSpeech();
   }
@@ -17,7 +18,9 @@ class SpeechHandler {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {
       this.recognition = new SpeechRecognition();
-      this.recognition.continuous = true;
+      
+      // On mobile devices (Android/iOS), continuous must be FALSE to avoid mobile Chrome/Safari mic hangs!
+      this.recognition.continuous = !this.isMobile;
       this.recognition.interimResults = true;
       this.recognition.lang = 'en-US';
 
@@ -43,7 +46,16 @@ class SpeechHandler {
 
       this.recognition.onerror = (event) => {
         console.warn('[SpeechHandler] Error:', event.error);
+        this.isListening = false;
         if (this.onStateChange) this.onStateChange('error', event.error);
+      };
+
+      this.recognition.onspeechend = () => {
+        if (this.isMobile && this.recognition) {
+          try {
+            this.recognition.stop();
+          } catch (e) {}
+        }
       };
 
       this.recognition.onend = () => {
@@ -78,6 +90,11 @@ class SpeechHandler {
         this.recognition.start();
       } catch (e) {
         console.error('[SpeechHandler] Start error:', e);
+        // Retry start if state mismatch
+        try {
+          this.recognition.stop();
+          setTimeout(() => this.recognition.start(), 200);
+        } catch (err) {}
       }
     }
   }

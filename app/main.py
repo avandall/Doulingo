@@ -1,11 +1,11 @@
 """
 Main FastAPI App for Duolingo Speak
 Features:
+- High-Quality Natural Dictionary Translation (dt=bd parameter for natural terms).
 - Saved Vocabulary Book Endpoint (/api/saved_words).
 - Permanent SQLite Word Dictionary Storage & RAM Cache (0ms Instant Word Lookup).
 - Expressive Neural Voice TTS (/api/tts).
-- Reliable Full Sentence Translation (/api/process_turn & /api/translate_word).
-- Level 1-20 Difficulty Control & SQLite Custom Topics.
+- Mobile App & PWA Support.
 """
 
 from fastapi import FastAPI, HTTPException, Query
@@ -15,6 +15,7 @@ from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 import os
 import uuid
+import unicodedata
 import requests
 
 from app.scenarios import list_scenarios, get_scenario
@@ -145,9 +146,6 @@ def api_process_turn(payload: TurnRequest):
 
 @app.get("/api/saved_words")
 def api_get_saved_words(target_lang: Optional[str] = Query(None, description="Optional target language filter")):
-    """
-    Retrieve all saved vocabulary words from SQLite DB for user review & study.
-    """
     words = get_all_saved_words(target_lang)
     return {"count": len(words), "words": words}
 
@@ -157,8 +155,8 @@ def api_translate_word(
     target_lang: str = Query("vi", description="Target translation language code (vi, en-def, es, fr)")
 ):
     """
-    High-Performance Word Lookup Endpoint.
-    Uses Permanent SQLite Storage + RAM Cache so all translated words are saved forever!
+    High-Quality Natural Dictionary Lookup Endpoint.
+    Uses dt=bd parameter to fetch natural, accurate dictionary meanings.
     """
     clean_word = word.strip().strip(".,!?;:\"'()[]{}")
     if not clean_word:
@@ -189,16 +187,31 @@ def api_translate_word(
         IPA_CACHE[clean_word.lower()] = db_word["phonetic"]
         return db_word
 
-    # 3. Fetch from External APIs if not in DB yet
+    # 3. High-Quality Dictionary API Lookup (dt=t & dt=bd for natural everyday terms)
     tl_code = target_lang if target_lang != "en-def" else "en"
     real_translation = f"Definition of '{clean_word}'"
     try:
-        gt_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={tl_code}&dt=t&q={requests.utils.quote(clean_word)}"
-        gt_res = requests.get(gt_url, timeout=3)
+        gt_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={tl_code}&dt=t&dt=bd&q={requests.utils.quote(clean_word)}"
+        gt_res = requests.get(gt_url, timeout=4)
         if gt_res.status_code == 200:
             gt_data = gt_res.json()
-            if gt_data and gt_data[0] and gt_data[0][0]:
-                real_translation = gt_data[0][0][0]
+            terms = []
+            
+            # Extract rich dictionary meanings if available (dt=bd)
+            if len(gt_data) > 1 and gt_data[1]:
+                for dict_entry in gt_data[1]:
+                    if len(dict_entry) > 1 and dict_entry[1]:
+                        terms.extend(dict_entry[1][:3])
+            
+            # Fallback to main translation
+            if not terms and gt_data[0] and gt_data[0][0]:
+                terms.append(gt_data[0][0][0])
+                
+            if terms:
+                # Deduplicate and normalize NFC Vietnamese characters
+                unique_terms = list(dict.fromkeys(terms))[:3]
+                raw_str = ", ".join(unique_terms)
+                real_translation = unicodedata.normalize('NFC', raw_str).capitalize()
     except Exception as e:
         print(f"[Translate Word] Google Translate error: {e}")
 
