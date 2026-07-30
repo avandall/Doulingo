@@ -251,16 +251,19 @@
             <div class="wave-bar"></div>
           </div>
 
-          <!-- Mic Button -->
-          <div class="mic-button-wrapper">
-            <button class="btn-mic" id="btn-mic-toggle" title="Press to speak">
+          <!-- Mic Button & Cancel Button Pair -->
+          <div class="mic-button-wrapper" style="display: flex; gap: 12px; align-items: center; justify-content: center;">
+            <button class="btn-mic" id="btn-mic-toggle" title="Press to speak, press again to stop & send">
               🎙️
+            </button>
+            <button class="btn-duo btn-red" id="btn-cancel-mic" style="display: none; padding: 10px 16px; font-size: 13px; height: 48px;" title="Cancel recording without sending">
+              ❌ HỦY NÓI
             </button>
           </div>
 
           <!-- Live Transcript Preview -->
           <div class="transcript-preview" id="transcript-display">
-            Tap mic and speak in English...
+            Tap mic to start speaking (Press again when done)...
           </div>
 
           <!-- Fallback Text Input -->

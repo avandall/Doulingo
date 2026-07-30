@@ -1,6 +1,7 @@
 /**
  * Duolingo Speak Application Controller
  * Features:
+ * - Cancel Speech Recording Button (Discard recording without sending).
  * - Saved Vocabulary Book Modal (Fetches /api/saved_words from SQLite DB).
  * - Instant 0ms Word Lookup (Frontend Map + Backend RAM Cache).
  * - Reliable Full AI Sentence Translation Toggle across all turns.
@@ -123,14 +124,22 @@ class DuolingoSpeakApp {
     document.getElementById('btn-close-practice').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
       this.stopTTS();
-      if (this.speechHandler) this.speechHandler.stop();
+      if (this.speechHandler) this.speechHandler.cancel();
       this.showScreen('scenario-screen');
     });
 
-    // Mic & Manual Text
+    // Mic Toggle & CANCEL Button
     document.getElementById('btn-mic-toggle').addEventListener('click', () => {
       this.speechHandler.toggleListening();
     });
+
+    const cancelBtn = document.getElementById('btn-cancel-mic');
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        if (window.duoAudio) window.duoAudio.playClick();
+        if (this.speechHandler) this.speechHandler.cancel();
+      });
+    }
 
     document.getElementById('btn-submit-text').addEventListener('click', () => {
       const input = document.getElementById('input-manual-text');
@@ -593,7 +602,7 @@ class DuolingoSpeakApp {
   }
 
   handleSpeechResult(transcript, isFinal) {
-    document.getElementById('transcript-display').textContent = transcript || 'Listening...';
+    document.getElementById('transcript-display').textContent = `"${transcript}"` || 'Listening...';
     if (isFinal && transcript.trim()) {
       this.submitSpokenTurn(transcript.trim());
     }
@@ -601,15 +610,25 @@ class DuolingoSpeakApp {
 
   handleSpeechStateChange(state, detail) {
     const micBtn = document.getElementById('btn-mic-toggle');
+    const cancelBtn = document.getElementById('btn-cancel-mic');
     const waveform = document.getElementById('waveform-anim');
+
     if (state === 'listening') {
       micBtn.classList.add('recording');
       waveform.classList.add('active');
+      if (cancelBtn) cancelBtn.style.display = 'inline-flex';
       DuoMascot.renderInto('practice-mascot', 'listening');
-      document.getElementById('transcript-display').textContent = 'Listening... Speak now!';
+      document.getElementById('transcript-display').textContent = '🎙️ Recording... Tap mic again to SEND, or tap Cancel to discard!';
+    } else if (state === 'cancelled') {
+      micBtn.classList.remove('recording');
+      waveform.classList.remove('active');
+      if (cancelBtn) cancelBtn.style.display = 'none';
+      DuoMascot.renderInto('practice-mascot', 'happy');
+      document.getElementById('transcript-display').textContent = '❌ Recording cancelled. Tap mic to try again!';
     } else {
       micBtn.classList.remove('recording');
       waveform.classList.remove('active');
+      if (cancelBtn) cancelBtn.style.display = 'none';
       if (state === 'stopped') DuoMascot.renderInto('practice-mascot', 'happy');
     }
   }
