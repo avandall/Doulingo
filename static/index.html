@@ -21,6 +21,35 @@
       user-select: text !important;
       -webkit-user-select: text !important;
     }
+
+    /* 5x5 Emoji Grid Picker */
+    .emoji-grid-5x5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .emoji-grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      height: 44px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .emoji-grid-item:hover {
+      background: rgba(28, 176, 246, 0.12);
+      transform: scale(1.08);
+    }
+    .emoji-grid-item.active {
+      background: rgba(28, 176, 246, 0.2);
+      border-color: var(--duo-blue);
+      box-shadow: 0 4px 0 var(--duo-blue-dark);
+    }
   </style>
 </head>
 <body>
@@ -158,8 +187,40 @@
         </div>
 
         <div class="form-group">
-          <label>Icon Emoji</label>
-          <input type="text" id="custom-topic-icon" class="form-input" placeholder="🍳" value="💬" />
+          <label>Choose Icon (5x5 Emoji Grid)</label>
+          <input type="hidden" id="custom-topic-icon" value="💬" />
+          <div class="emoji-grid-5x5" id="emoji-picker-grid">
+            <!-- Row 1 -->
+            <div class="emoji-grid-item active" data-emoji="💬">💬</div>
+            <div class="emoji-grid-item" data-emoji="☕">☕</div>
+            <div class="emoji-grid-item" data-emoji="🍕">🍕</div>
+            <div class="emoji-grid-item" data-emoji="🛒">🛒</div>
+            <div class="emoji-grid-item" data-emoji="✈️">✈️</div>
+            <!-- Row 2 -->
+            <div class="emoji-grid-item" data-emoji="🚕">🚕</div>
+            <div class="emoji-grid-item" data-emoji="🎬">🎬</div>
+            <div class="emoji-grid-item" data-emoji="🏖️">🏖️</div>
+            <div class="emoji-grid-item" data-emoji="🐶">🐶</div>
+            <div class="emoji-grid-item" data-emoji="💻">💻</div>
+            <!-- Row 3 -->
+            <div class="emoji-grid-item" data-emoji="🏠">🏠</div>
+            <div class="emoji-grid-item" data-emoji="🏥">🏥</div>
+            <div class="emoji-grid-item" data-emoji="💼">💼</div>
+            <div class="emoji-grid-item" data-emoji="🎓">🎓</div>
+            <div class="emoji-grid-item" data-emoji="⚽">⚽</div>
+            <!-- Row 4 -->
+            <div class="emoji-grid-item" data-emoji="🎵">🎵</div>
+            <div class="emoji-grid-item" data-emoji="🎮">🎮</div>
+            <div class="emoji-grid-item" data-emoji="🕶️">🕶️</div>
+            <div class="emoji-grid-item" data-emoji="🏴‍☠️">🏴‍☠️</div>
+            <div class="emoji-grid-item" data-emoji="🔮">🔮</div>
+            <!-- Row 5 -->
+            <div class="emoji-grid-item" data-emoji="🎨">🎨</div>
+            <div class="emoji-grid-item" data-emoji="🚴">🚴</div>
+            <div class="emoji-grid-item" data-emoji="🚀">🚀</div>
+            <div class="emoji-grid-item" data-emoji="🍔">🍔</div>
+            <div class="emoji-grid-item" data-emoji="🔑">🔑</div>
+          </div>
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 10px;">

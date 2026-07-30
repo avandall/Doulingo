@@ -1,171 +1,144 @@
 """
 Scenario definitions for Duolingo Speak
-10 Relatable, Everyday Life Topics (Bình dân cuộc sống).
-Merged with SQLite database custom topics.
+Clean, simple UI titles with open-ended creative story seeds for AI improvisation.
+No hardcoded levels, default characters, or suggested vocabulary.
 """
 
-from app.characters import get_character
 from app.db import get_custom_scenarios
 
 DEFAULT_SCENARIOS = {
     "cafe_order": {
         "id": "cafe_order",
-        "title": "Ordering Coffee & Bakery Snacks",
-        "category": "Everyday Life ☕",
+        "title": "Coffee Shop",
+        "category": "Everyday",
         "icon": "☕",
         "color": "#FF9933",
-        "level": "Beginner",
-        "level_code": "A2",
-        "default_character": "rajesh",
-        "description": "Order coffee, ask for milk choices, customize sugar levels, and pick a freshly baked pastry.",
-        "objective": "Practice polite ordering, food vocabulary, and asking simple questions.",
-        "suggested_vocabulary": ["I'd like an iced latte", "Less sugar please", "With oat milk", "To go / For here", "Fresh pastry"]
+        "description": "Order coffee, secret menu drinks, and gossip at a busy cafe.",
+        "open_story_guide": "An unscripted cafe encounter. Improvise funny drink mixups, secret menu items, or chaotic cafe drama."
     },
-    "grocery_market": {
-        "id": "grocery_market",
-        "title": "Grocery Shopping & Market Bargaining",
-        "category": "Everyday Life 🛒",
+    "night_market": {
+        "id": "night_market",
+        "title": "Night Market",
+        "category": "Everyday",
         "icon": "🛒",
         "color": "#4CAF50",
-        "level": "Beginner-Intermediate",
-        "level_code": "A2-B1",
-        "default_character": "priya",
-        "description": "Buy fresh fruits, vegetables, and negotiate prices with dramatic Bollywood diva Priya.",
-        "objective": "Practice asking for prices, quantity, and bargaining politely.",
-        "suggested_vocabulary": ["How much is this?", "Is it fresh?", "Can you give a discount?", "Half a kilo", "Ripe mangoes"]
+        "description": "Explore bustling street food stalls and bargain for unique finds.",
+        "open_story_guide": "An open night market adventure. Improvise exotic food tasting, funny price bargaining, or rare antique discoveries."
     },
     "dinner_choice": {
         "id": "dinner_choice",
-        "title": "Deciding What to Eat for Dinner",
-        "category": "Food & Dining 🍕",
+        "title": "Late-Night Diner",
+        "category": "Food",
         "icon": "🍕",
         "color": "#E91E63",
-        "level": "Beginner",
-        "level_code": "A2",
-        "default_character": "marco",
-        "description": "Argue passionately with Italian Chef Marco about whether to eat pizza, sushi, or homecooked pasta.",
-        "objective": "Practice expressing food cravings, agreeing/disagreeing, and making plans.",
-        "suggested_vocabulary": ["I'm craving...", "What are you in the mood for?", "Homemade pasta", "Spicy food", "Let's order delivery"]
+        "description": "Debate late-night food cravings and chef special recipes.",
+        "open_story_guide": "A hilarious late-night food debate. Improvise weird food combos, midnight cravings, or chef specials."
     },
-    "taxi_directions": {
-        "id": "taxi_directions",
-        "title": "Asking for Directions & Taking a Taxi",
-        "category": "Travel & Transportation 🚕",
+    "city_taxi": {
+        "id": "city_taxi",
+        "title": "City Taxi",
+        "category": "Travel",
         "icon": "🚕",
         "color": "#1CB0F6",
-        "level": "Beginner",
-        "level_code": "A2",
-        "default_character": "brody",
-        "description": "Tell your taxi driver where to go, ask about the fastest route, and avoid traffic jams.",
-        "objective": "Practice giving directions, location prepositions, and asking about time.",
-        "suggested_vocabulary": ["Turn left at the light", "Take the highway", "How long will it take?", "Drop me off here", "Traffic is heavy"]
+        "description": "Navigate city streets, dodge traffic, and find secret shortcuts.",
+        "open_story_guide": "A chaotic taxi ride across town. Improvise unexpected traffic jams, radio trivia, or secret detour shortcuts."
     },
-    "weekend_movies": {
-        "id": "weekend_movies",
-        "title": "Talking About Movies & Weekend Plans",
-        "category": "Entertainment 🎬",
+    "cinema_drinks": {
+        "id": "cinema_drinks",
+        "title": "Cinema & Drinks",
+        "category": "Fun",
         "icon": "🎬",
         "color": "#FF2A85",
-        "level": "Intermediate",
-        "level_code": "B1",
-        "default_character": "chloe",
-        "description": "Chat about the latest cinema releases, streaming series, and weekend hangout plans with Chloe.",
-        "objective": "Practice talking about entertainment, recommending movies, and weekend activities.",
-        "suggested_vocabulary": ["Binge-watch", "Have you seen...", "Popcorn movie", "Hang out", "Worth watching"]
+        "description": "Discuss movie premieres, plot twists, and smuggled cinema snacks.",
+        "open_story_guide": "A lively movie night chat. Improvise film plot debates, sold-out tickets, or secret movie spoilers."
     },
     "beach_vacation": {
         "id": "beach_vacation",
-        "title": "Planning a Weekend Beach Trip",
-        "category": "Travel & Fun 🏖️",
+        "title": "Beach Getaway",
+        "category": "Travel",
         "icon": "🏖️",
         "color": "#00843D",
-        "level": "Intermediate",
-        "level_code": "B1",
-        "default_character": "brody",
-        "description": "Plan a sunny beach trip, discuss packing sunscreen, surfing, and outdoor barbecues with Captain Brody.",
-        "objective": "Practice future intentions, packing lists, and outdoor activities.",
-        "suggested_vocabulary": ["Sunscreen", "Beach resort", "Rent a surfboard", "Seafood barbecue", "Soak up the sun"]
+        "description": "Plan a tropical beach trip, surfing sessions, and sunset barbecues.",
+        "open_story_guide": "A sunny coastal getaway. Improvise sudden tropical rainstorms, beach volleyball challenges, or secret cove discoveries."
     },
-    "pets_routine": {
-        "id": "pets_routine",
-        "title": "Pets, Cute Animals & Daily Habits",
-        "category": "Daily Life 🐶",
+    "pet_shelter": {
+        "id": "pet_shelter",
+        "title": "Pet Shelter",
+        "category": "Life",
         "icon": "🐶",
         "color": "#9C27B0",
-        "level": "Beginner",
-        "level_code": "A2",
-        "default_character": "evelyn",
-        "description": "Share stories about your pets, daily morning routines, and relaxing evening habits with Dr. Evelyn.",
-        "objective": "Practice simple present tense, daily routine verbs, and talking about pets.",
-        "suggested_vocabulary": ["Walk the dog", "Morning coffee", "Adoption", "Cute kitten", "Unwind after work"]
+        "description": "Meet adorable animals, adopt pets, and share funny routine stories.",
+        "open_story_guide": "A heartwarming or funny animal encounter. Improvise chaotic pet talents, adoption stories, or funny pet habits."
     },
-    "apartment_chores": {
-        "id": "apartment_chores",
-        "title": "Apartment Life & House Chores",
-        "category": "Home & Life 🏠",
+    "cyber_repair": {
+        "id": "cyber_repair",
+        "title": "Cyberpunk Repair",
+        "category": "Tech",
+        "icon": "💻",
+        "color": "#673AB7",
+        "description": "Troubleshoot glitchy AI gadgets, frozen screens, and futuristic tech.",
+        "open_story_guide": "A futuristic tech breakdown. Improvise rogue AI glitches, secret gadget modifications, or cyber hacker rumors."
+    },
+    "apartment_rent": {
+        "id": "apartment_rent",
+        "title": "Apartment Rental",
+        "category": "Housing",
         "icon": "🏠",
-        "color": "#DD0000",
-        "level": "Intermediate",
-        "level_code": "B1",
-        "default_character": "hans",
-        "description": "Complain or organize room cleaning, laundry schedules, and apartment maintenance with strict Hans Gruber.",
-        "objective": "Practice household vocabulary, schedules, and chore distribution.",
-        "suggested_vocabulary": ["Do the laundry", "Vacuum the carpet", "Fix the sink", "Noisy neighbors", "Rent payment"]
+        "color": "#795548",
+        "description": "Negotiate rent, check balcony views, and ask about building rules.",
+        "open_story_guide": "A dramatic housing inspection. Improvise eccentric landlord rules, secret balcony views, or funny room quirks."
     },
-    "apps_socialmedia": {
-        "id": "apps_socialmedia",
-        "title": "Chatting About Apps & Social Media",
-        "category": "Technology 📱",
-        "icon": "📱",
-        "color": "#CE82FF",
-        "level": "Intermediate",
-        "level_code": "B1",
-        "default_character": "chloe",
-        "description": "Discuss viral trends, useful smartphone apps, screen time, and funny videos with Gen-Z Chloe.",
-        "objective": "Practice tech vocabulary, describing trends, and opinion expressions.",
-        "suggested_vocabulary": ["Viral video", "Notification", "Scroll through feed", "Useful app", "Screen time limit"]
+    "midnight_clinic": {
+        "id": "midnight_clinic",
+        "title": "Midnight Clinic",
+        "category": "Health",
+        "icon": "🏥",
+        "color": "#00BCD4",
+        "description": "Describe mysterious symptoms, get health remedies, and consult a doctor.",
+        "open_story_guide": "An unusual medical checkup. Improvise strange symptoms, bizarre herbal remedies, or emergency room drama."
     },
-    "traffic_weather": {
-        "id": "traffic_weather",
-        "title": "Complaining About Traffic & Rain",
-        "category": "Daily Life 🌧️",
-        "icon": "🌧️",
-        "color": "#00247D",
-        "level": "Beginner-Intermediate",
-        "level_code": "A2-B1",
-        "default_character": "william",
-        "description": "Complain about unexpected heavy rain, traffic gridlocks, and cancelled plans with Sir William.",
-        "objective": "Practice weather descriptors, expressing frustration politely, and small talk.",
-        "suggested_vocabulary": ["Pouring rain", "Gridlock traffic", "Stuck in traffic", "Soaked", "Weather forecast"]
+    "secret_safehouse": {
+        "id": "secret_safehouse",
+        "title": "Secret Safehouse",
+        "category": "Action",
+        "icon": "🕶️",
+        "color": "#37474F",
+        "description": "Exchange secret codes, evade rival agents, and plan classified missions.",
+        "open_story_guide": "A high-stakes espionage roleplay. Improvise secret agent ambushes, encrypted radio messages, or undercover escapes."
+    },
+    "pirate_tavern": {
+        "id": "pirate_tavern",
+        "title": "Pirate Ship Tavern",
+        "category": "Adventure",
+        "icon": "🏴‍☠️",
+        "color": "#C62828",
+        "description": "Hunt for lost treasure maps, toast pirate grog, and duel swashbucklers.",
+        "open_story_guide": "A wild pirate adventure. Improvise treasure map clues, sea monster rumors, or tavern duel challenges."
     }
 }
+
+def list_scenarios():
+    scenarios_list = []
+    for sc in DEFAULT_SCENARIOS.values():
+        sc_copy = sc.copy()
+        sc_copy["is_custom"] = False
+        scenarios_list.append(sc_copy)
+
+    custom_scenarios = get_custom_scenarios()
+    for cs in custom_scenarios:
+        scenarios_list.append(cs)
+
+    return scenarios_list
 
 def get_scenario(scenario_id: str):
     if scenario_id in DEFAULT_SCENARIOS:
         sc = DEFAULT_SCENARIOS[scenario_id].copy()
-        sc["character_info"] = get_character(sc["default_character"])
+        sc["is_custom"] = False
         return sc
     
     customs = get_custom_scenarios()
-    for sc in customs:
-        if sc["id"] == scenario_id:
-            sc_copy = sc.copy()
-            sc_copy["character_info"] = get_character(sc["default_character"])
-            return sc_copy
-            
-    return None
+    for cs in customs:
+        if cs["id"] == scenario_id:
+            return cs
 
-def list_scenarios():
-    res = []
-    for s in DEFAULT_SCENARIOS.values():
-        item = s.copy()
-        item["character_info"] = get_character(s["default_character"])
-        res.append(item)
-    
-    customs = get_custom_scenarios()
-    for c in customs:
-        item = c.copy()
-        item["character_info"] = get_character(c["default_character"])
-        res.append(item)
-        
-    return res
+    return None

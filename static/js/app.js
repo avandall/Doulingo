@@ -1,6 +1,8 @@
 /**
  * Duolingo Speak Application Controller
  * Features:
+ * - ElevenLabs & Edge-TTS Expressive Voice Actor Integration.
+ * - Dynamic Partner Randomizer: Users freely choose character or get a RANDOM partner on every start.
  * - Cancel Speech Recording Button (Discard recording without sending).
  * - Saved Vocabulary Book Modal (Fetches /api/saved_words from SQLite DB).
  * - Instant 0ms Word Lookup (Frontend Map + Backend RAM Cache).
@@ -16,6 +18,7 @@ class DuolingoSpeakApp {
     this.characters = [];
     this.savedWords = [];
     this.selectedCharacter = null;
+    this.isUserSelectedCharacter = false; // Flag if user manually tapped a character card
     this.currentScenario = null;
     this.conversationHistory = [];
     this.turnCount = 0;
@@ -114,6 +117,21 @@ class DuolingoSpeakApp {
       this.saveCustomTopic();
     });
 
+    // 5x5 Emoji Grid Picker selection
+    const emojiGrid = document.getElementById('emoji-picker-grid');
+    if (emojiGrid) {
+      emojiGrid.querySelectorAll('.emoji-grid-item').forEach(item => {
+        item.addEventListener('click', () => {
+          if (window.duoAudio) window.duoAudio.playClick();
+          emojiGrid.querySelectorAll('.emoji-grid-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          const emojiVal = item.getAttribute('data-emoji') || '💬';
+          const hiddenInput = document.getElementById('custom-topic-icon');
+          if (hiddenInput) hiddenInput.value = emojiVal;
+        });
+      });
+    }
+
     // Random Roleplay
     document.getElementById('btn-random-roleplay').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
@@ -159,7 +177,7 @@ class DuolingoSpeakApp {
     // TTS Play Button
     document.getElementById('btn-tts-play').addEventListener('click', () => {
       if (this.currentAIText) {
-        this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'rajesh');
+        this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
       }
     });
 
@@ -167,11 +185,11 @@ class DuolingoSpeakApp {
     document.getElementById('btn-toggle-translate').addEventListener('click', () => {
       const transEl = document.getElementById('ai-translation-text');
       if (!transEl) return;
-      
+
       if (!transEl.textContent.trim() && this.currentAITextVi) {
         transEl.textContent = this.currentAITextVi;
       }
-      
+
       const isHidden = transEl.style.display === 'none' || getComputedStyle(transEl).display === 'none';
       transEl.style.display = isHidden ? 'block' : 'none';
     });
@@ -228,7 +246,7 @@ class DuolingoSpeakApp {
       const res = await fetch(`/api/saved_words?target_lang=${encodeURIComponent(this.targetLang)}`);
       const data = await res.json();
       this.savedWords = data.words || [];
-      
+
       const badge = document.getElementById('vocab-count-badge');
       if (badge) badge.textContent = data.count || 0;
 
@@ -246,8 +264,8 @@ class DuolingoSpeakApp {
     if (!listContainer) return;
     listContainer.innerHTML = '';
 
-    const filtered = this.savedWords.filter(w => 
-      w.word.toLowerCase().includes(filterQuery) || 
+    const filtered = this.savedWords.filter(w =>
+      w.word.toLowerCase().includes(filterQuery) ||
       w.translation.toLowerCase().includes(filterQuery)
     );
 
@@ -327,13 +345,19 @@ class DuolingoSpeakApp {
     if (!row) return;
     row.innerHTML = '';
 
-    this.characters.forEach((c, idx) => {
+    if (!this.selectedCharacter && this.characters.length > 0) {
+      this.selectedCharacter = this.characters[0];
+      this.isUserSelectedCharacter = true;
+    }
+
+    this.characters.forEach((c) => {
+      const isSelected = this.selectedCharacter && this.selectedCharacter.id === c.id;
       const card = document.createElement('div');
-      card.className = `character-card-mini ${idx === 0 ? 'selected' : ''}`;
+      card.className = `character-card-mini ${isSelected ? 'selected' : ''}`;
       card.innerHTML = `
         <div class="character-avatar">${c.avatar_icon}</div>
         <div class="character-name">${c.name}</div>
-        <span class="character-trait-badge">${c.trait || c.country}</span>
+        <span class="character-trait-badge">${c.trait || c.role}</span>
       `;
 
       card.addEventListener('click', () => {
@@ -341,14 +365,11 @@ class DuolingoSpeakApp {
         document.querySelectorAll('.character-card-mini').forEach(el => el.classList.remove('selected'));
         card.classList.add('selected');
         this.selectedCharacter = c;
+        this.isUserSelectedCharacter = true;
       });
 
       row.appendChild(card);
     });
-
-    if (this.characters.length > 0) {
-      this.selectedCharacter = this.characters[0];
-    }
   }
 
   async loadScenarios() {
@@ -379,28 +400,20 @@ class DuolingoSpeakApp {
     grid.innerHTML = '';
 
     this.scenarios.forEach(sc => {
-      const charInfo = sc.character_info || {};
       const card = document.createElement('div');
       card.className = 'scenario-card';
       card.innerHTML = `
         <div class="scenario-card-header">
-          <div class="scenario-icon">${sc.icon || '☕'}</div>
-          <span class="badge-level" style="background:${sc.color}">${sc.level_code || 'A2'}</span>
+          <div class="scenario-icon">${sc.icon || '💬'}</div>
         </div>
         <div class="scenario-title">${sc.title} ${sc.is_custom ? '✨' : ''}</div>
         <div class="scenario-desc">${sc.description}</div>
-        <div class="vocab-pills">
-          <span class="vocab-pill" style="background: rgba(0,0,0,0.08); font-weight:800;">
-            ${charInfo.avatar_icon || '🦉'} ${charInfo.name || 'AI Partner'}
-          </span>
-          ${(sc.suggested_vocabulary || []).map(v => `<span class="vocab-pill">${v}</span>`).join('')}
-        </div>
         <button class="btn-duo btn-blue" style="width:100%; margin-top: auto;">START ROLEPLAY</button>
       `;
 
       card.addEventListener('click', () => {
         if (window.duoAudio) window.duoAudio.playClick();
-        this.startScenario(sc.id, charInfo.id);
+        this.startScenario(sc.id);
       });
 
       grid.appendChild(card);
@@ -425,7 +438,7 @@ class DuolingoSpeakApp {
       color: '#1CB0F6',
       level: 'Beginner',
       level_code: 'A2',
-      default_character: this.selectedCharacter ? this.selectedCharacter.id : 'rajesh',
+      default_character: 'lily',
       description: descInput.value.trim() || 'Custom everyday life topic.',
       objective: 'Practice speaking freely.',
       suggested_vocabulary: ['Everyday conversation', 'Free chat']
@@ -468,19 +481,23 @@ class DuolingoSpeakApp {
   async startRandomRoleplay() {
     if (this.scenarios.length === 0 || this.characters.length === 0) return;
     const randScenario = this.scenarios[Math.floor(Math.random() * this.scenarios.length)];
-    const randChar = this.characters[Math.floor(Math.random() * this.characters.length)];
-
-    this.selectedCharacter = randChar;
-    await this.startScenario(randScenario.id, randChar.id);
+    this.isUserSelectedCharacter = false; // Reset to random
+    await this.startScenario(randScenario.id);
   }
 
-  async startScenario(scenarioId, defaultCharId) {
+  async startScenario(scenarioId) {
     try {
       const resSc = await fetch(`/api/scenarios/${scenarioId}`);
       this.currentScenario = await resSc.json();
 
-      const charIdToUse = this.selectedCharacter ? this.selectedCharacter.id : defaultCharId;
-      const resChar = await fetch(`/api/characters/${charIdToUse}`);
+      // If user did not manually pick a character card, pick a RANDOM partner automatically!
+      if (!this.isUserSelectedCharacter || !this.selectedCharacter) {
+        if (this.characters.length > 0) {
+          this.selectedCharacter = this.characters[Math.floor(Math.random() * this.characters.length)];
+        }
+      }
+
+      const resChar = await fetch(`/api/characters/${this.selectedCharacter.id}`);
       this.selectedCharacter = await resChar.json();
 
       this.conversationHistory = [];
@@ -515,7 +532,7 @@ class DuolingoSpeakApp {
       const startData = await resStart.json();
       this.currentAIText = startData.ai_response;
       this.currentAITextVi = startData.ai_response_vi || '';
-      
+
       this.renderInteractiveAIText(this.currentAIText);
       document.getElementById('ai-translation-text').textContent = this.currentAITextVi;
       document.getElementById('ai-translation-text').style.display = 'none';
@@ -697,7 +714,7 @@ class DuolingoSpeakApp {
 
     document.getElementById('feedback-title-text').textContent = isGood ? 'GREAT CONTINUOUS SPEAKING!' : 'GOOD EFFORT!';
     document.getElementById('feedback-score-badge').textContent = `Turn Score: ${score}/100 🔥`;
-    
+
     document.getElementById('native-phrasing-text').textContent = fb.native_phrasing || 'Keep expressing yourself freely!';
     document.getElementById('feedback-xp-earned').textContent = `+${fb.xp_earned || 10} XP`;
 
@@ -716,13 +733,13 @@ class DuolingoSpeakApp {
 
     this.currentAIText = data.ai_response;
     this.currentAITextVi = data.ai_response_vi || '';
-    
+
     this.renderInteractiveAIText(this.currentAIText);
     document.getElementById('ai-translation-text').textContent = this.currentAITextVi;
     document.getElementById('ai-translation-text').style.display = 'none';
 
-    // Play Neural Voice audio stream
-    this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'rajesh');
+    // Play Neural Voice TTS
+    this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
   }
 
   finishAndScoreRoleplay() {
@@ -811,7 +828,7 @@ class DuolingoSpeakApp {
     });
   }
 
-  playTTS(text, charId = 'rajesh') {
+  playTTS(text, charId = 'lily') {
     this.stopTTS();
 
     const url = `/api/tts?text=${encodeURIComponent(text)}&char_id=${encodeURIComponent(charId)}`;

@@ -112,19 +112,23 @@ class AIEngine:
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
         
+        story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
         angle = random.choice(SCENARIO_ANGLES)
 
         prompt = f"""CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF (DO NOT SAY 'Hello I am {character['name']}' OR 'My name is'). JUMP DIRECTLY INTO THE TOPIC!
 
-DYNAMIC SESSION ANGLE: {angle}
+UNSCRIPTED OPEN CREATIVE STORYTELLING:
+Story Guide: {story_guide}
+Dynamic Session Angle: {angle}
+Improvise an open, creative roleplay! Bring unexpected twists, humorous situations, and vivid character interactions. Never use repetitive templates.
+
 You are playing the role of {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
 SCENARIO TOPIC: "{scenario['title']}" - {scenario.get('description', '')}.
-OBJECTIVE: {scenario.get('objective', '')}.
 DIFFICULTY LEVEL: {level}/20 ({level_desc}).
 
-Task: Proactively START the roleplay conversation in a fresh, creative way! Jump DIRECTLY into an engaging, direct question or statement about "{scenario['title']}" focusing on the dynamic angle ({angle}).
+Task: Proactively START the roleplay conversation in a fresh, creative way! Jump DIRECTLY into an engaging, direct question or statement about "{scenario['title']}" focusing on the story guide ({story_guide}).
 
 CRITICAL TRANSLATION MANDATE:
 "ai_response_vi" MUST BE A NATURAL, FLUENT, CONVERSATIONAL VIETNAMESE TRANSLATION. (Bản dịch tiếng Việt phải mượt mà, văn phong giao tiếp tự nhiên chuẩn Việt, tuyệt đối KHÔNG dịch thô máy móc).
@@ -270,6 +274,8 @@ Output JSON ONLY:
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
 
+        story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
+
         return f"""CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF IN CONVERSATION.
@@ -282,12 +288,12 @@ CRITICAL RULE FOR corrected_text:
 PRESERVE THE USER'S EXACT MEANING, OPINION, AND DECISION 100%!
 
 SMART CONVERSATION DIRECTIVES:
-1. DYNAMIC & CREATIVE DIALOGUE: Advance the conversation in a fresh, creative, and engaging way! Never repeat questions or loop in circles.
+1. UNSCRIPTED OPEN STORYTELLING: Follow story guide: '{story_guide}'. Improvise dynamic plot twists, humorous surprises, and unscripted developments! Never repeat questions or loop in circles.
 2. BE PROACTIVE: If the user asks for suggestions or choices (e.g. "Can you suggest?", "What do you recommend?"), IMMEDIATELY PROVIDE SPECIFIC, INTERESTING SUGGESTIONS WITH REASONS!
 3. STRICT LEVEL DIFFERENTIATION: Enforce Difficulty Level {level}/20 parameters strictly: {level_desc}.
 
 PERMANENT ROLE: You are {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
-PERMANENT TOPIC: "{scenario['title']}" - {scenario.get('description', '')}.
+PERMANENT TOPIC: "{scenario['title']}" - {scenario.get('description', '')}. Story Guide: {story_guide}.
 DIFFICULTY LEVEL: {level}/20 ({level_desc}).
 TURN NUMBER: {turn_count}.
 
