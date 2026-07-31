@@ -218,7 +218,15 @@ class DuolingoSpeakApp {
     document.getElementById('btn-finish-roleplay').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
       this.stopTTS();
-      this.finishAndScoreRoleplay();
+      if (this.isDetInteractiveMode) {
+        const userSpeech = this.conversationHistory
+          .filter(t => t.speaker === 'User')
+          .map(t => t.text)
+          .join(' ');
+        this.submitDetSpeech('interactive_speaking', userSpeech || 'No speech recorded yet.');
+      } else {
+        this.finishAndScoreRoleplay();
+      }
     });
     document.getElementById('btn-continue-feedback').addEventListener('click', () => {
       this.closeFeedbackSheet();
@@ -290,6 +298,285 @@ class DuolingoSpeakApp {
         }
       });
     }
+    this.bindDetExamEvents();
+  }
+
+  bindDetExamEvents() {
+    const btnCloseExam = document.getElementById('btn-close-det-exam');
+    if (btnCloseExam) {
+      btnCloseExam.addEventListener('click', () => {
+        this.stopDetMonologueTimer();
+        document.getElementById('modal-det-exam').classList.remove('active');
+      });
+    }
+
+    const tabReadSpeak = document.getElementById('btn-tab-read-speak');
+    const tabInteractive = document.getElementById('btn-tab-interactive');
+    if (tabReadSpeak && tabInteractive) {
+      tabReadSpeak.addEventListener('click', () => {
+        tabReadSpeak.classList.add('active');
+        tabInteractive.classList.remove('active');
+        document.getElementById('det-view-read-speak').style.display = 'block';
+        document.getElementById('det-view-interactive').style.display = 'none';
+      });
+      tabInteractive.addEventListener('click', () => {
+        tabInteractive.classList.add('active');
+        tabReadSpeak.classList.remove('active');
+        document.getElementById('det-view-read-speak').style.display = 'none';
+        document.getElementById('det-view-interactive').style.display = 'block';
+      });
+    }
+
+    const textarea = document.getElementById('det-speech-textarea');
+    if (textarea) {
+      textarea.addEventListener('input', () => {
+        const words = textarea.value.trim().split(/\s+/).filter(w => w.length > 0).length;
+        const wcEl = document.getElementById('det-speech-word-count');
+        if (wcEl) wcEl.textContent = `${words} words`;
+      });
+    }
+
+    const btnStartRecord = document.getElementById('btn-det-start-record');
+    if (btnStartRecord) {
+      btnStartRecord.addEventListener('click', () => {
+        if (this.isDetRecording) {
+          this.stopDetMonologueTimer();
+        } else {
+          this.startDetMonologueTimer();
+        }
+      });
+    }
+
+    const btnSubmitSpeech = document.getElementById('btn-det-submit-speech');
+    if (btnSubmitSpeech) {
+      btnSubmitSpeech.addEventListener('click', () => {
+        this.submitDetSpeech('read_then_speak');
+      });
+    }
+
+    const btnStartInteractive = document.getElementById('btn-start-det-interactive-room');
+    if (btnStartInteractive) {
+      btnStartInteractive.addEventListener('click', () => {
+        document.getElementById('modal-det-exam').classList.remove('active');
+        if (this.currentDetScenario) {
+          this.isDetInteractiveMode = true;
+          this.startScenario(this.currentDetScenario.id);
+        }
+      });
+    }
+
+    const btnCloseReport = document.getElementById('btn-det-close-report');
+    if (btnCloseReport) {
+      btnCloseReport.addEventListener('click', () => {
+        document.getElementById('modal-det-score-report').classList.remove('active');
+      });
+    }
+
+    const btnTryAgain = document.getElementById('btn-det-try-again');
+    if (btnTryAgain) {
+      btnTryAgain.addEventListener('click', () => {
+        document.getElementById('modal-det-score-report').classList.remove('active');
+        if (this.currentDetScenario) {
+          this.openDetExamModal(this.currentDetScenario);
+        }
+      });
+    }
+  }
+
+  openDetExamModal(sc) {
+    this.currentDetScenario = sc;
+    this.isDetInteractiveMode = false;
+    this.stopDetMonologueTimer();
+
+    const titleEl = document.getElementById('det-exam-title');
+    const catBadgeEl = document.getElementById('det-exam-category-badge');
+    if (titleEl) titleEl.textContent = sc.title || 'DET Speaking Topic';
+    if (catBadgeEl) catBadgeEl.textContent = `🎓 ${sc.category || 'DET SPEAKING'}`;
+
+    const cardPrompt = document.getElementById('det-card-prompt-text');
+    const bulletList = document.getElementById('det-card-bullet-points');
+    const qCard = sc.question_card || {};
+    if (cardPrompt) cardPrompt.textContent = qCard.prompt || sc.description || 'Describe this topic in detail.';
+    if (bulletList) {
+      const bps = qCard.bullet_points || [
+        'What the main topic or event is',
+        'When and where it occurred',
+        'Who was involved',
+        'Why it is significant to you'
+      ];
+      bulletList.innerHTML = bps.map(p => `<li>${p}</li>`).join('');
+    }
+
+    const textarea = document.getElementById('det-speech-textarea');
+    if (textarea) {
+      textarea.value = '';
+      textarea.placeholder = 'Bấm nút màu cam bên dưới để ghi âm bài nói liên tục trong 1 - 3 phút, hoặc nhập trực tiếp bài nói của bạn vào đây...';
+    }
+    const wcEl = document.getElementById('det-speech-word-count');
+    if (wcEl) wcEl.textContent = '0 words';
+
+    const timerEl = document.getElementById('det-monologue-timer');
+    if (timerEl) timerEl.textContent = '00:00 / 03:00';
+    const statusEl = document.getElementById('det-timer-status-badge');
+    if (statusEl) {
+      statusEl.textContent = '⏳ Speak at least 1 minute';
+      statusEl.style.color = '#666';
+    }
+    const btnRecord = document.getElementById('btn-det-start-record');
+    if (btnRecord) btnRecord.innerHTML = '🎙️ START RECORDING (GHI ÂM)';
+
+    const tabReadSpeak = document.getElementById('btn-tab-read-speak');
+    const tabInteractive = document.getElementById('btn-tab-interactive');
+    if (tabReadSpeak && tabInteractive) {
+      tabReadSpeak.classList.add('active');
+      tabInteractive.classList.remove('active');
+      document.getElementById('det-view-read-speak').style.display = 'block';
+      document.getElementById('det-view-interactive').style.display = 'none';
+    }
+
+    document.getElementById('modal-det-exam').classList.add('active');
+  }
+
+  startDetMonologueTimer() {
+    this.isDetRecording = true;
+    this.detElapsedSeconds = 0;
+    const btnRecord = document.getElementById('btn-det-start-record');
+    if (btnRecord) {
+      btnRecord.innerHTML = '⏹️ STOP RECORDING (DỪNG GHI ÂM)';
+      btnRecord.classList.remove('btn-red');
+      btnRecord.classList.add('btn-blue');
+    }
+
+    if (this.speechHandler) {
+      this.speechHandler.startListening();
+    }
+
+    this.detTimerInterval = setInterval(() => {
+      this.detElapsedSeconds++;
+      const timerEl = document.getElementById('det-monologue-timer');
+      const statusEl = document.getElementById('det-timer-status-badge');
+      if (timerEl) {
+        timerEl.textContent = `${this._fmtTime(this.detElapsedSeconds)} / 03:00`;
+      }
+      if (this.detElapsedSeconds >= 60) {
+        if (statusEl) {
+          statusEl.textContent = '✅ Time requirement met (1 - 3 mins)';
+          statusEl.style.color = '#00843D';
+        }
+      }
+      if (this.detElapsedSeconds >= 180) {
+        this.stopDetMonologueTimer();
+      }
+    }, 1000);
+  }
+
+  stopDetMonologueTimer() {
+    this.isDetRecording = false;
+    if (this.detTimerInterval) {
+      clearInterval(this.detTimerInterval);
+      this.detTimerInterval = null;
+    }
+    const btnRecord = document.getElementById('btn-det-start-record');
+    if (btnRecord) {
+      btnRecord.innerHTML = '🎙️ START RECORDING (GHI ÂM)';
+      btnRecord.classList.remove('btn-blue');
+      btnRecord.classList.add('btn-red');
+    }
+    if (this.speechHandler) {
+      this.speechHandler.cancel();
+    }
+  }
+
+  async submitDetSpeech(mode, overrideText) {
+    this.stopDetMonologueTimer();
+    const textarea = document.getElementById('det-speech-textarea');
+    const speechText = overrideText || (textarea ? textarea.value.trim() : '');
+    if (!speechText) {
+      alert('Vui lòng ghi âm hoặc nhập nội dung bài nói trước khi nộp bài!');
+      return;
+    }
+
+    const btnSubmit = document.getElementById('btn-det-submit-speech');
+    const originalBtnText = btnSubmit ? btnSubmit.innerHTML : '📤 SUBMIT DET SPEECH';
+    if (btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '⏳ AI Examiner is evaluating...';
+    }
+
+    try {
+      const resp = await fetch('/api/det/evaluate_speech', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          scenario_id: this.currentDetScenario ? this.currentDetScenario.id : 'det_childhood_memory',
+          user_speech: speechText,
+          duration_seconds: this.detElapsedSeconds || 95,
+          mode: mode || 'read_then_speak'
+        })
+      });
+      const data = await resp.json();
+      document.getElementById('modal-det-exam').classList.remove('active');
+      this.renderDetScoreReport(data);
+    } catch (e) {
+      console.error('Error submitting DET speech:', e);
+      alert('Đã xảy ra lỗi khi chấm điểm bài nói. Vui lòng thử lại!');
+    } finally {
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = originalBtnText;
+      }
+    }
+  }
+
+  renderDetScoreReport(data) {
+    const scoreEl = document.getElementById('det-report-score');
+    const cefrEl = document.getElementById('det-report-cefr');
+    if (scoreEl) scoreEl.textContent = data.det_score || 120;
+    if (cefrEl) cefrEl.textContent = data.cefr_level || 'B2 Upper-Intermediate';
+
+    const fluencyVal = document.getElementById('det-val-fluency');
+    const grammarVal = document.getElementById('det-val-grammar');
+    const vocabVal = document.getElementById('det-val-vocab');
+    const coherenceVal = document.getElementById('det-val-coherence');
+
+    const fScore = data.fluency_score || 85;
+    const gScore = data.grammar_score || 80;
+    const vScore = data.vocabulary_score || 85;
+    const cScore = data.coherence_score || 88;
+
+    if (fluencyVal) fluencyVal.textContent = `${fScore}/100`;
+    if (grammarVal) grammarVal.textContent = `${gScore}/100`;
+    if (vocabVal) vocabVal.textContent = `${vScore}/100`;
+    if (coherenceVal) coherenceVal.textContent = `${cScore}/100`;
+
+    const barF = document.getElementById('det-bar-fluency');
+    const barG = document.getElementById('det-bar-grammar');
+    const barV = document.getElementById('det-bar-vocab');
+    const barC = document.getElementById('det-bar-coherence');
+    if (barF) barF.style.width = `${fScore}%`;
+    if (barG) barG.style.width = `${gScore}%`;
+    if (barV) barV.style.width = `${vScore}%`;
+    if (barC) barC.style.width = `${cScore}%`;
+
+    const critiqueEl = document.getElementById('det-report-critique');
+    if (critiqueEl) critiqueEl.textContent = data.examiner_critique || 'Bài làm đạt yêu cầu đề bài.';
+
+    const upgradesContainer = document.getElementById('det-report-upgrades');
+    if (upgradesContainer) {
+      const ups = data.sentence_upgrades || [];
+      upgradesContainer.innerHTML = ups.map(u => `
+        <div class="det-upgrade-card">
+          <div class="orig">❌ "${u.original || ''}"</div>
+          <div class="upgr">✨ "${u.upgraded || ''}"</div>
+          <div class="expl">💡 ${u.explanation || 'Nâng cấp từ vựng học thuật C1/C2.'}</div>
+        </div>
+      `).join('');
+    }
+
+    const sampleEl = document.getElementById('det-report-sample');
+    if (sampleEl) sampleEl.textContent = data.sample_native_response || 'Sample band 160 response available soon.';
+
+    document.getElementById('modal-det-score-report').classList.add('active');
   }
 
   _fmtTime(seconds) {
@@ -746,32 +1033,60 @@ class DuolingoSpeakApp {
       });
 
       this.scenarios = apiScenarios;
-      this.renderScenarios();
+      this.initCategoryFilterBar();
+      this.renderScenarios('all');
     } catch (e) {
       console.error('Failed to load scenarios:', e);
     }
   }
 
-  renderScenarios() {
+  initCategoryFilterBar() {
+    const filterBar = document.getElementById('category-filter-bar');
+    if (!filterBar) return;
+    const buttons = filterBar.querySelectorAll('.cat-pill');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (window.duoAudio) window.duoAudio.playClick();
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.category || 'all';
+        this.renderScenarios(cat);
+      });
+    });
+  }
+
+  renderScenarios(filterCategory = 'all') {
     const grid = document.getElementById('scenarios-grid');
     if (!grid) return;
     grid.innerHTML = '';
 
-    this.scenarios.forEach(sc => {
+    const filtered = this.scenarios.filter(sc => {
+      if (filterCategory === 'all') return true;
+      return sc.category === filterCategory;
+    });
+
+    filtered.forEach(sc => {
       const card = document.createElement('div');
       card.className = 'scenario-card';
+      const isDet = (sc.id || '').startsWith('det_');
+      const badgeColor = isDet ? '#FF4B4B' : '#1CB0F6';
       card.innerHTML = `
         <div class="scenario-card-header">
           <div class="scenario-icon">${sc.icon || '💬'}</div>
+          <span class="scenario-cat-badge" style="background-color: ${badgeColor}18; color: ${badgeColor}; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 99px; text-transform: uppercase;">${sc.category || 'Everyday'}</span>
         </div>
         <div class="scenario-title">${sc.title} ${sc.is_custom ? '✨' : ''}</div>
         <div class="scenario-desc">${sc.description}</div>
-        <button class="btn-duo btn-blue" style="width:100%; margin-top: auto;">START ROLEPLAY</button>
+        <button class="btn-duo ${isDet ? 'btn-red' : 'btn-blue'}" style="width:100%; margin-top: auto;">${isDet ? 'DET SPEAKING' : 'START ROLEPLAY'}</button>
       `;
 
       card.addEventListener('click', () => {
         if (window.duoAudio) window.duoAudio.playClick();
-        this.startScenario(sc.id);
+        if (isDet) {
+          this.openDetExamModal(sc);
+        } else {
+          this.startScenario(sc.id);
+        }
       });
 
       grid.appendChild(card);
@@ -1063,6 +1378,16 @@ class DuolingoSpeakApp {
   }
 
   handleSpeechResult(transcript, isFinal) {
+    if (this.isDetRecording) {
+      const textarea = document.getElementById('det-speech-textarea');
+      if (textarea && isFinal) {
+        textarea.value = (textarea.value + ' ' + transcript).trim();
+        const words = textarea.value.trim().split(/\s+/).filter(w => w.length > 0).length;
+        const wcEl = document.getElementById('det-speech-word-count');
+        if (wcEl) wcEl.textContent = `${words} words`;
+      }
+      return;
+    }
     document.getElementById('transcript-display').textContent = `"${transcript}"` || 'Listening...';
     if (isFinal && transcript.trim()) {
       this.submitSpokenTurn(transcript.trim());

@@ -196,6 +196,37 @@ html {
 .character-name { font-size: 13px; font-weight: 800; }
 .character-trait-badge { font-size: 10px; font-weight: 800; color: var(--duo-blue); text-transform: uppercase; }
 
+/* Category Filter Bar */
+.category-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 14px 0;
+  align-items: center;
+}
+.cat-pill {
+  border: 2px solid var(--border-light);
+  border-bottom: 4px solid var(--border-light);
+  background: var(--panel-bg);
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cat-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--duo-blue);
+}
+.cat-pill.active {
+  background: var(--duo-blue);
+  border-color: #1899D6;
+  border-bottom: 4px solid #1899D6;
+  color: #FFFFFF;
+}
+
 /* Scenarios Grid */
 .scenarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 6px; }
 .scenario-card {
@@ -491,4 +522,171 @@ html {
 .btn-lazy-translate:active {
   transform: translateY(1px);
   border-bottom-width: 2px;
+}
+
+/* ============================================================
+   DUOLINGO ENGLISH TEST (DET) EXAM & REPORT MODAL STYLES
+   ============================================================ */
+.det-mode-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--border-light);
+  margin-bottom: 12px;
+}
+.det-tab-btn {
+  flex: 1;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.det-tab-btn:hover {
+  color: var(--text-color);
+  background: rgba(0,0,0,0.03);
+}
+.det-tab-btn.active {
+  color: #FF4B4B;
+  border-bottom-color: #FF4B4B;
+  background: rgba(255,75,75,0.06);
+}
+
+.det-question-card {
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  border-bottom: 4px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+.det-card-tag {
+  font-size: 11px;
+  font-weight: 900;
+  color: #FF4B4B;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.det-card-prompt {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+.det-bullet-points {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.det-timer-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(28,176,246,0.08);
+  border: 2px solid rgba(28,176,246,0.3);
+  border-radius: 14px;
+  padding: 10px 16px;
+  margin-top: 14px;
+}
+.det-timer-display {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--duo-blue);
+  font-family: monospace;
+}
+.det-timer-status {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #666;
+}
+
+.det-score-big-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,75,75,0.08);
+  border: 2px solid #FF4B4B;
+  border-radius: 16px;
+  padding: 10px 24px;
+}
+.det-cefr-badge {
+  background: #00843D;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,132,61,0.25);
+}
+
+.det-subscores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+@media (max-width: 600px) {
+  .det-subscores-grid { grid-template-columns: 1fr; }
+}
+.det-subscore-item {
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 13px;
+}
+.det-subscore-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e5e5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.det-subscore-bar .bar-fill {
+  height: 100%;
+  background: var(--duo-blue);
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+.det-subscore-item .val {
+  font-size: 12px;
+  color: #666;
+  text-align: right;
+}
+
+.det-upgrade-card {
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  border-left: 4px solid #FF4B4B;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13.5px;
+}
+.det-upgrade-card .orig {
+  color: #c92a2a;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.det-upgrade-card .upgr {
+  color: #00843D;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.det-upgrade-card .expl {
+  font-size: 12.5px;
+  color: var(--text-muted);
 }

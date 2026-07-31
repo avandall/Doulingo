@@ -119,9 +119,19 @@
         <!-- Rendered dynamically -->
       </div>
 
-      <!-- Scenarios Grid -->
+      <!-- Scenarios Grid & DET Categories -->
       <div class="section-title">
-        <span>☕ Everyday Life Roleplays</span>
+        <span>🗣️ DET Speaking & Everyday Roleplays</span>
+      </div>
+      <div class="category-filter-bar" id="category-filter-bar">
+        <button class="cat-pill active" data-category="all">🌟 Tất cả (All)</button>
+        <button class="cat-pill" data-category="Personal & Family">👤 Cá nhân & Gia đình</button>
+        <button class="cat-pill" data-category="Studies & Career">🎓 Học tập & Nghề nghiệp</button>
+        <button class="cat-pill" data-category="Hobbies & Lifestyle">🎨 Sở thích & Lối sống</button>
+        <button class="cat-pill" data-category="Travel & Places">✈️ Du lịch & Địa điểm</button>
+        <button class="cat-pill" data-category="Tech & Society">💻 Công nghệ & Xã hội</button>
+        <button class="cat-pill" data-category="Everyday Roleplay">☕ Giao tiếp hằng ngày</button>
+        <button class="cat-pill" data-category="Creative Roleplay">🕶️ Tình huống sáng tạo</button>
       </div>
       <div class="scenarios-grid" id="scenarios-grid">
         <!-- Rendered dynamically -->
@@ -249,6 +259,162 @@
         <button class="btn-duo btn-secondary" id="btn-close-vocab-bottom" style="width:100%; margin-top: 14px;">
           CLOSE VOCABULARY BOOK
         </button>
+      </div>
+    </div>
+
+    <!-- MODAL: DET SPEAKING EXAM (Read Then Speak / Interactive Speaking) -->
+    <div class="modal-overlay" id="modal-det-exam">
+      <div class="modal-box" style="max-width: 720px; width: 95%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-light); padding-bottom: 12px; margin-bottom: 14px;">
+          <div>
+            <span class="level-badge" id="det-exam-category-badge" style="background: rgba(255,75,75,0.15); color: #FF4B4B;">🎓 DET SPEAKING</span>
+            <h2 style="font-weight: 900; font-size: 22px; margin-top: 4px;" id="det-exam-title">Childhood Memories</h2>
+          </div>
+          <button class="btn-close" id="btn-close-det-exam" title="Thoát bài thi">✕</button>
+        </div>
+
+        <!-- Mode Switcher Tabs -->
+        <div class="det-mode-tabs" id="det-mode-tabs">
+          <button class="det-tab-btn active" data-mode="read_then_speak" id="btn-tab-read-speak">
+            📖 Read, Then Speak (Độc thoại 1-3 phút)
+          </button>
+          <button class="det-tab-btn" data-mode="interactive_speaking" id="btn-tab-interactive">
+            🗣️ Interactive Speaking (Hội thoại Giám khảo 1-3 phút)
+          </button>
+        </div>
+
+        <!-- TAB 1: READ, THEN SPEAK (QUESTION CARD + RECORDING MONOLOGUE) -->
+        <div id="det-view-read-speak" style="display: block; margin-top: 14px;">
+          <div class="det-question-card">
+            <div class="det-card-tag">DUOLINGO ENGLISH TEST • QUESTION CARD</div>
+            <div class="det-card-prompt" id="det-card-prompt-text">Describe a memorable event from your childhood that taught you an important lesson.</div>
+            <div style="font-weight: 800; font-size: 13px; color: var(--text-muted); margin: 12px 0 6px 0;">You should say:</div>
+            <ul class="det-bullet-points" id="det-card-bullet-points">
+              <li>What the event was and when it happened</li>
+              <li>Who was with you during the event</li>
+              <li>Why this memory stands out to you</li>
+              <li>What life lesson you learned from the experience</li>
+            </ul>
+          </div>
+
+          <!-- DET Live Timer Box -->
+          <div class="det-timer-box">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 20px;">⏱️</span>
+              <div>
+                <div style="font-size: 11px; font-weight: 800; color: var(--text-muted);">MONOLOGUE TIMER (MIN 1:00 / MAX 3:00)</div>
+                <div class="det-timer-display" id="det-monologue-timer">00:00 / 03:00</div>
+              </div>
+            </div>
+            <span class="det-timer-status" id="det-timer-status-badge">⏳ Speak at least 1 minute</span>
+          </div>
+
+          <!-- Transcript & Input Area -->
+          <div class="form-group" style="margin-top: 14px;">
+            <label style="display: flex; justify-content: space-between; align-items: center;">
+              <span>🎙️ Your Spoken Speech (Bấm ghi âm hoặc nhập bài nói)</span>
+              <span id="det-speech-word-count" style="font-size: 12px; color: var(--duo-blue);">0 words</span>
+            </label>
+            <textarea id="det-speech-textarea" class="form-input" rows="4" placeholder="Bấm nút màu cam bên dưới để ghi âm bài nói liên tục trong 1 - 3 phút, hoặc nhập trực tiếp bài nói của bạn vào đây..." style="line-height: 1.5; font-size: 15px;"></textarea>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button class="btn-duo btn-red" id="btn-det-start-record" style="flex: 1; padding: 12px;">
+              🎙️ START RECORDING (GHI ÂM)
+            </button>
+            <button class="btn-duo btn-blue" id="btn-det-submit-speech" style="flex: 1; padding: 12px;">
+              📤 SUBMIT DET SPEECH
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 2: INTERACTIVE SPEAKING DESCRIPTION INFO -->
+        <div id="det-view-interactive" style="display: none; margin-top: 14px;">
+          <div class="det-question-card" style="background: rgba(28,176,246,0.06); border-color: var(--duo-blue);">
+            <div class="det-card-tag" style="color: var(--duo-blue);">DUOLINGO ENGLISH TEST • INTERACTIVE SPEAKING (1 - 3 MINS)</div>
+            <div style="font-weight: 800; font-size: 16px; margin: 8px 0;">🗣️ Hội thoại Trực tiếp với Giám Khảo AI (DET Examiner)</div>
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
+              Khác với Roleplay thông thường (đóng vai vui vẻ đời sống), trong chế độ này AI sẽ đóng vai <b>Giám Khảo Thi Nói DET (DET Speaking Examiner)</b>:
+            </p>
+            <ul style="padding-left: 20px; font-size: 13.5px; color: var(--text-color); line-height: 1.6;">
+              <li>Giám khảo đưa ra đề bài học thuật và đặt các câu hỏi phản biện, đào sâu (follow-up questions).</li>
+              <li>Bạn có thời gian chuẩn <b>1 đến 3 phút</b> để tương tác và trả lời liên tục.</li>
+              <li>Khi kết thúc phần thi, hệ thống sẽ xuất <b>Bảng điểm thi DET chính thức (10-160)</b> đánh giá toàn diện năng lực nói của bạn!</li>
+            </ul>
+          </div>
+
+          <button class="btn-duo btn-red" id="btn-start-det-interactive-room" style="width: 100%; margin-top: 16px; padding: 14px; font-size: 16px;">
+            🚀 BẮT ĐẦU PHẦN THI INTERACTIVE SPEAKING
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: DET SCORE REPORT CARD -->
+    <div class="modal-overlay" id="modal-det-score-report">
+      <div class="modal-box" style="max-width: 750px; width: 95%; max-height: 90vh; overflow-y: auto;">
+        <div style="text-align: center; border-bottom: 2px solid var(--border-light); padding-bottom: 16px; margin-bottom: 16px;">
+          <div style="font-size: 11px; font-weight: 900; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;">OFFICIAL DUOLINGO ENGLISH TEST REPORT</div>
+          <h2 style="font-weight: 900; font-size: 24px; margin: 4px 0 8px 0;">🏆 DET SPEAKING EVALUATION</h2>
+          
+          <div style="display: flex; justify-content: center; gap: 16px; align-items: center; margin-top: 10px;">
+            <div class="det-score-big-badge">
+              <span style="font-size: 12px; font-weight: 800; color: #666;">DET SCORE</span>
+              <div style="font-size: 34px; font-weight: 900; color: #FF4B4B; line-height: 1;" id="det-report-score">135</div>
+              <span style="font-size: 11px; font-weight: 800; color: #999;">/ 160</span>
+            </div>
+            <div class="det-cefr-badge" id="det-report-cefr">C1 Advanced</div>
+          </div>
+        </div>
+
+        <!-- 4 Component Scores Grid -->
+        <div class="det-subscores-grid">
+          <div class="det-subscore-item">
+            <span>Fluency & Pronunciation</span>
+            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-fluency" style="width: 85%;"></div></div>
+            <span class="val" id="det-val-fluency">85/100</span>
+          </div>
+          <div class="det-subscore-item">
+            <span>Grammar & Accuracy</span>
+            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-grammar" style="width: 80%;"></div></div>
+            <span class="val" id="det-val-grammar">80/100</span>
+          </div>
+          <div class="det-subscore-item">
+            <span>Lexical Resource (Vocab Tier)</span>
+            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-vocab" style="width: 88%;"></div></div>
+            <span class="val" id="det-val-vocab">88/100</span>
+          </div>
+          <div class="det-subscore-item">
+            <span>Coherence & Relevance</span>
+            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-coherence" style="width: 90%;"></div></div>
+            <span class="val" id="det-val-coherence">90/100</span>
+          </div>
+        </div>
+
+        <!-- Examiner Critique -->
+        <div style="margin-top: 16px; background: rgba(0,132,61,0.06); border-left: 4px solid #00843D; padding: 14px; border-radius: 8px;">
+          <div style="font-weight: 800; font-size: 14px; color: #00843D; margin-bottom: 6px;">👨‍🏫 EXAMINER CRITIQUE (NHẬN XÉT CỦA GIÁM KHẢO)</div>
+          <p id="det-report-critique" style="font-size: 14px; line-height: 1.5; color: var(--text-color); margin: 0;"></p>
+        </div>
+
+        <!-- Sentence Upgrades (C1/C2) -->
+        <div style="margin-top: 16px;">
+          <div style="font-weight: 800; font-size: 15px; margin-bottom: 10px;">✨ Nâng Cấp Câu Trả Lời (C1 / C2 Sentence Upgrades)</div>
+          <div id="det-report-upgrades" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Band-160 Sample Native Answer -->
+        <div style="margin-top: 16px; background: rgba(28,176,246,0.08); padding: 14px; border-radius: 12px;">
+          <div style="font-weight: 800; font-size: 14px; color: var(--duo-blue); margin-bottom: 6px;">👑 BÀI NÓI MẪU BAND 160/160 (SAMPLE NATIVE RESPONSE)</div>
+          <p id="det-report-sample" style="font-size: 14px; line-height: 1.5; color: var(--text-color); margin: 0; font-style: italic;"></p>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button class="btn-duo btn-blue" id="btn-det-try-again" style="flex: 1;">🔄 THỬ LẠI CHỦ ĐỀ NÀY</button>
+          <button class="btn-duo" id="btn-det-close-report" style="flex: 1; background: var(--border-light); color: var(--text-color);">🏠 QUAY VỀ TRANG CHỦ</button>
+        </div>
       </div>
     </div>
 

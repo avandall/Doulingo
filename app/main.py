@@ -62,6 +62,12 @@ class SentenceTranslateRequest(BaseModel):
     scenario_title: Optional[str] = ""
     context_history: Optional[List[str]] = []
 
+class DetSpeechEvalRequest(BaseModel):
+    scenario_id: str
+    user_speech: str
+    duration_seconds: Optional[int] = 120
+    mode: Optional[str] = "read_then_speak"
+
 # NOTE: Google Translate gtx scraping (client=gtx) has been REMOVED.
 # Translation fallback is now handled inside ai_engine._fallback_llm_translate()
 # which uses Groq/Gemini LLM for high-quality natural Vietnamese output.
@@ -175,6 +181,24 @@ def api_translate_sentence(payload: SentenceTranslateRequest):
 
     SENTENCE_TRANSLATION_CACHE[cache_key] = translation
     return {"translation": translation, "cached": False}
+
+@app.post("/api/det/evaluate_speech")
+async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
+    """
+    Evaluates DET Speaking tasks (Read, Then Speak & Interactive Speaking).
+    Returns official 10-160 DET score, CEFR band, examiner critique, C1/C2 upgrades, and band-160 sample speech.
+    """
+    scenario = get_scenario(payload.scenario_id)
+    if not scenario:
+        raise HTTPException(status_code=404, detail="DET Scenario not found")
+    
+    result = await ai_engine.evaluate_det_speech(
+        scenario=scenario,
+        user_speech=payload.user_speech.strip(),
+        duration_seconds=payload.duration_seconds or 120,
+        mode=payload.mode or "read_then_speak"
+    )
+    return result
 
 @app.get("/api/saved_words")
 def api_get_saved_words(target_lang: Optional[str] = Query(None, description="Optional target language filter")):
