@@ -98,6 +98,7 @@ def get_custom_scenarios() -> List[Dict[str, Any]]:
             "description": r["description"],
             "objective": r["objective"],
             "suggested_vocabulary": json.loads(r["suggested_vocabulary"]) if r["suggested_vocabulary"] else [],
+            "mode": "ielts_exam" if r["id"].startswith("det_") else "roleplay",
             "is_custom": True
         })
     conn.close()

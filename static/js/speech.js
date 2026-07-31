@@ -25,7 +25,8 @@ class SpeechHandler {
       this.recognition = new SpeechRecognition();
       
       this.recognition.continuous = true;
-      this.recognition.interimResults = true;
+      this.recognition.interimResults = false;
+      this.recognition.maxAlternatives = 5;
       this.recognition.lang = 'en-US';
 
       this.recognition.onstart = () => {
@@ -40,6 +41,12 @@ class SpeechHandler {
       this.recognition.onresult = (event) => {
         if (this.isCancelled) return;
 
+        const now = Date.now();
+        if (this.lastSpeechTime && (now - this.lastSpeechTime > 1800)) {
+          this.pauseCount = (this.pauseCount || 0) + 1;
+        }
+        this.lastSpeechTime = now;
+
         let interimTranscript = '';
         for (let i = event.resultIndex; i < event.results.length; ++i) {
           if (event.results[i].isFinal) {
@@ -51,9 +58,8 @@ class SpeechHandler {
         const fullTranscript = (this.finalTranscript + interimTranscript).trim();
         this.lastRecognizedText = fullTranscript;
         
-        if (this.onResult && fullTranscript) {
-          this.onResult(fullTranscript, false); // Real-time preview update
-        }
+        // Authentic Duolingo UX: Do NOT trigger onResult preview while speaking so interim STT errors don't flash on screen and cause frustration!
+        // Only submit when user explicitly stops speaking (onend)
       };
 
       this.recognition.onerror = (event) => {
@@ -84,18 +90,39 @@ class SpeechHandler {
 
         // If user is still supposed to be listening (did not tap stop), keep recording!
         if (this.isListening) {
-          try {
-            this.recognition.start();
-            return;
-          } catch (e) {}
+          this.pauseCount = (this.pauseCount || 0) + 1;
+          setTimeout(() => {
+            if (this.isListening) {
+              try {
+                this.recognition.start();
+              } catch (e) {}
+            }
+          }, 150);
+          return;
         }
 
         this.isListening = false;
         if (this.onStateChange) this.onStateChange('stopped');
 
         const textToSubmit = (this.lastRecognizedText || this.finalTranscript).trim();
-        if (textToSubmit && this.onResult && !this.isCancelled) {
-          this.onResult(textToSubmit, true); // Submit only when user tapped stop!
+        if (this.isCancelled) {
+          this._cleanupStream();
+          return;
+        }
+
+        // Authentic Duolingo: Send recorded audio blob to Backend AI Whisper / Gemini Audio ASR for true studio-grade English recognition
+        if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
+          this.mediaRecorder.onstop = async () => {
+            const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+            this._cleanupStream();
+            await this._submitTranscribeAudio(audioBlob, textToSubmit);
+          };
+          this.mediaRecorder.stop();
+        } else {
+          this._cleanupStream();
+          if (textToSubmit && this.onResult) {
+            this.onResult(textToSubmit, true);
+          }
         }
       };
     } else {
@@ -116,19 +143,52 @@ class SpeechHandler {
     }
   }
 
+  startListening() {
+    if (!this.isListening) {
+      this.start();
+    }
+  }
+
+  stopListening() {
+    if (this.isListening) {
+      this.stopAndSubmit();
+    }
+  }
+
   start() {
     if (this.recognition) {
       try {
+        this.isListening = true;
         this.isCancelled = false;
         this.finalTranscript = '';
         this.lastRecognizedText = '';
+        this.pauseCount = 0;
+        this.lastSpeechTime = Date.now();
+        this.audioChunks = [];
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+            this.audioStream = stream;
+            this.mediaRecorder = new MediaRecorder(stream);
+            this.mediaRecorder.ondataavailable = e => {
+              if (e.data && e.data.size > 0) this.audioChunks.push(e.data);
+            };
+            this.mediaRecorder.start();
+          }).catch(e => {
+            console.warn('[SpeechHandler] Audio stream record fallback:', e);
+          });
+        }
         this.recognition.start();
       } catch (e) {
         console.error('[SpeechHandler] Start error:', e);
         try {
           this.recognition.stop();
-          setTimeout(() => this.recognition.start(), 200);
-        } catch (err) {}
+          setTimeout(() => {
+            this.isListening = true;
+            this.recognition.start();
+          }, 200);
+        } catch (err) {
+          this.isListening = false;
+        }
       }
     }
   }
@@ -150,12 +210,50 @@ class SpeechHandler {
       this.isListening = false;
       this.finalTranscript = '';
       this.lastRecognizedText = '';
+      if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
+        try { this.mediaRecorder.stop(); } catch(e) {}
+      }
+      this._cleanupStream();
       try {
         this.recognition.abort();
       } catch (e) {
         console.error('[SpeechHandler] Cancel error:', e);
       }
       if (this.onStateChange) this.onStateChange('cancelled');
+    }
+  }
+
+  async _submitTranscribeAudio(audioBlob, fallbackText) {
+    try {
+      const formData = new FormData();
+      formData.append('file', audioBlob, 'user_speech.webm');
+      formData.append('fallback_text', fallbackText || '');
+      const res = await fetch('/api/transcribe_audio', {
+        method: 'POST',
+        body: formData
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const finalTx = (data.transcript || fallbackText).trim();
+        if (finalTx && this.onResult) {
+          this.onResult(finalTx, true);
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn('[SpeechHandler] Audio transcribe API fallback to local STT:', e);
+    }
+    if (fallbackText && this.onResult) {
+      this.onResult(fallbackText, true);
+    }
+  }
+
+  _cleanupStream() {
+    if (this.audioStream) {
+      try {
+        this.audioStream.getTracks().forEach(t => t.stop());
+      } catch(e) {}
+      this.audioStream = null;
     }
   }
 }

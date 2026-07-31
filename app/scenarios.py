@@ -1,6 +1,6 @@
 """
 Scenario definitions for Duolingo Speak
-Includes Duolingo English Test (DET) Interactive Speaking topics and everyday roleplays.
+Includes International English (IELTS / CEFR) Speaking topics and everyday roleplays.
 Clean, simple UI titles with open-ended creative story seeds for AI improvisation.
 """
 
@@ -9,7 +9,7 @@ from app.db import get_custom_scenarios
 
 DEFAULT_SCENARIOS = {
     # ============================================================
-    # DET GROUP 1: PERSONAL & FAMILY (CÁ NHÂN & GIA ĐÌNH)
+    # IELTS / CEFR GROUP 1: PERSONAL & FAMILY (CÁ NHÂN & GIA ĐÌNH)
     # ============================================================
     "det_childhood_memory": {
         "id": "det_childhood_memory",
@@ -18,7 +18,7 @@ DEFAULT_SCENARIOS = {
         "icon": "👶",
         "color": "#FF9600",
         "description": "Share a memorable childhood story, family tradition, or talk about someone close to you.",
-        "open_story_guide": "An interactive DET Speaking dialogue about personal memories. Ask open-ended questions about their childhood, family traditions, lessons learned growing up, and cherished memories.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about personal memories. Ask open-ended questions about their childhood, family traditions, lessons learned growing up, and cherished memories.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Describe a memorable event from your childhood that taught you an important lesson.",
@@ -39,7 +39,7 @@ DEFAULT_SCENARIOS = {
         "icon": "🤝",
         "color": "#FF4B4B",
         "description": "Discuss what makes a true friend, personality traits, and unforgettable moments.",
-        "open_story_guide": "An interactive DET Speaking dialogue about friendship and character. Ask about their closest friends, ideal personality traits, shared experiences, and what friendship means to them.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about friendship and character. Ask about their closest friends, ideal personality traits, shared experiences, and what friendship means to them.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Describe your best friend and explain what makes your friendship special.",
@@ -55,7 +55,7 @@ DEFAULT_SCENARIOS = {
     },
 
     # ============================================================
-    # DET GROUP 2: STUDIES & CAREER (HỌC TẬP & NGHỀ NGHIỆP)
+    # IELTS / CEFR GROUP 2: STUDIES & CAREER (HỌC TẬP & NGHỀ NGHIỆP)
     # ============================================================
     "det_career_ambition": {
         "id": "det_career_ambition",
@@ -64,7 +64,7 @@ DEFAULT_SCENARIOS = {
         "icon": "💼",
         "color": "#1CB0F6",
         "description": "Talk about your current job, dream profession, workplace skills, and future career goals.",
-        "open_story_guide": "An interactive DET Speaking dialogue about professional life. Explore their career ambitions, work ethic, dream job challenges, and future plans.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about professional life. Explore their career ambitions, work ethic, dream job challenges, and future plans.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Talk about a profession or career goal that you aspire to achieve in the future.",
@@ -85,7 +85,7 @@ DEFAULT_SCENARIOS = {
         "icon": "🎓",
         "color": "#673AB7",
         "description": "Describe your favorite school subject, memorable teachers, or university experience.",
-        "open_story_guide": "An interactive DET Speaking dialogue about education. Ask about their favorite subjects, study methods, impactful teachers, and educational experiences.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about education. Ask about their favorite subjects, study methods, impactful teachers, and educational experiences.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Describe a school subject or educational experience that had a significant impact on you.",
@@ -101,7 +101,7 @@ DEFAULT_SCENARIOS = {
     },
 
     # ============================================================
-    # DET GROUP 3: HOBBIES & LIFESTYLE (SỞ THÍCH & LỐI SỐNG)
+    # IELTS / CEFR GROUP 3: HOBBIES & LIFESTYLE (SỞ THÍCH & LỐI SỐNG)
     # ============================================================
     "det_book_movie": {
         "id": "det_book_movie",
@@ -110,7 +110,7 @@ DEFAULT_SCENARIOS = {
         "icon": "📚",
         "color": "#9C27B0",
         "description": "Describe a book, movie, or story that inspired you or changed your perspective.",
-        "open_story_guide": "An interactive DET Speaking dialogue about literature and film. Ask them to describe an inspiring story, key characters, plot twists, and why it resonated with them.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about literature and film. Ask them to describe an inspiring story, key characters, plot twists, and why it resonated with them.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Describe a book, film, or story that strongly inspired you or changed your perspective.",
@@ -131,7 +131,7 @@ DEFAULT_SCENARIOS = {
         "icon": "🏃",
         "color": "#00843D",
         "description": "Discuss weekend hobbies, favorite sports, physical fitness, and healthy daily routines.",
-        "open_story_guide": "An interactive DET Speaking dialogue about wellness and lifestyle. Ask about their exercise habits, favorite recreational activities, stress relief, and healthy diet choices.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about wellness and lifestyle. Ask about their exercise habits, favorite recreational activities, stress relief, and healthy diet choices.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Discuss the importance of maintaining a healthy lifestyle and regular physical activity.",
@@ -147,7 +147,7 @@ DEFAULT_SCENARIOS = {
     },
 
     # ============================================================
-    # DET GROUP 4: TRAVEL & PLACES (DU LỊCH & ĐỊA ĐIỂM)
+    # IELTS / CEFR GROUP 4: TRAVEL & PLACES (DU LỊCH & ĐỊA ĐIỂM)
     # ============================================================
     "det_hometown_city": {
         "id": "det_hometown_city",
@@ -156,7 +156,7 @@ DEFAULT_SCENARIOS = {
         "icon": "🏙️",
         "color": "#00BCD4",
         "description": "Describe your hometown, local culture, and living in a metropolis vs. the countryside.",
-        "open_story_guide": "An interactive DET Speaking dialogue about places and culture. Ask them to describe their hometown, local architecture, community vibes, and preferred living environment.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about places and culture. Ask them to describe their hometown, local architecture, community vibes, and preferred living environment.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Describe your hometown or the city where you currently live.",
@@ -177,7 +177,7 @@ DEFAULT_SCENARIOS = {
         "icon": "✈️",
         "color": "#3F51B5",
         "description": "Share stories about a place you visited or describe your dream vacation destination.",
-        "open_story_guide": "An interactive DET Speaking dialogue about travel experiences. Ask about memorable trips, cultural differences, dream destinations, and travel lessons.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about travel experiences. Ask about memorable trips, cultural differences, dream destinations, and travel lessons.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Describe a place you have visited or a dream travel destination you wish to explore.",
@@ -193,7 +193,7 @@ DEFAULT_SCENARIOS = {
     },
 
     # ============================================================
-    # DET GROUP 5: TECH & SOCIETY (CÔNG NGHỆ & XÃ HỘI)
+    # IELTS / CEFR GROUP 5: TECH & SOCIETY (CÔNG NGHỆ & XÃ HỘI)
     # ============================================================
     "det_social_media": {
         "id": "det_social_media",
@@ -202,7 +202,7 @@ DEFAULT_SCENARIOS = {
         "icon": "📱",
         "color": "#E91E63",
         "description": "Debate the role of internet, social networks, and smartphones in modern human life.",
-        "open_story_guide": "An interactive DET Speaking dialogue about digital life. Discuss the pros and cons of social media, digital communication, privacy, and changing social habits.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about digital life. Discuss the pros and cons of social media, digital communication, privacy, and changing social habits.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Discuss the influence of social media and smartphone communication on modern relationships.",
@@ -223,7 +223,7 @@ DEFAULT_SCENARIOS = {
         "icon": "🤖",
         "color": "#FF2A85",
         "description": "Discuss how artificial intelligence, automation, and innovation are shaping the future.",
-        "open_story_guide": "An interactive DET Speaking dialogue about AI and the future. Ask their thoughts on artificial intelligence, future workplaces, ethical challenges, and human creativity.",
+        "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about AI and the future. Ask their thoughts on artificial intelligence, future workplaces, ethical challenges, and human creativity.",
         "det_mode": "exam",
         "question_card": {
             "prompt": "Discuss how artificial intelligence and automation will affect the future workforce and society.",
@@ -239,119 +239,184 @@ DEFAULT_SCENARIOS = {
     },
 
     # ============================================================
-    # EVERYDAY LIFE ROLEPLAYS (TÌNH HUỐNG GIAO TIẾP HẰNG NGÀY)
+    # 1. FAMILY & FRIENDS (GIA ĐÌNH & BẠN BÈ)
     # ============================================================
-    "cafe_order": {
-        "id": "cafe_order",
-        "title": "Coffee Shop Order",
-        "category": "Everyday Roleplay",
-        "icon": "☕",
+    "family_dinner": {
+        "id": "family_dinner",
+        "title": "Family Dinner Conversation",
+        "category": "Family & Friends",
+        "icon": "🍽️",
         "color": "#FF9933",
-        "description": "Order coffee, secret menu drinks, and gossip at a busy cafe.",
-        "open_story_guide": "An unscripted cafe encounter. Improvise funny drink mixups, secret menu items, or chaotic cafe drama."
+        "description": "Gather around the dinner table, share daily news, and talk about family traditions.",
+        "open_story_guide": "A warm family dinner chat. Discuss daily highlights, family recipes, weekend plans, and supportive family advice."
     },
-    "night_market": {
-        "id": "night_market",
-        "title": "Street Night Market",
-        "category": "Everyday Roleplay",
-        "icon": "🛒",
-        "color": "#4CAF50",
-        "description": "Explore bustling street food stalls and bargain for unique finds.",
-        "open_story_guide": "An open night market adventure. Improvise exotic food tasting, funny price bargaining, or rare antique discoveries."
-    },
-    "dinner_choice": {
-        "id": "dinner_choice",
-        "title": "Late-Night Diner",
-        "category": "Everyday Roleplay",
-        "icon": "🍕",
+    "friend_catchup": {
+        "id": "friend_catchup",
+        "title": "Catching Up with an Old Friend",
+        "category": "Family & Friends",
+        "icon": "☕",
         "color": "#E91E63",
-        "description": "Debate late-night food cravings and chef special recipes.",
-        "open_story_guide": "A hilarious late-night food debate. Improvise weird food combos, midnight cravings, or chef specials."
+        "description": "Meet an old friend at a cozy coffee shop after years apart and share life updates.",
+        "open_story_guide": "A friendly reunion at a cafe. Share recent life changes, reminisce about old memories, and plan future hangouts."
     },
-    "city_taxi": {
-        "id": "city_taxi",
-        "title": "City Taxi Ride",
-        "category": "Everyday Roleplay",
-        "icon": "🚕",
-        "color": "#1CB0F6",
-        "description": "Navigate city streets, dodge traffic, and find secret shortcuts.",
-        "open_story_guide": "A chaotic taxi ride across town. Improvise unexpected traffic jams, radio trivia, or secret detour shortcuts."
-    },
-    "cinema_drinks": {
-        "id": "cinema_drinks",
-        "title": "Cinema & Movie Night",
-        "category": "Everyday Roleplay",
-        "icon": "🎬",
-        "color": "#FF2A85",
-        "description": "Discuss movie premieres, plot twists, and smuggled cinema snacks.",
-        "open_story_guide": "A lively movie night chat. Improvise film plot debates, sold-out tickets, or secret movie spoilers."
-    },
-    "apartment_rent": {
-        "id": "apartment_rent",
-        "title": "Apartment Rental Hunt",
-        "category": "Everyday Roleplay",
+    "roommate_chat": {
+        "id": "roommate_chat",
+        "title": "Living with Roommates",
+        "category": "Family & Friends",
         "icon": "🏠",
         "color": "#795548",
-        "description": "Negotiate rent, check balcony views, and ask about building rules.",
-        "open_story_guide": "A dramatic housing inspection. Improvise eccentric landlord rules, secret balcony views, or funny room quirks."
-    },
-    "midnight_clinic": {
-        "id": "midnight_clinic",
-        "title": "Midnight Medical Clinic",
-        "category": "Everyday Roleplay",
-        "icon": "🏥",
-        "color": "#00BCD4",
-        "description": "Describe mysterious symptoms, get health remedies, and consult a doctor.",
-        "open_story_guide": "An unusual medical checkup. Improvise strange symptoms, bizarre herbal remedies, or emergency room drama."
+        "description": "Discuss household chores, decorating the living room, and organizing movie nights.",
+        "open_story_guide": "A cooperative roommate conversation. Negotiate chore schedules, apartment rules, and shared cooking."
     },
 
     # ============================================================
-    # SPECIAL / CREATIVE ROLEPLAYS
+    # 2. HOBBIES & LIFESTYLE (SỞ THÍCH CÁ NHÂN & LỐI SỐNG)
     # ============================================================
-    "beach_vacation": {
-        "id": "beach_vacation",
-        "title": "Beach Getaway Trip",
-        "category": "Travel & Places",
-        "icon": "🏖️",
-        "color": "#00843D",
-        "description": "Plan a tropical beach trip, surfing sessions, and sunset barbecues.",
-        "open_story_guide": "A sunny coastal getaway. Improvise sudden tropical rainstorms, beach volleyball challenges, or secret cove discoveries."
-    },
-    "pet_shelter": {
-        "id": "pet_shelter",
-        "title": "Pet Shelter Adoption",
+    "weekend_fitness": {
+        "id": "weekend_fitness",
+        "title": "Weekend Sports & Fitness",
         "category": "Hobbies & Lifestyle",
-        "icon": "🐶",
+        "icon": "🏃",
+        "color": "#4CAF50",
+        "description": "Talk about morning runs, yoga routines, gym goals, and staying healthy.",
+        "open_story_guide": "An active chat about fitness and hobbies. Share workout tips, favorite outdoor sports, and healthy habits."
+    },
+    "book_club_chat": {
+        "id": "book_club_chat",
+        "title": "Book & Movie Club",
+        "category": "Hobbies & Lifestyle",
+        "icon": "📚",
         "color": "#9C27B0",
-        "description": "Meet adorable animals, adopt pets, and share funny routine stories.",
-        "open_story_guide": "A heartwarming or funny animal encounter. Improvise chaotic pet talents, adoption stories, or funny pet habits."
+        "description": "Share thoughts on a recent bestseller book or inspiring movie plot and characters.",
+        "open_story_guide": "A thoughtful discussion about books and cinema. Exchange recommendations and favorite character quotes."
     },
-    "cyber_repair": {
-        "id": "cyber_repair",
-        "title": "Cyberpunk Tech Repair",
-        "category": "Tech & Society",
-        "icon": "💻",
+    "cooking_recipe": {
+        "id": "cooking_recipe",
+        "title": "Cooking & Comfort Food",
+        "category": "Hobbies & Lifestyle",
+        "icon": "🍳",
+        "color": "#FF4B4B",
+        "description": "Exchange delicious home cooking recipes, ingredient tips, and favorite dishes.",
+        "open_story_guide": "A fun culinary exchange. Discuss comfort food recipes, healthy cooking shortcuts, and favorite cuisines."
+    },
+
+    # ============================================================
+    # 3. STUDY & CAREER (HỌC TẬP & CÔNG VIỆC)
+    # ============================================================
+    "job_interview_prep": {
+        "id": "job_interview_prep",
+        "title": "Job Interview Practice",
+        "category": "Study & Career",
+        "icon": "💼",
+        "color": "#1CB0F6",
+        "description": "Practice presenting professional skills, career goals, and answering interview questions.",
+        "open_story_guide": "A professional job interview simulation. Ask about work experience, strengths, teamwork, and career ambitions."
+    },
+    "study_group": {
+        "id": "study_group",
+        "title": "University Study Group",
+        "category": "Study & Career",
+        "icon": "🎓",
         "color": "#673AB7",
-        "description": "Troubleshoot glitchy AI gadgets, frozen screens, and futuristic tech.",
-        "open_story_guide": "A futuristic tech breakdown. Improvise rogue AI glitches, secret gadget modifications, or cyber hacker rumors."
+        "description": "Prepare for exams together, share study methods, and discuss academic subjects.",
+        "open_story_guide": "An encouraging study session. Share effective note-taking tips, exam preparation strategies, and academic goals."
     },
-    "secret_safehouse": {
-        "id": "secret_safehouse",
-        "title": "Secret Agent Safehouse",
-        "category": "Creative Roleplay",
-        "icon": "🕶️",
-        "color": "#37474F",
-        "description": "Exchange secret codes, evade rival agents, and plan classified missions.",
-        "open_story_guide": "A high-stakes espionage roleplay. Improvise secret agent ambushes, encrypted radio messages, or undercover escapes."
+    "workplace_colleague": {
+        "id": "workplace_colleague",
+        "title": "Workplace Team Project",
+        "category": "Study & Career",
+        "icon": "🖥️",
+        "color": "#3F51B5",
+        "description": "Collaborate with a colleague on a project deadline and brainstorm creative solutions.",
+        "open_story_guide": "A cooperative workplace discussion. Coordinate project tasks, offer supportive feedback, and solve work challenges."
     },
-    "pirate_tavern": {
-        "id": "pirate_tavern",
-        "title": "Pirate Ship Tavern",
-        "category": "Creative Roleplay",
-        "icon": "🏴‍☠️",
-        "color": "#C62828",
-        "description": "Hunt for lost treasure maps, toast pirate grog, and duel swashbucklers.",
-        "open_story_guide": "A wild pirate adventure. Improvise treasure map clues, sea monster rumors, or tavern duel challenges."
+
+    # ============================================================
+    # 4. CHILDHOOD & HOMETOWN (KÝ ỨC TUỔI THƠ & QUÊ HƯƠNG)
+    # ============================================================
+    "hometown_memories": {
+        "id": "hometown_memories",
+        "title": "Hometown Memories",
+        "category": "Childhood & Hometown",
+        "icon": "🏡",
+        "color": "#8D6E63",
+        "description": "Describe what growing up in your hometown was like, favorite places, and neighbors.",
+        "open_story_guide": "A nostalgic conversation about growing up. Share stories about hometown streets, local food, and childhood friends."
+    },
+    "memorable_teacher": {
+        "id": "memorable_teacher",
+        "title": "An Inspiring Teacher",
+        "category": "Childhood & Hometown",
+        "icon": "👨‍🏫",
+        "color": "#FFB300",
+        "description": "Talk about an influential teacher or mentor who encouraged you and taught life lessons.",
+        "open_story_guide": "An appreciative discussion about mentors. Share how a teacher made learning enjoyable and inspired confidence."
+    },
+
+    # ============================================================
+    # 5. TRAVEL & PLACES (DU LỊCH & ĐỊA ĐIỂM)
+    # ============================================================
+    "travel_planning": {
+        "id": "travel_planning",
+        "title": "Planning a Dream Trip",
+        "category": "Travel & Places",
+        "icon": "✈️",
+        "color": "#00843D",
+        "description": "Plan a relaxing vacation itinerary, compare destinations, and discuss travel tips.",
+        "open_story_guide": "An exciting travel planning dialogue. Compare scenic destinations, packing essentials, and cultural sightseeing."
+    },
+    "hotel_checkin": {
+        "id": "hotel_checkin",
+        "title": "Hotel Check-In & Local Tips",
+        "category": "Travel & Places",
+        "icon": "🏨",
+        "color": "#00BCD4",
+        "description": "Check into a hotel, ask about room amenities, and get recommendations for city landmarks.",
+        "open_story_guide": "A helpful hotel reception roleplay. Provide room assistance, breakfast times, and local sightseeing advice."
+    },
+
+    # ============================================================
+    # 6. TECH IN DAILY LIFE (CÔNG NGHỆ TRONG ĐỜI SỐNG)
+    # ============================================================
+    "tech_daily_life": {
+        "id": "tech_daily_life",
+        "title": "Smartphones & Productivity",
+        "category": "Tech & Daily Life",
+        "icon": "📱",
+        "color": "#E91E63",
+        "description": "Discuss how mobile apps help manage time, stay connected, and learn new skills.",
+        "open_story_guide": "A practical chat about everyday technology. Share useful apps, digital balance, and smartphone convenience."
+    },
+    "ai_learning_tools": {
+        "id": "ai_learning_tools",
+        "title": "AI & Language Learning",
+        "category": "Tech & Daily Life",
+        "icon": "🤖",
+        "color": "#FF2A85",
+        "description": "Talk about using artificial intelligence for studying languages, translation, and creativity.",
+        "open_story_guide": "A modern discussion on AI in education. Discuss how AI tutors provide instant feedback and make learning interactive."
+    },
+
+    # ============================================================
+    # 7. BASIC SOCIAL ISSUES (CÁC VẤN ĐỀ XÃ HỘI CƠ BẢN)
+    # ============================================================
+    "green_living_eco": {
+        "id": "green_living_eco",
+        "title": "Eco-Friendly Living",
+        "category": "Society & Community",
+        "icon": "🌱",
+        "color": "#4CAF50",
+        "description": "Share everyday tips for reducing plastic waste, recycling, and protecting the environment.",
+        "open_story_guide": "An environmentally conscious dialogue. Discuss simple habits to save energy, recycle, and keep neighborhoods clean."
+    },
+    "community_volunteer": {
+        "id": "community_volunteer",
+        "title": "Community & Volunteering",
+        "category": "Society & Community",
+        "icon": "🤝",
+        "color": "#3F51B5",
+        "description": "Talk about helping neighbors, volunteering at charities, and community kindness.",
+        "open_story_guide": "An uplifting conversation on community support. Discuss charity work, neighborhood events, and helping others."
     }
 }
 

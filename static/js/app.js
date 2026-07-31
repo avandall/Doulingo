@@ -109,7 +109,7 @@ class DuolingoSpeakApp {
     // Custom Topic Modal
     document.getElementById('btn-open-custom-modal').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
-      document.getElementById('modal-custom-topic').classList.add('active');
+      this.openCustomTopicModal('roleplay');
     });
     document.getElementById('btn-close-modal').addEventListener('click', () => {
       document.getElementById('modal-custom-topic').classList.remove('active');
@@ -181,17 +181,42 @@ class DuolingoSpeakApp {
       });
     }
 
-    document.getElementById('btn-submit-text').addEventListener('click', () => {
-      const input = document.getElementById('input-manual-text');
-      const val = input.value.trim();
-      if (val) {
-        this.submitSpokenTurn(val);
-        input.value = '';
-      }
-    });
-    document.getElementById('input-manual-text').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') document.getElementById('btn-submit-text').click();
-    });
+    const reviewSendBtn = document.getElementById('btn-review-send');
+    if (reviewSendBtn) {
+      reviewSendBtn.addEventListener('click', () => {
+        const reviewInput = document.getElementById('review-speech-input');
+        const val = reviewInput ? reviewInput.value.trim() : '';
+        if (val) {
+          if (window.duoAudio) window.duoAudio.playClick();
+          const reviewBox = document.getElementById('transcript-review-box');
+          if (reviewBox) reviewBox.style.display = 'none';
+          if (reviewInput) reviewInput.value = '';
+          this.submitSpokenTurn(val);
+        }
+      });
+    }
+    const reviewRetryBtn = document.getElementById('btn-review-retry');
+    if (reviewRetryBtn) {
+      reviewRetryBtn.addEventListener('click', () => {
+        if (window.duoAudio) window.duoAudio.playClick();
+        const reviewBox = document.getElementById('transcript-review-box');
+        if (reviewBox) reviewBox.style.display = 'none';
+        const reviewInput = document.getElementById('review-speech-input');
+        if (reviewInput) reviewInput.value = '';
+        if (this.speechHandler) {
+          this.speechHandler.startListening();
+        }
+      });
+    }
+    const reviewInputEl = document.getElementById('review-speech-input');
+    if (reviewInputEl) {
+      reviewInputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          if (reviewSendBtn) reviewSendBtn.click();
+        }
+      });
+    }
 
     // ===== AUDIO PLAYER CONTROLS =====
     this._bindAudioPlayerControls();
@@ -219,11 +244,7 @@ class DuolingoSpeakApp {
       if (window.duoAudio) window.duoAudio.playClick();
       this.stopTTS();
       if (this.isDetInteractiveMode) {
-        const userSpeech = this.conversationHistory
-          .filter(t => t.speaker === 'User')
-          .map(t => t.text)
-          .join(' ');
-        this.submitDetSpeech('interactive_speaking', userSpeech || 'No speech recorded yet.');
+        this.finishAndScoreDetInteractive();
       } else {
         this.finishAndScoreRoleplay();
       }
@@ -369,6 +390,11 @@ class DuolingoSpeakApp {
     if (btnCloseReport) {
       btnCloseReport.addEventListener('click', () => {
         document.getElementById('modal-det-score-report').classList.remove('active');
+        document.getElementById('modal-det-exam').classList.remove('active');
+        this.stopDetMonologueTimer();
+        if (this.speechHandler) this.speechHandler.cancel();
+        this.isDetInteractiveMode = false;
+        this.showScreen('scenario-screen');
       });
     }
 
@@ -376,6 +402,7 @@ class DuolingoSpeakApp {
     if (btnTryAgain) {
       btnTryAgain.addEventListener('click', () => {
         document.getElementById('modal-det-score-report').classList.remove('active');
+        this.stopDetMonologueTimer();
         if (this.currentDetScenario) {
           this.openDetExamModal(this.currentDetScenario);
         }
@@ -390,8 +417,8 @@ class DuolingoSpeakApp {
 
     const titleEl = document.getElementById('det-exam-title');
     const catBadgeEl = document.getElementById('det-exam-category-badge');
-    if (titleEl) titleEl.textContent = sc.title || 'DET Speaking Topic';
-    if (catBadgeEl) catBadgeEl.textContent = `🎓 ${sc.category || 'DET SPEAKING'}`;
+    if (titleEl) titleEl.textContent = sc.title || 'IELTS & CEFR Speaking Topic';
+    if (catBadgeEl) catBadgeEl.textContent = `🎓 ${sc.category || 'IELTS / CEFR SPEAKING'}`;
 
     const cardPrompt = document.getElementById('det-card-prompt-text');
     const bulletList = document.getElementById('det-card-bullet-points');
@@ -483,7 +510,7 @@ class DuolingoSpeakApp {
       btnRecord.classList.add('btn-red');
     }
     if (this.speechHandler) {
-      this.speechHandler.cancel();
+      this.speechHandler.stopListening();
     }
   }
 
@@ -497,21 +524,31 @@ class DuolingoSpeakApp {
     }
 
     const btnSubmit = document.getElementById('btn-det-submit-speech');
-    const originalBtnText = btnSubmit ? btnSubmit.innerHTML : '📤 SUBMIT DET SPEECH';
+    const originalBtnText = btnSubmit ? btnSubmit.innerHTML : '📤 SUBMIT SPEAKING TEST';
     if (btnSubmit) {
       btnSubmit.disabled = true;
       btnSubmit.innerHTML = '⏳ AI Examiner is evaluating...';
     }
 
     try {
+      const wordCount = speechText.trim().split(/\s+/).filter(Boolean).length;
+      const durationSecs = this.detElapsedSeconds || 95;
+      const wpm = Math.round((wordCount / Math.max(1, durationSecs)) * 60);
+      const pauseCount = (window.duoSpeech && typeof window.duoSpeech.pauseCount === 'number') ? window.duoSpeech.pauseCount : 0;
+      const fillerMatches = speechText.toLowerCase().match(/\b(uh|um|er|ah|like|you know|actually|basically|literally)\b/g);
+      const fillerCount = fillerMatches ? fillerMatches.length : 0;
+
       const resp = await fetch('/api/det/evaluate_speech', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           scenario_id: this.currentDetScenario ? this.currentDetScenario.id : 'det_childhood_memory',
           user_speech: speechText,
-          duration_seconds: this.detElapsedSeconds || 95,
-          mode: mode || 'read_then_speak'
+          duration_seconds: durationSecs,
+          mode: mode || 'read_then_speak',
+          wpm: wpm,
+          pause_count: pauseCount,
+          filler_count: fillerCount
         })
       });
       const data = await resp.json();
@@ -560,6 +597,16 @@ class DuolingoSpeakApp {
 
     const critiqueEl = document.getElementById('det-report-critique');
     if (critiqueEl) critiqueEl.textContent = data.examiner_critique || 'Bài làm đạt yêu cầu đề bài.';
+
+    const ac = data.acoustic_metrics || {};
+    const wpmEl = document.getElementById('det-ac-wpm');
+    const pausesEl = document.getElementById('det-ac-pauses');
+    const fillersEl = document.getElementById('det-ac-fillers');
+    const diagEl = document.getElementById('det-ac-diagnosis');
+    if (wpmEl) wpmEl.textContent = `${ac.wpm || 115} WPM (${ac.pace_label || 'Tự nhiên'})`;
+    if (pausesEl) pausesEl.textContent = `${ac.pause_count || 0} lần`;
+    if (fillersEl) fillersEl.textContent = `${ac.filler_count || 0} từ`;
+    if (diagEl) diagEl.textContent = ac.rhythm_diagnosis || 'Trôi chảy, nhịp điệu tự nhiên.';
 
     const upgradesContainer = document.getElementById('det-report-upgrades');
     if (upgradesContainer) {
@@ -1034,63 +1081,153 @@ class DuolingoSpeakApp {
 
       this.scenarios = apiScenarios;
       this.initCategoryFilterBar();
-      this.renderScenarios('all');
+      this.renderScenarios(this.currentIeltsCategory || 'all', this.currentRoleplayCategory || 'all');
     } catch (e) {
       console.error('Failed to load scenarios:', e);
     }
   }
 
   initCategoryFilterBar() {
-    const filterBar = document.getElementById('category-filter-bar');
-    if (!filterBar) return;
-    const buttons = filterBar.querySelectorAll('.cat-pill');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (window.duoAudio) window.duoAudio.playClick();
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.category || 'all';
-        this.renderScenarios(cat);
+    const ieltsBar = document.getElementById('ielts-category-filter-bar');
+    if (ieltsBar) {
+      const buttons = ieltsBar.querySelectorAll('.cat-pill');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (window.duoAudio) window.duoAudio.playClick();
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.currentIeltsCategory = btn.dataset.ieltsCat || 'all';
+          this.renderScenarios(this.currentIeltsCategory, this.currentRoleplayCategory || 'all');
+        });
       });
-    });
+    }
+
+    const roleplayBar = document.getElementById('roleplay-category-filter-bar');
+    if (roleplayBar) {
+      const buttons = roleplayBar.querySelectorAll('.cat-pill');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (window.duoAudio) window.duoAudio.playClick();
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.currentRoleplayCategory = btn.dataset.roleplayCat || 'all';
+          this.renderScenarios(this.currentIeltsCategory || 'all', this.currentRoleplayCategory);
+        });
+      });
+    }
   }
 
-  renderScenarios(filterCategory = 'all') {
-    const grid = document.getElementById('scenarios-grid');
-    if (!grid) return;
-    grid.innerHTML = '';
+  openCustomTopicModal(targetSection = 'roleplay') {
+    this.customTopicTargetSection = targetSection;
+    const modal = document.getElementById('modal-custom-topic');
+    if (!modal) return;
 
-    const filtered = this.scenarios.filter(sc => {
-      if (filterCategory === 'all') return true;
-      return sc.category === filterCategory;
+    const titleEl = modal.querySelector('h2');
+    const descEl = modal.querySelector('p');
+    const inputTitle = document.getElementById('custom-topic-title');
+    const inputDesc = document.getElementById('custom-topic-desc');
+
+    if (targetSection === 'ielts') {
+      if (titleEl) titleEl.textContent = '➕ Tạo Đề Thi IELTS Speaking Mới';
+      if (descEl) descEl.textContent = 'Thêm chủ đề thi IELTS với chấm điểm tự động 4 tiêu chí & đề xuất nâng cấp C1/C2';
+      if (inputTitle) inputTitle.placeholder = 'e.g. Discussing Artificial Intelligence in Education...';
+      if (inputDesc) inputDesc.placeholder = 'e.g. Describe how AI affects students and teachers...';
+    } else {
+      if (titleEl) titleEl.textContent = '➕ Tạo Chủ Đề Roleplay Giao Tiếp Mới';
+      if (descEl) descEl.textContent = 'Thêm tình huống hội thoại thực tế hàng ngày cùng nhân vật AI';
+      if (inputTitle) inputTitle.placeholder = 'e.g. Ordering Coffee at a Busy Café...';
+      if (inputDesc) inputDesc.placeholder = 'e.g. Chatting with barista about specials & pastry choices...';
+    }
+
+    if (inputTitle) inputTitle.value = '';
+    if (inputDesc) inputDesc.value = '';
+    modal.classList.add('active');
+  }
+
+  createAddTopicCard(targetSection, label, sublabel) {
+    const card = document.createElement('div');
+    card.className = 'scenario-card add-topic-card';
+    card.style.cssText = 'border: 2px dashed rgba(160, 160, 160, 0.45); background: rgba(160, 160, 160, 0.04); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; min-height: 200px; transition: all 0.25s ease; padding: 20px; border-radius: 20px;';
+    card.innerHTML = `
+      <div style="font-size: 52px; color: rgba(160, 160, 160, 0.55); font-weight: 300; line-height: 1; margin-bottom: 8px;">+</div>
+      <div style="font-weight: 800; font-size: 15px; color: var(--text-color); opacity: 0.85;">${label}</div>
+      <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 600;">${sublabel}</div>
+    `;
+    card.addEventListener('mouseover', () => {
+      card.style.borderColor = targetSection === 'ielts' ? '#FF4B4B' : '#1CB0F6';
+      card.style.background = targetSection === 'ielts' ? 'rgba(255, 75, 75, 0.06)' : 'rgba(28, 176, 246, 0.06)';
+    });
+    card.addEventListener('mouseout', () => {
+      card.style.borderColor = 'rgba(160, 160, 160, 0.45)';
+      card.style.background = 'rgba(160, 160, 160, 0.04)';
+    });
+    card.addEventListener('click', () => {
+      if (window.duoAudio) window.duoAudio.playClick();
+      this.openCustomTopicModal(targetSection);
+    });
+    return card;
+  }
+
+  createScenarioCardElement(sc) {
+    const card = document.createElement('div');
+    card.className = 'scenario-card';
+    const isDet = (sc.id || '').startsWith('det_') || sc.mode === 'ielts_exam';
+    const badgeColor = isDet ? '#FF4B4B' : '#1CB0F6';
+    card.innerHTML = `
+      <div class="scenario-card-header">
+        <div class="scenario-icon">${sc.icon || '💬'}</div>
+        <span class="scenario-cat-badge" style="background-color: ${badgeColor}18; color: ${badgeColor}; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 99px; text-transform: uppercase;">${sc.category || 'Everyday'}</span>
+      </div>
+      <div class="scenario-title">${sc.title} ${sc.is_custom ? '✨' : ''}</div>
+      <div class="scenario-desc">${sc.description}</div>
+      <button class="btn-duo ${isDet ? 'btn-red' : 'btn-blue'}" style="width:100%; margin-top: auto;">${isDet ? 'IELTS / CEFR EXAM' : 'START ROLEPLAY'}</button>
+    `;
+
+    card.addEventListener('click', () => {
+      if (window.duoAudio) window.duoAudio.playClick();
+      if (isDet) {
+        this.openDetExamModal(sc);
+      } else {
+        this.startScenario(sc.id);
+      }
     });
 
-    filtered.forEach(sc => {
-      const card = document.createElement('div');
-      card.className = 'scenario-card';
-      const isDet = (sc.id || '').startsWith('det_');
-      const badgeColor = isDet ? '#FF4B4B' : '#1CB0F6';
-      card.innerHTML = `
-        <div class="scenario-card-header">
-          <div class="scenario-icon">${sc.icon || '💬'}</div>
-          <span class="scenario-cat-badge" style="background-color: ${badgeColor}18; color: ${badgeColor}; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 99px; text-transform: uppercase;">${sc.category || 'Everyday'}</span>
-        </div>
-        <div class="scenario-title">${sc.title} ${sc.is_custom ? '✨' : ''}</div>
-        <div class="scenario-desc">${sc.description}</div>
-        <button class="btn-duo ${isDet ? 'btn-red' : 'btn-blue'}" style="width:100%; margin-top: auto;">${isDet ? 'DET SPEAKING' : 'START ROLEPLAY'}</button>
-      `;
+    return card;
+  }
 
-      card.addEventListener('click', () => {
-        if (window.duoAudio) window.duoAudio.playClick();
-        if (isDet) {
-          this.openDetExamModal(sc);
-        } else {
-          this.startScenario(sc.id);
-        }
-      });
+  renderScenarios(ieltsCat = 'all', roleplayCat = 'all') {
+    const ieltsGrid = document.getElementById('ielts-scenarios-grid');
+    const roleplayGrid = document.getElementById('roleplay-scenarios-grid');
+    if (!ieltsGrid || !roleplayGrid) return;
 
-      grid.appendChild(card);
+    ieltsGrid.innerHTML = '';
+    roleplayGrid.innerHTML = '';
+
+    const isIeltsScenario = (sc) => (sc.id || '').startsWith('det_') || sc.mode === 'ielts_exam';
+
+    const ieltsScenarios = this.scenarios.filter(sc => {
+      if (!isIeltsScenario(sc)) return false;
+      if (ieltsCat === 'all') return true;
+      return sc.category === ieltsCat;
     });
+
+    const roleplayScenarios = this.scenarios.filter(sc => {
+      if (isIeltsScenario(sc)) return false;
+      if (roleplayCat === 'all') return true;
+      return sc.category === roleplayCat;
+    });
+
+    // Render IELTS cards with plus card at the end of section
+    const ieltsCardElements = ieltsScenarios.map(sc => this.createScenarioCardElement(sc));
+    const addIeltsCard = this.createAddTopicCard('ielts', '➕ Thêm chủ đề thi IELTS', 'Bấm vào để tạo đề thi IELTS tự do');
+    ieltsCardElements.push(addIeltsCard);
+    ieltsCardElements.forEach(cardEl => ieltsGrid.appendChild(cardEl));
+
+    // Render Roleplay cards with plus card at the end of section
+    const roleplayCardElements = roleplayScenarios.map(sc => this.createScenarioCardElement(sc));
+    const addRoleplayCard = this.createAddTopicCard('roleplay', '➕ Thêm chủ đề Roleplay', 'Bấm vào để tạo tình huống tự do');
+    roleplayCardElements.push(addRoleplayCard);
+    roleplayCardElements.forEach(cardEl => roleplayGrid.appendChild(cardEl));
   }
 
   async saveCustomTopic() {
@@ -1104,17 +1241,20 @@ class DuolingoSpeakApp {
       return;
     }
 
+    const isIelts = this.customTopicTargetSection === 'ielts';
+
     const payload = {
       title: title,
-      category: 'Everyday Life ☕',
-      icon: iconInput.value.trim() || '💬',
-      color: '#1CB0F6',
-      level: 'Beginner',
-      level_code: 'A2',
+      category: isIelts ? 'Personal & Family' : 'Everyday Roleplay',
+      icon: iconInput.value.trim() || (isIelts ? '🎓' : '💬'),
+      color: isIelts ? '#FF4B4B' : '#1CB0F6',
+      level: isIelts ? 'Upper Intermediate' : 'Beginner',
+      level_code: isIelts ? 'B2' : 'A2',
       default_character: 'lily',
-      description: descInput.value.trim() || 'Custom everyday life topic.',
-      objective: 'Practice speaking freely.',
-      suggested_vocabulary: ['Everyday conversation', 'Free chat']
+      description: descInput.value.trim() || (isIelts ? 'Custom IELTS Speaking topic.' : 'Custom everyday roleplay topic.'),
+      objective: isIelts ? 'Demonstrate fluency, lexical resource, and accuracy.' : 'Practice speaking freely.',
+      suggested_vocabulary: isIelts ? ['Fluency', 'Lexical resource', 'Coherence'] : ['Everyday conversation', 'Free chat'],
+      mode: isIelts ? 'ielts_exam' : 'roleplay'
     };
 
     try {
@@ -1139,7 +1279,7 @@ class DuolingoSpeakApp {
     } catch (e) {
       console.error('Failed to save custom topic to server, saving locally:', e);
       const localCustoms = JSON.parse(localStorage.getItem('duo_custom_topics') || '[]');
-      payload.id = `custom_${Date.now()}`;
+      payload.id = isIelts ? `det_custom_${Date.now()}` : `custom_${Date.now()}`;
       payload.is_custom = true;
       localCustoms.unshift(payload);
       localStorage.setItem('duo_custom_topics', JSON.stringify(localCustoms));
@@ -1183,9 +1323,23 @@ class DuolingoSpeakApp {
       // Clear TTS cache from previous session to free RAM
       this._clearTTSCache();
 
+      // Calculate maxTurns for IELTS Exam Interactive mode (level dependent: L1-5: 4 turns, L6-10: 6 turns, L11-15: 8 turns, L16-20: 10 turns)
+      const maxTurns = this.isDetInteractiveMode
+        ? (this.currentLevel <= 5 ? 4 : this.currentLevel <= 10 ? 6 : this.currentLevel <= 15 ? 8 : 10)
+        : null;
+      this.detMaxTurns = maxTurns;
+
       // Update Header
-      document.getElementById('scenario-stage-title').textContent = `${this.currentScenario.title} (${this.selectedCharacter.name}) - Lvl ${this.currentLevel}`;
-      document.getElementById('current-turns-count').textContent = 'Turns: 0 (Unlimited)';
+      const titlePrefix = this.isDetInteractiveMode ? '🎓 IELTS Interactive Speaking' : this.currentScenario.title;
+      document.getElementById('scenario-stage-title').textContent = `${titlePrefix} (${this.selectedCharacter.name}) - Lvl ${this.currentLevel}`;
+      document.getElementById('current-turns-count').textContent = this.isDetInteractiveMode
+        ? `Turns: 0 / ${maxTurns} (IELTS Exam)`
+        : 'Turns: 0 (Unlimited)';
+
+      const btnFinish = document.getElementById('btn-finish-roleplay');
+      if (btnFinish) {
+        btnFinish.innerHTML = this.isDetInteractiveMode ? '🏁 KẾT THÚC & CHẤM ĐIỂM' : '🏁 FINISH';
+      }
 
       document.getElementById('ai-persona-name').textContent = `${this.selectedCharacter.name} (${this.selectedCharacter.country})`;
       this.renderInteractiveAIText('Generating AI opening question...');
@@ -1380,8 +1534,8 @@ class DuolingoSpeakApp {
   handleSpeechResult(transcript, isFinal) {
     if (this.isDetRecording) {
       const textarea = document.getElementById('det-speech-textarea');
-      if (textarea && isFinal) {
-        textarea.value = (textarea.value + ' ' + transcript).trim();
+      if (textarea && transcript && transcript.trim()) {
+        textarea.value = transcript.trim();
         const words = textarea.value.trim().split(/\s+/).filter(w => w.length > 0).length;
         const wcEl = document.getElementById('det-speech-word-count');
         if (wcEl) wcEl.textContent = `${words} words`;
@@ -1390,7 +1544,16 @@ class DuolingoSpeakApp {
     }
     document.getElementById('transcript-display').textContent = `"${transcript}"` || 'Listening...';
     if (isFinal && transcript.trim()) {
-      this.submitSpokenTurn(transcript.trim());
+      const reviewBox = document.getElementById('transcript-review-box');
+      const reviewInput = document.getElementById('review-speech-input');
+      if (reviewBox && reviewInput) {
+        reviewInput.value = transcript.trim();
+        reviewBox.style.display = 'block';
+        reviewInput.focus();
+        document.getElementById('transcript-display').textContent = '👀 Kiểm tra câu bạn vừa nói bên dưới trước khi bấm "GỬI CÂU NÀY" (hoặc chạm vào để sửa nếu máy nghe sai):';
+      } else {
+        this.submitSpokenTurn(transcript.trim());
+      }
     }
   }
 
@@ -1398,14 +1561,17 @@ class DuolingoSpeakApp {
     const micBtn = document.getElementById('btn-mic-toggle');
     const cancelBtn = document.getElementById('btn-cancel-mic');
     const waveform = document.getElementById('waveform-anim');
+    const reviewBox = document.getElementById('transcript-review-box');
 
     if (state === 'listening') {
+      if (reviewBox) reviewBox.style.display = 'none';
       micBtn.classList.add('recording');
       waveform.classList.add('active');
       if (cancelBtn) cancelBtn.style.display = 'inline-flex';
       DuoMascot.renderInto('practice-mascot', 'listening');
-      document.getElementById('transcript-display').textContent = '🎙️ Recording... Tap mic again to SEND, or tap Cancel to discard!';
+      document.getElementById('transcript-display').textContent = '🎙️ Recording... Tap mic again when done to review!';
     } else if (state === 'cancelled') {
+      if (reviewBox) reviewBox.style.display = 'none';
       micBtn.classList.remove('recording');
       waveform.classList.remove('active');
       if (cancelBtn) cancelBtn.style.display = 'none';
@@ -1467,7 +1633,17 @@ class DuolingoSpeakApp {
       this.currentHistoryAIIdx = this.historyLog.length - 1;
 
       this.turnCount++;
-      document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
+      if (this.isDetInteractiveMode) {
+        document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} / ${this.detMaxTurns} (IELTS Exam)`;
+        if (this.turnCount >= this.detMaxTurns) {
+          setTimeout(() => {
+            alert(`🏆 Bạn đã hoàn thành đủ ${this.detMaxTurns} lượt trả lời của bài thi IELTS Interactive Speaking! Hệ thống đang tổng hợp và chấm điểm chính thức...`);
+            this.finishAndScoreDetInteractive();
+          }, 600);
+        }
+      } else {
+        document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
+      }
 
       const fb = data.user_feedback || {};
       const turnScoreObj = {
@@ -1534,6 +1710,20 @@ class DuolingoSpeakApp {
 
     // Play Neural Voice TTS
     this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
+  }
+
+  finishAndScoreDetInteractive() {
+    this.stopTTS();
+    if (this.turnScores.length === 0 && this.conversationHistory.length === 0) {
+      alert('Bạn cần trả lời ít nhất 1 câu hỏi trước khi nộp bài thi IELTS Interactive Speaking!');
+      return;
+    }
+    const userSpeech = this.conversationHistory
+      .filter(t => t.role === 'user' || t.speaker === 'User')
+      .map(t => t.content || t.text)
+      .join(' . ');
+    const speechToEval = userSpeech.trim() || (this.turnScores.map(ts => ts.userText).join(' . '));
+    this.submitDetSpeech('interactive_speaking', speechToEval || 'Candidate completed interactive speaking turns.');
   }
 
   finishAndScoreRoleplay() {

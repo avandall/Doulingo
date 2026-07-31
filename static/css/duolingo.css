@@ -350,6 +350,9 @@ html {
   .speech-bubble { width: 100%; padding: 12px; }
   .ai-text { font-size: 16px; }
   .btn-mic { width: 68px; height: 68px; font-size: 26px; }
+  .scenarios-grid { grid-template-columns: 1fr; gap: 12px; }
+  .section-header-box { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .category-filter-bar { overflow-x: auto; padding-bottom: 6px; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
 }
 
 /* =====================================================

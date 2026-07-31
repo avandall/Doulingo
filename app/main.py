@@ -9,7 +9,7 @@ Features:
 - Granular 20-Level Difficulty System with per-level hard constraints.
 """
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel
@@ -18,6 +18,7 @@ import os
 import uuid
 import unicodedata
 import requests
+from urllib.parse import quote
 
 from app.scenarios import list_scenarios, get_scenario
 from app.characters import list_characters, get_character
@@ -54,6 +55,7 @@ class CustomScenarioRequest(BaseModel):
     description: Optional[str] = "Custom everyday life topic"
     objective: Optional[str] = "Express your thoughts freely."
     suggested_vocabulary: Optional[List[str]] = ["Everyday conversation", "Free chat"]
+    mode: Optional[str] = "roleplay"
 
 class SentenceTranslateRequest(BaseModel):
     text: str
@@ -67,6 +69,9 @@ class DetSpeechEvalRequest(BaseModel):
     user_speech: str
     duration_seconds: Optional[int] = 120
     mode: Optional[str] = "read_then_speak"
+    wpm: Optional[int] = None
+    pause_count: Optional[int] = None
+    filler_count: Optional[int] = None
 
 # NOTE: Google Translate gtx scraping (client=gtx) has been REMOVED.
 # Translation fallback is now handled inside ai_engine._fallback_llm_translate()
@@ -87,7 +92,8 @@ def api_get_scenario(scenario_id: str):
 def api_create_custom_scenario(payload: CustomScenarioRequest):
     if not payload.title.strip():
         raise HTTPException(status_code=400, detail="Title cannot be empty")
-    sc_id = f"custom_{uuid.uuid4().hex[:8]}"
+    prefix = "det_custom_" if payload.mode == "ielts_exam" else "custom_"
+    sc_id = f"{prefix}{uuid.uuid4().hex[:8]}"
     sc_data = {
         "id": sc_id,
         "title": payload.title,
@@ -99,7 +105,8 @@ def api_create_custom_scenario(payload: CustomScenarioRequest):
         "default_character": payload.default_character or "rajesh",
         "description": payload.description or "Everyday life topic",
         "objective": payload.objective or "Express thoughts freely.",
-        "suggested_vocabulary": payload.suggested_vocabulary or ["Everyday chat"]
+        "suggested_vocabulary": payload.suggested_vocabulary or ["Everyday chat"],
+        "mode": payload.mode or "roleplay"
     }
     saved = add_custom_scenario(sc_data)
     return {"status": "success", "scenario": saved}
@@ -144,6 +151,27 @@ def api_process_turn(payload: TurnRequest):
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/transcribe_audio")
+async def api_transcribe_audio(
+    file: Optional[UploadFile] = File(None),
+    fallback_text: str = Form("")
+):
+    """
+    Transcribes recorded microphone audio using Groq Whisper / Gemini Audio ASR.
+    Falls back to browser Web Speech API text if audio is empty or API unavailable.
+    """
+    audio_bytes = b""
+    filename = "speech.webm"
+    if file:
+        audio_bytes = await file.read()
+        filename = file.filename or "speech.webm"
+
+    if not audio_bytes and not fallback_text.strip():
+        raise HTTPException(status_code=400, detail="No audio or fallback text provided")
+
+    result = await ai_engine.transcribe_audio(audio_bytes, filename=filename, fallback_text=fallback_text)
+    return result
 
 # In-Memory cache for on-demand sentence translations
 SENTENCE_TRANSLATION_CACHE: Dict[str, str] = {}
@@ -196,7 +224,10 @@ async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
         scenario=scenario,
         user_speech=payload.user_speech.strip(),
         duration_seconds=payload.duration_seconds or 120,
-        mode=payload.mode or "read_then_speak"
+        mode=payload.mode or "read_then_speak",
+        wpm=payload.wpm,
+        pause_count=payload.pause_count,
+        filler_count=payload.filler_count
     )
     return result
 
@@ -247,7 +278,7 @@ def api_translate_word(
     tl_code = target_lang if target_lang != "en-def" else "en"
     real_translation = f"Definition of '{clean_word}'"
     try:
-        gt_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={tl_code}&dt=t&dt=bd&q={requests.utils.quote(clean_word)}"
+        gt_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={tl_code}&dt=t&dt=bd&q={quote(clean_word)}"
         gt_res = requests.get(gt_url, timeout=4)
         if gt_res.status_code == 200:
             gt_data = gt_res.json()
@@ -273,7 +304,7 @@ def api_translate_word(
     # Fetch Real IPA Phonetics
     real_ipa = f"/{clean_word.lower()}/"
     try:
-        dict_url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{requests.utils.quote(clean_word.lower())}"
+        dict_url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{quote(clean_word.lower())}"
         dict_res = requests.get(dict_url, timeout=3)
         if dict_res.status_code == 200:
             dict_data = dict_res.json()

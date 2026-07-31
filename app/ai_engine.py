@@ -47,183 +47,183 @@ SCENARIO_ANGLES = [
 LEVEL_CONFIGS = {
     1: {
         "cefr": "Pre-A1",
-        "sentence_words": "5-10",
-        "min_words": 15,
-        "max_words": 30,
+        "sentence_words": "8-15",
+        "min_words": 35,
+        "max_words": 70,
         "vocab_tier": "ONLY the 100 most common English words (yes, no, good, want, like, have, go, eat, drink, please, what, how)",
         "grammar_allowed": "Subject + Verb only. Present simple tense ONLY. Simple questions.",
-        "response_style": "1-2 short, simple sentences. Greet friendly and ask one basic everyday question (15-30 words). Example: 'Hello! Do you like coffee or tea?'",
+        "response_style": "2-3 simple sentences. Greet friendly, answer clearly, and ask one basic everyday question (35-70 words). Example: 'Hello! I like coffee very much. Do you like coffee or tea?'",
     },
     2: {
         "cefr": "A1",
-        "sentence_words": "6-11",
-        "min_words": 20,
-        "max_words": 35,
+        "sentence_words": "8-15",
+        "min_words": 35,
+        "max_words": 70,
         "vocab_tier": "Top 200 most common English words. Concrete nouns (food, water, home, bus, shop, today).",
         "grammar_allowed": "Simple present tense. 'I am', 'You are', 'It is'. Basic everyday phrasing.",
-        "response_style": "2 short sentences. Include one simple detail and ask a clear follow-up question (20-35 words).",
+        "response_style": "2-3 short, natural sentences. Include clear everyday details and ask a follow-up question (35-70 words).",
     },
     3: {
         "cefr": "A1",
-        "sentence_words": "7-12",
-        "min_words": 25,
-        "max_words": 40,
+        "sentence_words": "9-15",
+        "min_words": 35,
+        "max_words": 70,
         "vocab_tier": "A1 basic vocabulary. Simple adjectives (big, small, hot, cold, good, bad, happy).",
         "grammar_allowed": "Present simple. Can/cannot. Have/don't have. Simple yes/no and what/where questions.",
-        "response_style": "2 sentences with natural conversational flow. End with an engaging question (25-40 words).",
+        "response_style": "2-3 sentences with natural conversational flow. End with an engaging question (35-70 words).",
     },
     4: {
         "cefr": "A1+",
-        "sentence_words": "8-13",
-        "min_words": 25,
-        "max_words": 45,
+        "sentence_words": "9-15",
+        "min_words": 35,
+        "max_words": 70,
         "vocab_tier": "A1-A2 vocabulary. Can use 'would like', 'want to', common verbs (eat, drink, go, take, give).",
         "grammar_allowed": "Present simple + 'would like' + simple imperatives. Basic time words (today, now, yesterday).",
-        "response_style": "2-3 sentences. Express a basic preference or fact, then ask about theirs (25-45 words).",
+        "response_style": "2-3 sentences. Express a basic preference or fact clearly, then ask about theirs (35-70 words).",
     },
     5: {
         "cefr": "A2",
-        "sentence_words": "8-14",
-        "min_words": 30,
-        "max_words": 50,
+        "sentence_words": "10-16",
+        "min_words": 35,
+        "max_words": 70,
         "vocab_tier": "A2 everyday vocabulary. Common adjectives, basic adverbs (very, really, often, sometimes).",
         "grammar_allowed": "Present simple + past simple (regular verbs only). 'How much/many', basic questions.",
-        "response_style": "2-3 sentences. Share an interesting observation and invite their thoughts (30-50 words).",
+        "response_style": "2-3 sentences. Share an interesting observation and invite their thoughts (35-70 words).",
     },
     6: {
         "cefr": "A2",
-        "sentence_words": "9-15",
-        "min_words": 30,
-        "max_words": 55,
+        "sentence_words": "10-16",
+        "min_words": 45,
+        "max_words": 85,
         "vocab_tier": "A2 vocabulary. Can use common collocations (have a meal, take a break, make a call).",
         "grammar_allowed": "Past simple (regular + irregular). Future with 'going to'. Questions with 'When, Where, Who'.",
-        "response_style": "2-3 sentences. Connect past experiences or future plans with the topic (30-55 words).",
+        "response_style": "2-3 sentences. Connect past experiences or future plans with the topic (45-85 words).",
     },
     7: {
         "cefr": "A2+",
-        "sentence_words": "10-15",
-        "min_words": 35,
-        "max_words": 60,
+        "sentence_words": "10-17",
+        "min_words": 45,
+        "max_words": 85,
         "vocab_tier": "A2-B1 vocabulary. Basic phrasal verbs (look for, pick up, find out). Simple idioms avoided.",
         "grammar_allowed": "Past simple + continuous. Future with 'will'. Comparative adjectives (bigger, better, more).",
-        "response_style": "2-3 sentences with smooth transitions. Ask a question that encourages elaboration (35-60 words).",
+        "response_style": "3 sentences with smooth transitions. Ask a question that encourages elaboration (45-85 words).",
     },
     8: {
         "cefr": "B1-",
-        "sentence_words": "10-16",
-        "min_words": 35,
-        "max_words": 65,
+        "sentence_words": "11-17",
+        "min_words": 45,
+        "max_words": 85,
         "vocab_tier": "B1 vocabulary. Common idioms (a piece of cake, hit the road). Basic phrasal verbs freely.",
         "grammar_allowed": "Present perfect (have been, have done). Comparatives + superlatives. 'I think', 'I believe'.",
-        "response_style": "2-3 sentences. Share an opinion with a reason, then ask for their viewpoint (35-65 words).",
+        "response_style": "3 sentences. Share an opinion with a reason, then ask for their viewpoint (45-85 words).",
     },
     9: {
         "cefr": "B1",
-        "sentence_words": "11-17",
-        "min_words": 40,
-        "max_words": 70,
+        "sentence_words": "11-18",
+        "min_words": 45,
+        "max_words": 85,
         "vocab_tier": "B1 vocabulary. B1 idioms (on second thought, to be honest, as far as I know).",
         "grammar_allowed": "Past perfect. Conditionals (if...will). 'Used to'. Clause linking (because, although, while).",
-        "response_style": "3 sentences. Use natural idiomatic expressions and conditional phrasing (40-70 words).",
+        "response_style": "3 sentences. Use natural idiomatic expressions and conditional phrasing (45-85 words).",
     },
     10: {
         "cefr": "B1",
-        "sentence_words": "11-18",
-        "min_words": 40,
-        "max_words": 75,
+        "sentence_words": "12-18",
+        "min_words": 45,
+        "max_words": 85,
         "vocab_tier": "B1-B2 vocabulary. Phrasal verbs freely. Common idioms used naturally in context.",
         "grammar_allowed": "Reported speech. Relative clauses (who, which, that). Second conditional (if...would).",
-        "response_style": "3 sentences. Compare alternatives and present a thoughtful perspective (40-75 words).",
+        "response_style": "3 sentences. Compare alternatives and present a thoughtful perspective (45-85 words).",
     },
     11: {
         "cefr": "B1+",
-        "sentence_words": "12-18",
-        "min_words": 45,
-        "max_words": 80,
+        "sentence_words": "12-19",
+        "min_words": 55,
+        "max_words": 105,
         "vocab_tier": "B2 vocabulary. Abstract nouns. B2 collocations (raise awareness, make an impression).",
         "grammar_allowed": "All conditionals. Passive voice. Modals for deduction (must be, might have).",
-        "response_style": "3 sentences. Provide structured conversational analysis with discourse markers (45-80 words).",
+        "response_style": "3-4 sentences. Provide structured conversational analysis with discourse markers (55-105 words).",
     },
     12: {
         "cefr": "B2-",
-        "sentence_words": "12-19",
-        "min_words": 45,
-        "max_words": 85,
+        "sentence_words": "13-20",
+        "min_words": 55,
+        "max_words": 105,
         "vocab_tier": "B2 vocabulary. Formal and informal registers. Discourse markers (Furthermore, Nevertheless, In contrast).",
         "grammar_allowed": "Subjunctive (I wish, if only). Inversion for emphasis (Not only...but also). All tenses.",
-        "response_style": "3-4 sentences. Explore pros and cons or challenge an idea politely (45-85 words).",
+        "response_style": "3-4 sentences. Explore pros and cons or challenge an idea politely (55-105 words).",
     },
     13: {
         "cefr": "B2",
         "sentence_words": "13-20",
-        "min_words": 50,
-        "max_words": 90,
+        "min_words": 55,
+        "max_words": 105,
         "vocab_tier": "B2 rich vocabulary. Sophisticated adjectives (meticulous, vibrant, compelling). Abstract concepts.",
         "grammar_allowed": "Complex sentences. Mixed conditionals. Cleft sentences (It was...that). Emphatic structures.",
-        "response_style": "3-4 sentences. Employ abstract vocabulary and sophisticated reasoning naturally (50-90 words).",
+        "response_style": "3-4 sentences. Employ abstract vocabulary and sophisticated reasoning naturally (55-105 words).",
     },
     14: {
         "cefr": "B2",
-        "sentence_words": "13-21",
-        "min_words": 50,
-        "max_words": 95,
+        "sentence_words": "14-21",
+        "min_words": 55,
+        "max_words": 105,
         "vocab_tier": "B2-C1 vocabulary. Native idioms freely. Academic and journalistic vocabulary.",
         "grammar_allowed": "All advanced structures. Ellipsis. Fronting (What I find interesting is...). Perfect modals.",
-        "response_style": "3-4 sentences. Develop an engaging conversational point with idiomatic precision (50-95 words).",
+        "response_style": "3-4 sentences. Develop an engaging conversational point with idiomatic precision (55-105 words).",
     },
     15: {
         "cefr": "B2+",
         "sentence_words": "14-22",
         "min_words": 55,
-        "max_words": 100,
+        "max_words": 105,
         "vocab_tier": "C1 vocabulary. Nuanced language. Near-native collocations. Literary expressions.",
         "grammar_allowed": "Any native-level grammar. Hedging language (arguably, to a certain extent). Nominalizations.",
-        "response_style": "3-4 sentences. Anticipate viewpoints and use nuanced hedging language (55-100 words).",
+        "response_style": "3-4 sentences. Anticipate viewpoints and use nuanced hedging language (55-105 words).",
     },
     16: {
         "cefr": "C1",
-        "sentence_words": "14-23",
-        "min_words": 55,
-        "max_words": 105,
+        "sentence_words": "15-24",
+        "min_words": 65,
+        "max_words": 130,
         "vocab_tier": "C1 vocabulary. Idiomatic mastery. Academic and professional register.",
         "grammar_allowed": "Full native grammar range. Complex subordination. Implicit logical connectors.",
-        "response_style": "3-4 sentences. Speak with near-native eloquence, humor, and subtle connotations (55-105 words).",
+        "response_style": "3-4 sentences. Speak with near-native eloquence, humor, and subtle connotations (65-130 words).",
     },
     17: {
         "cefr": "C1",
-        "sentence_words": "15-23",
-        "min_words": 60,
-        "max_words": 110,
+        "sentence_words": "15-24",
+        "min_words": 65,
+        "max_words": 130,
         "vocab_tier": "C1-C2 vocabulary. Philosophical terms. Rhetorical devices (rhetorical questions, anaphora).",
         "grammar_allowed": "Native-level full range. Parenthetical remarks. Appositive phrases. Absolute constructions.",
-        "response_style": "3-4 sentences. Employ rhetorical devices, wit, or cultural references naturally (60-110 words).",
+        "response_style": "3-4 sentences. Employ rhetorical devices, wit, or cultural references naturally (65-130 words).",
     },
     18: {
         "cefr": "C1+",
-        "sentence_words": "15-24",
-        "min_words": 60,
-        "max_words": 115,
+        "sentence_words": "15-25",
+        "min_words": 65,
+        "max_words": 130,
         "vocab_tier": "C2 near-native vocabulary. Literary and cultural references. Nuanced connotations.",
         "grammar_allowed": "Any grammatical structure. Poetic license. Sophisticated register shifts.",
-        "response_style": "3-4 sentences. Express deep abstract ideas with effortless syntactic variety (60-115 words).",
+        "response_style": "3-4 sentences. Express deep abstract ideas with effortless syntactic variety (65-130 words).",
     },
     19: {
         "cefr": "C2",
-        "sentence_words": "16-24",
+        "sentence_words": "16-25",
         "min_words": 65,
-        "max_words": 120,
+        "max_words": 130,
         "vocab_tier": "C2 eloquent vocabulary. Native-speaker precision. Rare but precise word choices.",
         "grammar_allowed": "Fully native syntax. Deliberate syntactic complexity for stylistic effect.",
-        "response_style": "3-4 sentences. Speak as an articulate native speaker with rich conversational depth (65-120 words).",
+        "response_style": "3-4 sentences. Speak as an articulate native speaker with rich conversational depth (65-130 words).",
     },
     20: {
         "cefr": "C2+",
         "sentence_words": "16-25",
         "min_words": 65,
-        "max_words": 125,
+        "max_words": 130,
         "vocab_tier": "Native expert: slang, colloquialisms, domain jargon, cultural humor — all natural.",
         "grammar_allowed": "All native structures including deliberately broken grammar for rhetorical effect.",
-        "response_style": "3-4 sentences. Speak exactly as an articulate, witty native virtuoso. Complete conversational freedom (65-125 words).",
+        "response_style": "3-4 sentences. Speak exactly as an articulate, witty native virtuoso. Complete conversational freedom (65-130 words).",
     },
 }
 
@@ -568,6 +568,12 @@ SMART CONVERSATION DIRECTIVES & OPEN QUESTION MANDATE (MUST OBEY):
    - Actively drive the dialogue FORWARD to a brand-new angle, an unexpected plot twist, or a fresh sub-topic every single turn.
 3. UNSCRIPTED OPEN STORYTELLING: Follow story guide: '{story_guide}'. Improvise dynamic plot twists, humorous surprises, and unscripted developments!
 4. BE PROACTIVE WITH SUGGESTIONS: If the user asks for recommendations or choices, immediately provide specific, interesting suggestions with reasons, then ask an open-ended question about their preference.
+5. AUTHENTIC DUOLINGO ASR PHONETIC CLARIFICATION ("did you mean X? Is that right?"):
+   - The user's input "{user_transcript}" is transcribed from a microphone via Speech-to-Text (ASR).
+   - Because of learner pronunciation errors or accents, the ASR may transcribe homophones or acoustically similar words (e.g., 'important' -> 'in portal', 'think' -> 'sink', 'beach' -> 'bitch', 'sheet' -> 'seat').
+   - NEVER complain or say you don't understand an STT misrecognition!
+   - Instead, naturally GUESS the user's intended word, politely CONFIRM it in character in your spoken reply (e.g., "Oh, did you mean 'important'? Is that right? Because I agree that..."), and seamlessly continue your response based on your guess!
+   - In "user_feedback", praise their effort and give a gentle tip in Vietnamese on pronouncing that word clearer so ASR hears it accurately next time.
 {level_block}
 
 PERMANENT ROLE: You are {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
@@ -695,23 +701,106 @@ Output JSON ONLY:
             }
         }
 
+    def _compute_hybrid_acoustic_metrics(
+        self,
+        user_speech: str,
+        duration_seconds: int,
+        wpm: Optional[int] = None,
+        pause_count: Optional[int] = None,
+        filler_count: Optional[int] = None
+    ) -> Dict[str, Any]:
+        words = [w for w in user_speech.strip().split() if len(w) > 0]
+        word_count = len(words)
+        effective_wpm = wpm if (wpm is not None and wpm > 0) else int((word_count / max(1, duration_seconds)) * 60)
+
+        import re
+        filler_pattern = r'\b(uh|um|er|ah|like|you know|actually|basically|literally)\b'
+        matches = re.findall(filler_pattern, user_speech.lower())
+        detected_fillers = len(matches)
+        effective_fillers = max(filler_count or 0, detected_fillers)
+
+        effective_pauses = pause_count if pause_count is not None else (0 if effective_wpm >= 95 else 2)
+
+        if effective_wpm < 80:
+            pace_label = "Chậm / Ấp úng (Slow / Hesitant)"
+        elif effective_wpm <= 105:
+            pace_label = "Ổn định (Moderate Pace)"
+        elif effective_wpm <= 155:
+            pace_label = "Trôi chảy tự nhiên (Native-like Rhythm)"
+        else:
+            pace_label = "Nói quá nhanh (Rushed)"
+
+        if effective_wpm < 75 or effective_pauses >= 5 or effective_fillers >= 4:
+            rhythm_diagnosis = "Nhịp nói còn ngập ngừng, xuất hiện nhiều từ đệm hoặc khoảng lặng (High Hesitation)"
+        elif 85 <= effective_wpm <= 155 and effective_fillers <= 2 and effective_pauses <= 2:
+            rhythm_diagnosis = "Nhịp điệu trôi chảy, tự nhiên, liên tục và tự tin (Smooth & Continuous Rhythm)"
+        else:
+            rhythm_diagnosis = "Tốc độ nói khá tốt, cần duy trì nhịp điệu đều đặn hơn (Moderate Fluency)"
+
+        return {
+            "wpm": effective_wpm,
+            "pace_label": pace_label,
+            "pause_count": effective_pauses,
+            "filler_count": effective_fillers,
+            "filler_words_found": ", ".join(set(matches)) if matches else "None",
+            "rhythm_diagnosis": rhythm_diagnosis
+        }
+
     async def evaluate_det_speech(
         self,
         scenario: Dict[str, Any],
         user_speech: str,
         duration_seconds: int = 120,
-        mode: str = "read_then_speak"
+        mode: str = "read_then_speak",
+        wpm: Optional[int] = None,
+        pause_count: Optional[int] = None,
+        filler_count: Optional[int] = None
     ) -> Dict[str, Any]:
         question_card = scenario.get("question_card", {})
         prompt_text = question_card.get("prompt", scenario.get("description", ""))
         bullet_points = question_card.get("bullet_points", [])
 
-        word_count = len(user_speech.split())
-        est_score = min(155, max(45, 60 + int(word_count * 0.7)))
-        cefr = "C1 Advanced" if est_score >= 125 else ("B2 Upper-Intermediate" if est_score >= 95 else "B1 Intermediate")
+        words = [w for w in user_speech.strip().split() if len(w) > 0]
+        word_count = len(words)
+        is_too_short = word_count < 15
 
-        eval_prompt = f"""You are an Official Duolingo English Test (DET) Senior Speaking Examiner.
+        acoustic_metrics = self._compute_hybrid_acoustic_metrics(
+            user_speech=user_speech,
+            duration_seconds=duration_seconds,
+            wpm=wpm,
+            pause_count=pause_count,
+            filler_count=filler_count
+        )
+
+        if is_too_short:
+            est_score = min(35, max(10, 10 + int(word_count * 1.5)))
+            cefr = "Pre-A1" if est_score < 25 else "A1 Elementary"
+            critique_msg = f"Bài làm quá ngắn (chỉ có {word_count} từ), không đủ dữ liệu phát âm và từ vựng để đánh giá năng lực theo chuẩn Quốc Tế IELTS / CEFR. Thí sinh cần phát triển trọn vẹn dàn ý (tối thiểu 40 - 60 từ) trong thời gian 1 - 3 phút."
+        elif word_count < 40:
+            est_score = min(85, max(45, 40 + int((word_count - 15) * 1.2)))
+            cefr = "A2 Elementary" if est_score < 65 else "B1 Intermediate"
+            critique_msg = f"Thí sinh có cố gắng trả lời đề bài '{scenario.get('title')}' ({word_count} từ), tuy nhiên câu trả lời còn ngắn. Để đạt mốc B2/C1, bạn cần mở rộng thêm các ý chi tiết và ví dụ thực tế."
+        elif word_count < 80:
+            est_score = min(115, max(85, 80 + int((word_count - 40) * 0.7)))
+            cefr = "B1 Intermediate" if est_score < 95 else "B2 Upper-Intermediate"
+            critique_msg = f"Bài nói triển khai tốt ý tưởng ({word_count} từ, {duration_seconds}s). Ngữ pháp và từ vựng đạt mức khá. Để vươn lên band C1, hãy chú ý sử dụng thêm các cấu trúc câu đảo ngữ, liên từ học thuật và từ vựng chủ đề chuyên sâu."
+        else:
+            est_score = min(160, max(120, 115 + int((word_count - 80) * 0.5)))
+            cefr = "C1 Advanced" if est_score >= 130 else "B2 Upper-Intermediate"
+            critique_msg = f"Bài làm xuất sắc ({word_count} từ trong {duration_seconds} giây), lập luận chặt chẽ và từ vựng phong phú, thể hiện trình độ thành thạo ngôn ngữ tốt."
+
+        eval_prompt = f"""You are an Official International English (IELTS / CEFR) Senior Speaking Examiner.
 Evaluate the candidate's speech for a '{mode}' task.
+
+CRITICAL IELTS / CEFR RUBRIC PENALTY RULES:
+1. HYBRID FLUENCY SCORING MANDATE: You MUST evaluate "fluency_score" (0-100) based on BOTH text grammar AND the HYBRID ACOUSTIC METRICS below! If WPM < 75 or Long Pauses >= 5 or Fillers >= 4, penalize fluency_score (do not exceed 65) and comment on the hesitant pace in 'examiner_critique'. If WPM is 105-155 with <= 2 pauses, award 85-98 for fluency.
+2. MINIMUM LENGTH PENALTY: If the candidate speech is under 20 words, or just 1-2 words like "hello" / "test", the maximum possible det_score is 10-35 (Pre-A1 / A1). NEVER assign B1, B2, or C1 to a response under 25 words!
+3. RELEVANCE & MEANING PENALTY: If the speech is gibberish, off-topic, or meaningless, det_score MUST be between 10 and 25 (Pre-A1).
+4. CRITIQUE REQUIREMENTS: If penalized for being too short or irrelevant, state clearly in 'examiner_critique' in Vietnamese: "Bài nói quá ngắn (dưới 20 từ) hoặc không trả lời đúng trọng tâm đề bài..."
+5. ASR/STT PHONETIC RECONSTRUCTION & PRONUNCIATION ANALYSIS:
+   - The candidate's speech "{user_speech}" is transcribed from a microphone via Speech-to-Text (ASR).
+   - If there are homophone misrecognitions or phonetic substitutions (e.g., learner mispronounced a sound causing ASR to transcribe an acoustically similar word like 'in portal' instead of 'important'), RECONSTRUCT the candidate's intended vocabulary in context.
+   - In 'pronunciation_score' and 'examiner_critique', explicitly point out which specific words the candidate mispronounced that caused the STT engine to hear them incorrectly (e.g. "Từ 'important' bạn phát âm chưa chuẩn âm cuối nên máy bắt thành 'in portal'...").
 
 QUESTION PROMPT: "{prompt_text}"
 KEY POINTS TO ADDRESS:
@@ -720,15 +809,21 @@ KEY POINTS TO ADDRESS:
 CANDIDATE SPEECH ({duration_seconds} seconds, {word_count} words):
 "{user_speech}"
 
+[HYBRID ACOUSTIC & RHYTHM METRICS (Measured from audio stream)]
+- Measured Speaking Rate (WPM): {acoustic_metrics['wpm']} words/min ({acoustic_metrics['pace_label']})
+- Long Pauses / Hesitation Count: {acoustic_metrics['pause_count']} times
+- Filler Words / Stutter Count: {acoustic_metrics['filler_count']} times (words found: {acoustic_metrics['filler_words_found']})
+- Acoustic Rhythm Profile: {acoustic_metrics['rhythm_diagnosis']}
+
 Return ONLY a valid JSON object with EXACTLY this schema:
 {{
-  "det_score": (integer from 10 to 160 based on DET speaking rubric),
-  "cefr_level": "(e.g., 'C1 Advanced', 'B2 Upper-Intermediate', 'B1 Intermediate')",
+  "det_score": (integer from 10 to 160 based on IELTS/CEFR speaking rubric scale),
+  "cefr_level": "(e.g., 'C1 Advanced', 'B2 Upper-Intermediate', 'B1 Intermediate', 'A1 Elementary', 'Pre-A1')",
   "fluency_score": (integer 0-100),
   "grammar_score": (integer 0-100),
   "vocabulary_score": (integer 0-100),
   "coherence_score": (integer 0-100),
-  "examiner_critique": "(In Vietnamese 🇻🇳: Detailed examiner critique of strengths, structure, and areas to improve)",
+  "examiner_critique": "(In Vietnamese 🇻🇳: Detailed examiner critique of strengths, structure, acoustic pace/pauses, and areas to improve)",
   "sentence_upgrades": [
     {{
       "original": "(A sentence from candidate's speech)",
@@ -759,6 +854,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                 if start != -1 and end != -1:
                     text = text[start:end+1]
                 data = json.loads(text)
+                data["acoustic_metrics"] = acoustic_metrics
                 return data
             except Exception as e:
                 print(f"DET json parse fallback: {e}")
@@ -767,11 +863,11 @@ Return ONLY a valid JSON object with EXACTLY this schema:
         return {
             "det_score": est_score,
             "cefr_level": cefr,
-            "fluency_score": min(95, max(60, est_score - 10)),
-            "grammar_score": min(95, max(60, est_score - 5)),
-            "vocabulary_score": min(95, max(60, est_score)),
-            "coherence_score": min(95, max(65, est_score - 5)),
-            "examiner_critique": f"Thí sinh đã phát triển ý khá tốt cho chủ đề '{scenario.get('title')}'. Bài nói đạt khoảng {word_count} từ trong {duration_seconds} giây. Để đạt band C1/C2, nên tập trung sử dụng thêm câu phức và liên từ học thuật.",
+            "fluency_score": min(95, max(15, est_score - 10)),
+            "grammar_score": min(95, max(15, est_score - 5)),
+            "vocabulary_score": min(95, max(15, est_score)),
+            "coherence_score": min(95, max(15, est_score - 5)),
+            "examiner_critique": critique_msg,
             "sentence_upgrades": [
                 {
                     "original": user_speech[:80] + "..." if len(user_speech) > 80 else user_speech,
@@ -779,7 +875,59 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                     "explanation": "Sử dụng cụm từ 'In retrospect' và tính từ C1 'profound' để làm câu văn trang trọng và logic hơn."
                 }
             ],
-            "sample_native_response": f"Regarding the topic of {prompt_text}, I would like to highlight a truly defining moment in my life. It occurred several years ago and taught me resilience, adaptability, and the value of clear communication. Not only did it broaden my perspective, but it also reinforced the importance of continuous learning."
+            "sample_native_response": f"Regarding the topic of {prompt_text}, I would like to highlight a truly defining moment in my life. It occurred several years ago and taught me resilience, adaptability, and the value of clear communication. Not only did it broaden my perspective, but it also reinforced the importance of continuous learning.",
+            "acoustic_metrics": acoustic_metrics
         }
+
+    async def transcribe_audio(self, audio_bytes: bytes, filename: str = "speech.webm", fallback_text: str = "") -> Dict[str, Any]:
+        """
+        Transcribes recorded microphone audio using Groq Whisper Large V3 (ultra-fast & accurate for ESL learners).
+        Falls back to Gemini Audio or browser STT fallback text if API keys are unavailable.
+        """
+        if self.groq_keys:
+            url = "https://api.groq.com/openai/v1/audio/transcriptions"
+            for key in self.groq_keys:
+                try:
+                    headers = {"Authorization": f"Bearer {key}"}
+                    files = {"file": (filename, audio_bytes, "audio/webm")}
+                    data = {"model": "whisper-large-v3", "language": "en", "response_format": "json"}
+                    response = requests.post(url, headers=headers, files=files, data=data, timeout=10)
+                    if response.status_code == 200:
+                        result = response.json()
+                        text = result.get("text", "").strip()
+                        if text:
+                            return {"transcript": text, "source": "groq-whisper-large-v3"}
+                except Exception as e:
+                    print(f"[AIEngine] Groq Whisper error: {e}")
+                    continue
+
+        if self.gemini_keys:
+            import base64
+            b64_audio = base64.b64encode(audio_bytes).decode("utf-8")
+            for key in self.gemini_keys:
+                for model in self.gemini_models:
+                    try:
+                        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+                        payload = {
+                            "contents": [{
+                                "parts": [
+                                    {"inline_data": {"mime_type": "audio/webm", "data": b64_audio}},
+                                    {"text": "Transcribe this English speech accurately into text. Output ONLY the exact transcribed text without any conversational filler or quotes."}
+                                ]
+                            }],
+                            "generationConfig": {"temperature": 0.1, "maxOutputTokens": 200}
+                        }
+                        response = requests.post(url, json=payload, timeout=10)
+                        if response.status_code == 200:
+                            res_json = response.json()
+                            candidates = res_json.get("candidates", [])
+                            if candidates:
+                                text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "").strip()
+                                if text:
+                                    return {"transcript": text, "source": f"gemini-audio-{model}"}
+                    except Exception as e:
+                        continue
+
+        return {"transcript": fallback_text.strip(), "source": "browser-stt"}
 
 ai_engine = AIEngine()

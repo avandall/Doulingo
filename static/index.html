@@ -119,22 +119,57 @@
         <!-- Rendered dynamically -->
       </div>
 
-      <!-- Scenarios Grid & DET Categories -->
-      <div class="section-title">
-        <span>🗣️ DET Speaking & Everyday Roleplays</span>
+      <!-- SECTION 1: IELTS & CEFR SPEAKING EXAM -->
+      <div class="section-header-box" style="margin-top: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; background: rgba(255,75,75,0.06); border-left: 5px solid #FF4B4B; padding: 12px 16px; border-radius: 12px;">
+        <div style="font-size: 26px; display: flex; align-items: center; justify-content: center;">
+          🎓
+        </div>
+        <div>
+          <h2 style="margin: 0; font-size: 17px; font-weight: 900; color: #FF4B4B; text-transform: uppercase;">
+            IELTS & CEFR SPEAKING EXAM (BÀI THI NÓI CHUẨN QUỐC TẾ)
+          </h2>
+          <p style="margin: 2px 0 0; font-size: 13px; color: var(--text-color); opacity: 0.85; font-weight: 600;">
+            Bài thi chuẩn quốc tế có chấm điểm tự động 4 tiêu chí, phân band A1-C2 & đề xuất nâng cấp C1/C2
+          </p>
+        </div>
       </div>
-      <div class="category-filter-bar" id="category-filter-bar">
-        <button class="cat-pill active" data-category="all">🌟 Tất cả (All)</button>
-        <button class="cat-pill" data-category="Personal & Family">👤 Cá nhân & Gia đình</button>
-        <button class="cat-pill" data-category="Studies & Career">🎓 Học tập & Nghề nghiệp</button>
-        <button class="cat-pill" data-category="Hobbies & Lifestyle">🎨 Sở thích & Lối sống</button>
-        <button class="cat-pill" data-category="Travel & Places">✈️ Du lịch & Địa điểm</button>
-        <button class="cat-pill" data-category="Tech & Society">💻 Công nghệ & Xã hội</button>
-        <button class="cat-pill" data-category="Everyday Roleplay">☕ Giao tiếp hằng ngày</button>
-        <button class="cat-pill" data-category="Creative Roleplay">🕶️ Tình huống sáng tạo</button>
+
+      <div class="category-filter-bar" id="ielts-category-filter-bar" style="margin-bottom: 14px;">
+        <button class="cat-pill active" data-ielts-cat="all">🌟 Tất cả IELTS</button>
+        <button class="cat-pill" data-ielts-cat="Personal & Family">👤 Cá nhân & Gia đình</button>
+        <button class="cat-pill" data-ielts-cat="Studies & Career">🎓 Học tập & Nghề nghiệp</button>
+        <button class="cat-pill" data-ielts-cat="Hobbies & Lifestyle">🎨 Sở thích & Lối sống</button>
+        <button class="cat-pill" data-ielts-cat="Travel & Places">✈️ Du lịch & Địa điểm</button>
+        <button class="cat-pill" data-ielts-cat="Tech & Society">💻 Công nghệ & Xã hội</button>
       </div>
-      <div class="scenarios-grid" id="scenarios-grid">
-        <!-- Rendered dynamically -->
+
+      <div class="scenarios-grid" id="ielts-scenarios-grid" style="margin-bottom: 40px;">
+        <!-- IELTS Exam cards + Add Custom IELTS Topic card rendered dynamically -->
+      </div>
+
+      <!-- SECTION 2: EVERYDAY & CREATIVE ROLEPLAY -->
+      <div class="section-header-box" style="margin-top: 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; background: rgba(28,176,246,0.06); border-left: 5px solid #1CB0F6; padding: 12px 16px; border-radius: 12px; border-top: 2px dashed rgba(0,0,0,0.06);">
+        <div style="font-size: 26px; display: flex; align-items: center; justify-content: center;">
+          💬
+        </div>
+        <div>
+          <h2 style="margin: 0; font-size: 17px; font-weight: 900; color: #1CB0F6; text-transform: uppercase;">
+            EVERYDAY & CREATIVE ROLEPLAY (HỘI THOẠI GIAO TIẾP HÀNG NGÀY)
+          </h2>
+          <p style="margin: 2px 0 0; font-size: 13px; color: var(--text-color); opacity: 0.85; font-weight: 600;">
+            Luyện tập tự do cùng các nhân vật AI, tương tác giao tiếp phản xạ tự nhiên
+          </p>
+        </div>
+      </div>
+
+      <div class="category-filter-bar" id="roleplay-category-filter-bar" style="margin-bottom: 14px;">
+        <button class="cat-pill active" data-roleplay-cat="all">🌟 Tất cả Roleplay</button>
+        <button class="cat-pill" data-roleplay-cat="Everyday Roleplay">☕ Giao tiếp hàng ngày</button>
+        <button class="cat-pill" data-roleplay-cat="Creative Roleplay">🕶️ Tình huống sáng tạo</button>
+      </div>
+
+      <div class="scenarios-grid" id="roleplay-scenarios-grid" style="margin-bottom: 48px;">
+        <!-- Roleplay cards + Add Custom Roleplay Topic card rendered dynamically -->
       </div>
     </main>
 
@@ -262,12 +297,12 @@
       </div>
     </div>
 
-    <!-- MODAL: DET SPEAKING EXAM (Read Then Speak / Interactive Speaking) -->
+    <!-- MODAL: IELTS / CEFR SPEAKING EXAM (Read Then Speak / Interactive Speaking) -->
     <div class="modal-overlay" id="modal-det-exam">
       <div class="modal-box" style="max-width: 720px; width: 95%;">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-light); padding-bottom: 12px; margin-bottom: 14px;">
           <div>
-            <span class="level-badge" id="det-exam-category-badge" style="background: rgba(255,75,75,0.15); color: #FF4B4B;">🎓 DET SPEAKING</span>
+            <span class="level-badge" id="det-exam-category-badge" style="background: rgba(255,75,75,0.15); color: #FF4B4B;">🎓 IELTS / CEFR SPEAKING</span>
             <h2 style="font-weight: 900; font-size: 22px; margin-top: 4px;" id="det-exam-title">Childhood Memories</h2>
           </div>
           <button class="btn-close" id="btn-close-det-exam" title="Thoát bài thi">✕</button>
@@ -286,7 +321,7 @@
         <!-- TAB 1: READ, THEN SPEAK (QUESTION CARD + RECORDING MONOLOGUE) -->
         <div id="det-view-read-speak" style="display: block; margin-top: 14px;">
           <div class="det-question-card">
-            <div class="det-card-tag">DUOLINGO ENGLISH TEST • QUESTION CARD</div>
+            <div class="det-card-tag">IELTS & CEFR SPEAKING • QUESTION CARD</div>
             <div class="det-card-prompt" id="det-card-prompt-text">Describe a memorable event from your childhood that taught you an important lesson.</div>
             <div style="font-weight: 800; font-size: 13px; color: var(--text-muted); margin: 12px 0 6px 0;">You should say:</div>
             <ul class="det-bullet-points" id="det-card-bullet-points">
@@ -312,10 +347,10 @@
           <!-- Transcript & Input Area -->
           <div class="form-group" style="margin-top: 14px;">
             <label style="display: flex; justify-content: space-between; align-items: center;">
-              <span>🎙️ Your Spoken Speech (Bấm ghi âm hoặc nhập bài nói)</span>
+              <span>🎙️ Your Spoken Speech (Bài nói được ghi âm tự động)</span>
               <span id="det-speech-word-count" style="font-size: 12px; color: var(--duo-blue);">0 words</span>
             </label>
-            <textarea id="det-speech-textarea" class="form-input" rows="4" placeholder="Bấm nút màu cam bên dưới để ghi âm bài nói liên tục trong 1 - 3 phút, hoặc nhập trực tiếp bài nói của bạn vào đây..." style="line-height: 1.5; font-size: 15px;"></textarea>
+            <textarea id="det-speech-textarea" class="form-input" rows="4" readonly="readonly" placeholder="Bấm nút 'START RECORDING (GHI ÂM)' bên dưới để ghi âm bài nói. Lời nói của bạn sẽ tự động hiển thị ở đây..." style="line-height: 1.5; font-size: 15px; background: rgba(0,0,0,0.02);"></textarea>
           </div>
 
           <div style="display: flex; gap: 10px; margin-top: 14px;">
@@ -323,7 +358,7 @@
               🎙️ START RECORDING (GHI ÂM)
             </button>
             <button class="btn-duo btn-blue" id="btn-det-submit-speech" style="flex: 1; padding: 12px;">
-              📤 SUBMIT DET SPEECH
+              📤 SUBMIT SPEAKING TEST
             </button>
           </div>
         </div>
@@ -331,15 +366,15 @@
         <!-- TAB 2: INTERACTIVE SPEAKING DESCRIPTION INFO -->
         <div id="det-view-interactive" style="display: none; margin-top: 14px;">
           <div class="det-question-card" style="background: rgba(28,176,246,0.06); border-color: var(--duo-blue);">
-            <div class="det-card-tag" style="color: var(--duo-blue);">DUOLINGO ENGLISH TEST • INTERACTIVE SPEAKING (1 - 3 MINS)</div>
-            <div style="font-weight: 800; font-size: 16px; margin: 8px 0;">🗣️ Hội thoại Trực tiếp với Giám Khảo AI (DET Examiner)</div>
+            <div class="det-card-tag" style="color: var(--duo-blue);">IELTS & CEFR SPEAKING • INTERACTIVE MODE (1 - 3 MINS)</div>
+            <div style="font-weight: 800; font-size: 16px; margin: 8px 0;">🗣️ Hội thoại Trực tiếp với Giám Khảo AI (IELTS & CEFR Examiner)</div>
             <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-              Khác với Roleplay thông thường (đóng vai vui vẻ đời sống), trong chế độ này AI sẽ đóng vai <b>Giám Khảo Thi Nói DET (DET Speaking Examiner)</b>:
+              Khác với Roleplay thông thường (đóng vai vui vẻ đời sống), trong chế độ này AI sẽ đóng vai <b>Giám Khảo Thi Nói Chuẩn Quốc Tế (IELTS & CEFR Examiner)</b>:
             </p>
             <ul style="padding-left: 20px; font-size: 13.5px; color: var(--text-color); line-height: 1.6;">
               <li>Giám khảo đưa ra đề bài học thuật và đặt các câu hỏi phản biện, đào sâu (follow-up questions).</li>
               <li>Bạn có thời gian chuẩn <b>1 đến 3 phút</b> để tương tác và trả lời liên tục.</li>
-              <li>Khi kết thúc phần thi, hệ thống sẽ xuất <b>Bảng điểm thi DET chính thức (10-160)</b> đánh giá toàn diện năng lực nói của bạn!</li>
+              <li>Khi kết thúc phần thi, hệ thống sẽ xuất <b>Bảng điểm thi chuẩn Quốc Tế IELTS / CEFR</b> đánh giá toàn diện năng lực nói của bạn!</li>
             </ul>
           </div>
 
@@ -350,12 +385,12 @@
       </div>
     </div>
 
-    <!-- MODAL: DET SCORE REPORT CARD -->
+    <!-- MODAL: IELTS / CEFR SCORE REPORT CARD -->
     <div class="modal-overlay" id="modal-det-score-report">
       <div class="modal-box" style="max-width: 750px; width: 95%; max-height: 90vh; overflow-y: auto;">
         <div style="text-align: center; border-bottom: 2px solid var(--border-light); padding-bottom: 16px; margin-bottom: 16px;">
-          <div style="font-size: 11px; font-weight: 900; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;">OFFICIAL DUOLINGO ENGLISH TEST REPORT</div>
-          <h2 style="font-weight: 900; font-size: 24px; margin: 4px 0 8px 0;">🏆 DET SPEAKING EVALUATION</h2>
+          <div style="font-size: 11px; font-weight: 900; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;">OFFICIAL IELTS / CEFR SPEAKING TEST REPORT</div>
+          <h2 style="font-weight: 900; font-size: 24px; margin: 4px 0 8px 0;">🏆 IELTS & CEFR SPEAKING EVALUATION</h2>
           
           <div style="display: flex; justify-content: center; gap: 16px; align-items: center; margin-top: 10px;">
             <div class="det-score-big-badge">
@@ -388,6 +423,19 @@
             <span>Coherence & Relevance</span>
             <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-coherence" style="width: 90%;"></div></div>
             <span class="val" id="det-val-coherence">90/100</span>
+          </div>
+        </div>
+
+        <!-- Hybrid Acoustic Metrics Box -->
+        <div id="det-report-acoustic-box" style="margin-top: 14px; background: rgba(156,39,176,0.06); border: 1.5px solid rgba(156,39,176,0.3); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-weight: 800; font-size: 13px; color: #9C27B0; margin-bottom: 8px;">📊 HYBRID ACOUSTIC & RHYTHM METRICS (CHỈ SỐ NGỮ ÂM THỰC TẾ)</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 13px;">
+            <div>⏱️ <b>Tốc độ nói:</b> <span id="det-ac-wpm" style="color: var(--duo-blue); font-weight: 800;">0 WPM</span></div>
+            <div>⏸️ <b>Khoảng ngập ngừng:</b> <span id="det-ac-pauses" style="color: #E91E63; font-weight: 800;">0 lần</span></div>
+            <div>💬 <b>Từ đệm (Fillers):</b> <span id="det-ac-fillers" style="color: #FF9600; font-weight: 800;">0 từ</span></div>
+          </div>
+          <div style="margin-top: 8px; font-size: 13px; color: var(--text-color);">
+            🎯 <b>Chẩn đoán nhịp điệu:</b> <span id="det-ac-diagnosis" style="font-style: italic;">Đang tải...</span>
           </div>
         </div>
 
@@ -522,12 +570,6 @@
           <!-- Live Transcript Preview -->
           <div class="transcript-preview" id="transcript-display">
             Tap mic to start speaking (Press again when done)...
-          </div>
-
-          <!-- Fallback Text Input -->
-          <div class="text-input-fallback">
-            <input type="text" id="input-manual-text" class="input-speak-text" placeholder="Or type your response here..." />
-            <button class="btn-duo btn-blue" id="btn-submit-text" style="padding: 8px 14px;">SEND</button>
           </div>
         </div>
       </div>
