@@ -1,15 +1,13 @@
 /**
  * Duolingo Speak Application Controller
  * Features:
+ * - Custom Audio Player with seekbar, play/pause, stop, rewind.
+ * - Conversation History Drawer with replay + fork-from-turn.
+ * - Lazy On-Demand Translation (user clicks Translate → LLM called once, cached).
+ * - TTS Blob URL RAM cache (ElevenLabs called once per sentence, then 0ms replay).
  * - ElevenLabs & Edge-TTS Expressive Voice Actor Integration.
- * - Dynamic Partner Randomizer: Users freely choose character or get a RANDOM partner on every start.
- * - Cancel Speech Recording Button (Discard recording without sending).
- * - Saved Vocabulary Book Modal (Fetches /api/saved_words from SQLite DB).
  * - Instant 0ms Word Lookup (Frontend Map + Backend RAM Cache).
- * - Reliable Full AI Sentence Translation Toggle across all turns.
- * - Copyable Conversation Transcript Log (RAM Stored).
- * - Deterministic Consistent Scoring & Evaluation.
- * - Text Sanitized TTS (No Stuttering / No Mid-sentence Pauses).
+ * - Copyable Conversation Transcript Log.
  */
 
 class DuolingoSpeakApp {
@@ -18,7 +16,7 @@ class DuolingoSpeakApp {
     this.characters = [];
     this.savedWords = [];
     this.selectedCharacter = null;
-    this.isUserSelectedCharacter = false; // Flag if user manually tapped a character card
+    this.isUserSelectedCharacter = false;
     this.currentScenario = null;
     this.conversationHistory = [];
     this.turnCount = 0;
@@ -29,7 +27,12 @@ class DuolingoSpeakApp {
 
     this.speechHandler = null;
     this.currentAudio = null;
-    this.wordCache = new Map(); // Instant 0ms frontend word cache
+    this.wordCache = new Map();           // Word translation cache
+    this.ttsCache = new Map();            // TTS Blob URL RAM cache
+    this.sentenceTranslationCache = new Map(); // Lazy sentence translation cache
+    this.historyLog = [];                 // Full conversation history with audio
+    this.currentHistoryAIIdx = 0;         // Currently viewed AI turn index
+    this.isSeekDragging = false;          // Seekbar drag state
     this.init();
   }
 
@@ -65,15 +68,12 @@ class DuolingoSpeakApp {
       if (window.duoAudio) window.duoAudio.playClick();
       this.openVocabBookModal();
     });
-
     document.getElementById('btn-close-vocab-modal').addEventListener('click', () => {
       document.getElementById('modal-vocab-book').classList.remove('active');
     });
-
     document.getElementById('btn-close-vocab-bottom').addEventListener('click', () => {
       document.getElementById('modal-vocab-book').classList.remove('active');
     });
-
     document.getElementById('input-search-vocab').addEventListener('input', (e) => {
       this.renderVocabWordsList(e.target.value.trim().toLowerCase());
     });
@@ -83,11 +83,9 @@ class DuolingoSpeakApp {
       if (window.duoAudio) window.duoAudio.playClick();
       document.getElementById('modal-lang-setting').classList.add('active');
     });
-
     document.getElementById('btn-close-lang-modal').addEventListener('click', () => {
       document.getElementById('modal-lang-setting').classList.remove('active');
     });
-
     document.getElementById('btn-save-lang-setting').addEventListener('click', () => {
       const select = document.getElementById('select-target-lang');
       this.targetLang = select.value;
@@ -102,17 +100,20 @@ class DuolingoSpeakApp {
     document.getElementById('btn-close-word-modal').addEventListener('click', () => {
       document.getElementById('modal-word-lookup').classList.remove('active');
     });
+    document.getElementById('modal-word-lookup').addEventListener('click', (e) => {
+      if (e.target.id === 'modal-word-lookup') {
+        document.getElementById('modal-word-lookup').classList.remove('active');
+      }
+    });
 
     // Custom Topic Modal
     document.getElementById('btn-open-custom-modal').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
       document.getElementById('modal-custom-topic').classList.add('active');
     });
-
     document.getElementById('btn-close-modal').addEventListener('click', () => {
       document.getElementById('modal-custom-topic').classList.remove('active');
     });
-
     document.getElementById('btn-save-custom-topic').addEventListener('click', () => {
       this.saveCustomTopic();
     });
@@ -138,7 +139,7 @@ class DuolingoSpeakApp {
       this.startRandomRoleplay();
     });
 
-    // QUIT PRACTICE: Immediately stop Audio & Microphone!
+    // QUIT PRACTICE
     document.getElementById('btn-close-practice').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
       this.stopTTS();
@@ -146,11 +147,32 @@ class DuolingoSpeakApp {
       this.showScreen('scenario-screen');
     });
 
+    // Copy AI Speech Button
+    const copySpeechBtn = document.getElementById('btn-copy-ai-speech');
+    if (copySpeechBtn) {
+      copySpeechBtn.addEventListener('click', () => {
+        const textToCopy = this.currentAIText || '';
+        if (textToCopy) {
+          navigator.clipboard.writeText(textToCopy);
+          const oldText = copySpeechBtn.textContent;
+          copySpeechBtn.textContent = '✅ Copied!';
+          setTimeout(() => { copySpeechBtn.textContent = oldText; }, 1500);
+        }
+      });
+    }
+
+    // Lazy Translate Button
+    const lazyTranslateBtn = document.getElementById('btn-lazy-translate');
+    if (lazyTranslateBtn) {
+      lazyTranslateBtn.addEventListener('click', () => {
+        this.handleLazyTranslateTurn();
+      });
+    }
+
     // Mic Toggle & CANCEL Button
     document.getElementById('btn-mic-toggle').addEventListener('click', () => {
       this.speechHandler.toggleListening();
     });
-
     const cancelBtn = document.getElementById('btn-cancel-mic');
     if (cancelBtn) {
       cancelBtn.addEventListener('click', () => {
@@ -167,31 +189,29 @@ class DuolingoSpeakApp {
         input.value = '';
       }
     });
-
     document.getElementById('input-manual-text').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        document.getElementById('btn-submit-text').click();
+      if (e.key === 'Enter') document.getElementById('btn-submit-text').click();
+    });
+
+    // ===== AUDIO PLAYER CONTROLS =====
+    this._bindAudioPlayerControls();
+
+    // ===== HISTORY DRAWER =====
+    document.getElementById('btn-open-history').addEventListener('click', () => {
+      this.openHistoryDrawer();
+    });
+    document.getElementById('btn-close-history').addEventListener('click', () => {
+      document.getElementById('history-drawer-overlay').classList.remove('active');
+    });
+    document.getElementById('history-drawer-overlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('history-drawer-overlay')) {
+        document.getElementById('history-drawer-overlay').classList.remove('active');
       }
     });
 
-    // TTS Play Button
-    document.getElementById('btn-tts-play').addEventListener('click', () => {
-      if (this.currentAIText) {
-        this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
-      }
-    });
-
-    // Translation Toggle Button (Full AI Sentence Translation)
+    // Translation Toggle Button — Lazy LLM translate on demand
     document.getElementById('btn-toggle-translate').addEventListener('click', () => {
-      const transEl = document.getElementById('ai-translation-text');
-      if (!transEl) return;
-
-      if (!transEl.textContent.trim() && this.currentAITextVi) {
-        transEl.textContent = this.currentAITextVi;
-      }
-
-      const isHidden = transEl.style.display === 'none' || getComputedStyle(transEl).display === 'none';
-      transEl.style.display = isHidden ? 'block' : 'none';
+      this.toggleLazyTranslate();
     });
 
     // Finish & Score
@@ -200,24 +220,114 @@ class DuolingoSpeakApp {
       this.stopTTS();
       this.finishAndScoreRoleplay();
     });
-
     document.getElementById('btn-continue-feedback').addEventListener('click', () => {
       this.closeFeedbackSheet();
     });
-
     document.getElementById('btn-victory-continue').addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
       this.showScreen('scenario-screen');
     });
 
-    // COPY FULL CONVERSATION TRANSCRIPT TO CLIPBOARD
+    // Copy transcript
     const copyBtn = document.getElementById('btn-copy-transcript');
     if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        this.copyTranscriptToClipboard();
+      copyBtn.addEventListener('click', () => this.copyTranscriptToClipboard());
+    }
+  }
+
+  // =============================================
+  // AUDIO PLAYER BINDING
+  // =============================================
+  _bindAudioPlayerControls() {
+    const seekbar = document.getElementById('audio-seekbar');
+    const btnPlay = document.getElementById('audio-btn-playpause');
+    const btnRewind = document.getElementById('audio-btn-rewind');
+    const btnNext = document.getElementById('audio-btn-next');
+
+    if (btnPlay) {
+      btnPlay.addEventListener('click', () => {
+        if (!this.currentAudio) return;
+        if (this.currentAudio.paused) {
+          if (this.currentAudio.currentTime >= this.currentAudio.duration - 0.1) {
+            this.currentAudio.currentTime = 0;
+          }
+          this.currentAudio.play();
+          btnPlay.textContent = '⏸️';
+        } else {
+          this.currentAudio.pause();
+          btnPlay.textContent = '▶️';
+        }
+      });
+    }
+
+    if (btnRewind) {
+      btnRewind.addEventListener('click', () => {
+        this.navPrevHistoryTurn();
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener('click', () => {
+        this.navNextHistoryTurn();
+      });
+    }
+
+    // Seekbar drag
+    if (seekbar) {
+      seekbar.addEventListener('pointerdown', () => { this.isSeekDragging = true; });
+      seekbar.addEventListener('pointerup', () => {
+        this.isSeekDragging = false;
+        if (this.currentAudio && this.currentAudio.duration) {
+          this.currentAudio.currentTime = (parseFloat(seekbar.value) / 100) * this.currentAudio.duration;
+        }
+      });
+      seekbar.addEventListener('input', () => {
+        // Preview time while dragging
+        if (this.currentAudio && this.currentAudio.duration) {
+          const t = (parseFloat(seekbar.value) / 100) * this.currentAudio.duration;
+          document.getElementById('audio-time-display').textContent =
+            `${this._fmtTime(t)} / ${this._fmtTime(this.currentAudio.duration)}`;
+        }
       });
     }
   }
+
+  _fmtTime(seconds) {
+    const s = Math.floor(seconds % 60);
+    const m = Math.floor(seconds / 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  }
+
+  _setPlayerLoading() {
+    const loading = document.getElementById('audio-player-loading');
+    const controls = document.getElementById('audio-player-controls');
+    if (loading) loading.style.display = 'flex';
+    if (controls) controls.style.display = 'none';
+  }
+
+  _setPlayerReady() {
+    const loading = document.getElementById('audio-player-loading');
+    const controls = document.getElementById('audio-player-controls');
+    if (loading) loading.style.display = 'none';
+    if (controls) controls.style.display = 'flex';
+    const btnPlay = document.getElementById('audio-btn-playpause');
+    if (btnPlay) btnPlay.textContent = '⏸️'; // Show pause icon (audio plays automatically)
+  }
+
+  _updateSeekbar() {
+    if (!this.currentAudio || this.isSeekDragging) return;
+    const seekbar = document.getElementById('audio-seekbar');
+    const timeEl = document.getElementById('audio-time-display');
+    const dur = this.currentAudio.duration || 0;
+    const cur = this.currentAudio.currentTime || 0;
+    if (seekbar && dur > 0) {
+      seekbar.value = (cur / dur) * 100;
+    }
+    if (timeEl) {
+      timeEl.textContent = `${this._fmtTime(cur)} / ${this._fmtTime(dur)}`;
+    }
+  }
+
 
   stopTTS() {
     if (this.currentAudio) {
@@ -229,6 +339,254 @@ class DuolingoSpeakApp {
       window.speechSynthesis.cancel();
     }
   }
+
+  _clearTTSCache() {
+    // Revoke all cached Blob URLs to free RAM, then clear the cache map
+    this.ttsCache.forEach((blobUrl) => {
+      URL.revokeObjectURL(blobUrl);
+    });
+    this.ttsCache.clear();
+  }
+
+  // =============================================
+  // LAZY TRANSLATION (on-demand, cached in RAM)
+  // =============================================
+  async toggleLazyTranslate() {
+    const transEl = document.getElementById('ai-translation-text');
+    const btn = document.getElementById('btn-toggle-translate');
+    if (!transEl) return;
+
+    const isVisible = transEl.style.display !== 'none' && getComputedStyle(transEl).display !== 'none';
+    if (isVisible) {
+      transEl.style.display = 'none';
+      if (btn) btn.classList.remove('active');
+      return;
+    }
+
+    // If AI already provided translation, show immediately (0 extra API calls)
+    if (this.currentAITextVi) {
+      transEl.textContent = this.currentAITextVi;
+      transEl.style.display = 'block';
+      if (btn) btn.classList.add('active');
+      return;
+    }
+
+    const textToTranslate = this.currentAIText;
+    if (!textToTranslate) return;
+
+    const cacheKey = `${this.targetLang}::${textToTranslate}`;
+    if (this.sentenceTranslationCache.has(cacheKey)) {
+      this.currentAITextVi = this.sentenceTranslationCache.get(cacheKey);
+      transEl.textContent = this.currentAITextVi;
+      transEl.style.display = 'block';
+      if (btn) btn.classList.add('active');
+      return;
+    }
+
+    // First time user clicks Translate — call LLM once, cache result
+    transEl.innerHTML = '<span class="translate-loading">\u23f3 \u0110ang d\u1ecbch...</span>';
+    transEl.style.display = 'block';
+
+    try {
+      const res = await fetch('/api/translate_sentence', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: textToTranslate, target_lang: this.targetLang })
+      });
+      const data = await res.json();
+      const translation = data.translation || textToTranslate;
+
+      this.currentAITextVi = translation;
+      this.sentenceTranslationCache.set(cacheKey, translation);
+
+      // Update historyLog for current turn
+      if (this.historyLog.length > 0) {
+        const last = this.historyLog[this.historyLog.length - 1];
+        if (last.role === 'ai' && last.textEn === textToTranslate) {
+          last.textVi = translation;
+        }
+      }
+
+      transEl.textContent = translation;
+      if (btn) btn.classList.add('active');
+
+    } catch (e) {
+      transEl.textContent = textToTranslate;
+      console.warn('Lazy translate failed:', e);
+    }
+  }
+
+  // =============================================
+  // CONVERSATION HISTORY TURN NAVIGATION (RAM CACHE)
+  // =============================================
+  _getLatestAITurnIndex() {
+    for (let i = this.historyLog.length - 1; i >= 0; i--) {
+      if (this.historyLog[i] && this.historyLog[i].role === 'ai') return i;
+    }
+    return -1;
+  }
+
+  navPrevHistoryTurn() {
+    let prevIdx = -1;
+    for (let i = this.currentHistoryAIIdx - 1; i >= 0; i--) {
+      if (this.historyLog[i] && this.historyLog[i].role === 'ai') {
+        prevIdx = i;
+        break;
+      }
+    }
+    if (prevIdx === -1) {
+      this._showForkToast('🕒 Đây là lượt đầu tiên của hội thoại!');
+      return;
+    }
+    this._navToHistoryAITurn(prevIdx);
+  }
+
+  navNextHistoryTurn() {
+    let nextIdx = -1;
+    for (let i = this.currentHistoryAIIdx + 1; i < this.historyLog.length; i++) {
+      if (this.historyLog[i] && this.historyLog[i].role === 'ai') {
+        nextIdx = i;
+        break;
+      }
+    }
+    if (nextIdx === -1) {
+      this._showForkToast('🕒 Đây là lượt mới nhất của hội thoại!');
+      return;
+    }
+    this._navToHistoryAITurn(nextIdx);
+  }
+
+  _navToHistoryAITurn(idx) {
+    const entry = this.historyLog[idx];
+    if (!entry || entry.role !== 'ai') return;
+    this.currentHistoryAIIdx = idx;
+
+    const isLatest = (idx === this._getLatestAITurnIndex());
+
+    this.currentAIText = entry.textEn;
+    this.currentAITextVi = entry.textVi || '';
+    this.renderInteractiveAIText(entry.textEn);
+
+    const transEl = document.getElementById('ai-translation-text');
+    const btnTranslate = document.getElementById('btn-toggle-translate');
+    if (transEl) {
+      transEl.textContent = entry.textVi || '';
+      transEl.style.display = 'none';
+      if (btnTranslate) btnTranslate.classList.remove('active');
+    }
+
+    if (isLatest) {
+      document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
+      document.getElementById('transcript-display').textContent = 'Tap mic to respond!';
+    } else {
+      document.getElementById('current-turns-count').textContent = `Turn ${entry.turnNum} (Past — speak to fork from here)`;
+      document.getElementById('transcript-display').textContent = `Tap mic to respond from Turn ${entry.turnNum}...`;
+      this._showForkToast(`↩️ Đang xem Turn ${entry.turnNum} (lưu trong cache RAM)`);
+    }
+
+    const charId = this.selectedCharacter ? this.selectedCharacter.id : 'lily';
+    this.playTTS(entry.textEn, charId);
+  }
+
+  // =============================================
+  // CONVERSATION HISTORY DRAWER
+  // =============================================
+  openHistoryDrawer() {
+    this._renderHistoryDrawer();
+    document.getElementById('history-drawer-overlay').classList.add('active');
+  }
+
+  _renderHistoryDrawer() {
+    const body = document.getElementById('history-drawer-body');
+    if (!body) return;
+    body.innerHTML = '';
+
+    if (this.historyLog.length === 0) {
+      body.innerHTML = '<div style="text-align:center;color:var(--text-muted);font-weight:700;padding:30px 0;font-size:14px;">No conversation yet!</div>';
+      return;
+    }
+
+    this.historyLog.forEach((entry, idx) => {
+      const card = document.createElement('div');
+      const isCurrentTurn = idx === this.historyLog.length - 1;
+      card.className = `history-turn-card${isCurrentTurn ? ' current-turn' : ''}`;
+      const isAI = entry.role === 'ai';
+      const charName = this.selectedCharacter ? this.selectedCharacter.name : 'AI';
+      const charIcon = this.selectedCharacter ? (this.selectedCharacter.avatar_icon || '🤖') : '🤖';
+
+      card.style.textAlign = 'left';
+
+      card.innerHTML = `
+        <div class="history-turn-label" style="justify-content: flex-start;">
+          <span class="turn-badge ${isAI ? '' : 'user-badge'}">${isAI ? `${charIcon} ${charName}` : '👤 You'}</span>
+          <span>Turn ${entry.turnNum}</span>
+          ${isCurrentTurn ? '<span class="turn-badge current-badge">NOW</span>' : ''}
+        </div>
+        <div class="${isAI ? 'history-turn-text-en' : 'history-turn-text-user'}" style="text-align: left;">"${entry.textEn}"</div>
+        ${isAI && entry.textVi ? `<div class="history-turn-text-vi" style="text-align: left;">🇻🇳 "${entry.textVi}"</div>` : ''}
+        ${isAI ? `<div class="history-turn-actions" style="justify-content: flex-start;">
+          <button class="btn-history-action" data-idx="${idx}" data-action="replay">🔊 Nghe lại</button>
+          <button class="btn-history-action fork-btn" data-idx="${idx}" data-action="fork">↩️ Nói lại từ đây</button>
+        </div>` : ''}
+      `;
+      body.appendChild(card);
+    });
+
+    body.querySelectorAll('[data-action]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(e.currentTarget.getAttribute('data-idx'));
+        const action = e.currentTarget.getAttribute('data-action');
+        if (action === 'replay') this.replayFromHistory(idx);
+        if (action === 'fork') this.forkFromHistory(idx);
+      });
+    });
+
+    setTimeout(() => { body.scrollTop = body.scrollHeight; }, 50);
+  }
+
+  replayFromHistory(idx) {
+    document.getElementById('history-drawer-overlay').classList.remove('active');
+    this._navToHistoryAITurn(idx);
+  }
+
+  forkFromHistory(idx) {
+    const entry = this.historyLog[idx];
+    if (!entry || entry.role !== 'ai') return;
+
+    if (!confirm(`↩️ Quay lại Turn ${entry.turnNum} và nói lại?\n\nCác lượt sau đó sẽ bị xóa.`)) return;
+
+    document.getElementById('history-drawer-overlay').classList.remove('active');
+
+    this.conversationHistory = this.conversationHistory.slice(0, idx + 1);
+    this.historyLog = this.historyLog.slice(0, idx + 1);
+    this.turnCount = Math.floor(idx / 2) + 1;
+    this.currentHistoryAIIdx = idx;
+
+    this.currentAIText = entry.textEn;
+    this.currentAITextVi = entry.textVi || '';
+    this.renderInteractiveAIText(entry.textEn);
+
+    const transEl = document.getElementById('ai-translation-text');
+    if (transEl) {
+      transEl.textContent = entry.textVi || '';
+      transEl.style.display = entry.textVi ? 'block' : 'none';
+    }
+
+    document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
+    this.playTTS(entry.textEn, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
+    this._showForkToast(`↩️ Đã quay lại Turn ${entry.turnNum} — hãy nói lại!`);
+    document.getElementById('btn-mic-toggle').disabled = false;
+    document.getElementById('transcript-display').textContent = 'Tap mic to respond again from this point!';
+  }
+
+  _showForkToast(msg) {
+    const toast = document.getElementById('fork-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
 
   async updateVocabBadgeCount() {
     try {
@@ -503,8 +861,12 @@ class DuolingoSpeakApp {
       this.conversationHistory = [];
       this.turnCount = 0;
       this.turnScores = [];
+      this.historyLog = [];
+      this.sentenceTranslationCache.clear();
 
       this.stopTTS();
+      // Clear TTS cache from previous session to free RAM
+      this._clearTTSCache();
 
       // Update Header
       document.getElementById('scenario-stage-title').textContent = `${this.currentScenario.title} (${this.selectedCharacter.name}) - Lvl ${this.currentLevel}`;
@@ -532,18 +894,88 @@ class DuolingoSpeakApp {
       const startData = await resStart.json();
       this.currentAIText = startData.ai_response;
       this.currentAITextVi = startData.ai_response_vi || '';
+      this.initialAIText = startData.ai_response;
+      this.initialAITextVi = startData.ai_response_vi || '';
 
       this.renderInteractiveAIText(this.currentAIText);
       document.getElementById('ai-translation-text').textContent = this.currentAITextVi;
       document.getElementById('ai-translation-text').style.display = 'none';
+      const labelEl = document.getElementById('btn-lazy-translate-label');
+      if (labelEl) labelEl.textContent = 'Gợi ý / Dịch';
 
       this.conversationHistory.push({ role: 'assistant', content: this.currentAIText });
+      this.historyLog.push({
+        turnNum: 1,
+        role: 'ai',
+        textEn: this.currentAIText,
+        textVi: this.currentAITextVi
+      });
+      this.currentHistoryAIIdx = 0;
 
       // Play Neural Voice TTS
       this.playTTS(this.currentAIText, this.selectedCharacter.id);
 
     } catch (e) {
       console.error('Failed to start scenario:', e);
+    }
+  }
+
+  async handleLazyTranslateTurn() {
+    const transEl = document.getElementById('ai-translation-text');
+    const labelEl = document.getElementById('btn-lazy-translate-label');
+    if (!transEl) return;
+
+    if (transEl.style.display !== 'none' && transEl.textContent.trim() !== '' && transEl.textContent !== '⏳ Đang dịch câu thoại...') {
+      transEl.style.display = 'none';
+      if (labelEl) labelEl.textContent = 'Gợi ý / Dịch';
+      return;
+    }
+
+    if (this.currentAITextVi && this.currentAITextVi.trim() !== '') {
+      transEl.textContent = this.currentAITextVi;
+      transEl.style.display = 'block';
+      if (labelEl) labelEl.textContent = 'Ẩn bản dịch';
+      return;
+    }
+
+    transEl.textContent = '⏳ Đang dịch câu thoại...';
+    transEl.style.display = 'block';
+    if (labelEl) labelEl.textContent = 'Đang dịch...';
+
+    try {
+      const recentContext = this.historyLog.slice(-3).map(item => item.textEn).filter(Boolean);
+      const res = await fetch('/api/translate_sentence', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: this.currentAIText,
+          target_lang: 'vi',
+          character_name: this.selectedCharacter ? this.selectedCharacter.name : '',
+          scenario_title: this.currentScenario ? this.currentScenario.title : '',
+          context_history: recentContext
+        })
+      });
+      const data = await res.json();
+      if (data && data.translation) {
+        this.currentAITextVi = data.translation;
+        transEl.textContent = data.translation;
+        transEl.style.display = 'block';
+        if (labelEl) labelEl.textContent = 'Ẩn bản dịch';
+
+        if (this.historyLog.length > 0 && this.historyLog[this.historyLog.length - 1].role === 'ai') {
+          this.historyLog[this.historyLog.length - 1].textVi = data.translation;
+        }
+        if (this.turnScores.length > 0) {
+          this.turnScores[this.turnScores.length - 1].aiResponseVi = data.translation;
+        }
+      } else {
+        transEl.textContent = 'Không thể dịch câu này.';
+        if (labelEl) labelEl.textContent = 'Gợi ý / Dịch';
+      }
+    } catch (e) {
+      console.error('Lazy translation failed:', e);
+      transEl.textContent = 'Lỗi kết nối khi dịch.';
+      if (labelEl) labelEl.textContent = 'Gợi ý / Dịch';
     }
   }
 
@@ -568,7 +1000,19 @@ class DuolingoSpeakApp {
         tokenSpan.className = 'word-token';
         tokenSpan.textContent = cleanWord;
         tokenSpan.title = `Click to translate '${cleanWord}'`;
-        tokenSpan.addEventListener('click', () => {
+        let touched = false;
+        tokenSpan.addEventListener('touchend', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          touched = true;
+          this.lookupWord(cleanWord);
+        }, { passive: false });
+        tokenSpan.addEventListener('click', (e) => {
+          if (touched) {
+            touched = false;
+            return;
+          }
+          e.stopPropagation();
           this.lookupWord(cleanWord);
         });
         container.appendChild(tokenSpan);
@@ -655,6 +1099,14 @@ class DuolingoSpeakApp {
     document.getElementById('transcript-display').textContent = `"${userText}"`;
     document.getElementById('btn-mic-toggle').disabled = true;
 
+    const latestIdx = this._getLatestAITurnIndex();
+    if (this.currentHistoryAIIdx >= 0 && this.currentHistoryAIIdx < latestIdx) {
+      const idx = this.currentHistoryAIIdx;
+      this.conversationHistory = this.conversationHistory.slice(0, idx + 1);
+      this.historyLog = this.historyLog.slice(0, idx + 1);
+      this.turnCount = Math.floor(idx / 2) + 1;
+    }
+
     try {
       const res = await fetch('/api/process_turn', {
         method: 'POST',
@@ -673,6 +1125,21 @@ class DuolingoSpeakApp {
 
       this.conversationHistory.push({ role: 'user', content: userText });
       this.conversationHistory.push({ role: 'assistant', content: data.ai_response });
+
+      const nextTurnNum = this.turnCount + 1;
+      this.historyLog.push({
+        turnNum: nextTurnNum,
+        role: 'user',
+        textEn: userText,
+        textVi: ''
+      });
+      this.historyLog.push({
+        turnNum: nextTurnNum + 1,
+        role: 'ai',
+        textEn: data.ai_response,
+        textVi: data.ai_response_vi || ''
+      });
+      this.currentHistoryAIIdx = this.historyLog.length - 1;
 
       this.turnCount++;
       document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
@@ -737,6 +1204,8 @@ class DuolingoSpeakApp {
     this.renderInteractiveAIText(this.currentAIText);
     document.getElementById('ai-translation-text').textContent = this.currentAITextVi;
     document.getElementById('ai-translation-text').style.display = 'none';
+    const labelEl = document.getElementById('btn-lazy-translate-label');
+    if (labelEl) labelEl.textContent = 'Gợi ý / Dịch';
 
     // Play Neural Voice TTS
     this.playTTS(this.currentAIText, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
@@ -772,23 +1241,60 @@ class DuolingoSpeakApp {
     // Render Full Turn-by-Turn Dialogue Script Review
     const scoresContainer = document.getElementById('victory-scores-breakdown');
     scoresContainer.innerHTML = '';
+
+    // Render Opening Question (Turn 0 - Start of Conversation)
+    if (this.initialAIText) {
+      const charName = this.selectedCharacter ? this.selectedCharacter.name : 'AI';
+      const charIcon = this.selectedCharacter ? (this.selectedCharacter.avatar_icon || '🤖') : '🤖';
+
+      const openItem = document.createElement('div');
+      openItem.className = 'score-turn-item';
+      openItem.style.display = 'flex';
+      openItem.style.flexDirection = 'column';
+      openItem.style.alignItems = 'stretch';
+      openItem.style.gap = '8px';
+      openItem.style.padding = '14px 18px';
+      openItem.style.width = '100%';
+
+      openItem.innerHTML = `
+        <div style="width: 100%; display:flex; justify-content:center; align-items:center; gap: 20px; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 8px; margin-bottom: 4px; text-align: center;">
+          <span style="color: var(--duo-blue); font-weight:800; font-size: 15px;">Turn 0 — Start</span>
+          <span style="color: var(--duo-green); font-weight:800; font-size: 15px;">AI Opening Question</span>
+        </div>
+        <div style="width: 100%; font-size: 15px; color: var(--duo-green-dark); text-align: left; line-height: 1.5; align-self: flex-start;">
+          <strong>${charIcon} ${charName}:</strong> "${this.initialAIText}"
+        </div>
+        ${this.initialAITextVi ? `<div style="width: 100%; font-size: 14px; color: var(--text-muted); font-style: italic; text-align: left; line-height: 1.4; align-self: flex-start;">🇻🇳 Dịch: "${this.initialAITextVi}"</div>` : ''}
+      `;
+      scoresContainer.appendChild(openItem);
+    }
+
     this.turnScores.forEach(ts => {
       const item = document.createElement('div');
       item.className = 'score-turn-item';
       item.style.display = 'flex';
       item.style.flexDirection = 'column';
-      item.style.gap = '6px';
-      item.style.padding = '12px 16px';
+      item.style.alignItems = 'stretch';
+      item.style.gap = '8px';
+      item.style.padding = '14px 18px';
+      item.style.width = '100%';
+
+      const charName = this.selectedCharacter ? this.selectedCharacter.name : 'AI';
+      const charIcon = this.selectedCharacter ? (this.selectedCharacter.avatar_icon || '🤖') : '🤖';
 
       item.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 6px;">
-          <span style="color: var(--duo-blue); font-weight:800;">Turn ${ts.turn}</span>
-          <span style="color: ${ts.overall >= 85 ? 'var(--duo-green)' : 'var(--duo-orange)'}; font-weight:800;">Score: ${ts.overall}/100</span>
+        <div style="width: 100%; display:flex; justify-content:center; align-items:center; gap: 20px; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 8px; margin-bottom: 4px; text-align: center;">
+          <span style="color: var(--duo-blue); font-weight:800; font-size: 15px;">Turn ${ts.turn}</span>
+          <span style="color: ${ts.overall >= 85 ? 'var(--duo-green)' : 'var(--duo-orange)'}; font-weight:800; font-size: 15px;">Score: ${ts.overall}/100</span>
         </div>
-        <div style="font-size: 14px;"><strong>👤 You Spoke:</strong> "${ts.userText}"</div>
-        <div style="font-size: 14px; color: var(--duo-green-dark);"><strong>🦉 AI Reply:</strong> "${ts.aiResponse}"</div>
-        ${ts.aiResponseVi ? `<div style="font-size: 13px; color: var(--text-muted); font-style: italic;">🇻🇳 Dịch: "${ts.aiResponseVi}"</div>` : ''}
-        ${ts.nativePhrasing ? `<div style="font-size: 13px; color: var(--duo-purple); font-weight:700;">💡 Native Tip: "${ts.nativePhrasing}"</div>` : ''}
+        <div style="width: 100%; font-size: 15px; text-align: left; line-height: 1.5; color: var(--text-dark); align-self: flex-start;">
+          <strong>👤 You:</strong> "${ts.userText}"
+        </div>
+        <div style="width: 100%; font-size: 15px; color: var(--duo-green-dark); text-align: left; line-height: 1.5; align-self: flex-start;">
+          <strong>${charIcon} ${charName}:</strong> "${ts.aiResponse}"
+        </div>
+        ${ts.aiResponseVi ? `<div style="width: 100%; font-size: 14px; color: var(--text-muted); font-style: italic; text-align: left; line-height: 1.4; align-self: flex-start;">🇻🇳 Dịch: "${ts.aiResponseVi}"</div>` : ''}
+        ${ts.nativePhrasing ? `<div style="width: 100%; font-size: 14px; color: var(--duo-purple); font-weight:700; text-align: left; line-height: 1.4; align-self: flex-start;">💡 Native Tip: "${ts.nativePhrasing}"</div>` : ''}
       `;
       scoresContainer.appendChild(item);
     });
@@ -828,14 +1334,58 @@ class DuolingoSpeakApp {
     });
   }
 
-  playTTS(text, charId = 'lily') {
-    this.stopTTS();
-
-    const url = `/api/tts?text=${encodeURIComponent(text)}&char_id=${encodeURIComponent(charId)}`;
-    this.currentAudio = new Audio(url);
-    this.currentAudio.play().catch(err => {
-      console.warn('HTML5 Audio play error:', err);
+  _setupAudioPlayback(audioUrl) {
+    this.currentAudio = new Audio(audioUrl);
+    this.currentAudio.addEventListener('loadedmetadata', () => {
+      this._setPlayerReady();
+      this._updateSeekbar();
     });
+    this.currentAudio.addEventListener('timeupdate', () => {
+      this._updateSeekbar();
+    });
+    this.currentAudio.addEventListener('ended', () => {
+      const btnPlay = document.getElementById('audio-btn-playpause');
+      if (btnPlay) btnPlay.textContent = '▶️';
+    });
+    this.currentAudio.play().then(() => {
+      this._setPlayerReady();
+    }).catch(err => {
+      console.warn('TTS playback error:', err);
+      this._setPlayerReady();
+    });
+  }
+
+  async playTTS(text, charId = 'lily') {
+    this.stopTTS();
+    this._setPlayerLoading();
+
+    const cacheKey = `${charId}::${text}`;
+
+    // If we already fetched this audio blob, play from RAM (zero API call)
+    if (this.ttsCache.has(cacheKey)) {
+      this._setupAudioPlayback(this.ttsCache.get(cacheKey));
+      return;
+    }
+
+    // First time: fetch from API, convert to Blob URL, cache it in RAM
+    try {
+      const url = `/api/tts?text=${encodeURIComponent(text)}&char_id=${encodeURIComponent(charId)}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`TTS HTTP ${res.status}`);
+
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Cache the blob URL — next time Voice button is pressed, plays instantly
+      this.ttsCache.set(cacheKey, blobUrl);
+
+      this._setupAudioPlayback(blobUrl);
+    } catch (err) {
+      console.warn('TTS fetch failed, falling back to direct src:', err);
+      // Fallback: use src directly (old behavior) if fetch itself fails
+      const url = `/api/tts?text=${encodeURIComponent(text)}&char_id=${encodeURIComponent(charId)}`;
+      this._setupAudioPlayback(url);
+    }
   }
 
   showScreen(screenId) {

@@ -5,7 +5,8 @@ Features:
 - Meaning-Preserving Grammatical Correction.
 - Cleaned Punctuation & Contraction-Aware Deterministic Scoring.
 - High Conversational Creativity (temperature = 0.85 + Dynamic Scenario Angle Randomizer).
-- Single API Call Execution.
+- Granular 20-Level Difficulty System with per-level hard constraints.
+- LLM-based fallback translation (replaces unreliable Google Translate scraping).
 """
 
 import os
@@ -33,6 +34,199 @@ SCENARIO_ANGLES = [
     "Focus on shopping deals, market bargaining, and finding unique souvenirs."
 ]
 
+# ============================================================
+# GRANULAR 20-LEVEL CONFIGURATION SYSTEM
+# Each level has precise, machine-enforceable constraints:
+#   sentence_words  : target word count range per sentence
+#   max_words       : hard max words for AI's entire response
+#   vocab_tier      : vocabulary complexity description
+#   grammar_allowed : allowed grammar structures (whitelist)
+#   response_style  : how AI should format/length its response
+#   cefr            : CEFR reference level
+# ============================================================
+LEVEL_CONFIGS = {
+    1: {
+        "cefr": "Pre-A1",
+        "sentence_words": "5-10",
+        "min_words": 15,
+        "max_words": 30,
+        "vocab_tier": "ONLY the 100 most common English words (yes, no, good, want, like, have, go, eat, drink, please, what, how)",
+        "grammar_allowed": "Subject + Verb only. Present simple tense ONLY. Simple questions.",
+        "response_style": "1-2 short, simple sentences. Greet friendly and ask one basic everyday question (15-30 words). Example: 'Hello! Do you like coffee or tea?'",
+    },
+    2: {
+        "cefr": "A1",
+        "sentence_words": "6-11",
+        "min_words": 20,
+        "max_words": 35,
+        "vocab_tier": "Top 200 most common English words. Concrete nouns (food, water, home, bus, shop, today).",
+        "grammar_allowed": "Simple present tense. 'I am', 'You are', 'It is'. Basic everyday phrasing.",
+        "response_style": "2 short sentences. Include one simple detail and ask a clear follow-up question (20-35 words).",
+    },
+    3: {
+        "cefr": "A1",
+        "sentence_words": "7-12",
+        "min_words": 25,
+        "max_words": 40,
+        "vocab_tier": "A1 basic vocabulary. Simple adjectives (big, small, hot, cold, good, bad, happy).",
+        "grammar_allowed": "Present simple. Can/cannot. Have/don't have. Simple yes/no and what/where questions.",
+        "response_style": "2 sentences with natural conversational flow. End with an engaging question (25-40 words).",
+    },
+    4: {
+        "cefr": "A1+",
+        "sentence_words": "8-13",
+        "min_words": 25,
+        "max_words": 45,
+        "vocab_tier": "A1-A2 vocabulary. Can use 'would like', 'want to', common verbs (eat, drink, go, take, give).",
+        "grammar_allowed": "Present simple + 'would like' + simple imperatives. Basic time words (today, now, yesterday).",
+        "response_style": "2-3 sentences. Express a basic preference or fact, then ask about theirs (25-45 words).",
+    },
+    5: {
+        "cefr": "A2",
+        "sentence_words": "8-14",
+        "min_words": 30,
+        "max_words": 50,
+        "vocab_tier": "A2 everyday vocabulary. Common adjectives, basic adverbs (very, really, often, sometimes).",
+        "grammar_allowed": "Present simple + past simple (regular verbs only). 'How much/many', basic questions.",
+        "response_style": "2-3 sentences. Share an interesting observation and invite their thoughts (30-50 words).",
+    },
+    6: {
+        "cefr": "A2",
+        "sentence_words": "9-15",
+        "min_words": 30,
+        "max_words": 55,
+        "vocab_tier": "A2 vocabulary. Can use common collocations (have a meal, take a break, make a call).",
+        "grammar_allowed": "Past simple (regular + irregular). Future with 'going to'. Questions with 'When, Where, Who'.",
+        "response_style": "2-3 sentences. Connect past experiences or future plans with the topic (30-55 words).",
+    },
+    7: {
+        "cefr": "A2+",
+        "sentence_words": "10-15",
+        "min_words": 35,
+        "max_words": 60,
+        "vocab_tier": "A2-B1 vocabulary. Basic phrasal verbs (look for, pick up, find out). Simple idioms avoided.",
+        "grammar_allowed": "Past simple + continuous. Future with 'will'. Comparative adjectives (bigger, better, more).",
+        "response_style": "2-3 sentences with smooth transitions. Ask a question that encourages elaboration (35-60 words).",
+    },
+    8: {
+        "cefr": "B1-",
+        "sentence_words": "10-16",
+        "min_words": 35,
+        "max_words": 65,
+        "vocab_tier": "B1 vocabulary. Common idioms (a piece of cake, hit the road). Basic phrasal verbs freely.",
+        "grammar_allowed": "Present perfect (have been, have done). Comparatives + superlatives. 'I think', 'I believe'.",
+        "response_style": "2-3 sentences. Share an opinion with a reason, then ask for their viewpoint (35-65 words).",
+    },
+    9: {
+        "cefr": "B1",
+        "sentence_words": "11-17",
+        "min_words": 40,
+        "max_words": 70,
+        "vocab_tier": "B1 vocabulary. B1 idioms (on second thought, to be honest, as far as I know).",
+        "grammar_allowed": "Past perfect. Conditionals (if...will). 'Used to'. Clause linking (because, although, while).",
+        "response_style": "3 sentences. Use natural idiomatic expressions and conditional phrasing (40-70 words).",
+    },
+    10: {
+        "cefr": "B1",
+        "sentence_words": "11-18",
+        "min_words": 40,
+        "max_words": 75,
+        "vocab_tier": "B1-B2 vocabulary. Phrasal verbs freely. Common idioms used naturally in context.",
+        "grammar_allowed": "Reported speech. Relative clauses (who, which, that). Second conditional (if...would).",
+        "response_style": "3 sentences. Compare alternatives and present a thoughtful perspective (40-75 words).",
+    },
+    11: {
+        "cefr": "B1+",
+        "sentence_words": "12-18",
+        "min_words": 45,
+        "max_words": 80,
+        "vocab_tier": "B2 vocabulary. Abstract nouns. B2 collocations (raise awareness, make an impression).",
+        "grammar_allowed": "All conditionals. Passive voice. Modals for deduction (must be, might have).",
+        "response_style": "3 sentences. Provide structured conversational analysis with discourse markers (45-80 words).",
+    },
+    12: {
+        "cefr": "B2-",
+        "sentence_words": "12-19",
+        "min_words": 45,
+        "max_words": 85,
+        "vocab_tier": "B2 vocabulary. Formal and informal registers. Discourse markers (Furthermore, Nevertheless, In contrast).",
+        "grammar_allowed": "Subjunctive (I wish, if only). Inversion for emphasis (Not only...but also). All tenses.",
+        "response_style": "3-4 sentences. Explore pros and cons or challenge an idea politely (45-85 words).",
+    },
+    13: {
+        "cefr": "B2",
+        "sentence_words": "13-20",
+        "min_words": 50,
+        "max_words": 90,
+        "vocab_tier": "B2 rich vocabulary. Sophisticated adjectives (meticulous, vibrant, compelling). Abstract concepts.",
+        "grammar_allowed": "Complex sentences. Mixed conditionals. Cleft sentences (It was...that). Emphatic structures.",
+        "response_style": "3-4 sentences. Employ abstract vocabulary and sophisticated reasoning naturally (50-90 words).",
+    },
+    14: {
+        "cefr": "B2",
+        "sentence_words": "13-21",
+        "min_words": 50,
+        "max_words": 95,
+        "vocab_tier": "B2-C1 vocabulary. Native idioms freely. Academic and journalistic vocabulary.",
+        "grammar_allowed": "All advanced structures. Ellipsis. Fronting (What I find interesting is...). Perfect modals.",
+        "response_style": "3-4 sentences. Develop an engaging conversational point with idiomatic precision (50-95 words).",
+    },
+    15: {
+        "cefr": "B2+",
+        "sentence_words": "14-22",
+        "min_words": 55,
+        "max_words": 100,
+        "vocab_tier": "C1 vocabulary. Nuanced language. Near-native collocations. Literary expressions.",
+        "grammar_allowed": "Any native-level grammar. Hedging language (arguably, to a certain extent). Nominalizations.",
+        "response_style": "3-4 sentences. Anticipate viewpoints and use nuanced hedging language (55-100 words).",
+    },
+    16: {
+        "cefr": "C1",
+        "sentence_words": "14-23",
+        "min_words": 55,
+        "max_words": 105,
+        "vocab_tier": "C1 vocabulary. Idiomatic mastery. Academic and professional register.",
+        "grammar_allowed": "Full native grammar range. Complex subordination. Implicit logical connectors.",
+        "response_style": "3-4 sentences. Speak with near-native eloquence, humor, and subtle connotations (55-105 words).",
+    },
+    17: {
+        "cefr": "C1",
+        "sentence_words": "15-23",
+        "min_words": 60,
+        "max_words": 110,
+        "vocab_tier": "C1-C2 vocabulary. Philosophical terms. Rhetorical devices (rhetorical questions, anaphora).",
+        "grammar_allowed": "Native-level full range. Parenthetical remarks. Appositive phrases. Absolute constructions.",
+        "response_style": "3-4 sentences. Employ rhetorical devices, wit, or cultural references naturally (60-110 words).",
+    },
+    18: {
+        "cefr": "C1+",
+        "sentence_words": "15-24",
+        "min_words": 60,
+        "max_words": 115,
+        "vocab_tier": "C2 near-native vocabulary. Literary and cultural references. Nuanced connotations.",
+        "grammar_allowed": "Any grammatical structure. Poetic license. Sophisticated register shifts.",
+        "response_style": "3-4 sentences. Express deep abstract ideas with effortless syntactic variety (60-115 words).",
+    },
+    19: {
+        "cefr": "C2",
+        "sentence_words": "16-24",
+        "min_words": 65,
+        "max_words": 120,
+        "vocab_tier": "C2 eloquent vocabulary. Native-speaker precision. Rare but precise word choices.",
+        "grammar_allowed": "Fully native syntax. Deliberate syntactic complexity for stylistic effect.",
+        "response_style": "3-4 sentences. Speak as an articulate native speaker with rich conversational depth (65-120 words).",
+    },
+    20: {
+        "cefr": "C2+",
+        "sentence_words": "16-25",
+        "min_words": 65,
+        "max_words": 125,
+        "vocab_tier": "Native expert: slang, colloquialisms, domain jargon, cultural humor — all natural.",
+        "grammar_allowed": "All native structures including deliberately broken grammar for rhetorical effect.",
+        "response_style": "3-4 sentences. Speak exactly as an articulate, witty native virtuoso. Complete conversational freedom (65-125 words).",
+    },
+}
+
 class AIEngine:
     def __init__(self):
         self.reload_keys()
@@ -58,9 +252,9 @@ class AIEngine:
             "gemini-3.6-flash"
         ]
         self.groq_models = [
-            "llama-3.1-8b-instant",
             "llama-3.3-70b-versatile",
-            "mixtral-8x7b-32768"
+            "mixtral-8x7b-32768",
+            "llama-3.1-8b-instant"
         ]
 
     def _normalize_text_for_comparison(self, text: str) -> str:
@@ -93,6 +287,26 @@ class AIEngine:
             "overall": max(50, min(100, overall))
         }
 
+    def _get_level_config(self, level: int) -> Dict[str, Any]:
+        """Return the precise level configuration for levels 1-20."""
+        lvl = max(1, min(20, level))
+        return LEVEL_CONFIGS[lvl]
+
+    def _build_level_constraint_block(self, level: int) -> str:
+        """Build a hard-constraint text block to inject into the prompt."""
+        cfg = self._get_level_config(level)
+        return f"""
+=== STRICT DIFFICULTY ENFORCEMENT: LEVEL {level}/20 ({cfg['cefr']}) ===
+YOU MUST OBEY ALL RULES BELOW. VIOLATING ANY RULE = FAIL.
+
+RULE 1 — NATURAL SPOKEN CONVERSATIONAL LENGTH: Your ENTIRE response MUST be between {cfg['min_words']} and {cfg['max_words']} words total. Speak like a natural human in a real dialogue — NEVER write a long essay, speech, or textbook paragraph. Each sentence should be around {cfg['sentence_words']} words within [{cfg['min_words']} - {cfg['max_words']} words].
+RULE 2 — VOCABULARY: Use ONLY {cfg['vocab_tier']}. Do NOT use words outside this tier.
+RULE 3 — GRAMMAR: {cfg['grammar_allowed']}. Do NOT use grammar structures beyond this level.
+RULE 4 — RESPONSE FORMAT & MANDATORY QUESTION: {cfg['response_style']}. You SHOULD end your turn with a fresh, OPEN-ENDED question that NEVER repeats previous questions or loops back to topics already discussed in the conversation!
+
+SELF-CHECK BEFORE RESPONDING: Count your words. Is your response a natural spoken dialogue between {cfg['min_words']} and {cfg['max_words']} words? Did you end with a FRESH OPEN-ENDED QUESTION that does NOT repeat previous topics? If not, rewrite.
+=== END DIFFICULTY RULES ==="""
+
     def start_roleplay_greeting(
         self,
         scenario_id: str,
@@ -108,7 +322,7 @@ class AIEngine:
         char_key = character_id if character_id else default_char
         character = get_character(char_key)
 
-        level_desc = self._get_level_description(level)
+        level_block = self._build_level_constraint_block(level)
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
         
@@ -126,17 +340,13 @@ Improvise an open, creative roleplay! Bring unexpected twists, humorous situatio
 
 You are playing the role of {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
 SCENARIO TOPIC: "{scenario['title']}" - {scenario.get('description', '')}.
-DIFFICULTY LEVEL: {level}/20 ({level_desc}).
+{level_block}
 
-Task: Proactively START the roleplay conversation in a fresh, creative way! Jump DIRECTLY into an engaging, direct question or statement about "{scenario['title']}" focusing on the story guide ({story_guide}).
-
-CRITICAL TRANSLATION MANDATE:
-"ai_response_vi" MUST BE A NATURAL, FLUENT, CONVERSATIONAL VIETNAMESE TRANSLATION. (Bản dịch tiếng Việt phải mượt mà, văn phong giao tiếp tự nhiên chuẩn Việt, tuyệt đối KHÔNG dịch thô máy móc).
+Task: Proactively START the roleplay conversation. Jump DIRECTLY into an engaging, OPEN-ENDED opening question about "{scenario['title']}" that inspires storytelling and rich dialogue — strictly obeying the level rules above. NEVER use closed yes/no questions unless Level 1.
 
 Output JSON ONLY:
 {{
-  "ai_response": "Direct topic question or opening statement in 100% STANDARD ENGLISH",
-  "ai_response_vi": "Bản dịch tiếng Việt giao tiếp mượt mà tự nhiên"
+  "ai_response": "Opening in 100% STANDARD ENGLISH strictly obeying all level rules"
 }}"""
 
         for key in self.groq_keys:
@@ -144,6 +354,7 @@ Output JSON ONLY:
                 try:
                     res = self._call_groq(prompt, key, model, temp=0.85)
                     if res and "ai_response" in res:
+                        res["ai_response_vi"] = ""
                         return res
                 except Exception:
                     pass
@@ -153,13 +364,14 @@ Output JSON ONLY:
                 try:
                     res = self._call_gemini(prompt, key, model, temp=0.85)
                     if res and "ai_response" in res:
+                        res["ai_response_vi"] = ""
                         return res
                 except Exception:
                     pass
 
         return {
             "ai_response": f"What is your favorite item on the menu for '{scenario['title']}'?",
-            "ai_response_vi": f"Món ăn yêu thích của bạn trong thực đơn này là gì?"
+            "ai_response_vi": ""
         }
 
     def process_turn(
@@ -233,7 +445,6 @@ Output JSON ONLY:
         if not raw_res:
             raise RuntimeError("API Rate Limit hoặc chưa cấu hình API Key trong .env.")
 
-        # Post-process: Compute 100% Deterministic Scores mathematically
         fb = raw_res.get("user_feedback", {})
         corrected = fb.get("corrected_text", user_transcript)
         det_scores = self._compute_deterministic_score(user_transcript, corrected)
@@ -243,17 +454,81 @@ Output JSON ONLY:
         fb["overall_score"] = det_scores["overall"]
         raw_res["user_feedback"] = fb
 
+        raw_res["ai_response_vi"] = ""
         return raw_res
 
-    def _get_level_description(self, level: int) -> str:
-        if level <= 4:
-            return "ELEMENTARY (Level 1-4): Basic A1 words (<8 words per sentence), simple binary choices."
-        elif level <= 9:
-            return "INTERMEDIATE (Level 5-9): Everyday B1 words (12-18 words per sentence), natural follow-ups."
-        elif level <= 15:
-            return "ADVANCED (Level 10-15): B2/C1 idiomatic English, rich adjectives, complex sentences."
-        else:
-            return "NATIVE EXPERT (Level 16-20): C2 Native vocabulary, fast pace, sophisticated arguments!"
+    def _professional_vietnamese_localization(self, english_text: str, character_name: str = "", scenario_title: str = "", context_history: Optional[List[str]] = None) -> str:
+        """
+        Dedicated Professional Vietnamese Localization Engine (Dịch thuật ngữ cảnh văn nói).
+        Called LAZILY only when the user clicks the translate button.
+        Decouples translation from creative roleplay generation to guarantee idiomatic, culturally accurate Vietnamese.
+        Runs at low temperature (temp=0.15) on the largest 70B model with explicit speaker & context history rules.
+        """
+        if not english_text or not english_text.strip():
+            return ""
+
+        context_str = "\n".join([f"- {s}" for s in (context_history or [])[-3:]]) if context_history else "No previous turns"
+
+        translate_prompt = (
+            f"You are an expert film subtitle and dialogue translator specializing in spoken conversational Vietnamese (DỊCH THOÁT Ý TỰ NHIÊN THEO NGỮ CẢNH VĂN NÓI).\n"
+            f"Speaker Persona: '{character_name}'\n"
+            f"Scenario / Context: '{scenario_title}'\n"
+            f"Recent Dialogue Context (last 1-3 turns):\n{context_str}\n\n"
+            f"Target English Line to Translate: \"{english_text}\"\n\n"
+            f"LOCALIZATION RULES (MANDATORY):\n"
+            f"1. Contextual & Spoken Flow: Translate into natural spoken Vietnamese that fits '{character_name}' in the scenario and context above. Do NOT translate word-for-word.\n"
+            f"2. Appropriate Vietnamese Pronouns (Xưng hô): Select appropriate natural Vietnamese pronouns based on '{character_name}' and context. NEVER add hallucinated extra words or third-person pronouns not present in the English line (e.g., never say 'với chàng trai anh ấy không').\n"
+            f"3. Precise Business/Domain Terms: Accurately translate idioms and terminology based on context (e.g., 'rent increase' -> 'tăng giá thuê nhà / tăng tiền nhà' NOT 'thuế tăng'; 'do business with checks' -> 'làm ăn bằng séc / chuyển khoản minh bạch'; 'dirty cash' -> 'tiền bẩn / tiền mặt không rõ nguồn gốc').\n"
+            f"4. Output ONLY the translated Vietnamese dialogue line without quotes, markdown, or commentary."
+        )
+
+        for key in self.groq_keys:
+            for model in self.groq_models:
+                try:
+                    url = "https://api.groq.com/openai/v1/chat/completions"
+                    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+                    payload = {
+                        "model": model,
+                        "messages": [{"role": "user", "content": translate_prompt}],
+                        "max_tokens": 200,
+                        "temperature": 0.15,
+                    }
+                    res = requests.post(url, headers=headers, json=payload, timeout=6)
+                    if res.status_code == 200:
+                        text = res.json()["choices"][0]["message"]["content"].strip()
+                        if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
+                            text = text[1:-1].strip()
+                        if text:
+                            return text
+                except Exception:
+                    pass
+
+        for key in self.gemini_keys:
+            for model in self.gemini_models:
+                try:
+                    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+                    payload = {
+                        "contents": [{"parts": [{"text": translate_prompt}]}],
+                        "generationConfig": {"maxOutputTokens": 200, "temperature": 0.15}
+                    }
+                    res = requests.post(url, json=payload, timeout=6)
+                    if res.status_code == 200:
+                        text = res.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+                        if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
+                            text = text[1:-1].strip()
+                        if text:
+                            return text
+                except Exception:
+                    pass
+
+        return ""
+
+    def _fallback_llm_translate(self, english_text: str) -> str:
+        """
+        LLM-based fallback translation when AI omits ai_response_vi.
+        Now routes directly through _professional_vietnamese_localization.
+        """
+        return self._professional_vietnamese_localization(english_text)
 
     def _build_token_efficient_prompt(
         self,
@@ -270,7 +545,7 @@ Output JSON ONLY:
             role = "User" if h.get("role") == "user" else f"{character['name']}"
             hist_str += f"{role}: \"{h.get('content')}\"\n"
 
-        level_desc = self._get_level_description(level)
+        level_block = self._build_level_constraint_block(level)
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
 
@@ -280,21 +555,23 @@ Output JSON ONLY:
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF IN CONVERSATION.
 
-CRITICAL TRANSLATION MANDATE:
-"ai_response_vi" MUST BE A NATURAL, FLUENT, CONVERSATIONAL VIETNAMESE TRANSLATION OF YOUR RESPONSE. (Bản dịch tiếng Việt phải mượt mà, văn phong giao tiếp tự nhiên chuẩn Việt, tuyệt đối KHÔNG dịch thô máy móc).
-
 CRITICAL RULE FOR corrected_text:
 "corrected_text" MUST BE THE DIRECT GRAMMATICAL FIX OF THE USER'S EXACT SPOKEN SENTENCE ("{user_transcript}").
 PRESERVE THE USER'S EXACT MEANING, OPINION, AND DECISION 100%!
 
-SMART CONVERSATION DIRECTIVES:
-1. UNSCRIPTED OPEN STORYTELLING: Follow story guide: '{story_guide}'. Improvise dynamic plot twists, humorous surprises, and unscripted developments! Never repeat questions or loop in circles.
-2. BE PROACTIVE: If the user asks for suggestions or choices (e.g. "Can you suggest?", "What do you recommend?"), IMMEDIATELY PROVIDE SPECIFIC, INTERESTING SUGGESTIONS WITH REASONS!
-3. STRICT LEVEL DIFFERENTIATION: Enforce Difficulty Level {level}/20 parameters strictly: {level_desc}.
+SMART CONVERSATION DIRECTIVES & OPEN QUESTION MANDATE (MUST OBEY):
+1. ALWAYS END YOUR TURN WITH AN OPEN-ENDED QUESTION:
+   - NEVER end your turn with just an affirmative statement, agreement, or comment! If you do not ask a question, the conversation dies.
+   - Every single response MUST conclude with a compelling, OPEN-ENDED question (asking 'why', 'how', 'what led to...', 'what would you do if...', etc.) that inspires the user to speak more and share stories/details.
+2. STRICT ANTI-REPETITION (NEVER ASK PREVIOUSLY DISCUSSED TOPICS):
+   - NEVER repeat a question or circle back to an idea that was already asked or answered in the CONVERSATION HISTORY! Re-asking the same question/topic in slightly different words ("hỏi tới hỏi lui 1 vấn đề") is a CRITICAL ERROR.
+   - Actively drive the dialogue FORWARD to a brand-new angle, an unexpected plot twist, or a fresh sub-topic every single turn.
+3. UNSCRIPTED OPEN STORYTELLING: Follow story guide: '{story_guide}'. Improvise dynamic plot twists, humorous surprises, and unscripted developments!
+4. BE PROACTIVE WITH SUGGESTIONS: If the user asks for recommendations or choices, immediately provide specific, interesting suggestions with reasons, then ask an open-ended question about their preference.
+{level_block}
 
 PERMANENT ROLE: You are {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
 PERMANENT TOPIC: "{scenario['title']}" - {scenario.get('description', '')}. Story Guide: {story_guide}.
-DIFFICULTY LEVEL: {level}/20 ({level_desc}).
 TURN NUMBER: {turn_count}.
 
 CONVERSATION HISTORY SO FAR:
@@ -302,15 +579,14 @@ CONVERSATION HISTORY SO FAR:
 USER JUST SAID: "{user_transcript}"
 
 TASK:
-1. Reply in 100% STANDARD NATURAL ENGLISH strictly on topic, adapted strictly to Level {level}/20.
-2. REWRITE USER SENTENCE ACCURATELY: In "corrected_text", fix ONLY the grammar/spelling of the user's sentence ("{user_transcript}") while preserving their exact meaning 100%. In "native_phrasing", provide how a native English speaker would express that exact same thought.
+1. Reply in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules above. Your reply MUST end with a FRESH, OPEN-ENDED QUESTION that drives the topic forward without repeating previous ideas.
+2. REWRITE USER SENTENCE ACCURATELY: In "corrected_text", fix ONLY grammar/spelling of "{user_transcript}" while preserving their exact meaning 100%. In "native_phrasing", show how a native speaker would say that exact thought.
 
 Output JSON ONLY:
 {{
-  "ai_response": "Response in 100% STANDARD NATURAL ENGLISH strictly on topic",
-  "ai_response_vi": "Bản dịch tiếng Việt giao tiếp mượt mà tự nhiên (không dịch máy móc)",
+  "ai_response": "Response in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules",
   "user_feedback": {{
-    "grammar_status": "Clean & Clear" or brief fix,
+    "grammar_status": "Clean & Clear" or brief fix note,
     "corrected_text": "Grammatically corrected version of user's sentence preserving exact meaning",
     "native_phrasing": "Direct native speaker English rewrite of user's sentence",
     "duo_reaction": "celebrate"|"happy"|"encouraging"
@@ -400,7 +676,7 @@ Output JSON ONLY:
 
         data = json.loads(text)
         ai_res = data.get("ai_response", "That's a very interesting point! Tell me more.")
-        ai_res_vi = data.get("ai_response_vi", "Đó là một điểm rất thú vị!")
+        ai_res_vi = data.get("ai_response_vi", "")
         
         fb = data.get("user_feedback", {})
 

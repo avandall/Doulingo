@@ -26,10 +26,10 @@ CHARACTER_VOICE_MAP = {
         "eleven_voice_id": "pFZP5JQG7iQjIQuC4Bku",
         # DEADPAN: Max stability, zero style = total monotone flatness.
         "eleven_settings": {"stability": 0.95, "similarity_boost": 0.92, "style": 0.0, "use_speaker_boost": True},
-        "azure_voice": "en-US-AvaNeural",
-        "rate": "-12%",
-        "pitch": "-14Hz",
-        "fallback_tld": "com"
+        "azure_voice": "en-GB-SoniaNeural",
+        "rate": "-10%",
+        "pitch": "-10Hz",
+        "fallback_tld": "co.uk"
     },
     "oscar": {
         # 'Harry - Fierce Warrior' (American male) - aggressive, intense
@@ -89,7 +89,7 @@ CHARACTER_VOICE_MAP = {
         # GHOSTLY SPIRIT: Very high stability = eerily deliberate, ghost-like delivery.
         "eleven_settings": {"stability": 0.91, "similarity_boost": 0.92, "style": 0.62, "use_speaker_boost": True},
         "azure_voice": "en-CA-ClaraNeural",
-        "rate": "-25%",
+        "rate": "-18%",
         "pitch": "-12Hz",
         "fallback_tld": "ca"
     },
@@ -110,7 +110,7 @@ CHARACTER_VOICE_MAP = {
         # MAFIA DON: stability=0.78 = cold, CALCULATED, slow delivery. style=0.95 = full menacing acting.
         "eleven_settings": {"stability": 0.78, "similarity_boost": 0.95, "style": 0.95, "use_speaker_boost": True},
         "azure_voice": "en-US-BrianNeural",
-        "rate": "-12%",
+        "rate": "-8%",
         "pitch": "-8Hz",
         "fallback_tld": "it"
     }

@@ -261,6 +261,10 @@
           Roleplay Stage
         </span>
 
+        <button class="btn-history-open" id="btn-open-history" title="Conversation History">
+          📜 History
+        </button>
+
         <span id="current-turns-count" style="font-weight: 800; font-size: 12px; color: var(--duo-blue); margin-right: 6px;">
           Turns: 0 (Unlimited)
         </span>
@@ -276,22 +280,49 @@
           <div class="duo-mascot-box" id="practice-mascot"></div>
 
           <div class="speech-bubble">
-            <div class="ai-character-name" id="ai-persona-name">Rajesh Kumar (Indian English)</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <div class="ai-character-name" id="ai-persona-name" style="margin-bottom: 0;">Rajesh Kumar (Indian English)</div>
+              <button class="btn-copy-mini" id="btn-copy-ai-speech" title="Copy AI Speech to Clipboard">📋 Copy</button>
+            </div>
             
             <!-- Interactive Word Token Container -->
             <div class="ai-text word-token-container" id="ai-speech-text">
               Generating AI opening question...
             </div>
             
+            <!-- Lazy Translate Button (Duolingo style) -->
+            <div style="margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+              <button class="btn-lazy-translate" id="btn-lazy-translate" title="Dịch câu thoại của AI sang tiếng Việt">
+                💡 <span id="btn-lazy-translate-label">Gợi ý / Dịch</span>
+              </button>
+            </div>
+
             <!-- AI Sentence Vietnamese Translation -->
             <div class="ai-translation" id="ai-translation-text" style="display: none; background: rgba(28,176,246,0.08); padding: 10px 14px; border-radius: 12px; margin-top: 10px; font-weight: 700; color: #00843D;">
-              Đang khởi tạo...
+            </div>
+
+            <!-- Custom Audio Player with Seekbar -->
+            <div class="audio-player" id="audio-player-widget">
+              <!-- Loading state -->
+              <div class="audio-player-loading" id="audio-player-loading">
+                <div class="audio-loading-dot"></div>
+                <div class="audio-loading-dot"></div>
+                <div class="audio-loading-dot"></div>
+                <span>Loading voice...</span>
+              </div>
+              <!-- Controls (hidden until audio ready) -->
+              <div class="audio-player-controls" id="audio-player-controls" style="display:none;">
+                <button class="audio-btn rewind" id="audio-btn-rewind" title="Quay lại lượt trước (Prev Turn)">⏮️</button>
+                <button class="audio-btn play-pause" id="audio-btn-playpause" title="Play / Pause">▶️</button>
+                <button class="audio-btn next" id="audio-btn-next" title="Tiến tới lượt sau (Next Turn)">⏭️</button>
+                <div class="audio-seekbar-wrapper">
+                  <input type="range" class="audio-seekbar" id="audio-seekbar" min="0" max="100" value="0" step="0.1" />
+                </div>
+                <span class="audio-time" id="audio-time-display">0:00 / 0:00</span>
+              </div>
             </div>
 
             <div class="bubble-actions" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
-              <button class="btn-icon-sm" id="btn-tts-play" title="Listen to AI voice">
-                🔊 Voice
-              </button>
               <button class="btn-icon-sm" id="btn-toggle-translate" title="Show/Hide Full Translation">
                 🌐 Translate
               </button>
@@ -361,7 +392,7 @@
       </div>
 
       <!-- FULL CONVERSATION TRANSCRIPT REVIEW LIST (SELECTABLE & COPYABLE) -->
-      <div style="width: 100%; max-width: 700px; text-align: left; margin: 10px 0;">
+      <div style="width: 100%; max-width: 860px; text-align: left; margin: 10px 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <h3 style="font-size: 15px; font-weight: 900; color: var(--text-dark);">
             📜 Conversation Review
@@ -371,7 +402,7 @@
           </button>
         </div>
         
-        <div class="scores-list" id="victory-scores-breakdown" style="max-height: 260px; overflow-y: auto; user-select: text; -webkit-user-select: text;">
+        <div class="scores-list" id="victory-scores-breakdown" style="max-height: 560px; overflow-y: auto; user-select: text; -webkit-user-select: text;">
           <!-- Rendered dynamically -->
         </div>
       </div>
@@ -407,6 +438,24 @@
     </div>
 
   </div>
+
+  <!-- HISTORY DRAWER -->
+  <div class="history-drawer-overlay" id="history-drawer-overlay">
+    <div class="history-drawer" id="history-drawer">
+      <div class="history-drawer-header">
+        <span class="history-drawer-title">📜 Conversation History</span>
+        <button class="btn-close" id="btn-close-history">✕</button>
+      </div>
+      <div class="history-drawer-body" id="history-drawer-body">
+        <div style="text-align:center; color: var(--text-muted); font-weight: 700; padding: 30px 0; font-size: 14px;">
+          No conversation yet. Start speaking!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fork confirmation toast -->
+  <div class="fork-toast" id="fork-toast"></div>
 
   <!-- Scripts -->
   <script src="/static/js/audio_fx.js"></script>
