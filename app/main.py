@@ -378,12 +378,19 @@ def api_translate_word(
 @app.get("/api/tts")
 def api_tts(
     text: str = Query(..., description="Text to synthesize"),
-    char_id: str = Query("rajesh", description="Character ID for Neural Voice profile"),
+    character_id: Optional[str] = Query(None, description="Character ID"),
+    char_id: Optional[str] = Query(None, description="Character ID alias"),
     tld: str = Query("com", description="Top level domain fallback for accent")
 ):
+    selected_char = character_id or char_id or "rajesh"
     try:
-        mp3_stream = generate_tts_mp3(text=text, char_id=char_id, tld=tld)
-        return StreamingResponse(mp3_stream, media_type="audio/mpeg")
+        mp3_stream = generate_tts_mp3(text=text, char_id=selected_char, tld=tld)
+        headers = {
+            "Content-Disposition": "inline; filename=speech.mp3",
+            "Accept-Ranges": "bytes",
+            "Cache-Control": "public, max-age=86400"
+        }
+        return StreamingResponse(mp3_stream, media_type="audio/mpeg", headers=headers)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"TTS Generation failed: {e}")
 
