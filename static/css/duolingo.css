@@ -118,10 +118,10 @@ html {
 
 /* Buttons */
 .btn-duo {
-  background: var(--duo-green);
+  background: var(--duo-green-primary);
   color: #FFFFFF;
   border: none;
-  border-bottom: 4px solid var(--duo-green-dark);
+  border-bottom: 4px solid var(--duo-green-shadow);
   border-radius: 16px;
   padding: 12px 20px;
   min-height: 44px;
@@ -139,12 +139,12 @@ html {
 }
 
 .btn-duo:hover { background: var(--duo-green-light); }
-.btn-duo:active { transform: translateY(3px); border-bottom-width: 1px; margin-top: 3px; }
-.btn-duo.btn-blue { background: var(--duo-blue); border-bottom-color: var(--duo-blue-dark); }
+.btn-duo:active { transform: translateY(2px); border-bottom-width: 2px; }
+.btn-duo.btn-blue { background: var(--duo-blue-accent); border-bottom-color: var(--duo-blue-dark); }
 .btn-duo.btn-purple { background: var(--duo-purple); border-bottom-color: #A54BF6; }
 .btn-duo.btn-orange { background: var(--duo-orange); border-bottom-color: #E58600; }
 .btn-duo.btn-red { background: var(--duo-red); border-bottom-color: var(--duo-red-dark); }
-.btn-duo.btn-secondary { background: var(--panel-bg); color: var(--duo-blue); border: 2px solid var(--border-light); border-bottom: 4px solid var(--border-light); }
+.btn-duo.btn-secondary { background: var(--panel-bg); color: var(--duo-blue-accent); border: 2px solid var(--border-light); border-bottom: 4px solid var(--border-light); }
 
 .screen { display: none; flex: 1; padding: 18px; flex-direction: column; }
 .screen.active { display: flex; }
