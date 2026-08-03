@@ -572,7 +572,7 @@ Output JSON ONLY:
         turn_count: int,
         level: int
     ) -> str:
-        recent_history = history[-10:] if history else []
+        recent_history = history[-30:] if history else []
         hist_str = ""
         for h in recent_history:
             role = "User" if h.get("role") == "user" else f"{character['name']}"
