@@ -66,6 +66,6 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
   - **Few-Shot Examples (Ví dụ so sánh Dở vs. Hay):** Thêm trực tiếp vào prompt các ví dụ mẫu:
     - *Bad (Literal):* "Tôi muốn bạn làm điều này cho tôi ngay bây giờ." -> *Good (Spoken):* "Cậu giúp tớ việc này luôn nhé!"
     - *Bad (Literal):* "Chúng ta có sự gia tăng giá thuê nhà." -> *Good (Spoken):* "Đợt này tiền nhà lại tăng rồi cậu ạ."
-- [ ] **SPEC-TRANS-03 (Kiểm thử tự động Trace Log & Dịch Thuật):** Viết script kiểm thử tự động `tests/test_localization_trace.py` để:
+- [x] **SPEC-TRANS-03 (Kiểm thử tự động Trace Log & Dịch Thuật):** Viết script kiểm thử tự động `tests/test_localization_trace.py` để:
   - Xác thực hàm `_professional_vietnamese_localization` dịch thoại tự nhiên, không chứa dấu ngoặc kép thừa hoặc từ ngữ dịch máy thô cứng.
   - Xác thực hệ thống Trace Log hoạt động đúng, ghi log đầy đủ thông tin Masked Key, Status Code và tự động chuyển key khi gặp lỗi giả lập (Mock 429 Quota Exceeded).
