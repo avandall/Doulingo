@@ -93,3 +93,5 @@ Mục tiêu chính: Giúp người học thực hành **nói liên tục, tự n
 1. ☕ **At the Coffee Shop (Sơ cấp - 5 lượt nói):** Gọi đồ uống, yêu cầu điều chỉnh đường/đá, thanh toán.
 2. 🧳 **Checking into a Hotel (Trung cấp - 8 lượt nói):** Phàn nàn về phòng thiếu tiện nghi, đổi phòng.
 3. 💼 **Job Interview (Cao cấp - 10-15 lượt nói):** Trả lời câu hỏi phỏng vấn kéo dài, đưa ra ví dụ kinh nghiệm thực tế.
+
+/goal Hãy đọc hệ thống tài liệu trong docs/prompt.md, docs/rules.md và docs/specs.md. Hãy thực hiện trọn bộ nhiệm vụ chưa hoàn thành (- [ ]) theo đúng mô hình Harness Engineering (đóng 2 vai Coder - Reviewer đối chất mã nguồn trước khi test cú pháp). Không dừng lại cho đến khi 100% checkbox trong docs/specs.md hoàn tất!

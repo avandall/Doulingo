@@ -1,0 +1,2 @@
+[2026-08-03 21:37:34] [TRACE] Provider=Groq | Model=llama-3.3-70b | Key=gsk_...2345 | Status=429 | Latency=85.0ms | Error=Rate limit reached
+[2026-08-03 21:37:34] [TRACE] Provider=TestProvider | Model=test-model-70b | Key=gsk_...9key | Status=200 | Latency=150.5ms
