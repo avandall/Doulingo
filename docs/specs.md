@@ -15,7 +15,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 - [x] **SPEC-UI-01:** Xác thực và đồng bộ hóa các biến CSS chuẩn Duolingo (`--duo-green-primary: #58CC02`, `--duo-green-shadow: #46A302`, `--duo-blue-accent: #1CB0F6`, `--duo-yellow-xp: #FFC800`) trong `static/index.html` và file CSS liên quan.
 - [x] **SPEC-UI-02:** Chuẩn hóa toàn bộ các nút bấm tương tác theo phong cách **3D Feather Button** (`border-radius: 16px`, `border-bottom: 4px solid var(--duo-green-shadow)`, chuyển vị trí 2px khi click/active).
 - [x] **SPEC-UI-03:** Cải thiện Thanh Tiến Trình (Lesson Progress Bar) trong màn hình luyện nói, hiển thị chính xác tỷ lệ hoàn thành kịch bản với animation mượt mà.
-- [ ] **SPEC-UI-04:** Xác thực hiệu ứng chuyển động sóng âm (Audio Waveform Visualizer) trong `static/js/` hiển thị trạng thái sinh động khi người dùng bật Microphone.
+- [x] **SPEC-UI-04:** Xác thực hiệu ứng chuyển động sóng âm (Audio Waveform Visualizer) trong `static/js/` hiển thị trạng thái sinh động khi người dùng bật Microphone.
 
 ---
 
