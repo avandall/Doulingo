@@ -26,6 +26,8 @@ from app.characters import get_character
 load_dotenv()
 
 # Trace Logging & Masked Key Helpers
+KEY_STATUS_CACHE: Dict[str, Dict[str, Any]] = {}
+
 def mask_api_key(key: Optional[str]) -> str:
     """Safely mask API Key showing only 4 leading and 4 trailing characters (e.g. gsk_...9aB)."""
     if not key or len(key) < 8:
@@ -39,9 +41,19 @@ def log_api_trace(provider: str, model: str, api_key: str, status_code: int, lat
     log_file = os.path.join(logs_dir, "api_trace.log")
     
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    masked_key = mask_api_key(api_key)
+    masked = mask_api_key(api_key)
+    
+    KEY_STATUS_CACHE[masked] = {
+        "provider": provider,
+        "model": model,
+        "status": "EXHAUSTED" if status_code in [429, 403] or error_msg else "ACTIVE",
+        "status_code": status_code,
+        "last_used": timestamp,
+        "error": error_msg
+    }
+
     err_suffix = f" | Error={error_msg}" if error_msg else ""
-    log_line = f"[{timestamp}] [TRACE] Provider={provider} | Model={model} | Key={masked_key} | Status={status_code} | Latency={latency_ms:.1f}ms{err_suffix}\n"
+    log_line = f"[{timestamp}] [TRACE] Provider={provider} | Model={model} | Key={masked} | Status={status_code} | Latency={latency_ms:.1f}ms{err_suffix}\n"
     
     print(log_line.strip())
     try:
@@ -1001,5 +1013,26 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                         continue
 
         return {"transcript": fallback_text.strip(), "source": "browser-stt"}
+
+    def get_trace_quota_health(self) -> Dict[str, Any]:
+        """Return active key counts, key status cache, and recent 25 trace log entries."""
+        logs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
+        log_file = os.path.join(logs_dir, "api_trace.log")
+        recent_logs = []
+        if os.path.exists(log_file):
+            try:
+                with open(log_file, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+                    recent_logs = [line.strip() for line in lines[-25:]]
+            except Exception:
+                pass
+
+        return {
+            "active_groq_keys_count": len(self.groq_keys),
+            "active_gemini_keys_count": len(self.gemini_keys),
+            "active_openai_keys_count": len(self.openai_keys),
+            "key_statuses": KEY_STATUS_CACHE,
+            "recent_trace_logs": recent_logs
+        }
 
 ai_engine = AIEngine()

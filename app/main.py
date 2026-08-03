@@ -284,6 +284,11 @@ def api_get_user_stats():
 def api_add_user_xp(xp: int = Query(10, description="XP amount to add")):
     return add_user_xp(xp)
 
+@app.get("/api/health/quota")
+@app.get("/api/trace")
+def api_get_trace_quota():
+    return ai_engine.get_trace_quota_health()
+
 @app.get("/api/translate_word")
 def api_translate_word(
     word: str = Query(..., description="Word to look up"),
