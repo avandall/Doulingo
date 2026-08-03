@@ -548,10 +548,14 @@ Output JSON ONLY:
             f"Recent Dialogue Context (last 1-3 turns):\n{context_str}\n\n"
             f"Target English Line to Translate: \"{english_text}\"\n\n"
             f"LOCALIZATION RULES (MANDATORY):\n"
-            f"1. Contextual & Spoken Flow: Translate into natural spoken Vietnamese that fits '{character_name}' in the scenario and context above. Do NOT translate word-for-word.\n"
-            f"2. Appropriate Vietnamese Pronouns (Xưng hô): Select appropriate natural Vietnamese pronouns based on '{character_name}' and context. NEVER add hallucinated extra words or third-person pronouns not present in the English line (e.g., never say 'với chàng trai anh ấy không').\n"
-            f"3. Precise Business/Domain Terms: Accurately translate idioms and terminology based on context (e.g., 'rent increase' -> 'tăng giá thuê nhà / tăng tiền nhà' NOT 'thuế tăng'; 'do business with checks' -> 'làm ăn bằng séc / chuyển khoản minh bạch'; 'dirty cash' -> 'tiền bẩn / tiền mặt không rõ nguồn gốc').\n"
-            f"4. Output ONLY the translated Vietnamese dialogue line without quotes, markdown, or commentary."
+            f"1. Contextual & Spoken Flow: Translate into natural spoken Vietnamese that fits '{character_name}' in the scenario. Do NOT translate word-for-word.\n"
+            f"2. Natural Roleplay Pronouns (Xưng hô ngữ cảnh): Choose warm, natural Vietnamese pronouns based on character persona and relationship (e.g., 'tớ - cậu', 'em - anh', 'mình - bạn'). NEVER use rigid robotic 'tôi - bạn' for every line.\n"
+            f"3. Spoken Vietnamese Particles (Từ đệm cảm xúc): Naturally include conversational particles ('nhé', 'nha', 'đấy', 'đi', 'cơ mà', 'chứ', 'nè', 'vậy', 'cậu ạ') at sentence ends for authentic spoken warmth.\n"
+            f"4. FEW-SHOT CONTRAST EXAMPLES (SO SÁNH DỞ vs. HAY):\n"
+            f"   - Bad (Literal): \"Tôi muốn bạn làm điều này cho tôi ngay bây giờ.\" -> Good (Spoken): \"Cậu giúp tớ việc này luôn nhé!\"\n"
+            f"   - Bad (Literal): \"Chúng ta có sự gia tăng giá thuê nhà.\" -> Good (Spoken): \"Đợt này tiền nhà lại tăng rồi cậu ạ.\"\n"
+            f"   - Bad (Literal): \"Tôi nghe thấy bạn thích cà phê.\" -> Good (Spoken): \"Nghe nói cậu thích uống cà phê hả?\"\n"
+            f"5. Output ONLY the translated Vietnamese dialogue line without quotes, markdown, or commentary."
         )
 
         for key in self.groq_keys:
