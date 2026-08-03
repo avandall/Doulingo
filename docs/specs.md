@@ -59,7 +59,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
   - Kiểm tra mã phản hồi (HTTP 429 Too Many Requests, 403, 500 hoặc `Quota exceeded` từ response error message).
   - Khi một API key hết quota hoặc bị lỗi, tự động ghi log cảnh báo `"[TRACE] API Key [MASKED_KEY] exhausted/rate-limited"`, lập tức chuyển sang (rotate) API key tiếp theo trong danh sách và ghi nhận sự kiện chuyển key.
   - Bổ sung endpoint `/api/trace` hoặc `/api/health/quota` để tra cứu nhanh lịch sử gọi API, danh sách key đang hoạt động và tình trạng quota.
-- [ ] **SPEC-TRANS-01 (Khắc phục nguyên nhân dịch sát nghĩa/word-by-word):** Tối ưu hóa tham số cho hàm `_professional_vietnamese_localization` trong `app/ai_engine.py`. Nâng `temperature` từ `0.15` lên `0.35 - 0.40` để LLM có đủ độ linh hoạt diễn đạt tự nhiên theo văn ngôn người Việt thay vì dịch thô cứng sát nghĩa từng từ.
+- [x] **SPEC-TRANS-01 (Khắc phục nguyên nhân dịch sát nghĩa/word-by-word):** Tối ưu hóa tham số cho hàm `_professional_vietnamese_localization` trong `app/ai_engine.py`. Nâng `temperature` từ `0.15` lên `0.35 - 0.40` để LLM có đủ độ linh hoạt diễn đạt tự nhiên theo văn ngôn người Việt thay vì dịch thô cứng sát nghĩa từng từ.
 - [ ] **SPEC-TRANS-02 (Cải tiến System Prompt Dịch Thuật Văn Nói - Spoken Vietnamese Few-Shot):** Nâng cấp nội dung system prompt của hàm `_professional_vietnamese_localization` với các yêu cầu:
   - **Xưng hô ngữ cảnh (Roleplay Pronouns):** Bắt buộc chọn đại từ xưng hô tự nhiên (*em - anh, tớ - cậu, mình - bạn*) phù hợp mối quan hệ giữa nhân vật Duolingo và người học, tuyệt đối không dùng toàn bộ *tôi - bạn* kiểu dịch máy.
   - **Từ đệm văn nói (Vietnamese Particles):** Nhận diện văn cảnh để thêm các từ đệm tự nhiên (*nhé, nha, đấy, đi, cơ mà, chứ, nè, vậy*) ở cuối câu.

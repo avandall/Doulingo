@@ -563,7 +563,7 @@ Output JSON ONLY:
                         "model": model,
                         "messages": [{"role": "user", "content": translate_prompt}],
                         "max_tokens": 200,
-                        "temperature": 0.15,
+                        "temperature": 0.35,
                     }
                     res = requests.post(url, headers=headers, json=payload, timeout=6)
                     if res.status_code == 200:
@@ -581,7 +581,7 @@ Output JSON ONLY:
                     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
                     payload = {
                         "contents": [{"parts": [{"text": translate_prompt}]}],
-                        "generationConfig": {"maxOutputTokens": 200, "temperature": 0.15}
+                        "generationConfig": {"maxOutputTokens": 200, "temperature": 0.35}
                     }
                     res = requests.post(url, json=payload, timeout=6)
                     if res.status_code == 200:
