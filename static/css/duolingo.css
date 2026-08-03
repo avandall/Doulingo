@@ -2,12 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
 
 :root {
-  --duo-green: #58CC02;
-  --duo-green-dark: #46A302;
+  --duo-green-primary: #58CC02;
+  --duo-green-shadow: #46A302;
+  --duo-blue-accent: #1CB0F6;
+  --duo-yellow-xp: #FFC800;
+
+  --duo-green: var(--duo-green-primary);
+  --duo-green-dark: var(--duo-green-shadow);
   --duo-green-light: #61E002;
-  --duo-blue: #1CB0F6;
+  --duo-blue: var(--duo-blue-accent);
   --duo-blue-dark: #0092DF;
-  --duo-yellow: #FFC800;
+  --duo-yellow: var(--duo-yellow-xp);
   --duo-orange: #FF9600;
   --duo-red: #FF4B4B;
   --duo-red-dark: #EA2B2B;
