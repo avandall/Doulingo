@@ -46,7 +46,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 
 ## Giai Đoạn 4: Gamification & Hoàn Thiện Trải Nghiệm Người Học
 
-- [ ] **SPEC-GAME-01:** Xác thực hệ thống tính điểm XP và Streak Counter trong `app/db.py`, đảm bảo cập nhật tiến độ khi người học hoàn thành từng lượt thoại và toàn bộ kịch bản.
+- [x] **SPEC-GAME-01:** Xác thực hệ thống tính điểm XP và Streak Counter trong `app/db.py`, đảm bảo cập nhật tiến độ khi người học hoàn thành từng lượt thoại và toàn bộ kịch bản.
 - [ ] **SPEC-GAME-02:** Đảm bảo modal phản hồi (Instant Feedback Modal) hiển thị đúng màu sắc (xanh lá cho lời nói trôi chảy, xanh dương cho gợi ý sửa lỗi ngữ pháp nhẹ) theo chuẩn Duolingo UI.
 - [ ] **SPEC-TEST-01:** Tạo script smoke test (`tests/test_smoke.py` hoặc script python) để tự động kiểm thử nhanh các endpoint `/api/chat`, `/api/scenarios`, và `/api/tts` mà không cần bật trình duyệt, phục vụ tự động hóa Ralph Loop.
 

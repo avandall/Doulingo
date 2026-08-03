@@ -46,6 +46,17 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
+
+    # Table 3: User Gamification Stats (XP & Streak Counter)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_stats (
+            id INTEGER PRIMARY KEY DEFAULT 1,
+            total_xp INTEGER DEFAULT 150,
+            streak_days INTEGER DEFAULT 5,
+            last_active_date TEXT DEFAULT (DATE('now'))
+        )
+    """)
+    cursor.execute("INSERT OR IGNORE INTO user_stats (id, total_xp, streak_days, last_active_date) VALUES (1, 150, 5, DATE('now'))")
     conn.commit()
     conn.close()
 
@@ -161,3 +172,40 @@ def get_all_saved_words(target_lang: Optional[str] = None) -> List[Dict[str, Any
         }
         for r in rows
     ]
+
+def get_user_stats() -> Dict[str, Any]:
+    """Retrieve user XP total and Streak days from SQLite DB."""
+    init_db()
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT total_xp, streak_days, last_active_date FROM user_stats WHERE id = 1")
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return {
+            "total_xp": row["total_xp"],
+            "streak": row["streak_days"],
+            "last_active_date": row["last_active_date"]
+        }
+    return {"total_xp": 150, "streak": 5, "last_active_date": ""}
+
+def add_user_xp(xp_amount: int) -> Dict[str, Any]:
+    """Increment user total XP and update active streak."""
+    init_db()
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""
+        UPDATE user_stats
+        SET total_xp = total_xp + ?,
+            streak_days = CASE
+                WHEN last_active_date < DATE('now', '-1 day') THEN 1
+                WHEN last_active_date = DATE('now', '-1 day') THEN streak_days + 1
+                ELSE streak_days
+            END,
+            last_active_date = DATE('now')
+        WHERE id = 1
+    """, (xp_amount,))
+    conn.commit()
+    conn.close()
+    return get_user_stats()

@@ -22,7 +22,7 @@ from urllib.parse import quote
 
 from app.scenarios import list_scenarios, get_scenario
 from app.characters import list_characters, get_character
-from app.db import add_custom_scenario, get_translated_word, save_translated_word, get_all_saved_words
+from app.db import add_custom_scenario, get_translated_word, save_translated_word, get_all_saved_words, get_user_stats, add_user_xp
 from app.ai_engine import ai_engine
 from app.tts_service import generate_tts_mp3
 
@@ -275,6 +275,14 @@ async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
 def api_get_saved_words(target_lang: Optional[str] = Query(None, description="Optional target language filter")):
     words = get_all_saved_words(target_lang)
     return {"count": len(words), "words": words}
+
+@app.get("/api/user_stats")
+def api_get_user_stats():
+    return get_user_stats()
+
+@app.post("/api/user_stats/add_xp")
+def api_add_user_xp(xp: int = Query(10, description="XP amount to add")):
+    return add_user_xp(xp)
 
 @app.get("/api/translate_word")
 def api_translate_word(
