@@ -39,7 +39,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 
 ## Giai Đoạn 3: Dịch Vụ Âm Thanh (Speech-to-Text & Text-to-Speech)
 
-- [ ] **SPEC-AUDIO-01:** Kiểm tra dịch vụ TTS trong `app/tts_service.py` đảm bảo phát âm các giọng nhân vật Duolingo (Duo, Lily, Oscar...) ổn định và có cơ chế fallback về gTTS/Web Speech khi `edge-tts` gặp sự cố mạng.
+- [x] **SPEC-AUDIO-01:** Kiểm tra dịch vụ TTS trong `app/tts_service.py` đảm bảo phát âm các giọng nhân vật Duolingo (Duo, Lily, Oscar...) ổn định và có cơ chế fallback về gTTS/Web Speech khi `edge-tts` gặp sự cố mạng.
 - [ ] **SPEC-AUDIO-02:** Chuẩn hóa endpoint `/api/tts` để hỗ trợ stream âm thanh nhanh nhất cho Frontend.
 
 ---

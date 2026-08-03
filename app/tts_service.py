@@ -21,6 +21,14 @@ load_dotenv()
 # ElevenLabs & Azure Neural Voice Character Mappings
 # All voice IDs are CONFIRMED FREE PREMADE voices from the ElevenLabs API.
 CHARACTER_VOICE_MAP = {
+    "duo": {
+        "eleven_voice_id": "cgSgspJ2msm6clMCkdW9",
+        "eleven_settings": {"stability": 0.5, "similarity_boost": 0.85, "style": 0.5, "use_speaker_boost": True},
+        "azure_voice": "en-US-AnaNeural",
+        "rate": "+5%",
+        "pitch": "+10Hz",
+        "fallback_tld": "com"
+    },
     "lily": {
         # 'Lily - Velvety Actress' (British female) - CONFIRMED FREE PREMADE
         "eleven_voice_id": "pFZP5JQG7iQjIQuC4Bku",
