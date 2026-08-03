@@ -23,7 +23,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 
 - [x] **SPEC-BE-01:** Xác thực cơ chế Mock Fallback trong `app/ai_engine.py` đảm bảo trả về câu thoại hội thoại mẫu hợp lý, điểm Fluency và lời khuyên bản xứ (Native Phrasing) khi không có API Key của OpenAI/Gemini.
 - [x] **SPEC-BE-02:** Kiểm tra và hoàn thiện bộ nhớ ngữ cảnh dài (Long-Context History Management) cho hội thoại 5-15 lượt nói trong `app/scenarios.py` và `app/ai_engine.py`.
-- [ ] **SPEC-BE-03:** Đảm bảo endpoint `/api/chat` trong `app/main.py` xử lý mượt mà dữ liệu đầu vào STT từ người dùng và trả về phản hồi theo định dạng JSON chuẩn:
+- [x] **SPEC-BE-03:** Đảm bảo endpoint `/api/chat` trong `app/main.py` xử lý mượt mà dữ liệu đầu vào STT từ người dùng và trả về phản hồi theo định dạng JSON chuẩn:
   ```json
   {
     "response": "...",

@@ -39,6 +39,14 @@ class TurnRequest(BaseModel):
     conversation_history: List[Dict[str, str]] = []
     level: Optional[int] = 1
 
+class ChatRequest(BaseModel):
+    user_transcript: Optional[str] = None
+    text: Optional[str] = None
+    scenario_id: Optional[str] = "cafe_order"
+    character_id: Optional[str] = None
+    conversation_history: List[Dict[str, str]] = []
+    level: Optional[int] = 1
+
 class StartScenarioRequest(BaseModel):
     scenario_id: str
     character_id: Optional[str] = None
@@ -149,6 +157,38 @@ def api_process_turn(payload: TurnRequest):
             level=payload.level or 1
         )
         return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/chat")
+def api_chat(payload: ChatRequest):
+    input_text = (payload.user_transcript or payload.text or "").strip()
+    if not input_text:
+        raise HTTPException(status_code=400, detail="User transcript cannot be empty")
+
+    sc_id = payload.scenario_id or "cafe_order"
+    try:
+        result = ai_engine.process_turn(
+            scenario_id=sc_id,
+            character_id=payload.character_id,
+            user_transcript=input_text,
+            conversation_history=payload.conversation_history,
+            level=payload.level or 1
+        )
+        ai_resp = result.get("ai_response", "")
+        audio_url = f"/api/tts?text={quote(ai_resp[:200])}&character_id={payload.character_id or 'lily'}"
+        fb = result.get("user_feedback", {})
+
+        return {
+            "response": ai_resp,
+            "audio_url": audio_url,
+            "fluency_score": fb.get("fluency_score", 90),
+            "native_suggestion": fb.get("native_phrasing", ""),
+            "is_completed": result.get("is_completed", False),
+            "xp_gained": result.get("xp_gained", 10),
+            "ai_response_vi": result.get("ai_response_vi", ""),
+            "user_feedback": fb
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
