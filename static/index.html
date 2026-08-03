@@ -471,15 +471,23 @@
       <div class="practice-header">
         <button class="btn-close" id="btn-close-practice" title="Quit Scenario">✕</button>
         
-        <span id="scenario-stage-title" style="font-weight: 800; font-size: 14px; flex:1;">
+        <span id="scenario-stage-title" style="font-weight: 800; font-size: 14px;">
           Roleplay Stage
         </span>
+
+        <!-- Lesson Progress Bar -->
+        <div class="lesson-progress-container" title="Lesson Progress">
+          <div class="lesson-progress-bar">
+            <div class="lesson-progress-fill" id="lesson-progress-fill" style="width: 0%;"></div>
+          </div>
+          <span class="lesson-progress-text" id="lesson-progress-text">0%</span>
+        </div>
 
         <button class="btn-history-open" id="btn-open-history" title="Conversation History">
           📜 History
         </button>
 
-        <span id="current-turns-count" style="font-weight: 800; font-size: 12px; color: var(--duo-blue); margin-right: 6px;">
+        <span id="current-turns-count" style="font-weight: 800; font-size: 12px; color: var(--duo-blue-accent); margin-right: 6px;">
           Turns: 0 (Unlimited)
         </span>
 

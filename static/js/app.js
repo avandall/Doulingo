@@ -907,10 +907,23 @@ class DuolingoSpeakApp {
     }
 
     document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
+    this.updateProgressBar();
     this.playTTS(entry.textEn, this.selectedCharacter ? this.selectedCharacter.id : 'lily');
     this._showForkToast(`↩️ Đã quay lại Turn ${entry.turnNum} — hãy nói lại!`);
     document.getElementById('btn-mic-toggle').disabled = false;
     document.getElementById('transcript-display').textContent = 'Tap mic to respond again from this point!';
+  }
+
+  updateProgressBar() {
+    const fillEl = document.getElementById('lesson-progress-fill');
+    const textEl = document.getElementById('lesson-progress-text');
+    if (!fillEl || !textEl) return;
+
+    const targetTurns = this.isDetInteractiveMode ? (this.detMaxTurns || 5) : 5;
+    const pct = Math.min(100, Math.round((this.turnCount / targetTurns) * 100));
+
+    fillEl.style.width = `${pct}%`;
+    textEl.textContent = `${pct}%`;
   }
 
   _showForkToast(msg) {
@@ -1335,6 +1348,7 @@ class DuolingoSpeakApp {
       document.getElementById('current-turns-count').textContent = this.isDetInteractiveMode
         ? `Turns: 0 / ${maxTurns} (IELTS Exam)`
         : 'Turns: 0 (Unlimited)';
+      this.updateProgressBar();
 
       const btnFinish = document.getElementById('btn-finish-roleplay');
       if (btnFinish) {
@@ -1644,6 +1658,7 @@ class DuolingoSpeakApp {
       } else {
         document.getElementById('current-turns-count').textContent = `Turns: ${this.turnCount} (Unlimited)`;
       }
+      this.updateProgressBar();
 
       const fb = data.user_feedback || {};
       const turnScoreObj = {
