@@ -1692,10 +1692,23 @@ class DuolingoSpeakApp {
     const sheet = document.getElementById('feedback-sheet');
 
     const score = fb.overall_score || 90;
-    const isGood = score >= 85;
-    sheet.className = `feedback-sheet active ${isGood ? '' : 'needs-work'}`;
+    let sheetClass = '';
+    let titleText = 'GREAT CONTINUOUS SPEAKING!';
 
-    document.getElementById('feedback-title-text').textContent = isGood ? 'GREAT CONTINUOUS SPEAKING!' : 'GOOD EFFORT!';
+    if (score >= 90) {
+      sheetClass = '';
+      titleText = 'GREAT CONTINUOUS SPEAKING!';
+    } else if (score >= 80) {
+      sheetClass = 'suggestion';
+      titleText = 'LIGHT GRAMMAR SUGGESTION 💡';
+    } else {
+      sheetClass = 'needs-work';
+      titleText = 'GOOD EFFORT! KEEP PRACTICING!';
+    }
+
+    sheet.className = `feedback-sheet active ${sheetClass}`;
+
+    document.getElementById('feedback-title-text').textContent = titleText;
     document.getElementById('feedback-score-badge').textContent = `Turn Score: ${score}/100 🔥`;
 
     document.getElementById('native-phrasing-text').textContent = fb.native_phrasing || 'Keep expressing yourself freely!';

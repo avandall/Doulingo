@@ -343,12 +343,13 @@ html {
 /* Bottom Feedback Sheet */
 .feedback-sheet {
   position: fixed; bottom: 0; left: 50%; transform: translateX(-50%) translateY(100%);
-  width: 100%; max-width: 960px; background: #D7FFB8; border-top: 3px solid var(--duo-green-dark);
+  width: 100%; max-width: 960px; background: #D7FFB8; border-top: 4px solid var(--duo-green-shadow);
   padding: 16px 20px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex; flex-direction: column; gap: 10px; z-index: 100;
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
 }
 .feedback-sheet.active { transform: translateX(-50%) translateY(0); }
+.feedback-sheet.suggestion { background: #DDF4FE; border-top-color: var(--duo-blue-accent); }
 .feedback-sheet.needs-work { background: #FFDFE0; border-top-color: var(--duo-red-dark); }
 .native-phrasing-box { background: #FFF; border-radius: 14px; padding: 10px 12px; border: 2px dashed rgba(0,0,0,0.1); font-weight: 700; font-size: 14px; }
 
