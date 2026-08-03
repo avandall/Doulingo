@@ -54,7 +54,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 
 ## Giai Đoạn 5: Hệ Thống Trace Log, Theo Dõi Quota & Cải Tiến Chất Lượng Dịch Thuật (Logging, Quota & Localization Quality)
 
-- [ ] **SPEC-LOG-01 (Trace Log & Key Usage Tracking):** Xây dựng hệ thống ghi log chi tiết (Trace Logging) trong `app/ai_engine.py` và `app/main.py`. Mỗi lần gọi LLM API (Groq, Gemini, OpenAI, Anthropic) cần ghi rõ vào file log (`logs/api_trace.log`) và console: provider nào được gọi, model nào, **API key nào được sử dụng (masked key, ví dụ `gsk_...9aB` hoặc `AIza...x8A9`)**, thời gian phản hồi (latency) và trạng thái HTTP status code.
+- [x] **SPEC-LOG-01 (Trace Log & Key Usage Tracking):** Xây dựng hệ thống ghi log chi tiết (Trace Logging) trong `app/ai_engine.py` và `app/main.py`. Mỗi lần gọi LLM API (Groq, Gemini, OpenAI, Anthropic) cần ghi rõ vào file log (`logs/api_trace.log`) và console: provider nào được gọi, model nào, **API key nào được sử dụng (masked key, ví dụ `gsk_...9aB` hoặc `AIza...x8A9`)**, thời gian phản hồi (latency) và trạng thái HTTP status code.
 - [ ] **SPEC-LOG-02 (Quota Checking & Automated Key Rotation):** Xây dựng cơ chế theo dõi quota và xử lý lỗi hạn mức (Rate Limit / Quota Exhaustion).
   - Kiểm tra mã phản hồi (HTTP 429 Too Many Requests, 403, 500 hoặc `Quota exceeded` từ response error message).
   - Khi một API key hết quota hoặc bị lỗi, tự động ghi log cảnh báo `"[TRACE] API Key [MASKED_KEY] exhausted/rate-limited"`, lập tức chuyển sang (rotate) API key tiếp theo trong danh sách và ghi nhận sự kiện chuyển key.

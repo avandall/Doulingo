@@ -12,6 +12,8 @@ Features:
 import os
 import re
 import json
+import time
+import datetime
 import random
 import difflib
 import requests
@@ -22,6 +24,31 @@ from app.scenarios import get_scenario
 from app.characters import get_character
 
 load_dotenv()
+
+# Trace Logging & Masked Key Helpers
+def mask_api_key(key: Optional[str]) -> str:
+    """Safely mask API Key showing only 4 leading and 4 trailing characters (e.g. gsk_...9aB)."""
+    if not key or len(key) < 8:
+        return "***"
+    return f"{key[:4]}...{key[-4:]}"
+
+def log_api_trace(provider: str, model: str, api_key: str, status_code: int, latency_ms: float, error_msg: str = ""):
+    """Log LLM API invocation trace to logs/api_trace.log and console."""
+    logs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
+    os.makedirs(logs_dir, exist_ok=True)
+    log_file = os.path.join(logs_dir, "api_trace.log")
+    
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    masked_key = mask_api_key(api_key)
+    err_suffix = f" | Error={error_msg}" if error_msg else ""
+    log_line = f"[{timestamp}] [TRACE] Provider={provider} | Model={model} | Key={masked_key} | Status={status_code} | Latency={latency_ms:.1f}ms{err_suffix}\n"
+    
+    print(log_line.strip())
+    try:
+        with open(log_file, "a", encoding="utf-8") as f:
+            f.write(log_line)
+    except Exception as e:
+        print(f"[TraceLogger] Failed to write to log file: {e}")
 
 # Dynamic Scenario Angle Presets for Endless Variety
 SCENARIO_ANGLES = [
@@ -642,7 +669,10 @@ Output JSON ONLY:
                 "responseMimeType": "application/json"
             }
         }
+        t0 = time.time()
         res = requests.post(url, json=payload, timeout=8)
+        latency_ms = (time.time() - t0) * 1000
+        log_api_trace("Gemini", model_name, api_key, res.status_code, latency_ms)
         if res.status_code == 200:
             text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
             return self._parse_json_response(text)
@@ -660,7 +690,10 @@ Output JSON ONLY:
             "temperature": temp,
             "response_format": {"type": "json_object"}
         }
+        t0 = time.time()
         res = requests.post(url, headers=headers, json=payload, timeout=8)
+        latency_ms = (time.time() - t0) * 1000
+        log_api_trace("Groq", model_name, api_key, res.status_code, latency_ms)
         if res.status_code == 200:
             text = res.json()["choices"][0]["message"]["content"]
             return self._parse_json_response(text)
@@ -678,7 +711,10 @@ Output JSON ONLY:
             "temperature": temp,
             "response_format": {"type": "json_object"}
         }
+        t0 = time.time()
         res = requests.post(url, headers=headers, json=payload, timeout=8)
+        latency_ms = (time.time() - t0) * 1000
+        log_api_trace("OpenAI", "gpt-4o-mini", api_key, res.status_code, latency_ms)
         if res.status_code == 200:
             text = res.json()["choices"][0]["message"]["content"]
             return self._parse_json_response(text)
@@ -695,7 +731,10 @@ Output JSON ONLY:
             "format": "json",
             "options": {"num_predict": 1200, "temperature": temp}
         }
+        t0 = time.time()
         res = requests.post(url, json=payload, timeout=8)
+        latency_ms = (time.time() - t0) * 1000
+        log_api_trace("Ollama", self.ollama_model, "localhost", res.status_code, latency_ms)
         if res.status_code == 200:
             text = res.json()["response"]
             return self._parse_json_response(text)
