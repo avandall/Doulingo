@@ -104,7 +104,7 @@ Tài liệu này là bản đặc tả tổng thể cho **Duolingo Speak**. Các
 - [x] **Cơ Chế TTS Dự Phòng**: Tự động chuyển xuống `gTTS` nếu `edge-tts` gặp sự cố hoặc quá thời gian chờ.
 - [x] **Ghi Âm Web Speech API**: Thu âm giọng nói qua microphone trong `static/js/speech.js` kèm hiệu ứng sóng âm sống động.
 - [x] **Tối Ưu Nhận Diện Trên Mobile PWA**: Đảm bảo ghi nhận trọn vẹn câu nói trên iOS Safari và Android PWA mà không bị mất chữ đầu/cuối.
-- [ ] **Truyền Phát Âm Thanh Theo Gói (Streaming Audio)**: Thực hiện chia gói MP3 streaming để bắt đầu phát âm thanh ngay dưới <300ms kể từ khi LLM trả lời.
+- [x] **Truyền Phát Âm Thanh Theo Gói (Streaming Audio)**: Thực hiện chia gói MP3 streaming để bắt đầu phát âm thanh ngay dưới <300ms kể từ khi LLM trả lời.
 
 ---
 

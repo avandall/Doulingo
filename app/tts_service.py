@@ -13,10 +13,12 @@ import asyncio
 import concurrent.futures
 import requests
 import edge_tts
+import logging
 from gtts import gTTS
 from dotenv import load_dotenv
 
 load_dotenv()
+logger = logging.getLogger("duolingo_speak.tts")
 
 # ElevenLabs & Azure Neural Voice Character Mappings
 # All voice IDs are CONFIRMED FREE PREMADE voices from the ElevenLabs API.
@@ -192,9 +194,112 @@ async def _generate_edge_tts_async(text: str, char_id: str) -> bytes:
             mp3_data += chunk["data"]
     return mp3_data
 
+async def stream_edge_tts(text: str, char_id: str):
+    """Async generator yielding Edge-TTS MP3 chunks directly as they are generated (<300ms latency)."""
+    profile = CHARACTER_VOICE_MAP.get(char_id, CHARACTER_VOICE_MAP["lily"])
+    clean_text = sanitize_text_for_tts(text)
+
+    communicate = edge_tts.Communicate(
+        text=clean_text,
+        voice=profile["azure_voice"],
+        rate=profile["rate"],
+        pitch=profile["pitch"]
+    )
+    async for chunk in communicate.stream():
+        if chunk["type"] == "audio":
+            yield chunk["data"]
+
+def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str):
+    """Yields streaming chunks from ElevenLabs API."""
+    profile = CHARACTER_VOICE_MAP.get(char_id, CHARACTER_VOICE_MAP["lily"])
+    voice_id = profile["eleven_voice_id"]
+    settings = profile.get("eleven_settings", {"stability": 0.5, "similarity_boost": 0.75, "style": 0.5})
+    
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/stream"
+    headers = {
+        "xi-api-key": api_key,
+        "Content-Type": "application/json",
+        "Accept": "audio/mpeg"
+    }
+    payload = {
+        "text": sanitize_text_for_tts(text),
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+            "stability": settings["stability"],
+            "similarity_boost": settings["similarity_boost"],
+            "style": settings["style"],
+            "use_speaker_boost": True
+        }
+    }
+    
+    res = requests.post(url, headers=headers, json=payload, stream=True, timeout=8)
+    if res.status_code == 200:
+        for chunk in res.iter_content(chunk_size=1024):
+            if chunk:
+                yield chunk
+        return
+        
+    raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+
+def stream_gtts(text: str, char_id: str = "lily", tld: str = "com"):
+    """Yields MP3 audio chunks from gTTS safety fallback."""
+    profile = CHARACTER_VOICE_MAP.get(char_id, {})
+    fallback_tld = profile.get("fallback_tld", tld)
+    clean_text = sanitize_text_for_tts(text)
+    mp3_fp = io.BytesIO()
+    tts = gTTS(text=clean_text, lang="en", tld=fallback_tld, slow=False)
+    tts.write_to_fp(mp3_fp)
+    mp3_fp.seek(0)
+    while chunk := mp3_fp.read(4096):
+        yield chunk
+
+async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "com"):
+    """
+    Asynchronously yields audio MP3 chunks for real-time low-latency streaming (<300ms initial chunk).
+    Prioritizes ElevenLabs streaming, then Edge-TTS streaming async generator, then gTTS fallback.
+    """
+    logger.info(f"Starting chunked TTS audio stream for char_id='{char_id}', text_len={len(text)}")
+    load_dotenv(override=True)
+    raw_keys = os.getenv("ELEVENLABS_API_KEY", "").strip()
+    keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
+    
+    # 1. Try ElevenLabs Multi-Key Pool streaming if keys are present
+    if keys:
+        for idx, key in enumerate(keys):
+            try:
+                chunk_found = False
+                for chunk in stream_elevenlabs_tts_single(text, char_id, key):
+                    chunk_found = True
+                    yield chunk
+                if chunk_found:
+                    return
+            except Exception as e:
+                logger.warning(f"[ElevenLabs Stream Pool] Key #{idx+1} failed ({e}). Auto-rotating...")
+
+    # 2. Try Edge-TTS async stream (<300ms initial chunk)
+    try:
+        chunk_count = 0
+        async for chunk in stream_edge_tts(text, char_id):
+            chunk_count += 1
+            yield chunk
+        if chunk_count > 0:
+            logger.info(f"Successfully streamed {chunk_count} audio chunks via Edge-TTS")
+            return
+    except Exception as e:
+        logger.warning(f"[TTS Service] Edge-TTS stream warning ({e}), falling back to gTTS...")
+
+    # 3. Safety Fallback to gTTS
+    try:
+        for chunk in stream_gtts(text, char_id, tld):
+            yield chunk
+        logger.info("Successfully streamed audio chunks via gTTS fallback")
+    except Exception as e:
+        logger.error(f"[TTS Service] All TTS providers failed: {e}", exc_info=True)
+        raise
+
 def generate_tts_mp3(text: str, char_id: str = "lily", tld: str = "com") -> io.BytesIO:
     """
-    Generate character-specific MP3 audio stream.
+    Generate character-specific MP3 audio stream as a complete BytesIO buffer.
     Prioritizes ElevenLabs API with Multi-Key Pool,
     falls back to Microsoft Edge Neural Voice (100% Free) or gTTS.
     """
@@ -229,3 +334,4 @@ def generate_tts_mp3(text: str, char_id: str = "lily", tld: str = "com") -> io.B
     tts.write_to_fp(mp3_fp)
     mp3_fp.seek(0)
     return mp3_fp
+

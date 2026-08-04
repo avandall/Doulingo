@@ -32,7 +32,7 @@ from app.db import add_custom_scenario, get_translated_word, save_translated_wor
 from app.db import add_custom_scenario, get_custom_scenarios, get_translated_word, save_translated_word, get_all_saved_words
 >>>>>>> 633bd73 (feat(custom-scenarios): add custom scenario export and import endpoints for scenario sharing)
 from app.ai_engine import ai_engine
-from app.tts_service import generate_tts_mp3
+from app.tts_service import generate_tts_mp3, stream_tts_mp3_chunks
 
 app = FastAPI(title="Duolingo Speak - Unlimited AI Roleplays")
 
@@ -450,7 +450,7 @@ def api_translate_word(
     }
 
 @app.get("/api/tts")
-def api_tts(
+async def api_tts(
     text: str = Query(..., description="Text to synthesize"),
     character_id: Optional[str] = Query(None, description="Character ID"),
     char_id: Optional[str] = Query(None, description="Character ID alias"),
@@ -466,6 +466,7 @@ def api_tts(
         }
         return StreamingResponse(mp3_stream, media_type="audio/mpeg", headers=headers)
     except Exception as e:
+        logger.error(f"TTS Generation failed for char_id='{char_id}': {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"TTS Generation failed: {e}")
 
 # Static files
