@@ -20,9 +20,17 @@ import unicodedata
 import requests
 from urllib.parse import quote
 
+import logging
+
+logger = logging.getLogger("duolingo_speak.api")
+
 from app.scenarios import list_scenarios, get_scenario
 from app.characters import list_characters, get_character
+<<<<<<< HEAD
 from app.db import add_custom_scenario, get_translated_word, save_translated_word, get_all_saved_words, get_user_stats, add_user_xp
+=======
+from app.db import add_custom_scenario, get_custom_scenarios, get_translated_word, save_translated_word, get_all_saved_words
+>>>>>>> 633bd73 (feat(custom-scenarios): add custom scenario export and import endpoints for scenario sharing)
 from app.ai_engine import ai_engine
 from app.tts_service import generate_tts_mp3
 
@@ -64,6 +72,9 @@ class CustomScenarioRequest(BaseModel):
     objective: Optional[str] = "Express your thoughts freely."
     suggested_vocabulary: Optional[List[str]] = ["Everyday conversation", "Free chat"]
     mode: Optional[str] = "roleplay"
+
+class ScenarioImportRequest(BaseModel):
+    scenarios: List[CustomScenarioRequest]
 
 class SentenceTranslateRequest(BaseModel):
     text: str
@@ -118,6 +129,56 @@ def api_create_custom_scenario(payload: CustomScenarioRequest):
     }
     saved = add_custom_scenario(sc_data)
     return {"status": "success", "scenario": saved}
+
+@app.get("/api/custom_scenarios/export/{scenario_id}")
+def api_export_custom_scenario(scenario_id: str):
+    """
+    Export custom scenario by ID or 'all' for sharing between learners.
+    """
+    logger.info(f"Exporting scenario: {scenario_id}")
+    if scenario_id == "all":
+        custom_scenarios = get_custom_scenarios()
+        return {"scenarios": custom_scenarios, "count": len(custom_scenarios)}
+
+    scenario = get_scenario(scenario_id)
+    if not scenario:
+        logger.error(f"Scenario not found for export: {scenario_id}")
+        raise HTTPException(status_code=404, detail="Scenario not found")
+    return {"scenario": scenario}
+
+@app.post("/api/custom_scenarios/import")
+def api_import_custom_scenarios(payload: ScenarioImportRequest):
+    """
+    Import custom scenarios from JSON list for sharing between learners.
+    """
+    if not payload.scenarios:
+        raise HTTPException(status_code=400, detail="Scenarios list cannot be empty")
+
+    logger.info(f"Importing {len(payload.scenarios)} custom scenario(s)")
+    imported = []
+    for item in payload.scenarios:
+        if not item.title.strip():
+            continue
+        prefix = "det_custom_" if item.mode == "ielts_exam" else "custom_"
+        sc_id = f"{prefix}{uuid.uuid4().hex[:8]}"
+        sc_data = {
+            "id": sc_id,
+            "title": item.title.strip(),
+            "category": item.category or "Custom Topic",
+            "icon": item.icon or "💬",
+            "color": item.color or "#1CB0F6",
+            "level": item.level or "Beginner",
+            "level_code": item.level_code or "A2",
+            "default_character": item.default_character or "rajesh",
+            "description": item.description or "Imported topic",
+            "objective": item.objective or "Express thoughts freely.",
+            "suggested_vocabulary": item.suggested_vocabulary or ["Imported chat"],
+            "mode": item.mode or "roleplay"
+        }
+        saved = add_custom_scenario(sc_data)
+        imported.append(saved)
+
+    return {"status": "success", "imported_count": len(imported), "scenarios": imported}
 
 @app.get("/api/characters")
 def api_list_characters():

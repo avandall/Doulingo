@@ -54,6 +54,7 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 
 ## Giai Đoạn 5: Hệ Thống Trace Log, Theo Dõi Quota & Cải Tiến Chất Lượng Dịch Thuật (Logging, Quota & Localization Quality)
 
+<<<<<<< HEAD
 - [x] **SPEC-LOG-01 (Trace Log & Key Usage Tracking):** Xây dựng hệ thống ghi log chi tiết (Trace Logging) trong `app/ai_engine.py` và `app/main.py`. Mỗi lần gọi LLM API (Groq, Gemini, OpenAI, Anthropic) cần ghi rõ vào file log (`logs/api_trace.log`) và console: provider nào được gọi, model nào, **API key nào được sử dụng (masked key, ví dụ `gsk_...9aB` hoặc `AIza...x8A9`)**, thời gian phản hồi (latency) và trạng thái HTTP status code.
 - [x] **SPEC-LOG-02 (Quota Checking & Automated Key Rotation):** Xây dựng cơ chế theo dõi quota và xử lý lỗi hạn mức (Rate Limit / Quota Exhaustion).
   - Kiểm tra mã phản hồi (HTTP 429 Too Many Requests, 403, 500 hoặc `Quota exceeded` từ response error message).
@@ -69,3 +70,70 @@ Tài liệu này chứa toàn bộ các yêu cầu kỹ thuật có thể kiểm
 - [x] **SPEC-TRANS-03 (Kiểm thử tự động Trace Log & Dịch Thuật):** Viết script kiểm thử tự động `tests/test_localization_trace.py` để:
   - Xác thực hàm `_professional_vietnamese_localization` dịch thoại tự nhiên, không chứa dấu ngoặc kép thừa hoặc từ ngữ dịch máy thô cứng.
   - Xác thực hệ thống Trace Log hoạt động đúng, ghi log đầy đủ thông tin Masked Key, Status Code và tự động chuyển key khi gặp lỗi giả lập (Mock 429 Quota Exceeded).
+=======
+### Acceptance Criteria
+- [x] **Custom Scenario Endpoint (`/api/custom_scenarios`)**: Create custom user-defined speaking topics with custom objectives and vocabulary (`main.py:L91`).
+- [x] **IELTS / DET Exam Mode Support**: Support specialized exam simulation prefixes (`det_custom_`).
+- [x] **Scenario Sharing & Export**: Allow exporting custom scenarios as JSON files for sharing between learners (`app/main.py:L121`).
+
+---
+---
+
+# [VI] 📋 docs/specs.md — Đặc Tả Kỹ Thuật & Danh Sách Hoàn Thành Trực Quan
+
+Tài liệu này là bản đặc tả tổng thể cho **Duolingo Speak**. Các tính năng được phân chia thành **Đơn Vị Logic (Logical Units)** (*Tip 14*) cùng **Checklist Hoàn Thành Trực Quan** (`[ ]`, `[/]`, `[x]`) (*Tip 13*).
+
+---
+
+## 1. Động Cơ Nhập Vai Hội Thoại AI (`app/ai_engine.py`)
+
+### Tiêu Chí Nghiệm Thu
+- [x] **Duy Trì Hội Thoại LLM**: Sinh phản hồi nhập vai tiếng Anh theo ngữ cảnh dựa trên `scenario_id`, `character_id` và `conversation_history`.
+- [x] **Dịch Tiếng Việt Tự Nhiên**: Cung cấp bản dịch trôi chảy, không mang văn phong máy móc cho các câu trả lời của AI bằng Groq/Gemini LLM (`ai_engine.py:L26`).
+- [x] **Sửa Ngữ Pháp Giữ Nguyên Ý**: Đánh giá câu nói của học viên, sửa lỗi nhẹ nhàng và gợi ý cách nói chuẩn bản ngữ.
+- [x] **Bộ Đổi Góc Độ Kịch Bản Ngẫu Nhiên**: Xóa bỏ rập khuôn bằng cách chọn ngẫu nhiên các hướng hội thoại từ danh sách `SCENARIO_ANGLES` (`ai_engine.py:L27-35`).
+- [x] **Ràng Buộc 20 Cấp Độ CEFR (`LEVEL_CONFIGS`)**: Kiểm soát chặt chẽ số từ từng câu (`sentence_words`, `max_words`) và danh sách ngữ pháp được phép theo từng cấp độ (`ai_engine.py:L47`).
+- [x] **Bộ Lọc Cắt Gọn Ngữ Cảnh Dài**: Tự động tóm tắt hoặc cắt bớt các lượt thoại cũ hơn 15 lần trao đổi để tránh tràn prompt mà không làm mất ngữ cảnh cốt lõi.
+
+---
+
+## 2. Luồng Xử Lý Âm Thanh TTS & STT (`app/tts_service.py`, `static/js/speech.js`)
+
+### Tiêu Chí Nghiệm Thu
+- [x] **Tổng Hợp Giọng Nói Trí Tuệ Nhân Tạo (`edge-tts`)**: Tạo âm thanh truyền cảm sắc nét cho từng nhân vật (`tts_service.py:L27`).
+- [x] **Cơ Chế TTS Dự Phòng**: Tự động chuyển xuống `gTTS` nếu `edge-tts` gặp sự cố hoặc quá thời gian chờ.
+- [x] **Ghi Âm Web Speech API**: Thu âm giọng nói qua microphone trong `static/js/speech.js` kèm hiệu ứng sóng âm sống động.
+- [x] **Tối Ưu Nhận Diện Trên Mobile PWA**: Đảm bảo ghi nhận trọn vẹn câu nói trên iOS Safari và Android PWA mà không bị mất chữ đầu/cuối.
+- [ ] **Truyền Phát Âm Thanh Theo Gói (Streaming Audio)**: Thực hiện chia gói MP3 streaming để bắt đầu phát âm thanh ngay dưới <300ms kể từ khi LLM trả lời.
+
+---
+
+## 3. Giao Diện Duolingo UI/UX & Gamification (`static/index.html`)
+
+### Tiêu Chí Nghiệm Thu
+- [x] **Tích Hợp Design System Duolingo**: Áp dụng mã màu `--duo-primary-green` (`#58CC02`), nút bo góc 3D và bố cục thẻ bo tròn.
+- [x] **Lưới Lựa Chọn Kịch Bản Tương Tác**: Hiển thị danh sách kịch bản với emoji, nhãn danh mục và thẻ cấp độ CEFR rõ ràng.
+- [x] **Lựa Chọn Avatar Nhân Vật**: Cho phép người học tự do đổi bạn đồng hành (Duo, Rajesh, Lily, Oscar, v.v.).
+- [x] **Thanh Tiến Trình Lượt Nói**: Cập nhật thanh tiến độ liên tục trong suốt buổi nhập vai hội thoại.
+- [x] **Modal Sửa Lỗi Tức Thì**: Hiển thị mẹo diễn đạt bản ngữ và điểm ngữ pháp sau mỗi câu nói mà không ngắt quãng người dùng.
+- [ ] **Hiệu Ứng Nhận Thưởng XP & Chúc Mừng Streak**: Tích hợp hoạt ảnh pháo giấy và hộp thoại thưởng XP khi hoàn thành bài tập.
+
+---
+
+## 4. Sổ Từ Vựng 0ms & Từ Điển Vĩnh Viễn (`app/db.py`, `app/main.py`)
+
+### Tiêu Chí Nghiệm Thu
+- [x] **L1 RAM Cache (`TRANSLATION_CACHE`)**: Lưu từ vựng đã dịch trong RAM để tra cứu ngay lập tức 0ms (`main.py:L31-34`).
+- [x] **L2 Từ Điển SQLite**: Lưu trữ vĩnh viễn từ vựng và phiên âm IPA trên cơ sở dữ liệu SQLite cục bộ (`db.py:L25`).
+- [x] **API Sổ Từ Vựng Đã Lưu**: Cung cấp endpoint `/api/saved_words` để lấy, lưu và quản lý từ vựng yêu thích.
+- [ ] **Chế Độ Luyện Tập Flashcard**: Thêm giao diện modal ôn tập từ đã lưu bằng thẻ flashcard tương tác mang phong cách Duolingo.
+
+---
+
+## 5. Tạo Kịch Bản Tùy Chỉnh (`app/db.py`)
+
+### Tiêu Chí Nghiệm Thu
+- [x] **Endpoint Kịch Bản Tùy Chỉnh (`/api/custom_scenarios`)**: Cho phép người dùng tự tạo chủ đề giao tiếp với mục tiêu và từ vựng riêng (`main.py:L91`).
+- [x] **Hỗ Trợ Chế Độ Luyện Thi IELTS / DET**: Hỗ trợ tiếp đầu ngữ mô phỏng đề thi thực tế (`det_custom_`).
+- [x] **Xuất & Chia Sẻ Kịch Bản**: Cho phép xuất kịch bản tùy chỉnh sang file JSON để chia sẻ giữa các học viên (`app/main.py:L121`).
+>>>>>>> 633bd73 (feat(custom-scenarios): add custom scenario export and import endpoints for scenario sharing)

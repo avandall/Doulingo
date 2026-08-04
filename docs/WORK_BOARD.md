@@ -12,6 +12,7 @@ This board tracks task progression across human engineers, coding agents, and sc
 * [x] **Custom Scenario Builder**: `/api/custom_scenarios` endpoint with IELTS exam mode (`app/main.py:L91`).
 * [x] **TTS Neural Voice Audio Pipeline**: Synthesize expressive voices with `edge-tts` and `gTTS` fallback (`app/tts_service.py:L27`).
 * [x] **Multi-Turn Context Truncation Guard**: Rolling-window context truncation and summarization guard for conversations > 15 exchanges (`app/ai_engine.py:L533`).
+* [x] **Scenario Sharing & Export JSON API**: Export custom scenarios for sharing between learners (`app/main.py:L121`).
 
 ---
 
@@ -29,7 +30,6 @@ This board tracks task progression across human engineers, coding agents, and sc
 * [ ] **Streaming Speech Audio Buffering**: Chunked MP3 streaming in `app/tts_service.py` for <300ms audio playback start.
 * [ ] **XP Rewards & Streak Celebration Animation**: Confetti burst and XP reward card popup upon scenario completion in `static/index.html`.
 * [ ] **Vocabulary Flashcard Practice Mode**: Duolingo-style interactive flashcard modal for `/api/saved_words`.
-* [ ] **Scenario Sharing & Export JSON API**: Export custom scenarios for sharing between learners (`app/main.py`).
 
 ---
 
@@ -63,6 +63,7 @@ Bảng này theo dõi tiến độ thực hiện nhiệm vụ giữa kỹ sư, c
 * [x] **Bộ Tạo Kịch Bản Tùy Chỉnh**: Endpoint `/api/custom_scenarios` hỗ trợ chế độ luyện thi IELTS (`app/main.py:L91`).
 * [x] **Luồng Tổng Hợp Giọng Nói TTS**: Sinh giọng nói truyền cảm bằng `edge-tts` có dự phòng gTTS (`app/tts_service.py:L27`).
 * [x] **Bộ Lọc Cắt Gọn Ngữ Cảnh Dài**: Tích hợp tóm tắt cửa sổ trượt trong `app/ai_engine.py` cho hội thoại > 15 lượt (`app/ai_engine.py:L533`).
+* [x] **API Export & Chia Sẻ Kịch Bản JSON**: Xuất kịch bản tùy chỉnh để học viên chia sẻ với nhau (`app/main.py:L121`).
 
 ---
 
@@ -80,7 +81,6 @@ Bảng này theo dõi tiến độ thực hiện nhiệm vụ giữa kỹ sư, c
 * [ ] **Truyền Phát Âm Thanh Theo Gói**: Streaming chia nhỏ MP3 trong `app/tts_service.py` giúp phát thanh dưới <300ms.
 * [ ] **Hiệu Ứng Nhận Thưởng XP & Chúc Mừng Streak**: Pháo giấy và hộp thoại nhận XP khi hoàn thành kịch bản trong `static/index.html`.
 * [ ] **Chế Độ Luyện Tập Flashcard**: Modal flashcard tương tác chuẩn Duolingo cho `/api/saved_words`.
-* [ ] **API Export & Chia Sẻ Kịch Bản JSON**: Xuất kịch bản tùy chỉnh để học viên chia sẻ với nhau (`app/main.py`).
 
 ---
 
