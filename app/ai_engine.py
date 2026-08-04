@@ -606,6 +606,42 @@ Output JSON ONLY:
         """
         return self._professional_vietnamese_localization(english_text)
 
+    def _summarize_or_prune_history(
+        self,
+        history: List[Dict[str, str]],
+        max_exchanges: int = 15
+    ) -> tuple[List[Dict[str, str]], str]:
+        """
+        Multi-Turn Context Truncation Guard:
+        If conversation history exceeds max_exchanges (default 15 exchanges = 30 messages),
+        automatically prune older turns into a condensed summary block to prevent prompt
+        overflow while preserving core conversational context.
+        """
+        max_messages = max_exchanges * 2
+        if not history or len(history) <= max_messages:
+            return history if history else [], ""
+
+        # Retain last 10 messages (5 exchanges) for immediate rolling context
+        recent_window = 10
+        pruned_items = history[:-recent_window]
+        recent_items = history[-recent_window:]
+
+        # Create a structured summary of pruned history turns
+        summary_lines = []
+        for item in pruned_items:
+            role_name = "User" if item.get("role") == "user" else "AI"
+            content = item.get("content", "").strip()
+            if content:
+                short_text = content[:80] + "..." if len(content) > 80 else content
+                summary_lines.append(f"{role_name}: {short_text}")
+
+        concise_summary = " | ".join(summary_lines[-10:])
+        summary_block = (
+            f"[MULTI-TURN CONTEXT SUMMARY - PRUNED {len(pruned_items)} PREVIOUS MESSAGES ({len(pruned_items)//2} TURNS)]:\n"
+            f"{concise_summary}\n"
+        )
+        return recent_items, summary_block
+
     def _build_token_efficient_prompt(
         self,
         scenario: Dict[str, Any],
@@ -615,8 +651,12 @@ Output JSON ONLY:
         turn_count: int,
         level: int
     ) -> str:
-        recent_history = history[-30:] if history else []
+        recent_history, summary_block = self._summarize_or_prune_history(history, max_exchanges=15)
+
         hist_str = ""
+        if summary_block:
+            hist_str += f"{summary_block}\n"
+
         for h in recent_history:
             role = "User" if h.get("role") == "user" else f"{character['name']}"
             hist_str += f"{role}: \"{h.get('content')}\"\n"
