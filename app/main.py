@@ -26,11 +26,15 @@ logger = logging.getLogger("duolingo_speak.api")
 
 from app.scenarios import list_scenarios, get_scenario
 from app.characters import list_characters, get_character
-<<<<<<< HEAD
-from app.db import add_custom_scenario, get_translated_word, save_translated_word, get_all_saved_words, get_user_stats, add_user_xp
-=======
-from app.db import add_custom_scenario, get_custom_scenarios, get_translated_word, save_translated_word, get_all_saved_words
->>>>>>> 633bd73 (feat(custom-scenarios): add custom scenario export and import endpoints for scenario sharing)
+from app.db import (
+    add_custom_scenario,
+    get_custom_scenarios,
+    get_translated_word,
+    save_translated_word,
+    get_all_saved_words,
+    get_user_stats,
+    add_user_xp,
+)
 from app.ai_engine import ai_engine
 from app.tts_service import generate_tts_mp3, stream_tts_mp3_chunks
 
