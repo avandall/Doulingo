@@ -1,71 +1,58 @@
-# 🦉 Duolingo Speak Clone & Autonomous "Ralph Loop" Harness
+# 🦉 Duolingo Speak — AI Roleplay Speaking Practice (Harness Hub)
 
-**Duolingo Speak Clone** là ứng dụng luyện nói tiếng Anh với hội thoại ngữ cảnh dài (Long-Context Roleplay Conversation), mang đậm bản sắc giao diện **Duolingo UI/UX & Gamification DNA**.
-
-Dự án này được tích hợp trọn bộ hệ thống **Harness Engineering (Ralph Loop)** dựa trên triết lý từ video [Harness Engineering: 29 Tips to Build the Systems That Build Software](https://www.youtube.com/watch?v=rraHPF4ZgCw), cho phép AI Agent tự động vận hành qua đêm (Overnight Mode) để hoàn thiện 100% các tính năng.
+**Duolingo Speak** is an AI-powered conversational speaking practice web application built with a **FastAPI** backend and a **Duolingo-inspired UI/UX** frontend. It enables learners to practice continuous, natural, long-context roleplays across 20 CEFR-aligned difficulty levels.
 
 ---
 
-## 🏗️ Hệ Thống Tài Liệu Harness Engineering (`docs/`)
+## 🧭 Harness Engineering Hub (MD-File System)
+This project is governed by **Harness Engineering** principles (*Mirza Asceric — 29 Tips*):
 
-Hệ thống tài liệu là "bộ nhớ" và "dây cương" giúp AI Agent tự động code chính xác theo mô hình **Ralph Loop**:
+| Document | Purpose & Relevant Tips |
+| :--- | :--- |
+| **[`AGENTS.md`](file:///home/avandall1999/Projects/Doulingo_speak/AGENTS.md)** | **Agent Entry Point**: Core directives, session hygiene, and execution boundaries (*Tips 1, 8, 15, 28*). |
+| **[`docs/29_TIPS.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/29_TIPS.md)** | **Harness Cheat Sheet**: All 29 tips in a short, straight, and memorable field note format. |
+| **[`docs/architecture.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/architecture.md)** | **System Architecture & Tech Stack**: Live code mapping, data flow, and 0ms cache design (*Tips 3, 5, 25*). |
+| **[`docs/rules.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/rules.md)** | **Coding & UI/UX Rules**: Duolingo tokens (`#58CC02`), 3D buttons, git standards, and QA (*Tips 1, 7, 10, 25*). |
+| **[`docs/specs.md`]** | **Specs-Driven Development**: Functional requirements with visible checkboxes & logical units (*Tips 12, 13, 14*). |
+| **[`docs/WORK_BOARD.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/WORK_BOARD.md)** | **Kanban Work Board**: Multi-agent task tracking across TODO, IN PROGRESS, REVIEW, DONE (*Tips 26, 27, 29*). |
+| **[`docs/TECH_DEBT.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/TECH_DEBT.md)** | **Tech Debt Ledger**: Non-blocking refactoring, TODOs, and legacy improvements (*Tip 6, 11*). |
+| **[`docs/BLOCKED.md`]** | **The Handbrake**: Dedicated log for unresolvable errors and missing dependencies (*Tip 16, 19*). |
+| **[`docs/RALPH_LOOP.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/RALPH_LOOP.md)** | **Autonomous Loop Manual**: Build-test-fix loop, exit codes, git reset recovery, and logging (*Tips 17–24*). |
+| **[`docs/plan.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/plan.md)** | **Original Vietnamese Plan**: Legacy project roadmap and design DNA reference. |
 
-| Tài liệu | Link file | Mô tả chi tiết |
-| :--- | :--- | :--- |
-| **Kiến trúc hệ thống** | [architecture.md](file:///home/avandall/project/Doulingo_Speak/Doulingo/docs/architecture.md) | Sơ đồ hệ thống, luồng dữ liệu STT -> LLM -> TTS, màu sắc & nút bấm 3D chuẩn Duolingo. |
-| **Quy tắc Agent** | [rules.md](file:///home/avandall/project/Doulingo_Speak/Doulingo/docs/rules.md) | Các nguyên tắc bắt buộc: One Item One Fresh Chat, Don't Describe Code Point To It, Never Compact Chat, Git Reset Recovery. |
-| **Backlog Specs** | [specs.md](file:///home/avandall/project/Doulingo_Speak/Doulingo/docs/specs.md) | Danh sách kiểm thử chi tiết (`- [ ]` -> `- [x]`) cho Frontend, Backend, AI Engine và Gamification. |
-| **System Prompt** | [prompt.md](file:///home/avandall/project/Doulingo_Speak/Doulingo/docs/prompt.md) | System prompt được đưa vào AI CLI ở mỗi lần lặp (Iteration) của Ralph Loop. |
-| **Hướng dẫn qua đêm** | [ralph_loop_guide.md](file:///home/avandall/project/Doulingo_Speak/Doulingo/docs/ralph_loop_guide.md) | Hướng dẫn cấu hình CLI, chạy qua đêm với `tmux`/`nohup` và cơ chế phục hồi tự động. |
+---
+---
+
+# [VI] 🦉 Duolingo Speak — Luyện Nói AI Ngữ Cảnh Dài (Trung Tâm Harness)
+
+**Duolingo Speak** là ứng dụng web luyện nói tiếng Anh tương tác với AI, sử dụng backend **FastAPI** và giao diện người dùng frontend đậm chất **Duolingo UI/UX**. Ứng dụng giúp học viên thực hành liên tục các cuộc hội thoại ngữ cảnh dài theo 20 cấp độ chuẩn CEFR.
 
 ---
 
-## 🚀 Hướng Dẫn Chạy Thử "Ralph Loop" Qua Đêm Thành Công 100%
+## 🧭 Trung Tâm Tài Liệu Harness Engineering (Hệ Thống File MD)
+Dự án được điều phối theo triết lý **Harness Engineering** (*29 Lời Khuyên của Mirza Asceric*):
 
-Bạn có **2 cách** để chạy tự động qua đêm tùy theo môi trường làm việc:
-
-### Cách 1: Chạy trực tiếp trong Antigravity IDE (⭐ Khuyên dùng - Không cần cài CLI, Không cần `tmux`)
-Vì bạn đang sử dụng **Antigravity IDE**, IDE đã tích hợp sẵn AI Agent.
-- **Bước 1:** Vào cài đặt nguồn điện máy tính (Power/Sleep), chọn **Never Sleep** khi cắm sạc.
-- **Bước 2:** Nhập lệnh `/goal` vào khung chat của IDE kèm lời nhắc:
-  ```
-  /goal Hãy thực hiện tuần tự tất cả task chưa hoàn thành (- [ ]) trong docs/specs.md theo đúng triết lý Ralph Loop: đọc docs -> chọn 1 task -> code -> test cú pháp -> cập nhật [x] -> commit. Không dừng lại cho đến khi hoàn thành 100% tất cả checkbox trong docs/specs.md!
-  ```
-- **Bước 3:** Để máy tự chạy qua đêm. IDE sẽ liên tục lặp lại chu trình cho đến sáng.
-
-### Cách 2: Chạy bằng Bash Script [ralph_loop.sh](file:///home/avandall/project/Doulingo_Speak/Doulingo/ralph_loop.sh) trong Terminal Linux (Cần CLI + `tmux`/`nohup`)
-Dành cho trường hợp chạy trên VPS hoặc không muốn mở giao diện IDE:
-1. **Cài đặt AI CLI (Ví dụ Aider):**
-   ```bash
-   uv tool install --force --python 3.12 aider-chat
-   ```
-2. **Chạy qua đêm trong `tmux`:**
-   ```bash
-   # Cài tmux (trên Ubuntu/Debian)
-   sudo apt-get install -y tmux
-
-   # Tạo phiên làm việc và chạy script
-   tmux new -s ralph
-   chmod +x ralph_loop.sh
-   ./ralph_loop.sh
-
-   # Bấm Ctrl+B rồi bấm D để thoát tmux (script tiếp tục chạy qua đêm)
-   ```
-
-### 3. Cơ Chế Bảo Vệ 100% An Toàn Của Script
-- **Tự động dừng khi hoàn tất:** Khi không còn checkbox `- [ ]` nào trong [specs.md](file:///home/avandall/project/Doulingo_Speak/Doulingo/docs/specs.md), script thông báo thành công và dừng.
-- **Tự động phục hồi lỗi (Tip 18):** Sau mỗi lượt, script chạy `python -m py_compile main.py app/*.py`. Nếu xuất hiện lỗi cú pháp, script lập tức gọi `git reset --hard` để khôi phục commit ổn định gần nhất.
-- **Lưu ký chi tiết (Overnight Logs):** Toàn bộ nhật ký từng lượt chạy được lưu tại `logs/ralph_loop_<timestamp>/iteration_<N>.log`.
+| Tài Liệu | Mục Đích & Lời Khuyên Liên Quan |
+| :--- | :--- |
+| **[`AGENTS.md`](file:///home/avandall1999/Projects/Doulingo_speak/AGENTS.md)** | **Điểm Vào Cho Agent**: Quy tắc cốt lõi, vệ sinh phiên làm việc và giới hạn thực thi (*Tips 1, 8, 15, 28*). |
+| **[`docs/29_TIPS.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/29_TIPS.md)** | **Cẩm Nang 29 Tips**: Tóm tắt 29 lời khuyên ngắn gọn, súc tích và dễ nhớ. |
+| **[`docs/architecture.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/architecture.md)** | **Kiến Trúc & Code Tham Chiếu**: Sơ đồ luồng dữ liệu, ánh xạ code thực tế và cache 0ms (*Tips 3, 5, 25*). |
+| **[`docs/rules.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/rules.md)** | **Quy Chuẩn Code & UI/UX**: Màu xanh Duolingo (`#58CC02`), nút bo 3D, git commit và kiểm tra chất lượng (*Tips 1, 7, 10, 25*). |
+| **[`docs/specs.md`]** | **Đặc Tả Kỹ Thuật**: Yêu cầu tính năng kèm checklist rõ ràng (`[ ]`, `[x]`) theo đơn vị logic (*Tips 12, 13, 14*). |
+| **[`docs/WORK_BOARD.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/WORK_BOARD.md)** | **Bảng Việc Kanban**: Theo dõi tiến độ đa agent theo TODO, IN PROGRESS, REVIEW, DONE (*Tips 26, 27, 29*). |
+| **[`docs/TECH_DEBT.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/TECH_DEBT.md)** | **Sổ Theo Dõi Nợ Kỹ Thuật**: Ghi nhận việc tái cấu trúc, TODO và cải tiến hệ thống cũ (*Tip 6, 11*). |
+| **[`docs/BLOCKED.md`]** | **Phanh Khẩn Cấp (Handbrake)**: Nhật ký ghi nhận lỗi không thể giải quyết và phụ thuộc còn thiếu (*Tip 16, 19*). |
+| **[`docs/RALPH_LOOP.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/RALPH_LOOP.md)** | **Cẩm Nang Vòng Lặp Tự Động (Ralph Loop)**: Luồng build-test-fix tự động, mã thoát, `git reset` và log (*Tips 17–24*). |
+| **[`docs/plan.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/plan.md)** | **Kế Hoạch Gốc Tiếng Việt**: Tài liệu thiết kế ban đầu và hướng dẫn phong cách UI/UX của dự án. |
 
 ---
 
-## 💻 Chạy Ứng Dụng Cục Bộ (Local Development)
+## ⚡ Khởi Động Nhanh (Quick Start)
 
 ```bash
-# Cài đặt phụ thuộc với uv
-uv sync
+# 1. Kích hoạt môi trường ảo & cài đặt thư viện
+uv venv .venv && source .venv/bin/activate && uv pip install -r requirements.txt
 
-# Khởi chạy server FastAPI
-uv run uvicorn app.main:app --reload --port 8000
+# 2. Khởi chạy máy chủ phát triển cục bộ
+npm run dev # hoặc: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
-Truy cập ứng dụng tại: `http://localhost:8000`

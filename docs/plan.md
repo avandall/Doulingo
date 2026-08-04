@@ -1,5 +1,12 @@
 # 🦉 Kế Hoạch Triển Khai Ứng Dụng Luyện Nói Ngữ Cảnh Dài (Duolingo Speak Clone)
 
+> [!NOTE]
+> **Harness Engineering Documentation Hub**: This is the original Vietnamese project plan and design DNA reference. For active development, specifications, and AI agent execution rules, please refer to:
+> - Root Hub: [`README.md`](file:///home/avandall1999/Projects/Doulingo_speak/README.md) & [`AGENTS.md`](file:///home/avandall1999/Projects/Doulingo_speak/AGENTS.md)
+> - Architecture & Live Code: [`docs/architecture.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/architecture.md) | Coding Rules: [`docs/rules.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/rules.md)
+> - Specs & Work Board: [`docs/specs.md`] | [`docs/WORK_BOARD.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/WORK_BOARD.md)
+> - Tech Debt & Handbrake: [`docs/TECH_DEBT.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/TECH_DEBT.md) | [`docs/BLOCKED.md`] | [`docs/RALPH_LOOP.md`](file:///home/avandall1999/Projects/Doulingo_speak/docs/RALPH_LOOP.md)
+
 ## 1. Tổng Quan Dự Án (Project Overview)
 Ứng dụng **Duolingo Speak** là giải pháp luyện nói chuyên sâu, kết hợp phong cách thiết kế UI/UX & Gamification đặc trưng của Duolingo với công nghệ AI thoại hội thoại ngữ cảnh dài (Long-Context Roleplay Conversation). 
 

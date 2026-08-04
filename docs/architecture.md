@@ -1,105 +1,142 @@
-# 🏗️ Kiến Trúc Hệ Thống (Architecture Documentation) - Duolingo Speak Clone
+# 🏛️ docs/architecture.md — System Architecture & Live Code Mapping
 
-Tài liệu này xác định kiến trúc kỹ thuật, cấu trúc module và luồng dữ liệu cho **Duolingo Speak** (ứng dụng luyện nói hội thoại ngữ cảnh dài - Long-Context Roleplay Conversation với giao diện chuẩn Duolingo).
-
-> **Nguyên tắc Harness Engineering (Tip 4 & 5 - Don't describe code, point to it):**
-> Các agent tự động (Ralph Loop) khi thực hiện code cần làm theo đúng các module, đường dẫn file và cấu trúc dữ liệu được quy định tại đây, không tự ý sáng tạo kiến trúc mới.
+This document describes the technical architecture, data flow, API contracts, and live code references for **Duolingo Speak**. All documentation points directly to active source files (*Tip 3: Point Docs at Live Code*).
 
 ---
 
-## 1. Cấu Trúc Thư Mục & Vai Trò Các Module
+## 1. High-Level System Architecture
 
+```mermaid
+graph TD
+    subgraph Frontend [Web App UI - Duolingo Aesthetic]
+        UI[static/index.html] --> JS[static/js/speech.js]
+        JS --> CSS[static/css/]
+        JS --> STT_API[Web Speech API / Audio Recorder]
+    end
+
+    subgraph Backend [FastAPI Backend - Python 3.14+]
+        API[app/main.py] --> SCENARIOS[app/scenarios.py]
+        API --> CHARS[app/characters.py]
+        API --> DB[app/db.py]
+        API --> AI[app/ai_engine.py]
+        API --> TTS[app/tts_service.py]
+    end
+
+    subgraph Storage & Caching
+        DB --> SQLITE[(SQLite Permanent Dict & Saved Words)]
+        API --> RAM_CACHE[In-Memory 0ms Word Lookup Cache]
+    end
+
+    STT_API -->|POST /api/turn| API
+    AI -->|OpenAI / Gemini / Groq LLM| API
+    TTS -->|Edge-TTS / gTTS Audio MP3| JS
 ```
-/home/avandall/project/Doulingo_Speak/Doulingo/
-├── app/                      # Backend FastAPI Application
-│   ├── main.py               # API Router, endpoints (/api/chat, /api/tts, /api/scenarios...) & static serving
-│   ├── ai_engine.py          # LLM Roleplay Engine (OpenAI / Gemini / Mock fallback) & Speech Evaluator
-│   ├── scenarios.py          # Dữ liệu kịch bản hội thoại dài (Scenarios catalogue)
-│   ├── characters.py         # Danh sách nhân vật Duolingo (Duo, Lily, Oscar...) & system prompt cá tính
-│   ├── tts_service.py        # Dịch vụ Text-to-Speech (Edge-TTS / gTTS / Web Audio fallback)
-│   └── db.py                 # SQLite/Memory database lưu tiến độ, XP, Streak của người học
-├── static/                   # Frontend Web UI (Vanilla JS + CSS chuẩn Duolingo DNA)
-│   ├── index.html            # Single Page Application (SPA) layout
-│   ├── css/                  # Styling chuẩn Duolingo (Colors, 3D Feather buttons, Animations)
-│   ├── js/                   # UI logic, Web Speech API (STT), Audio Waveform visualizer, API calls
-│   └── *.mp3                 # Mẫu giọng nói nhân vật
-├── docs/                     # Harness Engineering Documentation (Ralph Loop harness)
-│   ├── architecture.md       # (File này) Kiến trúc hệ thống
-│   ├── rules.md              # Quy tắc kỹ thuật & chuẩn coding cho Agent
-│   ├── specs.md              # Backlog chi tiết các task kiểm thử được (Checklist [ ] -> [x])
-│   ├── prompt.md             # System prompt cho từng lặp lại của Ralph Loop
-│   └── ralph_loop_guide.md   # Hướng dẫn thực hành chạy Ralph Loop qua đêm
-├── main.py                   # Root entry point cho Uvicorn / Render deploy
-└── pyproject.toml / uv.lock  # Quản lý phụ thuộc bằng UV
+
+---
+
+## 2. Codebase Mapping & Module Boundaries (*Tip 3*)
+
+| Component | Source File | Core Responsibilities & Live Functions |
+| :--- | :--- | :--- |
+| **API Entrypoint & Routes** | [`app/main.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/main.py) | • Manages FastAPI app initialization and route definitions (`/api/scenarios`, `/api/custom_scenarios`, `/api/turn`, `/api/tts`, `/api/saved_words`).<br>• Hosts `TRANSLATION_CACHE` and `IPA_CACHE` dictionaries for 0ms in-memory lookup (`app/main.py:L31-34`). |
+| **AI Roleplay & Eval Engine** | [`app/ai_engine.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/ai_engine.py) | • Manages `LEVEL_CONFIGS` (20 CEFR difficulty levels from Pre-A1 to C2 mastery, `app/ai_engine.py:L47`).<br>• Dynamic Scenario Angle Randomizer (`SCENARIO_ANGLES`, `app/ai_engine.py:L27-35`).<br>• LLM conversational response generation, Vietnamese translations, and pronunciation/grammar evaluation. |
+| **Scenarios Catalog** | [`app/scenarios.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/scenarios.py) | • Defines preset roleplay scenarios (`list_scenarios`, `get_scenario`).<br>• Categorizes situations (Coffee Shop, Hotel Checkout, Job Interview, IELTS Exam practice). |
+| **Characters Catalog** | [`app/characters.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/characters.py) | • Defines AI conversational personas (`list_characters`, `get_character`), their personality traits, default CEFR tone, and TTS voice ID mapping. |
+| **TTS Audio Generator** | [`app/tts_service.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/tts_service.py) | • Generates neural speech audio (`generate_tts_mp3`) using `edge-tts` with fallback to `gTTS`.<br>• Outputs streaming MP3 audio to frontend. |
+| **Database & Permanent Store** | [`app/db.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/db.py) | • Manages local SQLite storage for user custom scenarios (`add_custom_scenario`), saved vocabulary book (`save_translated_word`, `get_all_saved_words`), and dictionary lookups. |
+| **Frontend PWA & Speech** | [`static/js/speech.js`](file:///home/avandall1999/Projects/Doulingo_speak/static/js/speech.js) | • Controls microphone input, Web Speech API speech-to-text recognition, UI state transitions, and audio playback. |
+| **Frontend Shell & Styles** | [`static/index.html`](file:///home/avandall1999/Projects/Doulingo_speak/static/index.html) | • Single Page Application (SPA) layout incorporating Duolingo tokens (`#58CC02`), feather buttons, and responsive modals. |
+
+---
+
+## 3. Key Subsystem Specifications (*Tip 5: Feed Outside Knowledge*)
+
+### 3.1 20-Level CEFR Difficulty System (`app/ai_engine.py`)
+The system enforces strict constraints per level (Levels 1 to 20):
+* **Word Count Constraints (`sentence_words`, `max_words`)**: Prevents LLM verbosity at beginner levels.
+* **Grammar Whitelist (`grammar_allowed`)**: Limits tense usage (e.g., Present Simple only in Pre-A1; Subjunctive/Conditionals in C1-C2).
+* **Vocabulary Tier (`vocab_tier`)**: Dynamically injects complexity instructions into LLM system prompts.
+
+### 3.2 Instant 0ms Word Lookup & Cache Architecture
+* **L1 Cache (In-Memory)**: Python dictionaries `TRANSLATION_CACHE` and `IPA_CACHE` in [`app/main.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/main.py) provide sub-millisecond lookup for previously translated words.
+* **L2 Cache (SQLite Storage)**: Permanent dictionary database managed by [`app/db.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/db.py) (`get_translated_word`).
+* **L3 Provider (LLM Engine)**: If a word is not cached in L1 or L2, [`app/ai_engine.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/ai_engine.py) queries the LLM for context-aware Vietnamese translation and IPA transcription, then updates L1 and L2.
+
+### 3.3 Audio Pipeline (STT -> LLM -> TTS)
+1. **Speech Recognition**: User audio is recorded via browser Web Speech API or microphone stream in [`static/js/speech.js`](file:///home/avandall1999/Projects/Doulingo_speak/static/js/speech.js).
+2. **API Turn Submission**: Transcript is sent to `POST /api/turn` with `scenario_id`, `character_id`, `user_transcript`, `conversation_history`, and `level`.
+3. **Response Generation**: FastAPI invokes `ai_engine` for roleplay continuation and translation.
+4. **TTS Speech Synthesis**: Audio MP3 generated via `edge-tts` in [`app/tts_service.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/tts_service.py) is returned and auto-played in the browser.
+
+---
+---
+
+# [VI] 🏛️ docs/architecture.md — Kiến Trúc Hệ Thống & Ánh Xạ Code Thực Tế
+
+Tài liệu này mô tả kiến trúc kỹ thuật, luồng dữ liệu, hợp đồng API và các tham chiếu code thực tế của **Duolingo Speak**. Toàn bộ tài liệu trỏ trực tiếp đến các tập tin nguồn đang hoạt động (*Tip 3: Point Docs at Live Code*).
+
+---
+
+## 1. Kiến Trúc Hệ Thống Tổng Quan
+
+```mermaid
+graph TD
+    subgraph Frontend [Web App UI - Giao Diện Duolingo]
+        UI[static/index.html] --> JS[static/js/speech.js]
+        JS --> CSS[static/css/]
+        JS --> STT_API[Web Speech API / Audio Recorder]
+    end
+
+    subgraph Backend [FastAPI Backend - Python 3.14+]
+        API[app/main.py] --> SCENARIOS[app/scenarios.py]
+        API --> CHARS[app/characters.py]
+        API --> DB[app/db.py]
+        API --> AI[app/ai_engine.py]
+        API --> TTS[app/tts_service.py]
+    end
+
+    subgraph Storage & Caching
+        DB --> SQLITE[(SQLite Từ Điển & Từ Vựng Đã Lưu)]
+        API --> RAM_CACHE[RAM Cache Tra Cứu Từ 0ms]
+    end
+
+    STT_API -->|POST /api/turn| API
+    AI -->|OpenAI / Gemini / Groq LLM| API
+    TTS -->|Edge-TTS / gTTS Audio MP3| JS
 ```
 
 ---
 
-## 2. Luồng Xử Lý Chính (Core Data Flow)
+## 2. Ánh Xạ Codebase & Ranh Giới Mô-đun (*Tip 3*)
 
-### 2.1 Luồng Hội Thoại Ngữ Cảnh Dài (Long-Context Roleplay Flow)
-1. **Nhận giọng nói (Voice Input):**
-   - Người dùng nhấn nút Micro trên giao diện (`static/js/`).
-   - Sóng âm (Audio Waveform) hiển thị thời gian thực theo giọng nói.
-   - Frontend sử dụng **Web Speech API / Whisper STT** chuyển âm thanh thành văn bản (Speech-to-Text).
-2. **Xử lý Ngôn ngữ Tự nhiên (LLM Engine):**
-   - Văn bản STT gửi lên endpoint `/api/chat` tại `app/main.py`.
-   - `app/ai_engine.py` nạp lịch sử hội thoại của tình huống (Scenario History), áp dụng System Prompt theo nhân vật (`app/characters.py`).
-   - LLM sinh phản hồi ngữ cảnh (Next Response) + Đánh giá độ trôi chảy & gợi ý cách diễn đạt tự nhiên hơn (Native Phrasing Feedback).
-3. **Phát âm AI (TTS Output):**
-   - Văn bản phản hồi từ LLM được gửi tới `app/tts_service.py` (sử dụng `edge-tts` hoặc `gTTS`).
-   - Trả về luồng âm thanh/base64 mp3 cho frontend phát ngữ điệu tự nhiên.
-4. **Cập nhật Tiến độ & Gamification:**
-   - Cập nhật số lượt thoại thành công, cộng XP và cập nhật Progress Bar trong `app/db.py`.
+| Thành Phần | Tập Tin Nguồn | Trách Nhiệm Cốt Lõi & Hàm Thực Tế |
+| :--- | :--- | :--- |
+| **API Entrypoint & Routes** | [`app/main.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/main.py) | • Quản lý khởi tạo ứng dụng FastAPI và định nghĩa các route (`/api/scenarios`, `/api/custom_scenarios`, `/api/turn`, `/api/tts`, `/api/saved_words`).<br>• Lưu trữ dictionary `TRANSLATION_CACHE` và `IPA_CACHE` để tra cứu nhanh 0ms trong bộ nhớ (`app/main.py:L31-34`). |
+| **AI Roleplay & Eval Engine** | [`app/ai_engine.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/ai_engine.py) | • Quản lý `LEVEL_CONFIGS` (20 cấp độ khó CEFR từ Pre-A1 đến thành thạo C2, `app/ai_engine.py:L47`).<br>• Bộ ngẫu nhiên hóa góc độ kịch bản (`SCENARIO_ANGLES`, `app/ai_engine.py:L27-35`).<br>• Tạo phản hồi hội thoại bằng LLM, dịch thuật tiếng Việt tự nhiên và đánh giá ngữ pháp/phát âm. |
+| **Danh Mục Kịch Bản** | [`app/scenarios.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/scenarios.py) | • Định nghĩa danh sách kịch bản nhập vai sẵn có (`list_scenarios`, `get_scenario`).<br>• Phân loại tình huống (Quán Cà phê, Trả phòng Khách sạn, Phỏng vấn Xin việc, luyện thi IELTS). |
+| **Danh Mục Nhân Vật** | [`app/characters.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/characters.py) | • Định nghĩa tính cách nhân vật AI (`list_characters`, `get_character`), giọng điệu CEFR mặc định và ID giọng nói TTS. |
+| **Bộ Tạo Âm Thanh TTS** | [`app/tts_service.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/tts_service.py) | • Tạo âm thanh giọng nói truyền cảm (`generate_tts_mp3`) bằng `edge-tts` với cơ chế tự động chuyển sang `gTTS` khi cần.<br>• Xuất âm thanh MP3 trực tiếp về frontend. |
+| **Cơ Sở Dữ Liệu & Lưu Trữ** | [`app/db.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/db.py) | • Quản lý CSDL SQLite cục bộ cho các kịch bản tùy chỉnh của người dùng (`add_custom_scenario`), sổ từ vựng (`save_translated_word`, `get_all_saved_words`) và tra cứu từ điển. |
+| **Frontend PWA & Speech** | [`static/js/speech.js`](file:///home/avandall1999/Projects/Doulingo_speak/static/js/speech.js) | • Điều khiển microphone, chuyển đổi giọng nói thành văn bản bằng Web Speech API, quản lý trạng thái UI và phát âm thanh. |
+| **Giao Diện Frontend & CSS** | [`static/index.html`](file:///home/avandall1999/Projects/Doulingo_speak/static/index.html) | • Bố cục Single Page Application (SPA) tích hợp các token Duolingo (`#58CC02`), nút bo góc 3D và các modal tương tác. |
 
 ---
 
-## 3. Duolingo Design Tokens & UI Component System
+## 3. Đặc Tả Các Hệ Thống Phụ (*Tip 5: Feed Outside Knowledge*)
 
-Hệ thống UI frontend (`static/`) bắt buộc áp dụng **Duolingo Design DNA**:
-* **Bảng Màu Chính (Palette Tokens):**
-  * `--duo-green-primary: #58CC02` (Màu xanh nhận diện thương hiệu)
-  * `--duo-green-shadow: #46A302` (Màu đổ bóng nút 3D)
-  * `--duo-blue-accent: #1CB0F6` (Màu xanh dương điểm nhấn / Gợi ý ngữ pháp)
-  * `--duo-yellow-xp: #FFC800` (Màu vàng thưởng XP / Streak)
-  * `--duo-coral-error: #FF4B4B` (Màu cảnh báo lỗi)
-  * `--duo-bg-light: #F7F7F7` (Nền sáng) / `--duo-bg-dark: #131F24` (Nền tối)
-* **3D Feather Buttons (Nút bấm 3D):**
-  - Sử dụng bo góc `border-radius: 16px`, viền dưới `border-bottom: 4px solid var(--duo-green-shadow)`.
-  - Khi `active/click`, nút chuyển dịch xuống 2px và giảm độ dày viền đáy (`border-bottom: 2px`).
-* **Phản Hồi Trực Quan (Instant Feedback Cards):**
-  - Modal feedback xuất hiện bên dưới sau mỗi lượt nói: màu xanh lá (nói tốt) hoặc xanh dương (gợi ý cách nói hay hơn của người bản xứ).
+### 3.1 Hệ Thống 20 Cấp Độ Khó CEFR (`app/ai_engine.py`)
+Hệ thống thực thi các ràng buộc nghiêm ngặt theo từng cấp độ (từ Cấp 1 đến 20):
+* **Giới Hạn Số Từ (`sentence_words`, `max_words`)**: Ngăn chặn LLM nói quá dài ở các cấp độ cơ bản.
+* **Danh Sách Ngữ Pháp Được Phép (`grammar_allowed`)**: Giới hạn thì ngữ pháp sử dụng (ví dụ: chỉ dùng Thì Hiện Tại Đơn ở Pre-A1; Câu Điều Kiện/Giả Định ở C1-C2).
+* **Cấp Độ Từ Vựng (`vocab_tier`)**: Đưa các hướng dẫn độ khó từ vựng vào hệ thống prompt của LLM một cách động.
 
----
+### 3.2 Kiến Trúc Tra Cứu Từ 0ms & Bộ Nhớ Cache
+* **L1 Cache (RAM Bộ Nhớ)**: Python dictionary `TRANSLATION_CACHE` và `IPA_CACHE` trong [`app/main.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/main.py) cung cấp tốc độ tra cứu dưới 1 mili-giây cho các từ đã từng dịch.
+* **L2 Cache (CSDL SQLite)**: Cơ sở dữ liệu từ điển vĩnh viễn được quản lý bởi [`app/db.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/db.py) (`get_translated_word`).
+* **L3 Provider (LLM Engine)**: Nếu từ chưa có trong L1 hoặc L2, [`app/ai_engine.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/ai_engine.py) sẽ gọi LLM để dịch theo ngữ cảnh và tạo phiên âm IPA, sau đó tự động cập nhật L1 và L2.
 
-## 4. Hướng Dẫn Tích Hợp Kỹ Thuật Cho Agent
-
-- **Tham chiếu Backend Endpoints:** Luôn kiểm tra và giữ tương thích API spec trong `app/main.py`.
-- **Quản lý Dependencies:** Chỉ sử dụng `uv` để cài đặt thư viện (`uv pip install ...` hoặc khai báo trong `pyproject.toml`).
-- **Xử lý ngoại lệ AI API:** Luôn duy trì cơ chế Mock Fallback trong `app/ai_engine.py` và `app/tts_service.py` để hệ thống vẫn chạy mượt mà ngay cả khi không có API Key của OpenAI/Gemini/Edge-TTS.
-
----
-
-## 5. Kiến Trúc Trace Log, Theo Dõi Quota & Dịch Thuật Văn Nói (Logging, Quota & Localization DNA)
-
-### 5.1 Hệ Thống Trace Log & Quota Key Rotation (`app/ai_engine.py` & `app/main.py`)
-- **Mục tiêu:** Giám sát thời gian thực các cuộc gọi tới AI Provider (Groq, Gemini, OpenAI, Anthropic), nhận diện API Key nào đang được gọi và kiểm soát hạn mức (Quota/Rate limit).
-- **Cơ chế hoạt động:**
-  1. **Masked Key Logging:** Trước mỗi request, ghi log đầy đủ thông tin vào file `logs/api_trace.log`:
-     `[TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...9aB | Status=PENDING`
-  2. **Quota Checking & Automated Failover:**
-     - Kiểm tra HTTP Status Code (`200`, `429 Too Many Requests`, `403 Forbidden`, `500...`) và Error Message (`Quota exceeded`, `Rate limit reached`).
-     - Khi phát hiện Key hết quota hoặc bị lỗi 429, tự động log:
-       `[WARN] Key=gsk_...9aB quota exhausted (HTTP 429). Rotating to next available key...`
-     - Tự động chuyển đổi sang API Key tiếp theo trong danh sách (`self.groq_keys`, `self.gemini_keys`) mà không làm ngắt quãng trải nghiệm người dùng.
-  3. **Health & Quota Endpoint:** Cung cấp API `/api/trace` hoặc `/api/health/quota` để tra cứu nhanh danh sách key, trạng thái hoạt động và lịch sử lỗi.
-
-### 5.2 Phân Tích & Nâng Cấp Chất Lượng Dịch Thuật (`_professional_vietnamese_localization`)
-- **Nguyên nhân gốc rễ lỗi dịch sát nghĩa (Root Cause Analysis):**
-  - Hàm `_professional_vietnamese_localization` hiện đang đặt `temperature = 0.15`. Nhiệt độ quá thấp làm suy giảm khả năng diễn đạt linh hoạt, khiến LLM dịch thô cứng theo từng từ (word-for-word).
-  - Prompt thiếu chỉ dẫn về hệ thống đại từ xưng hô trong tiếng Việt và các từ đệm cảm xúc văn nói.
-- **Chuẩn Dịch Thuật Văn Nói Tự Nhiên (Spoken Vietnamese Localization Standard):**
-  1. **Nhiệt độ tối ưu:** Nâng `temperature` lên `0.35 - 0.40` để câu văn mềm mại, đậm chất hội thoại.
-  2. **Xưng hô nhân vật (Roleplay Pronouns):** Luôn xác định mối quan hệ để dùng *em - anh, tớ - cậu, mình - bạn*, tuyệt đối không dịch rập khuôn *tôi - bạn* ở mọi tình huống.
-  3. **Từ đệm văn nói (Vietnamese Particles):** Tự nhiên hóa câu thoại bằng các từ đệm *nhé, nha, đấy, đi, cơ mà, chứ, nè, vậy*.
-  4. **Few-Shot Contrast Prompting:** Nhúng trực tiếp các cặp ví dụ so sánh (Dở - dịch từng từ vs. Hay - dịch văn nói) vào system prompt.
+### 3.3 Luồng Xử Lý Âm Thanh (STT -> LLM -> TTS)
+1. **Nhận Diện Giọng Nói**: Giọng nói của người dùng được ghi âm qua Web Speech API trên trình duyệt trong [`static/js/speech.js`](file:///home/avandall1999/Projects/Doulingo_speak/static/js/speech.js).
+2. **Gửi Lượt Hội Thoại**: Văn bản nhận diện được gửi qua `POST /api/turn` với `scenario_id`, `character_id`, `user_transcript`, `conversation_history` và `level`.
+3. **Tạo Phản Hồi**: FastAPI gọi `ai_engine` để sinh câu trả lời nhập vai và bản dịch tiếng Việt.
+4. **Tổng Hợp Giọng Nói TTS**: Âm thanh MP3 được tạo qua `edge-tts` trong [`app/tts_service.py`](file:///home/avandall1999/Projects/Doulingo_speak/app/tts_service.py) và tự động phát trên trình duyệt.
