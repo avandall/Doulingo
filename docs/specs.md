@@ -35,7 +35,7 @@ This document is the master specification for **Duolingo Speak**. It breaks all 
 - [x] **Character Avatar Selection**: Allow users to switch between conversational partners (Duo, Rajesh, Lily, Oscar, etc.).
 - [x] **Speaking Turn Progress Bar**: Show completion progress across a multi-turn roleplay session.
 - [x] **Instant Corrections Modal**: Display native phrasing suggestions and grammar scores after each turn without interrupting speech.
-- [/] **XP Rewards & Streak Celebration Animation**: Implement animated XP popup and confetti burst upon scenario completion.
+- [x] **XP Rewards & Streak Celebration Animation**: Implement animated XP popup and confetti burst upon scenario completion.
 
 ---
 
@@ -45,7 +45,7 @@ This document is the master specification for **Duolingo Speak**. It breaks all 
 - [x] **L1 In-Memory Cache (`TRANSLATION_CACHE`)**: Store translated words in RAM for instant 0ms lookup (`main.py:L31-34`).
 - [x] **L2 SQLite Word Dictionary**: Persist vocabulary entries and IPA transcriptions to local SQLite storage (`db.py:L25`).
 - [x] **Saved Vocabulary Book API**: Provide `/api/saved_words` endpoint to retrieve, save, and manage bookmarked words.
-- [ ] **Vocabulary Flashcard Practice Mode**: Add UI modal to review bookmarked words using interactive Duolingo-style flashcards.
+- [x] **Vocabulary Flashcard Practice Mode**: Add UI modal to review bookmarked words using interactive Duolingo-style flashcards.
 
 ---
 
@@ -96,7 +96,7 @@ Tài liệu này là bản đặc tả tổng thể cho **Duolingo Speak**. Các
 - [x] **Lựa Chọn Avatar Nhân Vật**: Cho phép người học tự do đổi bạn đồng hành (Duo, Rajesh, Lily, Oscar, v.v.).
 - [x] **Thanh Tiến Trình Lượt Nói**: Cập nhật thanh tiến độ liên tục trong suốt buổi nhập vai hội thoại.
 - [x] **Modal Sửa Lỗi Tức Thì**: Hiển thị mẹo diễn đạt bản ngữ và điểm ngữ pháp sau mỗi câu nói mà không ngắt quãng người dùng.
-- [ ] **Hiệu Ứng Nhận Thưởng XP & Chúc Mừng Streak**: Tích hợp hoạt ảnh pháo giấy và hộp thoại thưởng XP khi hoàn thành bài tập.
+- [x] **Hiệu Ứng Nhận Thưởng XP & Chúc Mừng Streak**: Tích hợp hoạt ảnh pháo giấy và hộp thoại thưởng XP khi hoàn thành bài tập.
 
 ---
 
@@ -106,7 +106,7 @@ Tài liệu này là bản đặc tả tổng thể cho **Duolingo Speak**. Các
 - [x] **L1 RAM Cache (`TRANSLATION_CACHE`)**: Lưu từ vựng đã dịch trong RAM để tra cứu ngay lập tức 0ms (`main.py:L31-34`).
 - [x] **L2 Từ Điển SQLite**: Lưu trữ vĩnh viễn từ vựng và phiên âm IPA trên cơ sở dữ liệu SQLite cục bộ (`db.py:L25`).
 - [x] **API Sổ Từ Vựng Đã Lưu**: Cung cấp endpoint `/api/saved_words` để lấy, lưu và quản lý từ vựng yêu thích.
-- [ ] **Chế Độ Luyện Tập Flashcard**: Thêm giao diện modal ôn tập từ đã lưu bằng thẻ flashcard tương tác mang phong cách Duolingo.
+- [x] **Chế Độ Luyện Tập Flashcard**: Thêm giao diện modal ôn tập từ đã lưu bằng thẻ flashcard tương tác mang phong cách Duolingo.
 
 ---
 
@@ -116,3 +116,8 @@ Tài liệu này là bản đặc tả tổng thể cho **Duolingo Speak**. Các
 - [x] **Endpoint Kịch Bản Tùy Chỉnh (`/api/custom_scenarios`)**: Cho phép người dùng tự tạo chủ đề giao tiếp với mục tiêu và từ vựng riêng (`main.py:L91`).
 - [x] **Hỗ Trợ Chế Độ Luyện Thi IELTS / DET**: Hỗ trợ tiếp đầu ngữ mô phỏng đề thi thực tế (`det_custom_`).
 - [x] **Xuất & Chia Sẻ Kịch Bản**: Cho phép xuất kịch bản tùy chỉnh sang file JSON để chia sẻ giữa các học viên (`app/main.py:L121`).
+
+## 6. Chỉnh sửa chức năng
+- [x] **Trong các phần nói, hãy bỏ giao diện nhập text hẳn ra. Chỉ để lại hình micro để bấm vào nói. Kể cả với phần IELTS EXAM, khi bấm start recording thì xuất hiện 1 micro và 1 hình sóng âm để khi người dùng nói nó sẽ nhảy sóng âm biểu thị đã ghi nhận đoạn nói cho user biết.**
+- [x] **Kiểm tra lại tính năng tự chuyển API key tiếp theo trong list API lấy từ env có hoạt động đúng ko hay 1 API exhausted thì nó ngưng và fallback luôn**
+- [x] **Bạn là 1 kỹ sư từng làm ra app Doulingo, giờ bạn quay lại làm app này, hãy test app bằng MCP chrome devtool, bật giao diện, test như 1 real user xem lỗi gì đang có, AI phản hồi có tốt ko, có đúng level cho real user ko ? Còn lỗi hay violation nào ko, nếu có thì phản biện lại để AI implement sửa và hand-out cho bạn check**

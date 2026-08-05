@@ -58,8 +58,10 @@ class SpeechHandler {
         const fullTranscript = (this.finalTranscript + interimTranscript).trim();
         this.lastRecognizedText = fullTranscript;
         
-        // Authentic Duolingo UX: Do NOT trigger onResult preview while speaking so interim STT errors don't flash on screen and cause frustration!
-        // Only submit when user explicitly stops speaking (onend)
+        // Emit interim results so user sees they are being heard
+        if (this.onResult) {
+          this.onResult(fullTranscript, false);
+        }
       };
 
       this.recognition.onerror = (event) => {
@@ -168,6 +170,33 @@ class SpeechHandler {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
             this.audioStream = stream;
+            
+            // Set up audio visualizer for dynamic waveform
+            try {
+              this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+              this.analyser = this.audioContext.createAnalyser();
+              this.microphone = this.audioContext.createMediaStreamSource(stream);
+              this.microphone.connect(this.analyser);
+              this.analyser.fftSize = 256;
+              const bufferLength = this.analyser.frequencyBinCount;
+              this.dataArray = new Uint8Array(bufferLength);
+              
+              const updateWaveform = () => {
+                if (!this.isListening) return;
+                this.analyser.getByteFrequencyData(this.dataArray);
+                let sum = 0;
+                for (let i = 0; i < bufferLength; i++) {
+                  sum += this.dataArray[i];
+                }
+                const average = sum / bufferLength;
+                if (this.onVolumeChange) this.onVolumeChange(average);
+                requestAnimationFrame(updateWaveform);
+              };
+              updateWaveform();
+            } catch (err) {
+              console.warn("AudioContext setup failed:", err);
+            }
+
             this.mediaRecorder = new MediaRecorder(stream);
             this.mediaRecorder.ondataavailable = e => {
               if (e.data && e.data.size > 0) this.audioChunks.push(e.data);
@@ -254,6 +283,11 @@ class SpeechHandler {
         this.audioStream.getTracks().forEach(t => t.stop());
       } catch(e) {}
       this.audioStream = null;
+    }
+    if (this.audioContext && this.audioContext.state !== 'closed') {
+      try {
+        this.audioContext.close();
+      } catch(e) {}
     }
   }
 }

@@ -75,24 +75,24 @@ Mục tiêu chính: Giúp người học thực hành **nói liên tục, tự n
 ## 5. Kế Hoạch Triển Khai (Implementation Plan)
 
 ### Giai Đoạn 1: Xây Dựng UI/UX chuẩn Duolingo (Design System & Frontend)
-- [ ] Thiết lập HTML/CSS/JS frontend với Duolingo theme tokens (Colors, Typography, 3D Buttons, Card Components).
-- [ ] Tạo màn hình chính chọn Scenarios & màn hình Speaking Interface.
-- [ ] Tích hợp Audio Waveform Visualizer khi người dùng bật Microphone.
+- [x] Thiết lập HTML/CSS/JS frontend với Duolingo theme tokens (Colors, Typography, 3D Buttons, Card Components).
+- [x] Tạo màn hình chính chọn Scenarios & màn hình Speaking Interface.
+- [x] Tích hợp Audio Waveform Visualizer khi người dùng bật Microphone.
 
 ### Giai Đoạn 2: Xây Dựng Backend & Tích Hợp AI Engines
-- [ ] Xây dựng REST API / WebSocket bằng FastAPI (`uv`).
-- [ ] Triển khai STT (Speech-to-Text) ghi nhận giọng nói người dùng.
-- [ ] Triển khai LLM Engine với Memory Management (Lưu giữ lịch sử hội thoại dài).
-- [ ] Triển khai TTS (Text-to-Speech) phát âm phản hồi của AI.
+- [x] Xây dựng REST API / WebSocket bằng FastAPI (`uv`).
+- [x] Triển khai STT (Speech-to-Text) ghi nhận giọng nói người dùng.
+- [x] Triển khai LLM Engine với Memory Management (Lưu giữ lịch sử hội thoại dài).
+- [x] Triển khai TTS (Text-to-Speech) phát âm phản hồi của AI.
 
 ### Giai Đoạn 3: Đánh Giá Phát Âm & Phản Hồi Ngữ Cảnh (Grammar & Fluency Feedback)
-- [ ] Xây dựng prompt đánh giá & so sánh câu gốc người dùng nói vs câu bản xứ (Native phrasing).
-- [ ] Thiết kế Feedback Modal chuẩn Duolingo (Màu xanh dương/xanh lá, hiển thị điểm & mẹo diễn đạt).
+- [x] Xây dựng prompt đánh giá & so sánh câu gốc người dùng nói vs câu bản xứ (Native phrasing).
+- [x] Thiết kế Feedback Modal chuẩn Duolingo (Màu xanh dương/xanh lá, hiển thị điểm & mẹo diễn đạt).
 
 ### Giai Đoạn 4: Gamification & Hoàn Thiện Trải Nghiệm
-- [ ] Tích hợp hiệu ứng âm thanh (Correct sound, Complete sound).
-- [ ] Thêm thanh tiến trình (Progress Bar), Streak count, XP rewards & Confetti animation khi xong bài.
-- [ ] Kiểm thử & Tối ưu độ trễ (Latency optimization cho luồng Voice-to-Voice).
+- [x] Tích hợp hiệu ứng âm thanh (Correct sound, Complete sound).
+- [x] Thêm thanh tiến trình (Progress Bar), Streak count, XP rewards & Confetti animation khi xong bài.
+- [x] Kiểm thử & Tối ưu độ trễ (Latency optimization cho luồng Voice-to-Voice).
 
 ---
 

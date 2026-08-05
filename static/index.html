@@ -291,9 +291,47 @@
           <!-- Rendered dynamically -->
         </div>
 
-        <button class="btn-duo btn-secondary" id="btn-close-vocab-bottom" style="width:100%; margin-top: 14px;">
+        <button class="btn-duo btn-purple" id="btn-open-flashcards" style="width:100%; margin-top: 14px; margin-bottom: 4px;">
+          🗂️ LUYỆN TẬP FLASHCARD
+        </button>
+
+        <button class="btn-duo btn-secondary" id="btn-close-vocab-bottom" style="width:100%; margin-top: 8px;">
           CLOSE VOCABULARY BOOK
         </button>
+      </div>
+    </div>
+
+    <!-- MODAL 5: VOCABULARY FLASHCARD PRACTICE -->
+    <div class="modal-overlay" id="modal-flashcard-practice">
+      <div class="modal-box" style="max-width: 500px; text-align: center;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 10px;">
+          <h2 style="font-weight: 900; font-size: 20px; color: var(--duo-purple);">🗂️ Flashcard Practice</h2>
+          <button class="btn-close" id="btn-close-flashcard-modal">✕</button>
+        </div>
+
+        <div id="flashcard-container" style="margin: 20px 0; perspective: 1000px; height: 220px; cursor: pointer;">
+          <div id="flashcard-inner" style="width: 100%; height: 100%; position: relative; transition: transform 0.6s; transform-style: preserve-3d;">
+            <!-- Front -->
+            <div id="flashcard-front" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: #fff; border: 2px solid var(--border-light); border-bottom: 6px solid var(--border-light); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+              <div id="fc-word" style="font-size: 32px; font-weight: 900; color: var(--duo-blue);">Word</div>
+              <div id="fc-phonetic" style="font-size: 16px; font-weight: 800; color: var(--text-muted); margin-top: 8px;">/wɜːd/</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 15px;">Tap to flip</div>
+            </div>
+            <!-- Back -->
+            <div id="flashcard-back" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: rgba(28,176,246,0.1); border: 2px solid var(--duo-blue); border-bottom: 6px solid var(--duo-blue-dark); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; transform: rotateY(180deg);">
+              <div id="fc-translation" style="font-size: 24px; font-weight: 900; color: var(--duo-blue-dark);">Bản dịch</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 15px;">
+          Card <span id="fc-current">1</span> of <span id="fc-total">10</span>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <button class="btn-duo btn-red" id="btn-fc-hard" style="flex: 1;">❌ Needs Practice</button>
+          <button class="btn-duo btn-green" id="btn-fc-easy" style="flex: 1;">✅ Got It</button>
+        </div>
       </div>
     </div>
 
@@ -347,10 +385,22 @@
           <!-- Transcript & Input Area -->
           <div class="form-group" style="margin-top: 14px;">
             <label style="display: flex; justify-content: space-between; align-items: center;">
-              <span>🎙️ Your Spoken Speech (Bài nói được ghi âm tự động)</span>
+              <span>🎙️ Trạng thái ghi âm (No text input)</span>
               <span id="det-speech-word-count" style="font-size: 12px; color: var(--duo-blue);">0 words</span>
             </label>
-            <textarea id="det-speech-textarea" class="form-input" rows="4" readonly="readonly" placeholder="Bấm nút 'START RECORDING (GHI ÂM)' bên dưới để ghi âm bài nói. Lời nói của bạn sẽ tự động hiển thị ở đây..." style="line-height: 1.5; font-size: 15px; background: rgba(0,0,0,0.02);"></textarea>
+            <textarea id="det-speech-textarea" class="form-input" rows="4" style="display: none;"></textarea>
+            <div id="det-recording-ui" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.02); border-radius: 12px; padding: 30px; border: 2px dashed rgba(0,0,0,0.1);">
+              <div class="waveform-container" id="det-waveform-anim" style="display: none; margin-bottom: 20px;">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+              </div>
+              <div id="det-mic-status" style="font-size: 15px; font-weight: 700; color: var(--text-muted); text-align: center;">
+                Bấm nút 'START RECORDING (GHI ÂM)' bên dưới để bắt đầu nói...
+              </div>
+            </div>
           </div>
 
           <div style="display: flex; gap: 10px; margin-top: 14px;">
@@ -678,6 +728,7 @@
   <script src="/static/js/duo_mascot.js"></script>
   <script src="/static/js/speech.js"></script>
   <script src="/static/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     // Register PWA Service Worker for Mobile App Installability
     if ('serviceWorker' in navigator) {

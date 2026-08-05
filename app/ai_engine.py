@@ -395,8 +395,9 @@ Output JSON ONLY:
                     if res and "ai_response" in res:
                         res["ai_response_vi"] = ""
                         return res
-                except Exception:
-                    pass
+                except Exception as e:
+                    if "429" in str(e) or "403" in str(e):
+                        break
 
         for key in self.gemini_keys:
             for model in self.gemini_models:
@@ -405,8 +406,9 @@ Output JSON ONLY:
                     if res and "ai_response" in res:
                         res["ai_response_vi"] = ""
                         return res
-                except Exception:
-                    pass
+                except Exception as e:
+                    if "429" in str(e) or "403" in str(e):
+                        break
 
         return {
             "ai_response": f"What is your favorite item on the menu for '{scenario['title']}'?",
@@ -449,8 +451,9 @@ Output JSON ONLY:
                     raw_res = self._call_groq(prompt, key, model, temp=0.85)
                     if raw_res:
                         break
-                except Exception:
-                    pass
+                except Exception as e:
+                    if "429" in str(e) or "403" in str(e):
+                        break
             if raw_res:
                 break
 
@@ -461,8 +464,9 @@ Output JSON ONLY:
                         raw_res = self._call_gemini(prompt, key, model, temp=0.85)
                         if raw_res:
                             break
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        if "429" in str(e) or "403" in str(e):
+                            break
                 if raw_res:
                     break
 
@@ -472,8 +476,9 @@ Output JSON ONLY:
                     raw_res = self._call_openai(prompt, key, temp=0.85)
                     if raw_res:
                         break
-                except Exception:
-                    pass
+                except Exception as e:
+                    if "429" in str(e) or "403" in str(e):
+                        break
 
         if not raw_res and self.ollama_base_url:
             try:
@@ -1027,6 +1032,8 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                             return {"transcript": text, "source": "groq-whisper-large-v3"}
                 except Exception as e:
                     print(f"[AIEngine] Groq Whisper error: {e}")
+                    if "429" in str(e) or "403" in str(e):
+                        pass # No inner loop here, continue outer loop
                     continue
 
         if self.gemini_keys:
@@ -1054,6 +1061,8 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                                 if text:
                                     return {"transcript": text, "source": f"gemini-audio-{model}"}
                     except Exception as e:
+                        if "429" in str(e) or "403" in str(e):
+                            break
                         continue
 
         return {"transcript": fallback_text.strip(), "source": "browser-stt"}

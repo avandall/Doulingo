@@ -45,12 +45,75 @@ class DuolingoSpeakApp {
       (transcript, isFinal) => this.handleSpeechResult(transcript, isFinal),
       (state, detail) => this.handleSpeechStateChange(state, detail)
     );
+    this.speechHandler.onVolumeChange = (volume) => this.handleVolumeChange(volume);
 
     this.bindEvents();
     this.updateLangDisplay();
     await this.loadCharacters();
     await this.loadScenarios();
     await this.updateVocabBadgeCount();
+  }
+
+  handleVolumeChange(volume) {
+    const minH = 10;
+    const maxH = 40;
+    const scale = volume / 128; // volume is roughly 0 to 255, usually much lower, so scale by 128
+    
+    // Animate DET mode waveform
+    const detWaveform = document.getElementById('det-waveform-anim');
+    if (detWaveform && detWaveform.style.display !== 'none') {
+      const bars = detWaveform.querySelectorAll('.wave-bar');
+      bars.forEach((bar) => {
+        const h = minH + Math.min(scale, 1.0) * (maxH - minH) * (Math.random() * 0.5 + 0.5);
+        bar.style.height = `${h}px`;
+      });
+    }
+
+    // Animate RP mode waveform
+    const rpWaveform = document.getElementById('waveform-anim');
+    if (rpWaveform && rpWaveform.style.display !== 'none') {
+      const bars = rpWaveform.querySelectorAll('.wave-bar');
+      bars.forEach((bar) => {
+        const h = minH + Math.min(scale, 1.0) * (maxH - minH) * (Math.random() * 0.5 + 0.5);
+        bar.style.height = `${h}px`;
+      });
+    }
+  }
+
+  // =============================================
+  // FLASHCARD PRACTICE LOGIC
+  // =============================================
+  openFlashcards() {
+    if (!this.savedWords || this.savedWords.length === 0) {
+      alert('Sổ từ vựng của bạn đang trống! Hãy tra từ mới để thêm vào sổ trước khi luyện tập.');
+      return;
+    }
+    this.fcIndex = 0;
+    document.getElementById('modal-vocab-book').classList.remove('active');
+    document.getElementById('modal-flashcard-practice').classList.add('active');
+    this.renderFlashcard();
+  }
+
+  renderFlashcard() {
+    document.getElementById('flashcard-inner').style.transform = 'rotateY(0deg)';
+    if (this.fcIndex >= this.savedWords.length) {
+      alert('Hoan hô! Bạn đã ôn tập xong tất cả các từ trong sổ.');
+      document.getElementById('modal-flashcard-practice').classList.remove('active');
+      return;
+    }
+    
+    const wordObj = this.savedWords[this.fcIndex];
+    document.getElementById('fc-word').textContent = wordObj.word || '';
+    document.getElementById('fc-phonetic').textContent = wordObj.phonetic || '';
+    document.getElementById('fc-translation').textContent = wordObj.translation || 'Bản dịch...';
+    
+    document.getElementById('fc-current').textContent = this.fcIndex + 1;
+    document.getElementById('fc-total').textContent = this.savedWords.length;
+  }
+
+  nextFlashcard() {
+    this.fcIndex++;
+    this.renderFlashcard();
   }
 
   bindEvents() {
@@ -76,6 +139,31 @@ class DuolingoSpeakApp {
     });
     document.getElementById('input-search-vocab').addEventListener('input', (e) => {
       this.renderVocabWordsList(e.target.value.trim().toLowerCase());
+    });
+    
+    // Flashcard Events
+    document.getElementById('btn-open-flashcards').addEventListener('click', () => {
+      if (window.duoAudio) window.duoAudio.playClick();
+      this.openFlashcards();
+    });
+    document.getElementById('btn-close-flashcard-modal').addEventListener('click', () => {
+      document.getElementById('modal-flashcard-practice').classList.remove('active');
+    });
+    document.getElementById('flashcard-container').addEventListener('click', () => {
+      const inner = document.getElementById('flashcard-inner');
+      if (inner.style.transform === 'rotateY(180deg)') {
+        inner.style.transform = 'rotateY(0deg)';
+      } else {
+        inner.style.transform = 'rotateY(180deg)';
+      }
+    });
+    document.getElementById('btn-fc-hard').addEventListener('click', () => {
+      if (window.duoAudio) window.duoAudio.playClick();
+      this.nextFlashcard();
+    });
+    document.getElementById('btn-fc-easy').addEventListener('click', () => {
+      if (window.duoAudio) window.duoAudio.playClick();
+      this.nextFlashcard();
     });
 
     // Language Setting Modal
@@ -477,6 +565,13 @@ class DuolingoSpeakApp {
     if (this.speechHandler) {
       this.speechHandler.startListening();
     }
+    const waveform = document.getElementById('det-waveform-anim');
+    const micStatus = document.getElementById('det-mic-status');
+    if (waveform) waveform.style.display = 'flex';
+    if (micStatus) {
+      micStatus.textContent = '🎙️ Đang ghi âm... Hãy tự tin nói!';
+      micStatus.style.color = '#FF4B4B';
+    }
 
     this.detTimerInterval = setInterval(() => {
       this.detElapsedSeconds++;
@@ -511,6 +606,13 @@ class DuolingoSpeakApp {
     }
     if (this.speechHandler) {
       this.speechHandler.stopListening();
+    }
+    const waveform = document.getElementById('det-waveform-anim');
+    const micStatus = document.getElementById('det-mic-status');
+    if (waveform) waveform.style.display = 'none';
+    if (micStatus) {
+      micStatus.textContent = '✅ Đã ghi nhận lời nói. Nhấn Submit để nộp bài.';
+      micStatus.style.color = '#00843D';
     }
   }
 
@@ -1843,6 +1945,16 @@ class DuolingoSpeakApp {
     });
 
     if (window.duoAudio) window.duoAudio.playVictory();
+    
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#58CC02', '#1CB0F6', '#FFC800', '#FF4B4B']
+      });
+    }
+
     this.showScreen('victory-screen');
   }
 
