@@ -13,7 +13,7 @@ from fastapi import FastAPI, HTTPException, Query, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Optional
 import os
 import uuid
 import unicodedata
@@ -21,8 +21,6 @@ import requests
 from urllib.parse import quote
 
 import logging
-
-logger = logging.getLogger("duolingo_speak.api")
 
 from app.scenarios import list_scenarios, get_scenario
 from app.characters import list_characters, get_character
@@ -36,7 +34,9 @@ from app.db import (
     add_user_xp,
 )
 from app.ai_engine import ai_engine
-from app.tts_service import generate_tts_mp3, stream_tts_mp3_chunks
+from app.tts_service import generate_tts_mp3
+
+logger = logging.getLogger("duolingo_speak.api")
 
 app = FastAPI(title="Duolingo Speak - Unlimited AI Roleplays")
 

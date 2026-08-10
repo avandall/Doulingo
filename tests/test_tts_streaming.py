@@ -3,7 +3,6 @@ Unit and integration tests for Streaming Speech Audio Buffering in app/tts_servi
 """
 
 import asyncio
-import pytest
 from fastapi.testclient import TestClient
 from app.main import app
 from app.tts_service import stream_tts_mp3_chunks

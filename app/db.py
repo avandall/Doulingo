@@ -1,6 +1,7 @@
 """
-SQLite Database Module for User Custom Topics & Permanent Vocabulary Dictionary Cache
-Persists custom topics and dictionary translations in data/custom_topics.db
+SQLite / Turso Cloud Database Module for User Custom Topics & Permanent Vocabulary Dictionary Cache
+Persists custom topics, dictionary translations, saved vocabulary, and user stats.
+Supports Turso Cloud SQLite (libsql) via TURSO_DATABASE_URL & TURSO_AUTH_TOKEN with local SQLite fallback.
 """
 
 import os
@@ -8,14 +9,70 @@ import sqlite3
 import json
 from typing import List, Dict, Any, Optional
 
+try:
+    import libsql_experimental as libsql  # type: ignore
+    HAS_LIBSQL = True
+except ImportError:
+    HAS_LIBSQL = False
+
 DB_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 DB_PATH = os.path.join(DB_DIR, "custom_topics.db")
 
-def init_db():
+
+def get_db_connection():
+    """Connect to Turso Cloud SQLite if credentials present, otherwise fallback to local SQLite."""
+    turso_url = os.getenv("TURSO_DATABASE_URL", "").strip()
+    turso_token = os.getenv("TURSO_AUTH_TOKEN", "").strip()
+
+    if turso_url and HAS_LIBSQL:
+        try:
+            conn = libsql.connect(database=turso_url, auth_token=turso_token)
+            # Verify connection is functional
+            cursor = conn.cursor()
+            cursor.execute("SELECT 1")
+            return conn
+        except Exception as e:
+            print(f"[DB Warning] Turso Cloud connection failed: {e}. Falling back to local SQLite.")
+
     os.makedirs(DB_DIR, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def _fetch_all_dicts(cursor) -> List[Dict[str, Any]]:
+    rows = cursor.fetchall()
+    if not rows or not cursor.description:
+        return []
+    cols = [col[0] for col in cursor.description]
+    results = []
+    for r in rows:
+        if isinstance(r, sqlite3.Row):
+            results.append(dict(r))
+        elif isinstance(r, dict):
+            results.append(r)
+        else:
+            results.append(dict(zip(cols, r)))
+    return results
+
+
+def _fetch_one_dict(cursor) -> Optional[Dict[str, Any]]:
+    row = cursor.fetchone()
+    if not row or not cursor.description:
+        return None
+    cols = [col[0] for col in cursor.description]
+    if isinstance(row, sqlite3.Row):
+        return dict(row)
+    if isinstance(row, dict):
+        return row
+    return dict(zip(cols, row))
+
+
+def init_db():
+    """Initialize database tables for custom scenarios, word dictionary, saved vocabulary, and user stats."""
+    conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     # Table 1: Custom Scenarios
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS custom_scenarios (
@@ -47,7 +104,19 @@ def init_db():
         )
     """)
 
-    # Table 3: User Gamification Stats (XP & Streak Counter)
+    # Table 3: Saved Vocabulary List
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS saved_vocabulary (
+            id TEXT PRIMARY KEY,
+            word TEXT NOT NULL,
+            definition TEXT,
+            example TEXT,
+            topic_id TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    # Table 4: User Gamification Stats (XP & Streak Counter)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS user_stats (
             id INTEGER PRIMARY KEY DEFAULT 1,
@@ -60,11 +129,12 @@ def init_db():
     conn.commit()
     conn.close()
 
+
 def add_custom_scenario(scenario_data: Dict[str, Any]) -> Dict[str, Any]:
     init_db()
-    conn = sqlite3.connect(DB_PATH)
+    conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     sc_id = scenario_data["id"]
     title = scenario_data["title"]
     category = scenario_data.get("category", "Custom Topic")
@@ -82,19 +152,20 @@ def add_custom_scenario(scenario_data: Dict[str, Any]) -> Dict[str, Any]:
         (id, title, category, icon, color, level, level_code, default_character, description, objective, suggested_vocabulary)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (sc_id, title, category, icon, color, level, level_code, default_character, description, objective, suggested_vocab))
-    
+
     conn.commit()
     conn.close()
     return scenario_data
 
+
 def get_custom_scenarios() -> List[Dict[str, Any]]:
     init_db()
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM custom_scenarios ORDER BY created_at DESC")
-    rows = cursor.fetchall()
-    
+    rows = _fetch_all_dicts(cursor)
+    conn.close()
+
     scenarios = []
     for r in rows:
         scenarios.append({
@@ -108,17 +179,17 @@ def get_custom_scenarios() -> List[Dict[str, Any]]:
             "default_character": r["default_character"],
             "description": r["description"],
             "objective": r["objective"],
-            "suggested_vocabulary": json.loads(r["suggested_vocabulary"]) if r["suggested_vocabulary"] else [],
-            "mode": "ielts_exam" if r["id"].startswith("det_") else "roleplay",
+            "suggested_vocabulary": json.loads(r["suggested_vocabulary"]) if r.get("suggested_vocabulary") else [],
+            "mode": "ielts_exam" if str(r["id"]).startswith("det_") else "roleplay",
             "is_custom": True
         })
-    conn.close()
     return scenarios
 
+
 def save_translated_word(word: str, target_lang: str, target_label: str, translation: str, phonetic: str):
-    """Save word translation permanently into SQLite DB."""
+    """Save word translation permanently into DB."""
     init_db()
-    conn = sqlite3.connect(DB_PATH)
+    conn = get_db_connection()
     cursor = conn.cursor()
     word_key = f"{word.strip().lower()}_{target_lang}"
     cursor.execute("""
@@ -128,15 +199,15 @@ def save_translated_word(word: str, target_lang: str, target_label: str, transla
     conn.commit()
     conn.close()
 
+
 def get_translated_word(word: str, target_lang: str) -> Optional[Dict[str, str]]:
-    """Retrieve word translation permanently from SQLite DB."""
+    """Retrieve word translation permanently from DB."""
     init_db()
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db_connection()
     cursor = conn.cursor()
     word_key = f"{word.strip().lower()}_{target_lang}"
     cursor.execute("SELECT * FROM word_dictionary WHERE word_key = ?", (word_key,))
-    row = cursor.fetchone()
+    row = _fetch_one_dict(cursor)
     conn.close()
     if row:
         return {
@@ -148,19 +219,19 @@ def get_translated_word(word: str, target_lang: str) -> Optional[Dict[str, str]]
         }
     return None
 
+
 def get_all_saved_words(target_lang: Optional[str] = None) -> List[Dict[str, Any]]:
     """Retrieve all saved vocabulary words sorted by most recent."""
     init_db()
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db_connection()
     cursor = conn.cursor()
     if target_lang:
         cursor.execute("SELECT * FROM word_dictionary WHERE target_lang = ? ORDER BY created_at DESC", (target_lang,))
     else:
         cursor.execute("SELECT * FROM word_dictionary ORDER BY created_at DESC")
-    rows = cursor.fetchall()
+    rows = _fetch_all_dicts(cursor)
     conn.close()
-    
+
     return [
         {
             "word": r["word"],
@@ -173,14 +244,14 @@ def get_all_saved_words(target_lang: Optional[str] = None) -> List[Dict[str, Any
         for r in rows
     ]
 
+
 def get_user_stats() -> Dict[str, Any]:
-    """Retrieve user XP total and Streak days from SQLite DB."""
+    """Retrieve user XP total and Streak days from DB."""
     init_db()
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT total_xp, streak_days, last_active_date FROM user_stats WHERE id = 1")
-    row = cursor.fetchone()
+    row = _fetch_one_dict(cursor)
     conn.close()
     if row:
         return {
@@ -190,10 +261,11 @@ def get_user_stats() -> Dict[str, Any]:
         }
     return {"total_xp": 150, "streak": 5, "last_active_date": ""}
 
+
 def add_user_xp(xp_amount: int) -> Dict[str, Any]:
     """Increment user total XP and update active streak."""
     init_db()
-    conn = sqlite3.connect(DB_PATH)
+    conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
         UPDATE user_stats

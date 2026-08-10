@@ -384,9 +384,42 @@
 #### Git
 - **Commit:** `[iter-12] feat(demo): implement demo_seed.py, test_demo_rehearsal.py and demo-rehearsal.sh for 6-minute presentation`
 
+---
+
+### Iteration 014 — 2026-08-10 14:33
+
+#### Task Reference
+- **Task ID:** TASK-000
+- **Task Name:** Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite)
+- **Phase:** Phase 0 (Cloud Infrastructure & Database)
+
+#### Goal
+Replace local file SQLite DB in `app/db.py` with Turso Cloud SQLite (`libsql_experimental`) support using environment variables `TURSO_DATABASE_URL` & `TURSO_AUTH_TOKEN`, with seamless local SQLite fallback when credentials are absent or unreachable.
+
+#### Actions Taken
+1. Updated `requirements.txt` to include `libsql-experimental>=0.0.55`.
+2. Refactored `app/db.py` with `get_db_connection()`, fallback handling, connection probe (`SELECT 1`), and unified dictionary fetching helpers `_fetch_all_dicts` and `_fetch_one_dict`.
+3. Created table schemas `custom_scenarios`, `word_dictionary`, `saved_vocabulary`, and `user_stats`.
+4. Authored unit test suite `tests/test_db_turso.py` covering table creation, custom scenario CRUD, vocabulary dictionary caching, user XP stats, and invalid URL fallback.
+5. Executed Tier 1 quality checks via `python3 H_docs/scripts/verify.py` (23/23 tests pass 100%).
+6. Conducted Tier 2 Cognitive Review (`git diff` inspection, DEBATE-004 entry appended to `DEBATE_LOG.md`).
+7. Updated `Tasks_list.md` (`TASK-000` [x] DONE) and `STATUS.md` (`Phase: IN_PROGRESS`).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `python3 H_docs/scripts/verify.py` report status PASS (23 passed in 7.13s).
+
+#### Decisions Made
+- Added `SELECT 1` connection probe in `get_db_connection()` to catch lazy connection errors instantly when Turso URLs are invalid, forcing clean fallback to local SQLite.
+- Used `cursor.description` column zip mapping to standard dicts to unify data structures across `sqlite3.Row` and `libsql_experimental` tuple results.
+
+#### Git
+- **Commit:** `[iter-14] feat(db): migrate app/db.py to Turso Cloud SQLite with local fallback & add unit tests`
+
 #### Next
-- **Action:** Tất cả 8/8 tasks hoàn thành 100%. Tạo PROOF_OF_SOLUTION.md và cập nhật STATUS.md thành Phase: ALL_DONE.
-- **State:** ALL_DONE
+- **Action:** Start TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`).
+- **State:** IN_PROGRESS
+
 
 
 

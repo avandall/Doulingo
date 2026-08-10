@@ -8,12 +8,12 @@
 ## Current State
 
 ```
-Task:           
-Next Task:      
-Phase:          
-Current Step:   
-Iteration:      
-Last Updated:   
+Task:           TASK-000: Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite) -> DONE
+Next Task:      TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
+Phase:          IN_PROGRESS
+Current Step:   TASK-000 Executed, Verified (23 tests green), Reviewed & Committed
+Iteration:      1
+Last Updated:   2026-08-10 14:33
 ```
 
 ---
@@ -23,7 +23,7 @@ Last Updated:
 ```
 ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
                                                            ↑
-                                                      [ALL_DONE]
+                                                     [IN_PROGRESS]
 ```
 
 ---
@@ -31,9 +31,9 @@ ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
 ## Last Action
 
 ```
-Action:   
-Result:   
-Time:     
+Action:   Hoàn thành TASK-000: Refactor app/db.py kết nối Turso Cloud SQLite / Local SQLite fallback, tạo unit test tests/test_db_turso.py. Tier 1 verify.py pass 100% (23/23 tests). Phản biện Tier 2 DEBATE-004 APPROVED.
+Result:   PASS
+Time:     2026-08-10 14:33
 ```
 
 ---
@@ -41,9 +41,9 @@ Time:
 ## Next Action
 
 ```
-Action:   
-Priority: 
-Blocks:   
+Action:   Thực hiện TASK-001: Material Bank Data Models & Markdown Parser (app/material_bank.py).
+Priority: P0-Critical
+Blocks:   NONE
 ```
 
 ---
@@ -51,9 +51,8 @@ Blocks:
 ## Progress Summary
 
 ```
-Tasks completed:  /  ( 
-
-Tasks remaining: 
+Tasks completed: 1 / 9 (TASK-000 DONE)
+Tasks remaining: 8 (TASK-001, TASK-002, TASK-003, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008)
 ```
 
 ---
