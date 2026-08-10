@@ -21,6 +21,7 @@
 | `TASK-006` | FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`) | Phase 3 | P1 | `[x] DONE` | Connect `/api/scenarios`, `/api/start_scenario`, `/api/process_turn` |
 | `TASK-007` | End-to-End Integration Testing & Latency Benchmarks | Phase 4 | P1 | `[x] DONE` | Verify full conversation flow and response parsing |
 | `TASK-008` | System Verification Evidence & Harness Documentation Update | Phase 4 | P2 | `[x] DONE` | Final sanity checks, status update & walkthrough |
+| `TASK-009` | UI Roleplay Simplification & Random Roleplay Placement | Phase 5 | P1 | `[x] DONE` | Streamline roleplay scenarios, move random roleplay button to section, remove category filters |
 
 > **Trạng thái hợp lệ:**
 > - `[ ] TODO`: Chưa làm, chờ AI chọn

@@ -239,184 +239,52 @@ DEFAULT_SCENARIOS = {
     },
 
     # ============================================================
-    # 1. FAMILY & FRIENDS (GIA ĐÌNH & BẠN BÈ)
+    # EVERYDAY & CREATIVE ROLEPLAY (HỘI THOẠI GIAO TIẾP HÀNG NGÀY)
     # ============================================================
-    "family_dinner": {
-        "id": "family_dinner",
-        "title": "Family Dinner Conversation",
-        "category": "Family & Friends",
-        "icon": "🍽️",
-        "color": "#FF9933",
-        "description": "Gather around the dinner table, share daily news, and talk about family traditions.",
-        "open_story_guide": "A warm family dinner chat. Discuss daily highlights, family recipes, weekend plans, and supportive family advice."
-    },
-    "friend_catchup": {
-        "id": "friend_catchup",
-        "title": "Catching Up with an Old Friend",
-        "category": "Family & Friends",
+    "everyday_chat": {
+        "id": "everyday_chat",
+        "title": "Everyday Social Chat",
+        "category": "Everyday Roleplay",
         "icon": "☕",
-        "color": "#E91E63",
-        "description": "Meet an old friend at a cozy coffee shop after years apart and share life updates.",
-        "open_story_guide": "A friendly reunion at a cafe. Share recent life changes, reminisce about old memories, and plan future hangouts."
-    },
-    "roommate_chat": {
-        "id": "roommate_chat",
-        "title": "Living with Roommates",
-        "category": "Family & Friends",
-        "icon": "🏠",
-        "color": "#795548",
-        "description": "Discuss household chores, decorating the living room, and organizing movie nights.",
-        "open_story_guide": "A cooperative roommate conversation. Negotiate chore schedules, apartment rules, and shared cooking."
-    },
-
-    # ============================================================
-    # 2. HOBBIES & LIFESTYLE (SỞ THÍCH CÁ NHÂN & LỐI SỐNG)
-    # ============================================================
-    "weekend_fitness": {
-        "id": "weekend_fitness",
-        "title": "Weekend Sports & Fitness",
-        "category": "Hobbies & Lifestyle",
-        "icon": "🏃",
-        "color": "#4CAF50",
-        "description": "Talk about morning runs, yoga routines, gym goals, and staying healthy.",
-        "open_story_guide": "An active chat about fitness and hobbies. Share workout tips, favorite outdoor sports, and healthy habits."
-    },
-    "book_club_chat": {
-        "id": "book_club_chat",
-        "title": "Book & Movie Club",
-        "category": "Hobbies & Lifestyle",
-        "icon": "📚",
-        "color": "#9C27B0",
-        "description": "Share thoughts on a recent bestseller book or inspiring movie plot and characters.",
-        "open_story_guide": "A thoughtful discussion about books and cinema. Exchange recommendations and favorite character quotes."
-    },
-    "cooking_recipe": {
-        "id": "cooking_recipe",
-        "title": "Cooking & Comfort Food",
-        "category": "Hobbies & Lifestyle",
-        "icon": "🍳",
-        "color": "#FF4B4B",
-        "description": "Exchange delicious home cooking recipes, ingredient tips, and favorite dishes.",
-        "open_story_guide": "A fun culinary exchange. Discuss comfort food recipes, healthy cooking shortcuts, and favorite cuisines."
-    },
-
-    # ============================================================
-    # 3. STUDY & CAREER (HỌC TẬP & CÔNG VIỆC)
-    # ============================================================
-    "job_interview_prep": {
-        "id": "job_interview_prep",
-        "title": "Job Interview Practice",
-        "category": "Study & Career",
-        "icon": "💼",
         "color": "#1CB0F6",
-        "description": "Practice presenting professional skills, career goals, and answering interview questions.",
-        "open_story_guide": "A professional job interview simulation. Ask about work experience, strengths, teamwork, and career ambitions."
+        "description": "Chat casually with your AI partner about daily routines, coffee spots, and weekend plans.",
+        "open_story_guide": "A relaxed, friendly social conversation about daily habits, hobbies, and life updates."
     },
-    "study_group": {
-        "id": "study_group",
-        "title": "University Study Group",
-        "category": "Study & Career",
-        "icon": "🎓",
-        "color": "#673AB7",
-        "description": "Prepare for exams together, share study methods, and discuss academic subjects.",
-        "open_story_guide": "An encouraging study session. Share effective note-taking tips, exam preparation strategies, and academic goals."
+    "cafe_dining": {
+        "id": "cafe_dining",
+        "title": "Café & Culinary Experiences",
+        "category": "Everyday Roleplay",
+        "icon": "🍕",
+        "color": "#FF9600",
+        "description": "Order food, discuss favorite cuisines, recipes, and dining out with friends.",
+        "open_story_guide": "An engaging dining and cooking conversation covering recipes, food preferences, and restaurant ordering."
     },
-    "workplace_colleague": {
-        "id": "workplace_colleague",
-        "title": "Workplace Team Project",
-        "category": "Study & Career",
-        "icon": "🖥️",
-        "color": "#3F51B5",
-        "description": "Collaborate with a colleague on a project deadline and brainstorm creative solutions.",
-        "open_story_guide": "A cooperative workplace discussion. Coordinate project tasks, offer supportive feedback, and solve work challenges."
-    },
-
-    # ============================================================
-    # 4. CHILDHOOD & HOMETOWN (KÝ ỨC TUỔI THƠ & QUÊ HƯƠNG)
-    # ============================================================
-    "hometown_memories": {
-        "id": "hometown_memories",
-        "title": "Hometown Memories",
-        "category": "Childhood & Hometown",
-        "icon": "🏡",
-        "color": "#8D6E63",
-        "description": "Describe what growing up in your hometown was like, favorite places, and neighbors.",
-        "open_story_guide": "A nostalgic conversation about growing up. Share stories about hometown streets, local food, and childhood friends."
-    },
-    "memorable_teacher": {
-        "id": "memorable_teacher",
-        "title": "An Inspiring Teacher",
-        "category": "Childhood & Hometown",
-        "icon": "👨‍🏫",
-        "color": "#FFB300",
-        "description": "Talk about an influential teacher or mentor who encouraged you and taught life lessons.",
-        "open_story_guide": "An appreciative discussion about mentors. Share how a teacher made learning enjoyable and inspired confidence."
-    },
-
-    # ============================================================
-    # 5. TRAVEL & PLACES (DU LỊCH & ĐỊA ĐIỂM)
-    # ============================================================
-    "travel_planning": {
-        "id": "travel_planning",
-        "title": "Planning a Dream Trip",
-        "category": "Travel & Places",
+    "travel_culture": {
+        "id": "travel_culture",
+        "title": "Travel & Cultural Exchange",
+        "category": "Everyday Roleplay",
         "icon": "✈️",
         "color": "#00843D",
-        "description": "Plan a relaxing vacation itinerary, compare destinations, and discuss travel tips.",
-        "open_story_guide": "An exciting travel planning dialogue. Compare scenic destinations, packing essentials, and cultural sightseeing."
+        "description": "Share travel stories, cultural experiences, hotel check-ins, and vacation planning.",
+        "open_story_guide": "An adventurous travel dialogue about exploring new destinations, local customs, and travel tips."
     },
-    "hotel_checkin": {
-        "id": "hotel_checkin",
-        "title": "Hotel Check-In & Local Tips",
-        "category": "Travel & Places",
-        "icon": "🏨",
-        "color": "#00BCD4",
-        "description": "Check into a hotel, ask about room amenities, and get recommendations for city landmarks.",
-        "open_story_guide": "A helpful hotel reception roleplay. Provide room assistance, breakfast times, and local sightseeing advice."
+    "work_study_space": {
+        "id": "work_study_space",
+        "title": "Workplace & Academic Life",
+        "category": "Everyday Roleplay",
+        "icon": "💼",
+        "color": "#673AB7",
+        "description": "Discuss career goals, university projects, study tips, and team collaboration.",
+        "open_story_guide": "A collaborative career and academic chat focusing on professional skills, study habits, and workplace teamwork."
     },
-
-    # ============================================================
-    # 6. TECH IN DAILY LIFE (CÔNG NGHỆ TRONG ĐỜI SỐNG)
-    # ============================================================
-    "tech_daily_life": {
-        "id": "tech_daily_life",
-        "title": "Smartphones & Productivity",
-        "category": "Tech & Daily Life",
+    "digital_lifestyle": {
+        "id": "digital_lifestyle",
+        "title": "Digital Life & Hobbies",
+        "category": "Everyday Roleplay",
         "icon": "📱",
         "color": "#E91E63",
-        "description": "Discuss how mobile apps help manage time, stay connected, and learn new skills.",
-        "open_story_guide": "A practical chat about everyday technology. Share useful apps, digital balance, and smartphone convenience."
-    },
-    "ai_learning_tools": {
-        "id": "ai_learning_tools",
-        "title": "AI & Language Learning",
-        "category": "Tech & Daily Life",
-        "icon": "🤖",
-        "color": "#FF2A85",
-        "description": "Talk about using artificial intelligence for studying languages, translation, and creativity.",
-        "open_story_guide": "A modern discussion on AI in education. Discuss how AI tutors provide instant feedback and make learning interactive."
-    },
-
-    # ============================================================
-    # 7. BASIC SOCIAL ISSUES (CÁC VẤN ĐỀ XÃ HỘI CƠ BẢN)
-    # ============================================================
-    "green_living_eco": {
-        "id": "green_living_eco",
-        "title": "Eco-Friendly Living",
-        "category": "Society & Community",
-        "icon": "🌱",
-        "color": "#4CAF50",
-        "description": "Share everyday tips for reducing plastic waste, recycling, and protecting the environment.",
-        "open_story_guide": "An environmentally conscious dialogue. Discuss simple habits to save energy, recycle, and keep neighborhoods clean."
-    },
-    "community_volunteer": {
-        "id": "community_volunteer",
-        "title": "Community & Volunteering",
-        "category": "Society & Community",
-        "icon": "🤝",
-        "color": "#3F51B5",
-        "description": "Talk about helping neighbors, volunteering at charities, and community kindness.",
-        "open_story_guide": "An uplifting conversation on community support. Discuss charity work, neighborhood events, and helping others."
+        "description": "Talk about favorite mobile apps, books, movies, fitness routines, and tech in daily life.",
+        "open_story_guide": "A modern lifestyle discussion on technology, entertainment recommendations, and health."
     }
 }
 

@@ -1196,7 +1196,7 @@ class DuolingoSpeakApp {
 
       this.scenarios = apiScenarios;
       this.initCategoryFilterBar();
-      this.renderScenarios(this.currentIeltsCategory || 'all', this.currentRoleplayCategory || 'all');
+      this.renderScenarios(this.currentIeltsCategory || 'all');
     } catch (e) {
       console.error('Failed to load scenarios:', e);
     }
@@ -1212,21 +1212,7 @@ class DuolingoSpeakApp {
           buttons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           this.currentIeltsCategory = btn.dataset.ieltsCat || 'all';
-          this.renderScenarios(this.currentIeltsCategory, this.currentRoleplayCategory || 'all');
-        });
-      });
-    }
-
-    const roleplayBar = document.getElementById('roleplay-category-filter-bar');
-    if (roleplayBar) {
-      const buttons = roleplayBar.querySelectorAll('.cat-pill');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (window.duoAudio) window.duoAudio.playClick();
-          buttons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          this.currentRoleplayCategory = btn.dataset.roleplayCat || 'all';
-          this.renderScenarios(this.currentIeltsCategory || 'all', this.currentRoleplayCategory);
+          this.renderScenarios(this.currentIeltsCategory);
         });
       });
     }
@@ -1310,7 +1296,7 @@ class DuolingoSpeakApp {
     return card;
   }
 
-  renderScenarios(ieltsCat = 'all', roleplayCat = 'all') {
+  renderScenarios(ieltsCat = 'all') {
     const ieltsGrid = document.getElementById('ielts-scenarios-grid');
     const roleplayGrid = document.getElementById('roleplay-scenarios-grid');
     if (!ieltsGrid || !roleplayGrid) return;
@@ -1326,11 +1312,7 @@ class DuolingoSpeakApp {
       return sc.category === ieltsCat;
     });
 
-    const roleplayScenarios = this.scenarios.filter(sc => {
-      if (isIeltsScenario(sc)) return false;
-      if (roleplayCat === 'all') return true;
-      return sc.category === roleplayCat;
-    });
+    const roleplayScenarios = this.scenarios.filter(sc => !isIeltsScenario(sc));
 
     // Render IELTS cards with plus card at the end of section
     const ieltsCardElements = ieltsScenarios.map(sc => this.createScenarioCardElement(sc));
@@ -1408,8 +1390,11 @@ class DuolingoSpeakApp {
 
   async startRandomRoleplay() {
     if (this.scenarios.length === 0 || this.characters.length === 0) return;
-    const randScenario = this.scenarios[Math.floor(Math.random() * this.scenarios.length)];
-    this.isUserSelectedCharacter = false; // Reset to random
+    const isIeltsScenario = (sc) => (sc.id || '').startsWith('det_') || sc.mode === 'ielts_exam';
+    const roleplayScenarios = this.scenarios.filter(sc => !isIeltsScenario(sc));
+    const pool = roleplayScenarios.length > 0 ? roleplayScenarios : this.scenarios;
+    const randScenario = pool[Math.floor(Math.random() * pool.length)];
+    this.isUserSelectedCharacter = false; // Reset to random character
     await this.startScenario(randScenario.id);
   }
 

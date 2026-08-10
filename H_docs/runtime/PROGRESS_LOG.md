@@ -199,6 +199,40 @@
 - **Action:** Dự án đã hoàn thành 100%. Sẵn sàng nghiệm thu.
 - **State:** ALL_DONE
 
+---
+
+### [ITER-023] 2026-08-10 15:30 — TASK-009 UI Roleplay Simplification & Random Roleplay Placement
+
+**Phase:** COMMITTING
+**Step:** Implementation & Verification of TASK-009
+**Duration:** ~3 phút
+
+#### Actions Taken
+1. Đọc `H_docs/core/AGENT_CONSTITUTION.md`, `H_docs/context/Tasks_list.md`, và `H_docs/runtime/STATUS.md`.
+2. Tạo `H_docs/runtime/PLAN.md` mới cho `TASK-009` (UI Roleplay Simplification & Random Roleplay Placement).
+3. Cập nhật `app/scenarios.py`: Tối giản các static default roleplays lặp lại/trùng lặp thành 5 chủ đề roleplay cốt lõi, tinh gọn (`everyday_chat`, `cafe_dining`, `travel_culture`, `work_study_space`, `digital_lifestyle`).
+4. Cập nhật `static/index.html`: Di chuyển nút `#btn-random-roleplay` (`🎲 RANDOM ROLEPLAY`) từ hero banner xuống header box của Section 2 (`EVERYDAY & CREATIVE ROLEPLAY`), đồng thời xóa bỏ hoàn toàn thanh category filter `#roleplay-category-filter-bar`.
+5. Cập nhật `static/js/app.js`: Loại bỏ logic gắn event listeners cho `#roleplay-category-filter-bar`, cập nhật `renderScenarios` hiển thị trực tiếp danh sách roleplay, và tinh chỉnh `startRandomRoleplay` để chọn ngẫu nhiên các kịch bản roleplay giao tiếp.
+6. Chạy `pytest` thành công 100% (50/50 test cases passed in 26.49s).
+7. Executed Tier 1 verification via `python3 H_docs/scripts/verify.py` — Status PASS (Ruff/Mypy/Bandit/Pytest 100% green).
+8. Cập nhật `H_docs/context/Tasks_list.md` (`TASK-009` [x] DONE) và `H_docs/runtime/STATUS.md` (`Phase: ALL_DONE`).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest` (50/50 passed), `python3 H_docs/scripts/verify.py` status PASS.
+
+#### Decisions Made
+- Placed `#btn-random-roleplay` prominently in the header box of the Roleplay section for maximum usability.
+- Streamlined roleplays to eliminate duplicate/repetitive topics while preserving full backend MaterialBank & Custom Topic compatibility.
+
+#### Git
+- **Commit:** `[TASK-009] feat(ui): simplify roleplay grid, move random roleplay button to section, remove category filters`
+
+#### Next
+- **Action:** TASK-009 complete. All tasks DONE.
+- **State:** ALL_DONE
+
+
 
 
 

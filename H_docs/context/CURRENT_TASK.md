@@ -1,5 +1,5 @@
 # CURRENT TASK
-# Task hiện tại — TASK-003: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`)
+# Task hiện tại — TASK-009: UI Roleplay Simplification & Random Roleplay Placement
 
 > **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-10
 
@@ -7,11 +7,11 @@
 
 ## Metadata
 ```
-Task ID:         TASK-003
-Task Name:       Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`)
-Phase:           Phase 2 (Sampling & Prompt Factory)
+Task ID:         TASK-009
+Task Name:       UI Roleplay Simplification & Random Roleplay Placement
+Phase:           Phase 5 (UI Refinement & Minimalization)
 Task Type:       feature
-Priority:        P0-Critical
+Priority:        P1-High
 Trạng thái:      [/] IN_PROGRESS
 Ngày bắt đầu:    2026-08-10
 ```
@@ -19,14 +19,18 @@ Ngày bắt đầu:    2026-08-10
 ---
 
 ## Bối cảnh & Mục tiêu
-- **Why:** Cần một bộ lắp ráp System Prompt động dựa trên việc sample nguyên liệu ngẫu nhiên từ `MaterialBank` theo level của người dùng.
-- **What:** Xây dựng module `app/prompt_factory.py` chứa class `PromptFactory`.
+- **Why:** Trên UI hiện có quá nhiều roleplay tràn lan và lặp lại giống nhau. Cần tối giản roleplay, chuyển nút random roleplay xuống section roleplay và xóa các nút category filter trong roleplay.
+- **What:**
+  1. Move `#btn-random-roleplay` (`🎲 RANDOM ROLEPLAY`) down into the `EVERYDAY & CREATIVE ROLEPLAY` section.
+  2. Remove `#roleplay-category-filter-bar` (category buttons in roleplay section).
+  3. Streamline static default roleplays in `app/scenarios.py` to avoid repetitive/duplicate roleplays.
+  4. Ensure `startRandomRoleplay()` works smoothly when clicked.
 
 ---
 
 ## Acceptance Criteria
-- [ ] Class `PromptFactory` có hàm `sample_materials(topic_id, level)` thực hiện sample 1 Persona, 3-4 Vocab items, 1-2 Questions theo band điểm.
-- [ ] Hàm `build_system_prompt(topic_id, level, character_id, user_history)` lắp ráp thành công System Prompt hoàn chỉnh.
-- [ ] Hỗ trợ fallback an toàn nếu `topic_id` không tồn tại trong Material Bank.
-- [ ] Code tuân thủ 100% Tier 1 CLI check (`python3 H_docs/scripts/verify.py`).
-- [ ] Tier 2 Cognitive Review đạt `APPROVED`.
+- [ ] Nút `🎲 RANDOM ROLEPLAY` được di chuyển từ hero banner xuống trực tiếp section Roleplay.
+- [ ] Các nút category filter trong section Roleplay (`#roleplay-category-filter-bar`) đã bị xóa hoàn toàn.
+- [ ] Danh sách roleplay được tối giản gọn gàng, không bị trùng lặp lặp đi lặp lại.
+- [ ] Nút `🎲 RANDOM ROLEPLAY` khởi tạo thành công một roleplay ngẫu nhiên với nhân vật AI.
+- [ ] Chạy `python3 H_docs/scripts/verify.py` pass 100%.

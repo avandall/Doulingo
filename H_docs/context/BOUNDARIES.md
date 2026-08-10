@@ -19,8 +19,9 @@
 ✅ app/characters.py          [Persona Matching Layer]
 ✅ app/db.py                  [Turso Cloud SQLite & Local SQLite Persistence]
 ✅ tests/**                   [Unit & Integration Tests]
-✅ H_docs/runtime/**          [Runtime logs, status, blockers]
-```
+✅ static/index.html           [Frontend HTML Structure]
+✅ static/js/app.js            [Frontend JS Application Logic]
+✅ static/css/duolingo.css     [Frontend Styling]
 
 ### AI KHÔNG được chạm vào (Strictly Disallowed / Read-Only):
 ```
@@ -30,7 +31,6 @@
 ❌ docs/DB4_Science_Nature_and_Health.md   [Ground Truth Raw Materials - READ ONLY]
 ❌ docs/DB5_Leisure_Entertainment_and_Media.md [Ground Truth Raw Materials - READ ONLY]
 ❌ .env / .env.example                     [API Keys & Secrets - READ ONLY]
-❌ static/**                              [Frontend Assets - Chuyển sang task riêng nếu cần]
 ```
 
 ---
