@@ -305,14 +305,14 @@ class MaterialBank:
                     return self.topics[cand_norm]
 
         # Tier 3: Keyword & Token Substring Matching
-        tokens = [t for t in re.split(r'[-_\s]+', norm) if len(t) > 2]
+        STOP_WORDS = {"topic", "custom", "test", "non", "existent", "scenario", "bank", "ielts", "det"}
+        tokens = [t for t in re.split(r'[-_\s]+', norm) if len(t) > 2 and t not in STOP_WORDS]
         for token in tokens:
             for tid, topic in self.topics.items():
                 if token in tid or token in self.normalize_id(topic.topic_name):
                     return topic
 
-        # Tier 4: Fallback to any loaded topic bank so sampling never fails
-        return list(self.topics.values())[0]
+        return None
 
     def list_topics(self) -> List[Dict[str, Any]]:
         """Return a list of summary dictionaries for all loaded topics."""

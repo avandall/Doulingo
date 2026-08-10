@@ -331,7 +331,13 @@ def get_scenario(scenario_id: str) -> Optional[Dict[str, Any]]:
         sc["is_custom"] = False
         return sc
 
-    # Check Material Bank topics
+    # 2. Check Custom Scenarios from DB
+    customs = get_custom_scenarios()
+    for cs in customs:
+        if cs["id"] == scenario_id:
+            return cs
+
+    # 3. Check Material Bank topics
     try:
         from app.material_bank import get_material_bank
         mb_topic = get_material_bank().get_topic(scenario_id)
@@ -352,10 +358,5 @@ def get_scenario(scenario_id: str) -> Optional[Dict[str, Any]]:
             }
     except Exception as e:
         print(f"[scenarios.py] Error looking up MaterialBank topic: {e}")
-
-    customs = get_custom_scenarios()
-    for cs in customs:
-        if cs["id"] == scenario_id:
-            return cs
 
     return None
