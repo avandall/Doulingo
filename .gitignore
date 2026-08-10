@@ -16,3 +16,8 @@ wheels/
 # SQLite Data files
 data/*.db
 data/
+
+# OS / Windows rác metadata files
+*Zone.Identifier*
+*:Zone.Identifier
+
