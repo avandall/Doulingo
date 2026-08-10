@@ -1186,11 +1186,16 @@ class DuolingoSpeakApp {
       const data = await res.json();
       let apiScenarios = data.scenarios || [];
 
+      // Filter out raw Material Bank background topics from UI grid cards to prevent 100+ duplicate cards with 📖 icon
+      apiScenarios = apiScenarios.filter(s => s.source !== 'material_bank' && s.category !== 'Academic IELTS Bank');
+
       const localCustoms = JSON.parse(localStorage.getItem('duo_custom_topics') || '[]');
       const existingIds = new Set(apiScenarios.map(s => s.id));
+      const existingTitles = new Set(apiScenarios.map(s => s.title));
       localCustoms.forEach(lc => {
-        if (!existingIds.has(lc.id)) {
+        if (!existingIds.has(lc.id) && !existingTitles.has(lc.title)) {
           apiScenarios.push(lc);
+          existingTitles.add(lc.title);
         }
       });
 

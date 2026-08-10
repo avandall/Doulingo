@@ -63,6 +63,11 @@ def test_import_custom_scenarios():
     exported_data = export_res.json()
     assert exported_data["scenario"]["title"] == "Shared Coffee Chat"
 
+    # Clean up test scenario from DB
+    from app.db import delete_custom_scenario
+    delete_custom_scenario(imported_sc["id"])
+
+
 def test_import_empty_list_returns_400():
     response = client.post("/api/custom_scenarios/import", json={"scenarios": []})
     assert response.status_code == 400

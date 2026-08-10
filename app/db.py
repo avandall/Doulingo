@@ -158,6 +158,18 @@ def add_custom_scenario(scenario_data: Dict[str, Any]) -> Dict[str, Any]:
     return scenario_data
 
 
+def delete_custom_scenario(sc_id: str) -> bool:
+    """Delete a custom scenario from DB by ID."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM custom_scenarios WHERE id = ?", (sc_id,))
+    deleted = cursor.rowcount > 0
+    conn.commit()
+    conn.close()
+    return deleted
+
+
 def get_custom_scenarios() -> List[Dict[str, Any]]:
     init_db()
     conn = get_db_connection()
