@@ -455,6 +455,40 @@ Create `app/material_bank.py` module containing Pydantic models (`Persona`, `Que
 - **Action:** Start TASK-002: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`).
 - **State:** IN_PROGRESS
 
+---
+
+### Iteration 016 — 2026-08-10 14:37
+
+#### Task Reference
+- **Task ID:** TASK-002
+- **Task Name:** Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`)
+- **Phase:** Phase 1 (Ingestion & Models)
+
+#### Goal
+Write comprehensive unit test suite in `tests/test_material_bank.py` to verify loading, parsing, schema integrity, case-insensitive indexing, listing, and singleton behavior of `MaterialBank`.
+
+#### Actions Taken
+1. Created `tests/test_material_bank.py` with 8 unit test cases covering real markdown file loading, schema validation, case/slug-insensitive lookup, non-existent topic handling, summary listing, singleton pattern, and custom markdown block parsing.
+2. Resolved Ruff unused import warnings by adding explicit `assertIsInstance` checks for Pydantic models (`Persona`, `Question`, `VocabularyItem`, `GrammarPattern`).
+3. Ran Tier 1 verification via `python3 H_docs/scripts/verify.py` — 100% PASS across Ruff, Mypy, Bandit, and Pytest.
+4. Conducted Tier 2 Cognitive Review (DEBATE-006 entry appended to `DEBATE_LOG.md`, APPROVED).
+5. Updated `Tasks_list.md` (`TASK-002` [x] DONE) and `STATUS.md` (`Phase: IN_PROGRESS`).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_material_bank.py` (8/8 passed in 1.09s), `python3 H_docs/scripts/verify.py` status PASS.
+
+#### Decisions Made
+- Used `tempfile.TemporaryDirectory()` for custom markdown test cases to ensure complete test isolation without mutating production files.
+- Used explicit `assertIsInstance` checks for all schema types to ensure zero dead code or unused imports under Ruff linting rules.
+
+#### Git
+- **Commit:** `[iter-16] test(material-bank): add unit tests for Material Bank parser & indexer`
+
+#### Next
+- **Action:** Start TASK-003: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`).
+- **State:** IN_PROGRESS
+
 
 
 

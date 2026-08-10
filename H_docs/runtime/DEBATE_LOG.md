@@ -292,5 +292,53 @@ Before review:  9/10
 After review:   10/10 — Tier 1 verification passed 100% (ruff/mypy/bandit/pytest) and 161 topics loaded cleanly into memory.
 ```
 
+---
 
+### DEBATE-006 — [2026-08-10 14:37]
 
+**Iteration:** ITER-003
+**Type:** SELF_REVIEW
+**Reviewer:** AI Self
+**Subject:** TASK-002 Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`)
+
+#### Critique Raised
+
+**Q1: Unused import warnings flagged by Ruff in test suite**
+- **Raised by:** Self / Ruff Linter
+- **Severity:** LOW
+- **Detail:** Pydantic models (`Persona`, `Question`, `VocabularyItem`, `GrammarPattern`) were imported into `tests/test_material_bank.py` but initially only used in type annotations.
+- **Response:** Added explicit `self.assertIsInstance(obj, ModelClass)` assertions in `test_topic_structure_and_completeness` and `test_parse_custom_markdown_block`.
+- **Action:** FIXED — Unused imports resolved and verified with 100% PASS on Ruff.
+
+**Q2: Isolation of custom markdown parser tests without side effects**
+- **Raised by:** Self
+- **Severity:** MEDIUM
+- **Detail:** Testing custom markdown block parsing could contaminate global state or write files into `docs/`.
+- **Response:** Used Python's `tempfile.TemporaryDirectory()` to create isolated ephemeral files and instantiated a separate `MaterialBank(docs_dir=tmpdir)` instance.
+- **Action:** FIXED — Full isolation achieved in `test_parse_custom_markdown_block`.
+
+#### Session Summary
+
+```
+Total issues raised:   2
+  CRITICAL:  0
+  HIGH:      0
+  MEDIUM:    1
+  LOW:       1
+  INFO:      0
+
+Resolution:
+  Fixed:          2
+  Accepted risk:  0
+  Won't fix:      0
+  Deferred:       0
+
+Review Result: APPROVED
+```
+
+#### Confidence Score
+
+```
+Before review:  9/10
+After review:   10/10 — 8/8 unit tests pass 100% and Tier 1 verification report status is PASS.
+```

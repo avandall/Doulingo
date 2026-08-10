@@ -1,5 +1,5 @@
 # PLAN
-# Kế hoạch thực thi — TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
+# Kế hoạch thực thi — TASK-002: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`)
 
 > **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Ngày tạo:** 2026-08-10
 
@@ -8,9 +8,9 @@
 ## Task Reference
 
 ```
-Task ID:    TASK-001
-Task Name:  Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
-Spec:       Tạo module app/material_bank.py chứa Pydantic models (Persona, Question, VocabularyItem, GrammarPattern, TopicBank) và lớp MaterialBank tự động parse tất cả 5 file markdown (DB1_*.md -> DB5_*.md) tại startup.
+Task ID:    TASK-002
+Task Name:  Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`)
+Spec:       Viết toàn bộ unit test suite trong tests/test_material_bank.py cho app/material_bank.py để kiểm tra việc parse 5 file DB markdown, indexing, case-insensitive retrieval, topic listing, và singleton behavior.
 ```
 
 ---
@@ -18,14 +18,18 @@ Spec:       Tạo module app/material_bank.py chứa Pydantic models (Persona, Q
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [ ] File `app/material_bank.py` được tạo với các Pydantic models chuẩn hóa (`Persona`, `Question`, `VocabularyItem`, `GrammarPattern`, `TopicBank`).
-- [ ] Lớp `MaterialBank` có phương thức `load_all(docs_dir)` đọc thành công cả 5 file `DB1_*.md` đến `DB5_*.md`.
-- [ ] Parser bóc tách chính xác các section: Persona Pool, Question Pool (by Band), Vocab Pool (by Band), Grammar Patterns.
-- [ ] Hỗ trợ chuẩn hóa `topic_id` và các phương thức `get_topic(topic_id)` (case-insensitive, dash/underscore insensitive) và `list_topics()` trả về dữ liệu nhanh chóng từ RAM.
+- [ ] Test case 1: Nạp cả 5 file DB (`docs/DB1_*.md` -> `docs/DB5_*.md`) kiểm tra số lượng Topic > 0 (161 topics).
+- [ ] Test case 2: Kiểm tra các Topic parsed có đủ Persona pool, Question pool và Vocabulary pool.
+- [ ] Test case 3: Kiểm tra `get_topic(topic_id)` hoạt động chính xác không phân biệt hoa thường và dấu gạch nối (`shopping-mall`, `SHOPPING_MALL`, `Shopping Mall`).
+- [ ] Test case 4: Kiểm tra truy vấn topic không tồn tại trả về `None`.
+- [ ] Test case 5: Kiểm tra `list_topics()` trả về đầy đủ metadata summary của tất cả các topics.
+- [ ] Test case 6: Kiểm tra hàm `get_material_bank()` trả về singleton instance của `MaterialBank`.
+- [ ] Test case 7: Kiểm tra parse custom markdown block cô lập.
 - [ ] Tier 1 verification (`python3 H_docs/scripts/verify.py`) pass 100%.
 
 ### Verification Commands
 ```bash
+pytest tests/test_material_bank.py
 python3 H_docs/scripts/verify.py
 ```
 
@@ -33,10 +37,10 @@ python3 H_docs/scripts/verify.py
 
 ## Execution Steps
 
-### Step 1: Implement `app/material_bank.py`
-- **Mục tiêu:** Định nghĩa Pydantic models và class `MaterialBank` tự động parse 5 file markdown trong `docs/`.
-- **Files tạo/sửa:** `app/material_bank.py`
-- **Exit condition:** `app/material_bank.py` import thành công, `MaterialBank().load_all('docs')` nạp > 0 topics.
+### Step 1: Create `tests/test_material_bank.py`
+- **Mục tiêu:** Viết unit test suite với 100% pass rate bao phủ đầy đủ các case.
+- **Files tạo/sửa:** `tests/test_material_bank.py`
+- **Exit condition:** `pytest tests/test_material_bank.py` chạy 100% PASS.
 
 ### Step 2: Verification (Tier 1 & Tier 2)
 - **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py` kiểm tra Tier 1 (ruff, mypy, pytest, bandit). Thực hiện Tier 2 Cognitive Review dựa trên `git diff` và ghi log vào `DEBATE_LOG.md`.
@@ -44,7 +48,7 @@ python3 H_docs/scripts/verify.py
 - **Exit condition:** `verify.py` pass 100%, `DEBATE_LOG.md` result APPROVED.
 
 ### Step 3: Documentation & State Update
-- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-001` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
+- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-002` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
 - **Files tạo/sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`
 - **Exit condition:** Git commit thành công.
 
@@ -55,7 +59,7 @@ python3 H_docs/scripts/verify.py
 ```
 Estimated iterations: 1
 Maximum allowed:      2
-Context refresh at:   Iteration 2
+Context refresh at:   Iteration 3
 ```
 
 ---
@@ -64,4 +68,4 @@ Context refresh at:   Iteration 2
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-10 | Tạo plan cho TASK-001 |
+| v1 | 2026-08-10 | Tạo plan cho TASK-002 |
