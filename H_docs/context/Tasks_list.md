@@ -13,7 +13,7 @@
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Ghi chú / Blocker |
 |---------|----------|-------|---------|------------|-------------------|
 | `TASK-000` | Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite) | Phase 0 | P0 | `[x] DONE` | Replace local SQLite file with Turso Cloud SQLite (9GB Free Tier) |
-| `TASK-001` | Material Bank Data Models & Markdown Parser (`app/material_bank.py`) | Phase 1 | P0 | `[ ] TODO` | Parse all 5 `DB*.md` files into Pydantic models |
+| `TASK-001` | Material Bank Data Models & Markdown Parser (`app/material_bank.py`) | Phase 1 | P0 | `[x] DONE` | Parse all 5 `DB*.md` files into Pydantic models |
 | `TASK-002` | Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`) | Phase 1 | P0 | `[ ] TODO` | Verify all topics, personas, questions & vocab parsed |
 | `TASK-003` | Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`) | Phase 2 | P0 | `[ ] TODO` | Implement sampling algorithm & prompt assembly |
 | `TASK-004` | Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`) | Phase 2 | P0 | `[ ] TODO` | Verify assembly speed (<5ms) and non-repetitive sampling |
@@ -68,7 +68,7 @@ Task Name:       Material Bank Data Models & Markdown Parser (`app/material_bank
 Phase:           Phase 1 (Ingestion & Models)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-10
 ```
 

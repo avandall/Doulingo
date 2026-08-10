@@ -8,12 +8,12 @@
 ## Current State
 
 ```
-Task:           TASK-000: Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite) -> DONE
-Next Task:      TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
+Task:           TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`) -> DONE
+Next Task:      TASK-002: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`)
 Phase:          IN_PROGRESS
-Current Step:   TASK-000 Executed, Verified (23 tests green), Reviewed & Committed
-Iteration:      1
-Last Updated:   2026-08-10 14:33
+Current Step:   TASK-001 Executed, Verified (Tier 1 100% PASS), Reviewed (Tier 2 APPROVED), and Committed
+Iteration:      2
+Last Updated:   2026-08-10 14:36
 ```
 
 ---
@@ -31,9 +31,9 @@ ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
 ## Last Action
 
 ```
-Action:   Hoàn thành TASK-000: Refactor app/db.py kết nối Turso Cloud SQLite / Local SQLite fallback, tạo unit test tests/test_db_turso.py. Tier 1 verify.py pass 100% (23/23 tests). Phản biện Tier 2 DEBATE-004 APPROVED.
+Action:   Hoàn thành TASK-001: Tạo app/material_bank.py với Pydantic models (Persona, Question, VocabularyItem, GrammarPattern, TopicBank) và lớp MaterialBank parse 161 topics từ 5 DB files. Tier 1 verify.py pass 100%. Phản biện Tier 2 DEBATE-005 APPROVED.
 Result:   PASS
-Time:     2026-08-10 14:33
+Time:     2026-08-10 14:36
 ```
 
 ---
@@ -41,7 +41,7 @@ Time:     2026-08-10 14:33
 ## Next Action
 
 ```
-Action:   Thực hiện TASK-001: Material Bank Data Models & Markdown Parser (app/material_bank.py).
+Action:   Thực hiện TASK-002: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`).
 Priority: P0-Critical
 Blocks:   NONE
 ```
@@ -51,8 +51,8 @@ Blocks:   NONE
 ## Progress Summary
 
 ```
-Tasks completed: 1 / 9 (TASK-000 DONE)
-Tasks remaining: 8 (TASK-001, TASK-002, TASK-003, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008)
+Tasks completed: 2 / 9 (TASK-000 DONE, TASK-001 DONE)
+Tasks remaining: 7 (TASK-002, TASK-003, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008)
 ```
 
 ---

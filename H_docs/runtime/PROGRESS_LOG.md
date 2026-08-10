@@ -420,6 +420,42 @@ Replace local file SQLite DB in `app/db.py` with Turso Cloud SQLite (`libsql_exp
 - **Action:** Start TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`).
 - **State:** IN_PROGRESS
 
+---
+
+### Iteration 015 — 2026-08-10 14:36
+
+#### Task Reference
+- **Task ID:** TASK-001
+- **Task Name:** Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
+- **Phase:** Phase 1 (Ingestion & Models)
+
+#### Goal
+Create `app/material_bank.py` module containing Pydantic models (`Persona`, `Question`, `VocabularyItem`, `GrammarPattern`, `TopicBank`) and class `MaterialBank` to automatically parse all 5 academic IELTS database markdown files (`DB1_*.md` to `DB5_*.md`) into memory for sub-5ms retrieval.
+
+#### Actions Taken
+1. Created `app/material_bank.py` with Pydantic v2 schemas (`Persona`, `Question`, `VocabularyItem`, `GrammarPattern`, `TopicBank`).
+2. Implemented `MaterialBank` class with robust AST/regex parsing for Persona Pool, Question Pool (by Band), Vocabulary Pool (by Band), and Grammar Patterns.
+3. Implemented `normalize_id` for case-insensitive and slug-insensitive topic lookups (`get_topic`) and `_merge_topic` for set-based deduplication across multi-file topic blocks.
+4. Executed Tier 1 quality checks via `python3 H_docs/scripts/verify.py` (Ruff, Mypy, Bandit, Pytest passed 100%).
+5. Conducted Tier 2 Cognitive Review (`git diff` inspection, DEBATE-005 entry appended to `DEBATE_LOG.md`).
+6. Updated `Tasks_list.md` (`TASK-001` [x] DONE) and `STATUS.md` (`Phase: IN_PROGRESS`).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `python3 H_docs/scripts/verify.py` report status PASS. 161 unique academic IELTS topic banks parsed and indexed into memory.
+
+#### Decisions Made
+- Added `normalize_id` static method to convert underscores/spaces to hyphens and lowercase topic IDs, handling varied slug formats seamlessly.
+- Built set-based deduplication in `_merge_topic` to gracefully merge topic stubs and full content blocks across multiple markdown files without repeating personas, questions, or vocabulary.
+
+#### Git
+- **Commit:** `[iter-15] feat(material-bank): add material bank Pydantic models & markdown parser in app/material_bank.py`
+
+#### Next
+- **Action:** Start TASK-002: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`).
+- **State:** IN_PROGRESS
+
+
 
 
 

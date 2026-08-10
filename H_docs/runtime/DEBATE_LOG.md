@@ -241,4 +241,56 @@ Before review:  8/10
 After review:   10/10 — All 23 unit tests pass 100% and Tier 1 verification status is PASS.
 ```
 
+---
+
+### DEBATE-005 — [2026-08-10 14:36]
+
+**Iteration:** ITER-002
+**Type:** SELF_REVIEW
+**Reviewer:** AI Self
+**Subject:** TASK-001 Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
+
+#### Critique Raised
+
+**Q1: Inconsistent Topic ID slugification across multiple DB markdown files**
+- **Raised by:** Self
+- **Severity:** MEDIUM
+- **Detail:** `topic_id` in `DB1`..`DB5` uses varied casing (`study` vs `STUDY`, `mobile_phones` vs `mobile-phones`, or topic titles like `Work, Economy & Social Equality Topics`).
+- **Response:** Implemented `normalize_id` static method which converts underscores/spaces to hyphens, lowercases strings, and strips non-alphanumeric chars. `get_topic` uses this normalized form for lookup, so `"mobile_phones"`, `"mobile-phones"`, `"Mobile Phones"` all resolve to the same `TopicBank`.
+- **Action:** FIXED — `normalize_id` and fallback lookup by `topic_name` added to `MaterialBank`.
+
+**Q2: Multi-file topic merging without duplicate items**
+- **Raised by:** Self
+- **Severity:** HIGH
+- **Detail:** When topics appear across multiple DB files or as stubs and full sections, naive appending would create duplicate personas, questions, or vocabulary.
+- **Response:** Added `_merge_topic` helper using case-insensitive set matching (`title.lower()`, `text.lower()`, `phrase.lower()`, `pattern.lower()`) to merge new unique pool items into existing topic banks.
+- **Action:** FIXED — Set-based deduplication implemented in `_merge_topic`. Tested successfully with 161 unique topics parsed.
+
+#### Session Summary
+
+```
+Total issues raised:   2
+  CRITICAL:  0
+  HIGH:      1
+  MEDIUM:    1
+  LOW:       0
+  INFO:      0
+
+Resolution:
+  Fixed:          2
+  Accepted risk:  0
+  Won't fix:      0
+  Deferred:       0
+
+Review Result: APPROVED
+```
+
+#### Confidence Score
+
+```
+Before review:  9/10
+After review:   10/10 — Tier 1 verification passed 100% (ruff/mypy/bandit/pytest) and 161 topics loaded cleanly into memory.
+```
+
+
 

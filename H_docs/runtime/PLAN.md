@@ -1,5 +1,5 @@
 # PLAN
-# Kế hoạch thực thi — TASK-000: Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite)
+# Kế hoạch thực thi — TASK-001: Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
 
 > **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Ngày tạo:** 2026-08-10
 
@@ -8,11 +8,9 @@
 ## Task Reference
 
 ```
-Task ID:    TASK-000
-Task Name:  Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite)
-Spec:       Thêm cấu hình TURSO_DATABASE_URL và TURSO_AUTH_TOKEN trong .env và app/db.py.
-            Kết nối thành công đến Turso Cloud SQLite bằng libsql_experimental hoặc fallback local SQLite nếu thiếu credentials.
-            Tự động khởi tạo/migrate các bảng custom_scenarios, word_dictionary, user_stats.
+Task ID:    TASK-001
+Task Name:  Material Bank Data Models & Markdown Parser (`app/material_bank.py`)
+Spec:       Tạo module app/material_bank.py chứa Pydantic models (Persona, Question, VocabularyItem, GrammarPattern, TopicBank) và lớp MaterialBank tự động parse tất cả 5 file markdown (DB1_*.md -> DB5_*.md) tại startup.
 ```
 
 ---
@@ -20,17 +18,14 @@ Spec:       Thêm cấu hình TURSO_DATABASE_URL và TURSO_AUTH_TOKEN trong .env
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [ ] Thêm `libsql-experimental` vào `requirements.txt`.
-- [ ] Cập nhật `app/db.py` hỗ trợ đọc `TURSO_DATABASE_URL` và `TURSO_AUTH_TOKEN` từ môi trường (`os.getenv`).
-- [ ] Hàm `get_db_connection()` trong `app/db.py` ưu tiên dùng `libsql_experimental.connect` khi có `TURSO_DATABASE_URL`, và tự động fallback về `sqlite3.connect(DB_PATH)` khi thiếu URL hoặc lỗi kết nối.
-- [ ] Đảm bảo khởi tạo các bảng `custom_scenarios`, `word_dictionary`, `user_stats` hoạt động 100% không lỗi trên cả Turso DB và Local SQLite.
-- [ ] Cập nhật các hàm thao tác DB trong `app/db.py` (`add_custom_scenario`, `get_custom_scenarios`, `save_translated_word`, `get_translated_word`, `get_all_saved_words`, `get_user_stats`, `add_user_xp`) tương thích với cả `libsql_experimental` và `sqlite3`.
-- [ ] Viết unit tests trong `tests/test_db_turso.py` kiểm tra kết nối DB, migration bảng, và fallback mechanism.
-- [ ] Chạy `python3 H_docs/scripts/verify.py` pass 100%.
+- [ ] File `app/material_bank.py` được tạo với các Pydantic models chuẩn hóa (`Persona`, `Question`, `VocabularyItem`, `GrammarPattern`, `TopicBank`).
+- [ ] Lớp `MaterialBank` có phương thức `load_all(docs_dir)` đọc thành công cả 5 file `DB1_*.md` đến `DB5_*.md`.
+- [ ] Parser bóc tách chính xác các section: Persona Pool, Question Pool (by Band), Vocab Pool (by Band), Grammar Patterns.
+- [ ] Hỗ trợ chuẩn hóa `topic_id` và các phương thức `get_topic(topic_id)` (case-insensitive, dash/underscore insensitive) và `list_topics()` trả về dữ liệu nhanh chóng từ RAM.
+- [ ] Tier 1 verification (`python3 H_docs/scripts/verify.py`) pass 100%.
 
 ### Verification Commands
 ```bash
-pytest tests/test_db_turso.py
 python3 H_docs/scripts/verify.py
 ```
 
@@ -38,20 +33,20 @@ python3 H_docs/scripts/verify.py
 
 ## Execution Steps
 
-### Step 1: Update Dependencies & DB Module (`requirements.txt`, `app/db.py`)
-- **Mục tiêu:** Thêm `libsql-experimental>=0.0.55` vào `requirements.txt`. Refactor `app/db.py` để hỗ trợ Turso Cloud SQLite với graceful fallback về local SQLite.
-- **Files sửa:** `requirements.txt`, `app/db.py`
-- **Exit condition:** `app/db.py` import thành công, hàm `init_db()` khởi tạo được tất cả các bảng.
+### Step 1: Implement `app/material_bank.py`
+- **Mục tiêu:** Định nghĩa Pydantic models và class `MaterialBank` tự động parse 5 file markdown trong `docs/`.
+- **Files tạo/sửa:** `app/material_bank.py`
+- **Exit condition:** `app/material_bank.py` import thành công, `MaterialBank().load_all('docs')` nạp > 0 topics.
 
-### Step 2: Unit Testing (`tests/test_db_turso.py`)
-- **Mục tiêu:** Viết unit test kiểm tra khởi tạo bảng, CRUD operations, và fallback behavior.
-- **Files tạo:** `tests/test_db_turso.py`
-- **Exit condition:** `pytest tests/test_db_turso.py` pass 100%.
-
-### Step 3: Tier 1 Verification & Tier 2 Cognitive Review
-- **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py`, kiểm tra `VERIFICATION_REPORT.md`, sau đó thực hiện Tier 2 Review trên `git diff` và append vào `DEBATE_LOG.md`.
+### Step 2: Verification (Tier 1 & Tier 2)
+- **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py` kiểm tra Tier 1 (ruff, mypy, pytest, bandit). Thực hiện Tier 2 Cognitive Review dựa trên `git diff` và ghi log vào `DEBATE_LOG.md`.
 - **Files tạo/sửa:** `H_docs/runtime/VERIFICATION_REPORT.md`, `H_docs/runtime/DEBATE_LOG.md`
-- **Exit condition:** `verify.py` report status PASS, `DEBATE_LOG.md` result APPROVED.
+- **Exit condition:** `verify.py` pass 100%, `DEBATE_LOG.md` result APPROVED.
+
+### Step 3: Documentation & State Update
+- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-001` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
+- **Files tạo/sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`
+- **Exit condition:** Git commit thành công.
 
 ---
 
@@ -69,4 +64,4 @@ Context refresh at:   Iteration 2
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-10 | Tạo plan cho TASK-000 |
+| v1 | 2026-08-10 | Tạo plan cho TASK-001 |
