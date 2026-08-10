@@ -96,7 +96,7 @@ class PromptFactory:
         if topic.personas:
             sampled_persona = random.choice(topic.personas)
 
-        # 2. Sample Vocabulary — prioritize target band, fallback to any available
+        # 2. Sample Vocabulary - prioritize target band, fallback to any available
         vocab_candidates = [
             v for v in topic.vocabulary
             if band in v.band or v.band.strip() == band
@@ -109,7 +109,7 @@ class PromptFactory:
             random.sample(vocab_candidates, actual_count) if actual_count > 0 else []
         )
 
-        # 3. Sample Questions (1-2 items) — prioritize target band, fallback to any
+        # 3. Sample Questions (1-2 items) - prioritize target band, fallback to any
         question_candidates = [
             q for q in topic.questions
             if band in q.band or q.band.strip() == band
@@ -122,7 +122,7 @@ class PromptFactory:
             random.sample(question_candidates, question_count) if question_count > 0 else []
         )
 
-        # 4. Sample Grammar Patterns (1-2 items) — skip empty/placeholder patterns
+        # 4. Sample Grammar Patterns (1-2 items) - skip empty/placeholder patterns
         grammar_candidates = [
             g for g in topic.grammar_patterns
             if g.pattern.strip() and g.pattern.strip() != "--"
@@ -177,25 +177,25 @@ class PromptFactory:
             "",
         ]
 
-        # ── Section 3: Persona role (if available) ──────────────────────────
+        # -- Section 3: Persona role (if available) --------------------------
         persona: Optional[Persona] = sampled.get("persona")
         if persona:
             prompt_lines += [
                 "### YOUR ROLE THIS SESSION",
-                f"Play the persona of: [{persona.id}] {persona.title} — {persona.description}",
+                f"Play the persona of: [{persona.id}] {persona.title} - {persona.description}",
                 "",
             ]
 
-        # ── Section 4: Mandatory Vocabulary Injection ───────────────────────
+        # -- Section 4: Mandatory Vocabulary Injection -----------------------
         # Phrased as MANDATORY to prevent AI from ignoring soft suggestions.
         vocab_items: List[VocabularyItem] = sampled.get("vocabulary", [])
         if vocab_items:
             prompt_lines += [
-                "### MANDATORY VOCABULARY — USE THESE IN YOUR RESPONSES",
+                "### MANDATORY VOCABULARY - USE THESE IN YOUR RESPONSES",
                 "You MUST weave at least 1-2 of these phrases organically into the conversation:",
             ]
             for v in vocab_items:
-                prompt_lines.append(f'  \u2726 "{v.phrase}" \u2014 {v.meaning}')
+                prompt_lines.append(f'  * "{v.phrase}" - {v.meaning}')
             prompt_lines.append("")
 
         # ── Section 5: Question seeds ────────────────────────────────────────

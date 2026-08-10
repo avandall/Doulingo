@@ -161,7 +161,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "A2 vocabulary. Can use common collocations (have a meal, take a break, make a call).",
         "grammar_allowed": "Past simple (regular + irregular). Future with 'going to'. Questions with 'When, Where, Who'.",
         "response_style": "2-3 sentences. Connect past experiences or future plans with the topic (45-85 words).",
-        "example_response": "I'm going to have lunch with my colleague today at the new place downtown. Last week we tried a noodle shop and it was pretty good — decent food and a really relaxed atmosphere. Have you made any plans for eating out this week?",
+        "example_response": "I'm going to have lunch with my colleague today at the new place downtown. Last week we tried a noodle shop and it was pretty good - decent food and a really relaxed atmosphere. Have you made any plans for eating out this week?",
     },
     7: {
         "cefr": "A2+",
@@ -181,7 +181,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B1 vocabulary. Common idioms (a piece of cake, hit the road). Basic phrasal verbs freely.",
         "grammar_allowed": "Present perfect (have been, have done). Comparatives + superlatives. 'I think', 'I believe'.",
         "response_style": "3 sentences. Share an opinion with a reason, then ask for their viewpoint (45-85 words).",
-        "example_response": "I think learning a new language is a piece of cake when you're surrounded by native speakers — immersion is by far the most effective approach I've tried. I've been studying Spanish for six months and I've already noticed a huge improvement in how confident I feel. What do you believe is the biggest obstacle to becoming fluent in another language?",
+        "example_response": "I think learning a new language is a piece of cake when you're surrounded by native speakers - immersion is by far the most effective approach I've tried. I've been studying Spanish for six months and I've already noticed a huge improvement in how confident I feel. What do you believe is the biggest obstacle to becoming fluent in another language?",
     },
     9: {
         "cefr": "B1",
@@ -211,7 +211,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2 vocabulary. Abstract nouns. B2 collocations (raise awareness, make an impression).",
         "grammar_allowed": "All conditionals. Passive voice. Modals for deduction (must be, might have).",
         "response_style": "3-4 sentences. Provide structured conversational analysis with discourse markers (55-105 words).",
-        "example_response": "It's worth raising awareness about how much our childhood experiences shape our adult relationships — something I've been reflecting on quite a bit lately. Growing up in a community where open communication was actively encouraged must have made a significant difference for those who had that privilege. Furthermore, the absence of such an environment might have led to communication barriers that can take years to unlearn. What aspects of your upbringing do you think have had the most lasting impression on how you interact with people today?",
+        "example_response": "It's worth raising awareness about how much our childhood experiences shape our adult relationships - something I've been reflecting on quite a bit lately. Growing up in a community where open communication was actively encouraged must have made a significant difference for those who had that privilege. Furthermore, the absence of such an environment might have led to communication barriers that can take years to unlearn. What aspects of your upbringing do you think have had the most lasting impression on how you interact with people today?",
     },
     12: {
         "cefr": "B2-",
@@ -231,7 +231,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2 rich vocabulary. Sophisticated adjectives (meticulous, vibrant, compelling). Abstract concepts.",
         "grammar_allowed": "Complex sentences. Mixed conditionals. Cleft sentences (It was...that). Emphatic structures.",
         "response_style": "3-4 sentences. Employ abstract vocabulary and sophisticated reasoning naturally (55-105 words).",
-        "example_response": "It was precisely the meticulous attention to cultural nuance that made that documentary so compelling — a rare quality in mainstream media. Had the director taken a more conventional approach, the vibrant complexity of those communities would have been flattened into a superficial stereotype. What I find particularly fascinating is how documentary filmmakers navigate the tension between telling a coherent narrative and preserving the messy, authentic reality of their subjects. Which aspects of storytelling do you think are most easily distorted when a story crosses cultural boundaries?",
+        "example_response": "It was precisely the meticulous attention to cultural nuance that made that documentary so compelling - a rare quality in mainstream media. Had the director taken a more conventional approach, the vibrant complexity of those communities would have been flattened into a superficial stereotype. What I find particularly fascinating is how documentary filmmakers navigate the tension between telling a coherent narrative and preserving the messy, authentic reality of their subjects. Which aspects of storytelling do you think are most easily distorted when a story crosses cultural boundaries?",
     },
     14: {
         "cefr": "B2",
@@ -241,7 +241,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2-C1 vocabulary. Native idioms freely. Academic and journalistic vocabulary.",
         "grammar_allowed": "All advanced structures. Ellipsis. Fronting (What I find interesting is...). Perfect modals.",
         "response_style": "3-4 sentences. Develop an engaging conversational point with idiomatic precision (55-105 words).",
-        "example_response": "What I find genuinely intriguing is how the gig economy has quietly dismantled the very concept of job security — an idea that previous generations treated as a given rather than a privilege. Journalists have been documenting this shift for years, yet policymakers seem to have dragged their feet in responding to its implications. There's something to be said for the flexibility it offers, but one could argue that it largely benefits those who were already economically stable to begin with. To what extent do you think institutional responses to economic disruption tend to favour those who already hold the most power?",
+        "example_response": "What I find genuinely intriguing is how the gig economy has quietly dismantled the very concept of job security - an idea that previous generations treated as a given rather than a privilege. Journalists have been documenting this shift for years, yet policymakers seem to have dragged their feet in responding to its implications. There's something to be said for the flexibility it offers, but one could argue that it largely benefits those who were already economically stable to begin with. To what extent do you think institutional responses to economic disruption tend to favour those who already hold the most power?",
     },
     15: {
         "cefr": "B2+",
@@ -251,7 +251,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C1 vocabulary. Nuanced language. Near-native collocations. Literary expressions.",
         "grammar_allowed": "Any native-level grammar. Hedging language (arguably, to a certain extent). Nominalizations.",
         "response_style": "3-4 sentences. Anticipate viewpoints and use nuanced hedging language (55-105 words).",
-        "example_response": "Arguably, the proliferation of social media has fundamentally altered the dynamics of human connection — not so much by bringing people closer together, but by creating the illusion of closeness while arguably deepening a sense of isolation. To a certain extent, the curation of one's online persona has become a form of performative self-expression that prioritises external validation over genuine intimacy. The normalization of this behaviour raises fascinating questions about authenticity in contemporary relationships. To what degree do you think the boundaries between one's public and private self have eroded in the age of constant digital visibility?",
+        "example_response": "Arguably, the proliferation of social media has fundamentally altered the dynamics of human connection - not so much by bringing people closer together, but by creating the illusion of closeness while arguably deepening a sense of isolation. To a certain extent, the curation of one's online persona has become a form of performative self-expression that prioritises external validation over genuine intimacy. The normalization of this behaviour raises fascinating questions about authenticity in contemporary relationships. To what degree do you think the boundaries between one's public and private self have eroded in the age of constant digital visibility?",
     },
     16: {
         "cefr": "C1",
@@ -261,7 +261,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C1 vocabulary. Idiomatic mastery. Academic and professional register.",
         "grammar_allowed": "Full native grammar range. Complex subordination. Implicit logical connectors.",
         "response_style": "3-4 sentences. Speak with near-native eloquence, humor, and subtle connotations (65-130 words).",
-        "example_response": "There's an almost paradoxical quality to ambition — the very drive that compels people to pursue extraordinary goals tends to render the attainment of those goals strangely anticlimactic, as though the journey itself was the point all along. I've often wondered whether high achievers are genuinely motivated by the destination or whether they're, in some sense, addicted to the act of striving — a distinction that carries profound implications for how we structure our lives and measure fulfilment. What strikes you as the most honest answer when someone asks whether you're ultimately driven by a passion for the work itself or by the recognition and reward it might bring?",
+        "example_response": "There's an almost paradoxical quality to ambition - the very drive that compels people to pursue extraordinary goals tends to render the attainment of those goals strangely anticlimactic, as though the journey itself was the point all along. I've often wondered whether high achievers are genuinely motivated by the destination or whether they're, in some sense, addicted to the act of striving - a distinction that carries profound implications for how we structure our lives and measure fulfilment. What strikes you as the most honest answer when someone asks whether you're ultimately driven by a passion for the work itself or by the recognition and reward it might bring?",
     },
     17: {
         "cefr": "C1",
@@ -271,7 +271,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C1-C2 vocabulary. Philosophical terms. Rhetorical devices (rhetorical questions, anaphora).",
         "grammar_allowed": "Native-level full range. Parenthetical remarks. Appositive phrases. Absolute constructions.",
         "response_style": "3-4 sentences. Employ rhetorical devices, wit, or cultural references naturally (65-130 words).",
-        "example_response": "Is it not curious — deeply, philosophically curious — that the societies most obsessed with measuring happiness tend to produce populations that report feeling least content? There's an aphorism lurking here: the more rigorously we attempt to quantify well-being, the more elusive it becomes, slipping through the fingers of our instruments like sand. Our metrics, precise as they are, capture the shadow of human flourishing while the substance stubbornly resists quantification — a limitation that should give any serious policymaker pause. What, in your estimation, lies beyond the reach of our current frameworks for understanding what it means to live well?",
+        "example_response": "Is it not curious - deeply, philosophically curious - that the societies most obsessed with measuring happiness tend to produce populations that report feeling least content? There's an aphorism lurking here: the more rigorously we attempt to quantify well-being, the more elusive it becomes, slipping through the fingers of our instruments like sand. Our metrics, precise as they are, capture the shadow of human flourishing while the substance stubbornly resists quantification - a limitation that should give any serious policymaker pause. What, in your estimation, lies beyond the reach of our current frameworks for understanding what it means to live well?",
     },
     18: {
         "cefr": "C1+",
@@ -281,7 +281,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C2 near-native vocabulary. Literary and cultural references. Nuanced connotations.",
         "grammar_allowed": "Any grammatical structure. Poetic license. Sophisticated register shifts.",
         "response_style": "3-4 sentences. Express deep abstract ideas with effortless syntactic variety (65-130 words).",
-        "example_response": "Memory, as Proust understood, is less an archive than a creative act — each retrieval subtly reshapes the original, so that what we remember is always, in some sense, a fiction we have authored about our past. This insight carries uncomfortable implications: the sense of continuity that anchors our identity is built, at least in part, on stories we've told ourselves so many times they've hardened into apparent fact. There is something both liberating and vertiginous in that recognition — liberating because it suggests the past is more malleable than we imagined, vertiginous because it undermines the bedrock on which we've constructed our sense of self. In what ways do you find yourself curating or revising the narrative of your own life?",
+        "example_response": "Memory, as Proust understood, is less an archive than a creative act - each retrieval subtly reshapes the original, so that what we remember is always, in some sense, a fiction we have authored about our past. This insight carries uncomfortable implications: the sense of continuity that anchors our identity is built, at least in part, on stories we've told ourselves so many times they've hardened into apparent fact. There is something both liberating and vertiginous in that recognition - liberating because it suggests the past is more malleable than we imagined, vertiginous because it undermines the bedrock on which we've constructed our sense of self. In what ways do you find yourself curating or revising the narrative of your own life?",
     },
     19: {
         "cefr": "C2",
@@ -291,17 +291,17 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C2 eloquent vocabulary. Native-speaker precision. Rare but precise word choices.",
         "grammar_allowed": "Fully native syntax. Deliberate syntactic complexity for stylistic effect.",
         "response_style": "3-4 sentences. Speak as an articulate native speaker with rich conversational depth (65-130 words).",
-        "example_response": "What separates the merely clever from the genuinely wise is, I suspect, not the breadth of knowledge but the quality of attention — an almost Simone Weil-ian capacity to be wholly present to what stands before you, unmediated by the noise of prior assumption. Wisdom, in this sense, has less to do with accumulating the right answers than with cultivating a certain tolerance for uncertainty, a willingness to sit with questions that resist resolution without collapsing into either nihilism or false comfort. It is a rarer disposition than intelligence, and arguably more necessary. What do you think our educational systems most fundamentally fail to cultivate in the people who pass through them?",
+        "example_response": "What separates the merely clever from the genuinely wise is, I suspect, not the breadth of knowledge but the quality of attention - an almost Simone Weil-ian capacity to be wholly present to what stands before you, unmediated by the noise of prior assumption. Wisdom, in this sense, has less to do with accumulating the right answers than with cultivating a certain tolerance for uncertainty, a willingness to sit with questions that resist resolution without collapsing into either nihilism or false comfort. It is a rarer disposition than intelligence, and arguably more necessary. What do you think our educational systems most fundamentally fail to cultivate in the people who pass through them?",
     },
     20: {
         "cefr": "C2+",
         "sentence_words": "16-25",
         "min_words": 65,
         "max_words": 130,
-        "vocab_tier": "Native expert: slang, colloquialisms, domain jargon, cultural humor — all natural.",
+        "vocab_tier": "Native expert: slang, colloquialisms, domain jargon, cultural humor - all natural.",
         "grammar_allowed": "All native structures including deliberately broken grammar for rhetorical effect.",
         "response_style": "3-4 sentences. Speak exactly as an articulate, witty native virtuoso. Complete conversational freedom (65-130 words).",
-        "example_response": "Look, I'll be straight with you — the older I get, the more I'm convinced that the things we spend our twenties absolutely certain about are precisely the things we spend our forties quietly dismantling. There's a kind of intellectual arrogance that's almost endearing in retrospect: all that ferocious certainty! And yet, I'm not sure the alternative — the studied, performative open-mindedness you see everywhere now — is meaningfully better; it just swaps one pose for another. What's something you held as an absolute conviction a decade ago that now strikes you as, well, frankly embarrassing?",
+        "example_response": "Look, I'll be straight with you - the older I get, the more I'm convinced that the things we spend our twenties absolutely certain about are precisely the things we spend our forties quietly dismantling. There's a kind of intellectual arrogance that's almost endearing in retrospect: all that ferocious certainty! And yet, I'm not sure the alternative - the studied, performative open-mindedness you see everywhere now - is meaningfully better; it just swaps one pose for another. What's something you held as an absolute conviction a decade ago that now strikes you as, well, frankly embarrassing?",
     },
 }
 
@@ -519,7 +519,7 @@ Output JSON ONLY:
                 except Exception:
                     continue
 
-        # All providers exhausted — use smart level-aware fallback
+        # All providers exhausted - use smart level-aware fallback
         fallback_q = self._build_smart_fallback_opener(scenario_id, scenario['title'], level)
         return {"ai_response": fallback_q, "ai_response_vi": ""}
 

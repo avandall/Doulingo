@@ -286,8 +286,8 @@ def api_translate_sentence(payload: SentenceTranslateRequest):
     """
     On-demand sentence translation endpoint.
     Called LAZILY only when user explicitly clicks the Translate button.
-    Caches results in RAM — same sentence translated only ONCE per session.
-    Uses the same LLM pool as the main AI engine (Groq → Gemini fallback).
+    Caches results in RAM - same sentence translated only ONCE per session.
+    Uses the same LLM pool as the main AI engine (Groq -> Gemini fallback).
     ZERO extra API calls unless user actively requests translation.
     """
     text = payload.text.strip()
@@ -297,7 +297,7 @@ def api_translate_sentence(payload: SentenceTranslateRequest):
     target_lang = payload.target_lang or "vi"
     cache_key = f"{target_lang}::{text}"
 
-    # Check RAM cache first — avoids repeat LLM calls for same sentence
+    # Check RAM cache first - avoids repeat LLM calls for same sentence
     if cache_key in SENTENCE_TRANSLATION_CACHE:
         return {"translation": SENTENCE_TRANSLATION_CACHE[cache_key], "cached": True}
 
