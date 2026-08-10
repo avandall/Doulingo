@@ -15,7 +15,7 @@
 | `TASK-000` | Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite) | Phase 0 | P0 | `[x] DONE` | Replace local SQLite file with Turso Cloud SQLite (9GB Free Tier) |
 | `TASK-001` | Material Bank Data Models & Markdown Parser (`app/material_bank.py`) | Phase 1 | P0 | `[x] DONE` | Parse all 5 `DB*.md` files into Pydantic models |
 | `TASK-002` | Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`) | Phase 1 | P0 | `[x] DONE` | Verify all topics, personas, questions & vocab parsed |
-| `TASK-003` | Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`) | Phase 2 | P0 | `[ ] TODO` | Implement sampling algorithm & prompt assembly |
+| `TASK-003` | Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`) | Phase 2 | P0 | `[x] DONE` | Implement sampling algorithm & prompt assembly |
 | `TASK-004` | Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`) | Phase 2 | P0 | `[ ] TODO` | Verify assembly speed (<5ms) and non-repetitive sampling |
 | `TASK-005` | AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`) | Phase 3 | P1 | `[ ] TODO` | Inject sampled prompts & set temperature 0.75-0.85 |
 | `TASK-006` | FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`) | Phase 3 | P1 | `[ ] TODO` | Connect `/api/scenarios`, `/api/start_scenario`, `/api/process_turn` |
@@ -118,7 +118,7 @@ Task Name:       Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_f
 Phase:           Phase 2 (Sampling & Prompt Factory)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-10
 ```
 
@@ -127,9 +127,9 @@ Ngày tạo:        2026-08-10
 - **What:** Xây dựng module `app/prompt_factory.py` chứa class `PromptFactory`.
 
 #### Acceptance Criteria
-- [ ] Class `PromptFactory` có hàm `sample_materials(topic_id, level)` thực hiện sample 1 Persona, 3-4 Vocab items, 1-2 Questions theo band điểm.
-- [ ] Hàm `build_system_prompt(topic_id, level, character_id, user_history)` lắp ráp thành công System Prompt hoàn chỉnh.
-- [ ] Hỗ trợ fallback an toàn nếu `topic_id` không tồn tại trong Material Bank.
+- [x] Class `PromptFactory` có hàm `sample_materials(topic_id, level)` thực hiện sample 1 Persona, 3-4 Vocab items, 1-2 Questions theo band điểm.
+- [x] Hàm `build_system_prompt(topic_id, level, character_id, user_history)` lắp ráp thành công System Prompt hoàn chỉnh.
+- [x] Hỗ trợ fallback an toàn nếu `topic_id` không tồn tại trong Material Bank.
 
 ---
 

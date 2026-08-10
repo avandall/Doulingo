@@ -342,3 +342,55 @@ Review Result: APPROVED
 Before review:  9/10
 After review:   10/10 — 8/8 unit tests pass 100% and Tier 1 verification report status is PASS.
 ```
+
+---
+
+### DEBATE-007 — [2026-08-10 14:39]
+
+**Iteration:** ITER-004
+**Type:** SELF_REVIEW
+**Reviewer:** AI Self
+**Subject:** TASK-003 Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`)
+
+#### Critique Raised
+
+**Q1: Safe fallback handling for custom scenario IDs or unknown topics**
+- **Raised by:** Self
+- **Severity:** HIGH
+- **Detail:** When users start custom scenarios or unknown topic IDs, `MaterialBank.get_topic(topic_id)` returns `None`. If `PromptFactory` does not handle `None` gracefully, `build_system_prompt` will crash with `AttributeError` or `TypeError`.
+- **Response:** In `PromptFactory.sample_materials`, checked if `topic` is `None`. If so, returns a formatted default dictionary with title derived from `topic_id`, `persona=None`, and empty lists for pools. In `build_system_prompt`, optional sections are added conditionally.
+- **Action:** FIXED — Safe fallback implemented and verified without any runtime exceptions.
+
+**Q2: Boundary safety of `random.sample()` when candidate pools have fewer items than requested sample size**
+- **Raised by:** Self
+- **Severity:** MEDIUM
+- **Detail:** Python's `random.sample(population, k)` raises a `ValueError: Sample larger than population` if `k > len(population)`.
+- **Response:** Calculated `vocab_count = min(len(vocab_candidates), random.randint(3, 4))` and similarly for questions and grammar before calling `random.sample`. If count is 0, empty list `[]` is returned.
+- **Action:** FIXED — Guarded count calculations prevent `ValueError` under all pool size conditions.
+
+#### Session Summary
+
+```
+Total issues raised:   2
+  CRITICAL:  0
+  HIGH:      1
+  MEDIUM:    1
+  LOW:       0
+  INFO:      0
+
+Resolution:
+  Fixed:          2
+  Accepted risk:  0
+  Won't fix:      0
+  Deferred:       0
+
+Review Result: APPROVED
+```
+
+#### Confidence Score
+
+```
+Before review:  9/10
+After review:   10/10 — Tier 1 verification passed 100% (ruff/mypy/bandit/pytest) and PromptFactory handles all fallback paths smoothly.
+```
+

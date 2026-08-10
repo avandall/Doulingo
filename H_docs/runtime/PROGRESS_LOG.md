@@ -489,6 +489,42 @@ Write comprehensive unit test suite in `tests/test_material_bank.py` to verify l
 - **Action:** Start TASK-003: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`).
 - **State:** IN_PROGRESS
 
+---
+
+### Iteration 017 — 2026-08-10 14:39
+
+#### Task Reference
+- **Task ID:** TASK-003
+- **Task Name:** Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`)
+- **Phase:** Phase 2 (Sampling & Prompt Factory)
+
+#### Goal
+Implement `app/prompt_factory.py` with `PromptFactory` class to perform dynamic sampling of Personas, Vocabulary, Questions, and Grammar patterns from `MaterialBank` and build structured System Prompts.
+
+#### Actions Taken
+1. Created `app/prompt_factory.py` implementing `PromptFactory` class and `get_prompt_factory()` singleton factory.
+2. Implemented `sample_materials(topic_id, level)` sampling 1 Persona, 3-4 Vocab items, 1-2 Questions, and 1-2 Grammar patterns according to target level with safe fallbacks for missing/unknown topics.
+3. Implemented `build_system_prompt(topic_id, level, character_id, user_history)` assembling full structured prompts combining AI Character system prompt and sampled MaterialBank components.
+4. Executed Tier 1 verification via `python3 H_docs/scripts/verify.py` — 100% PASS (Ruff, Mypy, Bandit, Pytest).
+5. Performed Tier 2 Cognitive Review (DEBATE-007 appended to `DEBATE_LOG.md`, APPROVED).
+6. Updated `CURRENT_TASK.md`, `PLAN.md`, `Tasks_list.md` (TASK-003 [x] DONE), `STATUS.md` (`Phase: IN_PROGRESS`), and created `iter_004.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `python3 H_docs/scripts/verify.py` status PASS (100% clean check).
+
+#### Decisions Made
+- Implemented boundary guard `min(len(candidates), count)` before calling `random.sample` to prevent `ValueError` on small pool sizes.
+- Added graceful fallback handling for unknown topic IDs (e.g. custom user scenarios) so `build_system_prompt` never raises runtime exceptions.
+
+#### Git
+- **Commit:** `[iter-17] feat(prompt-factory): implement Backend Prompt Factory & Dynamic Sampling Engine`
+
+#### Next
+- **Action:** Start TASK-004: Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`).
+- **State:** IN_PROGRESS
+
+
 
 
 

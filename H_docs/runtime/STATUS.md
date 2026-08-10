@@ -8,12 +8,12 @@
 ## Current State
 
 ```
-Task:           TASK-002: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`) -> DONE
-Next Task:      TASK-003: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`)
+Task:           TASK-003: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`) -> DONE
+Next Task:      TASK-004: Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`)
 Phase:          IN_PROGRESS
-Current Step:   TASK-002 Executed, Verified (Tier 1 100% PASS), Reviewed (Tier 2 APPROVED), and Committed
-Iteration:      3
-Last Updated:   2026-08-10 14:37
+Current Step:   TASK-003 Executed, Verified (Tier 1 100% PASS), Reviewed (Tier 2 APPROVED), and Committed
+Iteration:      4
+Last Updated:   2026-08-10 14:39
 ```
 
 ---
@@ -31,9 +31,9 @@ ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
 ## Last Action
 
 ```
-Action:   Hoàn thành TASK-002: Tạo unit test suite tests/test_material_bank.py (8 test cases). Tier 1 verify.py pass 100% (Ruff, Mypy, Bandit, Pytest). Phản biện Tier 2 DEBATE-006 APPROVED.
+Action:   Hoàn thành TASK-003: Xây dựng app/prompt_factory.py với class PromptFactory và dynamic sampling logic (Persona, Vocab, Questions, Grammar). Tier 1 verify.py pass 100% (Ruff, Mypy, Bandit, Pytest). Phản biện Tier 2 DEBATE-007 APPROVED.
 Result:   PASS
-Time:     2026-08-10 14:37
+Time:     2026-08-10 14:39
 ```
 
 ---
@@ -41,9 +41,9 @@ Time:     2026-08-10 14:37
 ## Next Action
 
 ```
-Action:   Thực hiện TASK-003: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`).
+Action:   Thực hiện TASK-004: Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`).
 Priority: P0-Critical
-Blocks:   TASK-004, TASK-005
+Blocks:   TASK-005
 ```
 
 ---
@@ -51,8 +51,8 @@ Blocks:   TASK-004, TASK-005
 ## Progress Summary
 
 ```
-Tasks completed: 3 / 9 (TASK-000 DONE, TASK-001 DONE, TASK-002 DONE)
-Tasks remaining: 6 (TASK-003, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008)
+Tasks completed: 4 / 9 (TASK-000 DONE, TASK-001 DONE, TASK-002 DONE, TASK-003 DONE)
+Tasks remaining: 5 (TASK-004, TASK-005, TASK-006, TASK-007, TASK-008)
 ```
 
 ---
