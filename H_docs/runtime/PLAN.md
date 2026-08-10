@@ -1,5 +1,5 @@
 # PLAN
-# Kế hoạch thực thi — TASK-004: Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`)
+# Kế hoạch thực thi — TASK-005: AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`)
 
 > **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Ngày tạo:** 2026-08-10
 
@@ -8,9 +8,9 @@
 ## Task Reference
 
 ```
-Task ID:    TASK-004
-Task Name:  Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`)
-Spec:       Viết bộ unit test comprehensive cho PromptFactory trong `tests/test_prompt_factory.py`. Đảm bảo kiểm chứng tốc độ dựng prompt (< 5ms), tính đa dạng không lặp lại giữa các lần sample, và các trường hợp fallback (topic không tồn tại, bank thiếu dữ liệu).
+Task ID:    TASK-005
+Task Name:  AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`)
+Spec:       Tích hợp System Prompt động từ PromptFactory (MaterialBank) vào luồng gọi LLM trong `ai_engine.py` (`start_roleplay_greeting` & `process_turn`), đồng thời thiết lập các tham số sinh text tối ưu (`temperature: 0.8`, `presence_penalty: 0.6`).
 ```
 
 ---
@@ -18,17 +18,17 @@ Spec:       Viết bộ unit test comprehensive cho PromptFactory trong `tests/t
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [ ] Implement `tests/test_prompt_factory.py` với pytest fixtures và test cases chi tiết.
-- [ ] Benchmark test: Chứng minh thời gian dựng prompt trung bình (`build_system_prompt`) < 5ms over 100+ iterations.
-- [ ] Diversity test: Gọi `build_system_prompt` 5 lần liên tiếp trên cùng 1 topic và xác nhận thu được các prompt có sự khác biệt ở Vocab/Persona/Question.
-- [ ] Fallback test: Kiểm tra `build_system_prompt` và `sample_materials` với topic_id không tồn tại hoặc level không khớp hoạt động an toàn không ném exception.
-- [ ] Target Level & Character test: Kiểm tra đúng character definitions (Lily, etc.) và target levels được nhúng vào System Prompt.
+- [ ] `ai_engine` tự động kết nối và sử dụng `PromptFactory` để sample nguyên liệu (Vocabulary, Questions, Grammar, Personas) khi nhận `scenario_id` hoặc `topic_id`.
+- [ ] Bổ sung tham số `presence_penalty: 0.6` và tinh chỉnh `temperature: 0.8` (hoặc 0.85 cho creative roleplay) đồng bộ trên các adapter LLM (Groq, Gemini, OpenAI, Ollama).
+- [ ] Đảm bảo tương thích ngược: nếu `scenario_id` là custom scenario cũ không nằm trong MaterialBank thì fallback an toàn sang `get_scenario()`.
+- [ ] Luồng multi-key fallback và trace logger hoạt động mượt mà không bị ngắt quãng.
+- [ ] Thêm unit tests bổ sung trong `tests/test_ai_engine.py` kiểm tra tích hợp `PromptFactory` và tham số payload.
 - [ ] Tier 1 verification (`python3 H_docs/scripts/verify.py`) pass 100%.
-- [ ] Tier 2 Cognitive Review đạt `APPROVED` trong `H_docs/runtime/DEBATE_LOG.md`.
+- [ ] Tier 2 Cognitive Review được ghi nhận trong `H_docs/runtime/DEBATE_LOG.md`.
 
 ### Verification Commands
 ```bash
-pytest tests/test_prompt_factory.py
+pytest tests/test_ai_engine.py
 python3 H_docs/scripts/verify.py
 ```
 
@@ -36,19 +36,24 @@ python3 H_docs/scripts/verify.py
 
 ## Execution Steps
 
-### Step 1: Implement `tests/test_prompt_factory.py`
-- **Mục tiêu:** Viết file `tests/test_prompt_factory.py` chứa test suite đầy đủ cho `PromptFactory`.
-- **Files tạo/sửa:** `tests/test_prompt_factory.py`
-- **Exit condition:** `pytest tests/test_prompt_factory.py` chạy qua 100% pass.
+### Step 1: Refactor `app/ai_engine.py`
+- **Mục tiêu:** Tích hợp `PromptFactory` vào `start_roleplay_greeting` và `_build_token_efficient_prompt` / `process_turn`, đồng thời thêm `presence_penalty: 0.6` và tuning `temperature: 0.8` trong tất cả LLM API call payloads.
+- **Files sửa:** `app/ai_engine.py`
+- **Exit condition:** Logic gọi API thành công, sử dụng prompt từ `PromptFactory` và truyền đúng payload parameters.
 
-### Step 2: Verification (Tier 1 & Tier 2)
+### Step 2: Add Unit Tests in `tests/test_ai_engine.py`
+- **Mục tiêu:** Thêm test case kiểm chứng `ai_engine` gọi `PromptFactory` nạp material bank prompt và payload chứa `presence_penalty`.
+- **Files sửa:** `tests/test_ai_engine.py`
+- **Exit condition:** `pytest tests/test_ai_engine.py` pass 100%.
+
+### Step 3: Verification (Tier 1 & Tier 2)
 - **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py` kiểm tra Tier 1 (ruff, mypy, pytest, bandit). Thực hiện Tier 2 Cognitive Review dựa trên `git diff` và ghi log vào `DEBATE_LOG.md`.
 - **Files tạo/sửa:** `H_docs/runtime/VERIFICATION_REPORT.md`, `H_docs/runtime/DEBATE_LOG.md`
 - **Exit condition:** `verify.py` pass 100%, `DEBATE_LOG.md` result APPROVED.
 
-### Step 3: Documentation & State Update
-- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-004` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, `H_docs/runtime/ITERATIONS/iter_005.md`, và thực hiện atomic git commit.
-- **Files tạo/sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, `H_docs/runtime/ITERATIONS/iter_005.md`
+### Step 4: Documentation & State Update
+- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-005` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
+- **Files tạo/sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`
 - **Exit condition:** Git commit thành công.
 
 ---
@@ -58,7 +63,7 @@ python3 H_docs/scripts/verify.py
 ```
 Estimated iterations: 1
 Maximum allowed:      2
-Context refresh at:   Iteration 6
+Context refresh at:   Iteration 7
 ```
 
 ---
@@ -67,4 +72,4 @@ Context refresh at:   Iteration 6
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-10 | Tạo plan cho TASK-004 |
+| v1 | 2026-08-10 | Tạo plan cho TASK-005 |

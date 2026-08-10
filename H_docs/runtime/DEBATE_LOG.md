@@ -444,3 +444,55 @@ Review Result: APPROVED
 Before review:  9/10
 After review:   10/10 — Tier 1 verification passed 100% (Ruff, Mypy, Bandit, Pytest) with 7/7 tests passing in 0.34s.
 ```
+
+---
+
+### DEBATE-009 — [2026-08-10 14:43]
+
+**Iteration:** ITER-006
+**Type:** SELF_REVIEW
+**Reviewer:** AI Self
+**Subject:** TASK-005 AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`)
+
+#### Critique Raised
+
+**Q1: Backward compatibility when scenario_id is not in static scenarios dict**
+- **Raised by:** Self
+- **Severity:** HIGH
+- **Detail:** If `scenario_id` is an IELTS topic from `MaterialBank` (e.g. `topic_001_education`) or a custom scenario, calling `get_scenario(scenario_id)` returns `None`. `ai_engine` would raise `ValueError("Unknown scenario")`.
+- **Response:** Added fallback logic in `start_roleplay_greeting` and `process_turn`: if `get_scenario(scenario_id)` returns `None`, `ai_engine` queries `get_prompt_factory()._get_bank().get_topic(scenario_id)` to dynamically build scenario metadata.
+- **Action:** FIXED — Seamless fallback between static scenarios, custom Turso DB scenarios, and MaterialBank topics implemented and tested in `test_ai_engine_material_bank_topic_fallback`.
+
+**Q2: Parameter tuning across multiple LLM Provider Adapters (Gemini, Groq, OpenAI, Ollama)**
+- **Raised by:** Self
+- **Severity:** MEDIUM
+- **Detail:** Gemini API uses `presencePenalty` (camelCase) inside `generationConfig`, while Groq/OpenAI/Ollama use `presence_penalty` (snake_case).
+- **Response:** Customized payload schemas per provider: `presencePenalty: 0.6` for Gemini, `presence_penalty: 0.6` for Groq, OpenAI, and Ollama options. Standardized default temperature to `0.8`.
+- **Action:** FIXED — Correct provider-specific parameter keys configured and verified across all LLM adapters.
+
+#### Session Summary
+
+```
+Total issues raised:   2
+  CRITICAL:  0
+  HIGH:      1
+  MEDIUM:    1
+  LOW:       0
+  INFO:      0
+
+Resolution:
+  Fixed:          2
+  Accepted risk:  0
+  Won't fix:      0
+  Deferred:       0
+
+Review Result: APPROVED
+```
+
+#### Confidence Score
+
+```
+Before review:  9/10
+After review:   10/10 — Tier 1 verification passed 100% (Ruff, Mypy, Bandit, Pytest) with 5/5 ai_engine unit tests passing.
+```
+

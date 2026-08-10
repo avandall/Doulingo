@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 
 from app.scenarios import get_scenario
 from app.characters import get_character
+from app.prompt_factory import get_prompt_factory
 
 load_dotenv()
 
@@ -355,11 +356,28 @@ SELF-CHECK BEFORE RESPONDING: Count your words. Is your response a natural spoke
         self.reload_keys()
         scenario = get_scenario(scenario_id)
         if not scenario:
-            raise ValueError(f"Unknown scenario: {scenario_id}")
+            topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
+            if topic:
+                scenario = {
+                    "id": topic.topic_id,
+                    "title": topic.topic_name,
+                    "description": f"IELTS Speaking Topic: {topic.topic_name}",
+                    "default_character": character_id or "lily",
+                    "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
+                }
+            else:
+                raise ValueError(f"Unknown scenario: {scenario_id}")
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char
         character = get_character(char_key)
+
+        prompt_factory = get_prompt_factory()
+        mb_system_prompt = prompt_factory.build_system_prompt(
+            topic_id=scenario_id,
+            level=f"{level}",
+            character_id=char_key
+        )
 
         level_block = self._build_level_constraint_block(level)
         trait = character.get("trait", "Friendly")
@@ -368,7 +386,9 @@ SELF-CHECK BEFORE RESPONDING: Count your words. Is your response a natural spoke
         story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
         angle = random.choice(SCENARIO_ANGLES)
 
-        prompt = f"""CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
+        prompt = f"""{mb_system_prompt}
+
+CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF (DO NOT SAY 'Hello I am {character['name']}' OR 'My name is'). JUMP DIRECTLY INTO THE TOPIC!
 
@@ -391,7 +411,7 @@ Output JSON ONLY:
         for key in self.groq_keys:
             for model in self.groq_models:
                 try:
-                    res = self._call_groq(prompt, key, model, temp=0.85)
+                    res = self._call_groq(prompt, key, model, temp=0.8)
                     if res and "ai_response" in res:
                         res["ai_response_vi"] = ""
                         return res
@@ -402,7 +422,7 @@ Output JSON ONLY:
         for key in self.gemini_keys:
             for model in self.gemini_models:
                 try:
-                    res = self._call_gemini(prompt, key, model, temp=0.85)
+                    res = self._call_gemini(prompt, key, model, temp=0.8)
                     if res and "ai_response" in res:
                         res["ai_response_vi"] = ""
                         return res
@@ -427,7 +447,17 @@ Output JSON ONLY:
 
         scenario = get_scenario(scenario_id)
         if not scenario:
-            raise ValueError(f"Unknown scenario ID: {scenario_id}")
+            topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
+            if topic:
+                scenario = {
+                    "id": topic.topic_id,
+                    "title": topic.topic_name,
+                    "description": f"IELTS Speaking Topic: {topic.topic_name}",
+                    "default_character": character_id or "lily",
+                    "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
+                }
+            else:
+                raise ValueError(f"Unknown scenario ID: {scenario_id}")
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char
@@ -448,7 +478,7 @@ Output JSON ONLY:
         for key in self.groq_keys:
             for model in self.groq_models:
                 try:
-                    raw_res = self._call_groq(prompt, key, model, temp=0.85)
+                    raw_res = self._call_groq(prompt, key, model, temp=0.8)
                     if raw_res:
                         break
                 except Exception as e:
@@ -461,7 +491,7 @@ Output JSON ONLY:
             for key in self.gemini_keys:
                 for model in self.gemini_models:
                     try:
-                        raw_res = self._call_gemini(prompt, key, model, temp=0.85)
+                        raw_res = self._call_gemini(prompt, key, model, temp=0.8)
                         if raw_res:
                             break
                     except Exception as e:
@@ -473,7 +503,7 @@ Output JSON ONLY:
         if not raw_res:
             for key in self.openai_keys:
                 try:
-                    raw_res = self._call_openai(prompt, key, temp=0.85)
+                    raw_res = self._call_openai(prompt, key, temp=0.8)
                     if raw_res:
                         break
                 except Exception as e:
@@ -482,7 +512,7 @@ Output JSON ONLY:
 
         if not raw_res and self.ollama_base_url:
             try:
-                raw_res = self._call_ollama(prompt, temp=0.85)
+                raw_res = self._call_ollama(prompt, temp=0.8)
             except Exception:
                 pass
 
@@ -666,13 +696,23 @@ Output JSON ONLY:
             role = "User" if h.get("role") == "user" else f"{character['name']}"
             hist_str += f"{role}: \"{h.get('content')}\"\n"
 
+        prompt_factory = get_prompt_factory()
+        scenario_key = scenario.get("id") or scenario.get("title", "")
+        mb_system_prompt = prompt_factory.build_system_prompt(
+            topic_id=scenario_key,
+            level=f"{level}",
+            character_id=character.get("id", "lily")
+        )
+
         level_block = self._build_level_constraint_block(level)
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
 
         story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
 
-        return f"""CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
+        return f"""{mb_system_prompt}
+
+CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF IN CONVERSATION.
 
@@ -720,13 +760,14 @@ Output JSON ONLY:
   }}
 }}"""
 
-    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.85) -> Optional[Dict[str, Any]]:
+    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {
                 "maxOutputTokens": 1200,
                 "temperature": temp,
+                "presencePenalty": 0.6,
                 "responseMimeType": "application/json"
             }
         }
@@ -741,7 +782,7 @@ Output JSON ONLY:
             raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         return None
 
-    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.85) -> Optional[Dict[str, Any]]:
+    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
         url = "https://api.groq.com/openai/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {
@@ -749,6 +790,7 @@ Output JSON ONLY:
             "messages": [{"role": "user", "content": prompt}],
             "max_tokens": 1200,
             "temperature": temp,
+            "presence_penalty": 0.6,
             "response_format": {"type": "json_object"}
         }
         t0 = time.time()
@@ -762,7 +804,7 @@ Output JSON ONLY:
             raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         return None
 
-    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.85) -> Optional[Dict[str, Any]]:
+    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
         url = "https://api.openai.com/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {
@@ -770,6 +812,7 @@ Output JSON ONLY:
             "messages": [{"role": "user", "content": prompt}],
             "max_tokens": 1200,
             "temperature": temp,
+            "presence_penalty": 0.6,
             "response_format": {"type": "json_object"}
         }
         t0 = time.time()
@@ -783,14 +826,14 @@ Output JSON ONLY:
             raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         return None
 
-    def _call_ollama(self, prompt: str, temp: float = 0.85) -> Optional[Dict[str, Any]]:
+    def _call_ollama(self, prompt: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
         url = f"{self.ollama_base_url}/api/generate"
         payload = {
             "model": self.ollama_model,
             "prompt": prompt,
             "stream": False,
             "format": "json",
-            "options": {"num_predict": 1200, "temperature": temp}
+            "options": {"num_predict": 1200, "temperature": temp, "presence_penalty": 0.6}
         }
         t0 = time.time()
         res = requests.post(url, json=payload, timeout=8)

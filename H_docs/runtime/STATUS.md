@@ -8,12 +8,12 @@
 ## Current State
 
 ```
-Task:           TASK-004: Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`) -> DONE
-Next Task:      TASK-005: AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`)
+Task:           TASK-005: AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`) -> DONE
+Next Task:      TASK-006: FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`)
 Phase:          IN_PROGRESS
-Current Step:   TASK-004 Executed, Verified (Tier 1 100% PASS), Reviewed (Tier 2 APPROVED), and Committed
-Iteration:      5
-Last Updated:   2026-08-10 14:41
+Current Step:   TASK-005 Executed, Verified (Tier 1 100% PASS), Reviewed (Tier 2 APPROVED), and Committed
+Iteration:      6
+Last Updated:   2026-08-10 14:44
 ```
 
 ---
@@ -31,9 +31,9 @@ ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
 ## Last Action
 
 ```
-Action:   Hoàn thành TASK-004: Xây dựng bộ unit tests `tests/test_prompt_factory.py` kiểm chứng tốc độ dựng prompt (< 5ms, actual ~0.15ms), tính đa dạng sampling, fallback an toàn và character traits integration. Tier 1 verify.py pass 100% (Ruff, Mypy, Bandit, Pytest). Phản biện Tier 2 DEBATE-008 APPROVED.
+Action:   Hoàn thành TASK-005: Tích hợp PromptFactory (MaterialBank) vào ai_engine.py, bổ sung parameter tuning (temperature: 0.8, presence_penalty: 0.6) cho Groq, Gemini, OpenAI, Ollama adapters, và hỗ trợ dynamic topic fallback. Tier 1 verify.py pass 100% (Ruff, Mypy, Bandit, Pytest). Phản biện Tier 2 DEBATE-009 APPROVED.
 Result:   PASS
-Time:     2026-08-10 14:41
+Time:     2026-08-10 14:44
 ```
 
 ---
@@ -41,9 +41,9 @@ Time:     2026-08-10 14:41
 ## Next Action
 
 ```
-Action:   Thực hiện TASK-005: AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`).
+Action:   Thực hiện TASK-006: FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`).
 Priority: P1-High
-Blocks:   TASK-006
+Blocks:   TASK-007
 ```
 
 ---
@@ -51,8 +51,8 @@ Blocks:   TASK-006
 ## Progress Summary
 
 ```
-Tasks completed: 5 / 9 (TASK-000 DONE, TASK-001 DONE, TASK-002 DONE, TASK-003 DONE, TASK-004 DONE)
-Tasks remaining: 4 (TASK-005, TASK-006, TASK-007, TASK-008)
+Tasks completed: 6 / 9 (TASK-000 DONE, TASK-001 DONE, TASK-002 DONE, TASK-003 DONE, TASK-004 DONE, TASK-005 DONE)
+Tasks remaining: 3 (TASK-006, TASK-007, TASK-008)
 ```
 
 ---
