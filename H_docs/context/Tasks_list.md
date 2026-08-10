@@ -16,7 +16,7 @@
 | `TASK-001` | Material Bank Data Models & Markdown Parser (`app/material_bank.py`) | Phase 1 | P0 | `[x] DONE` | Parse all 5 `DB*.md` files into Pydantic models |
 | `TASK-002` | Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py`) | Phase 1 | P0 | `[x] DONE` | Verify all topics, personas, questions & vocab parsed |
 | `TASK-003` | Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py`) | Phase 2 | P0 | `[x] DONE` | Implement sampling algorithm & prompt assembly |
-| `TASK-004` | Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`) | Phase 2 | P0 | `[ ] TODO` | Verify assembly speed (<5ms) and non-repetitive sampling |
+| `TASK-004` | Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`) | Phase 2 | P0 | `[x] DONE` | Verify assembly speed (<5ms) and non-repetitive sampling |
 | `TASK-005` | AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`) | Phase 3 | P1 | `[ ] TODO` | Inject sampled prompts & set temperature 0.75-0.85 |
 | `TASK-006` | FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`) | Phase 3 | P1 | `[ ] TODO` | Connect `/api/scenarios`, `/api/start_scenario`, `/api/process_turn` |
 | `TASK-007` | End-to-End Integration Testing & Latency Benchmarks | Phase 4 | P1 | `[ ] TODO` | Verify full conversation flow and response parsing |
@@ -142,7 +142,7 @@ Task Name:       Unit Tests for Prompt Factory & Sampling Diversity (`tests/test
 Phase:           Phase 2 (Sampling & Prompt Factory)
 Task Type:       test
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-10
 ```
 
@@ -151,9 +151,9 @@ Ngày tạo:        2026-08-10
 - **What:** Tạo unit test `tests/test_prompt_factory.py`.
 
 #### Acceptance Criteria
-- [ ] Benchmark test chứng minh thời gian dựng prompt trung bình < 5ms.
-- [ ] Diversity test: Gọi `build_system_prompt` 5 lần liên tiếp trên cùng topic và xác nhận thu được các prompt có sự khác biệt ở Vocab/Persona/Question.
-- [ ] Lệnh `pytest tests/test_prompt_factory.py` chạy thành công.
+- [x] Benchmark test chứng minh thời gian dựng prompt trung bình < 5ms.
+- [x] Diversity test: Gọi `build_system_prompt` 5 lần liên tiếp trên cùng topic và xác nhận thu được các prompt có sự khác biệt ở Vocab/Persona/Question.
+- [x] Lệnh `pytest tests/test_prompt_factory.py` chạy thành công.
 
 ---
 
