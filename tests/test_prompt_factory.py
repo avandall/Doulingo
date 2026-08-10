@@ -66,9 +66,7 @@ class TestPromptFactory(unittest.TestCase):
         self.assertIsInstance(prompt, str)
         self.assertGreater(len(prompt), 100)
         self.assertIn("Lily", prompt)
-        self.assertIn("TOPIC & SCENARIO CONTEXT", prompt)
-        self.assertIn("PEDAGOGICAL & CONVERSATIONAL GUIDELINES", prompt)
-        self.assertIn("Target IELTS Band / CEFR Level: 5.0-6.0", prompt)
+        self.assertIn("CONVERSATION TOPIC", prompt)
 
     def test_build_system_prompt_fallback_topic(self) -> None:
         """Verify build_system_prompt produces valid output even for nonexistent topic."""
@@ -76,8 +74,7 @@ class TestPromptFactory(unittest.TestCase):
         prompt = self.factory.build_system_prompt(topic_id=dummy_id, character_id="lily")
 
         self.assertIn("Lily", prompt)
-        self.assertIn(dummy_id, prompt)
-        self.assertIn("PEDAGOGICAL & CONVERSATIONAL GUIDELINES", prompt)
+        self.assertIn("CONVERSATION TOPIC", prompt)
 
     def test_prompt_assembly_benchmark(self) -> None:
         """Benchmark prompt assembly latency to ensure average time < 5ms."""

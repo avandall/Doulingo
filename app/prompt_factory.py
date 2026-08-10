@@ -18,6 +18,30 @@ from app.material_bank import (
 from app.characters import get_character
 
 
+# Map numeric level (1-20) → IELTS band label for MaterialBank filtering.
+# DB*.md files store vocab/questions under "Band 5.0 - 6.0" or "Band 6.5+".
+# Level 1-8  = beginner/lower-intermediate → use Band 5.0-6.0 materials
+# Level 9-20 = upper-intermediate/advanced → prefer Band 6.5+ materials,
+#              fall back to 5.0-6.0 if 6.5+ pool is empty for this topic.
+def _level_to_band(level: int) -> str:
+    """Convert a numeric level (1-20) into a DB*.md band label for vocab filtering."""
+    if level <= 8:
+        return "5.0-6.0"
+    return "6.5+"
+
+
+# How many DB vocab items to sample depending on level depth.
+def _vocab_count(level: int) -> int:
+    if level <= 4:
+        return 2
+    elif level <= 8:
+        return 3
+    elif level <= 14:
+        return 4
+    else:
+        return 5
+
+
 class PromptFactory:
     """Dynamic Prompt Builder & Sampling Engine for IELTS / CEFR roleplay dialogues."""
 
@@ -36,11 +60,11 @@ class PromptFactory:
         level: str = "5.0-6.0"
     ) -> Dict[str, Any]:
         """
-        Sample materials for a given topic and target band level:
-        - 1 Persona (randomly selected from topic persona pool)
-        - 3-4 Vocabulary items (prioritizing target level band)
-        - 1-2 Questions (prioritizing target level band)
-        - 1-2 Grammar patterns (if available)
+        Sample materials for a given topic and target band level.
+
+        'level' accepts either:
+        - a numeric string like "7" or "15" (auto-converts to band)
+        - a band string like "5.0-6.0" or "6.5+"
 
         Returns a dictionary containing sampled items with safe fallbacks.
         """
@@ -57,28 +81,38 @@ class PromptFactory:
                 "grammar_patterns": []
             }
 
+        # Normalize level: if numeric string, convert to band label
+        try:
+            numeric_level = int(level.strip())
+            band = _level_to_band(numeric_level)
+            n_vocab = _vocab_count(numeric_level)
+        except (ValueError, AttributeError):
+            # Already a band string like "5.0-6.0" or "6.5+"
+            band = level.strip()
+            n_vocab = 3
+
         # 1. Sample Persona (1 item)
         sampled_persona: Optional[Persona] = None
         if topic.personas:
             sampled_persona = random.choice(topic.personas)
 
-        # 2. Sample Vocabulary (3-4 items)
+        # 2. Sample Vocabulary — prioritize target band, fallback to any available
         vocab_candidates = [
             v for v in topic.vocabulary
-            if v.band.strip() == level.strip() or level.strip() in v.band
+            if band in v.band or v.band.strip() == band
         ]
         if not vocab_candidates:
             vocab_candidates = list(topic.vocabulary)
 
-        vocab_count = min(len(vocab_candidates), random.randint(3, 4)) if vocab_candidates else 0
+        actual_count = min(len(vocab_candidates), n_vocab)
         sampled_vocab: List[VocabularyItem] = (
-            random.sample(vocab_candidates, vocab_count) if vocab_count > 0 else []
+            random.sample(vocab_candidates, actual_count) if actual_count > 0 else []
         )
 
-        # 3. Sample Questions (1-2 items)
+        # 3. Sample Questions (1-2 items) — prioritize target band, fallback to any
         question_candidates = [
             q for q in topic.questions
-            if q.band.strip() == level.strip() or level.strip() in q.band
+            if band in q.band or q.band.strip() == band
         ]
         if not question_candidates:
             question_candidates = list(topic.questions)
@@ -88,8 +122,11 @@ class PromptFactory:
             random.sample(question_candidates, question_count) if question_count > 0 else []
         )
 
-        # 4. Sample Grammar Patterns (1-2 items)
-        grammar_candidates = list(topic.grammar_patterns)
+        # 4. Sample Grammar Patterns (1-2 items) — skip empty/placeholder patterns
+        grammar_candidates = [
+            g for g in topic.grammar_patterns
+            if g.pattern.strip() and g.pattern.strip() != "--"
+        ]
         grammar_count = min(len(grammar_candidates), random.randint(1, 2)) if grammar_candidates else 0
         sampled_grammar: List[GrammarPattern] = (
             random.sample(grammar_candidates, grammar_count) if grammar_count > 0 else []
@@ -112,76 +149,74 @@ class PromptFactory:
         user_history: Optional[List[Dict[str, str]]] = None
     ) -> str:
         """
-        Assemble a complete System Prompt incorporating Character persona,
-        sampled MaterialBank components, target level instructions, and pedagogical guidelines.
+        Assemble a System Prompt incorporating Character persona,
+        sampled MaterialBank vocabulary/questions/grammar patterns.
+
+        IMPORTANT: Length/difficulty constraints are applied SEPARATELY in
+        ai_engine._build_level_constraint_block(). Do NOT add conflicting
+        length/complexity instructions here.
         """
         character = get_character(character_id)
         sampled = self.sample_materials(topic_id, level)
 
         char_name = character.get("name", "AI Tutor")
-        char_role = character.get("role", "Language Partner")
-        char_trait = character.get("trait", "Helpful")
         char_prompt = character.get("system_prompt", "")
-
         topic_name = sampled["topic_name"]
 
+        # ── Section 1: Character Identity ──────────────────────────────────
         prompt_lines = [
-            f"You are {char_name}, playing the role of a {char_role} ({char_trait}).",
+            f"CHARACTER: You are {char_name}.",
             f"{char_prompt}",
             "",
-            "### TOPIC & SCENARIO CONTEXT",
-            f"- Topic: {topic_name} (ID: {topic_id})",
-            f"- Target IELTS Band / CEFR Level: {level}",
         ]
 
-        # Add sampled persona roleplay context if available
+        # ── Section 2: Topic Context ────────────────────────────────────────
+        prompt_lines += [
+            "### CONVERSATION TOPIC",
+            f"Topic: {topic_name}",
+            "",
+        ]
+
+        # ── Section 3: Persona role (if available) ──────────────────────────
         persona: Optional[Persona] = sampled.get("persona")
         if persona:
-            prompt_lines.append(f"- Roleplay Character Persona: [{persona.id}] {persona.title} — {persona.description}")
+            prompt_lines += [
+                "### YOUR ROLE THIS SESSION",
+                f"Play the persona of: [{persona.id}] {persona.title} — {persona.description}",
+                "",
+            ]
 
-        # Add sampled vocabulary section
+        # ── Section 4: Mandatory Vocabulary Injection ───────────────────────
+        # Phrased as MANDATORY to prevent AI from ignoring soft suggestions.
         vocab_items: List[VocabularyItem] = sampled.get("vocabulary", [])
         if vocab_items:
-            prompt_lines.extend([
-                "",
-                "### TARGET VOCABULARY TO WEAVE NATURALLY IN CONVERSATION",
-                "Try to naturally incorporate 1-2 of these words/phrases per turn when relevant:"
-            ])
+            prompt_lines += [
+                "### MANDATORY VOCABULARY — USE THESE IN YOUR RESPONSES",
+                "You MUST weave at least 1-2 of these phrases organically into the conversation:",
+            ]
             for v in vocab_items:
-                prompt_lines.append(f"  • {v.phrase}: {v.meaning} (Band {v.band})")
+                prompt_lines.append(f'  \u2726 "{v.phrase}" \u2014 {v.meaning}')
+            prompt_lines.append("")
 
-        # Add sampled question seeds section
+        # ── Section 5: Question seeds ────────────────────────────────────────
         question_items: List[Question] = sampled.get("questions", [])
         if question_items:
-            prompt_lines.extend([
-                "",
-                "### SUGGESTED QUESTION SEEDS TO ADVANCE DIALOGUE",
-                "Use or adapt these open-ended questions to probe deeper:"
-            ])
+            prompt_lines += [
+                "### QUESTION INSPIRATION (adapt freely, never ask verbatim)",
+            ]
             for q in question_items:
-                prompt_lines.append(f"  • [{q.id}] {q.text}")
+                prompt_lines.append(f"  \u2192 {q.text}")
+            prompt_lines.append("")
 
-        # Add sampled grammar patterns section
+        # ── Section 6: Grammar patterns ──────────────────────────────────────
         grammar_items: List[GrammarPattern] = sampled.get("grammar_patterns", [])
         if grammar_items:
-            prompt_lines.extend([
-                "",
-                "### TARGET GRAMMAR PATTERNS TO ENCOURAGE",
-                "Model these high-scoring sentence structures during the conversation:"
-            ])
+            prompt_lines += [
+                "### GRAMMAR STRUCTURES TO MODEL IN YOUR SPEECH",
+            ]
             for g in grammar_items:
-                prompt_lines.append(f"  • [{g.pattern_id}] {g.pattern}")
-
-        # Add pedagogical rules
-        prompt_lines.extend([
-            "",
-            "### PEDAGOGICAL & CONVERSATIONAL GUIDELINES",
-            f"1. Always remain strictly in character as {char_name}.",
-            f"2. Adapt sentence structure and vocabulary complexity to Band {level}.",
-            "3. Keep each response conversational, engaging, and concise (2-4 sentences max).",
-            "4. Gently correct major grammar or vocabulary errors if necessary, but keep conversation flow smooth.",
-            "5. Do NOT introduce yourself repeatedly in ongoing turns."
-        ])
+                prompt_lines.append(f"  \u25b8 {g.pattern}")
+            prompt_lines.append("")
 
         return "\n".join(prompt_lines)
 

@@ -54,7 +54,7 @@ def test_ai_engine_material_bank_topic_fallback():
         turn_count=1,
         level=5
     )
-    assert "TOPIC & SCENARIO CONTEXT" in prompt
+    assert "CONVERSATION TOPIC" in prompt
     assert "Education & Learning" in prompt or "topic_001_education" in prompt
 
 def test_ai_engine_prompt_factory_integration():
@@ -70,6 +70,6 @@ def test_ai_engine_prompt_factory_integration():
         turn_count=1,
         level=8
     )
-    assert "PEDAGOGICAL & CONVERSATIONAL GUIDELINES" in prompt
+    assert "CONVERSATION TOPIC" in prompt
     assert "Lily" in prompt
 
