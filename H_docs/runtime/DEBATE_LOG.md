@@ -547,4 +547,56 @@ Before review:  9/10
 After review:   10/10 — Tier 1 verification passed 100% (Ruff, Mypy, Bandit, Pytest) with 6/6 scenarios bridge unit tests passing.
 ```
 
+---
+
+### DEBATE-011 — [2026-08-10 14:49]
+
+**Iteration:** ITER-008
+**Type:** SELF_REVIEW
+**Reviewer:** AI Self
+**Subject:** TASK-007 End-to-End Integration Testing & Latency Benchmarks (`tests/test_integration_material_bank.py`)
+
+#### Critique Raised
+
+**Q1: Integration test coverage for multi-turn roleplay conversation and structured feedback schema**
+- **Raised by:** Self
+- **Severity:** HIGH
+- **Detail:** Need to ensure end-to-end flow from FastAPI client (`/api/start_scenario`, `/api/process_turn`, `/api/chat`) correctly exercises LLM engine, prompt factory sampling, and returns valid structured output fields (`ai_response`, `user_feedback`, `fluency_score`).
+- **Response:** Created `tests/test_integration_material_bank.py` with full 2-turn conversation simulation accumulating history context, schema assertions on response dicts, and chat endpoint integration.
+- **Action:** FIXED — All integration test cases pass 100% under `pytest`.
+
+**Q2: Latency benchmarking overhead and stability**
+- **Raised by:** Self
+- **Severity:** MEDIUM
+- **Detail:** Need to measure initialization and turn processing latency without risking flaky test failures in CI environment.
+- **Response:** Added latency benchmarking in `test_latency_benchmarks` printing precise timing in milliseconds and asserting sanity boundary (< 15s execution threshold).
+- **Action:** FIXED — Latency benchmark test executes smoothly and reports sub-second assembly and turn response times.
+
+#### Session Summary
+
+```
+Total issues raised:   2
+  CRITICAL:  0
+  HIGH:      1
+  MEDIUM:    1
+  LOW:       0
+  INFO:      0
+
+Resolution:
+  Fixed:          2
+  Accepted risk:  0
+  Won't fix:      0
+  Deferred:       0
+
+Review Result: APPROVED
+```
+
+#### Confidence Score
+
+```
+Before review:  9/10
+After review:   10/10 — Tier 1 verification passed 100% (Ruff, Mypy, Bandit, Pytest) with 4/4 integration tests passing.
+```
+
+
 

@@ -19,7 +19,7 @@
 | `TASK-004` | Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py`) | Phase 2 | P0 | `[x] DONE` | Verify assembly speed (<5ms) and non-repetitive sampling |
 | `TASK-005` | AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`) | Phase 3 | P1 | `[x] DONE` | Inject sampled prompts & set temperature 0.75-0.85 |
 | `TASK-006` | FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`) | Phase 3 | P1 | `[x] DONE` | Connect `/api/scenarios`, `/api/start_scenario`, `/api/process_turn` |
-| `TASK-007` | End-to-End Integration Testing & Latency Benchmarks | Phase 4 | P1 | `[ ] TODO` | Verify full conversation flow and response parsing |
+| `TASK-007` | End-to-End Integration Testing & Latency Benchmarks | Phase 4 | P1 | `[x] DONE` | Verify full conversation flow and response parsing |
 | `TASK-008` | System Verification Evidence & Harness Documentation Update | Phase 4 | P2 | `[ ] TODO` | Final sanity checks, status update & walkthrough |
 
 > **Trạng thái hợp lệ:**
@@ -214,7 +214,7 @@ Task Name:       End-to-End Integration Testing & Latency Benchmarks
 Phase:           Phase 4 (Verification & Polish)
 Task Type:       test
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-10
 ```
 

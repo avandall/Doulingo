@@ -129,4 +129,41 @@
 - **Action:** Start TASK-007: End-to-End Integration Testing & Latency Benchmarks.
 - **State:** IN_PROGRESS
 
+---
+
+### Iteration 8 — [2026-08-10 14:50]
+**Task:** TASK-007 End-to-End Integration Testing & Latency Benchmarks
+**Phase:** Phase 4 — VERIFY & REVIEW
+**Step:** Implementation & Tier 1/2 Verification of TASK-007
+**Duration:** ~3 phút
+
+#### Actions Taken
+1. Đọc `H_docs/core/AGENT_CONSTITUTION.md`, `H_docs/context/Tasks_list.md`, và `H_docs/runtime/STATUS.md`.
+2. Tạo `H_docs/runtime/PLAN.md` cho `TASK-007` và chuyển trạng thái `TASK-007` thành `[/] IN_PROGRESS` trong `Tasks_list.md`.
+3. Xây dựng integration test suite `tests/test_integration_material_bank.py`:
+   - `test_full_turn_conversation_flow`: Kiểm thử mô phỏng cuộc thoại 2 lượt liên tiếp với MaterialBank topic qua FastAPI client.
+   - `test_structured_json_response_fields`: Kiểm tra đầy đủ kiểu dữ liệu và các trường `ai_response`, `user_feedback`, `fluency_score`.
+   - `test_api_chat_integration_with_material_bank`: Kiểm thử endpoint `/api/chat` kết hợp MaterialBank scenarios.
+   - `test_latency_benchmarks`: Đo đạc thời gian đáp ứng (latency) cho `start_scenario` và `process_turn`.
+4. Chạy `pytest tests/test_integration_material_bank.py` pass 100% (4/4 tests passed in 5.75s).
+5. Thực thi Tier 1 verification via `python3 H_docs/scripts/verify.py` — Pass 100% (Ruff, Mypy, Bandit, Pytest).
+6. Thực hiện Tier 2 Cognitive Review (`git diff` inspection, DEBATE-011 appended to `DEBATE_LOG.md`, APPROVED).
+7. Cập nhật `H_docs/context/Tasks_list.md` (`TASK-007` [x] DONE), `H_docs/runtime/STATUS.md` (`Phase: IN_PROGRESS`, next task `TASK-008`), và `H_docs/runtime/PROGRESS_LOG.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_integration_material_bank.py` (4 passed in 5.75s), `python3 H_docs/scripts/verify.py` status PASS.
+
+#### Decisions Made
+- Multi-turn history structure explicitly validated during end-to-end client integration testing.
+- Added performance latency logging for scenario startup and turn processing.
+
+#### Git
+- **Commit:** `[iter-21] test(integration): add end-to-end integration tests & latency benchmarks for MaterialBank`
+
+#### Next
+- **Action:** Start TASK-008: System Verification Evidence & Harness Documentation Update.
+- **State:** IN_PROGRESS
+
+
 

@@ -1,5 +1,5 @@
 # PLAN
-# Kế hoạch thực thi — TASK-006: FastAPI Endpoints Bridge & Scenario Registry (`app/main.py` & `app/scenarios.py`)
+# Kế hoạch thực thi — TASK-007: End-to-End Integration Testing & Latency Benchmarks (`tests/test_integration_material_bank.py`)
 
 > **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Ngày tạo:** 2026-08-10
 
@@ -8,9 +8,9 @@
 ## Task Reference
 
 ```
-Task ID:    TASK-006
-Task Name:  FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`)
-Spec:       Cập nhật các API endpoints hiện có trên FastAPI (`/api/scenarios`, `/api/start_scenario`, `/api/process_turn`, `/api/chat`) để phục vụ cả danh sách Topic từ Material Bank (5 DB markdown files) lẫn Custom Topics từ Turso DB.
+Task ID:    TASK-007
+Task Name:  End-to-End Integration Testing & Latency Benchmarks (`tests/test_integration_material_bank.py`)
+Spec:       Tạo test suite mô phỏng full turn conversation từ FastAPI -> Prompt Factory -> LLM Engine -> Structured Output với MaterialBank topic_id, kiểm tra đầy đủ JSON response (ai_response, ai_response_vi, user_feedback, v.v.) và đo lường latency benchmark.
 ```
 
 ---
@@ -18,17 +18,16 @@ Spec:       Cập nhật các API endpoints hiện có trên FastAPI (`/api/scen
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [ ] Endpoint `/api/scenarios` trả về đầy đủ danh sách Topics từ 5 DB files (hơn 100 topics từ `MaterialBank`) kết hợp với default scenarios và custom scenarios.
-- [ ] Endpoint `/api/scenarios/{scenario_id}` truy vấn chính xác scenario/topic details bất kể ID đến từ DEFAULT_SCENARIOS, MaterialBank topic_id, hay Turso custom scenarios.
-- [ ] Endpoint `/api/start_scenario` và `/api/process_turn` (và `/api/chat`) hoạt động chính xác với `topic_id` từ MaterialBank.
-- [ ] Đảm bảo tương thích ngược 100% với các custom scenario lưu trong Turso Cloud Database (`get_custom_scenarios()`).
-- [ ] Unit tests bổ sung trong `tests/test_scenarios_bridge.py` kiểm tra `/api/scenarios` nạp đầy đủ MaterialBank topics và khởi tạo scenario thành công.
+- [ ] Tạo file integration test suite `tests/test_integration_material_bank.py` với `pytest` và `TestClient`.
+- [ ] Test case 1: Full turn roleplay flow với `start_scenario` và `process_turn` cho MaterialBank `topic_id` (e.g. `work_job_interview`, `travel_booking`).
+- [ ] Test case 2: Verification of structured JSON fields (`ai_response`, `ai_response_vi`, `user_feedback`, `grammar_corrections`, `pronunciation_tips`, `vocabulary_hints`, `suggested_replies`).
+- [ ] Test case 3: Latency Benchmark - Đảm bảo response time của endpoint `/api/start_scenario` và `/api/process_turn` (khi mock hoặc integration) đáp ứng ngưỡng thời gian cho phép (< 50ms đối với prompt assembly / routing, và hợp lý với LLM).
 - [ ] Tier 1 verification (`python3 H_docs/scripts/verify.py`) pass 100%.
 - [ ] Tier 2 Cognitive Review được ghi nhận trong `H_docs/runtime/DEBATE_LOG.md`.
 
 ### Verification Commands
 ```bash
-pytest tests/test_scenarios_bridge.py tests/test_smoke.py
+pytest tests/test_integration_material_bank.py
 python3 H_docs/scripts/verify.py
 ```
 
@@ -36,28 +35,23 @@ python3 H_docs/scripts/verify.py
 
 ## Execution Steps
 
-### Step 1: Update `app/scenarios.py` to Bridge `MaterialBank`
-- **Mục tiêu:** Cập nhật `list_scenarios()` và `get_scenario(scenario_id)` trong `app/scenarios.py` để tự động tích hợp danh sách topics từ `MaterialBank` (`get_material_bank()`).
-- **Files sửa:** `app/scenarios.py`
-- **Exit condition:** `list_scenarios()` trả về danh sách đầy đủ (> 100 topics) và `get_scenario(topic_id)` hỗ trợ nạp topic từ `MaterialBank`.
+### Step 1: Create `tests/test_integration_material_bank.py`
+- **Mục tiêu:** Viết các test cases kiểm thử end-to-end cho FastAPI client nạp MaterialBank scenarios, khởi tạo phiên thoại `/api/start_scenario`, thực hiện lượt thoại `/api/process_turn`, kiểm tra đầy đủ schema fields và benchmark latency.
+- **Files tạo:** `tests/test_integration_material_bank.py`
+- **Exit condition:** `pytest tests/test_integration_material_bank.py` pass 100%.
 
-### Step 2: Ensure Endpoint Compatibility in `app/main.py`
-- **Mục tiêu:** Rà soát và đảm bảo các endpoint `/api/scenarios`, `/api/start_scenario`, `/api/process_turn`, `/api/chat` xử lý mượt mà cả standard scenarios, MaterialBank topic_ids và custom scenarios.
-- **Files sửa:** `app/main.py`
-- **Exit condition:** Endpoints phản hồi 200 OK với đúng schema.
+### Step 2: Tier 1 Verification
+- **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py` kiểm tra Tier 1 (ruff, mypy, pytest, bandit).
+- **Files tạo/sửa:** `H_docs/runtime/VERIFICATION_REPORT.md`
+- **Exit condition:** `verify.py` pass 100% không còn lỗi.
 
-### Step 3: Add Unit Tests in `tests/test_scenarios_bridge.py`
-- **Mục tiêu:** Tạo unit test kiểm tra `/api/scenarios`, `/api/scenarios/{scenario_id}`, `/api/start_scenario` với `topic_id` từ `MaterialBank`.
-- **Files tạo:** `tests/test_scenarios_bridge.py`
-- **Exit condition:** `pytest tests/test_scenarios_bridge.py` pass 100%.
+### Step 3: Tier 2 Cognitive Review
+- **Mục tiêu:** Thực hiện Tier 2 Review trên `git diff` theo `H_docs/core/REVIEW_PROTOCOL.md` và ghi nhận vào `DEBATE_LOG.md`.
+- **Files sửa:** `H_docs/runtime/DEBATE_LOG.md`
+- **Exit condition:** Review result APPROVED.
 
-### Step 4: Verification (Tier 1 & Tier 2)
-- **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py` kiểm tra Tier 1 (ruff, mypy, pytest, bandit). Thực hiện Tier 2 Cognitive Review dựa trên `git diff` và ghi log vào `DEBATE_LOG.md`.
-- **Files tạo/sửa:** `H_docs/runtime/VERIFICATION_REPORT.md`, `H_docs/runtime/DEBATE_LOG.md`
-- **Exit condition:** `verify.py` pass 100%, `DEBATE_LOG.md` result APPROVED.
-
-### Step 5: Documentation & State Update
-- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-006` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
+### Step 4: Documentation, State Update & Git Commit
+- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-007` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
 - **Files sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`
 - **Exit condition:** Git commit thành công.
 
@@ -68,7 +62,7 @@ python3 H_docs/scripts/verify.py
 ```
 Estimated iterations: 1
 Maximum allowed:      2
-Context refresh at:   Iteration 7
+Context refresh at:   Iteration 8
 ```
 
 ---
@@ -77,4 +71,4 @@ Context refresh at:   Iteration 7
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-10 | Tạo plan cho TASK-006 |
+| v1 | 2026-08-10 | Tạo plan cho TASK-007 |
