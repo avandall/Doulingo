@@ -111,6 +111,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "ONLY the 100 most common English words (yes, no, good, want, like, have, go, eat, drink, please, what, how)",
         "grammar_allowed": "Subject + Verb only. Present simple tense ONLY. Simple questions.",
         "response_style": "2-3 simple sentences. Greet friendly, answer clearly, and ask one basic everyday question (35-70 words). Example: 'Hello! I like coffee very much. Do you like coffee or tea?'",
+        "example_response": "I like food. Food is good. Do you like food?",
     },
     2: {
         "cefr": "A1",
@@ -120,6 +121,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "Top 200 most common English words. Concrete nouns (food, water, home, bus, shop, today).",
         "grammar_allowed": "Simple present tense. 'I am', 'You are', 'It is'. Basic everyday phrasing.",
         "response_style": "2-3 short, natural sentences. Include clear everyday details and ask a follow-up question (35-70 words).",
+        "example_response": "I eat lunch at home every day. I like rice and vegetables. Do you eat at home or at a restaurant?",
     },
     3: {
         "cefr": "A1",
@@ -129,6 +131,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "A1 basic vocabulary. Simple adjectives (big, small, hot, cold, good, bad, happy).",
         "grammar_allowed": "Present simple. Can/cannot. Have/don't have. Simple yes/no and what/where questions.",
         "response_style": "2-3 sentences with natural conversational flow. End with an engaging question (35-70 words).",
+        "example_response": "I think this place is very big and nice. I can see many people here. Where do you usually go in your free time?",
     },
     4: {
         "cefr": "A1+",
@@ -138,6 +141,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "A1-A2 vocabulary. Can use 'would like', 'want to', common verbs (eat, drink, go, take, give).",
         "grammar_allowed": "Present simple + 'would like' + simple imperatives. Basic time words (today, now, yesterday).",
         "response_style": "2-3 sentences. Express a basic preference or fact clearly, then ask about theirs (35-70 words).",
+        "example_response": "I would like to try something new today. Yesterday I had coffee and it was really good. What would you like to eat or drink?",
     },
     5: {
         "cefr": "A2",
@@ -147,6 +151,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "A2 everyday vocabulary. Common adjectives, basic adverbs (very, really, often, sometimes).",
         "grammar_allowed": "Present simple + past simple (regular verbs only). 'How much/many', basic questions.",
         "response_style": "2-3 sentences. Share an interesting observation and invite their thoughts (35-70 words).",
+        "example_response": "I really enjoy spending time with friends on weekends. Last Saturday, we went to a small café near the park. How often do you usually meet up with your friends?",
     },
     6: {
         "cefr": "A2",
@@ -156,6 +161,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "A2 vocabulary. Can use common collocations (have a meal, take a break, make a call).",
         "grammar_allowed": "Past simple (regular + irregular). Future with 'going to'. Questions with 'When, Where, Who'.",
         "response_style": "2-3 sentences. Connect past experiences or future plans with the topic (45-85 words).",
+        "example_response": "I'm going to have lunch with my colleague today at the new place downtown. Last week we tried a noodle shop and it was pretty good — decent food and a really relaxed atmosphere. Have you made any plans for eating out this week?",
     },
     7: {
         "cefr": "A2+",
@@ -165,6 +171,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "A2-B1 vocabulary. Basic phrasal verbs (look for, pick up, find out). Simple idioms avoided.",
         "grammar_allowed": "Past simple + continuous. Future with 'will'. Comparative adjectives (bigger, better, more).",
         "response_style": "3 sentences with smooth transitions. Ask a question that encourages elaboration (45-85 words).",
+        "example_response": "I was looking for a good travel destination last week and found this amazing coastal town. The reviews were much better than the places I checked before, and the prices were more affordable too. Have you been travelling anywhere interesting recently, or are you still figuring out where to go?",
     },
     8: {
         "cefr": "B1-",
@@ -174,6 +181,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B1 vocabulary. Common idioms (a piece of cake, hit the road). Basic phrasal verbs freely.",
         "grammar_allowed": "Present perfect (have been, have done). Comparatives + superlatives. 'I think', 'I believe'.",
         "response_style": "3 sentences. Share an opinion with a reason, then ask for their viewpoint (45-85 words).",
+        "example_response": "I think learning a new language is a piece of cake when you're surrounded by native speakers — immersion is by far the most effective approach I've tried. I've been studying Spanish for six months and I've already noticed a huge improvement in how confident I feel. What do you believe is the biggest obstacle to becoming fluent in another language?",
     },
     9: {
         "cefr": "B1",
@@ -183,6 +191,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B1 vocabulary. B1 idioms (on second thought, to be honest, as far as I know).",
         "grammar_allowed": "Past perfect. Conditionals (if...will). 'Used to'. Clause linking (because, although, while).",
         "response_style": "3 sentences. Use natural idiomatic expressions and conditional phrasing (45-85 words).",
+        "example_response": "To be honest, I used to think social media was just a distraction, but on second thought it's actually helped me stay connected with people who matter. If I hadn't downloaded that app last year, I would have lost touch with a lot of old friends. How has technology changed the way you maintain your friendships, if at all?",
     },
     10: {
         "cefr": "B1",
@@ -192,6 +201,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B1-B2 vocabulary. Phrasal verbs freely. Common idioms used naturally in context.",
         "grammar_allowed": "Reported speech. Relative clauses (who, which, that). Second conditional (if...would).",
         "response_style": "3 sentences. Compare alternatives and present a thoughtful perspective (45-85 words).",
+        "example_response": "There's this interesting debate about whether remote work, which has become the norm for so many people, actually improves productivity or quietly erodes teamwork. My colleague who switched to fully remote last year told me she gets more done, but she misses the spontaneous conversations that used to spark her best ideas. If you could design your ideal work setup, would you go fully remote, fully in-office, or something in between?",
     },
     11: {
         "cefr": "B1+",
@@ -201,6 +211,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2 vocabulary. Abstract nouns. B2 collocations (raise awareness, make an impression).",
         "grammar_allowed": "All conditionals. Passive voice. Modals for deduction (must be, might have).",
         "response_style": "3-4 sentences. Provide structured conversational analysis with discourse markers (55-105 words).",
+        "example_response": "It's worth raising awareness about how much our childhood experiences shape our adult relationships — something I've been reflecting on quite a bit lately. Growing up in a community where open communication was actively encouraged must have made a significant difference for those who had that privilege. Furthermore, the absence of such an environment might have led to communication barriers that can take years to unlearn. What aspects of your upbringing do you think have had the most lasting impression on how you interact with people today?",
     },
     12: {
         "cefr": "B2-",
@@ -210,6 +221,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2 vocabulary. Formal and informal registers. Discourse markers (Furthermore, Nevertheless, In contrast).",
         "grammar_allowed": "Subjunctive (I wish, if only). Inversion for emphasis (Not only...but also). All tenses.",
         "response_style": "3-4 sentences. Explore pros and cons or challenge an idea politely (55-105 words).",
+        "example_response": "Not only does urban living offer unparalleled access to career opportunities and cultural experiences, but it also comes with significant trade-offs in terms of space, noise, and cost of living. If only city planners prioritized affordable housing as much as they do commercial development, the quality of life would improve substantially for most residents. Nevertheless, I wish more people would challenge the assumption that city life is inherently superior to a quieter, more rural existence. In your view, what would the ideal balance between urban convenience and a more peaceful lifestyle look like?",
     },
     13: {
         "cefr": "B2",
@@ -219,6 +231,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2 rich vocabulary. Sophisticated adjectives (meticulous, vibrant, compelling). Abstract concepts.",
         "grammar_allowed": "Complex sentences. Mixed conditionals. Cleft sentences (It was...that). Emphatic structures.",
         "response_style": "3-4 sentences. Employ abstract vocabulary and sophisticated reasoning naturally (55-105 words).",
+        "example_response": "It was precisely the meticulous attention to cultural nuance that made that documentary so compelling — a rare quality in mainstream media. Had the director taken a more conventional approach, the vibrant complexity of those communities would have been flattened into a superficial stereotype. What I find particularly fascinating is how documentary filmmakers navigate the tension between telling a coherent narrative and preserving the messy, authentic reality of their subjects. Which aspects of storytelling do you think are most easily distorted when a story crosses cultural boundaries?",
     },
     14: {
         "cefr": "B2",
@@ -228,6 +241,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "B2-C1 vocabulary. Native idioms freely. Academic and journalistic vocabulary.",
         "grammar_allowed": "All advanced structures. Ellipsis. Fronting (What I find interesting is...). Perfect modals.",
         "response_style": "3-4 sentences. Develop an engaging conversational point with idiomatic precision (55-105 words).",
+        "example_response": "What I find genuinely intriguing is how the gig economy has quietly dismantled the very concept of job security — an idea that previous generations treated as a given rather than a privilege. Journalists have been documenting this shift for years, yet policymakers seem to have dragged their feet in responding to its implications. There's something to be said for the flexibility it offers, but one could argue that it largely benefits those who were already economically stable to begin with. To what extent do you think institutional responses to economic disruption tend to favour those who already hold the most power?",
     },
     15: {
         "cefr": "B2+",
@@ -237,6 +251,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C1 vocabulary. Nuanced language. Near-native collocations. Literary expressions.",
         "grammar_allowed": "Any native-level grammar. Hedging language (arguably, to a certain extent). Nominalizations.",
         "response_style": "3-4 sentences. Anticipate viewpoints and use nuanced hedging language (55-105 words).",
+        "example_response": "Arguably, the proliferation of social media has fundamentally altered the dynamics of human connection — not so much by bringing people closer together, but by creating the illusion of closeness while arguably deepening a sense of isolation. To a certain extent, the curation of one's online persona has become a form of performative self-expression that prioritises external validation over genuine intimacy. The normalization of this behaviour raises fascinating questions about authenticity in contemporary relationships. To what degree do you think the boundaries between one's public and private self have eroded in the age of constant digital visibility?",
     },
     16: {
         "cefr": "C1",
@@ -246,6 +261,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C1 vocabulary. Idiomatic mastery. Academic and professional register.",
         "grammar_allowed": "Full native grammar range. Complex subordination. Implicit logical connectors.",
         "response_style": "3-4 sentences. Speak with near-native eloquence, humor, and subtle connotations (65-130 words).",
+        "example_response": "There's an almost paradoxical quality to ambition — the very drive that compels people to pursue extraordinary goals tends to render the attainment of those goals strangely anticlimactic, as though the journey itself was the point all along. I've often wondered whether high achievers are genuinely motivated by the destination or whether they're, in some sense, addicted to the act of striving — a distinction that carries profound implications for how we structure our lives and measure fulfilment. What strikes you as the most honest answer when someone asks whether you're ultimately driven by a passion for the work itself or by the recognition and reward it might bring?",
     },
     17: {
         "cefr": "C1",
@@ -255,6 +271,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C1-C2 vocabulary. Philosophical terms. Rhetorical devices (rhetorical questions, anaphora).",
         "grammar_allowed": "Native-level full range. Parenthetical remarks. Appositive phrases. Absolute constructions.",
         "response_style": "3-4 sentences. Employ rhetorical devices, wit, or cultural references naturally (65-130 words).",
+        "example_response": "Is it not curious — deeply, philosophically curious — that the societies most obsessed with measuring happiness tend to produce populations that report feeling least content? There's an aphorism lurking here: the more rigorously we attempt to quantify well-being, the more elusive it becomes, slipping through the fingers of our instruments like sand. Our metrics, precise as they are, capture the shadow of human flourishing while the substance stubbornly resists quantification — a limitation that should give any serious policymaker pause. What, in your estimation, lies beyond the reach of our current frameworks for understanding what it means to live well?",
     },
     18: {
         "cefr": "C1+",
@@ -264,6 +281,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C2 near-native vocabulary. Literary and cultural references. Nuanced connotations.",
         "grammar_allowed": "Any grammatical structure. Poetic license. Sophisticated register shifts.",
         "response_style": "3-4 sentences. Express deep abstract ideas with effortless syntactic variety (65-130 words).",
+        "example_response": "Memory, as Proust understood, is less an archive than a creative act — each retrieval subtly reshapes the original, so that what we remember is always, in some sense, a fiction we have authored about our past. This insight carries uncomfortable implications: the sense of continuity that anchors our identity is built, at least in part, on stories we've told ourselves so many times they've hardened into apparent fact. There is something both liberating and vertiginous in that recognition — liberating because it suggests the past is more malleable than we imagined, vertiginous because it undermines the bedrock on which we've constructed our sense of self. In what ways do you find yourself curating or revising the narrative of your own life?",
     },
     19: {
         "cefr": "C2",
@@ -273,6 +291,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "C2 eloquent vocabulary. Native-speaker precision. Rare but precise word choices.",
         "grammar_allowed": "Fully native syntax. Deliberate syntactic complexity for stylistic effect.",
         "response_style": "3-4 sentences. Speak as an articulate native speaker with rich conversational depth (65-130 words).",
+        "example_response": "What separates the merely clever from the genuinely wise is, I suspect, not the breadth of knowledge but the quality of attention — an almost Simone Weil-ian capacity to be wholly present to what stands before you, unmediated by the noise of prior assumption. Wisdom, in this sense, has less to do with accumulating the right answers than with cultivating a certain tolerance for uncertainty, a willingness to sit with questions that resist resolution without collapsing into either nihilism or false comfort. It is a rarer disposition than intelligence, and arguably more necessary. What do you think our educational systems most fundamentally fail to cultivate in the people who pass through them?",
     },
     20: {
         "cefr": "C2+",
@@ -282,6 +301,7 @@ LEVEL_CONFIGS = {
         "vocab_tier": "Native expert: slang, colloquialisms, domain jargon, cultural humor — all natural.",
         "grammar_allowed": "All native structures including deliberately broken grammar for rhetorical effect.",
         "response_style": "3-4 sentences. Speak exactly as an articulate, witty native virtuoso. Complete conversational freedom (65-130 words).",
+        "example_response": "Look, I'll be straight with you — the older I get, the more I'm convinced that the things we spend our twenties absolutely certain about are precisely the things we spend our forties quietly dismantling. There's a kind of intellectual arrogance that's almost endearing in retrospect: all that ferocious certainty! And yet, I'm not sure the alternative — the studied, performative open-mindedness you see everywhere now — is meaningfully better; it just swaps one pose for another. What's something you held as an absolute conviction a decade ago that now strikes you as, well, frankly embarrassing?",
     },
 }
 
@@ -398,15 +418,17 @@ class AIEngine:
         cfg = self._get_level_config(level)
         return f"""
 === STRICT DIFFICULTY ENFORCEMENT: LEVEL {level}/20 ({cfg['cefr']}) ===
-YOU MUST OBEY ALL RULES BELOW. VIOLATING ANY RULE = FAIL.
+YOU MUST WRITE EXACTLY LIKE THE EXAMPLE BELOW. DO NOT DEVIATE.
 
-RULE 1 — NATURAL SPOKEN CONVERSATIONAL LENGTH: Your ENTIRE response MUST be between {cfg['min_words']} and {cfg['max_words']} words total. Speak like a natural human in a real dialogue — NEVER write a long essay, speech, or textbook paragraph. Each sentence should be around {cfg['sentence_words']} words within [{cfg['min_words']} - {cfg['max_words']} words].
-RULE 2 — VOCABULARY: Use ONLY {cfg['vocab_tier']}. Do NOT use words outside this tier.
-RULE 3 — GRAMMAR: {cfg['grammar_allowed']}. Do NOT use grammar structures beyond this level.
-RULE 4 — RESPONSE FORMAT & MANDATORY QUESTION: {cfg['response_style']}. You SHOULD end your turn with a fresh, OPEN-ENDED question that NEVER repeats previous questions or loops back to topics already discussed in the conversation!
+EXAMPLE OF A PERFECT LEVEL {level} RESPONSE:
+"{cfg['example_response']}"
 
-SELF-CHECK BEFORE RESPONDING: Count your words. Is your response a natural spoken dialogue between {cfg['min_words']} and {cfg['max_words']} words? Did you end with a FRESH OPEN-ENDED QUESTION that does NOT repeat previous topics? If not, rewrite.
-=== END DIFFICULTY RULES ==="""
+RULES (same style as the example above):
+- LENGTH: Between {cfg['min_words']} and {cfg['max_words']} words. COUNT YOUR WORDS.
+- VOCABULARY: {cfg['vocab_tier']}
+- GRAMMAR: {cfg['grammar_allowed']}
+=== END LEVEL RULES ===
+"""
 
     def start_roleplay_greeting(
         self,
@@ -441,6 +463,7 @@ SELF-CHECK BEFORE RESPONDING: Count your words. Is your response a natural spoke
         )
 
         level_block = self._build_level_constraint_block(level)
+        cfg = self._get_level_config(level)
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
         
@@ -462,7 +485,10 @@ You are playing the role of {character['name']} ({character.get('country', '')},
 SCENARIO TOPIC: "{scenario['title']}" - {scenario.get('description', '')}.
 {level_block}
 
-Task: Proactively START the roleplay conversation. Jump DIRECTLY into an engaging, OPEN-ENDED opening question about "{scenario['title']}" that inspires storytelling and rich dialogue — strictly obeying the level rules above. NEVER use closed yes/no questions unless Level 1.
+Task: Proactively START the roleplay conversation as {character['name']}.
+1. Share a compelling thought, personal observation, or story setup (2-3 sentences) about "{scenario['title']}" matching your character persona and difficulty level.
+2. End your turn with ONE engaging, OPEN-ENDED question that invites the user to elaborate.
+3. CRITICAL LENGTH & LEVEL MANDATE: Your ENTIRE response MUST be between {cfg['min_words']} and {cfg['max_words']} words. Match the exact vocabulary complexity, sentence length, and structure of the Level {level} ({cfg['cefr']}) example provided above!
 
 Output JSON ONLY:
 {{
@@ -770,6 +796,7 @@ Output JSON ONLY:
         )
 
         level_block = self._build_level_constraint_block(level)
+        cfg = self._get_level_config(level)
         trait = character.get("trait", "Friendly")
         style = character.get("speech_style", "Conversational")
 
@@ -811,7 +838,7 @@ CONVERSATION HISTORY SO FAR:
 USER JUST SAID: "{user_transcript}"
 
 TASK:
-1. Reply in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules above. Your reply MUST end with a FRESH, OPEN-ENDED QUESTION that drives the topic forward without repeating previous ideas.
+1. Reply in 100% STANDARD NATURAL ENGLISH as {character['name']}. Your response MUST be between {cfg['min_words']} and {cfg['max_words']} words total (strictly obeying Level {level} - {cfg['cefr']} length and vocabulary rules). Express a rich 2-3 sentence thought/reaction matching the Level {level} example above, and end with ONE FRESH OPEN-ENDED QUESTION.
 2. REWRITE USER SENTENCE ACCURATELY: In "corrected_text", fix ONLY grammar/spelling of "{user_transcript}" while preserving their exact meaning 100%. In "native_phrasing", show how a native speaker would say that exact thought.
 
 Output JSON ONLY:
