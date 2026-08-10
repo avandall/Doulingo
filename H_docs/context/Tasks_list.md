@@ -20,7 +20,7 @@
 | `TASK-005` | AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py`) | Phase 3 | P1 | `[x] DONE` | Inject sampled prompts & set temperature 0.75-0.85 |
 | `TASK-006` | FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`) | Phase 3 | P1 | `[x] DONE` | Connect `/api/scenarios`, `/api/start_scenario`, `/api/process_turn` |
 | `TASK-007` | End-to-End Integration Testing & Latency Benchmarks | Phase 4 | P1 | `[x] DONE` | Verify full conversation flow and response parsing |
-| `TASK-008` | System Verification Evidence & Harness Documentation Update | Phase 4 | P2 | `[ ] TODO` | Final sanity checks, status update & walkthrough |
+| `TASK-008` | System Verification Evidence & Harness Documentation Update | Phase 4 | P2 | `[x] DONE` | Final sanity checks, status update & walkthrough |
 
 > **Trạng thái hợp lệ:**
 > - `[ ] TODO`: Chưa làm, chờ AI chọn
@@ -238,7 +238,7 @@ Task Name:       System Verification Evidence & Harness Documentation Update
 Phase:           Phase 4 (Verification & Polish)
 Task Type:       docs
 Priority:        P2-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-10
 ```
 
@@ -247,5 +247,5 @@ Ngày tạo:        2026-08-10
 - **What:** Cập nhật `H_docs/runtime/STATUS.md` và tạo bằng chứng verification.
 
 #### Acceptance Criteria
-- [ ] Mọi test suite trong `tests/` đều pass 100%.
-- [ ] File `H_docs/runtime/STATUS.md` được cập nhật trạng thái hoàn thành.
+- [x] Mọi test suite trong `tests/` đều pass 100%.
+- [x] File `H_docs/runtime/STATUS.md` được cập nhật trạng thái hoàn thành.

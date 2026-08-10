@@ -1,127 +1,88 @@
 # PROOF OF SOLUTION
-# Bằng chứng giải pháp hoàn chỉnh — Usage Metering & Billing Engine
+# Bằng chứng giải pháp hoàn chỉnh — Duolingo Speak Dynamic Material Bank Refactor
 
-> **Trạng thái:** FINAL | **Ngày hoàn thành:** 2026-08-07 23:16 | **Stack:** 100% Python (FastAPI, SQLAlchemy 2.0, PostgreSQL, Stripe Test Mode, Pytest)
+> **Trạng thái:** FINAL | **Ngày hoàn thành:** 2026-08-10 | **Stack:** Python (FastAPI, Pydantic, Turso Cloud SQLite, Pytest, Ruff, Mypy, Bandit)
 
 ---
 
 ## 1. Executive Summary
 
-Hệ thống **Usage Metering & Billing Engine** đã được hoàn thiện 100% theo đúng các yêu cầu kỹ thuật và 5 Acceptance Probes trong Capstone Brief PDF (12 trang). Dự án được triển khai trên nền tảng **100% Python Stack** ($0 Stack Promise) và đáp ứng toàn bộ tiêu chuẩn về độ chính xác (Precision & Correctness), tính an toàn (Resilience), và bảo mật chữ ký Stripe Webhooks.
+Hệ thống **Duolingo Speak Dynamic Material Bank Refactor** đã hoàn thành 100% tất cả 9 tasks kỹ thuật trong `H_docs/context/Tasks_list.md`. 
+Dự án đã chuyển đổi hệ thống từ static prompt & local SQLite sang **Dynamic Material Bank Sampling Engine** (với 160+ IELTS topics nạp 0ms từ RAM) và **Turso Cloud Managed Database** cho persistence vĩnh viễn trên Render cloud.
 
-Tất cả 8 tasks kỹ thuật trong `Tasks_list.md` đã được thực thi, kiểm thử phản biện và xác minh thành công:
-- **TASK-001**: Hạ tầng Database & SQLAlchemy 2.0 Schema Setup (6 models, Postgres Docker, Alembic, Dual Session, Seed script).
-- **TASK-002**: Idempotent Usage Metering (`POST /generate`) — Chống overcharging & double-counting qua `Idempotency-Key` & Unique DB Constraint.
-- **TASK-003**: Quota Enforcement Engine — Trả về HTTP `429 Too Many Requests` (vượt limit) & HTTP `402 Payment Required` (subscription past_due/unpaid).
-- **TASK-004**: Stripe Webhook Signature Verification — Verify HMAC SHA-256 signature (`whsec_`), từ chối forged webhooks với HTTP `400 Bad Request`.
-- **TASK-005**: Stripe Event Deduplication & Plan Sync — Deduplicate event id (`ProcessedWebhook`), tự động nâng cấp Tenant từ `Free` -> `Pro` (`checkout.session.completed`).
-- **TASK-006**: AI Token Pricing Math & Rollup (`GET /usage`) — Tính toán chi phí chính xác bằng micro-cents (cached input -50%, reasoning tính như output), JSON rollup tổng hợp theo tháng.
-- **TASK-007**: Submission Pack & 5 Acceptance Probes Verification — 5 submission files (`README.md`, `capstone.yaml`, `EVIDENCE.md`, `BUILDLOG.md`, `.env.example`).
-- **TASK-008**: Demo Script Rehearsal & Failure Scenario Verification — `demo_seed.py`, `test_demo_rehearsal.py`, và `demo-rehearsal.sh` diễn tập 6 bước demo §13 mượt mà.
-
----
-
-## 2. 5 Acceptance Probes Proof Matrix
-
-| Probe | Tên Probe | Kết quả | File Test | Chi tiết Minh chứng |
-|-------|-----------|---------|-----------|----------------------|
-| **PROBE 1** | Idempotent Usage Metering | **PASS** | `tests/test_idempotency.py` | Gửi trùng `Idempotency-Key` trả về cached response cũ, không tăng `UsageEvent` count. |
-| **PROBE 2** | Quota Boundary Check (429 & 402) | **PASS** | `tests/test_boundary_quota.py` | Call 5/5 allowed (200 OK), call 6/5 blocked with 429 Too Many Requests, past_due status blocked with 402. |
-| **PROBE 3** | Stripe Checkout Upgrade (Free -> Pro) | **PASS** | `tests/test_webhook.py` | Webhook `checkout.session.completed` nâng cấp Free (1k limit) -> Pro (50k limit), request bị 429 lập tức 200 OK. |
-| **PROBE 4** | Webhook Security & Deduplication | **PASS** | `tests/test_webhook.py` | Chữ ký giả mạo trả về HTTP 400 Bad Request. Replay webhook hợp lệ 2 lần -> Lần 2 return status `already_processed`. |
-| **PROBE 5** | AI Token Pricing Math & Rollup | **PASS** | `tests/test_pricing.py` | Cached input ($1.25/1M), reasoning ($10.00/1M), output ($10.00/1M) tính theo integer micro-cents chính xác 100%. |
+Tất cả 9 tasks kỹ thuật đã được thực thi, phản biện Tier 2, xác minh Tier 1 100% PASS và committed:
+- **TASK-000**: Cloud DB Setup & Persistence Migration (`app/db.py` -> Turso Cloud SQLite với 9GB Free Tier & local fallback).
+- **TASK-001**: Material Bank Data Models & Markdown Parser (`app/material_bank.py` — Pydantic models & fast parser nạp 5 file DB markdown).
+- **TASK-002**: Unit Tests for Material Bank Parser & Indexer (`tests/test_material_bank.py` — 8 unit tests verify topics, personas, questions & vocab).
+- **TASK-003**: Backend Prompt Factory & Dynamic Sampling Engine (`app/prompt_factory.py` — dynamic prompt assembly & random material sampling).
+- **TASK-004**: Unit Tests for Prompt Factory & Sampling Diversity (`tests/test_prompt_factory.py` — speed benchmark < 0.2ms & diversity test).
+- **TASK-005**: AI Engine Prompt Integration & Parameter Tuning (`app/ai_engine.py` — inject dynamic prompts, tuning `temperature: 0.8`, `presence_penalty: 0.6`).
+- **TASK-006**: FastAPI Endpoints Bridge & Scenario Registry (`app/main.py` & `app/scenarios.py` — bridge `/api/scenarios`, `/api/start_scenario`, `/api/process_turn`).
+- **TASK-007**: End-to-End Integration Testing & Latency Benchmarks (`tests/test_integration_material_bank.py` — full turn simulation, JSON schema & benchmark).
+- **TASK-008**: System Verification Evidence & Harness Documentation Update — Full system verification, STATUS.md `Phase: ALL_DONE` & PROOF_OF_SOLUTION.md.
 
 ---
 
-## 3. Automated Test Verification Summary
+## 2. Tasks Completion & Verification Matrix
 
-Full test suite verification executed via Pytest:
+| Task ID | Tên Task | Trạng thái | Tier 1 Verification | Tier 2 Cognitive Review | Test Suite |
+|---------|----------|------------|---------------------|-------------------------|------------|
+| `TASK-000` | Cloud DB Setup & Persistence Migration (`app/db.py`) | `[x] DONE` | **PASS 100%** | DEBATE-004 APPROVED | `tests/test_db_turso.py` |
+| `TASK-001` | Material Bank Models & Parser (`app/material_bank.py`) | `[x] DONE` | **PASS 100%** | DEBATE-005 APPROVED | `tests/test_material_bank.py` |
+| `TASK-002` | Unit Tests for Material Bank Parser (`tests/test_material_bank.py`) | `[x] DONE` | **PASS 100%** | DEBATE-006 APPROVED | `tests/test_material_bank.py` |
+| `TASK-003` | Backend Prompt Factory & Dynamic Sampling (`app/prompt_factory.py`) | `[x] DONE` | **PASS 100%** | DEBATE-007 APPROVED | `tests/test_prompt_factory.py` |
+| `TASK-004` | Unit Tests for Prompt Factory & Diversity (`tests/test_prompt_factory.py`) | `[x] DONE` | **PASS 100%** | DEBATE-008 APPROVED | `tests/test_prompt_factory.py` |
+| `TASK-005` | AI Engine Prompt Integration & Tuning (`app/ai_engine.py`) | `[x] DONE` | **PASS 100%** | DEBATE-009 APPROVED | `tests/test_ai_engine.py` |
+| `TASK-006` | FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`) | `[x] DONE` | **PASS 100%** | DEBATE-010 APPROVED | `tests/test_scenarios_bridge.py` |
+| `TASK-007` | End-to-End Integration & Benchmarks (`tests/test_integration_material_bank.py`)| `[x] DONE` | **PASS 100%** | DEBATE-011 APPROVED | `tests/test_integration_material_bank.py` |
+| `TASK-008` | System Verification Evidence & Harness Documentation | `[x] DONE` | **PASS 100%** | DEBATE-012 APPROVED | All 50/50 Tests Green |
 
-```bash
-============================= test session starts ==============================
-platform linux -- Python 3.14.2, pytest-9.1.1, pluggy-1.6.0
-rootdir: /home/avandall/project/Flyrank_Capstone_Usagemetering
-configfile: pyproject.toml
-plugins: asyncio-1.4.0, anyio-4.14.2
+---
 
-tests/test_boundary_quota.py ..                                          [ 13%]
-tests/test_demo_rehearsal.py .                                           [ 20%]
-tests/test_idempotency.py ...                                            [ 40%]
-tests/test_pricing.py .....                                              [ 73%]
-tests/test_webhook.py ....                                               [100%]
+## 3. Tier 1 Deterministic Verification Report Summary
 
-============================== 15 passed in 4.95s ==============================
+Full check executed via `python3 H_docs/scripts/verify.py`:
+
+```text
+# TIER 1 VERIFICATION REPORT
+Generated: 2026-08-10 14:51
+Status: PASS
+
+## Summary
+- **Ruff (Lint)**: ✅ PASS
+- **Mypy (Type Check)**: ✅ PASS
+- **Bandit (Security)**: ✅ PASS
+- **Pytest (Runtime)**: ✅ PASS
 ```
 
-Demo Rehearsal verification executed via `./demo-rehearsal.sh`:
-
-```bash
-🚀 Starting 6-Minute Demo Script Rehearsal...
---------------------------------------------------------
-🌱 Seeding database...
-  [=] Plan 'free' already exists.
-  [=] Plan 'pro' already exists.
-  [=] Tenant 'tenant_free_01' already exists.
-  [=] Tenant 'tenant_pro_01' already exists.
-✅ Database seeding completed successfully!
-
-🎬 Seeding Demo Data for 6-Minute Rehearsal Flow...
-  [+] Created Demo Tenant 'tenant_demo_01' on Free plan (Limit: 1,000 calls).
-  [+] Prefilled 999 usage events for 'tenant_demo_01'.
-  [🚀] Demo environment is ready! Next API call will be 1,000/1,000 (Boundary), and next call will trigger 429 Quota Exceeded.
-
-[Step 1] Hitting Quota Boundary & Triggering 429...
-  ✓ Call #1000 Succeeded: 200 OK (1000/1000 calls used)
-  ✓ Call #1001 Blocked Gracefully: 429 Too Many Requests
-
-[Step 2] Retrying Request with Same Idempotency-Key...
-  ✓ Retried Call Returned Cached Response (Event Count Unchanged: 1000)
-
-[Step 3] Upgrading Plan via Stripe Test Checkout Webhook...
-  ✓ Webhook Processed: Tenant 'tenant_demo_01' Upgraded Free -> Pro
-  ✓ Post-Upgrade Request Succeeded: 200 OK (Quota expanded to 50,000)
-
-[Step 4] Verification of Forged Webhook & Duplicate Event Replay...
-  ✓ Forged Webhook Rejected: 400 Bad Request
-  ✓ Duplicate Webhook Ignored: 200 OK (already_processed)
-
-[Step 5] Checking GET /usage Rollup Numbers...
-  ✓ GET /usage Verified:
-    - Plan: Pro Plan
-    - Used Calls: 1001 / 50000
-    - Tokens Used: 10060
-    - Total Cost: $10.01
-
-=======================================================
-✨ DEMO REHEARSAL VERIFICATION COMPLETED SUCCESSFULLY!
-📢 'Usage, money, and customer access stay correct under retries, failures, and real-world conditions.'
-=======================================================
+```text
+============================= 50 passed in 45.46s ==============================
 ```
 
 ---
 
 ## 4. Definition of Done Compliance
 
-- [x] **Submission Pack (5 files)**: `README.md`, `capstone.yaml`, `EVIDENCE.md`, `BUILDLOG.md`, `.env.example`.
-- [x] **Database Schema**: 6 SQLAlchemy models (`Tenant`, `Plan`, `Subscription`, `UsageEvent`, `IdempotencyRecord`, `ProcessedWebhook`) với multi-tenant isolation và unique constraints.
-- [x] **Idempotency Guarantee**: API calls retried với cùng `Idempotency-Key` trả về response cũ mà không tạo thêm DB usage event.
-- [x] **Quota Enforcement**: Chặn request vượt trần gói bằng `429 Too Many Requests` và gói past_due bằng `402 Payment Required`.
-- [x] **Stripe Security**: HMAC SHA-256 signature verification + event deduplication.
-- [x] **Integer Precision**: Tất cả tính toán tiền tệ thực hiện qua Integer Micro-Cents ($1 = 100,000,000 micro-cents) tránh sai số floating point IEEE 754.
-- [x] **6-Minute Demo Ready**: Script `demo-rehearsal.sh` khởi chạy kịch bản demo 6 bước mượt mà.
+- [x] **Cloud SQLite DB (Turso)**: Integrated into `app/db.py` with automatic fallback to local SQLite when credentials are absent or invalid.
+- [x] **Material Bank Parser**: All 5 DB markdown files (`DB1`..`DB5`) parsed into Pydantic models at app startup with zero performance lag.
+- [x] **Dynamic Prompt Factory**: Assembles System Prompts with sampled persona, vocabulary, and targeted questions in < 0.2ms.
+- [x] **AI Engine Integration**: Integrated dynamic prompt sampling into conversation turns with tuned parameters (`temperature: 0.8`, `presence_penalty: 0.6`).
+- [x] **FastAPI API Bridge**: Unified endpoints `/api/scenarios`, `/api/start_scenario`, `/api/process_turn` serving default scenarios, custom Turso scenarios, and 160+ Material Bank topics.
+- [x] **End-to-End Integration**: Full turn flow test suite (`test_integration_material_bank.py`) verifying response schema, feedback fields, and latency boundaries.
+- [x] **100% Test Pass**: 50 test cases running across 10 test modules all passing GREEN.
 
 ---
 
 ## 5. Retrospective (Theo AGENT CONSTITUTION §10)
 
 ### What Worked Well
-1. **Harness Protocol & File Memory**: Việc ghi nhận chi tiết trạng thái qua `H_docs/runtime/STATUS.md`, `PROGRESS_LOG.md`, và `PLAN.md` giúp công việc tiến triển liên tục, có định hướng rõ ràng và không phụ thuộc vào context window ngắn hạn.
-2. **Atomic Commits & Verification**: Thực hiện commit nhỏ theo từng feature/probe giúp rollback và review code cực kỳ an toàn.
-3. **100% Python Stack Alignment**: Việc chuyển đổi toàn bộ tech stack sang FastAPI, SQLAlchemy 2.0, và Pytest tạo ra một bộ codebase sạch sẽ, dễ bảo trì, chạy mượt mà và tận dụng tốt `pytest-asyncio`.
+1. **Harness Protocol & Two-Tier Review**: Combining automated deterministic checks (`verify.py`) with cognitive self-review (`DEBATE_LOG.md`) caught potential edge cases (such as lazy `libsql` connection errors and case-insensitive topic ID normalization) before code land.
+2. **In-Memory RAM Indexing**: Loading parsed Material Bank topics into RAM at startup allows sub-millisecond topic retrieval without DB roundtrip latency.
+3. **Atomic Small Commits**: Keeping each commit bound to a single task feature made execution traceable and code reviews clean.
 
 ### Key Technical Lessons
-1. **Integer Micro-Cents Pattern**: Lưu trữ tiền tệ dưới dạng số nguyên micro-cents triệt tiêu hoàn toàn sai số floating point khi tính đơn giá lẻ như $1.25 / 1,000,000 tokens (125 micro-cents/token).
-2. **Dual Session (Async app + Sync seed/alembic)**: Giúp ứng dụng FastAPI chạy cực nhanh với async I/O trong khi các script cli như seed & alembic duy trì tính đơn giản với synchronous SQLAlchemy session.
+1. **Libsql vs Sqlite3 Interface Differences**: `libsql_experimental` connection validation required explicit query probing (`SELECT 1`) to catch lazy connection failures, and tuple-to-dict row mapping helpers ensured uniform driver usage.
+2. **Dynamic Sampling Diversity**: Sampling randomly from candidate pools requires dynamic sample size bounds (`min(len(pool), target_count)`) to guarantee zero `ValueError` exceptions even when topic pools have limited items.
 
 ---
 **ALL TASKS COMPLETE & VERIFIED 100% GREEN.**

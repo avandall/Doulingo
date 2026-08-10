@@ -1,5 +1,5 @@
 # PLAN
-# Kế hoạch thực thi — TASK-007: End-to-End Integration Testing & Latency Benchmarks (`tests/test_integration_material_bank.py`)
+# Kế hoạch thực thi — TASK-008: System Verification Evidence & Harness Documentation Update
 
 > **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Ngày tạo:** 2026-08-10
 
@@ -8,9 +8,9 @@
 ## Task Reference
 
 ```
-Task ID:    TASK-007
-Task Name:  End-to-End Integration Testing & Latency Benchmarks (`tests/test_integration_material_bank.py`)
-Spec:       Tạo test suite mô phỏng full turn conversation từ FastAPI -> Prompt Factory -> LLM Engine -> Structured Output với MaterialBank topic_id, kiểm tra đầy đủ JSON response (ai_response, ai_response_vi, user_feedback, v.v.) và đo lường latency benchmark.
+Task ID:    TASK-008
+Task Name:  System Verification Evidence & Harness Documentation Update
+Spec:       Thực hiện kiểm định toàn bộ hệ thống (Pytest 100% PASS, Tier 1 verify.py 100% PASS), đánh giá phản biện Tier 2 Cognitive Review, hoàn thiện bằng chứng giải pháp, cập nhật STATUS.md thành Phase: ALL_DONE và viết H_docs/runtime/PROOF_OF_SOLUTION.md.
 ```
 
 ---
@@ -18,16 +18,20 @@ Spec:       Tạo test suite mô phỏng full turn conversation từ FastAPI -> 
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [ ] Tạo file integration test suite `tests/test_integration_material_bank.py` với `pytest` và `TestClient`.
-- [ ] Test case 1: Full turn roleplay flow với `start_scenario` và `process_turn` cho MaterialBank `topic_id` (e.g. `work_job_interview`, `travel_booking`).
-- [ ] Test case 2: Verification of structured JSON fields (`ai_response`, `ai_response_vi`, `user_feedback`, `grammar_corrections`, `pronunciation_tips`, `vocabulary_hints`, `suggested_replies`).
-- [ ] Test case 3: Latency Benchmark - Đảm bảo response time của endpoint `/api/start_scenario` và `/api/process_turn` (khi mock hoặc integration) đáp ứng ngưỡng thời gian cho phép (< 50ms đối với prompt assembly / routing, và hợp lý với LLM).
-- [ ] Tier 1 verification (`python3 H_docs/scripts/verify.py`) pass 100%.
-- [ ] Tier 2 Cognitive Review được ghi nhận trong `H_docs/runtime/DEBATE_LOG.md`.
+- [ ] Chạy full test suite (`pytest`) pass 100%.
+- [ ] Chạy Tier 1 verification (`python3 H_docs/scripts/verify.py`) pass 100% (Ruff, Mypy, Bandit, Pytest).
+- [ ] Kiểm tra `H_docs/runtime/VERIFICATION_REPORT.md` đảm bảo 0 errors.
+- [ ] Thực hiện Tier 2 Cognitive Review dựa trên `git diff` và `H_docs/core/REVIEW_PROTOCOL.md`, ghi log kết quả vào `H_docs/runtime/DEBATE_LOG.md`.
+- [ ] Cập nhật `H_docs/context/Tasks_list.md`: đánh dấu `TASK-008` thành `[x] DONE`.
+- [ ] Kiểm tra tất cả các task trong `Tasks_list.md` (TASK-000 -> TASK-008) đã `[x] DONE`.
+- [ ] Cập nhật `H_docs/runtime/STATUS.md` chuyển sang `Phase: ALL_DONE`.
+- [ ] Tạo file `H_docs/runtime/PROOF_OF_SOLUTION.md` chứa tổng hợp bằng chứng nghiệm thu & Retrospective theo Điều 10 Constitution.
+- [ ] Cập nhật `H_docs/runtime/PROGRESS_LOG.md`.
+- [ ] Thực hiện atomic git commit cho TASK-008.
 
 ### Verification Commands
 ```bash
-pytest tests/test_integration_material_bank.py
+pytest
 python3 H_docs/scripts/verify.py
 ```
 
@@ -35,25 +39,23 @@ python3 H_docs/scripts/verify.py
 
 ## Execution Steps
 
-### Step 1: Create `tests/test_integration_material_bank.py`
-- **Mục tiêu:** Viết các test cases kiểm thử end-to-end cho FastAPI client nạp MaterialBank scenarios, khởi tạo phiên thoại `/api/start_scenario`, thực hiện lượt thoại `/api/process_turn`, kiểm tra đầy đủ schema fields và benchmark latency.
-- **Files tạo:** `tests/test_integration_material_bank.py`
-- **Exit condition:** `pytest tests/test_integration_material_bank.py` pass 100%.
+### Step 1: Execute Full Suite Verification & Tier 1 Pass
+- **Mục tiêu:** Xác minh 100% test cases và static analysis tools đều green.
+- **Exit condition:** `verify.py` trả về PASS, `VERIFICATION_REPORT.md` không có lỗi.
 
-### Step 2: Tier 1 Verification
-- **Mục tiêu:** Chạy `python3 H_docs/scripts/verify.py` kiểm tra Tier 1 (ruff, mypy, pytest, bandit).
-- **Files tạo/sửa:** `H_docs/runtime/VERIFICATION_REPORT.md`
-- **Exit condition:** `verify.py` pass 100% không còn lỗi.
-
-### Step 3: Tier 2 Cognitive Review
-- **Mục tiêu:** Thực hiện Tier 2 Review trên `git diff` theo `H_docs/core/REVIEW_PROTOCOL.md` và ghi nhận vào `DEBATE_LOG.md`.
+### Step 2: Perform Tier 2 Cognitive Review
+- **Mục tiêu:** Rà soát `git diff` theo `REVIEW_PROTOCOL.md` checklist và Adversarial Mode.
 - **Files sửa:** `H_docs/runtime/DEBATE_LOG.md`
 - **Exit condition:** Review result APPROVED.
 
-### Step 4: Documentation, State Update & Git Commit
-- **Mục tiêu:** Cập nhật `H_docs/context/Tasks_list.md` (`TASK-007` -> `[x] DONE`), `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, và thực hiện atomic git commit.
-- **Files sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`
-- **Exit condition:** Git commit thành công.
+### Step 3: Complete Runtime Artifacts & Proof of Solution
+- **Mục tiêu:** Cập nhật `Tasks_list.md`, `STATUS.md` (`Phase: ALL_DONE`), `PROGRESS_LOG.md`, và tạo `PROOF_OF_SOLUTION.md`.
+- **Files tạo/sửa:** `H_docs/context/Tasks_list.md`, `H_docs/runtime/STATUS.md`, `H_docs/runtime/PROGRESS_LOG.md`, `H_docs/runtime/PROOF_OF_SOLUTION.md`
+- **Exit condition:** Tất cả task `[x] DONE`, STATUS `ALL_DONE`, PROOF_OF_SOLUTION hoàn chỉnh.
+
+### Step 4: Atomic Git Commit
+- **Mục tiêu:** Commit toàn bộ artifacts hoàn thành TASK-008.
+- **Exit condition:** `git status` clean.
 
 ---
 
@@ -62,7 +64,7 @@ python3 H_docs/scripts/verify.py
 ```
 Estimated iterations: 1
 Maximum allowed:      2
-Context refresh at:   Iteration 8
+Context refresh at:   Iteration 9
 ```
 
 ---
@@ -71,4 +73,4 @@ Context refresh at:   Iteration 8
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-10 | Tạo plan cho TASK-007 |
+| v1 | 2026-08-10 | Tạo plan cho TASK-008 |
