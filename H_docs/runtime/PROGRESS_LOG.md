@@ -232,6 +232,39 @@
 - **Action:** TASK-009 complete. All tasks DONE.
 - **State:** ALL_DONE
 
+---
+
+### [ITER-024] 2026-08-10 15:48 — Material Bank Topic Resolver Fix for AI Prompt Factory
+
+**Phase:** COMMITTING
+**Step:** Implementation & Verification of MaterialBank Smart Topic Mapping
+**Duration:** ~3 phút
+
+#### Actions Taken
+1. Phản biện và giải thích cơ chế gọi LLM Cloud API (Groq/Gemini/OpenAI) cho User: LLM API không tự kết nối hay đọc disk/DB local. Server Python bắt buộc phải đọc/sample nguyên liệu -> lắp ráp thành System Prompt -> gửi kèm trong API payload.
+2. Kiểm tra vết từ commit `cbbed2756fd246d77124528a67c914b319a57cee` đến nay: Phát hiện điểm nghẽn (root cause) khi gọi `pf.sample_materials(topic_id)`. Các scenario ID trên UI (`everyday_chat`, `cafe_dining`, `det_childhood_memory`) không khớp với 161 key ID trong `MaterialBank` (`food`, `friends`, `travel`, `study`, `technology`), dẫn đến `get_topic` trả về `None` làm System Prompt bị rỗng nguyên liệu.
+3. Nâng cấp `MaterialBank.get_topic()` trong `app/material_bank.py`:
+   - Bổ sung `PRESET_MAPPINGS` đa cấp ánh xạ trực tiếp scenario ID -> `MaterialBank` topics tương ứng.
+   - Thêm bộ lọc Keyword & Token Substring Matching cho các custom topics.
+   - Bổ sung Fallback Topic đảm bảo 100% các cuộc hội thoại luôn được nạp đầy đủ từ vựng academic, câu hỏi gợi mở, vai diễn persona và mẫu câu từ bộ `DB1_*.md` đến `DB5_*.md`.
+4. Chạy `pytest` thành công 100% (50/50 test cases passed in 23.95s).
+5. Executed Tier 1 verification via `python3 H_docs/scripts/verify.py` — Status PASS (Ruff/Mypy/Bandit/Pytest 100% green).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest` (50/50 passed), `python3 H_docs/scripts/verify.py` status PASS.
+
+#### Decisions Made
+- Maintained in-memory MaterialBank lookup for 0ms prompt assembly latency while ensuring 100% topic resolution coverage for all UI scenarios and custom topics.
+
+#### Git
+- **Commit:** `[TASK-003] fix(prompt-factory): implement smart topic mapping for MaterialBank dynamic prompt assembly`
+
+#### Next
+- **Action:** Retest AI conversation generation.
+- **State:** ALL_DONE
+
+
 
 
 

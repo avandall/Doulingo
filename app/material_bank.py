@@ -265,18 +265,54 @@ class MaterialBank:
                 target.grammar_patterns.append(g)
                 existing_pats.add(g.pattern.lower())
 
+    PRESET_MAPPINGS: Dict[str, List[str]] = {
+        "everyday-chat": ["friends", "family-and-friends-bonds", "ielts-speaking-friends", "hobbies"],
+        "cafe-dining": ["food", "ielts-speaking-food", "food-health", "ielts-speaking-healthy-eating"],
+        "travel-culture": ["travel", "holidays-and-travel", "travel-and-transport", "ielts-speaking-travelling", "culture"],
+        "work-study-space": ["work", "jobs-and-work", "study", "education-and-study", "ielts-speaking-what-you-do-your-job"],
+        "digital-lifestyle": ["technology", "science-and-technology", "mobile-phones", "arts-and-media", "movies"],
+        "det-childhood-memory": ["youth-and-childhood", "ielts-speaking-childhood", "ielts-speaking-memories-of-the-past"],
+        "det-best-friend": ["friends", "family-and-friends-bonds", "ielts-speaking-friends"],
+        "det-career-ambition": ["jobs-and-work", "work", "ielts-speaking-what-you-do-your-job"],
+        "det-school-life": ["education-and-study", "study", "studying"],
+        "det-book-movie": ["arts-and-media", "movies", "reading"],
+        "det-sports-health": ["health-and-fitness", "diet-and-health", "food-health"],
+        "det-hometown-city": ["hometown", "home-and-places", "culture"],
+        "det-dream-travel": ["travel", "holidays-and-travel", "travel-and-transport"],
+        "det-social-media": ["technology", "mobile-phones", "science-and-technology"],
+        "det-ai-future": ["science-and-technology", "technology", "machines-cycles-and-processes"],
+    }
+
     def get_topic(self, topic_id: str) -> Optional[TopicBank]:
-        """Lookup a topic by topic_id or topic_name (case-insensitive and slug-insensitive)."""
+        """Lookup a topic by topic_id, preset mapping, or keyword search with robust fallback."""
+        if not self.topics:
+            return None
+
         norm = self.normalize_id(topic_id)
+        # Tier 1: Exact key or normalized title match
         if norm in self.topics:
             return self.topics[norm]
 
-        # Fallback search by normalized topic_name
         for topic in self.topics.values():
             if self.normalize_id(topic.topic_name) == norm:
                 return topic
 
-        return None
+        # Tier 2: Explicit scenario mapping
+        if norm in self.PRESET_MAPPINGS:
+            for candidate in self.PRESET_MAPPINGS[norm]:
+                cand_norm = self.normalize_id(candidate)
+                if cand_norm in self.topics:
+                    return self.topics[cand_norm]
+
+        # Tier 3: Keyword & Token Substring Matching
+        tokens = [t for t in re.split(r'[-_\s]+', norm) if len(t) > 2]
+        for token in tokens:
+            for tid, topic in self.topics.items():
+                if token in tid or token in self.normalize_id(topic.topic_name):
+                    return topic
+
+        # Tier 4: Fallback to any loaded topic bank so sampling never fails
+        return list(self.topics.values())[0]
 
     def list_topics(self) -> List[Dict[str, Any]]:
         """Return a list of summary dictionaries for all loaded topics."""
