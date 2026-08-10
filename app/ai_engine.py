@@ -35,6 +35,21 @@ def mask_api_key(key: Optional[str]) -> str:
         return "***"
     return f"{key[:4]}...{key[-4:]}"
 
+# Tracks keys that are currently rate-limited (429/403) to skip on next call
+KEY_EXHAUSTED_CACHE: Dict[str, float] = {}  # key -> epoch timestamp when it was exhausted
+KEY_COOLDOWN_SECONDS = 60  # How long before retrying an exhausted key
+
+def is_key_exhausted(api_key: str) -> bool:
+    """Return True if this key has been rate-limited within the cooldown window."""
+    exhausted_at = KEY_EXHAUSTED_CACHE.get(api_key)
+    if exhausted_at is None:
+        return False
+    return (time.time() - exhausted_at) < KEY_COOLDOWN_SECONDS
+
+def mark_key_exhausted(api_key: str):
+    """Mark this key as rate-limited."""
+    KEY_EXHAUSTED_CACHE[api_key] = time.time()
+
 def log_api_trace(provider: str, model: str, api_key: str, status_code: int, latency_ms: float, error_msg: str = ""):
     """Log LLM API invocation trace to logs/api_trace.log and console."""
     logs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
@@ -44,6 +59,9 @@ def log_api_trace(provider: str, model: str, api_key: str, status_code: int, lat
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     masked = mask_api_key(api_key)
     
+    if status_code in [429, 403]:
+        mark_key_exhausted(api_key)
+
     KEY_STATUS_CACHE[masked] = {
         "provider": provider,
         "model": model,
@@ -332,6 +350,49 @@ class AIEngine:
         lvl = max(1, min(20, level))
         return LEVEL_CONFIGS[lvl]
 
+    def _build_smart_fallback_opener(self, scenario_id: str, scenario_title: str, level: int) -> str:
+        """
+        Build a smart, varied fallback opening when all LLM APIs are rate-limited.
+        Uses a level-aware question bank keyed to the scenario title.
+        Does NOT rely on DB*.md data (which may have parsing mix-ups).
+        """
+        t = scenario_title.lower()
+
+        # Level-stratified opener pools
+        if level <= 3:
+            pool = [
+                f"Do you like {t}?",
+                f"What do you think about {t}?",
+                f"Is {t} important to you?",
+                f"Tell me one thing about {t}.",
+            ]
+        elif level <= 7:
+            pool = [
+                f"What is your favorite thing about {t}?",
+                f"How often do you think about {t}?",
+                f"Do you have any experience with {t}?",
+                f"What do you usually do when it comes to {t}?",
+            ]
+        elif level <= 12:
+            pool = [
+                f"What has been your most memorable experience related to {t}?",
+                f"How has your perspective on {t} changed over the years?",
+                f"If you could change one thing about {t}, what would it be and why?",
+                f"What do you think is the biggest challenge people face when it comes to {t}?",
+                f"How do {t} affect people's daily lives, in your opinion?",
+            ]
+        else:
+            pool = [
+                f"To what extent do you think {t} shapes people's identities and worldviews?",
+                f"What would you argue is the most underrated aspect of {t} that most people overlook?",
+                f"If you were to challenge a common assumption about {t}, what would it be?",
+                f"How do cultural differences influence the way people approach {t}?",
+                f"In your view, what distinguishes genuine engagement with {t} from mere surface-level interest?",
+            ]
+
+        return random.choice(pool)
+
+
     def _build_level_constraint_block(self, level: int) -> str:
         """Build a hard-constraint text block to inject into the prompt."""
         cfg = self._get_level_config(level)
@@ -409,31 +470,32 @@ Output JSON ONLY:
 }}"""
 
         for key in self.groq_keys:
+            if is_key_exhausted(key):
+                continue  # Skip rate-limited keys, use next available
             for model in self.groq_models:
                 try:
                     res = self._call_groq(prompt, key, model, temp=0.8)
                     if res and "ai_response" in res:
                         res["ai_response_vi"] = ""
                         return res
-                except Exception as e:
-                    if "429" in str(e) or "403" in str(e):
-                        break
+                except Exception:
+                    continue
 
         for key in self.gemini_keys:
+            if is_key_exhausted(key):
+                continue  # Skip rate-limited keys, use next available
             for model in self.gemini_models:
                 try:
                     res = self._call_gemini(prompt, key, model, temp=0.8)
                     if res and "ai_response" in res:
                         res["ai_response_vi"] = ""
                         return res
-                except Exception as e:
-                    if "429" in str(e) or "403" in str(e):
-                        break
+                except Exception:
+                    continue
 
-        return {
-            "ai_response": f"What is your favorite item on the menu for '{scenario['title']}'?",
-            "ai_response_vi": ""
-        }
+        # All providers exhausted — use smart level-aware fallback
+        fallback_q = self._build_smart_fallback_opener(scenario_id, scenario['title'], level)
+        return {"ai_response": fallback_q, "ai_response_vi": ""}
 
     def process_turn(
         self,
@@ -476,39 +538,42 @@ Output JSON ONLY:
 
         raw_res = None
         for key in self.groq_keys:
+            if is_key_exhausted(key):
+                continue
             for model in self.groq_models:
                 try:
                     raw_res = self._call_groq(prompt, key, model, temp=0.8)
                     if raw_res:
                         break
-                except Exception as e:
-                    if "429" in str(e) or "403" in str(e):
-                        break
+                except Exception:
+                    continue
             if raw_res:
                 break
 
         if not raw_res:
             for key in self.gemini_keys:
+                if is_key_exhausted(key):
+                    continue
                 for model in self.gemini_models:
                     try:
                         raw_res = self._call_gemini(prompt, key, model, temp=0.8)
                         if raw_res:
                             break
-                    except Exception as e:
-                        if "429" in str(e) or "403" in str(e):
-                            break
+                    except Exception:
+                        continue
                 if raw_res:
                     break
 
         if not raw_res:
             for key in self.openai_keys:
+                if is_key_exhausted(key):
+                    continue
                 try:
                     raw_res = self._call_openai(prompt, key, temp=0.8)
                     if raw_res:
                         break
-                except Exception as e:
-                    if "429" in str(e) or "403" in str(e):
-                        break
+                except Exception:
+                    continue
 
         if not raw_res and self.ollama_base_url:
             try:
