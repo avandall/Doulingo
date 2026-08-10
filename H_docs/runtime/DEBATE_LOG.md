@@ -496,3 +496,55 @@ Before review:  9/10
 After review:   10/10 — Tier 1 verification passed 100% (Ruff, Mypy, Bandit, Pytest) with 5/5 ai_engine unit tests passing.
 ```
 
+---
+
+### DEBATE-010 — [2026-08-10 14:46]
+
+**Iteration:** ITER-007
+**Type:** SELF_REVIEW
+**Reviewer:** AI Self
+**Subject:** TASK-006 FastAPI Endpoints Bridge & Scenario Registry (`app/main.py` & `app/scenarios.py`)
+
+#### Critique Raised
+
+**Q1: Lazy import of `MaterialBank` in `app/scenarios.py` to prevent circular dependencies**
+- **Raised by:** Self
+- **Severity:** HIGH
+- **Detail:** Importing `get_material_bank` at top-level in `app/scenarios.py` could trigger circular imports if `material_bank.py` or `prompt_factory.py` imports `scenarios.py`.
+- **Response:** Used inline lazy imports inside `list_scenarios()` and `get_scenario()` with exception handling guards.
+- **Action:** FIXED — Lazy import pattern prevents circular imports while bridging 100+ MaterialBank topics.
+
+**Q2: Uniform topic schema for `/api/scenarios` response across default, MaterialBank, and custom scenarios**
+- **Raised by:** Self
+- **Severity:** MEDIUM
+- **Detail:** MaterialBank topics are `TopicBank` model instances with different field names (`topic_id`, `topic_name`, `vocabulary`) compared to default scenario dicts (`id`, `title`, `suggested_vocabulary`).
+- **Response:** Normalized `TopicBank` instances into standard scenario dictionary objects containing `id`, `title`, `category`, `icon`, `color`, `description`, `open_story_guide`, `is_custom: False`, `source: "material_bank"`, `target_levels`, and `suggested_vocabulary`.
+- **Action:** FIXED — Standardized dictionary mapping ensures frontend receives identical JSON schema for all scenario sources.
+
+#### Session Summary
+
+```
+Total issues raised:   2
+  CRITICAL:  0
+  HIGH:      1
+  MEDIUM:    1
+  LOW:       0
+  INFO:      0
+
+Resolution:
+  Fixed:          2
+  Accepted risk:  0
+  Won't fix:      0
+  Deferred:       0
+
+Review Result: APPROVED
+```
+
+#### Confidence Score
+
+```
+Before review:  9/10
+After review:   10/10 — Tier 1 verification passed 100% (Ruff, Mypy, Bandit, Pytest) with 6/6 scenarios bridge unit tests passing.
+```
+
+

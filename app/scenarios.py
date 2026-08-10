@@ -427,6 +427,30 @@ def list_scenarios() -> List[Dict[str, Any]]:
         sc_copy["is_custom"] = False
         scenarios_list.append(sc_copy)
 
+    # 2. Material Bank Topics (parsed from 5 DB markdown files)
+    try:
+        from app.material_bank import get_material_bank
+        mb = get_material_bank()
+        for topic_id, topic in mb.topics.items():
+            if topic_id not in DEFAULT_SCENARIOS:
+                vocab_preview = [v.phrase for v in topic.vocabulary[:5]]
+                scenarios_list.append({
+                    "id": topic.topic_id,
+                    "title": topic.topic_name,
+                    "category": "Academic IELTS Bank",
+                    "icon": "📖",
+                    "color": "#1CB0F6",
+                    "description": f"IELTS Topic with {len(topic.personas)} personas, {len(topic.questions)} questions, and {len(topic.vocabulary)} vocabulary items.",
+                    "open_story_guide": f"Interactive IELTS Speaking discussion on {topic.topic_name}.",
+                    "is_custom": False,
+                    "source": "material_bank",
+                    "target_levels": topic.target_levels,
+                    "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
+                })
+    except Exception as e:
+        print(f"[scenarios.py] Error loading MaterialBank topics: {e}")
+
+    # 3. Custom Scenarios from Turso DB
     custom_scenarios = get_custom_scenarios()
     for cs in custom_scenarios:
         scenarios_list.append(cs)
@@ -438,7 +462,29 @@ def get_scenario(scenario_id: str) -> Optional[Dict[str, Any]]:
         sc: Dict[str, Any] = dict(DEFAULT_SCENARIOS[scenario_id])
         sc["is_custom"] = False
         return sc
-    
+
+    # Check Material Bank topics
+    try:
+        from app.material_bank import get_material_bank
+        mb_topic = get_material_bank().get_topic(scenario_id)
+        if mb_topic:
+            vocab_preview = [v.phrase for v in mb_topic.vocabulary[:5]]
+            return {
+                "id": mb_topic.topic_id,
+                "title": mb_topic.topic_name,
+                "category": "Academic IELTS Bank",
+                "icon": "📖",
+                "color": "#1CB0F6",
+                "description": f"IELTS Topic with {len(mb_topic.personas)} personas, {len(mb_topic.questions)} questions, and {len(mb_topic.vocabulary)} vocabulary items.",
+                "open_story_guide": f"Interactive IELTS Speaking discussion on {mb_topic.topic_name}.",
+                "is_custom": False,
+                "source": "material_bank",
+                "target_levels": mb_topic.target_levels,
+                "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
+            }
+    except Exception as e:
+        print(f"[scenarios.py] Error looking up MaterialBank topic: {e}")
+
     customs = get_custom_scenarios()
     for cs in customs:
         if cs["id"] == scenario_id:

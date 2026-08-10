@@ -44,3 +44,18 @@
 [2026-08-10 14:43:11] [TRACE] Provider=Groq | Model=llama-3.3-70b | Key=gsk_...2345 | Status=429 | Latency=85.0ms | Error=Rate limit reached
 [2026-08-10 14:43:11] [TRACE] Provider=TestProvider | Model=test-model-70b | Key=gsk_...9key | Status=200 | Latency=150.5ms
 [2026-08-10 14:43:12] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=643.5ms
+[2026-08-10 14:44:21] [TRACE] Provider=Groq | Model=llama-3.3-70b | Key=gsk_...2345 | Status=429 | Latency=85.0ms | Error=Rate limit reached
+[2026-08-10 14:44:21] [TRACE] Provider=TestProvider | Model=test-model-70b | Key=gsk_...9key | Status=200 | Latency=150.5ms
+[2026-08-10 14:44:23] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=790.6ms
+[2026-08-10 14:45:15] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=1867.8ms
+[2026-08-10 14:45:15] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=537.3ms
+[2026-08-10 14:45:24] [TRACE] Provider=Groq | Model=llama-3.3-70b | Key=gsk_...2345 | Status=429 | Latency=85.0ms | Error=Rate limit reached
+[2026-08-10 14:45:24] [TRACE] Provider=TestProvider | Model=test-model-70b | Key=gsk_...9key | Status=200 | Latency=150.5ms
+[2026-08-10 14:45:27] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=773.2ms
+[2026-08-10 14:45:27] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=471.6ms
+[2026-08-10 14:45:28] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=783.8ms
+[2026-08-10 14:46:03] [TRACE] Provider=Groq | Model=llama-3.3-70b | Key=gsk_...2345 | Status=429 | Latency=85.0ms | Error=Rate limit reached
+[2026-08-10 14:46:03] [TRACE] Provider=TestProvider | Model=test-model-70b | Key=gsk_...9key | Status=200 | Latency=150.5ms
+[2026-08-10 14:46:05] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=711.6ms
+[2026-08-10 14:46:05] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=497.6ms
+[2026-08-10 14:46:06] [TRACE] Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...uMCq | Status=200 | Latency=769.0ms

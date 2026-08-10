@@ -88,3 +88,45 @@
 - **Action:** Start TASK-006: FastAPI Endpoints Bridge & Scenario Registry (`app/main.py`).
 - **State:** IN_PROGRESS
 
+---
+
+### [ITER-020] 2026-08-10 14:47 — TASK-006 FastAPI Endpoints Bridge & Scenario Registry
+
+**Phase:** COMMITTING
+**Step:** Implementation & Tier 1/2 Verification of TASK-006
+**Duration:** ~3 phút
+
+#### Actions Taken
+1. Đọc `H_docs/core/AGENT_CONSTITUTION.md`, `H_docs/context/Tasks_list.md`, và `H_docs/runtime/STATUS.md`.
+2. Tạo `H_docs/runtime/PLAN.md` mới cho `TASK-006` (FastAPI Endpoints Bridge & Scenario Registry) và cập nhật status `TASK-006` thành `[/] IN_PROGRESS` trong `Tasks_list.md`.
+3. Refactor `app/scenarios.py`:
+   - Cập nhật `list_scenarios()` và `get_scenario(scenario_id)` để tự động nạp toàn bộ 100+ topics từ `MaterialBank` (`get_material_bank()`).
+   - Đảm bảo tương thích ngược 100% với `DEFAULT_SCENARIOS` và `get_custom_scenarios()` từ Turso Cloud Database.
+4. Tạo unit test suite `tests/test_scenarios_bridge.py`:
+   - `test_list_scenarios_includes_material_bank`
+   - `test_api_list_scenarios_endpoint`
+   - `test_api_get_scenario_by_id`
+   - `test_api_get_scenario_not_found`
+   - `test_start_scenario_with_material_bank_topic`
+   - `test_process_turn_with_material_bank_topic`
+5. Chạy `pytest tests/test_scenarios_bridge.py` pass 100% (6/6 tests passed in 3.31s).
+6. Thực thi Tier 1 verification via `python3 H_docs/scripts/verify.py` — Sửa lỗi unused import trong Ruff và re-run verify.py thành công 100% (Status: PASS).
+7. Thực hiện Tier 2 Cognitive Review (`git diff` inspection, DEBATE-010 appended to `DEBATE_LOG.md`, APPROVED).
+8. Cập nhật `H_docs/context/Tasks_list.md` (`TASK-006` [x] DONE) và `H_docs/runtime/STATUS.md` (`Phase: IN_PROGRESS`, next task `TASK-007`).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_scenarios_bridge.py` (6 passed in 3.31s), `python3 H_docs/scripts/verify.py` status PASS.
+
+#### Decisions Made
+- Used lazy import pattern for `MaterialBank` in `app/scenarios.py` to prevent potential circular dependency cycles.
+- Standardized topic representation so frontend receives consistent scenario JSON fields (`id`, `title`, `description`, `suggested_vocabulary`, `source: "material_bank"`).
+
+#### Git
+- **Commit:** `[iter-20] feat(api): bridge MaterialBank topics into scenarios registry endpoints`
+
+#### Next
+- **Action:** Start TASK-007: End-to-End Integration Testing & Latency Benchmarks.
+- **State:** IN_PROGRESS
+
+
