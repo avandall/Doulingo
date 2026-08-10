@@ -5,8 +5,7 @@ Provides full programmatic control over Antigravity sessions including enable_su
 """
 
 import subprocess
-import sys
-from typing import Optional, List, Dict, Any
+from typing import Optional, List
 
 
 class AntigravitySDK:

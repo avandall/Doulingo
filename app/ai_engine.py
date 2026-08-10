@@ -513,7 +513,7 @@ Output JSON ONLY:
             f"That sounds wonderful! Could you tell me more about your thoughts on {title}?",
             f"I completely agree with you! How do you usually handle this when dealing with {title}?",
             f"That's a great point. What is the most important thing to remember about {title}?",
-            f"Interesting perspective! Have you ever experienced anything similar before?"
+            "Interesting perspective! Have you ever experienced anything similar before?"
         ]
         chosen = random.choice(fallback_responses)
         vi_trans = self._professional_vietnamese_localization(chosen, char_name, title)
@@ -528,7 +528,7 @@ Output JSON ONLY:
                 "grammar_score": max(det_scores["grammar"], 88),
                 "overall_score": max(det_scores["overall"], 86),
                 "corrected_text": user_transcript,
-                "native_phrasing": f"Great expression! Try adding conversational connectors like 'In my opinion' or 'To be honest' when speaking."
+                "native_phrasing": "Great expression! Try adding conversational connectors like 'In my opinion' or 'To be honest' when speaking."
             },
             "is_completed": False,
             "xp_gained": 10
