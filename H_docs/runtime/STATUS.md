@@ -8,12 +8,12 @@
 ## Current State
 
 ```
-Task:           TASK-009: UI Roleplay Simplification & Random Roleplay Placement -> DONE
-Next Task:      NONE (All 10 tasks completed 100%)
-Phase:          ALL_DONE
-Current Step:   All 10 Tasks Executed, Verified (Tier 1 100% PASS), and Solution Proof Prepared
-Iteration:      23
-Last Updated:   2026-08-10 15:30
+Task:           TASK-000: Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) -> TODO
+Next Task:      TASK-001: Template Ingestion Engine & Vector Embeddings (`scripts/ingest_templates.py`)
+Phase:          Phase 0 (Data Foundation)
+Current Step:   Refactoring Master Plan v2 & 6 Important Tasks Spec Linked into Context
+Iteration:      25
+Last Updated:   2026-08-11 14:06
 ```
 
 ---
@@ -22,8 +22,8 @@ Last Updated:   2026-08-10 15:30
 
 ```
 ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
-                                                           ↑
-                                                      [ALL_DONE]
+   ↑
+[READY_FOR_EXECUTION]
 ```
 
 ---
@@ -31,9 +31,9 @@ ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
 ## Last Action
 
 ```
-Action:   Hoàn thành TASK-009: Tối giản danh sách roleplay, đưa nút Random Roleplay xuống section Roleplay, xóa category filter bar của Roleplay, chạy verify PASS 100%.
+Action:   Cập nhật toàn bộ hệ thống workflow context (PROJECT_BRIEF.md, TECH_CONTEXT.md, BOUNDARIES.md, CURRENT_TASK.md, STATUS.md) trỏ trực tiếp tới 25 Tasks trong Tasks_list.md v2 và bản đặc tả kỹ thuật 6_important_tasks_solution.md.
 Result:   PASS
-Time:     2026-08-10 15:30
+Time:     2026-08-11 14:06
 ```
 
 ---
@@ -41,8 +41,8 @@ Time:     2026-08-10 15:30
 ## Next Action
 
 ```
-Action:   Dự án hoàn thành 100%. Sẵn sàng nghiệm thu sản phẩm.
-Priority: NONE
+Action:   Sẵn sàng chạy Ralph Loop thực thi TASK-000 (Database Schema Design & Migration).
+Priority: P0-Critical
 Blocks:   NONE
 ```
 
@@ -51,8 +51,8 @@ Blocks:   NONE
 ## Progress Summary
 
 ```
-Tasks completed: 10 / 10
-Tasks remaining: 0
+Tasks completed: 0 / 25
+Tasks remaining: 25
 ```
 
 ---
@@ -62,5 +62,5 @@ Tasks remaining: 0
 ```
 🚩 BLOCKED:     NO
 ⚠️ RISK:        NONE
-📝 NEEDS_INPUT: NONE
+📝 NEEDS_INPUT: NONE (Ready for Ralph Loop execution)
 ```

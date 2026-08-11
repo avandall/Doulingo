@@ -40,6 +40,7 @@ Khi bắt đầu bất kỳ task nào trong workspace này, bạn PHẢI đọc 
 - Claim task DONE mà không có verification evidence
 - Tiếp tục khi đã gặp blocker — tạo `BLOCKED.md` thay vào đó
 - Giữ state trong conversation — write ra file
+- Dùng API key trong .env để chạy test
 
 ### Khi bị kẹt (Overnight Non-Blocking Mode)
 1. Ghi lý do kẹt và câu hỏi chi tiết vào file `H_docs/runtime/BLOCKERS/<TASK_ID>.md`

@@ -20,4 +20,4 @@ data/
 # OS / Windows rác metadata files
 *Zone.Identifier*
 *:Zone.Identifier
-
+*.log

@@ -1,134 +1,260 @@
 # TECH CONTEXT
-# Bối cảnh Kỹ thuật & Chi tiết Kiến trúc — Duolingo Speak Refactor
+# Bối cảnh Kỹ thuật & Chi tiết Kiến trúc — Master Blueprint (`docs/plan.md` & `6_important_tasks_solution.md`)
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-10
-
----
-
-## 1. Kiến trúc Tổng quan (Architecture Overview)
-
-Dự án refactor Duolingo Speak chuyển đổi từ cơ chế sinh kịch bản ngẫu nhiên hoặc scenario tĩnh sang **Dynamic Material Bank Architecture** kết hợp tầng **Cloud Database Persistence (Turso Cloud SQLite - 9GB Free Tier)** để đảm bảo dữ liệu lưu trữ tồn tại vĩnh viễn trên mảng Free Tier của Render.
-
-```
-                                  [ DB1..DB5.md ]
-                                         │
-                                         ▼ (Startup Markdown AST / Regex Parser)
-                              ┌────────────────────┐
-                              │    MaterialBank    │  (In-Memory Thread-Safe Index)
-                              └─────────┬──────────┘
-                                        │
-                                        ▼ (topic_id, level)
-                              ┌────────────────────┐
-                              │   PromptFactory    │  (Dynamic Sampling Engine)
-                              └─────────┬──────────┘
-                                        │
-                                        ▼ (Assembled System Prompt)
-                              ┌────────────────────┐
-                              │      ai_engine     │  (Multi-Key LLM Engine)
-                              └─────────┬──────────┘
-                                        │
-                                        ▼ (JSON Response + Speech Feedback)
-                              ┌────────────────────┐
-                              │  FastAPI Endpoints │ ◄────► [ Turso Cloud SQLite DB (9GB) ]
-                              └────────────────────┘        (Custom Topics, Saved Vocab, Stats)
-```
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-11 (Dựa trên `Tasks_list.md` v2 & `6_important_tasks_solution.md`)
 
 ---
 
-## 2. Dynamic Material Bank Schema (`app/material_bank.py`)
+## 1. Tóm tắt Kiến trúc Hệ thống (Dual-Agent System)
 
-Tất cả các thành phần trong file `DB*.md` được parse thành các Data Structure mạnh mẽ (Pydantic models hoặc Dataclasses):
-
-```python
-from pydantic import BaseModel
-from typing import List, Dict, Optional
-
-class Persona(BaseModel):
-    id: str                  # e.g., "P1"
-    name: str                # e.g., "Friendly Local Resident"
-    description: str         # Persona context & demeanor
-
-class Question(BaseModel):
-    id: str                  # e.g., "Q_5_01"
-    band_level: str          # e.g., "5.0-6.0" or "6.5+"
-    text: str                # e.g., "Do you like travelling in your free time?"
-
-class VocabularyItem(BaseModel):
-    phrase: str              # e.g., "off the beaten track"
-    meaning: str             # e.g., "far away from main tourist areas"
-    band_level: str          # e.g., "5.0-6.0" or "6.5+"
-
-class GrammarPattern(BaseModel):
-    id: str                  # e.g., "Pattern_1"
-    template: str            # e.g., "To be completely honest, I'd say I'm more of a..."
-
-class TopicBank(BaseModel):
-    topic_id: str            # e.g., "travel_01" or "hometown"
-    topic_name: str          # e.g., "Travel & Holidays"
-    source_file: str         # e.g., "DB1_Personal_and_Daily_Life.md"
-    target_levels: List[str] # e.g., ["5.0-6.0", "6.5+"]
-    personas: List[Persona]
-    questions: List[Question]
-    vocabulary: List[VocabularyItem]
-    grammar_patterns: List[GrammarPattern]
+```
+[1] User Audio Voice
+        │
+        ▼
+[2] ASR Processor (`TASK-004` SPEC 3: Chunk Streaming + Cumulative Sample Timestamps)
+        │
+        ├──────────────────────────────────────────────────┐
+        ▼                                                  ▼
+[Tầng 1 Scorer <300ms (`TASK-011` SPEC 1)]         [Tầng 2 Deep Scorer (`TASK-012` SPEC 4)]
+ (WPM, Pause Ratio, Fillers, MTLD từ SPEC 0 Config) (spaCy Grammar, GOP Pronunciation, LLM Judge)
+        │                                                  │
+        ▼                                                  ▼
+   `difficulty_adjustment` (ephemeral)              `raw_score` 4 trục
+        │                                                  │
+        │                                                  ▼
+        │                                          `EMA Band Smoothing Engine` (`TASK-013` SPEC 4)
+        │                                          (`effective_alpha` động = word_factor * confidence_factor)
+        │                                                  │
+        └─────────────────────────┬────────────────────────┘
+                                  ▼
+[3] Retrieval Layer (`TASK-005` & `TASK-015` SPEC 2: SQL + pgvector / Hybrid RAG with Fallback Cascade)
+    - Query `sample_dialogues` matching `topic_tags`, band window [band-0.5, band+1.0]
+    - Exclude dialogue IDs in `user_content_exposure` (last 30 days)
+    - Vector similarity search (`embedding <-> query_embedding`)
+    - Fallback Cascade if strict query returns < 2 items
+        │
+        ▼
+[4] Prompt Constructor (`TASK-006`)
+    - Combine: User Profile (EMA band, recurring errors) + Retrieved Dialogues + Persona Directives
+        │
+        ▼
+[5] Conversational Agent (`TASK-007`)
+    - Structured JSON Output:
+      {
+        "ai_utterance": "...",
+        "internal_band_signal": "rising | stable | struggling",
+        "topic_tag": "accommodation",
+        "difficulty_adjustment": "increase | hold | decrease"
+      }
+        │
+        ▼
+[6] TTS Audio Output Streamer (`TASK-008` P0) -> User
 ```
 
 ---
 
-## 3. Database & Deployment Architecture (Render + Turso Cloud SQLite)
+## 2. Quy chuẩn Kỹ thuật Cho 6 Task Rủi Ro Cao (`H_docs/context/6_important_tasks_solution.md`)
 
-### Render Free Tier Ephemeral Disk Constraint & Turso Solution
-Render Web Service gói miễn phí tự động tắt container sau 15 phút không có traffic và reset đĩa đệm (Ephemeral Disk). Do đó:
-- File SQLite local (`data/custom_topics.db`) sẽ bị reset về bản gốc khi container khởi động lại.
-- **Giải pháp:** Sử dụng **Turso DB (Managed Cloud SQLite - 9GB Free Tier)** thông qua biến môi trường `TURSO_DATABASE_URL` (`libsql://...`) và `TURSO_AUTH_TOKEN`.
-- Tầng `app/db.py` kiểm tra `TURSO_DATABASE_URL`: Nếu có biến môi trường Turso, app kết nối tới Turso Cloud SQLite; nếu không có, app dùng local SQLite (`data/custom_topics.db`) làm fallback cho môi trường offline.
-- Giữ nguyên 100% cú pháp câu lệnh SQL của SQLite, không cần refactor SQL dialect.
+Hệ thống bắt buộc tuân thủ 6 bản spec kỹ thuật chi tiết đã được biên soạn trong [6_important_tasks_solution.md](file:///home/avandall1999/Projects/Doulingo_speak/H_docs/context/6_important_tasks_solution.md):
 
----
+### SPEC 0 — `TASK-010`: Scoring Threshold Bootstrap & Calibration Config
+- **Single Source of Truth:** Tất cả các hàm trích xuất đặc trưng `compute_wpm()`, `compute_pause_ratio()`, `compute_filler_density()`, `compute_mtld()` phải nằm duy nhất tại `app/scoring/features.py`. Cả script calibration `scripts/calibrate_thresholds.py` lẫn runtime Tier 1 Scorer `app/scoring/tier1_realtime.py` đều import từ module này.
+- **Versioned Config:** Output xuất ra `config/scoring_anchors.v{N}.json`. Cấm hardcode anchor numbers trong code. Hệ thống đọc file config có `"status": "active"`.
 
-## 4. Thuật toán Dynamic Sampling (`app/prompt_factory.py`)
+### SPEC 1 — `TASK-011`: Tier 1 Real-Time Scorer (<300ms)
+- **Ephemeral State:** Tier 1 chỉ đo 2 trục proxy (Fluency, Lexical) để đưa ra tín hiệu tạm thời `difficulty_adjustment` ("increase" | "hold" | "decrease"). Tier 1 **KHÔNG được gọi EMA update** vào DB `user_profile`.
+- **Lexicon & Algorithm:** Filler lexicon cố định `{"um", "uh", "umm", "erm", "hmm"}`. MTLD tính 2 chiều (forward & backward) với `ttr_threshold = 0.72`.
 
-Khi một phiên hội thoại khởi tạo (`/api/start_scenario` hoặc `/api/process_turn`):
+### SPEC 2 — `TASK-005` & `TASK-015`: RAG Retrieval Layer & Fallback Cascade
+- **Single-Query Hybrid RAG:** SQL lọc metadata band + topic + NOT IN exposure history 30 ngày + Vector similarity search `<->` được thực thi **trong CÙNG MỘT câu SQL**. Không lọc 2 pha bằng Python.
+- **Fallback Cascade:** Nếu câu query strict trả về < 2 items, tự động chạy qua 3 cấp fallback: (1) nới exposure history 30 ngày -> 7 ngày; (2) nới dải band window; (3) bỏ topic filter. Log cảnh báo mỗi lần fallback kích hoạt.
 
-1. **Map User Level -> Band Category:**
-   - Level 1 - 10 (A1 - B1): Ưu tiên lấy Question & Vocab thuộc nhóm `Band 5.0 - 6.0`.
-   - Level 11 - 20 (B2 - C2): Ưu tiên lấy Question & Vocab thuộc nhóm `Band 6.5+`.
-2. **Dynamic Sampling:**
-   - `sampled_persona` = `random.choice(topic.personas)`
-   - `sampled_questions` = `random.sample(topic.questions_by_band, k=min(2, len(...)))`
-   - `sampled_vocab` = `random.sample(topic.vocab_by_band, k=min(4, len(...)))`
-   - `sampled_pattern` = `random.choice(topic.grammar_patterns)` (nếu có)
-3. **Prompt Assembly:**
-   - Ghép nguyên liệu đã sample vào System Prompt template:
-     ```text
-     ROLE: You are roleplaying as {persona.name} ({persona.description}).
-     TOPIC: {topic_name}
-     FOCUS VOCABULARY TO GUIDE USER TO USE OR DEMONSTRATE:
-     {formatted_vocab_list}
-     ANCHOR CONVERSATION QUESTIONS:
-     {formatted_question_list}
-     SUGGESTED SENTENCE STRUCTURE:
-     {pattern_template}
-     FORMAT & CONSTRAINTS:
-     - Keep responses natural, concise, and under {max_words} words.
-     - Provide JSON containing ai_response, ai_response_vi, user_feedback.
-     ```
+### SPEC 3 — `TASK-004`: Streaming ASR Ingestion & Cumulative Timestamps
+- **Sample-Based Offset:** `cumulative_offset_sec` được tính dựa trên số mẫu audio nhận được (`len(chunk) / sample_rate`), KHÔNG dùng wall-clock server.
+- **Monotonic Timestamps:** Timestamp từng từ (`start_time`, `end_time`) luôn đơn điệu tăng qua toàn bộ session, phục vụ chính xác cho việc tính Pause Ratio.
+
+### SPEC 4 — `TASK-013`: Dynamic User Profile & EMA Band Smoothing Engine
+- **Dynamic Effective Alpha:** $\text{alpha}_{\text{effective}} = 0.2 \times \text{word\_count\_factor} \times \text{confidence\_factor}$.
+- **Filtering Noise:** Nếu `word_count < 5` hoặc `avg_asr_confidence < 0.6`, `alpha_effective = 0.0` (skip update). Có floor alpha chống kẹt band khi bị skip liên tục.
+
+### SPEC 5 — `TASK-022` & `TASK-023`: PII Scrubber & Harvest Review Queue
+- **Standalone PII Scrubber (`TASK-022`):** Phát hiện PII (PERSON, GPE, ORG, phone/email) dùng spaCy NER + regex. Áp dụng chính sách REJECT-FIRST.
+- **Review Queue Safety (`TASK-023`):** Mọi candidate band cao (≥7.5) dừng ở `harvest_review_queue` với `review_status='pending'`. TUYỆT ĐỐI không insert trực tiếp vào `sample_dialogues`.
 
 ---
 
-## 5. Hiệu năng & Cache Strategy (0ms Latency Guarantee)
+## 3. Dynamic Database Schema (Relational + Vector DDL)
 
-- **Startup Indexing:** Khi FastAPI app khởi chạy (`@app.on_event("startup")`), `MaterialBank.load_all()` đọc toàn bộ 5 file `DB*.md` vào bộ nhớ RAM (`dict[topic_id, TopicBank]`).
-- **Access Speed:** Truy vấn `MaterialBank.get_topic(topic_id)` lấy từ RAM hashmap đạt tốc độ $O(1)$ (< 0.1ms).
-- **Sampling Overhead:** Thuật toán random sampling + string assembly hoàn thành trong **< 1ms**.
-- **No Vector Search Overhead:** Tiết kiệm từ 300ms - 1500ms so với giải pháp Vector Database / RAG Search.
+Database hợp nhất 3 loại Template (A: Progressive Band Ladder, B: Functional Bank, C: Scenario) qua bảng cha `content_units` và bảng trung tâm `sample_dialogues`.
+
+```sql
+-- Bảng cha dùng chung cho mọi Template
+CREATE TABLE content_units (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  template_type TEXT NOT NULL CHECK (template_type IN ('band_ladder','functional_bank','scenario')),
+  title TEXT NOT NULL,
+  topic_tags TEXT[] NOT NULL DEFAULT '{}',
+  target_band_min NUMERIC(3,1),
+  target_band_max NUMERIC(3,1),
+  register TEXT,                       -- casual / neutral / formal
+  source_citation TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now(),
+  version INT DEFAULT 1
+);
+CREATE INDEX idx_content_units_topic ON content_units USING GIN (topic_tags);
+CREATE INDEX idx_content_units_band ON content_units (target_band_min, target_band_max);
+
+-- Template A & C: Band Tiers
+CREATE TABLE band_tiers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  content_unit_id UUID REFERENCES content_units(id) ON DELETE CASCADE,
+  band_min NUMERIC(3,1) NOT NULL,
+  band_max NUMERIC(3,1) NOT NULL,
+  can_do_description TEXT,
+  grammar_required TEXT[],
+  vocabulary_core TEXT[],
+  vocabulary_stretch TEXT[],
+  vocabulary_avoid TEXT[],
+  sentence_length_target TEXT,
+  common_errors_to_simulate TEXT
+);
+
+-- Template B: Function Details & Variants
+CREATE TABLE function_details (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  content_unit_id UUID UNIQUE REFERENCES content_units(id) ON DELETE CASCADE,
+  function_name TEXT NOT NULL,
+  applicable_topics TEXT[]
+);
+
+CREATE TABLE function_band_variants (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  function_id UUID REFERENCES function_details(id) ON DELETE CASCADE,
+  band_min NUMERIC(3,1) NOT NULL,
+  band_max NUMERIC(3,1) NOT NULL,
+  phrases TEXT[],
+  grammar_pattern TEXT
+);
+
+-- Template C: Scenarios, Branches & Hooks
+CREATE TABLE scenarios (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  content_unit_id UUID UNIQUE REFERENCES content_units(id) ON DELETE CASCADE,
+  setting TEXT,
+  ai_role TEXT,
+  user_role TEXT,
+  grammar_required TEXT[],
+  vocabulary_core TEXT[],
+  vocabulary_stretch TEXT[]
+);
+
+CREATE TABLE scenario_branches (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scenario_id UUID REFERENCES scenarios(id) ON DELETE CASCADE,
+  branch_type TEXT CHECK (branch_type IN ('low_band','high_band')),
+  condition_rule TEXT,
+  ai_response_style TEXT,
+  example_text TEXT
+);
+
+CREATE TABLE evaluation_hooks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scenario_id UUID REFERENCES scenarios(id) ON DELETE CASCADE,
+  trigger_condition TEXT,
+  ai_reaction TEXT
+);
+
+-- Bảng trung tâm cho RAG Retrieval (Vector Search)
+CREATE TABLE sample_dialogues (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  content_unit_id UUID REFERENCES content_units(id) ON DELETE CASCADE,
+  band_level NUMERIC(3,1) NOT NULL,
+  turn_type TEXT,                      -- opening / elaborate / negotiation / closing / standalone
+  function_tag TEXT,
+  ai_line TEXT NOT NULL,
+  user_model_answer TEXT NOT NULL,
+  embedding VECTOR(1536),              -- embed(ai_line + user_model_answer + topic_tags)
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+CREATE INDEX idx_sample_dialogues_band ON sample_dialogues (band_level);
+CREATE INDEX idx_sample_dialogues_embedding ON sample_dialogues USING hnsw (embedding vector_cosine_ops);
+
+-- Ngân hàng phụ trợ
+CREATE TABLE hook_bank (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  topic_tags TEXT[],
+  text TEXT NOT NULL,
+  type TEXT CHECK (type IN ('hook','anti_cliche'))
+);
+
+CREATE TABLE vocabulary_lookup (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  category TEXT NOT NULL,
+  tier TEXT,
+  terms TEXT[]
+);
+
+-- Hồ sơ User & Tracking lặp
+CREATE TABLE user_profile (
+  user_id UUID PRIMARY KEY,
+  band_estimate_overall NUMERIC(3,1) DEFAULT 5.0,
+  band_fluency NUMERIC(3,1) DEFAULT 5.0,
+  band_lexical NUMERIC(3,1) DEFAULT 5.0,
+  band_grammar NUMERIC(3,1) DEFAULT 5.0,
+  band_pronunciation NUMERIC(3,1) DEFAULT 5.0,
+  recurring_errors JSONB DEFAULT '[]',
+  entity_memory JSONB DEFAULT '{}',
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE user_content_exposure (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES user_profile(user_id),
+  sample_dialogue_id UUID REFERENCES sample_dialogues(id),
+  exposed_at TIMESTAMPTZ DEFAULT now()
+);
+CREATE INDEX idx_exposure_user_time ON user_content_exposure (user_id, exposed_at);
+
+-- Queue duyệt Data Flywheel (TASK-023)
+CREATE TABLE harvest_review_queue (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES user_profile(user_id),
+  ai_line TEXT NOT NULL,
+  user_response TEXT NOT NULL,
+  scores_json JSONB NOT NULL,
+  review_status TEXT DEFAULT 'pending' CHECK (review_status IN ('pending', 'approved', 'rejected')),
+  reviewed_by TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+```
 
 ---
 
-## 6. Môi trường & Dependencies
+## 4. Real-Time Single Query Hybrid RAG (`app/retrieval.py`)
+
+```sql
+SELECT sd.id, sd.ai_line, sd.user_model_answer, sd.band_level
+FROM sample_dialogues sd
+JOIN content_units cu ON sd.content_unit_id = cu.id
+WHERE cu.topic_tags && ARRAY[:topic_tag]
+  AND sd.band_level BETWEEN :band_min AND :band_max
+  AND sd.id NOT IN (
+    SELECT sample_dialogue_id FROM user_content_exposure
+    WHERE user_id = :user_id AND exposed_at > now() - interval '30 days'
+  )
+ORDER BY sd.embedding <-> :query_embedding
+LIMIT 4;
+```
+
+---
+
+## 5. Môi trường & Dependencies
 
 - Python 3.10+
 - FastAPI, Pydantic v2
-- `libsql-experimental` / `sqld` (cho Turso Cloud SQLite)
-- pytest (Unit & Integration tests)
-- `python-dotenv` cho `.env` credentials
+- PostgreSQL + pgvector (`psycopg3` / `asyncpg`)
+- `spaCy` (`en_core_web_sm` / `en_core_web_trf`)
+- `scikit-learn` (`IsotonicRegression` cho `scripts/calibrate_thresholds.py`)
+- `sentence-transformers` / `openai` embeddings
+- `pytest`, `pytest-asyncio`

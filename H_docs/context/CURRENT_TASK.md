@@ -1,36 +1,37 @@
 # CURRENT TASK
-# Task hiện tại — TASK-009: UI Roleplay Simplification & Random Roleplay Placement
+# Task hiện tại — TASK-000: Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.)
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-10
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-11 (Dựa trên `Tasks_list.md` v2 & `6_important_tasks_solution.md`)
 
 ---
 
 ## Metadata
 ```
-Task ID:         TASK-009
-Task Name:       UI Roleplay Simplification & Random Roleplay Placement
-Phase:           Phase 5 (UI Refinement & Minimalization)
+Task ID:         TASK-000
+Task Name:       Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.)
+Phase:           Phase 0 (Data Foundation)
 Task Type:       feature
-Priority:        P1-High
-Trạng thái:      [/] IN_PROGRESS
-Ngày bắt đầu:    2026-08-10
+Priority:        P0-Critical
+Trạng thái:      [ ] TODO
+Ngày bắt đầu:    2026-08-11
+Tài liệu tham khảo: H_docs/context/Tasks_list.md & H_docs/context/6_important_tasks_solution.md
 ```
 
 ---
 
 ## Bối cảnh & Mục tiêu
-- **Why:** Trên UI hiện có quá nhiều roleplay tràn lan và lặp lại giống nhau. Cần tối giản roleplay, chuyển nút random roleplay xuống section roleplay và xóa các nút category filter trong roleplay.
+- **Why:** Toàn bộ dữ liệu Template A, B, C từ các nguồn tài liệu IELTS và thông tin hồ sơ người dùng cần được lưu trữ trong Database quan hệ hỗ trợ Vector Search (PostgreSQL + pgvector) theo Schema hợp nhất được thiết kế tại mục 7 của `docs/plan.md`.
 - **What:**
-  1. Move `#btn-random-roleplay` (`🎲 RANDOM ROLEPLAY`) down into the `EVERYDAY & CREATIVE ROLEPLAY` section.
-  2. Remove `#roleplay-category-filter-bar` (category buttons in roleplay section).
-  3. Streamline static default roleplays in `app/scenarios.py` to avoid repetitive/duplicate roleplays.
-  4. Ensure `startRandomRoleplay()` works smoothly when clicked.
+  1. Thiết kế DDL khởi tạo 12 bảng trong `app/db.py` (`content_units`, `band_tiers`, `function_details`, `function_band_variants`, `scenarios`, `scenario_branches`, `evaluation_hooks`, `sample_dialogues`, `hook_bank`, `vocabulary_lookup`, `user_profile`, `user_content_exposure`).
+  2. Tạo HNSW Vector Cosine Index trên `sample_dialogues(embedding)`.
+  3. Tạo GIN Index trên `content_units(topic_tags)` và B-Tree Index trên `target_band_min/max`.
+  4. Đảm bảo script migration khởi tạo DB chạy mượt mà trên môi trường dev/cloud.
 
 ---
 
 ## Acceptance Criteria
-- [ ] Nút `🎲 RANDOM ROLEPLAY` được di chuyển từ hero banner xuống trực tiếp section Roleplay.
-- [ ] Các nút category filter trong section Roleplay (`#roleplay-category-filter-bar`) đã bị xóa hoàn toàn.
-- [ ] Danh sách roleplay được tối giản gọn gàng, không bị trùng lặp lặp đi lặp lại.
-- [ ] Nút `🎲 RANDOM ROLEPLAY` khởi tạo thành công một roleplay ngẫu nhiên với nhân vật AI.
-- [ ] Chạy `python3 H_docs/scripts/verify.py` pass 100%.
+- [ ] Thiết kế và tạo thành công DDL cho 12 bảng trong `app/db.py`.
+- [ ] Bảng `sample_dialogues` có cột `embedding` kiểu Vector(1536) và chỉ mục HNSW cosine vector index.
+- [ ] Bảng `content_units` hỗ trợ chỉ mục GIN trên `topic_tags` và B-Tree trên `target_band_min/max`.
+- [ ] Bảng `hook_bank` và `vocabulary_lookup` được khởi tạo chuẩn schema phụ lục.
+- [ ] Script khởi tạo DB chạy không bị lỗi foreign key hay constraint.
