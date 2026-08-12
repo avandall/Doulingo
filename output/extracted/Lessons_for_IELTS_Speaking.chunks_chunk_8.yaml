@@ -1,0 +1,50 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. Listen to the sentences in the previous Part 1 Warm-up. Can you write the stress and rhythm of each sentence in the table below? Write o for the weak syllables and O for the stressed syllables in each sentence. The first one has been done for you.
+  user_model_answer: '| Sentences | Stress and rhythm | |-----------|-------------------| | I''m a student at high school. | ooOooOo | | I''m studying biology. English, maths, physics, and chemistry. | | | I don''t find it difficult, because I enjoy studying science. | | | I have a really good teacher. | | | The most interesting aspect? | | | I think it''s how biology applies to people and everyday life. | |'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 21. What type of courses and new skills would you like to take up for fun?
+  user_model_answer: '- A new skill, e.g. web design - A creative hobby, e.g. photography - A sport, e.g. snowboarding - A useful skill, e.g. cooking - A musical instrument, e.g. guitar - An artistic skill, e.g. dancing'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 22. Use the following questions to help you prepare short notes for your own answer. In pairs, practise your long turn answer. - Which type of course/class would you take?
+  user_model_answer: '- What would the class teach you? (i.e. What is involved?) - Where would you take the class? - Why do you want to take this course/class? - ADDING EXTRA INFORMATION: - Do you need any special gear for your course/class? - Do you think it would be difficult or easy to learn? Why? - Have you heard anything about the course/class?'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 23. Sometimes, you will be unfamiliar with Part 3 vocabulary. If this is the case, you should try to guess and clarify the meaning for yourself. Below, the candidate does not know the word *curriculum*. Listen to how she copes. **Examiner:** Could you tell me how you think the high school curriculum has changed in your country since the last century?
+  user_model_answer: '**Candidate:** Oh, mmm, curriculum. Do you mean what we do at school? The different subjects we study? **Examiner:** Yes. Subjects or courses of study. **Candidate:** Well, actually, I believe the school curriculum at high school has changed considerably. Students nowadays take subjects which didn''t even exist at the beginning of the last century, such as computer science.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 26. Now, ask your partner the following Part 3 questions. If your partner does not know any of the underlined words, wait for him or her to guess the meaning before you give any help. a. How do you think methods of teaching have changed over the last 100 years?
+  user_model_answer: b. Is a university education considered high status in your country? c. Do you think it is a good idea for students to have a gap year between finishing high school and starting university?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 30. When you have answered the questions, ask your partner the following Part 3 questions. If your partner does not know any of the underlined words, wait for him or her to guess the meaning before you give any help. a. How do you think the education system might change in the future?
+  user_model_answer: b. If you could alter the education system in your country, what would you do? c. In your opinion, what characteristics make a good teacher?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Think of your home and answer the following questions. a. Do you live in a house, an apartment, or another type of accommodation?
+  user_model_answer: b. Are there any public facilities nearby, e.g. a garden, sports park, library, or museum? c. Is this a good area for old people, children, or students? Why? d. Describe the natural environment, e.g. nearby lakes or rivers, parks, and the air.

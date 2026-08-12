@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tuyen_tap_Bai_mau_Speaking_Part1_IELTS_Fighter.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why do some people keep pets at home?
+  user_model_answer: I think we would all agree that pets are loyal companions to human. Especially for those who adopt pets when they were just newborns, these animals are like the precious children to many families.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Have you ever had a pet before?
+  user_model_answer: I used to have a puppy corgi when I was a kid. He and I were best friends, actually. I remember taking him to the park, feeding him with milk and training him with many cool tricks. Sadly, when I got older, I discovered that I am allergic to dog fur, so I had to give him away.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you like to see animals in the zoo?
+  user_model_answer: I've been to the zoo once, so I can't really tell whether I'm into it. It was good to see exotic animals like lions or giraffes when you were a kid. But when I got older, I've come to realize that zoos are no different from prisons for animals, where they are caged and locked away from their natural habitat.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What is the most popular animal in Vietnam?
+  user_model_answer: I suppose the most popular animal in my country is the dog. A lot of Vietnamese children grow up with fond memories about their puppies as their childhood best friend. Besides, you can see that there are many dog rescue groups in the main cities, which aims to save dogs from being abandoned or kidnapped.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. How many hours do you usually sleep at night?
+  user_model_answer: I usually spend like five to six hours a day on sleeping, which is not really recommended by doctors, I know. What's worse is that I'm only in my early 20s but I'm already experiencing something called sleep deprivation. There are days when I cannot even shut my eyes down in the middle of the night.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like to get up early in the morning?
+  user_model_answer: Unlike a lot of youngsters my age, I like getting up early in the morning to prepare myself for a new day. I used to be a jogger, spending at least 30 minutes a day on running and doing exercises in the park. But since Hanoi is overly polluted now, that habit has to stop so I tend to oversleep a lot these days.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How to have a good sleep?
+  user_model_answer: I think the answer to this question really depends. For me, having a light dinner with no proteins might get me to sleep better. There are times when I become so desperate that I have to resort to sleeping pills, which I believe many others are depending on for a good night's sleep.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you have a nap during the day?
+  user_model_answer: I think this is a good question. I usually don't spend my lunch break on sleeping at the office, but I often nod off many times during work hours. My boss is very
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What is the climate like in your country?
+  user_model_answer: Vietnam is a tropical country, you know, so the climate here is quite hot and humid. What upsets me the most is that the weather is getting more unpredictable. It can rain cats and dogs in the morning and suddenly clear out in the afternoon.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Does the weather affect people’s lives in your country?
+  user_model_answer: I believe that the weather always affects us in every aspect. If it is a gloomy day, I'm pretty sure everyone will easily get bored or tired of whatever they are doing. In contrast, the sunny days make us feel alive and upbeat.

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: GAMES — Answer Bank
+  topic_tags:
+  - games
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: GAMES'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về games bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - games
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What games are popular in your country?
+  user_model_answer: "Well, if we can consider sports as games, then football is definitely the most co\uFEFFnsider A as B: coi A là B popular game in my country, but we also love board games like chess. brother-in-law"
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you play any games? wife; your sister’s or brother's
+  user_model_answer: 'Not regularly these days. I play the occasional game of tennis with my brother-in- husband; the husband of your law, and I recently played a bowling game on the Nintendo Wii with my nephew. I husband''s or wife’s sister or wasn''t very good at it. brother: anh/em rể nephew = the son of your'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How do people learn to play games in your country? brother or sister; the son of
+  user_model_answer: 'I think children teach each other to play games. I remember a friend at primary your husband’s or wife’s school teaching me to play chess, for example. brother or sister: cháu trai cooperate (with somebody)'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think it's important for people to play games? (v) = to work together with
+  user_model_answer: Yes, it's really important, especially for children. I think research has shown that somebody else in order to

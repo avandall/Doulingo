@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think young people are more and more reliant on these programs?
+  user_model_answer: 'Yes, young people are becoming more reliant because many parts of their life—learning, entertainment, and even socialising—now happen through digital platforms. 🌍 Student Visa (Canada, USA, UK, Australia, Germany, Europe) + Scholarships • Do you know you can get up to 50% scholarships abroad? 👉 ✅ Get free counselling— • Follow us on Instagram www.instagram.com/makkarielts • https://g.co/kgs/GBYy9Mi - Phagwara - 9560820208 • https://g.co/kgs/9XnhRqa - Jalandhar - 9888195776 • https://g.co/kgs/xBR5EKQ - Mohali - 8360957299 www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 26 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

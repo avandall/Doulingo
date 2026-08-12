@@ -1,0 +1,91 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Are water sports popular in India?
+  user_model_answer: In India, the water sports are popular in Coastal areas, llocated in the southern part of the country.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kind of water sports do you want to try?
+  user_model_answer: I would like to try rafting and Scuba Diving. Or I would not like to try any water sport as I have a phobia that I will drown in the water.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Is there good scenery in your hometown or does your hometown has a lot of scenic views?
+  user_model_answer: I am from Chandigarh and it is a city located in the foothills of Shivalik Mountains. There are lot of beautiful views in our city, especially at the city lake.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. When you travel, do you like to live in hotels with good scenic views?
+  user_model_answer: Yes, whenever I travel to I ask for rooms which have a good view of the hills or the beach depending upon the place I am travelling to.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you like to take picture of good scenic views with your smartphone? Why?
+  user_model_answer: Yes, I mostly keep scenic pictures as my wallpaper because I get inspiration from nature. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 327 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Is there good scenery in cities?
+  user_model_answer: Nowadays, cities have become concrete jungles and there are not many scenic views in the cities.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 182. Break Do you prefer a long break or several short breaks?
+  user_model_answer: I prefer several short breaks because I can only concentrate for short durations. What do you usually do during a break? During a break I like to check news or social networking apps on my phone. Why do you need to take a break? As I said earlier, I find it difficult to concentrate for longer durations so I take breaks to relax myself. How often do you take a break? When I am studying or working, I normally take a break after every hour.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 183. Haircut How often do you have a haircut?
+  user_model_answer: I don't go for a haircut very often, as I like long hair but yes I think it is good to have a haircut every 3-4 months. How long have you had your current haircut? It's been 2 months since my last haircut. I think it still looks good. Have you ever had an unhappy haircut experience? No, I haven't experienced anything like this but I will feel terrible if it happens. Do you like to have your hair cut? No I don’t like it much, because I don't like anyone doing anything with my hair. So, I go for haircuts only when it is necessary.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 184. Area you live in Do you like the area you live in?
+  user_model_answer: Yes, I love my neighbourhood. It is clean, green and beautiful. What are some changes in the area recently? An open gym was recently inaugurated by the mayor in our area. Do you know any famous people in your area? No, I do not know any famous people in my area. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 328 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Where do you like to go in that area? I like to go the market and park in my neighbourhood.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 185. Voice a. Has your voice ever changed?
+  user_model_answer: Yes, I rember the change in my voice happened I entered the teenage. Probably due to the hormonal changes, my voice became more deep. b. Is your voice similar to your parents? No, but it is similar to my brother. People find it hard to distinguish between my brother’s and my voice over the phone. c. Do you like your voice? Yes, I love my voice. I love to sing. d. Is your voice different from when you were young? Yes, as I mentioned before, my voice changed when I became a teeenager. e. Do you like to record your voice? My voice sounds a lot different after I hear the recording so I don’t like to record it much. But I did do a lot of recordings when I was preparig for the IELTS exam f. Does anyone in your family have similar voice? Yes, my brother’s voice is similar to mine.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 186. Smile a. Do you always smile?
+  user_model_answer: Not always, but most of the times. I think it is a good thing to do. b. Do you like smiling? Yes, it is a good thing to do and it brings positivity in me. c. Should people smile more? Yes, absolutely. It will make the world a better place. d. Do you smile while taking photos? I always smile for photos, I don’t like photos with a straight face. e. When do people smile at others? People smile when they meet each other for the first time or when they are wishing each other like Good Morning. f. Can you recognise a fake smile? I am not good at recognising fake smiles because sometimes I do not understand people. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 329 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 187. Jeans a. Do your wear jeans?
+  user_model_answer: Yes, it is one of my favourite items of clothing. b. How often do you wear jeans? I wear jeans almost everyday. c. Do you like wearning jeans, why? Yes, I like wearing it because it is a piece of clothing with which you can combine anything like shirt, t-shirt etc. d. Why do you think jeans are popular? Jeans are popular because of many reasons like comfort factor, you don’t have to wash them everyday. Moreover you can wear them for years and they still look new.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 188. Walking a. Do you walk a lot?
+  user_model_answer: Yes, I like walking. It is probably the only exercise that I do. b. Do yu walk more than in the past? Yes, I recently bought a fitness tracker which counts the number of steps I make everyday and since I bought it I have been trying to achieve a target of 10000 steps everyday. c. Where do you usually take a walk? I normally walk in the park, near my house. d. Do you think people will walk more in the future? Yes, I think the current generation understands the importance of staying healthy and since they have less time for exercise, they will prefer to walk more.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 189. Plan a. Do you make plans everyday?
+  user_model_answer: No, I am not a kind of person who is good at planning things. I sort of do things as they come. b. Are you good at managing your time? Until now I have been good at managing my time since I did not have much to do as a student but I am not sure about how things would be once I start working. c. What is the latest plan you made? My latest plan was for a trip to Delhi which I went for with my friends. d. What is the hardest part about making plans? www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 330 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books The hardest thing about making plans is the amount of time that goes into thinking and sometimes thinking too much stops you from doing actual work.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 190. Festival a. What is is your favorite festival?
+  user_model_answer: My favorite festival is Diwali. It is also known as the festival of lights and is celebrated during winters. b. How do you celebrate this festival? I do a lot of things on Diwali. I buy new clothes, clean my house and decorate it with colorful festive lights. I also distribute sweets with my friends and exchange gifts. In the evening, I light the candles at the temple and burst firecrackers. c. What is the most popular Indian festival? Diwali is the most popular festival in our country as people from all walks of life celebrate it with great enthusiasm. d. Do you like Western festivals? Yes, I like to celebrate Christmas. It is a beautiful festival. I like to wear red clothes on Christmas day. I also go to the Church and enjoy Christmas cake with my friends. How do you celebrate festivals in your country? India is a very diverse county, and many festivals are celebrated in different parts of India for various reasons. Most festivals involve rituals of prayers, cooking
+    special foods, decorating houses, getting together with family and friends, wearing new clothes, music, dance etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 191. Island a. Have you ever been to any island?
+  user_model_answer: No, I have never been to an island but I have seen many islands on televeision and would love to vist one day. b. Are there any islands in your country? Yes, in India we have Andaman and Nicobar islands. c. Do you want to live on an island? Well, I would certainly love to try but whether I would want to stay their forever, will depend upon if I like the experience or not. d. What would you like to do if you go to any island? I would love to explore the beaches on the island and stay in a tree house.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 193. Sky a. Do you like to see the sky?
+  user_model_answer: Yes I love to see clear blue sky and appreciate the nature. Looking at the sky reminds me that there are no limits and boundaries in life and we can achieve anything we want. b. How about stars? Yes i also like to see the stars sometimes. I read about constellations during my childhood and I like to find them in the sky. My favourite constellation is Orion. c. Which is a good place to see the stars? I think mountains are the best place to see the stars. There is less pollution in the mountains so the stars are clearly visible and they also appear more closer. d. Do you know something about stars? There are millions of stars in our galaxy and our nearest star is sun. It provides us the energy that makes life possible on our planet.

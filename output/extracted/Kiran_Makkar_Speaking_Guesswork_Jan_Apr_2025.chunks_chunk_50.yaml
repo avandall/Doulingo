@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 104. Describe a person you met at a party and enjoyed a conversation with. You should say - Who was the person?
+  user_model_answer: '- What topics did you discuss? - How did you feel? • I am an introvert and so it is really difficult for me to converse with strangers. • I don’t normally start conversations and let people strike up a conversation first. • However, two three months I met a person at a marriage party and I had a really enjoyable conversation with him. • I was the groom’s friend and he was the bridegroom’s cousin. • We were seated together at the wedding and he just randomly asked my name. • As we started talking we came to know that we shared many interests. • We are both interested in politics, cricket and video gaming. • The conversation just flowed with him • We talked about so many things. • He told me about the recent games we had played online. • We also added each other on steam, a gaming website as we both loved playing the same game. • He was from UP and I was really interested in what changes had came in UP with the new government. • I had seen and heard a lot of things in
+    the news and I wanted to know if they were true. • He gave me an insider’s perspective. • Then, we started discussing cricket. • We discussed our favourite players, the most memorable matches in recent times. • We also planned to watch a match together in the future. • It was really fun hanging out with him overall. • Normally I feel bored at marriages and I am always eager to leave as early as possible. • However, that day, we were among the last people to leave home. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 225 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Part 3 Follow Up Questions'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Under what circumstances do you meet new people, and when do you communicate with people you don't know?
+  user_model_answer: I think I meet new people mainly when I am travelling or at parties. We are social beings and I think we communicate with new people when we don’t know anyone. In other words, when we feeling alone. We also do it when we find someone interesting and we want to know more about them. 2.) Where do people go to meet new people? I think earlier people used to functions, parties or travel to new places to meet new people. However, now they go to social media websites and apps like Facebook and Instagram. Technology has really changed the way we socialise and make new friends
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What topics do you discuss with new acquaintances?
+  user_model_answer: I think it can be anything I am interested in, which is in fact quite broad. I love talking politics, sports, coffee, movies, tv shows, video games, fashion products. I sometimes also talk about studies but that’s rare.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What topics are not suitable for discussion?
+  user_model_answer: I think there are very few things, which I find unsuitable. Firstly, I don’t like talking about money or how much people earn. In India, its quite common to talk about salaries even when we meet someone the first time, but I don’t find it suitable. I also don’t feel its appropriate to talk about religion.

@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 28. Work with a partner. Take turns to suggest solutions to the problems. **For example:** How can we solve the problem of food distribution in some parts of the world?
+  user_model_answer: → It's a matter of getting around the wars, politics, and corruption that prevent the distribution of staples to the general population.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 29. Look at the following questions. Note down all of the vocabulary items you will need to give your own solutions to the problems. Use the Vocabulary Bank and your dictionary to help you if necessary. a. How can we solve the problem of increasing petrol prices?
+  user_model_answer: b. How can we solve the problem of declining energy reserves? c. How can we solve the problem of food distribution in some parts of the world? d. How can we solve the problem of increasing food prices? e. Do you think that we will be able to produce enough staples, such as rice, to feed the world's population in the future?

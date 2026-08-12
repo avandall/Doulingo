@@ -1,0 +1,55 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are smart people happier than others?
+  user_model_answer: I’m not sure. Being smart doesn’t always mean being happy. Some intelligent people overthink or feel lonely if they don’t find like-minded people. In fact, people with simple lives and less stress might be happier. (Practice more answers using the Makkar IELTS graph book and ideas book at www.makkarielts.com or instagram.com/makkarielts) Stay ahead in your study abroad journey! For the latest daily updates on immigration, travel, and English language exams, follow us on Instagram @makkarielts.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think people are healthier now than in the past?
+  user_model_answer: 'I don’t think so. Many people today have busy lifestyles and eat a lot of processed food, which affects their health. Even though modern medicine has improved, problems like stress and obesity are more common now. In the past, life was slower and food was more natural. (For more speaking ideas, visit: www.makkarielts.com or follow @makkarielts on Instagram)'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How can you tell whether a website is reliable or not?
+  user_model_answer: I usually check if the website is from a trusted source, like a government or well-known news site. If the information is written by experts or has proper references, then I trust it more. Also, I avoid websites that have too many ads or spelling mistakes.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What activities can schools organize for children to keep fit?
+  user_model_answer: Schools can arrange regular sports events, yoga classes, or dance sessions. Even morning walks or fun games during breaks can help children stay active. Physical activity not only improves fitness but also helps with focus and mood. (More ideas available at www.makkarielts.com and @makkarielts on Instagram)
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What can governments do to improve people's health?
+  user_model_answer: 'Governments can run awareness campaigns about healthy eating and exercise. They should also build more public parks, walking tracks, and fitness centres. In my opinion, they can even ban junk food ads near schools. But some people believe it''s the person’s responsibility, not the government’s. (Explore more speaking questions at www.makkarielts.com or instagram.com/makkarielts) www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 179 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of people are interested in stars?
+  user_model_answer: People who are curious about space, like scientists or dreamers, often enjoy looking at stars. Some find peace in stargazing, while others do it as a hobby. I’ve also met people who just enjoy learning about the universe.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Is high technology helpful for star watching?
+  user_model_answer: Yes, technology has made star watching much easier and more detailed. We can now use apps or telescopes to find constellations. It’s more exciting than just looking with the naked eye.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Should kids know more about stars and planets?
+  user_model_answer: 'Definitely. Learning about stars and planets can boost their interest in science. It also helps them understand how big and amazing our universe is. Our books are available on Amazon now To buy genuine and original books please select makkarielts as the seller https://amzn.to/47swIkX - Kiran Makkar Ideas for Essays for IELTS, PTE & ToEFL https://amzn.to/3Zd7R2x - Kiran Makkar IELTS Graphs From The Past Exams https://amzn.to/4d5t5m1 - Kiran Makkar IELTS Academic Essays From The Past Exams 2024 Edition https://amzn.to/3z1O23H - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 1 https://amzn.to/3MZe8HX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 2 https://amzn.to/4ggCdXX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 3 https://amzn.to/3z2EoOf - Kiran Makkar IELTS General Training Essays & Letters From The Past Exams https://amzn.to/4gcbYC9 - Kiran Makkar IELTS General Training GT Readings For Exam Practice www.youtube.com/makkarielts
+    www.instagram.com/makkarielts www.makkarielts.com/books 181 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

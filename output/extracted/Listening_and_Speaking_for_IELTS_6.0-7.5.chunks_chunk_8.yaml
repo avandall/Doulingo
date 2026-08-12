@@ -1,0 +1,50 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Read two more candidates' answers to questions in 1. Which question is each one answering? Underline any words or expressions used to make generalizations.
+  user_model_answer: '**Candidate C** There are many worthwhile areas of research but, on the whole, I think anything that develops our knowledge and understanding of health and medicine should have further resources and investment. It often seems to be the case that this area is neglected in favour of things like space research and I don''t believe that''s right. **Candidate D** As a rule, most jobs would require you to have some skills in this area and I believe in many cases it''s probably essential to have a good understanding as you would be expected to use them on a daily basis. Generally speaking, it''s more likely to be older generations who haven''t got these skills, as they didn''t learn them in their younger days and they can have a tendency to be nervous about learning something new.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. 2.3 Listen to two students responding to this Part 3 question. Which student sounds more interested? Why?
+  user_model_answer: '**Question:** Do you think scientific developments often cause more problems than they solve? **Candidate A:** No, not really. Actually, I would say, that it''s the other way round - the problems that science solves far outweigh the problems that it may bring. **Candidate B:** Yes, I think so. Scientific developments often cause lots of problems so sometimes they''re not worth it.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Look at the picture and answer the questions below. a. How many different forms of transport can you see?
+  user_model_answer: b. Which form of transport do you most often use on a daily basis? c. Which form of transport is the most popular in your town/city? d. Which of these forms of transport has the most benefits?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Choose the incorrect alternative in each of the questions below. a. What was the last long **flight / holiday / journey / travel** you went on?
+  user_model_answer: b. When going long distances, do you prefer to **go / journey / travel** by train or plane? c. Would you prefer to go on a package **excursion / tour / holiday** or travel independently? d. What is the most famous or popular tourist **destination / attraction / location / centre** in your country? e. What are the advantages of travelling **first / upper / business / economy** class? f. Do you like holidays with lots of day **trips / expeditions / excursions / sightseeing tours**? g. When was the last time you took a **long-haul / domestic / short-haul / home / international** flight? h. What is your opinion of **eco- / ethical / mass / abroad** tourism?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. The list below gives seven popular types of overseas voluntary work. What do you think the work would involve in each case?
+  user_model_answer: a. working with children in an orphanage b. working on a wildlife conservation project c. working on a construction project in a rural community d. working in a rural school e. working on a rural health education programme f. working on an environmental conservation project g. working on a marine conservation project
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Compare ideas with another student. Then answer the questions below. a. How easy or difficult do you think each of the jobs would be?
+  user_model_answer: b. Which of the voluntary projects would you choose to work on? Why? c. In which countries would you be most likely to do one of these projects? d. At what stage in life might someone volunteer overseas?
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. The paragraph below is taken from a summary completion task. What is the general topic? You will complete the gaps in 6.
+  user_model_answer: Complete the summary below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.

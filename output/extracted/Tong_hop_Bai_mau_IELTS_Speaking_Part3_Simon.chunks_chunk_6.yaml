@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part3_Simon.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '1. Why do you think some school teachers use competitions as class somebody’s attention activities? and interest: thu hút'
+  user_model_answer: I think teachers use competitions to motivate the children in their pupil
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Is it a good thing to give prizes to children who do well at school?
+  user_model_answer: Why? khuyế n khích trẻ làm gì It might be a good idea to encourage children to do well in games or prize
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Would you say that schools for young children have become more competitive (adj) = trying or less competitive since you were that age? Why?
+  user_model_answer: 'I''d say that they have become more competitive since I was young. very hard to be better Children now have to take exams from a much younger age, so I think than others: mang tính there is more of a focus on doing well in tests. Parents also seem to cạnh tranh be getting more competitive; I think that many parents push their push their children to...:'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What is the relationship between leisure and the economy?
+  user_model_answer: Well, people spend a lot of money on all sorts of leisure activities đó... việc làm nowadays, so I think leisure is a very important part of the economy makes a huge
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How does the economy benefit from people's leisure activities? làm
+  user_model_answer: 'The leisure industry makes a huge contribution to the economy. As I pay their taxes: đóng said before, it keeps millions of people in employment, and all of thuế these employees pay their taxes and have money to spend on other gender'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do men and women enjoy the same type of leisure activities?
+  user_model_answer: cultural differences, Yes and no. I think both men and women enjoy things like eating in rather than differences in restaurants or going to the cinema, but I'm sure there are other biology; members of a activities that are more popular with one gender. For example, I think particular gender as a more men than women go to football matches.

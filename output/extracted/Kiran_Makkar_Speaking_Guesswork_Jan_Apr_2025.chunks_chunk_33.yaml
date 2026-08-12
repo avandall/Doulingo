@@ -1,0 +1,70 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do most people mind others talking on the phone in public places?
+  user_model_answer: Yes, many people do find it annoying when others talk loudly on the phone in public, especially in quiet environments like waiting rooms or public transport. It can be seen as disruptive, particularly if the conversation is lengthy or personal. https://g.co/kgs/GBYy9Mi - Phagwara https://g.co/kgs/xBR5EKQ - Mohali https://g.co/kgs/9XnhRqa - Jalandhar https://g.co/kgs/u2p4jK3 - Chandigarh https://g.co/kgs/mDAeiYA - Zirakpur www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 151 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Is it bad behavior for people to look at their phones during a meal?
+  user_model_answer: Yes, it can be considered bad behavior to look at phones during a meal. It distracts from the social aspect of eating and can make others feel ignored. Instead, mealtimes are often seen as opportunities for family and friends to connect and enjoy each other’s company.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Why do people like to have a big meal at traditional festivals or big events?
+  user_model_answer: People enjoy having a big meal during festivals and big events because it’s a way to celebrate and bring everyone together. Food plays a central role in marking special occasions, and large meals often include traditional dishes that hold cultural significance. For example, during Diwali in India, families prepare elaborate feasts to celebrate the festival. https://g.co/kgs/u2p4jK3
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do most people prefer vegetables bought from the supermarket or grown at home?
+  user_model_answer: Many people prefer vegetables grown at home because they are fresher and often taste better. Home-grown vegetables also allow for better control over pesticides and chemicals. However, buying from supermarkets is convenient and often necessary for those who don’t have the space or time to garden. https://amzn.to/4ggCdXX
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are there any difficulties when people grow plants in cities?
+  user_model_answer: Yes, there are several difficulties when growing plants in cities. Limited space, poor soil quality, and pollution can all be challenges. Additionally, urban areas often have less access to sunlight, which can hinder plant growth. https://amzn.to/4ggCdXX
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What plants can people grow in cities?
+  user_model_answer: In cities, people can grow plants that require less space and are suited to urban conditions. Common choices include herbs like basil and mint, small vegetables like cherry tomatoes, and indoor plants like spider plants. Container gardening is popular because it allows for flexible use of available space.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do people in your country grow plants at home?
+  user_model_answer: Yes, many people in my country grow plants at home. Urban gardening is becoming more popular as people seek to have fresh produce and enjoy the benefits of nature in their living spaces. Common plants include herbs, small vegetables, and decorative indoor plants. https://g.co/kgs/GBYy9Mi - Phagwara https://g.co/kgs/xBR5EKQ - Mohali https://g.co/kgs/9XnhRqa - Jalandhar https://g.co/kgs/u2p4jK3 - Chandigarh https://g.co/kgs/mDAeiYA - Zirakpur www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 153 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What are the differences between holding a party at home and in a public place?
+  user_model_answer: Holding a party at home offers more privacy and a personal touch, as the host can control the environment. However, it may involve more work, like cooking and cleaning. In public places like restaurants or clubs, there is more space, less responsibility for cleaning, and often a professional service, but it can be more expensive. https://amzn.to/3MZe8HX
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What would you do if you were disturbed by a neighbor's party?
+  user_model_answer: If I were disturbed by a neighbor's party, I would politely ask them to lower the noise. If that didn’t help, I might consider using earplugs or calling the authorities if it was too late and affecting my rest. I would try to handle it calmly, as maintaining good relations with neighbors is important.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think music and dancing are a must at a party?
+  user_model_answer: Music and dancing add a lot of energy to parties, making them more fun and lively. While they are not a must, they do help people relax and enjoy themselves. Some people might prefer quieter gatherings with conversation instead, depending on the type of party.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think those who tend to stay at home are less healthy than those who often attend parties?
+  user_model_answer: Staying at home doesn't necessarily make a person less healthy, as it depends on their lifestyle. However, socializing at parties can be good for mental well-being. On the other hand, too much partying might lead to unhealthy habits, like lack of sleep or excessive drinking. https://g.co/kgs/GBYy9Mi 5.Why do some people not like going to parties? Some people avoid parties because they may feel uncomfortable in large crowds or dislike noisy environments. Introverts, for example, may find social gatherings draining and prefer quieter, more personal settings. Others might not enjoy the atmosphere or activities, like dancing or loud music.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do people like parties?
+  user_model_answer: People enjoy parties because they provide an opportunity to socialize, have fun, and relax. It’s a great way to celebrate special occasions, connect with friends, and unwind from daily stress. Parties can lift people’s mood and offer a break from routine. https://g.co/kgs/GBYy9Mi - Phagwara https://g.co/kgs/xBR5EKQ - Mohali https://g.co/kgs/9XnhRqa - Jalandhar https://g.co/kgs/u2p4jK3 - Chandigarh https://g.co/kgs/mDAeiYA - Zirakpur www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 155 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books

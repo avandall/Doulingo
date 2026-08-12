@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Is the way people buy things affected? How?
+  user_model_answer: Yes, people today buy things online. Moreover, like I said before we don’t have an emotional connection with products as in the past. Earlier, we felt a loss when something broke down. Now, it’s just an object, and breaking down is an opportunity to buy a newer version.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do you think influences people to buy new things?
+  user_model_answer: I think it’s just that as things get old, people get bored, and to renew their excitement, they buy a new thing. It also the influence of ads, which keep on reminding us that we are missing out if we don’t have the latest version of something.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Why do children like toys?
+  user_model_answer: Children like toys because they are fun and interesting. Toys help them use their imagination and learn new things while playing. They also help children share and play together, which improves their social skills.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think it is good for a child to always take his or her favourite toy with them all the time?
+  user_model_answer: 'I think it can be good to some extent because a favourite toy can make children feel safe and comfortable, especially in new or stressful situations. However, if children always depends on the toy, it may not become independent and interact with others. So, it is better if children enjoy their favourite toy but also learn to stay without it sometimes. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 58 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

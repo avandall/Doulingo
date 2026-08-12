@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part3_Simon.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What do you think cities will be like in 50 years time? advance to ensure
+  user_model_answer: 'success: quy hoạch tố t Firstly, the cost of living in cities is much higher. Housing is much stressful'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '1. What do you think are the functions of rivers nowadays? person or thing: chức'
+  user_model_answer: Rivers have various functions. In the UK, they were probably more năng important in the past because they were used for the transportation renewable energy
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What do you think of boats and ships as forms of transportation?
+  user_model_answer: năng lượng thủy điện I'm not really a fan of boats and ships. If I'm going abroad, I like to irrigation
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why do some people like to live near rivers, lakes or the sea? channels so that crops
+  user_model_answer: 'Well, the view is probably a major factor; most people like to look will grow: tưới tiêu out to sea, or across a river or lake. I''d much prefer to look out of my I''m not really a fan of...:'

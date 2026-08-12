@@ -1,0 +1,186 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. How does reading help a child?
+  user_model_answer: Reading helps to improve concentration. It also helps to improve general knowledge. It also improves the language skills and satisfies the curiosity of children on various things.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. What sort of books can be suggested to children to read?
+  user_model_answer: Children should be encouraged to read religious and historical books. They should also read biographies and autobiographies of famous people so that they get motivation from them. They should also be encouraged to read books on science and technology. However, these books should be made very interesting by adding pictures. Ma kkar IELTS
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. How much should a child read every day?
+  user_model_answer: A child should read half to one hour daily. I think that would be enough considering that they have to go to school and do their homework as well.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 13. What is the difference between the books sold in the past and the books sold nowadays?
+  user_model_answer: In the past, books related to culture, tradition, religion and history were sold. Nowadays, books are mostly based on fiction and fantasy. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 344 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like to take photographs? (Why?)
+  user_model_answer: Yes, I like taking photographs. Photographs are the memories of good times and special events. We can capture special moments, interesting things or beautiful sceneries through pictures. They are reminders of good times.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you prefer to take photos yourself or to have other people take photos? (Why?)
+  user_model_answer: I prefer taking photos myself, as everyone has a different way of looking at things. Another person may not like, what I find interesting.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How long have you liked taking photographs?
+  user_model_answer: I have liked taking photographs since I was a child. We used to take our camera to all our vacations and I used to be very fascinated with it. Now I mostly use my cellphone to take pictures.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How (why) did you become interested in photography?
+  user_model_answer: I became interested in photography because my father was very fond of taking pictures and he always had a good camera. We used to take a camera to all our vacations and take pictures.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. How often do you take photographs?
+  user_model_answer: I take photographs very often, in fact almost everyday.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. In what situations do you take photographs?
+  user_model_answer: I take photographs in many situations. Sometimes its during friends or family get-togethers, sometimes it is a beautiful scenery, like of the sky or the sunset or when I travel to another city, I take pictures and on many more such situations.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. What kind of photos do you like to take? (Why?)
+  user_model_answer: I like to take photos of different things. Sometimes it is a beautiful scene, which can be of the clouds, sky, sunrise, sunset and so on. Sometimes I take pictures of plants and animals. I also like to capture the different expressions on people’s faces.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you prefer to take pictures of people or of scenery?
+  user_model_answer: I do not prefer one to the other. I like taking pictures of various things, sometimes it’s scenery and sometimes I like capturing a person’s expressions.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 9. Who do you take photos of?
+  user_model_answer: I take photos of family, relatives, friends, my dogs, other animals, etc.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 10. How do you keep your photos?
+  user_model_answer: I save pictures mostly in online albums, like Google photos. Sometimes, I get them printed also.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 11. Do you keep your photographs on your computer?
+  user_model_answer: Yes, I keep my photographs on the computer. I always backup my phone photos onto the computer.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. Are there any photos on the walls of your home?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 345 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, there are photos on the walls of my home. We have pictures of all special family events, like birthdays and weddings and also of all of us growing up and at different stages of our lives.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 13. Do you frame (or have you framed) any of your photos? (If yes, which? & why?)
+  user_model_answer: Yes, I have a family photo framed. It is from my sister’s wedding. All five members of my family are there in this picture together and everyone is looking cheerful and happy. It is one of my favorite photographs.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. Do you prefer to send postcards to people or to send photos that you took yourself? (Why?)
+  user_model_answer: I prefer to send photographs I took myself, as they are a way to share your experiences with your near and dear ones and letting them know that you are thinking of them.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What kind of entertainment do you prefer, TV or radio? (Why?)
+  user_model_answer: I pay for TV to radio because TV is both audio as well as visual. I listen to radio only while traveling.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How are radio programs and television programs different?
+  user_model_answer: While listening to radio you can do other things such as cooking and driving. This is not possible while watching TV. Radio programs are cheaper as you do not have to subscribe to radio channels. Watching television is costlier in comparison. Radio programs have only the audio component whereas TV is audio as well as visual.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What programs do you like to watch/listen to?
+  user_model_answer: I like to watch sitcoms like comedy night with Kapil. I also watch some daily soaps, some sports channels and news programs. OR I listen radio Mirchi and other such radio channels from where I can listen to the latest songs.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. When do you watch TV/listen to the radio?
+  user_model_answer: I watch TV mostly in the evenings. At that time we all family members sit together and watch some sitcoms or news channels. I listen to radio only when I’m traveling with my parents in our car.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. In India, has television/radio changed much in recent years?
+  user_model_answer: Television has changed a lot in the recent years. Many new channels and programs have been added. High-definition TV has become very popular. You can also watch some TV shows of other countries almost at the same time. In the radio also many new channels have been added. So there is an improvement in both TV and radio.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How do you think TV/radio broadcasts in India could be improved?
+  user_model_answer: Some new shows on education could be added. Otherwise I’m quite happy with the TV programs and the radio broadcasts. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 346 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. Do you prefer TV news or news on the radio? (Why?)
+  user_model_answer: I prefer news on TV to news on radio. This is because TV has both the audio as well as a visual component.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you watch programs on the TV or your cell phone?
+  user_model_answer: I like to watch programs on TV. I don’t like watching them on my cell phone because I feel the screen is too small. Sometimes I watch short trailers or clips on my cell phone but for the full program, I prefer the TV. I also watch programs on my laptop.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Do you like watching the same kind of programs all the time?
+  user_model_answer: No, there is so much content on the TV today because of streaming platforms like Netflix and Prime. I like to try new programs and genres that I haven’t watched before.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. Do you talk with your friends about the program you watched?
+  user_model_answer: Yes, I talk to my friends about the programs I watched. One program that I especially like is Kapil Sharma Show and I share all his jokes with my friends. We also talk about the dance performances that we like from the dance reality shows.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often read newspapers?
+  user_model_answer: Yes, I often read newspapers. I read the newspaper every day. I come to know what is happening around me and in the world.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Which do you prefer reading, magazines or newspapers?
+  user_model_answer: I prefer reading newspapers because I like to know what is happening around me.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What kinds of (types of) newspapers (or magazines) do you usually read?
+  user_model_answer: My father has subscribed to the Tribune. So I read that daily. It is a National newspaper, but has a maximum circulation in Punjab.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. How old were you when you first started to read newspapers?
+  user_model_answer: I remember I was 10 years old when I started reading the newspaper. I started from the sports section.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Do you think it's important to read newspapers? (Why?/Why not?)
+  user_model_answer: It is very important to read newspapers. We feel connected with the whole world.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do (you think) people read newspapers?
+  user_model_answer: People read newspapers to know what is happening around them. They also read newspapers for the international news. They also read newspapers for the employment advertisements and matrimonial. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 347 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. What different types of newspaper are there in India?
+  user_model_answer: There are broadsheets and tabloids. There are newspapers in English, Hindi, Punjabi and other regional languages.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you care about the news?
+  user_model_answer: Yes, I care about the news. I think news is very important. We should be aware of what is happening around us and in the whole world.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. What kinds of news do Indian people read in newspapers?
+  user_model_answer: Indian people like to read fall types of news. They read local news, National news, International news, Sports news and many other news.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 11. Do you prefer to read about domestic (or local) news or international news? (Why?)
+  user_model_answer: I like to read domestic news as well as international news.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. What are some methods that newspapers use to attract readers?
+  user_model_answer: Some newspapers use colourful graphics. Some use very bold headlines. Some newspapers add puzzles like Sudoku and crossword puzzles to attractive readers.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 13. What influence do you think newspapers have on society?
+  user_model_answer: Newspapers have a lot of effect on society. They shape people’s opinions. Through letters to the editor they are a link between the government and people. They also entertain us.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. Do you think the Internet is a good way to get news?
+  user_model_answer: Yes, the Internet is a really good way to get the news nowadays. People subscribe to the e- newspapers. There are many apps off the TV News channels, which help the people to be updated all the time.

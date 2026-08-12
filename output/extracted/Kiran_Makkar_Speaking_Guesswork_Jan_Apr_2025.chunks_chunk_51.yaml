@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What topics do you discuss with new acquaintances?
+  user_model_answer: I think it can be anything I am interested in, which is in fact quite broad. I love talking politics, sports, coffee, movies, tv shows, video games, fashion products. I sometimes also talk about studies but that’s rare.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What topics are not suitable for discussion?
+  user_model_answer: I think there are very few things, which I find unsuitable. Firstly, I don’t like talking about money or how much people earn. In India, its quite common to talk about salaries even when we meet someone the first time, but I don’t find it suitable. I also don’t feel its appropriate to talk about religion.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What's the difference between chatting with friends and new people?
+  user_model_answer: Firstly, I think I am much less reserved with friends. There are very few topics, I don’t talk about with friends. Secondly, the conversation gets much more personal and detailed with friends. For example, I have talked about mundane things like what I ate last night or what time I woke up with my friends. Finally, I don’t mind discussing embarrassing stories with my friends, but I would never do that with strangers. 6.) How do people start a conversation? One of the most common ways to talk about the weather. Another way is to compliment someone or their clothes and then ask where they got that particular dress from. Sometimes, people also just introduce themselves. 7.) Is it difficult for Indian people to talk to foreigners? Both yes and no. Yes, because naturally most Indians are bit shy and its difficult for them to initiate a conversation. However, many Indians are also fluent in English, so that makes it easier. 8.) Why are some people unwilling to have conversations
+    with strangers? One of the reasons is increasing crime. People are worried about talking or mixing up with people they don’t know. Secondly, many people consider it to be waste of time. They feel like we should only converse if we have a purpose. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 226 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why is it difficult for some people to relax?
+  user_model_answer: I think some people are just wired that way. They imagine the worst possible scenarios during any situation and because of that they find it difficult to relax. People should live in the moment and forget about the past and the future.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What are the benefits of doing exercise?
+  user_model_answer: I think firstly it makes us healthier and fit, which in turn makes us confident. Moreover, it is also essential to be mentally healthy as a healthy mind cannot reside in an unhealthy mind.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do people in your country exercise after work?
+  user_model_answer: Not the old generation, but the young generation certainly. That is why, gyms are getting popular day by day. Most of young give physical fitness a huge priority.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What is the place where people spend most of their time at home?
+  user_model_answer: Well, technically speaking most people most of their time in the bedrooms as they sleep there, which accounts for at least one fourth of the day. But apart from that, it is the living room, where people just spend time with their family and do activities like watch TV or read books.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think there should be classes for training young people and children how to relax?
+  user_model_answer: Definitely. There has been an increase in stress and pressures in life. I think the stress only increases as people grow older, so it would be better to learn deal with stress from a young age.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Which is more important, mental relaxation or physical relaxation?
+  user_model_answer: I think both are important in their own ways. I think our body needs to be relaxed for the mind to be relaxes. Whenever, we have any physical discomfort, our mind can’t focus and if we are mentally tired we are bound to make more mistakes and get hurt doing physical work. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 228 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books

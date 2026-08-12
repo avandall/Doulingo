@@ -1,0 +1,71 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of public transportation do you usually take?
+  user_model_answer: If I am travelling locally, I normally travel by bus, but if I am travelling farther away, I travel by railways or air. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 299 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books 2 When do you usually take public transportation, in your everyday life, or when you are travelling? When I was young, I used to travel by bus every day because of my studies. However, nowadays, I only use public transportation when I am especially visiting someplace. For example, after every one or two months, I visit Golden Temple in Amritsar and for that I travel by bus. 3 Do most people prefer public transportation in your country? I think public transportation is the main mode of travel for most people in India. However, as people are becoming richer, many people have started travelling by car. 4 Did you take public transportation when you were a kid? Yes, as I said before, in my childhood,
+    I used to travel by bus daily because of my studies. 5 Will there be more people taking public transportation in the future? On the contrary, I think the use of public transportation will decrease further as people are becoming richer and they care more about comfort than cost. However, if the government takes some steps in this regard, there can be a change.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 114. Names 1 Does your name have any special meaning?
+  user_model_answer: My name is Indroop. According to Hindu mythology, my name means an Avatar of Lord Inder. 2 How would you choose names for your next generation? I think traditionally, people used to take the first letter for the name from the holy book, and then the elder people used to suggest a name beginning with that letter. I would do the same, but I would try to keep a modern and unique name. 3 Are there any differences between how Indians name their children now and in the past? I think nowadays, people don’t follow many rituals and traditions, and names are kept without following any rules. 4 Does anyone in your family have the same name as you? No, I am the only one in my family with this name. I think my parents wanted to keep a unique name for me and so they kept it Indroop. 5 Are there any names that are more popular than others in India? India is a large and diverse country. Different regions have different names. For example, in Punjab, names like Gagan and Jaspreet are
+    very common. I remember there used to be three girls with the name Gagan in my class when I was young.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 115. Morning Time 1 Do you like getting up early in the morning?
+  user_model_answer: No, I don’t like getting up early in the morning. I normally sleep late at night, so I don’t get up early in the morning. However, my parents keep telling me that I should change this habit. 2 What do you usually do in the morning? I normally don’t get up early in the morning, so I just finish the basic chores like bathing, getting ready, and having my breakfast in the morning. I also read the newspaper for some time. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 300 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books 3 What did you do in the morning when you were little? Why? I think I pretty much did the same in my childhood too. I used to get up late, so I used to be barely able to finish my basic chores in the morning time. I had little time to do anything else. 4 Are there any differences between what you do in the morning now and what you did in the past? No, as I said before, it is pretty much the same.
+    There is just one small difference, in my childhood I didn’t use to read the newspaper, but nowadays I do. 5 Do you spend your mornings doing the same things on both weekends and weekdays? Why? No, on the weekends, we normally go to the Gurdwara in the morning. So, I have to get up early. On the weekends, we also eat breakfast outside.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 116. Housework and cooking 1 Do you do some cooking/help your family cook at home now?
+  user_model_answer: My cooking skills are quite limited. However, I do make the evening tea and cut the cucumber and radish for the salad. I also wash the utensils. 2 Do you think your home is clean and tidy? I wouldn’t call it clean, but I wouldn’t call it dirty also. I try to keep it as clean as I can, but it does get dirty. 3 Did you do some house cleaning when you were young? Yes, in fact, I used to spend more time on house cleaning when I was young as I had more free time. 4 Do you have breakfast at home every day? As I get up late, I normally don’t have time to cook breakfast in the morning. But I do have something like fruits, breakfast cereals, or boiled eggs before I leave home. 5 Do you want to learn how to cook well? I want to learn to cook to survive. I don’t plan or want to be an expert, but I want my cooking to be edible. 6 What housework do you like or dislike doing? The one thing I really like is feeding the dogs and taking them out for a walk. They are a part of our lives
+    and I love spending time with them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 117. Geography 1 Do you like geography?
+  user_model_answer: Yes, I like geography. In fact, it was one of my favourite subjects when I was in school. 2 Have you ever studied geography at school? Yes, I studied geography when I was at school. 3 Are you good at reading a map? Well, I don’t think I am good at reading maps, but I am able to read them decently, so I don’t have trouble while I am travelling. 4 Would you visit a country because of its geographical location? www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 301 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, I love visiting coastal countries. I want to visit Maldives and Seychelles when I grow older.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 118. Birthday 1 What do you usually do on your birthday?
+  user_model_answer: I normally get up early and then I go to the Gurudwara. Then I go out and watch a movie or visit a mall with my friends. In the evenings, I have dinner at a restaurant with my family. 2 What did you do on your birthday when you were young? When I was young, my parents used to throw a big party at home and invite all my friends and relatives. I used to love opening gifts and cutting the cake. Now, I am not as excited. 3 Do you think it is important for you to celebrate your birthday? I think celebrating birthdays makes us feel special and important. It also gives an opportunity to meet with our loved ones and relatives. 4 Whose birthday do you think is the most important to celebrate in India? I think publicly one of the most important birthdays that we celebrate is Mahatma Gandhi’s birthday. It is a national holiday, which is celebrated on 2nd October. Personally, people like to celebrate their children’s birthdays.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Have you ever bought mirrors?
+  user_model_answer: Yes, I bought a beautiful mirror when I went to Jodhpur last month, it has a nice wooden frame and a clear mirror to look at. It also has carving on the frame
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Would you use Mirrors to decorate rooms?
+  user_model_answer: Yes I would like to use Mirrors to decorate the rooms. Mirrors add space to the room and also enhance the lighting effect. My interior decorator friend also recommended it for my study room recently.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you check yourself when you decide to buy a mirror?
+  user_model_answer: Yes, I check for any defects or flaws in the reflection, when buying a mirror. I also check for any physical damage, like cracks.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 120. Watch 1 Do you wear a watch?
+  user_model_answer: Yes, I do wear Titan Watch. It is an integral part of my daily dressing up routine. 2 Have you ever got a watch as a gift? Yes, I got this watch as a gift from my parents at my wedding. 3 Why do some people wear expensive watches? People have fads for different things, some may like expensive clothes, and others may be fond of good stationery while many others may like to wear expensive pieces of jewellery. Similarly those www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 302 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books who are used to wearing a watch may like to spend on an expensive watch. An expensive watch is also used to make a statement about one’s personality and ability to buy one. 4 Do you think it is important to wear a watch? Why? Till a few years ago it was considered an integral part of one’s attire because without a watch one could not have functioned effectively in one’s daily routine. Since
+    the advent of mobile phones wrist watches have become quite dispensable as most people use their mobiles to check on time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you have a talent, or something you are good at?
+  user_model_answer: I think everyone is born with some talent or the other. I have a talent to embroider. 2 Was it mastered recently or when you were young? I was lucky to have discovered it in my school, where the nuns would teach us varied handcrafts like knitting, sewing, painting and embroidering

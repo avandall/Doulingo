@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: '30_Day_IELTS_Speaking_Challenge.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Why do you want to learn English?
+  user_model_answer: 'Cách triển khai: goal → reason → time frame'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How do you stay motivated when studying English?
+  user_model_answer: 'Cách triển khai: method → benefit → example'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Can you introduce yourself?
+  user_model_answer: 'Cách triển khai ý: name/age → hometown→ job/study'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Where do you live now, and what do you like about it?
+  user_model_answer: 'Cách triển khai ý: current location → feeling/feature → reason'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What are your goals for the next few years?
+  user_model_answer: 'Cách triển khai ý: career goal → personal goal → reason'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What time do you usually wake up on a normal day?
+  user_model_answer: 'Cách triển khai ý: wake-up time → reason → weekend difference'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What does your morning routine look like?
+  user_model_answer: 'Cách triển khai ý: wake up → brush teeth → get ready → breakfast → commute → start work'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you follow a fixed morning schedule or a flexible one? Why?
+  user_model_answer: 'Cách triển khai ý: fixed OR flexible → reason → example'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What makes your morning productive or unproductive?
+  user_model_answer: 'Cách triển khai ý: good habit → bad habit → effect on morning'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. How has your morning routine changed compared to when you were younger?
+  user_model_answer: 'Cách triển khai ý: past routine → current routine → reason'

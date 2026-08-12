@@ -1,0 +1,50 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What are apartments like in your country?
+  user_model_answer: 'In India, apartments come in different sizes and styles. In big cities like Mumbai and Delhi, apartments can be small due to limited space, and they are often expensive. However, in smaller cities, apartments are more spacious and affordable. Many new apartments are built with modern designs, and some even have shared facilities like gyms or gardens. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 276 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. How do you get along with your neighbors?
+  user_model_answer: I have a very good relationship with my neighbors as I have known them for more than 10 years now. It almost feels like that they are part of our family now, as we spend a lot of time at each other’s place. We support each other during both good and bad times. Sometimes I think that our neighbors play a more important role in our lives as compared to our relatives.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How do neighbors help each other?
+  user_model_answer: Neighbors can help each other in a variety of ways, such as by lending tools or household items, watching each other's homes when one is away, assisting with household repairs or projects,
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think neighbors help each other more often in the countryside than in the city?
+  user_model_answer: It's possible that neighbors may help each other more often in rural or suburban areas compared to urban areas. The reason being that in rural or suburban areas, neighbors may have a greater sense of community, and may be more likely to know each other personally, and therefore be more likely to offer help when needed. Additionally, in rural and suburban areas, people may have more opportunities to interact with each other, such as while working on shared projects or participating in community events.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How do children learn to cooperate with each other?
+  user_model_answer: Children learn to cooperate with each other through a combination of socialization, modeling, and direct teaching. For example, they can learn cooperation by playing with other children, as they learn to share toys, take turns, and work together to achieve a common goal.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think parents should teach children how to cooperate with others? How?
+  user_model_answer: Yes, I believe that parents play a vital role in teaching children how to cooperate with others. Cooperation is an important life skill that is needed in a wide variety of contexts, such as in the family, at school, in the workplace, and in the community. Children learn by example, so when parents demonstrate cooperation and collaboration in their own relationships and daily activities, children will learn how to do the same. Parents can also provide opportunities for children to practice cooperation by setting up games and activities that require teamwork. Additionally, parents can teach children the importance of listening to others' ideas and opinions, compromising, and taking turns.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think it's important for children to learn about cooperation?
+  user_model_answer: 'Yes, it is very important for children to learn about cooperation. Cooperation is a key social skill that is essential for success in many aspects of life. Children who learn to cooperate with others are more likely to develop positive relationship and achieve academic success. Order your books from www.makkarielts.com/books www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 278 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

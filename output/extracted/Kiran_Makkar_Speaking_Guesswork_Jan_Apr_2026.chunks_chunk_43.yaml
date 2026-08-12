@@ -1,0 +1,87 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think there are more beautiful things now than in the past? Why?
+  user_model_answer: In some ways, yes. We have modern buildings, new designs, and digital art. But natural beauty like mountains and rivers hasn’t changed. So it depends on what kind of beauty we’re talking about.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What beautiful scenery spots are there in your country?
+  user_model_answer: India has many—like Kashmir, Himachal, Kerala, and the desert areas of Rajasthan. Each place offers something different, from snowy hills to sunny beaches.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why do you think people create beautiful things?
+  user_model_answer: People like to express their feelings through beauty. It makes the world more colorful and meaningful. Sometimes, it’s just for peace or happiness.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Where do you think people usually come into contact with beautiful things?
+  user_model_answer: Mostly in nature, art galleries, or even social media now. A walk in the park or visiting a temple can also feel beautiful. Beauty is everywhere if we notice.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do people in your country prefer listening to music to appreciating paintings and literature?
+  user_model_answer: Yes, I think music is more popular these days. It’s easy to access and enjoy. But there are still people who love reading and looking at art.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do many people go to scenic spots in person instead of just reading about them in books?
+  user_model_answer: 'Seeing a place in real life gives a different feeling. Books show the details, but standing there gives the experience. It’s like the difference between hearing about food and tasting it. Our books are available on Amazon now To buy genuine and original books please select makkarielts as the seller https://amzn.to/47swIkX - Kiran Makkar Ideas for Essays for IELTS, PTE & ToEFL https://amzn.to/3Zd7R2x - Kiran Makkar IELTS Graphs From The Past Exams https://amzn.to/4d5t5m1 - Kiran Makkar IELTS Academic Essays From The Past Exams 2024 Edition https://amzn.to/3z1O23H - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 1 https://amzn.to/3MZe8HX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 2 https://amzn.to/4ggCdXX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 3 https://amzn.to/3z2EoOf - Kiran Makkar IELTS General Training Essays & Letters From The Past Exams https://amzn.to/4gcbYC9 - Kiran Makkar IELTS General Training GT Readings
+    For Exam Practice www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 187 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think kids like to share? Why?
+  user_model_answer: Yes, some kids do enjoy sharing, especially when they are taught from a young age. It helps them feel connected to others. But some children are a bit possessive, especially with their favourite toys. I think it depends on the child's nature and upbringing. makkarielts.com | instagram.com/makkarielts
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How can parents teach their children to share?
+  user_model_answer: Parents can teach sharing by setting an example. If children see their parents being generous or sharing things with others, they will likely copy that behaviour. Also, praising them when they share can really help.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What do you think is the benefit of sharing for children?
+  user_model_answer: Sharing helps children build friendships and learn teamwork. It also teaches them empathy and kindness, which are important in life. I think kids who learn to share grow into better people.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Is there anything that parents persuade children to share with others?
+  user_model_answer: Yes, parents often ask their kids to share toys, snacks, or even books. Sometimes the child agrees, but sometimes they need a little push, especially if it's something they really love.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How can governments encourage shared transport?
+  user_model_answer: Governments can improve public transport and make it cheaper. They can also promote carpooling by giving tax benefits or special lanes. If it's comfortable and affordable, people will choose it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why is it important to share food with others during celebration?
+  user_model_answer: 'Sharing food brings people together and makes the celebration more joyful. It shows love and care. In my culture, festivals are incomplete without offering food to guests and neighbours. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 189 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Where do you often see advertisements?
+  user_model_answer: I mostly see ads on YouTube and Instagram these days. Sometimes they also pop up while I’m playing games or watching something online. makkarielts.com | instagram.com/makkarielts
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What are the benefits of advertising?
+  user_model_answer: Advertising helps people know about new products or offers. It saves time because we don’t have to search much — we just see what’s available. Also, for businesses, it increases sales.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Are advertisements good or bad for children?
+  user_model_answer: It depends. Some ads are useful and teach good habits, but many ads make children want things they don’t need. For example, too many junk food ads can affect their eating habits.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How does advertising affect people?
+  user_model_answer: Advertising influences the way people think and shop. Sometimes, it pushes people to buy unnecessary things. But at the same time, it can help in making better choices when done right. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books

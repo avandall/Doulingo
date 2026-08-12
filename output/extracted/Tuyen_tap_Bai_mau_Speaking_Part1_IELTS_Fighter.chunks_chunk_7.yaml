@@ -1,0 +1,50 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tuyen_tap_Bai_mau_Speaking_Part1_IELTS_Fighter.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What kinds of meals do you like?
+  user_model_answer: Oh, I adore different meat plates… My mouth is watering whenever I see roast beef, grilled chicken or pork chops… However, I don’t like to cook… That's why I often eat ready meals and take-aways.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you often dinner with your family or friends?
+  user_model_answer: Well, I try to dinner with my family as often as possible… Unfortunately, I don’t have enough time for such dinners due to my busy schedule...
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are there any fruits or vegetables you don’t like?
+  user_model_answer: Yes, there are… I’m not a fussy eater, but I really hate onions and seafood… I try to avoid meals that might contain these products…
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What kinds of food do you particularly like?
+  user_model_answer: 'A: I really enjoy eating fresh fish, homegrown vegetables and fruits and on special occasions meat that comes from local farmers. I also enjoy fresh eggs from neighbours and family members.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Did you like chocolate as a child?
+  user_model_answer: 'A: Of course! Until I discovered I had a lactose intolerance, then I cut it out of my diet as it was making me ill. The ''free from'' options are great, as I can enjoy chocolate without dairy or gluten.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you think most people like chocolate? Why?
+  user_model_answer: 'A: Yes, as it is a lovely sweet treat. Chocolate can give you a sugar high and of course, it tastes delicious. There is nothing better than selecting chocolates and treating yourself after a long day or as a celebration. People enjoy it as a way of treating themselves.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. What kinds of food are most popular in your country?
+  user_model_answer: 'A: Fresh home grown vegetables, fruits and meat are part of the staple diet here in Greece. Particular dishes, such as kokinisto - beef cooked in a red wine sauce is'

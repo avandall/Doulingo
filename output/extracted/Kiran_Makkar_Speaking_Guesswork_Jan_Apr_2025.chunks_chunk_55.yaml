@@ -1,0 +1,139 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 16. What kind of noises are there in our life?
+  user_model_answer: 'There are many different types of noises that we can experience in our daily lives, including: Environmental noises, such as traffic, construction, and nature sounds (e.g. birds singing, wind blowing). Mechanical noises, such as those produced by appliances, machinery, and vehicles. Human-generated noises, such as talking, laughing, and music. Biological noises, such as those produced by animals, insects, and other living organisms. Acoustic noise, such as noise from sound systems, and other audio sources.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 17. Which area is exposed to noise more, the city or the countryside?
+  user_model_answer: Cities tend to have higher levels of noise pollution than rural or suburban areas. This is because cities have a higher population density, more traffic on the roads, and more industrial and commercial activity, all of which can contribute to noise pollution.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 18. How would people usually respond to noises in your country?
+  user_model_answer: I think that the way people respond to noise in India can vary depending on factors such as age, culture, and socioeconomic status. But in general, people in my country may be more accustomed to living with a higher level of noise pollution than people in some other countries. This is because noise is a common part of daily life in India, where cities are often very crowded and busy, and there is a lot of traffic and other activity on the streets.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 19. How can people consider other’s feelings when chatting in public?
+  user_model_answer: I believe there are many ways people can consider others' feelings when chatting in public. Firstly, people should speak at a moderate volume. They should speak in a normal tone of voice and avoiding talking loudly. This can help preventconversation from disrupting the people around them. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 244 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Secondly, people should be aware of their surroundings. They should be mindful of where they are and who might be around them. For example, if they are in a library or a quiet area, it's best to keep the voice down. Finally, they should be sensitive to the topic of conversation and avoid discussing sensitive or controversial topics that might offend or upset others. ACADEMIC READING BOOKS (VOL1, VOL2 & VOL 3) - Each book contains 20-21 Complete Practice Tests (1-20) • Based and designed in accordance with actual Exam pattern.
+    • Passages from the book are often repeated in actual exams.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What are things that young people can teach old people to do?
+  user_model_answer: I think they can teach them anything they are good at. However, if I had to pick something specific I would say the use of technology like how to use mobile phone features, apps and computer softwares.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What skills can young people teach the old besides technology?
+  user_model_answer: I think they can teach them the ability to change and adapt. Old people are generally hesitant and unwilling to take risks and make changes but they are necessary to survive in today’s world. They can also teach them how to take risks.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why older people have problems in learning new things?
+  user_model_answer: I think its about memory. I think people"s memory deteriorates with time and people start forgetting things. For example, sometimes when I am teaching my mother, she forgets the previous steps. However, when I repeat it once or twice, she picks it up.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think showing is a better way than telling during education?
+  user_model_answer: Of course. Its easier to remember things we see. I am not sure why but I think our visual memory is far better. Moreover, there can be misunderstandings when telling something as words can be interpret differently.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think constant training is important for people to study something?
+  user_model_answer: Yes, practice is the key to success. I remember I once watched a video which said that if a person spends about 1200 hours on something, he can become an expert at it. I couldn"t agree more. I remember I taught my mother how to use Microsoft Word and now she knows about it more than me because she uses it much more. 6.) How can the young teach the old? I think the best way way would be show them to do something rather than telling them what to do. Young people need to be patient while teaching and remember that it takes the aged a little bit more time. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 247 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books SPEAKING PART 1 INTRO QUESTIONS www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 248 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. May I know your full name?
+  user_model_answer: 'My full name is Kiranpreet Kaur Makkar. (Note: Full name means given name + middle name if any + surname. Mostly students will speak the name given in the passport, which may not have the surname. So, you must speak your full name in answer to this question)'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How may I address you?
+  user_model_answer: 'You may address me as Kiran. (Note 1: Here you may even speak your nickname. It just means that while asking the next questions, the examiner will call you by that name. Note 2: Many students start speaking their address here. Here, the word ‘address’ has been used as a verb, which means ‘call’. In other words, the question is - How may I call you?)'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. May I see your ID?
+  user_model_answer: 'Here is my passport. (Note: open the first page of the passport and show it to the examiner. You don’t need to say ‘Yes’)'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Where do you come from?
+  user_model_answer: I come from Phagwara. It is a small town between Jalandhar and Ludhiana.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Why did you choose to do that type of work (or that job)?
+  user_model_answer: I chose that work, because I was interested in it.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you like your job?
+  user_model_answer: Yes, I like my job. It is very interesting.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Is it very interesting?
+  user_model_answer: Yes, it is very interesting.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you miss being a student?
+  user_model_answer: Yes, I miss being a student. Now, when I look back I realize that they were the happiest days of my life. STUDIES www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 249 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What subject(s) are you studying?
+  user_model_answer: I’ve just completed my senior secondary in commerce stream. Now I wish to go abroad for my higher education.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Why did you choose to study that subject/those subjects?
+  user_model_answer: I chose these subjects because I was interested in them.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you like your subject? Why/Why not?
+  user_model_answer: Yes, I like my subjects. I think they’re very interesting.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Is it very interesting?
+  user_model_answer: Yes, my subjects are very interesting.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Are you looking forward to working?
+  user_model_answer: Yes, I’m looking forward to a part-time job when I go abroad to study.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Do you prefer to study in the mornings or afternoons?
+  user_model_answer: I prefer to study in the mornings because at that time I feel very fresh and I can concentrate on my studies.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you live in a house or flat? Or What kind of housing/accommodation do you live in?
+  user_model_answer: I live in a house. It is a two storey brick house.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What’s your favorite room in your home?
+  user_model_answer: My favorite room is my own room, because I’ve decorated it according to my taste.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What have you done to your room to make it look nice?
+  user_model_answer: I keep my room spic and span. The walls are painted light pink because it is my favorite color. There are floral curtains.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Who do you live with?
+  user_model_answer: I live with my parents and brother.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Which room does your family spend most of the time in?
+  user_model_answer: My family spends most time in the living room. We have our meals there. We watch TV together and also entertain informal guests in that room.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. How long have you lived there?
+  user_model_answer: I have lived there since my birth.

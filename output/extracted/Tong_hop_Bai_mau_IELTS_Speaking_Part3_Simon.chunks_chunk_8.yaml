@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part3_Simon.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you think the traditional classroom will disappear in the often; existing in large future?
+  user_model_answer: 'numbers or in many places: I don''t think it will disappear, but it might become less'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '1. Do you think it''s important for boys to play with "boys'' toys" and for important effect on girls to only play with "girls'' toys"? somebody/something:'
+  user_model_answer: I think boys naturally seem to prefer playing with "boys' toys" and girls quan trọng
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think it's good if parents only buy "educational" toys for worry about their children?
+  user_model_answer: No, I don't agree with only giving children educational toys. In my somebody/ something opinion, children learn by playing with whatever interests them. = to keep thinking Children invent their own games, even if they don't have any toys at all. about unpleasant It's important for children just to have fun; there will be plenty of time things that might for parents to worry about education when their children get older. happen or about problems that you

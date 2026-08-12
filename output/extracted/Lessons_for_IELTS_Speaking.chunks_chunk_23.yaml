@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 15. Finish with a rounding-off question. Choose one from the examples below or make up a suitable question of your own. **For example:** - Do you think you'll visit this town/city again?
+  user_model_answer: '- Would you recommend this town/city as a good place to visit?'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 22. Listen to one candidate's response to a question in Part 3 of the Speaking test about the negative impact of tourism. **Examiner:** Now, let's discuss more general ideas about tourism. Let's start with tourism and the environment. Can you tell me about any negative impact that tourism can have on the natural environment?
+  user_model_answer: '**Candidate:** Okay, negative impact. Mmm. Firstly, if we think about how the tourists get to their destination... They have to travel by plane, boat, bus, train, or car - and every kind of transport produces air pollution and noise pollution. Then, there is the problem of resources. Tourists use lots of resources like energy, food, and specially water. I think visitors, especially westerners, use lots more water than the local population. The tourist facilities, you know, the infrastructure they need, like hotels and roads, results in forest being cut down or the habitat of animals being destroyed. Tourists make a lot of rubbish, also. And if they go to look at animals, the animals can be disturbed by the noise and their habitat might be damaged. Tourists often walk on plants and damage them; they sometimes take plants, too, or bits of coral from under the sea, as souvenirs - and in this way, they destroy the environment.'

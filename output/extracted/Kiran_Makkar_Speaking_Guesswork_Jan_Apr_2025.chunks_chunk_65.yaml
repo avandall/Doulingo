@@ -1,0 +1,105 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 87. Clothing What kind of clothes do you like to wear?
+  user_model_answer: I like to wear jeans and a T-shirt. They are both comfortable and stylish. Some|mes, I have to wear formal suits for special occasions, and although they look nice, they are never comfortable. Do you prefer to wear comfortable and casual clothes or smart clothes? I prefer to wear comfortable and casual clothes. It doesn't mean I like to wear pajamas all day. Comfortable clothes like T-shirts and jeans can be smart and can look put-together. Do you like wearing T-shirts? Yes, I love wearing T-shirts, and graphic T-shirts are my favorite. I like the ones with wi…y quotes on them. Do you spend a lot of nme choosing clothes? No, I'm not too fond of shopping and don’t spend too much |me choosing clothes. I have also started to shop online. It is so much more convenient and |me-saving. These days, most stores have websites, and online retailers like Amazon/Flipkart also have good clothing brands.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 88. Musical Instruments Have you ever learned to play a musical instrument?
+  user_model_answer: Yes, I have always wanted to learn Piano. There were few op|ons in my hometown when I was growing up. A couple of years ago, I found a teacher online. I take weekly lessons from him, and I am s|ll learning. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 288 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books What musical instruments do you enjoy listening to the most? I enjoy listening to Piano the most. I ﬁnd it very soothing, and it relaxes me. I can have it on in the background when working and doing other chores. Do you think children should learn to play an instrument at school? Yes, children should learn to play an instrument at school. It should be part of their curriculum. If they learn it at school, they are more commi…ed to learning. They have to prac|ce it daily as they are also graded on it. They primarily play in a group and learn to coordinate with others. Do you think music educanon is important
+    for children? Yes, music has so many beneﬁts for children. Learning to read music helps children perform be…er in academics. It improves their focus, gives them conﬁdence, and makes them more disciplined.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 89. Noise Do you like to stay in a place with a lot of noise?
+  user_model_answer: No, I like to stay away from noise. Noisy places give me stress, and I can’t concentrate on my work. What kinds of noises are there in the area where you live? There are so many kinds of noises in our area. Traﬃc horns, noises from construc|on sites, loudspeakers, and dance events at marriages and par|es are some that come to mind. Do you want to move to a quieter place? Yes, some|mes I want to move to a small village away from the big and bustling ci|es. But it is not prac|cal as I have to work, and my job is in a city. Do you think there is too much noise in today's world? Yes, there is too much noise in today’s world. There are too many cars on the roads, too many planes in the skies, and too many construc|on sites. Ci|es are expanding, and newer buildings and apartments are being built to accommodate the growing popula|on. Is making noise one of people's rights? No, it is not. Excessive noise can disturb other people, and people should be mindful of their neighbors
+    and surroundings. You have every right to complain to the authori|es if people are being very noisy, especially at night.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 90. Tea and Coffee Do people like tea and coﬀee nowadays?
+  user_model_answer: Yes, tea and coﬀee are very popular. Most people like to start their day with their morning cup of tea or coﬀee. Do you prefer to use tea or coﬀee to serve your guests? I usually ask the guests what they would like to have. I drink both tea and coﬀee and serve what my guests prefer. When was the last nme you had a cup of coﬀee or tea? I had it this morning. I am addicted to my morning cup of tea. I can't func|on without it, and I am upset all day if I don't have it. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 289 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Do you usually buy your coﬀee in a coﬀee shop? No, I don't go to any specialty coﬀee shop. I get it from our local grocery store.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 91. Robots Are robots important?
+  user_model_answer: Yes, robots are important for various tasks and industries. They not only make our lives comfortable, but they also help reduce accidents and save human lives. Do robots aﬀect people’s lives? Yes, robots have the poten|al to signiﬁcantly aﬀect people's lives, especially in areas like heavy industries, healthcare, and defence. Have you ever watched a movie about robots? Yes, I have watched movies about robots, like "I, Robot" and "Wall-E." Should we let a robot drive for us for long |me? I don’t think the technology is safe and reliable enough at the moment, but in the future, it might be possible to use robots for long journeys. What can robots do for you at home? Robots can perform tasks like cleaning, vacuuming, and even assis|ng with cooking or home security.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 92. Gifts Have you ever sent handmade gi•s to others?
+  user_model_answer: Yes, I have sent handmade gi•s to others on special occasions. For example, I used to make cars for my friends and parents when I was younger on their birthdays. Nowadays, I don't have |me to make handmade gi•s, and I normally prefer buying something that my friends or parents need. Have you ever received a great gi•? Yes, I have received some wonderful gi•s that meant a lot to me. Recently, my mother gi•ed me a hand-knit sweater, and it was all the more special because it took her nearly three months to make it. What do you consider when choosing a gi•? When choosing a gi•, I consider the recipient's interests, preferences, and the occasion itself. And, of course, I also consider the budget. Do you think you are good at choosing gi•s? I believe I'm reasonably good at choosing gi•s, as I try to make though„ul selec|ons based on the person and the event. Many |mes, my friends also call me and appreciate my gi• selec|on, so I am sure I am pre…y good at it. www.youtube.com/makkarielts
+    www.instagram.com/makkarielts www.makkarielts.com/books 290 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 93. Geography How do you like geography?
+  user_model_answer: I ﬁnd geography quite interes|ng as it helps us understand the world around us. Do you think geography is useful? Yes, I believe geography is very useful as it provides knowledge about our planet, its features, and how humans interact with it. Have you ever learned geography? Yes, I have learned geography as a subject in school, and I con|nue to explore it out of personal interest. Do you want to be a geography teacher? While I appreciate geography, I don't have plans to become a geography teacher.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 94. Films What ﬁlms do you like?
+  user_model_answer: I enjoy a wide range of ﬁlms, but my favourites are typically ac|on and adventure movies. Did you omen watch ﬁlms when you were a child? Yes, I used to watch ﬁlms quite o•en when I was a child, especially animated and family-oriented ones. Did you ever go to the cinema alone as a child? No, I rarely went to the cinema alone as a child; I usually went with family or friends. Do you omen go to the cinema with your friends? Yes, I do go to the cinema with my friends occasionally, especially when there's a new release we're all excited about. Do you think going to the cinema is a good way to spend nme with friends? Yes, I believe going to the cinema is a great way to spend quality |me with friends, enjoying a good ﬁlm together and discussing it a•erward.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you love ice cream?
+  user_model_answer: Yes, it is one of my favourite desserts especially in the summers.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Did you often eat ice cream when you were younger?
+  user_model_answer: Yes I would often love to eat ice cream as a child.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Are there shops selling ice cream near the place where you live?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 291 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, there are many ice cream shops near my house. Also most of the grocery stores have refrigerators to store ice creams
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Can you make ice cream yourself?
+  user_model_answer: No I don’t know how to make icecream, but I think it should not be too difficult because ice cream has just two ingredients that is milk and sugar.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 96. Concentrate Can you concentrate for a long time?
+  user_model_answer: No I find it difficult to concentrate for an extended period. Could you concentrate for a long time when you were younger? No, my concentration was equally bad even then. I would get distracted easily. Is it easy for you to concentrate in a noisy place? Not at all. Loud cachophonic noise makes me irritable. How do you stay focused? I medidate every day in the morning.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you often fix things?
+  user_model_answer: Yes I do try to fix things if I feel I can do so.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Did you learn to fix things when you were younger?
+  user_model_answer: Yes my parents would fix things if they stopped working or broke, they would encourage my brother and me to do so too rather than throwing them away.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What do you do when one thing is broken and cannot be fixed?
+  user_model_answer: I look for someone who can still find a use for it, if not then I discard it.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think it is necessary for people to learn to fix things?
+  user_model_answer: Yes, knowing how to repair things is a skill that everyone should possess.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How do you keep healthy?
+  user_model_answer: I exercise everyday in the morning. Also, I try to eat healthy meals and avoid junk food.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What is your favourite sport?
+  user_model_answer: My favourite sport is cricket. In fact, it is the favorite sport of most of the people in India.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Are there health classes in your school?
+  user_model_answer: Unfortunately not. In my school more focus is given to academics.

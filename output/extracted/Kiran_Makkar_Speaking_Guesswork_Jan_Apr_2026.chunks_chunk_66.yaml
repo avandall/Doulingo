@@ -1,0 +1,96 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 29. Chatting Do you like chatting with friends?
+  user_model_answer: No, I don’t like chatting. I prefer doing something productive rather than chatting with friends. What do you usually chat about with friends? Like I said, I don’t usually chat with friends but if I do talk, it’s about what’s happening in my life or their life. Sometimes, I also talk about the news. Do you prefer to chat with a group of people or with only one friend? When I do chat, it’s normally with only one friend. I don’t like chatting with many people at one time. Do you prefer to communicate face-to-face or via social media? I normally Facetime my friends. Most of friends live far away, so it’s not possible to meet them face to face often. Do you argue with friends? Yes, of course. I do argue sometimes. One of my friends is always late. I have had many arguments with him about it. Once I missed my train just because of him.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 30. Friends Do you invite friends to your home?
+  user_model_answer: 'Yes, I love having friends over at my place, we always have a good time. Do you prefer to spend time with one friend or with a group of friends? I prefer spending time with a smaller group of friends as it feels more personal and I get time to interact with everyone. Do you often go out with your friends? Yes, we often go out to movies, malls, cafe’s etc. Where do you often meet each other? We usually meet at home, coffee shops, malls and movie theaters. Do you have a friend you have known for a long time? Yes, I have one friend I have known for years. He is very important to me, and we always make time to catch up. What do you usually do with your friends? We usually go out for meals, movies or just hang out at home. How important are friends to you? Friends are very important to me, especially my childhood friends. We know each other so well and always make time to stay in touch. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 294
+    Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts Why are some places suitable for a meeting while others are not? It’s just because there is no privacy in some places and it is quite challenging Is there a difference between where you meet friends now and where you used to meet them in the past?'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 31. Art Do you like art?
+  user_model_answer: Yes, I like art. Art gives meaning to life. Art is what differentiates us from animals. I like all sorts of art. Do you like visiting art galleries? I live in small town. Unfortunately, there are no art galleries in my hometown. If I get a chance to visit a renowned art gallery while travelling, I will surely visit it. Do you want to be an artist? No, I don’t want to be artist. I am not that talented. I love enjoying art, but I don’t think I would be good at creating art. Do you like modern art or traditional art? I like both. I love certain modern art forms like 3D origami, but I also like traditional art forms like pottery.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 32. Shoes Do you like buying shoes? How often?
+  user_model_answer: No, I don’t like buying shoes. I have just 2-3 pairs. One for running, one for casual wear and one set of formal leather shoes Have you ever bought shoes online? Once I bought shoes online for my mother, but I have never bought shoes for myself online. How much money do you usually spend on shoes? It ranges. I have spent even as low as Rs 300 and as high as Rs 15000. But normally, I buy shoes in the range of Rs 2000 to Rs 3000. Which do you prefer, fashionable shoes or comfortable shoes? Comfort over looks any day. My feet are quite sensitive, and they start aching all over if wear something uncomfortable, so I prefer comfortable shoes.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 33. Museum Do you think museums are important?
+  user_model_answer: 'Yes, I do. Museums are important because they preserve history, culture, and art, and they also give people a chance to learn in a more interactive way. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 295 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts Are there many museums in your hometown? Not really. My hometown doesn’t have many museums, but there is small museum on Bhagat Singh about 15 kms from my hometown. Do you often visit a museum? To be honest, not very often. I usually only when I am traveling to another city. When was the last time you visited a museum? The last time I visited a museum was about a year ago, when I went to a history museum in Delhi. I remember being really impressed by the ancient artifacts there.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 34. Having a Break How often do you take a rest or a break?
+  user_model_answer: I usually take short breaks of around 5-10 mins after every hour or so, especially when I’m studying or working for long hours. What do you usually do when you are resting? Normally, I just scroll through my phone, have a cup of tea. Sometimes, I also listen to music to relax. Do you take a nap when you are taking your rest? Not usually, but if I’m really tired, I take a short nap during the afternoons. How do you feel after taking a nap? If it’s a short nap, I feel refreshed and more energetic. But if I sleep too long, I actually feel a bit lazy afterward.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 35. Internet 1.​ ​When did you start using the internet?
+  user_model_answer: 'I started using the internet when I was in 10th standard. At that time, I got my first smartphone and so I bought a net pack and started using the internet and the first thing I did was to make an email account. 2.​ ​How often do you go online? I usually spend at least four to five hours on the internet. I use it for studies, for watching, playing games and chatting with my friends. 3.​ ​How does the internet influence people? Firstly, people are going out less because they can almost anything sitting at their home like shopping or banking. Secondly, people have become less social as they meet each other face to face less often. Finally, it has impacted their health. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 296 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts 4.​ ​Do you think you spend too much time online? Yes, I think so. I
+    am spending about four to five hours on the internet every day and I think I should not spending more than 2 hours. 5.​ ​What would you do without the internet? I can’t imagine a life without the internet but if it happened I think I would spend more time with my loved ones and I would give more time to my hobbies and interests.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 36. Praise/ encouragement 1.​ ​Have you had any achievements recently?
+  user_model_answer: Just two months, I graduated in bachelor’s of nursing and I stood second in the whole class. 2.​ ​How do you feel when you are praised? I feel very happy when someone praises me. I feel motivated to do even better. 3.​ ​When was the last time when you praised someone? Last year, I praised my friend when she came first in a dance competition. 4.​ ​Do you think parents should often praise and encourage their children? Yes, parents should often praise and encourage their children so that they do better in the future and feel motivated. 5.​ ​Have you ever been praised or encouraged by your teacher? Yes, in my third year of graduation when teacher praised me when I stood 1st in the whole class.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Where did you go for your last holiday?
+  user_model_answer: I went to Shimla for the last holiday. It’s a famous hill station in the foothills of Himalayas.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like holidays? Why?
+  user_model_answer: Of course. Who doesn’t like holidays. I think they are just release the stress of work and studies and provide a break from the monotony of everyday life.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Which public holiday do you like the best?
+  user_model_answer: I like Diwali the best. We get a lot of gifts on Diwali. Also, I love lighting up the house with diyas and candles.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do you do on holidays?
+  user_model_answer: If it’s a festival, we take part in special traditions like cooking special food and decorating the house or go to a religious place. Otherwise, I spend time with my family. We either go out and just stay home and watch a TV show or a movie.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you like to spend your day at home?
+  user_model_answer: Yes, sometimes. After a few hectic or busy days, I prefer to just stay home and chill. However, sometimes I also get bored staying at home and doing nothing.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you prefer a leisurely or a busy holiday?
+  user_model_answer: 'It depends upon the company. With my friends, I prefer a busy holiday like going to different tourist sites, doing trekking, trying new cuisines. On the other hand, with my parents, I just like to stay at a resort and relax. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 297 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you often go to library?
+  user_model_answer: No, unfortunately, my city doesn’t have a public library.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What do you usually in the library?
+  user_model_answer: Like I said, I don’t normally go to the library. However, people normally just go read books or complete their assignments or work. Nowadays, people visit libraries more for their peaceful environment than for borrowing books or other reference material.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Did you go to the library when you were a kid?
+  user_model_answer: Yes, my school had a very spacious library. I used to go there every week to borrow books.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do Indian kids often go to the library?
+  user_model_answer: I don’t think reading is a very popular hobby in India. So, I don’t think children go to libraries often. But, I think there has been a shift after Harry Potter, which has made reading more fashionable.

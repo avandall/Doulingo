@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '15. Now, say the sentences again to your partner. Sometimes, you will need to ask the examiner to repeat the question. Here is some useful language to do this: - Pardon?'
+  user_model_answer: '- I''m sorry, could you repeat that, please? - Sorry, what was that? - I''m sorry, I didn''t catch that. - Could you say that again, please? **Your intonation is important.** When using these expressions, your voice should go up at the end of the word or sentence. In English, this shows politeness. For example: *Pardon?*'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 17. Work in pairs. Use the questions below to practise the language in Activity 15. One person asks a question and the other asks for repetition, using one of the expressions. Focus on using the correct intonation and make sure you practise with all of the expressions. - What's your favourite food?
+  user_model_answer: '- Do you like to cook? - Do you prefer to eat out or eat at home? - What do you usually eat for breakfast? - Do you like fast food?'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 19. Look at the food in the table below. Which do you prefer for each option? Write your answer in the 'Your preference' column. The first one has been done for you.
+  user_model_answer: '| Option 1 | Option 2 | Your preference | |----------|----------|-----------------| | 1. Hamburgers | Dumplings | Hamburgers | | 2. Chocolate | Rice | | | 3. KFC | Pizza Hut | | | 4. Coca cola | Pepsi | | | 5. Donuts | Bananas | | | 6. Spinach | Cheeseburgers | | | 7. Sprite | Green tea | | | 8. Subway | McDonalds | |'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 31. Think about a meal you have enjoyed and make your own answer to the prompt card. Use the questions below to help you make notes before you speak. - When and where did you eat?
+  user_model_answer: '- Who were you with? - What did you eat? - Why was the meal special?'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Look at the following sports. Can you add any more to the list?
+  user_model_answer: football, hockey, soccer, rugby, athletics, gymnastics, volleyball, table tennis, swimming, golf, American football, basketball, cycling, skiing, snowboarding, skating, kayaking, tennis, weightlifting, squash, surfing, boxing, motor racing, badminton, show jumping, snooker, sailing

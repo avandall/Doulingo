@@ -1,0 +1,170 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Do you like to travel by air?
+  user_model_answer: Yes I would like to travel by air, but unfortunately I have not got the opportunity to travel by air yet.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What was the dream job for you when you were young?
+  user_model_answer: When I was young I wanted to become a pilot www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 336 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Have you changed your mind on your dream job?
+  user_model_answer: Yes I have changed my mind as it is very expensive to become a pilot and it involves lot of studies. But I still plan to take flying lessons.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What kinds of jobs are popular in your country?
+  user_model_answer: In my country computer or IT related jobs are more popular these days because these are well paid jobs.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like animals?
+  user_model_answer: Yes, I like animals. I think they are all unique and beautiful creations of nature and form an important part of our ecosystem.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What's your favourite animal? (Why?)
+  user_model_answer: My favourite animal is dog because I think it is the most affectionate and the most loyal animal. Dogs make excellent companions for humans.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What's your favourite wild animal? (Why?)
+  user_model_answer: My favourite wild animal is a tiger because I think tigers are beautiful creatures and they look very regal.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Are people in your country fond of animals?
+  user_model_answer: Yes, in my country many people are fond of animals. Many people keep pet animals.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do many people in your country keep animals at home (or, keep a pet)? OR Do people in your
+  user_model_answer: country like to raise animals? Yes, people in my country like to keep pet animals. People keep dogs, cats, birds, rabbits, fish, etc. as pets.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What kinds of animals do people in in your county (or, hometown) keep? OR What kinds of
+  user_model_answer: pets do the people have in your hometown? People in my hometown/country have different types of pets like dogs, cats, birds, fish, rabbits, etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Compared with the past, have there been any changes concerning pets in your country/hometown?
+  user_model_answer: I think the only change I can think of is that the number of homes that have pets have increased. Also, there are many people who have started adopting the stray dogs and cats, instead of buying them from a breeder. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 337 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you think pets are important?
+  user_model_answer: Yes, definitely. Pets act as stress reliever and are also said to be therapeutic. They act as good companions and provide security. They also teach us about responsibility and unconditional love.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 9. Do you think cities are suitable places for keeping a pet?
+  user_model_answer: Yes, cities are suitable to keep small pets like cats, smaller breeds of dogs, fish, etc. Farm Animals
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 10. What farm animals do you have in your country?
+  user_model_answer: There are many farm animals in my country, like cows, goats, sheep, buffalos, horses, hens, etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Do you think farm animals are important?
+  user_model_answer: Yes, I think farm animals are important. They are a source of income for many people, especially in the rural areas. They provide us many products like milk, eggs, wool, meat and they can be used for farming, like to plough and till the land.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. How are these animals used? OR In what ways are animals used in agriculture in your
+  user_model_answer: country? Farm animals are used for their products, like eggs, milk, meat etc. or in the fields to plough and to till the land for the crops.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 13. Do you think raising farm animals is important?
+  user_model_answer: Yes, it is important to raise farm animals, as it is a source of livelihood and income for many people living in the rural areas. Also, they provide us with many products.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often use a dictionary?If yes, how often and what for? If no, why not? If not very often,
+  user_model_answer: say how often and why not very often? Yes, I use a dictionary very often, in fact daily. I am a student and I read a lot of text related to my studies. I often come across words I don’t know the meaning of and I use the dictionary to look up the meaning and synonyms.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you prefer to use an electronic dictionary or a dictionary made of paper?
+  user_model_answer: I prefer to use the electronic dictionary now as it is very convenient and I can easily search for a meaning in a matter of a few seconds. I have a dictionary app downloaded on my phone.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. If someone gave you a dictionary as a gift, how would you feel?
+  user_model_answer: I will feel happy, as it is a very useful gift for me or for anyone. We keep coming across new words everyday and everyone should have a dictionary.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think it would be interesting to write a dictionary? OR Do you think it would be
+  user_model_answer: interesting to be part of a team that is writing a dictionary? Yes, I think so. It will be very interesting to understand the details of all the words, like which part of speech they form, what the origin of the word is, its synonyms and many more such details. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 338 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What kind of person do you think writes a dictionary?
+  user_model_answer: A person who writes a dictionary has to have an in-depth knowledge of the language and also needs to know the origin and history of the language. It requires a great deal of work and thoroughness, so the person has to be very patient and thorough.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Which mobile apps do you use?
+  user_model_answer: I use a lot of mobile apps for different purposes like Whatsapp for sending messages to my friends and family members. For social networking I use facebook and for sharing my pictures I use Instagram. Apart from this I use apps to read news or do banking services on my phone
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Which ones do you want to use?
+  user_model_answer: I would like to use apps to know more about jobs or studies related to my field. I believe there is a huge requirement for apps related to specific jobs or courses and these can help people in becoming good and what they do or study.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Which ones are popular in your country?
+  user_model_answer: In my country whatsapp, snapchat and instagram are the most popular apps as people in my country like to spend their time by chatting with each other and sharing their pictures.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you want to make an app?
+  user_model_answer: Yes, I would like to make an App. I would make an app for the IELTS exam which can help students in preparation of the exam and to score good band score.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do old people sleep a lot? Why
+  user_model_answer: Yes old people tend to sleep a lot because due to old age they get tired easily and they need more rest as compared to young people.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What time you usually go to the bed?
+  user_model_answer: I normally go to the bed around 11 PM but if I have important work or have to prepare for exams I sleep early so that I can study or work by getting up early in the morning.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you always have a good sleep?
+  user_model_answer: I am a happy person so I normally have a good sleep, but if I am disturbed about something or my health is not good I find it difficult to sleep. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 339 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think handwriting is still important?
+  user_model_answer: Yes, I think so. Handwriting skills will always be important. Formal letters are needed in business. Writing skills are also needed in writing resumes. We all know that we belong to a global village. Today we have to compete with children all over the world. We have to apply for jobs in multinational companies. So we need good writing skills.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think computers might one day replace handwriting?
+  user_model_answer: Even though technology has reduced the need of writing skills, still, I feel that it is very important in today’s world and will remain in future as well.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you usually write by hand or write using a computer?
+  user_model_answer: Well it depends on the situation, if I am sending an email to my friends or texting them then it is usually by computer or mobile phone. When I am studying and making notes then I usually write by hand.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. When do children begin to write in your country?
+  user_model_answer: Nowadays the children have started writing a lot earlier. They normally join the schools at the age of 4 and they begin to write at the age of five
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think handwriting will die in the future?
+  user_model_answer: No, definitely not. Handwriting will never die. Its need may decrease because of technology; still there will be many areas in which handwriting will be needed. I also feel that, that day is still very far when each and every person on earth will have access to technology.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Do you write letters?
+  user_model_answer: Yes, I do. I write e-mails to my friends and relatives.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. Do you think children should be taught to write like in the old days?
+  user_model_answer: Yes, I think so. Writing is an art, which is going down because of modern technology.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often invite friends to visit your home?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 340 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, I like to invite friends to visit my home. Sometimes we have get-togethers at home and sometimes when we have to study or make a project, I invite my friends over.

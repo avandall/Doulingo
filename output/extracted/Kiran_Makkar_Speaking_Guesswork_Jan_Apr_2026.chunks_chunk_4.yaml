@@ -1,0 +1,50 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What negative effects does technology have on people’s relationships?
+  user_model_answer: Um, one negative effect is reduced time together. Many people spend more time on screens than talking to their family. For example, at home during dinner, everyone is often busy with their phone. This can weaken emotional bonds over time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What are the differences between making friends in real life and online?
+  user_model_answer: 'For Online & Offline Classes (IELTS, PTE, CELPIP, TOEFL, French) • https://g.co/kgs/GBYy9Mi - Phagwara - 9560820208 • https://g.co/kgs/9XnhRqa - Jalandhar - 9888195776 • https://g.co/kgs/xBR5EKQ - Mohali - 8360957299 www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 22 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What are the differences between old and young people when using apps?
+  user_model_answer: Young people are usually faster and more comfortable exploring new features, while older people prefer simple layouts and need more time to get used to updates.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Why do some people not like using apps?
+  user_model_answer: Some people find apps confusing or time-consuming, and others worry about privacy or feel they don’t really need them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What apps are popular in your country? Why?
+  user_model_answer: Social media and payment apps are very popular because they make communication and daily transactions quick and convenient.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Should parents limit their children’s use of computer programs and computer games? Why and
+  user_model_answer: how? Yes, because excessive screen time can affect sleep and studies. Parents can set time limits, monitor content, and encourage other activities like outdoor play.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think young people are more and more reliant on these programs?
+  user_model_answer: 'Yes, young people are becoming more reliant because many parts of their life—learning, entertainment, and even socialising—now happen through digital platforms. 🌍 Student Visa (Canada, USA, UK, Australia, Germany, Europe) + Scholarships • Do you know you can get up to 50% scholarships abroad? 👉 ✅ Get free counselling— • Follow us on Instagram www.instagram.com/makkarielts • https://g.co/kgs/GBYy9Mi - Phagwara - 9560820208 • https://g.co/kgs/9XnhRqa - Jalandhar - 9888195776 • https://g.co/kgs/xBR5EKQ - Mohali - 8360957299 www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 26 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

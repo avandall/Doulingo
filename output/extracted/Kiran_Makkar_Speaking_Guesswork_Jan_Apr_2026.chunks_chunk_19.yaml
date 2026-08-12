@@ -1,0 +1,82 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. Do you think it is important to be able to read a map?
+  user_model_answer: 'www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 88 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts Yes, I think so. In places where there is no internet connectivity, the GPS will not work. Sometimes the battery of the phone may run out. Knowing how to read a map can prove to be an asset in such circumstances.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Is a paper map still necessary?
+  user_model_answer: Yes, definitely. A paper map can show much more details than a digital map can. Secondly, there are places in remote areas where GPS doesn’t work.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 13. Why do some people get lost more easily than others?
+  user_model_answer: Some people are poor with directions, and so can get lost more easily.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. How do people react when they get lost?
+  user_model_answer: 'The reaction of people cannot be generalised. Some keep their cool and think of a way to get out of the scenario. Others may panic. Some may even start crying. “Lost between UK, Canada, and Australia? We’re your GPS 🌏. Call us today or follow us on instagram.com/makkarielts. OUR OFFICES & COACHING CENTRES https://g.co/kgs/GBYy9Mi - Phagwara - 9560820208 https://g.co/kgs/xBR5EKQ - Mohali - 8360957299 https://g.co/kgs/9XnhRqa - Jalandhar - 9888195776 www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 89 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Would people be willing to get up early to watch and enjoy the sunrise?
+  user_model_answer: Well, I think some people are willing to wake up early for a sunrise because it feels peaceful and refreshing. For example, when I visited Shimla, I woke up at 5 am to watch the sunrise from the hills and it was worth it. On the other hand, many people, especially youngsters, prefer sleeping late instead of waking up early.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. When would people watch the sky?
+  user_model_answer: Well, I believe people usually watch the sky in the evening when the sun sets or at night when stars are visible. Sometimes even during the day, like when clouds look beautiful before rain. Personally, I like to sit on my terrace at night and just look at the stars.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do many people pay attention to the shapes of stars?
+  user_model_answer: To be honest, not many people notice the shapes of stars, because life is busy and they don’t spend much time looking up. But some people, especially children or those interested in astronomy, like to recognise shapes such as the Big Dipper or Orion. I remember once in school my teacher showed us star constellations during a night camp.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do people usually see in the sky in the daytime?
+  user_model_answer: Well, in the daytime people usually see the sun, clouds, and sometimes airplanes or birds. If the weather is clear, the sky looks bright blue. On hot summer afternoons, the strong sun is the main thing everyone notices.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What are the differences between things people see in the sky in the daytime and at night?
+  user_model_answer: I think the day sky and night sky are completely different. During the day, the sun, clouds, and birds are visible. But at night, we see the moon, stars, and sometimes satellites. So in simple words, the day sky is bright and active, while the night sky is calm and shining.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do some people like to watch stars at night?
+  user_model_answer: 'Well, I believe people enjoy watching stars because it feels relaxing and makes them think about the universe. For some, it is romantic or even spiritual. For example, my cousin loves stargazing because it helps him clear his mind after a long day. No more fee transfer drama—fast, safe, and stress- free 💸👌. Call us today or follow us on instagram.com/makkarielts. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 91 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What sports do young people like?
+  user_model_answer: I think young people usually like fast and energetic sports like football, basketball, or cricket. These games are social and give them a chance to play with friends. For example, in my area most kids gather in the evening to play cricket.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What kind of people do extreme sports?
+  user_model_answer: Well, I believe people who enjoy challenges and have adventurous personalities go for extreme sports. They are usually not afraid of risks and like to test their limits. For example, my cousin once tried bungee jumping on his trip to Goa.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why are some people willing to try dangerous extreme sports?
+  user_model_answer: According to me, people try dangerous sports because they want thrill and excitement. They feel proud after completing something risky. On the other hand, some people avoid it completely because they value safety more than adventure.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Should people take more into account the risks that extreme sports may bring?
+  user_model_answer: Yes, I think so. Extreme sports can cause serious injuries if precautions are ignored. Wearing proper gear and listening to instructors is very important. Still, some people believe the fun is worth the risk, but I personally feel safety should come first.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Why do people keep inventing new and slightly dangerous sports?
+  user_model_answer: In my opinion, people invent new sports because they get bored of old ones and want something exciting. Another reason is competition, as people like to show they can try something unique. For example, sports like parkour or snowboarding became popular only in recent years.

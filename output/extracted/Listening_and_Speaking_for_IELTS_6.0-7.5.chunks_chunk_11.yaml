@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Look at the sentences (a-h) below. Are the underlined words strong or weak?
+  user_model_answer: a. I'd like to leave home one day but I'm not sure if I'm ready to yet. b. I'm lucky - I've had far better opportunities in life than my parents did. c. I thought young children could be difficult but teenagers can too! d. Couples who don't have much money often wait until they do before having children. e. I loved being part of a big family when I was young and I still do. f. Being shy has never been a disadvantage for me, but I know it can be for some. g. When I was young I would have loved to have an older brother to look up to. h. Children today are sometimes more confident about using technology than their parents and teachers are.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How often do you use the following types of retailers? What type of goods do you buy from them? What are the advantages and disadvantages of each?
+  user_model_answer: a. national chain stores or supermarkets b. independent local shops c. large online retailers d. second-hand or charity shops e. online auction sites

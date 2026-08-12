@@ -1,0 +1,53 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 136. Running Do you go running a lot?
+  user_model_answer: Yes, I like to go running. It is my preferred form of exercise. At the end of the day, if I go running, it relieves me of all the stress, and I can forget all my troubles for some •me. Running keeps me mentally and physically ﬁt. Where do you usually go running? I prefer to run outside than running on a treadmill in a gym as I like to enjoy the scenery and fresh air. I usually go to the park near my house and do 10-15 laps around the park. Many people are walking and running there, and seeing them keeps me mo•vated. When was the last jme you went running? I go running 4-5 days a week. The last I went running was the day before yesterday. What do you think of running as a sport? Running is an excellent sport. It is not a tradi•onal team sport like soccer, cricket, hockey, etc. People compete in many running events like track and ﬁeld, long-distance running, marathons, sprints, and relay runs. It requires a lot of hard work, discipline, and endurance and is very compe••ve.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 138. Helping others Do you usually help people around you?
+  user_model_answer: 'Yes, I usually help people around me. I was fortunate to grow up in a very caring and helpful family. I have seen my parents help their rela•ves, friends, neighbors, and even strangers they met. I have learned the same values from them and like to help others. How you should how do you help people around you, such as neighbors'' family, and friends? I help my parents at home. I am not good at cooking, but I help my mother with the prep work, like cu‰ng vegetables. My father is an avid gardener, and I help him with gardening. I am good at mathema•cs and help my cousins with their math homework. Somedays, I give my neighbor’s son a ride to school on my way to work. Do your parents teach you how to help others? Yes, my parents have always taught me to be compassionate and help others in •mes of need. They also taught me to help others without expec•ng anything in return. Did your parents help you a lot when you were young? Yes, my parents helped and guided me when I was
+    young. I deeply respect them and am grateful to them for being there for me whenever I needed them. What have you done to help the elderly? www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 338 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts I like to help the elderly by talking to them and listening to their life stories. It''s common for them to feel lonely once they are re•red and are at home. Talking to them and giving them your •me is one way to help them. I also bring over any groceries or medicines they might need.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 139. Maps Do you oien use maps?
+  user_model_answer: Yes, I use maps o„en. I use them when I am outside my hometown, in ci•es I am not very familiar with. I use Google Maps and Waze. I am not very good with direc•ons, and I get lost if I don’t use a map. Do you use paper maps? I prefer to use GPS apps and don’t use paper maps. I only remember using a paper map recently at Jim Corbeˆ Na•onal Park, where we went for vaca•on. The phone signal was not good, and we were given a paper map at the entrance to the park. How oien do you use maps on your phone? I use it whenever I have to go to a new place or places I have visited before but don't remember all the routes. In my hometown, I hardly use it as it’s a very small town, and I am familiar with most streets and roads. Do you have maps at home? No, I don’t have maps at home. I do have an old Atlas in our bookshelf, but I don’t use it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 140. Clothing What kind of clothes do you like to wear?
+  user_model_answer: I like to wear jeans and a T-shirt. They are both comfortable and stylish. Some•mes, I have to wear formal suits for special occasions, and although they look nice, they are never comfortable. Do you prefer to wear comfortable and casual clothes or smart clothes? I prefer to wear comfortable and casual clothes. It doesn't mean I like to wear pajamas all day. Comfortable clothes like T-shirts and jeans can be smart and can look put-together. Do you like wearing T-shirts? Yes, I love wearing T-shirts, and graphic T-shirts are my favorite. I like the ones with wiˆy quotes on them. Do you spend a lot of jme choosing clothes? No, I'm not too fond of shopping and don’t spend too much •me choosing clothes. I have also started to shop online. It is so much more convenient and •me-saving. These days, most stores have websites, and online retailers like Amazon/Flipkart also have good clothing brands.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 141. Musical Instruments Have you ever learned to play a musical instrument?
+  user_model_answer: 'www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 339 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts Yes, I have always wanted to learn Piano. There were few op•ons in my hometown when I was growing up. A couple of years ago, I found a teacher online. I take weekly lessons from him, and I am s•ll learning. What musical instruments do you enjoy listening to the most? I enjoy listening to Piano the most. I ﬁnd it very soothing, and it relaxes me. I can have it on in the background when working and doing other chores. Do you think children should learn to play an instrument at school? Yes, children should learn to play an instrument at school. It should be part of their curriculum. If they learn it at school, they are more commiˆed to learning. They have to prac•ce it daily as they are also graded on it. They primarily play in a group and
+    learn to coordinate with others. Do you think music educajon is important for children? Yes, music has so many beneﬁts for children. Learning to read music helps children perform beˆer in academics. It improves their focus, gives them conﬁdence, and makes them more disciplined.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 142. Noise Do you like to stay in a place with a lot of noise?
+  user_model_answer: No, I like to stay away from noise. Noisy places give me stress, and I can’t concentrate on my work. What kinds of noises are there in the area where you live? There are so many kinds of noises in our area. Traﬃc horns, noises from construc•on sites, loudspeakers, and dance events at marriages and par•es are some that come to mind. Do you want to move to a quieter place? Yes, some•mes I want to move to a small village away from the big and bustling ci•es. But it is not prac•cal as I have to work, and my job is in a city. Do you think there is too much noise in today's world? Yes, there is too much noise in today’s world. There are too many cars on the roads, too many planes in the skies, and too many construc•on sites. Ci•es are expanding, and newer buildings and apartments are being built to accommodate the growing popula•on. Is making noise one of people's rights? No, it is not. Excessive noise can disturb other people, and people should be mindful of their neighbors
+    and surroundings. You have every right to complain to the authori•es if people are being very noisy, especially at night.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 143. Tea and Coffee Do people like tea and coﬀee nowadays?
+  user_model_answer: 'Yes, tea and coﬀee are very popular. Most people like to start their day with their morning cup of tea or coﬀee. Do you prefer to use tea or coﬀee to serve your guests? I usually ask the guests what they would like to have. I drink both tea and coﬀee and serve what my guests prefer. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 340 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

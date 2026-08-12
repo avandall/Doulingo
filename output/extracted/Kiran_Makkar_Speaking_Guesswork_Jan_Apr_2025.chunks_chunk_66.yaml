@@ -1,0 +1,194 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What do you do when one thing is broken and cannot be fixed?
+  user_model_answer: I look for someone who can still find a use for it, if not then I discard it.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think it is necessary for people to learn to fix things?
+  user_model_answer: Yes, knowing how to repair things is a skill that everyone should possess.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How do you keep healthy?
+  user_model_answer: I exercise everyday in the morning. Also, I try to eat healthy meals and avoid junk food.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What is your favourite sport?
+  user_model_answer: My favourite sport is cricket. In fact, it is the favorite sport of most of the people in India.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Are there health classes in your school?
+  user_model_answer: Unfortunately not. In my school more focus is given to academics.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Is it easy for people to exercise in your country?
+  user_model_answer: Yes, the government has installed open gyms in lot of parks, so people can exercise everyday.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What was your childhood dream?
+  user_model_answer: My childhood dream was to become a pilot because I liked planes a lot.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Are you the kind of person who sticks to dreams?
+  user_model_answer: Well I try to pursue my dreams although I don’t think that I am successful everytime
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What is your dream job?
+  user_model_answer: I would like to become a teacher because I believe it is one of the best jobs in the world.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think you are an ambitious person?
+  user_model_answer: Yes, I have many goals in my life which I would hopefully achieve.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 100. FRIENDS How important are friends to you?
+  user_model_answer: My friends are really important to me. I enjoy spending time with my friends. Do you often go out with your friends? Yes, I often go out with my friends. Mostly to the movies or shopping malls. Where do you often meet each other? We often meet at the playground, shopping centres or at eating joints. What do you usually do with your friends? Usually we spend time chit chatting or doing some activity together like watching movies
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 101. FAVOURITE DAY Which day is your favourite day?
+  user_model_answer: Sunday is my favourite day as I can relax and spend some time on entertaining myself, either by reading a book or watching a movie. Which day is your least favourite day? I absolutely hate Mondays. I always have Monday blues. How do you usually spend your time? I normally spend 6-7 hours on studying. Rest of the time I try to exercise or run some errands for my parents.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 102. RAIN Do you like rainy days?
+  user_model_answer: Yes I do love rainy days during summers as they bring relief from scorching heat. Does it rain much in your city? It normally rains a lot from July to Septmember. It is also called as monsoon season in India Would you like to live in a place that is dry or wet? I’d prefer to live in a dry place. Although I like rains but if it rains a lot, like, for more than a week then it becomes depressing for me. Would you change your plan if it rained? May be, actually, it would depend on whether the plan involves indoor or outdoor activity. If it is outdoor activity like playing any sport, then I would definitely change it. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 293 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. When was the last time you had a few days off?
+  user_model_answer: It was during the Diwali festival.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What do you usually do when you have your days off?
+  user_model_answer: Usually I like to sit and relax during my days off but if it is a long holiday I like to travel.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you usually spend your days off with your parents or with your friends?
+  user_model_answer: I would say it depends on my plans. Sometimes I plan outing with friends and sometimes I stay at home with parents
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What would you like to do if you had a day off tomorrow?
+  user_model_answer: I would like to go and watch a movie because I feel I deserve a break after my exam.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like bags?
+  user_model_answer: Yes, I like bags. I have different bags for different occasions. I carry a backpack to my school/college/classes, as I can easily carry my books in it. I have special bags for formal occasions, shopping and everyday use.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What types of bags do you like?
+  user_model_answer: I like bags that are easy to carry, like backpacks, sling bags and totes, and I can use such bags to easily accommodate the things I need. I also like bags that have a few compartments, so that I can keep my things organized. m a kkar IELTS
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you usually carry a bag (when you go out)?
+  user_model_answer: Yes, I usually carry a bag when I go out, however, the type of bags I use for different occasions vary.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. (Similar to above) Do you have different bags for different occasions (or, different purposes)?
+  user_model_answer: Yes, I have different bags for different occasions. I use a backpack when I go for my classes, for formal occasions I have formal bags, for shopping I use totes and sometimes I use a sling bag when I don’t have to shop and the occasion is not formal.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What do you put in these bags?
+  user_model_answer: For my classes or when I go to school/college I usually carry books and stationary in my bag. When going for shopping I carry my wallet, cellphone, and a bottle of water and when travelling I also put medicines and a book or a magazine in my bag. On formal occasions I carry only my wallet and my cellphone.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. What sorts of bags do women like to buy?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 294 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I don’t think it can be generalized, as it depends on the individual choice of the women. Some women like big bags and some like smaller ones, some always use a sling bag and some like a particular color or material of bags. Some women also choose bags from a particular brand
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Is a bag an ideal gift?
+  user_model_answer: I don’t think it is a perfect gift because it’s more of a personal choice, so if I decide to buy a bag for someone, I am not sure if they would have the same design preference as me.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 9. Did you use a backpack when you were a child?
+  user_model_answer: Yes I did have a backpack during my childhood. I used it to carry my school books.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. What kind of bags would you use when travelling?
+  user_model_answer: I prefer to use backpacks because I can put more things in them and they are more comfortable to carry as compared to sling bags,
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 11. Do you change your bags often?
+  user_model_answer: No, my bags generally last longer as I take good care of them. So, I change my bag after 3-4 years.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 105. WILD ANIMALS Are there wild animals in your country?
+  user_model_answer: Yes, there are many wild animals in India like lions, tigers and elephants. Have you ever been to a zoo or a safari park? Yes, I have been to Chatbir zoo, which is located on the outskirts of Chandigarh. What is the animal you would like to see in the wild? I would love to see a lion in the jungle. Are there TV programs about wild animals in your country? I don’t watch TV programs a lot, so I cant say for sure.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What's the most famous wild animal from your country?
+  user_model_answer: India is a diverse country and many wild animals are found in India. However, I believe that the Bengal Tiger is the most famous wild animal in my country and it is also our national animal.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What's your favourite wild animal (from your country)?
+  user_model_answer: The Bengal Tiger is my favourite wild animal.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you like to watch TV programs about wild animals?
+  user_model_answer: Yes, I like watching TV programs about wild animals. It is very interesting to see wild animals in their natural habitat and all that they must do to survive. One program that I saw recently is a documentary on Netflix called Our Planet.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Did you learn something about wild animals at school?
+  user_model_answer: Yes, we were taught about wildlife in schools especially about wildlife conservation. The dangers wildlife is facing and how human actions like poaching, deforestation, etc. are leading to their extinction.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Where can you see wild animals?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 295 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books National parks, wildlife reserves are good places to see wild animals. Jim Corbett National park in Uttarakhand has a lot of elephants, leopards, and tigers
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. In which country do you think you can see many wild animals?
+  user_model_answer: Countries in Africa like Namibia, Zimbabwe have a lot of wild animals.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Where do you go to school?
+  user_model_answer: I recently completed my senior secondary education, so I don’t go to school anymore.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you go to a good school?
+  user_model_answer: Like I mentioned before I don’t go to a school now but the school I went to was the best school in my town.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you like your teachers?
+  user_model_answer: Yes I loved my teachers at my previous school.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you like your current learning atmosphere?
+  user_model_answer: At present I am preparing for my higher education so there is not much pressure of studies and exams.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. What are the differences between your school and other schools?
+  user_model_answer: I have hardly met students from other schools so I cant say much on how the other schools are different
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Is there anything you want to change about your school?
+  user_model_answer: Yes, I would like to add more sports facilites for students, especially for indoor sports. Outer Space and Stars
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Have you ever learnt about outer space and stars?
+  user_model_answer: Yes, there was a chapter on the solar system in my science book. So, I read about the different planets in our solar system
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like science fiction movies? Why?
+  user_model_answer: Yes, I love science fiction movies because they are a great source of entertainment. My favourite science fiction movie is Avatar.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you want to know more about outer space?
+  user_model_answer: Yes, I want to know about black holes and how the universe was formed.

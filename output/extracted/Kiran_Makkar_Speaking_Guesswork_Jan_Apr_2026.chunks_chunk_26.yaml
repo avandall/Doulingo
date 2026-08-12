@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think it is a good choice to travel by plane?
+  user_model_answer: Well, yes, I think travelling by plane is a good choice when time is limited. It is the fastest way to cover long distances. For example, once we had to attend a wedding in South India, and by flight we reached in just three hours, but by train it would have taken two days. Of course, it can be expensive, so not everyone chooses it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What are the differences between group travelling and travelling alone?
+  user_model_answer: According to me, group travelling is more fun because you share experiences, and it feels safer. Travelling alone gives more freedom since you don’t have to adjust to anyone’s schedule. For instance, when I went with my friends to Shimla, it was very lively, but when I travelled alone once, I could explore at my own pace.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What do we need to prepare for a long journey?
+  user_model_answer: I believe for a long journey, the most important thing is planning. You need to carry enough money, clothes, and medicines. Also, checking the vehicle or booking tickets in advance saves stress. Personally, I always pack some snacks and water because sometimes you don’t get food easily on the way.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why do some people like making long journeys?
+  user_model_answer: Some people enjoy long journeys because they see them as an adventure. They like watching changing scenery and trying new experiences on the way. My uncle, for example, loves road trips because he feels the journey is as enjoyable as the destination. On the other hand, some people may find it tiring and boring.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Why do some people prefer to travel in their own country?
+  user_model_answer: In my opinion, people prefer local travel because it feels easier and more affordable. They know the language, food, and culture, so there is less stress. For example, my parents mostly travel within India as they feel comfortable and safe here.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do some people prefer to travel abroad?
+  user_model_answer: 'I think many people choose foreign travel because they want to experience different cultures and lifestyles. Visiting new countries feels exciting and educational. For instance, my cousin went to Europe last year and said he learned so much about history and traditions there, which is something you can’t get by staying only in your country OUR OFFICES & COACHING CENTRES https://g.co/kgs/GBYy9Mi - Phagwara - 9560820208 https://g.co/kgs/xBR5EKQ - Mohali - 8360957299 https://g.co/kgs/9XnhRqa - Jalandhar - 9888195776 www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 121 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

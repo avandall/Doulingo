@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Improve_Your_Skills_Listening_Speaking_IELTS.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How many syllables are there in each of these words for describing places?
+  user_model_answer: pleasant / dynamic / flat / peaceful / cramped / bungalow / detached / overpriced
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Look at the pictures with a partner and answer the questions which follow. a. What do you think each item reminds the speaker of?
+  user_model_answer: b. Does the train ticket trigger happy or sad memories? How do you know? c. Is there anything which triggers happy memories for you? If so, what? d. Are your happy memories similar to your partner's?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. The questions below are taken from a matching task. Can you predict any of the answers?
+  user_model_answer: How does the lecturer describe each kind of history? T = a traditional type of history M = a modern type of history F = a type of history which looks to the future Write the correct letter T, M or F next to questions 4-10.

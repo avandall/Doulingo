@@ -1,0 +1,174 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you like solving word puzzles or number puzzles? Which is more difficult for you?
+  user_model_answer: I am good at math, so I find number puzzles easier, but I also love solving word puzzles. I also
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think it is good for old people to solve puzzles?
+  user_model_answer: Yes definitely, it keeps their mind sharp and active.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do people in your country often say, ‘thank you’?
+  user_model_answer: No, it’s not common. People do smile and show their appreciation through other gestures, but people don’t often say thank you.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. On what occasions do people often say, ‘thank you’?
+  user_model_answer: People normally say thank you when the other person goes out of the way to help them. People don’t often say thank you in everyday life.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What kind of public transportation do you usually take?
+  user_model_answer: I normally use the train. In buses, I feel road sick, so I prefer the train.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. When do you usually take public transportation, in your everyday life or when you are travelling?
+  user_model_answer: For short distances, I prefer using my own car and I only use public transportation for long distances.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Does your name have any special meaning?
+  user_model_answer: 'Yes, my name is Indroop. It means the avatar of Lord Inder, the God of Rain, according to Hindu mythology. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 301 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How would you choose names for your next generation?
+  user_model_answer: I would like to keep a unique name. So, I think I will be taking the help of Chatgpt or any other AI for keeping the name.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Does anyone in your family have the same name as you?
+  user_model_answer: No, I am the only one with this name in my family and it is a pretty unique name. I think there are very few people with the same name globally.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are there any differences between how Indians name their children now and in the past?
+  user_model_answer: Yes, in the past, people used to give importance to religious books. A special letter was chosen by religious gurus, and the name was kept starting with that letter. Nowadays, people don’t believe in such traditions and people just name their kid with the help of the internet.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Are there any names that are more popular than others in India?
+  user_model_answer: Yes, there are certain names like Gurpreet, Gagan, Aakash, Rahul and Shahrukh which are common. I remember in my class there were three girls with the name Gagan and none of them used sir names. It led to some big misunderstandings.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often wear jewelry?
+  user_model_answer: No, I personally, I don’t like the feel of anything like a metal or plastic touching my skin. So, I don’t wear jewelry. I don’t even like wearing a wristwatch for the same reason.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What types of jewelry do you like?
+  user_model_answer: I like plain, subtle jewelry. I think it gives a more elegant look.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you usually buy jewelry?
+  user_model_answer: No, I have never bought jewelry. I have accompanied my parents to the jewelry store, but I have never chosen the jewelry.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why do you think some people like to wear a piece of jewelry for a long time?
+  user_model_answer: Some people like to wear a piece of jewelry for a long time as it has emotional value. For example, a family member or loved one may have gifted them that piece of jewelry. Moreover, jewelry like rings become a part of the person and people feel something is missing when they take it off. Finally, a jewelry may have religious significance like the ‘Kara’ in Sikh religion.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you like geography?
+  user_model_answer: Yes, I do. I love travelling and exploring new places. I think this passion developed only out of my love for geography.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think geography is useful?
+  user_model_answer: Yes, I think geography is very useful. It gives insight into the layout and physical features of the earth like mountains, rivers and oceans. It is also important in certain professions like city planning, environmental protection, and travel and tourism. Finally, it improves understanding of global issues like migration, global warming and so on.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Have you ever learned geography?
+  user_model_answer: Yes, I learnt geography when I was in school. It was a compulsory subject till 10th standard.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you want to be a geography teacher?
+  user_model_answer: 'www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 302 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts No, I am interested in learning more about geography, but I don’t want to be a teacher. I think teaching is a very challenging profession. It requires a lot of patience, and I lack that.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you want to learn more about the geography of other countries?
+  user_model_answer: Yes, I would love to learn more about geography of other countries if I get the opportunity. It gives certain insights about culture which are very fascinating. For example, recently I learnt that in hot countries eat more spicy food because it makes them sweat, which in turn helps them cool down.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do people in your country often give flowers to others?
+  user_model_answer: Yes, people in my country often give flowers and bouquets on special occasions like birthdays, wedding ceremonies, anniversaries and even professional events like retirement or promotions. Nowadays, people have also started giving plants as gifts instead of flowers.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you know anyone who loves flowers?
+  user_model_answer: Yes, in fact I know many people who love flowers. My mother is also one of them. She has more than a 100 flower pots.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Are there a lot of flowers where you live?
+  user_model_answer: No, there are not a lot of flowers, where I live. I live in an urban area and there are not many gardens near my house. However, my mother has a lot of flowerpots. So, there are flowers at our home.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What do you usually do on your birthday?
+  user_model_answer: In the morning, I go to the Gurudwara and take blessings from God. In the evening, I go out with either my friends or family members for a meal.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What did you do on your birthday when you were young?
+  user_model_answer: My day started exactly like it starts now, with a visit to the Gurudwara. In the evening, my parents invited all my friends to my home, I cut the cake, and we played some fun party games.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think it is important for you to celebrate your birthday?
+  user_model_answer: Yes, I think birthdays should be celebrated. I think it is a celebration of being alive and moreover, it brings all friends and family members together.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Whose birthday do you think is the most important to celebrate in India?
+  user_model_answer: I think 2nd October – the birthday of Mahatma Gandhi is the most important birthday celebrated in India. He is considered the father of the nation, and his principles of non- violence are still reflected in our countries’ principles today. Apart from this, another special birthday is 14th April, the birthday of B.R. Ambedkar, the architect of Indian constitution.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like making plans?
+  user_model_answer: 'No, personally, I like going with the flow. I used to make plans earlier and I felt like it took the joy out of things. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 303 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you use paper or your cellphone to make plans?
+  user_model_answer: If I do make plans, I make it on paper. Maybe, I am old school, but I still prefer jotting things down on a paper rather than typing it on the small screen of my phone.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What are the benefits of making plans?
+  user_model_answer: There are certainly a few benefits. Firstly, it saves time by making us organized. I feel like, I can do more when I plan. Secondly, planning helps people become punctual. When we plan, we are more likely to note down appointments and thus reach on time.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you often have free time?
+  user_model_answer: After work, I have some free time as I have a part-time maid for cleaning. Also, I have free time on weekends.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What do you usually do in your free time?
+  user_model_answer: I read books and do some exercise. Sometimes, I listen or watch the TV as well.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you usually spend time by yourself?
+  user_model_answer: Yes, I usually spend time by myself because I like spending time alone. Also, I want to spend time on self-improvement, which I cannot do with others. However, when I was younger, I loved spending time with my friends and going out, but I have changed a lot with time because now I feel I should do something meaningful.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What did you do last time when you were by yourself?
+  user_model_answer: I dipped my feet in hot water and gave myself a foot massage. I also applied a face mask.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you like spending time by yourself?
+  user_model_answer: For all answers 1,3 and 4 - Yes, I usually spend time by myself because I like spending time alone. Also, I want to spend time on self-improvement, which cannot I do with others. However, when I was younger, I loved spending time with my friends and going out, but I have changed a lot with time because now I feel I should do something meaningful.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you write a lot?
+  user_model_answer: Yes, I write a lot as I must do a lot of writing in my work. However, I don’t write by hand, I type.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What do you like to write? Why?
+  user_model_answer: Apart from my work, I write poetry. Sometimes, I also write about experiences so that I can learn from them. It’s also a means of expressing my feelings. When I see something beautiful, I just want to express it in words.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think the things you write would change in the future?
+  user_model_answer: Maybe. I don’t think about it. But I believe as I grew older, I changed my habits and character so I might also change what I write about in the future.

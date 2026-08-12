@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think shopping is good for a country's economy?
+  user_model_answer: Yes, definitely. When people shop, businesses grow and more jobs are created. It helps money move through the system. But if people shop too much, especially on credit, it can cause problems too. So, shopping is good, but it needs to be balanced. Stay ahead in your study abroad journey! For the latest daily updates on immigration, travel, and English language exams, follow us on Instagram @makkarielts.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What are the advantages and disadvantages of being a famous child?
+  user_model_answer: I think the biggest advantage is that the child gets a lot of attention and opportunities at a young age. But the downside is, they lose their normal childhood. They are always under pressure and sometimes miss out on school or playtime with friends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What can today's children do to become famous?
+  user_model_answer: Nowadays, kids can become famous through social media, talent shows, or even YouTube. If they have a special skill like dancing, singing, or acting, they can post videos and get noticed. But not everyone wants that kind of life.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What can children do with their fame?
+  user_model_answer: If they use their fame in a good way, they can inspire others and even support social causes. Some young stars help in raising money for charities or speak up about important issues. But it’s also easy to get lost in attention and forget to stay grounded.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do people become famous because of their talent?
+  user_model_answer: 'Yes, many people do become famous because they are really talented. But in today’s world, sometimes people also get fame just by doing something viral or controversial. I feel real talent lasts longer, while instant fame fades quickly. Our books are available on Amazon now To buy genuine and original books please select makkarielts as the seller https://amzn.to/47swIkX - Kiran Makkar Ideas for Essays for IELTS, PTE & ToEFL https://amzn.to/3Zd7R2x - Kiran Makkar IELTS Graphs From The Past Exams https://amzn.to/4d5t5m1 - Kiran Makkar IELTS Academic Essays From The Past Exams 2024 Edition https://amzn.to/3z1O23H - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 1 https://amzn.to/3MZe8HX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 2 https://amzn.to/4ggCdXX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 3 https://amzn.to/3z2EoOf - Kiran Makkar IELTS General Training Essays & Letters From The Past Exams https://amzn.to/4gcbYC9
+    - Kiran Makkar IELTS General Training GT Readings For Exam Practice www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 175 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why are some children more intelligent than others?
+  user_model_answer: I think it depends on many things like genetics, environment, and the kind of learning they are exposed to. Some children grow up in homes where they are encouraged to read and ask questions, which helps a lot. Also, using books like the Makkar IELTS ideas book can develop strong thinking and speaking skills early on.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Who do you think plays a more important role in a child's development, teachers or parents?
+  user_model_answer: I believe both are important, but parents have a stronger influence in the early years. They shape habits, values, and behaviour at home, which stays with the child for life. However, good teachers also inspire children and guide their academic growth. (Resources like GT reading, essay books, and letter writing practice available at www.makkarielts.com and instagram.com/makkarielts)
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think smart people tend to be selfish?
+  user_model_answer: Not always. Some smart people use their knowledge to help others and solve problems. But yes, there are a few who become proud or think they are better than everyone else. It depends more on a person’s nature than just their intelligence. (Check out the Makkar IELTS reading books and essay collection at www.makkarielts.com or follow @makkarielts for updates.)
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are smart people happier than others?
+  user_model_answer: I’m not sure. Being smart doesn’t always mean being happy. Some intelligent people overthink or feel lonely if they don’t find like-minded people. In fact, people with simple lives and less stress might be happier. (Practice more answers using the Makkar IELTS graph book and ideas book at www.makkarielts.com or instagram.com/makkarielts) Stay ahead in your study abroad journey! For the latest daily updates on immigration, travel, and English language exams, follow us on Instagram @makkarielts.

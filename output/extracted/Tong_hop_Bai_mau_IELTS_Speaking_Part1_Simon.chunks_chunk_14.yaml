@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: COOKING — Answer Bank
+  topic_tags:
+  - cooking
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: COOKING'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về cooking bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - cooking
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like cooking? Why / why not?
+  user_model_answer: Sometimes. I like preparing a special meal for family or friends who visit, but everyday cooking is a bit boring; it's something that has to be done, but it's not really fun.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Who did the cooking in your family when you were a child?
+  user_model_answer: trust somebody to My mother almost always did the cooking when I was young. I don't think she
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you think that it's important to know how to cook well?
+  user_model_answer: 'somebody/something: dựa vào I''m not sure whether it''s important to cook well, but I do think that everyone'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think that children should be taught cookery at school?
+  user_model_answer: Yes, that's probably a good idea. If all children knew how to cook a few basic, healthy meals, that would surely be a good thing.

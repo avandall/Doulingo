@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Which age group is the best at learning new things?
+  user_model_answer: 'I am a strong believer in the fact that there is no age for learning. We can learn anything at any age. I believe that we should keep learning new skills, as it keeps the mind sharp and active. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 199 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What bad behavior do children usually have?
+  user_model_answer: Normally, the bad behavior I associate with children is being noisy, breaking things, disrespecting elders, scribbling on walls, etc. I have to admit, I was guilty of doing all of these when I was younger.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How should parents stop their children from behaving badly in public?
+  user_model_answer: Parents should calmly talk to their children and explain why the behavior is not okay. They can gently remove the child from the situation, set clear rules, and use positive discipline like rewards for good behavior. Staying patient and consistent helps children learn better behavior over time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Are parents these days stricter than those in the past?
+  user_model_answer: Parents today are often less strict than in the past. Many now focus more on understanding their children and talking things through, instead of using strict rules or punishments.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Whose influence on children is more? Friends or parents?
+  user_model_answer: 'I think in the early years, the parent’s influence is second to none as children spend the majority of their time with the parents. But as children grow older, they spend considerably more time with their friends, and I think during these years it is their friends that influence their behavior and thinking the most. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 201 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are there many people growing their own vegetables now?
+  user_model_answer: Yes, many people are growing their own vegetables these days, especially after the pandemic. They want fresh and chemical-free food at home.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think it’s good to let kids learn how to plant?
+  user_model_answer: Yes, it’s a great hobby and it teaches them patience and responsibility. It also helps them connect with nature and fosters a love for gardening.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What do you think of the job of a farmer?
+  user_model_answer: Farmers grow the food we eat, and farming is a very important and hardworking job. If farmers will not grow any crops, then we will not have any food on our table and there will be hunger and starvation everywhere. I feel disappointed that farmers don’t get enough support or respect.

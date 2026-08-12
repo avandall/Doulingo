@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: T-shirts — Answer Bank
+  topic_tags:
+  - t_shirts
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Bai_mau_IELTS_Speaking_Part_1.md, Topic: T-shirts'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về t-shirts bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - t shirts
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like wearing T-shirts?
+  user_model_answer: Well, yeah, I love them. Honestly, I wear t-shirts almost every day because they’re just so comfortable and practical. You can wear them in summer to stay cool, or layer them with a jacket in winter. They’re just so versatile.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How often do you wear T-shirts?
+  user_model_answer: Pretty much every day. My closet is full of them in different colors and styles — I’ve got crop tops, oversized ones, and some fitted ones too. They’re so easy to mix and match. You can pair them with jeans, skirts, or even sweatpants if you want to stay comfy at home.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you like T-shirts with pictures or prints?
+  user_model_answer: Yeah, for sure. I actually love t-shirts with motivational quotes on them, like “Never give up” or “You can do it.” I feel like they give me a little boost of energy when I wear them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think older people who wear T-shirts are fashionable?
+  user_model_answer: Yeah, why not? I think older people who wear t-shirts can look really stylish, especially if they pair them with jeans or sneakers. To me, it shows they have a young spirit and they’re confident in their style.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Would you buy T-shirts as souvenirs on vacation?
+  user_model_answer: Oh, absolutely. T-shirts are one of my favorite souvenirs because they’re practical and easy to pack. You don’t need to worry too much about sizes because oversized t- shirts work for pretty much everyone.

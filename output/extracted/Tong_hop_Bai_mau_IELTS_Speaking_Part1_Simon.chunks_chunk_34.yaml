@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: LAUGHING — Answer Bank
+  topic_tags:
+  - laughing
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: LAUGHING'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về laughing bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - laughing
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kinds of thing make you laugh?
+  user_model_answer: "I laugh most when I'm with friends talking about funny things that have happened to us. I also like watching comedians and comedy films. take something too seriousl\uFEFFy"
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you like making other people laugh? = to regard (a matter) as a
+  user_model_answer: Yes, it's a nice feeling when you can make someone laugh because you can see that subject for concern or serious
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think it's important for people to laugh? having a useful or helpful
+  user_model_answer: 'Yes, of course. It''s important to see the funny side of things; humour helps us not to effect on take life too seriously. I think that laughter is good for our health. somebody/something: tốt cho...'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '4. Is laughing the same as feeling happy? a sense of humour: khiếu hài'
+  user_model_answer: It's not exactly the same because you can be happy without laughing, and hước sometimes we laugh when something bad has happened; a sense of humour can help us to cope with difficult situations.

@@ -1,0 +1,182 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 169. Meeting New People 1.Do you like meeting new people?
+  user_model_answer: Yes I love meeting new people because I like to make friends and discuss new ideas.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How do you feel when people welcome you?
+  user_model_answer: I feel great and happy when people welcome me. I think it is a great way to show care and love for your guests.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you often meet new people?
+  user_model_answer: Yes I often meet new people but nowdays due to the pandemic I have been staying home, so I have not been able to meet anyone new.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Can you tell if you like someone when you meet them for the first time? Why?
+  user_model_answer: No, it takes me a lot of meetings to actually like someone. I take time to understand people.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What do you like to talk about?
+  user_model_answer: I like to discuss news and recent events. Sometimes I like to talk about life in general.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Have your discussion topics changed since you were a child?
+  user_model_answer: Yes when I was a child I only used to talk about toys and games but now most of my discussions are related to my studies and currentevetns www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 323 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you change your opinion frequently?
+  user_model_answer: Well, I form my opinions on the basis of facts. If I come to know that my facts are wrong then I do change my opinion.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you prefer to talk or listen?
+  user_model_answer: I am more of a listener. I like to hear what people have to say.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 171. Tidiness 1.Are you a tidy person?
+  user_model_answer: Yes I like to keep things tidy and don’t like to create a mess around me. 2.How do you keep things tidy? I like to keep my surroundings tidy by putting the things in their right place. 3.Do you think people should be tidy all the time? Yes people should definitely keep things tidy, this helps them to stay organised 4.Are you tidier at work(school) or home? I think I am more tidier at work(school) as compared to home because I feel more relaxed at home and sometimes I tend to procrastinate about tidying up.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are you good at telling jokes?
+  user_model_answer: Well, I try but I don’t think I am good at it because my friends do not laugh at my jokes. May be my jokes are not witty enough.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do your friends like to tell jokes?
+  user_model_answer: Yes my friends love to share jokes. In our free time we often search for jokes on the internet.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you like to watch comedies?
+  user_model_answer: Yes, I love to watch comedies. I feel they are a great way to relax and spend one’s time.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Have you ever watched a live show?
+  user_model_answer: No I have never watched a live stand up comedy show but I would definitely like to experience live comedy.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you like shopping?
+  user_model_answer: Yes, I am a shopaholic. I absolutely love shopping. I normally do shopping, once or twice in a month.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you compare prices when you shop?
+  user_model_answer: Yes, whenever I go for shopping, I normally visit 2-3 shops to get the best price.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Is it difficult for you to make choices when you shop?
+  user_model_answer: Yes, this is the most difficult part for me when I shop and because of this I waste a lot of time. Because of so many brands and different varieties of products, it is very toguh to make a quick buying decision nowadays.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you prefer to read newspaper or magazine?
+  user_model_answer: I prefer to read the newspaper. I have a habit of reading the newspaper every morning. Magazines come only after a week or once in a month so I find it to difficult to make a routine for reading magazines.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you like insects?
+  user_model_answer: I do not like insects. I am scared of them.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Are there many different insects where you live?
+  user_model_answer: Yes there are many insects around my house because we have lot of greenery in area which attracts the insects.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think insects are useful?
+  user_model_answer: Well, I read somewhere that insects are an important part of our foodchain so I think they are useful. For example they help in fertilizing the soil.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What do you think is the best age to learn driving?
+  user_model_answer: In my country, one can learn to drive when they turn 18. I think this is the right age because at this age a person’s mind and body are fully developed to handle the complexties of driving a vehicle.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How do you feel about getting older?
+  user_model_answer: I think ageing is a natural process and one should embrace it gracefully.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Should we treat people of different ages in the same way?
+  user_model_answer: No, I don’t think how we treat others should depend on their age. Irrespective of the age, everyone should be treated with love and respect.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What do street markets sell?
+  user_model_answer: Street markets sell all kinds of everyday use products like groceries.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Are there many street markets in your country?
+  user_model_answer: Yes, in Inda you will find street markets in almost every city.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What are the differences between street markets and supermarkets?
+  user_model_answer: I think the basic difference in the price and quality of the products. In street markets you get low quality and cheaper products.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you often go to the supermarket?
+  user_model_answer: No, I don’t often go the supermarket as I don’t like shopping.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Have you ever been to museum to learn history?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 325 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, I went to the Partition Museum in Amritsar last year. It opened in 2017 and is about a 5 minute walk from Golden Temple. It has a rich collection of stories, events, arts and artifacts related to partition of India in 1947. I was brought to tears listening and reading about the sufferings of millions of people.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think history is important?
+  user_model_answer: Yes, history is important. They are a lot of events that changed the world and to know about these we need to delve deep into history. History also helps us understand other cultures. History repeats itself so it’s important to learn about mistakes made in the past so that we don’t make the same mistakes in the future.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. When was the last time you read a book about history?
+  user_model_answer: Last time I read a book about history was in my summer break last year. The book I read was The Discovery of India. India’s first Prime Minister, Jawaharlal Nehru wrote this book during his imprisonment at Ahmednagar fort from 1942-1946.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 179. Mathematics 1.When did you start learning math?
+  user_model_answer: I started learning numbers in the nursery classes, but the basic math of addition and subtraction, started when I was in the 1st standard. 2.Do you like math? I am not very good at math. However, I don’t dislike math. I think it is very useful in our everyday lives. 3.Who taught you math? I have had many math teachers throughout my school and college years, who taught me math. 4.Who’s your favorite teacher so far? My favorite math teacher is Ms. Roy, who taught me math when I was in the 7th grade. 5.Is math difficult for you to learn? I don’t consider myself very good at math. I find certain aspects of it very difficult to understand. I don’t do manual calculations; I use the calculator app on my phone most of the times. 6.Do you like to use a calculator? Yes, I use the calculator app on my phone whenever I have to calculate something. I think that it is very useful, accurate and saves our time.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. Do students learn math in secondary schools in India?
+  user_model_answer: Yes, Math is a compulsory subject in secondary schools in India.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you think math is difficult?
+  user_model_answer: Yes, I think math is difficult as it requires analytical skills. In higher grades, math becomes more challenging and advanced. It’s very important to have a strong grasp of basic concepts in math and sometimes students find it difficult because their foundation is weak. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 326 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. What can people do with math in their daily life?
+  user_model_answer: Basic Math is used in everything we do in our day-to-day lives like managing our money, driving, cooking, shopping, etc. When we drive, we need to keep track of the distance traveled, in cooking, we measure ingredients for a recipe, while shopping, we calculate discounts and buy at the best price.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 10. Do you learn math now? Why or Why not
+  user_model_answer: No, I am not learning math now. I am working now and don’t need to learn math for my job.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Have you done water sports?
+  user_model_answer: Yes, I have done swimming. There is a swimming pool near my home where I learnt how to swim. Or No, I have never done water sports. I am afraid of water.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What water sports you like doing?
+  user_model_answer: Swimming is the only water sport I know, so I like to swim. Or I would not like to try any water sport as I have a phobia that I will drown in the water.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Are water sports popular in India?
+  user_model_answer: In India, the water sports are popular in Coastal areas, llocated in the southern part of the country.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kind of water sports do you want to try?
+  user_model_answer: I would like to try rafting and Scuba Diving. Or I would not like to try any water sport as I have a phobia that I will drown in the water.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Is there good scenery in your hometown or does your hometown has a lot of scenic views?
+  user_model_answer: I am from Chandigarh and it is a city located in the foothills of Shivalik Mountains. There are lot of beautiful views in our city, especially at the city lake.

@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Basic_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Complete the following dialogue with appropriate sentences or phrases. **A:** Can you tell me something about your years in school? I'm interested in learning what people think about their years as students.
+  user_model_answer: '**B:** Sure, no problem. What do you want to know? **A:** Well, first of all, when did you start attending school? **B:** When I was three years old, I began attending nursery school. **A:** What are some of your happiest memories about your early years in school? **B:** I remember going to school with my mother, and being picked up by my grandfather. My teachers were very kind, and we had a lot of fun playing and learning. **A:** Where did you go to elementary school? Where was it located? **B:** My elementary school was located just 5 minutes away from my house.'

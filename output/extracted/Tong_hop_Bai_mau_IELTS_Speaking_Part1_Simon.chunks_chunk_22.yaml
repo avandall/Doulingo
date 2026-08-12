@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: SPORTS — Answer Bank
+  topic_tags:
+  - sports
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: SPORTS'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về sports bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - sports
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What sports or physical activities do you regularly do?
+  user_model_answer: Unfortunately I don't have time to do any sports or physical activities because of my work commitments. I'd like to find more time for regular exercise.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Which sport or game would you like to be good at?
+  user_model_answer: 'work commitments: những I''d like to be good at tennis. It must be great to be able to hit the ball as hard as you'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you prefer watching or playing sports?
+  user_model_answer: 'successful at doing it: giỏi... I don''t watch much sport on TV and I''m not a big sports fan, so I think I would enjoy A more than B: thích A probably enjoy doing sports more than watching them.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think children should be encouraged to do more sport?
+  user_model_answer: Yes, I think that sport is really important for children. Sports and games teach children to play together and try their best.

@@ -1,0 +1,174 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What excuses do people have when they are late?
+  user_model_answer: People give excuses like car or bike breakdown or that they were stuck in traffic, when they are late
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are you good at organizing time?
+  user_model_answer: Yes, I am good at organizing time. I set up reminders for important events and meetings. I am never late for an appointment.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How do you usually organize time?
+  user_model_answer: I sometimes set up reminders for important events or meetings, sometimes I make lists of tasks to complete, sometimes I set deadlines for myself, especially when working on an important assignment/project.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think planning is important for time management?
+  user_model_answer: Yes, planning is essential for good time management. If we don’t plan ahead, we will tend to waste time doing tasks/things which are unimportant or unnecessary.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Why do you think some people pay to learn time management?
+  user_model_answer: Time management has become very important in today’s fast-paced world. Some people pay to take courses on time management so that they can succeed and excel at their work. Some people are not very good at organizing and managing time, so they need to take up courses on managing time well.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you think children should learn to manage time?
+  user_model_answer: Yes, definitely. We live in a fast paced world and children too need to manage their time well, so that they can deal with the competition and do well at their studies and later, at their jobs.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Why do some people find it hard to follow their plans?
+  user_model_answer: Some people find it hard to follow their plans because of other pressing commitments, like family commitments. Some people maybe too lazy to follow their plans.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. 10.How would you teach your children time management?
+  user_model_answer: Time management can be taught to children by helping them make a timetable and ensuring that they follow it. Also, children can learn easily from stories or movies, which teach them a lesson about the importance of time and managing it well. The parents are role models for children and they should set a good example for their children. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 366 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. 11.Do old people and young people manage time in a similar way?
+  user_model_answer: No, old and young people do not manage their time the same way. Old people have more life experience and they understand the importance of time management better than the young generation. The young people may be too impulsive or impatient and may not understand the importance of planning ahead. Another difference is the way the younger generation manages time. They make more use of technology and the old people may use the traditional methods, like a timetable or writing down a list of tasks.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you like fruits and vegetables? OR Do you like to eat fruit(s) and vegetables?
+  user_model_answer: Yes, I like fruits and vegetables. In fact they are a part of my daily diet.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How often do you eat fruits and vegetables? OR Do you often eat fruit(s) and vegetables?
+  user_model_answer: I eat fruits and vegetables daily. In fact seasonal fruits and vegetables are part of my daily diet.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Why do you think fruits and vegetables are important for us?
+  user_model_answer: I think they are important because they have essential vitamins and minerals, which we must eat to be healthy.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What kind of fruit do you prefer?
+  user_model_answer: I prefer all kinds of fruit. But I prefer seasonal fruits because they are readily available and cheap.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What fruit(s) (and /or vegetables) do you especially like to eat?
+  user_model_answer: I like to eat allfruits and vegetables, but I especially like the okra and broccoli among the veggies and my favourite fruits are watermelon and mango.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you like the same fruits and vegetables today as you did when you were a child?
+  user_model_answer: As a child, my favourite fruit used to be grapes, but now I like mango and watermelon more. Also, I wasn’t very find of vegetables as a child. Now I love all kinds of vegetables and fruits.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. What fruit and vegetables did you like to eat when you were a child?
+  user_model_answer: I liked all fruits as a child and my favourite fruit used to be grapes. I wasn’t very fond of vegetables when I was a child.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Is it easy (or, convenient) to buy fruit and vegetables where you live?
+  user_model_answer: Yes, it is very convenient to buy fruits and vegetables where I live. I live in a city and there are many fruit and vegetable sellers, who have stalls/standsset up in many parts of the city. In grocery stores also we have a fruits and vegetables section.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Do you think people should eat more fruits and vegetables?
+  user_model_answer: Yes, I think people should eat more fruits and vegetables, as they contain essential vitamins and nutrients needed for a healthy body and mind. Also, it has become all the more important now to eat healthy food as most of the people lead a sedentary life. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 367 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. Do you think it's (really) necessary to eat fruits and vegetables? OR How important is
+  user_model_answer: it to eat fruit and vegetables? OR What are the benefits of eating fresh fruit (or, fresh fruits and vegetables)? Yes, certainly. It is essential to eat fresh fruits and vegetables, as they contain nutrients like vitamins and minerals, which our body needs to function properly and to remain healthy. Also, having a healthy diet makes us feel more energetic.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. How much fruit and vegetables do you think a person needs to stay healthy?
+  user_model_answer: I think fruits and vegetables are needed as a part of our everyday diet. Many dieticians suggest that we should eat fruits and vegetables of at least five different colors everyday.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are you still in contact with your friends from high school?
+  user_model_answer: Yes, I am in contact with my friends from high school. Many of them are now in different cities and countries. But we stay in touch through social networking apps and we also have reunions sometimes.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What is your high school like?
+  user_model_answer: Give a brief description of your school – describe building(s), garden, playground and other facilities)
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What happened on the first day of high school?
+  user_model_answer: I don’t remember exactly what happened. However, I do remember that all my classmates and I were feeling like we have entered an important stage in our lives and that we are grown ups now.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Did your parents choose your secondary school (= high school) for you?
+  user_model_answer: Yes, my parents chose my secondary school. My high school and primary school were the same.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What subjects did you study in secondary school (= high school)?
+  user_model_answer: I studied many subjects in secondary school like, social sciences, mathematics, the Hindi and English languages, science subjects like biology, chemistry, physics and geography, art and crafts, etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What was your favourite subject ( = class) in secondary school? (= high school)
+  user_model_answer: My favourite subject in secondary school was science. I liked science subjects because I learned about the basic principles of the way things work all around us.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. And which class (= subject) did you like the least? (Why?)
+  user_model_answer: There wasn’t any subject I liked the least. I liked all the subjects in secondary school.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Which secondary school subject do you think is most useful for people in adult life?
+  user_model_answer: I think all the subjects that we study in secondary school are useful for people in adult life. A strong foundation is built in primary and high school years that helps us throughout our life.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. What part of your secondary school education did you enjoy most? OR Did (do) you like your
+  user_model_answer: secondary school life? I enjoyed my secondary school education a lot. There is no one part that I liked more than the other. I liked the fact that our school had an equal focus on extra curricular and physical activities, and not just on the academics.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. How do you feel about your high school (secondary school)?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 368 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I think that high school years were the wonder years and I miss those times.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Why did you choose to attend (= to go to) that particular school?
+  user_model_answer: My parents chose my school for me. I think I was too young to decide on my own and my parents chose the best school for my siblings and me.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. Which class did (do) you enjoy the most? (Why?)
+  user_model_answer: I enjoyed all the school years a lot. However, there was a lot of excitement and a feeling of pride when I got promoted from the primary wing of the school to the high school wing
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often write (or, send) emails?
+  user_model_answer: No, I don’t often write/send emails. I sometimes write official emails, like for sending in a job application through email and sometimes I write to my friends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What do you write about?
+  user_model_answer: I sometimes I write official emails, like sending a job application. When I write to my friends or relatives, it is informal and I ask about their health and wellbeing and tell them about what’s going on in my life.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think emails are useful?
+  user_model_answer: Yes, I think that emails are very useful. Emails are convenient, timesaving, cost-effective and easy to send and receive. These days, emails are a good way to communicate for both formal and informal purposes.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kinds of emails do you send and receive?
+  user_model_answer: I mostly receive promotional or spam emails advertising various shopping websites or products. I sometimes receive emails from my friends who are living in another country and at times I receive official communication, e.g. emails from the bank or the Income Tax department.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think it is a good thing that some companies send out letters/spam emails for the purpose of advertising?
+  user_model_answer: I think sending spam emails for the purpose of advertising is a good marketing strategy and promotes a product or a service. However, it sometimes becomes a nuisance when it is sent repeatedly.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How often do you write letters?
+  user_model_answer: I don’t write handwritten letters any more. If I need to, I send an email. All official and personal letters can be sent through emails now.

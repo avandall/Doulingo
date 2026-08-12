@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What are the differences between young people’s and old people’s preferences in music?
+  user_model_answer: According to me, young people usually go for modern beats and western styles, while older people prefer classical or old melodies. My grandfather still listens to old Punjabi folk songs, while my younger cousins listen to English pop.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What are the benefits of children learning a musical instrument?
+  user_model_answer: Oh, there are many benefits. It helps children improve concentration and creativity. For example, my cousin started learning guitar and it not only made him more confident but also gave him a new friend circle.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you know what kind of music children like today?
+  user_model_answer: Hmm, from what I see, children enjoy cartoon songs or fun dance numbers. They like songs with easy words and simple beats. My little niece, for instance, always plays the same animated movie songs again and again.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think the government should invest more money in concerts?
+  user_model_answer: 'In my opinion, yes, because concerts promote culture and bring people together. They also give local artists a chance to perform. But some may say the money should go to education or health first, which I also understand. GET FREE DELIVERY on Amazon now - CASH On DELIVERY – Acceptable https://amzn.to/47swIkX - Kiran Makkar Ideas for Essays for IELTS, PTE & ToEFL https://amzn.to/3Zd7R2x - Kiran Makkar IELTS Graphs From The Past Exams https://amzn.to/4d5t5m1 - Kiran Makkar IELTS Academic Essays From The Past Exams 2024 Edition https://amzn.to/3z1O23H - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 1 https://amzn.to/3MZe8HX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 2 https://amzn.to/4ggCdXX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 3 https://amzn.to/3z2EoOf - Kiran Makkar IELTS General Training Essays & Letters From The Past Exams https://amzn.to/4gcbYC9 - Kiran Makkar IELTS General Training GT Readings For Exam Practice
+    www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 109 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

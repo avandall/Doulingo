@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: '30_Day_IELTS_Speaking_Challenge.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Do you prefer working alone or working in a team? Why?
+  user_model_answer: 'Cách triển khai ý: choice → reason → example'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What is your favorite hobby, and how long have you been doing it?
+  user_model_answer: 'Cách triển khai ý: name of hobby → duration/frequency → what you enjoy most'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you think it is important to pursue a hobby? Why/Why not?
+  user_model_answer: 'Cách triển khai ý: importance level → benefit (mental/physical) → example'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. How did you become interested in your hobby?
+  user_model_answer: 'Cách triển khai ý: origin → story → current interest'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. How has your hobby changed over the years?
+  user_model_answer: 'Cách triển khai ý: past hobby/method → current method/focus → effect'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What kind of food do you usually enjoy eating?
+  user_model_answer: 'Cách triển khai ý: preferred food type → specific example → reason (taste/health)'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you like cooking? Why/Why not?
+  user_model_answer: 'Cách triển khai ý: affirmation → frequency/skill level → feeling'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What’s a traditional dish from your region?
+  user_model_answer: 'Cách triển khai ý: dish names → main ingredients → when it is eaten'

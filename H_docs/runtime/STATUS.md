@@ -8,12 +8,12 @@
 ## Current State
 
 ```
-Task:           TASK-000: Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) -> TODO
-Next Task:      TASK-001: Template Ingestion Engine & Vector Embeddings (`scripts/ingest_templates.py`)
+Task:           TASK-000: Database Schema Design & Migration (Turso/libSQL) -> TODO
+Next Task:      TASK-001: YAML Ingestion, Embeddings Generation & Vector Indexing (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`)
 Phase:          Phase 0 (Data Foundation)
-Current Step:   Refactoring Master Plan v2 & 6 Important Tasks Spec Linked into Context
-Iteration:      25
-Last Updated:   2026-08-11 14:06
+Current Step:   Bước 1-3 (Extract YAML & Validate) đã hoàn thành bởi User. TASK-001 đã cập nhật đầy đủ Buốc 4-6 từ README_phase0.md vào Tasks_list.md.
+Iteration:      27
+Last Updated:   2026-08-12 16:03
 ```
 
 ---
@@ -31,9 +31,9 @@ ORIENT → PLANNING → EXECUTING → REVIEWING → COMMITTING → DONE
 ## Last Action
 
 ```
-Action:   Cập nhật toàn bộ hệ thống workflow context (PROJECT_BRIEF.md, TECH_CONTEXT.md, BOUNDARIES.md, CURRENT_TASK.md, STATUS.md) trỏ trực tiếp tới 25 Tasks trong Tasks_list.md v2 và bản đặc tả kỹ thuật 6_important_tasks_solution.md.
+Action:   Tích hợp 100% thông tin từ README_phase0.md và TASK-000-turso-updated.md vào Tasks_list.md, sau đó đã xóa 2 file tạm này để làm sạch context.
 Result:   PASS
-Time:     2026-08-11 14:06
+Time:     2026-08-12 16:04
 ```
 
 ---
@@ -41,7 +41,7 @@ Time:     2026-08-11 14:06
 ## Next Action
 
 ```
-Action:   Sẵn sàng chạy Ralph Loop thực thi TASK-000 (Database Schema Design & Migration).
+Action:   Sẵn sàng chạy Ralph Loop bắt đầu thực thi Phase 0: TASK-000 & TASK-001 (Insert DB, Embeddings, Indexing).
 Priority: P0-Critical
 Blocks:   NONE
 ```

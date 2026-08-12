@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: ART — Answer Bank
+  topic_tags:
+  - art
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: ART'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về art bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - art
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Did you enjoy doing art lessons when you were a child?
+  user_model_answer: No I didn't. I was never very good at drawing or painting, and I found art lessons quite slow and boring. I preferred language and science lessons.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: "2. Do you ever draw or paint pictures now? t\uFEFFhere's never any need for"
+  user_model_answer: 'No, I don''t draw or paint these days, because there''s never any need for me to me to do something: tôi'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. When was the last time you went to an art gallery or exhibition? art exhibition = an event at
+  user_model_answer: I honestly can't remember the last time I went to any kind of art exhibition; I'm which objects such as not much of an art fan, and I tend to go to music concerts, the cinema or the theatre paintings are shown to the
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kind of pictures do you like having in your home? bừng sáng ...
+  user_model_answer: I don't have any paintings or artistic images in my home, but I do have photos of family members and some nice photos of landscapes on the walls to brighten the place up.

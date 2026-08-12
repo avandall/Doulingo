@@ -20,18 +20,21 @@ Tài liệu tham khảo: H_docs/context/Tasks_list.md & H_docs/context/6_importa
 ---
 
 ## Bối cảnh & Mục tiêu
-- **Why:** Toàn bộ dữ liệu Template A, B, C từ các nguồn tài liệu IELTS và thông tin hồ sơ người dùng cần được lưu trữ trong Database quan hệ hỗ trợ Vector Search (PostgreSQL + pgvector) theo Schema hợp nhất được thiết kế tại mục 7 của `docs/plan.md`.
+- **Why:** Toàn bộ dữ liệu Template A, B, C từ các nguồn tài liệu IELTS và thông tin hồ sơ người dùng cần được lưu trữ trong Database quan hệ hỗ trợ Vector Search (Turso/libSQL) theo Schema cập nhật tại `H_docs/context/Tasks_list.md` (TASK-000).
 - **What:**
-  1. Thiết kế DDL khởi tạo 12 bảng trong `app/db.py` (`content_units`, `band_tiers`, `function_details`, `function_band_variants`, `scenarios`, `scenario_branches`, `evaluation_hooks`, `sample_dialogues`, `hook_bank`, `vocabulary_lookup`, `user_profile`, `user_content_exposure`).
-  2. Tạo HNSW Vector Cosine Index trên `sample_dialogues(embedding)`.
-  3. Tạo GIN Index trên `content_units(topic_tags)` và B-Tree Index trên `target_band_min/max`.
-  4. Đảm bảo script migration khởi tạo DB chạy mượt mà trên môi trường dev/cloud.
+  1. Thiết kế DDL khởi tạo 12 bảng theo chuẩn libSQL/Turso (`content_units`, `band_tiers`, `function_details`, `function_band_variants`, `scenarios`, `scenario_branches`, `evaluation_hooks`, `sample_dialogues`, `hook_bank`, `vocabulary_lookup`, `user_profile`, `user_content_exposure`).
+  2. Dùng cột `embedding` kiểu `F32_BLOB(384)` và tạo index `libsql_vector_idx(embedding, 'metric=cosine')`.
+  3. Cấu hình `topic_tags` dạng JSON text, query filter qua JSON/LIKE.
+  4. Chuẩn bị script nạp dữ liệu và embedded replica sync cho Render free tier.
 
 ---
 
 ## Acceptance Criteria
-- [ ] Thiết kế và tạo thành công DDL cho 12 bảng trong `app/db.py`.
-- [ ] Bảng `sample_dialogues` có cột `embedding` kiểu Vector(1536) và chỉ mục HNSW cosine vector index.
-- [ ] Bảng `content_units` hỗ trợ chỉ mục GIN trên `topic_tags` và B-Tree trên `target_band_min/max`.
-- [ ] Bảng `hook_bank` và `vocabulary_lookup` được khởi tạo chuẩn schema phụ lục.
-- [ ] Script khởi tạo DB chạy không bị lỗi foreign key hay constraint.
+- [ ] DDL 12 bảng chạy không lỗi trên Turso thật (kiểm tra bằng `turso db shell`)
+- [ ] Cột `embedding` kiểu `F32_BLOB(384)` — KHÔNG dùng BLOB chung hoặc TEXT
+- [ ] Vector index `sd_vec_idx` tạo được sau khi có ít nhất 1 row có embedding
+- [ ] `topic_tags` lưu JSON string, query được bằng `LIKE '%"<tag>"%'`
+- [ ] Foreign key cascade hoạt động: xoá `content_units` → cascade xoá `band_tiers` và `sample_dialogues`
+- [ ] Script `insert_turso.py --turso-url ... --turso-token ...` insert thành công không lỗi
+- [ ] Script `generate_embeddings.py --turso-url ...` cập nhật được embedding, `length(embedding) = 1536` (384 float × 4 bytes)
+- [ ] Query `vector_top_k` trả về kết quả sau khi đủ data + index

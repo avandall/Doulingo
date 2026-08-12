@@ -1,0 +1,84 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Are there any differences between the mornings of your childhood and now?
+  user_model_answer: Well, as a kid the mornings were very fast because I used to get up really early for my school bus but now I have relaxed mornings.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Would you like to change your morning routine?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 280 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books No I am happy with my current morning routine and I don’t want to make any changes.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 71. Video games Do you play video games?
+  user_model_answer: I don't play video games. I think they are a waste of |me and can get very addic|ve. I am an outdoor person and prefer spending my free |me pursuing other hobbies like gardening, tennis, hiking, etc. What kinds of video games do you play? I don’t play video games. I like watching sports, so if I play video games in the future, I think I would like video games that have a sports theme. Is it good for young people to play video games? It's good if done in modera|on. It helps them bond with their friends and improves their hand-eye coordina|on and problem-solving skills. Too much |me playing video games can aﬀect their sleep, rela|onships, social behavior, and focus.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 72. Sunglasses Do you omen wear sunglasses?
+  user_model_answer: Yes, I wear sunglasses whenever I am outside in the sun. I always wear them when I am driving. Do you spend a lot of money on sunglasses? No, I don’t like to spend a lot of money on sunglasses. I don’t buy very cheap sunglasses because they can scratch easily and may not oﬀer full protec|on. I like to buy good quality sunglasses that ﬁt well. Do you give sunglasses as a gim? No, I don’t give sunglasses as a gi•. I think they need to ﬁt right, and people should buy the style and frame they prefer. Why do you wear sunglasses? I wear sunglasses to reduce the glare from the sun especially while driving. I also wear them to protect my eyes from harmful UV rays.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 73. Social media When did you start using social media?
+  user_model_answer: I started using social media in high school. I got my ﬁrst phone around that |me and that’s when I downloaded and created accounts on a couple of social media apps. Do you think you spend too much nme on social media? I don’t spend too much |me on social media. I don’t post about my personal life on social media. I just follow a few accounts of people I admire and can learn a lot from. I have a small circle of friends and I prefer calling my friends or mee|ng them in person. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 281 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Do your friends use social media? I have a small circle of friends and most of them are not very ac|ve on social media. We are all busy with our careers and family life. Two of my friends have a small business and they mainly use social media to promote it. What do people omen do on social media? People like to stay connected with their
+    family and friends on social media. They share pictures of their travels, celebra|ons, and other important events on social media. Some use it to adver|se and promote their business. Some use it to ﬁnd ideas and inspira|on for a new hobby.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 74. Cake Do you like eanng cakes?
+  user_model_answer: I don't like tradi|onal cakes because I hate fros|ng. I like ea|ng coﬀee cakes, pound cakes, and cakes with fruits and nuts with no icing. I also try to make subs|tu|ons like replacing white ﬂour with whole wheat, sugar with dates, etc. to make the cake more healthy Do you know how to bake a cake? Yes, I know how to bake a cake. My mom used to bake cakes for all our birthdays and other special occasions. I learned the basics from her. I like to try new cake recipes that I ﬁnd online. When do usually eat cakes? I usually eat cakes when we are celebra|ng something like birthdays or anniversaries. Some|mes I make coﬀee cakes and enjoy them with my morning or evening tea. What is your favorite kind of cake? My favorite cake is Upside-Down Cake with a layer of fruit like peaches or pineapple. Not only do they taste so good, but they also look very fancy.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you prefer to save money or spend money?
+  user_model_answer: Well, I like doing both. I love to buy new things for which I have to obviously spend but at the same |me I do realise the importance of saving money for diﬃcult situa|ons in life.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How do you save money?
+  user_model_answer: I like to create ﬁxed deposit in my bank account so that I am able to earn some interest as well.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What do you think about payment apps or mobile payments?
+  user_model_answer: I believe that they are a very convenient for doing shopping these days but at the same |me one should be careful about the frauds happening on such apps.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you use a credit card to buy things?
+  user_model_answer: No I don’t have a credit card, however I would like to have one in the future.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think cash will snll be popular in the future?
+  user_model_answer: I think the popularity of cash will decline in future. Because I have online payment apps on my phone, I hardly carry any cash these days. Also, most of the businesses accept online payments. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 282 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 75. Losing things Do you omen lose things?
+  user_model_answer: Yes, I am very absent-minded and o•en lose things. I think two things that I lost a lot are my car keys and eyeglasses. I mostly lose them at home and ﬁnd them a•er looking for them everywhere. What can we do to avoid losing things? We can avoid losing things at home by being more organized and having a designated spot for all our personal belongings. For example, a tray or hooks for keys. When we are outside, we should carry a bag or backpack and keep all our personal belongings in there to avoid losing them. Why do some people tend to lose things more omen than others? I think one reason can be that some people are more forge„ul and get easily distracted. People who are not organized also tend to lose things more o•en. What will you do if you ﬁnd something lost by others? It depends on the situa|on and where I found the item. First, I will look around and see if I can ﬁnd the owner. If that's not possible I will hand it to someone who can help like the police. If I
+    ﬁnd something in my neighborhood, I will post about it on my neighborhood social media page.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 76. Colors What is your favorite color?
+  user_model_answer: My favorite color is green, especially sage green because I ﬁnd it very calming and relaxing. It reminds me of nature and greenery. Do you usually wear clothes in your favorite color? No, I like to wear black clothes. They look very elegant, and sophis|cated and go with everything. Are there any colors that have a special meaning in your country? Saﬀron is considered sacred in India and is a symbol of purity. Priests wear saﬀron-colored clothes, and it is a big part of all religious ceremonies. It is also on the Indian ﬂag. Do you think diﬀerent types of people like diﬀerent colors? Yes, I think people have diﬀerent color preferences. I think color preferences vary by gender, culture, and age. Some people prefer bright and warm colors and others prefer cooler colors.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 78. Feeling bored Do you omen feel bored?
+  user_model_answer: Yes, I get bored some|mes, especially when I am at work doing the same thing every day. When would you feel bored? I feel bored in long work mee|ngs which are most of the |me unnecessary. Some|mes, I spend more |me in mee|ngs than doing the actual job. What do you do when you feel bored? When I feel bored I like to read books, watch a movie or TV series on the TV, and talk to my friends and family. Do you think childhood is boring or adulthood is boring? I think adulthood is boring because as adults we have so many responsibili|es. We get busy with our work lives and life becomes boring and monotonous. Childhood is the |me we can play with friends and enjoy life without any worries.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 79. Music Do a lot of people like music?
+  user_model_answer: Yes, people like music as it relaxes them and li•s their mood. Music brings out so many diﬀerent emo|ons, mo|vates people, and keeps them going. What kind of music do you listen to? I mainly listen to Punjabi songs. They have good lyrics and beats. Diljit Dosanjh, Riaar Sahib and Sidhu Mosseswala are some of my favorite Punjabi singers Is it easy to learn music? I think it’s easy to learn if you are consistent and commi…ed. It requires a lot of prac|ce. Did you have music lessons at school? www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 284 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I did not have music lessons at school. I wish there was an op|on, but my school curriculum did not include music.

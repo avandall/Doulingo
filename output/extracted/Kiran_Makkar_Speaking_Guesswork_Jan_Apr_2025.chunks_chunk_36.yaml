@@ -1,0 +1,70 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think online learning will replace face-to-face learning?
+  user_model_answer: No, I don’t think online learning will completely replace face to face learning. I imagine a scenario of blended learning where a mixture of both will be used. There are some key advantages of face to face learning, like the chance to address doubts immediately, which make it irreplaceable. Moreover, there is the element of competition and motivation in offline learning, which is lacking in online learning.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What are the advantages of online learning?
+  user_model_answer: The first advantage of online learning is the flexibility. Students can learn whenever and wherever they want. They can also study at their own pace, giving more time to the concepts they find difficult. Secondly, online learning is cheaper, not only for the students but also for universities as they can teach many more students. Finally, online learning reduces the barrier of age and location. For example, people can get quality education from foreign universities, without needing to move abroad. https://amzn.to/3Zd7R2x
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why are so many young people obsessed with short videos?
+  user_model_answer: The first reason is that they are easy to consume. We can watch them while waiting in line or travelling, they don’t ask for a long time commitment. Secondly, people today have short attention spans, so it is difficult for people to watch long videos. Lastly, video creators also make shorts in an innovative way to grab as much attention as possible.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think people spend too much time watching short videos? Why?
+  user_model_answer: Yes, they are addictive. Moreover, they give us the assumption that we are only watching them for a minute or so, but we end up watching many videos together wasting hours on them. The millions and billions of views on these videos prove that we are spending too much time on them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Are there many people who watch online videos a lot?
+  user_model_answer: Yes, there are many people who watch online videos a lot. It is common as there are videos on nearly everything. The algorithm of these platforms makes sure that we are shown videos based on our interests and that there is something for everybody.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What kinds of videos are most popular in your country?
+  user_model_answer: I think humorous videos or animal videos, the ones about dogs and cats doing hilarious things are the most popular. They are the ones that get shared with me the most on WhatsApp or Facebook. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 165 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think it is good to have strong opinions?
+  user_model_answer: Both yes and no. I think there is nothing wrong with having strong opinions. In fact, it shows clarity of thought but I think it becomes a problem when people try to impose their views on others. We can encourage others to change but we should never force our views on them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think we should only say something after thinking it through?
+  user_model_answer: Yes, I think our mind comes with stupid thoughts all the time. So, we should definitely think things through before saying them. However, that doesn’t mean we should be untruthful. If someone asks our opinion, we should be honest, but we should say it in a way that it is not hurtful.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Which is more important, listening to others or persuading others?
+  user_model_answer: I think we cannot persuade others unless we listen to them. Only after we listen to them, can we come to know how to convince them. In addition, listening to others also makes us more broad minded. It tells us what others think. https://amzn.to/47swIkX
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are there many young people who have strong opinions in our lives?
+  user_model_answer: I don’t think young people are that strongly opinionated. There are of course a few exceptions but majority of the young people are willing to listen to others. Strong opinions take time to form. So, I associate strong opinions mostly with the elderly.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What do old people have strong opinions about?
+  user_model_answer: They think they are strongly opinionated about many things such as politics, religion, and way of life. For example, most elderly in India believe in getting up early, praying, and eating home cooked meals instead of eating out. Many are against drinking or eating meat as well. So, these are the things old people have firm opinions about.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What do young people have strong opinions about?
+  user_model_answer: I think young people have firm opinions about social and economic issues. They believe in social and economic equality. They also share firm opinions about climate change and the environment and what we should be doing to protect the earth. https://amzn.to/3z2EoOf https://amzn.to/4gcbYC9 https://amzn.to/47swIkX https://amzn.to/3Zd7R2x https://amzn.to/4d5t5m1 https://amzn.to/3z1O23H https://amzn.to/3MZe8HX https://amzn.to/4ggCdXX https://amzn.to/3z2EoOf https://amzn.to/4gcbYC9 www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 167 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books

@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. How could leaders encourage their employees?
+  user_model_answer: There are many ways by which leaders and managers can encourage employees like leading through example, incentives and appreciation. I think each individual is wired differently. So, while one method may work for some people, it may not work for another person.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. When should parents encourage their children?
+  user_model_answer: I think parents should always encourage their children. But children need encouragement especially if they are afraid of failing or trying out something new. Parents should tell them that success is secondary and trying is a much bigger achievement.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What kind of encouragement should parents give?
+  user_model_answer: I think parents can encourage their children in many ways. If children are afraid of embarrassment, parents can do the same thing in front of children first. For example, once in school, one of my friends’ father encouraged him to dance by himself dancing. But I think the biggest achievement is supporting children when they are trying something new and telling them that success doesn’t matter as long as they try something.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think some people are better at persuading others?
+  user_model_answer: 'Yes, I think some people are able to motivate others much better. I think it depends upon emotional intelligence. If people are able to understand other people’s emotions, they are able to better understand and motivate them. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 43 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why do so many young people spend a lot of money on concerts?
+  user_model_answer: I think it is mainly because of the experience. Hearing a singer on the screen can never match the feeling of hearing them live. Also, I think it’s about spending quality time with friends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think older people like the same music as young people?
+  user_model_answer: I feel young people like pop, rock music, basically any music that they can dance to. They don’t care about the lyrics; they care more about the fast beats. Old people are more into soft, slow, music. They actually pay more attention to the lyrics.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think music concerts are suitable for old people to attend?
+  user_model_answer: I think it might be physically taxing for the old people to stand for so long at a concert. But otherwise, I think if the old people can manage the physical exertion, the concerts are certainly suitable. Today many concerts also offer chairs, where the older people can sit and enjoy the show rather than having to stand.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why do shopping malls often have background music?
+  user_model_answer: 'I think the music is there to enhance the experience of shopping. We remember shopping through not only sight but also through music playing in the background. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 45 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

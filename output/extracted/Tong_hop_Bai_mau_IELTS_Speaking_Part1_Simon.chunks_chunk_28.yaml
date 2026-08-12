@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: CLOTHES — Answer Bank
+  topic_tags:
+  - clothes
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: CLOTHES'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về clothes bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - clothes
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are clothes and clothing fashions important to you? (Why/Why not?)
+  user_model_answer: 'No, clothes and fashions are not really important to me. I tend to wear clothes that are comfortable and practical rather than fashionable. follow (a) fashion = to do what is popular at the time:'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What different clothes do you wear for different situations?
+  user_model_answer: chạy theo xu hướng thời trang Well, I have to dress quite formally for work, so I wear a shirt and trousers. At home careful about = giving I prefer to wear jeans and a T-shirt, and on special occasions I might wear a suit. attention or thought to what you are doing so that you
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you wear different styles of clothes now compared to 10 years ago?
+  user_model_answer: avoid hurting yourself, No, not really, because I don't follow fashion. I think I have dressed in a similar damaging something or doing way for the last 10 years.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think the clothes we wear say something about who we are?
+  user_model_answer: 'show wealth or status: thể Yes, they probably do. Some people are really careful about what they wear'

@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '5. Think of someone you know well. Tell your partner whether the person you''re thinking of is male or female. Then, take turns asking: *What''s he/she like?*'
+  user_model_answer: '*What does he/she look like?*'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Look at the table below. You can see that life expectancy in New Zealand is 80 years. Try to predict the life expectancy for the other countries in the table. Then, check your partner's table. Do you agree?
+  user_model_answer: '| Countries | Years | |-----------|-------| | Botswana | | | China | | | Russia | | | New Zealand | 80 | | Peru | | | Japan | |'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. Practise saying the following sentences, stressing the words in bold. Remember the stressed words will be spoken slightly louder and longer than the others. There's a lot of **poverty** in **Peru**. It's a very **poor** **country**. They have quite a **low** **standard** of **living**. What about **New** **Zealand**?
+  user_model_answer: They've got **plenty** of **clean**, **fresh** **air**. I've also heard that it has a **good** **system** of **government**. The **government** takes a **lot** of **taxes** though. What are the **people** like? On the whole, they are quite **well-educated**. I've heard they're very **friendly**, too.

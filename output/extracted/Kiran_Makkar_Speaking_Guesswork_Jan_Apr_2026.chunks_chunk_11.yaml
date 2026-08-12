@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why are children attracted to new things (such as electronics)?
+  user_model_answer: I think everyone is attracted to new things nowadays. Children are attracted more so because for them everything is new and they are curious about things work. Another reason is that children want to possess or own the latest technology to show off to their friends and classmates.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Why do some grown-ups hate to throw out old things (such as clothes)?
+  user_model_answer: Adults have a personal connection or a story attached to old things. For example, a sweater made by their mother or gifted by an aunt. They feel like they are losing a part of themselves when they throw them out as it is a reminder of their childhood and hence, they are hesitant. In today’s era of mass-produced goods, there is no connection to products.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Is the way people buy things affected? How?
+  user_model_answer: Yes, people today buy things online. Moreover, like I said before we don’t have an emotional connection with products as in the past. Earlier, we felt a loss when something broke down. Now, it’s just an object, and breaking down is an opportunity to buy a newer version.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do you think influences people to buy new things?
+  user_model_answer: I think it’s just that as things get old, people get bored, and to renew their excitement, they buy a new thing. It also the influence of ads, which keep on reminding us that we are missing out if we don’t have the latest version of something.

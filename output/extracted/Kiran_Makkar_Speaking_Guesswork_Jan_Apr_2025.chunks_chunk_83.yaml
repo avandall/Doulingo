@@ -1,0 +1,154 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like to plan what you will do each day? (Why?/Why not?)
+  user_model_answer: Yes, I like to plan what I do each day. If I do not plan I tend to procrastinate and then all my work piles up and I start getting stressed.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What's your favourite time of the day? (Why? What do you do at that time?)
+  user_model_answer: My favorite time of the day is evening time. We are family members have dinner together. We share our day’s happenings with each other. We watch TV together. Sometimes we go for walk after dinner. So this is my favorite time of the day.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you usually do the same things at the same time each day?
+  user_model_answer: No, my timetable is not that fixed. Dinner time is more or less fixed. Sometimes I go to bed late, if I have to complete an assignment or prepare for some test. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 355 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How do you plan (organize) your study time?
+  user_model_answer: I plan my study time very meticulously. I’m usually very diligent and try to study for 2-3 hours on school days, and 5 to 6 hours on weekends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Do you ever (or, do you often) change these plans?
+  user_model_answer: Yes many times, I have to change my plans. Sometimes there are guests at home and I have to help my mother. Then my timetable gets disturbed, but I usually make it up the next day by studying more.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. In your country is it important to be on time (= be punctual)? (e.g., for meetings, work, classes)
+  user_model_answer: Yes, it is very important to be on time to meetings, classes or for work. Time is valued a lot in India, as unlike money, time once gone doesn’t come back.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How do you feel when others are late?
+  user_model_answer: When others are late occasionally, it maybe due to a genuine problem, however, if someone is late very often, then it’s definitely a habit that I do not appreciate or like.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. How do you remind yourself to be on time?
+  user_model_answer: I usually remember the appointments and meetings, but sometimes I set reminders on my phone to be on time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why are some people always late?
+  user_model_answer: Some people are always late because they do not plan well and are not good at time management. They may also not value time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Do you think it’s important to be punctual?
+  user_model_answer: I think it’s very important to be punctual. It saves our time and the other person’s time also. Time is the most precious commodity.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. What will you do if you are waiting for someone?
+  user_model_answer: If I am waiting for someone, I’ll probably pass time by playing games on my phone or reading the news or chatting with my friends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Do you think people these days are as punctual as they were in the past?
+  user_model_answer: I think people are as punctual these days, as they were in the past. However, sometimes due to the traffic situation of today, despite wanting to be punctual, people are sometimes not able to reach on time for their work, meetings, appointments etc www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 356 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. How do children celebrate birthdays in your country?
+  user_model_answer: Children celebrate birthdays in different ways. Some children invite friends and cut the cake. Older children take their friends out for a party. Some people celebrate by donating for charity.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How did you celebrate your last birthday?
+  user_model_answer: I took my friends out for dinner at Rangla Punjab, a famous restaurant in the suburbs of my hometown.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What kinds of birthday gifts do you like to receive?
+  user_model_answer: I like to receive clothes, books, flowers as gifts. I take gifts as gestures of love. So I happily accept anything that anybody brings for me.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Is there a difference between the way you celebrated your birthday in the past and the present?
+  user_model_answer: When I was younger, my mother used to make snacks at home and bake a cake. I used to invite my friends, but now I prefer to take them out for lunch or dinner.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you use computer very much?
+  user_model_answer: Yes, I use computers a lot. I have a laptop I use for my studies, to stay connected to my friends and relatives living far away, to research on various topics, for entertainment I watch movies and play games.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. When do you use a computer?
+  user_model_answer: I use the computer everyday at home, usually in the evenings and after dinner. I use it to research for my assignments and to check my emails, check Facebook updates and post messages and sometimes I use it to watch movies or play games.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What do you use computer for?
+  user_model_answer: I use it to research for my assignments and to check my emails, check Facebook updates and post messages and sometimes I use it to watch movies or play games.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What was your impression when you used a computer the first time?
+  user_model_answer: I remember the day when I used the computer the first time. I was in class 6 at that time. I vividly remember how fascinated I was with the computer.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How did you learn to use a computer?
+  user_model_answer: I learned to use a computer through school lessons. Later I got my own personal desktop at home and I learned a little more by using it more at home. Now I have a laptop that I use regularly.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Have computers changed your life in anyway (if yes, How?)?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 357 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, definitely. Computers have changed my life. I am well connected with all my friends and relatives, irrespective of which part of the world they are in. It has made the research work for my assignments very convenient. I think it’s a very good source of entertainment and with the Internet it is a boon for the humankind. Many everyday tasks can be done in a matter of a few clicks and in a few seconds, be it banking, shopping, etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Are computers used much in your country?
+  user_model_answer: Yes, the use of computers has increased greatly in my country. It is a common household electronic equipment and almost all the workplaces make use of a computer, like in a grocery store, bank, coffee shop, school, post office, etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you think computer are useful in everyday life (how)?
+  user_model_answer: Yes, computers are very useful in everyday life. We can pay our bills, book tickets, shop for anything, set reminders, connect with relatives and friends, research, entertain ourselves, create new things and do umpteen other things by using a computer.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Computers are now used a lot in education. What do you think of this?
+  user_model_answer: I think it is the need of the day to make use of computers in education. It not only makes the lessons more interesting, it also helps make the children more techno-savvy, as technology is used in almost all fields.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 10. Do you play computer games?
+  user_model_answer: Yes, sometimes I play word games, puzzles or card games on my computer.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Do you think computers are perfect now or do they still need to be improved?
+  user_model_answer: I think the computers technology, in terms of both hardware and software keeps changing and there is always something new that needs to be added as time passes. So, in the future I can foresee a lot of changes and improvements that are made to the computers.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. When was the last time you did something in a hurry?
+  user_model_answer: The last time I did something in a hurry was two months ago. I remember my exams were going on. I slept really late because I was studying and in the morning I did not hear the alarm. So I got ready in a hurry, and forgot my wallet at home.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like to finish things quickly?
+  user_model_answer: If I don’t like what I’m doing, then I like to finish things quickly. But, if I am enjoying what I’m doing then I take my time.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What kind of things you would never do in a hurry?
+  user_model_answer: I would never drive in a hurry, or cross the road in a hurry.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why do people make mistakes more easily when they are in a hurry?
+  user_model_answer: It is easy to make mistakes in a hurry, because the mind is preoccupied and so it is easy to forget certain things. That desire it has been rightly said that haste makes waste. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 358 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are there many (or any) museums in your hometown?
+  user_model_answer: No, there are no museums in my hometown. That is on museum of our great martyr Bhagat Singh, which is 30 km away. There is an another Sikh museum in Amritsar in Golden Temple.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think museums are useful for visitors to your hometown/country?
+  user_model_answer: Yes, museums are very useful for the visitors. Museums provide knowledge and information. They also provide entertainment. Museums preserve a collection. Museums inspire people to do things.

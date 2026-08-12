@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Is it important to take photos while traveling?
+  user_model_answer: Yes, photos help keep memories alive. I always take pictures when I travel. They also help me share experiences with family and friends. But some people feel taking too many photos can spoil the moment.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Can you trust other people's travel journals on the Internet?
+  user_model_answer: Sometimes they are helpful, but not always. Some reviews are fake or too personal. I prefer to check multiple sources before planning. Once I booked a hotel based on reviews, and it was very different.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What factors affect how people feel about traveling?
+  user_model_answer: Things like budget, time, and company matter a lot. If the weather is good and people enjoy food and sightseeing, they feel happy. But if there’s too much crowd or bad service, the experience becomes poor.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Will you go to a foreign country to travel because of the distinct landscape?
+  user_model_answer: Yes, I love to see new natural places. Mountains, beaches, and forests are very exciting to me. I hope to visit Switzerland one day just to see the snow and lakes. The beauty of a place attracts many tourists.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How can tourists have a good travel experience?
+  user_model_answer: They should plan properly and keep important things like ID, tickets, and money safe. Also, they should respect local culture and try local food. A positive attitude also helps in enjoying the trip.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What kinds of comments do travelers typically leave online after a trip?
+  user_model_answer: 'Mostly people write about hotel experience, food, and places they visited. They also give tips for future visitors. Sometimes, if they had a bad experience, they warn others. I always check such reviews before booking. INTRODUCING STUDY LOAN Your Fast and Flexible Funding Solution Call/Whatsapp -8360957299 Don’t let a lack of funds keep you from achieving your dreams. Access custom-made loan plans whether or not you apply through us. The average approval turnaround time is only 2–7 days! https://g.co/kgs/xBR5EKQ - Mohali www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 131 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kinds of sports events are broadcast on TV or other media in your country?
+  user_model_answer: In my country, cricket is the most popular on TV. Apart from that, people also watch football, kabaddi, and hockey. During big events like the Olympics or World Cup, even non-sports fans watch. Sports channels show highlights all the time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do people in your country enjoy watching football games?
+  user_model_answer: Yes, especially young people. Though cricket is more famous, football is growing fast. Big matches like FIFA finals attract a lot of viewers. I also enjoy watching Messi and Ronaldo play.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Does encouragement and applause from the audience have an impact on athletes?
+  user_model_answer: 'Definitely. It boosts their energy and confidence. When the crowd cheers, athletes feel more motivated. But too much noise can also cause pressure sometimes. INTRODUCING makkarVISA360 Check - Student Visa Pre-Check Service • Expert review of your educational, financial, and visa documents • In-depth check of your Statement of Purpose (SOP) • Application validated on 50+ critical success parameters • Completed within 1 day — fast, accurate, and stress-free • Avoid rejection due to common filing mistakes • Save thousands of rupees by preventing costly reapplications • Protect your future by submitting an error-free visa application • Bonus services: SOP writing and visa interview preparation • Trusted by students who want their application to be right the first time 💡 All this for just ₹999 — a small step for a big success! Call 836-095-7299 Avoid costly mistakes and visa refusals with our Student Visa Pre-Check Service. Our expert team thoroughly reviews your educational
+    documents, financial papers, visa application forms, and Statement of Purpose (SOP) to ensure everything is accurate and complete before you apply. We validate your entire application within just one day, checking it against 50+ critical parameters to eliminate errors that could lead to rejection. With lakhs of students facing visa refusals every year due to incorrect or incomplete information submitted by their visa filing teams, this is your chance to save thousands of rupees and protect your academic future. In addition to the Pre-Check, we also offer professional SOP writing and visa interview preparation to boost your chances of success even further. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 133 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

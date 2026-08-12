@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. With a partner, ask and answer the questions below. a. Do you think time management is important? Why/Why not?
+  user_model_answer: b. How well do you manage your time? c. Have you ever been in a situation where you were late for an important event or deadline? How did you feel?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What is the function of each of the underlined phrases in 2? Add them to the table below.
+  user_model_answer: '| Function | Examples from 2 | |----------|-----------------| | Starting | | | Adding | | | Sequencing | | | Changing topic | | | Digressing (going off the topic) | | | Returning to the topic | | | Concluding | |'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Underline the compound adjective in the following pairs of sentences. Where do you think the stress falls?
+  user_model_answer: a. Her books on time travel have been **best-selling**. b. She's written a number of **best-selling** books on time travel. c. The effects of postponing the election will be **far-reaching**. d. The postponement of the election will have **far-reaching** effects.

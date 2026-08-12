@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: SHOES — Answer Bank
+  topic_tags:
+  - shoes
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: SHOES'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về shoes bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - shoes
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like to buy expensive shoes?
+  user_model_answer: 'No. I tend to buy average-priced shoes because I''m more interested in comfort than expensive brands. be interest in...= like:'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. When you buy shoes, do you prefer convenience or style? thích ...
+  user_model_answer: I mainly look for comfort and convenience. But obviously I consider the style too, following the latest
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why do you think some people buy many pairs of shoes? try something on = ​to
+  user_model_answer: I suppose they either like following the latest fashions, or they want a pair of shoes to put on a piece of clothing match all of the different clothes or outfits that they have. to see if it fits and how it
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Have you ever bought shoes online? thử
+  user_model_answer: No, I haven't. I always like to try shoes on before I buy them, to make sure that they fit properly and feel comfortable.

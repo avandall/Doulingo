@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Compare ideas with another student. Then answer the questions below. a. How easy or difficult do you think each of the jobs would be?
+  user_model_answer: b. Which of the voluntary projects would you choose to work on? Why? c. In which countries would you be most likely to do one of these projects? d. At what stage in life might someone volunteer overseas?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What type of information do you think goes in the gaps (1-8) in 3? Choose an idea from the box below for each gap.
+  user_model_answer: a description, an aspect of language learning, a skill or ability, a time period, a person, a place or person, a place (x2)
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. 2.9 The task cards below are from Speaking Part 2. Listen to a candidate answering one of the questions. Which task is he doing? Make a brief note on the card of the answers he gives to each prompt.
+  user_model_answer: '**A. Describe a country you would like to visit.** *You should say:* - *where you would like to go* - *how you would travel* - *what you would do there* - *and explain why you would like to go to this place.* **B. Describe a place you have been to on holiday.** *You should say:* - *where you went* - *who you went with* - *what you did* - *and explain what you particularly liked about the holiday.*'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 22. Where has a payment been introduced to restrict city traffic?
+  user_model_answer: A. some cities in China B. London C. Moscow
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 23. Which cause of traffic congestion is NOT given?
+  user_model_answer: A. it can be caused by the action of a single driver B. it can be caused by bad driving C. it can be caused by unexpected events on the road
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Look at the pictures and answer the questions below. a. Which picture most closely resembles the family you grew up in?
+  user_model_answer: b. Is there any such thing as a typical family nowadays? c. Do you think the family unit has changed over the years? In what way?

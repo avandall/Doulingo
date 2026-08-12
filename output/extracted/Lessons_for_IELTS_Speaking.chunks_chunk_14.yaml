@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Look at the following adverbial phrases. Can you divide them into two groups? Which grammatical pattern do you notice?
+  user_model_answer: to relax, to spend time with my friends, for fun, for enjoyment, to enjoy myself, to have fun, to be creative, for entertainment, to buy stuff, to get good marks, to socialise with my classmates, to practise my English, to meet new people, for communication, to communicate with my friends, to keep in touch with friends overseas | to + verb | for + noun | |-----------|------------| | to relax | for fun | | | | | | | | | | | | | | | |
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 17. Look at the following Part 2 prompt card and the notes which the candidate has made. Can you predict what they will speak about by looking at their notes?
+  user_model_answer: '**Prompt Card:** *Describe your favourite leisure activity.* *You should say:* - *What it is* - *Where and when you do it* - *Who you do it with* - *And why you enjoy it* **Candidate''s notes:** - Twitter - like Facebook - share photos, music, gossip - keep in touch with friends'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '21. Now, it is your turn. Make notes about the same prompt card: Describe your favourite leisure activity. Make good use of your preparation time. Your notes will help you to structure your talk and give you confidence. | Prompts | Your notes | |---------|------------| | What is your favourite leisure activity? | |'
+  user_model_answer: '| Where and when do you do it? | | | Who do you do it with? | | | Why do you enjoy it? | |'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '25. Here is another typical Part 3 question: *Why do you think the older generation enjoy different leisure activities to the younger generation?*'
+  user_model_answer: 'With your partner, ask and answer the question above. This time, include introductory phrases and reason/result or result/reason sentence structures. Introductory phrases: *In my opinion,... Well, I think... It seems to me that... I think one of the reasons...* Reason = *because*; Result = *so* **For example:** *I think one of the reasons is that the older generation have less energy than the younger generation, so they need less energetic leisure activities.* *In my opinion, the younger generation prefer to use technology in their free time because they grew up in a different era to the older generation.*'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Look at the following aspects of life. How have they been made easier by technology? Discuss some examples with a partner.
+  user_model_answer: education, housework, shopping, communication, entertainment, work, transport, diet

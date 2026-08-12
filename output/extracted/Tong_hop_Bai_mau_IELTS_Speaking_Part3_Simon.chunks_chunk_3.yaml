@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part3_Simon.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think it's important for people to have hobbies? Why?
+  user_model_answer: 'special exercises: giữ Yes, I think people need to have hobbies because we all need to do dáng things we enjoy in our spare time. In my case, I find that playing football affect'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Can hobbies have any negative effects?
+  user_model_answer: 'Yes, if you spend too much time on your hobby, it can affect other parts hưởng of your life. I remember that one of my friends spent most of his time at instead of = ​in the university playing computer games instead of studying. In the end, he place of somebody/ failed most of his exams. something: thay vì collected by ielts-nguyenhuyen.com'

@@ -1,0 +1,159 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you read magazines?
+  user_model_answer: Yes, I read magazines. Reader’s Digest is the one I usually read.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Who prefers to read magazines – younger or older people?
+  user_model_answer: I think it is a matter of personal choice and is not related to age.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Have you ever read online magazines?
+  user_model_answer: Yes, I have read online magazines. But I prefer traditional printed magazines to online ones.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Did you read magazines when you were young?
+  user_model_answer: No, I didn’t read magazines, but I read comic books and other children’s books when I was young. I started reading magazines in my late teenage years.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What kind of magazines are popular in your country?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 362 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books There are many types of magazines popular in my country, like fashion magazines, sports magazines, housekeeping magazines, automobiles magazines, art & craft magazines and many more.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you know your neighbors?
+  user_model_answer: Yes, I know my neighbors well. I meet them daily and we are like a family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you like your neighbors?
+  user_model_answer: Yes, I like my neighbors. They are very friendly and helpful. In fact, we are like a family.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why are neighbors important?
+  user_model_answer: Neighbours are very important because they are next to our family. In fact, in today’s era of nuclear families, neighbours are the only family we have in times of emergencies. Neighbours are the people with whom we share our walls. They are the first ones to help us in times of need.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. When do you meet your neighbors?
+  user_model_answer: I meet my neighbors in the evenings. We usually meet them in the park or outside my home. Sometimes we have some celebrations in our neighborhood or some community programs, where I get to meet my neighbors.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How often do you meet your neighbors?
+  user_model_answer: I meet my neighbors very often, in fact almost daily.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Who’s your favorite pop star?
+  user_model_answer: My favorite pop star is the famous Punjabi singer, DiljeetDosanjh. He is an excellent singer, performer and an actor.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you want to be a pop star?
+  user_model_answer: No, I don’t have the qualities or talent to be a pop star.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you like to go to concerts?
+  user_model_answer: Yes, I like to go to concerts. I think live performances are very enjoyable and much different from listening to recorded music. We get to meet like-minded people, with similar interests.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you prefer live music or recorded music?
+  user_model_answer: I don’t prefer one to the other. I enjoy both equally. Live music has its own charm and energy, whereas recorded music can be enjoyed anytime, anywhere
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like to spend time with teenagers?
+  user_model_answer: I have a few cousins who are in their teenage years and I like to spend time with them. I get to know about what is the latest trend and what kinds of apps are popular among them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you know anything about the kind of fashion that teenagers like?
+  user_model_answer: Yes, I know about the kind of fashion that teenagers like, through the TV shows and movies. I also see a lot of teenagers when I go out and get a sense of the kind of fashion they follow.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What are the best things of being a teenager?
+  user_model_answer: I think that the best part of being a teenager is the sense of responsibility that is developed in those years. It is also a stage of life, which brings a little more freedom, than the younger years.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How do teenagers entertain themselves?
+  user_model_answer: Teenagers usually entertain themselves by watching movies, listening to music, hanging out with friends, chatting online with friends, playing outdoor sports, and other such activities.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 240. Social Network 1.What kind of social networking websites do you like to use?
+  user_model_answer: I mostly use the Facebook website for social networking. These days all the social networking sites have an app that we can install and use on our phones, so I don’t usually visit the websites. I use my cellphone apps. 2.Are you a social person? I am not a very social person. However, I have a good social circle of friends. I like to meet them at least once in two-three months. OR I am a social person. I like to meet new people and make new friends. I have a big social circle of friends. 3.What kinds of people do you like to be friends with on those websites? On those websites, I only have friends whom I already know or whom I know through someone. I do not make new friends on such websites. 4.Is it easy to find real friends on a social networking website? No, it is not at all easy to find real friends on social networking websites. People make fake ids, with fake information and dupe people. 5.What kind of chatting app or software do Indian people like to use? Indian
+    people like to use chatting apps like, Whatsapp, Snapchat, Hike, V-chat, Viber, etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Who teaches you to be polite?
+  user_model_answer: Our parents, teachers, relatives, friends and other acquaintances, teach us politeness. We also learn about the importance of politeness from stories we read and movies we watch. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 364 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How do Indian people show politeness?
+  user_model_answer: Indian people show politeness in their actions, like talking softly, spending time with the elderly, helping people, greeting others with a smile and many other such small gestures reflect politeness.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Has the way people show politeness changed in India?
+  user_model_answer: Yes, I think with the advancement in technology, the way we show politeness has changed. With the advent of the internet and social networking, it is very important to show respect to others in the way we write messages or emails, so as to not offend others. For example, when chatting with someone, it is not acceptable to type in capital letters. It is considered rude and impolite.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are you angry with people who are late?
+  user_model_answer: Yes, definitely I am angry with people who are late. I am very punctual myself and I feel irritated when somebody keeps me waiting.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think that people have less free time today than in the past? Why?
+  user_model_answer: Yes, I do feel that people have less free time today than in the past. Today, people have become workaholics. They run after money and in doing so they work longer hours. Moreover, today we belong to a materialistic society and to buy the luxuries we have to work more. In earlier times, life was slower and the needs of people were limited. So people had a lot of free time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think that the quality of living is increasing? How?
+  user_model_answer: I feel that the quality of life has increased in many ways and in many ways it has gone down. People today enjoy greater comforts and have more money to enjoy life but on the other hand we face many problems today such as pollution and global warming which make the quality of life bad.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Today people use machinery to automate everything, is it good or bad?
+  user_model_answer: It is both – good as well as bad. In many ways it is good. We have more time because of machines. We get good quality things because machines make uniform things. We do mass production because of automation and this boosts our economy as we can export things to other countries when we produce them in bulk. On the other hand, many people have lost jobs because of automation. So, unemployment occurs and this leads to many other problems in society. Machines can also not give a personal touch to things.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. How does modern technology help to save time?
+  user_model_answer: Modern technology has touched all aspects of life. In transport industry we have much faster means of travel. In communication, technology has given us tools to connect to others at the click of a mouse. In the homes, we have washing machines and microwave ovens, which save our time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Do you agree that people should let machinery do everything?
+  user_model_answer: I do not agree that machines should do everything. In that way we shall become slaves of our own creation. We should know when, where and how much we have to use machines. We should know where to draw the line. When we need mass production, we should take the help of machines. In doing repetitive and boring work we can let the machines take over. But where creativity is needed, we should do with our own hands. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 365 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are you ever late for anything?
+  user_model_answer: No, I am a very punctual person. I value time and am never late for anything, unless it is due to some unavoidable and unforeseen circumstances.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What excuses do you use when you are late?
+  user_model_answer: I am usually not late for any meetings or appointments. However, if at all I am getting late due to an unavoidable circumstance, then I inform the person I am meeting, beforehand. I don’t make excuses.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What excuses do people have when they are late?
+  user_model_answer: People give excuses like car or bike breakdown or that they were stuck in traffic, when they are late
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Are you good at organizing time?
+  user_model_answer: Yes, I am good at organizing time. I set up reminders for important events and meetings. I am never late for an appointment.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How do you usually organize time?
+  user_model_answer: I sometimes set up reminders for important events or meetings, sometimes I make lists of tasks to complete, sometimes I set deadlines for myself, especially when working on an important assignment/project.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think planning is important for time management?
+  user_model_answer: Yes, planning is essential for good time management. If we don’t plan ahead, we will tend to waste time doing tasks/things which are unimportant or unnecessary.

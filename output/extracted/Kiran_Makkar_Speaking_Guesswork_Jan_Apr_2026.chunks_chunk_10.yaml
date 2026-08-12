@@ -1,0 +1,58 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What types of buildings are popular in your country?
+  user_model_answer: Well, in my country, modern high-rise apartments and shopping malls are very popular in big cities. People prefer them because they save space and offer facilities like parking and security. But in rural areas, single-storey houses are still common because land is cheaper and families live together.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Is it worth spending a lot of money on the exterior appearance of a building?
+  user_model_answer: According to me, it depends on the purpose of the building. If it's a hotel or a commercial space, the exterior matters because it attracts customers. But for a normal house, I feel comfort is more important than decoration. Some people still like to invest in fancy exteriors just to show status, but I'm not too fond of that idea.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Is it more important for a building to look good on the outside or on the inside?
+  user_model_answer: I personally believe the inside matters more. People spend most of their time indoors, so the space should be comfortable and practical. A building can look simple from the outside but still feel warm, neat, and useful on the inside. I’ve seen many houses like that, and they feel much nicer to live in.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why do people like to visit historical sites?
+  user_model_answer: 'People enjoy historical sites because they help them connect with the past. These places tell stories about how people lived, fought, or built things before modern technology. When I visited a fort last year, I felt like I was stepping into another time, and that made the experience quite special. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 50 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you think you want to take up this job?
+  user_model_answer: Yes, I would definitely like to take up this job. It requires great commitment but it is also well paid.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Which occupation should be given a better pay?
+  user_model_answer: Teachers, doctors, nurses, entertainers, people in the civil services, people in the defense, those working in fire brigades, should all be given better pay.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Is being rich a good thing?
+  user_model_answer: Yes, being rich is a good thing. Rich people can help others. They can also satisfy/fulfill all their needs.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think people should save for the future?
+  user_model_answer: Yes, people should save for the future. The future is uncertain. There should always be some saving for the rainy days.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What makes a person choose a job apart from the pay it offers?
+  user_model_answer: 'Many factors help a person choose a job. The first is money, and the second is job satisfaction. Then there are chances of promotion. Good relations with the employers, perks and bonuses. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 52 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

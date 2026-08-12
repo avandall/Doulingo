@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tuyen_tap_Bai_mau_Speaking_Part1_IELTS_Fighter.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do people in your country like to go to a cinema to watch a film?
+  user_model_answer: I would say so. Since people like to go out with their families on the weekends, this is often an activity that they would choose. Moreover, teenagers enjoy this activity as a way to get out of the house. Furthermore, it’s often a popular date option for many people!
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. How much sleep is best for you?
+  user_model_answer: I’ve heard that 8 hours of sleep is the best amount of sleep that is needed for adults. But I tend to disagree with that. It seems that I can function just as well with 7 hours of sleep.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do old people sleep a lot? Why?
+  user_model_answer: Yes, I guess the elderly people do need to sleep more. I believe the reason is that after years of working, stress and the natural process breaks down people’s body until all they want to do is sleep, consequently, their bodies take longer to recharge the batteries.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you like to get up early in the morning?
+  user_model_answer: Yes, getting up early in the morning is really beneficial for health, because I can enjoy the fresh air in the morning; besides, I have plenty of time in the morning so that I can do some physical exercises liking running and jogging; as well as that, I can prepare a good dinner for the family.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How to have a good sleep?
+  user_model_answer: I believe you have to follow several rules to get a good sleep regularly. Firstly, go to bed at the same time every night. Choose a time when you normally feel tired, so that you don’t toss and turn. Besides, make sure your bed is comfortable so that you can stretch and turn in bed comfortably. As well as that, stay away from big meals at night or try to make dinnertime earlier in the evening, and avoid heavy, rich foods before bed.

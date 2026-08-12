@@ -1,0 +1,55 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of plans do young people often make?
+  user_model_answer: Young people usually plan for their studies, jobs, or travel. Some also plan daily routines to manage time better. I often plan my study schedule to prepare for IELTS.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Why can't people always follow their plans?
+  user_model_answer: 'Sometimes life is unpredictable—things change or problems come up. That’s why even well-made plans can fail. But I believe planning is still useful, even if we don’t follow everything exactly. Our books are available on Amazon now To buy genuine and original books please select makkarielts as the seller https://amzn.to/47swIkX - Kiran Makkar Ideas for Essays for IELTS, PTE & ToEFL https://amzn.to/3Zd7R2x - Kiran Makkar IELTS Graphs From The Past Exams https://amzn.to/4d5t5m1 - Kiran Makkar IELTS Academic Essays From The Past Exams 2024 Edition https://amzn.to/3z1O23H - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 1 https://amzn.to/3MZe8HX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 2 https://amzn.to/4ggCdXX - Kiran Makkar IELTS Academic Readings For Exam Practice, Vol 3 https://amzn.to/3z2EoOf - Kiran Makkar IELTS General Training Essays & Letters From The Past Exams https://amzn.to/4gcbYC9 - Kiran Makkar IELTS General Training GT Readings
+    For Exam Practice www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 183 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why do some people like to record important things with photos?
+  user_model_answer: Photos help us remember special moments clearly. One picture can bring back a lot of emotions. That’s why many people take photos at weddings, birthdays, and trips.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What can people learn from historical photographs?
+  user_model_answer: They show us how people lived in the past—their clothes, houses, or lifestyle. It’s like getting a visual lesson about history. These pictures help us connect with old times.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Is taking photos the best way to remember something?
+  user_model_answer: It depends. Photos are great, but sometimes just being present in the moment creates stronger memories. Not everything has to be captured by a camera.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Which is better, taking photos or keeping a diary?
+  user_model_answer: I think both are good. Photos show how things looked, but a diary shows how we felt. I prefer a mix of both, especially when I travel or have a special day.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. When do people take photos?
+  user_model_answer: People mostly take photos during happy moments—like birthdays, holidays, or when they meet friends. Some also click random things they find beautiful.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do some people like to keep old photos?
+  user_model_answer: 'Old photos remind us of people and times we might forget. They have emotions attached. I often smile when I see my childhood pictures. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 185 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

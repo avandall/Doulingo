@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: Study — Answer Bank
+  topic_tags:
+  - study
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Bai_mau_IELTS_Speaking_Part_1.md, Topic: Study'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về study bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - study
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What is your favourite place to study?
+  user_model_answer: I prefer studying at home because it’s quiet, and I can really focus without any distractions. I’ve tried studying at a café before, but it’s too distracting with all the noise and people around.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you prefer to study at home or in the library? (Why?)
+  user_model_answer: I like both because they’re both pretty quiet, which is great for studying. During the week, I usually study at home since it’s convenient, but on weekends, I like going to the library—it’s a nice change of scenery, and I can use the resources there.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What part of your school do you like the most?
+  user_model_answer: I really enjoy the school yard because it has plenty of trees and flowers. It’s refreshing and unique compared to many schoolyards that are mostly concrete. It’s such a great spot to relax during breaks or even just sit and enjoy the fresh air when I need a little break from studying.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do you find most interesting about your studies? (Why?)
+  user_model_answer: For me, the most interesting part of my studies has to be the teachers. They’re not just knowledgeable but also super enthusiastic about what they teach. Plus, they’re always willing to help if I have questions or need extra support.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Which is more important to you – the teachers or the other students on your course? (Why?)
+  user_model_answer: I think both are equally important, and it’s hard to choose one over the other. Teachers guide you through the material and explain everything clearly, but other students play a big role too. They’re the ones you can share ideas, and motivate each other when things get tough. So, I’d say you kind of need both to have a good learning experience.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How much time do you spend studying every week?
+  user_model_answer: I usually spend about 4 to 5 hours a day studying, depending on how much I’ve got to do. By the end of the week, that adds up to somewhere around 28 to 35 hours. It might sound like a lot, but it’s just part of my daily routine now. I break it up with little breaks here and there to keep it manageable.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. How do you usually travel to the city where you study?
+  user_model_answer: My school is actually in the suburbs, so getting to the city takes quite a bit of time— around three hours, actually. Because of that, I only make the trip about once a month when I really need to.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Do you study best in the morning or the afternoon? (Why?)
+  user_model_answer: I’m definitely more of a morning person when it comes to studying. I feel way more alert and focused when I get started early. By the time the afternoon rolls around, I tend to feel a bit sluggish, and it’s harder to concentrate. So, I try to get most of my important work done earlier in the day.

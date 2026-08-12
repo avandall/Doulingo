@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Underline the compound adjective in the following pairs of sentences. Where do you think the stress falls?
+  user_model_answer: a. Her books on time travel have been **best-selling**. b. She's written a number of **best-selling** books on time travel. c. The effects of postponing the election will be **far-reaching**. d. The postponement of the election will have **far-reaching** effects.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Underline the stressed syllable in the compound adjectives in the following questions. a. What are the benefits and drawbacks of buying **mass-produced** goods? What about products that are **custom-made**?
+  user_model_answer: b. What are some of the **long-term** effects of flooding? c. What is the most **cost-effective** way to travel in your country? d. How can **cross-cultural** understanding be best achieved? e. What's the best way of keeping **up-to-date** with world news? f. What are the advantages and disadvantages of students working **part-time**? g. Do you like modern buildings or do you prefer them to be more **old-fashioned**? h. What are the most **time-consuming** daily activities for you? i. What information can **non-verbal** communication give us? j. How can you ensure friendships are **long-lasting**?

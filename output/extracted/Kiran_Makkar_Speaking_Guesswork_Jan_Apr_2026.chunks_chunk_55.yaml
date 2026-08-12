@@ -1,0 +1,70 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think it is good for children to make noise?
+  user_model_answer: It is neither good nor bad. It is a part of being a child. I think noise is the essence of childhood and a child can never truly enjoy himself if we ask him/her to be quiet. However, I also believe that it is necessary to be respectful to our neighbours and ask children to be less noisy in case they are being excessively loud.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Should children not be allowed to make noise under any circumstances?
+  user_model_answer: No, I think there should be restrictions. Children have the right to make noise but people around them also have a right to peaceful environment. For example, children shouldn’t be allowed to be noisy at night as it might impact others’ sleep and they shouldn’t be allowed to make noise in a movie theatre as it might ruin the experience of other movie goers.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What kinds of noises are there in our life?
+  user_model_answer: There are so many noises in our life. Firstly, there is noise of vehicles, the engine sounds and horns. If people are living close to an industry, then there is that noise as well. Then, there is the noise of everyday appliances like air conditioners, fans, grinders, machines and so on. Finally, there is the noise from other living beings around us like insects, animals like dogs barking and just other people talking to each other or on the phone.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Which area is exposed to noise more, the city or the countryside?
+  user_model_answer: I think it is certainly cities, which are noisier. I think the one of the biggest sources of noise is technology. It may be in the form of cars or industrial machinery or household appliances. Another source of noise is us humans. Both these factors are much more common in cities than in the countryside and thus cities are noisier.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How would people usually respond to noises in your country?
+  user_model_answer: Indians generally don’t mind noise that much. We are very densely populated country and thus it is hard to find a peaceful or quiet environment. Moreover, there is no segregation between commercial and residential areas. Thus, most people accept noise as a part of life. It’s like there is no point complaining about something we can’t do anything about. In recent years, however, I have seen people moving to suburbs to avoid excessive noise.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How can people consider others’ feelings when chatting in public?
+  user_model_answer: 'Firstly, if it is not urgent, they can just tell the other person they will call them back. However, if it is urgent, they should go out and talk. If that is not possible, then they should at least talk in a low volume. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 247 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What do you do if you disagree with someone?
+  user_model_answer: Firstly, I listen to the person carefully to avoid any misunderstanding. Then, I share my opinion along with suitable evidence and reasoning to support it. Finally, I try to find some common ground, which satisfies me as well as the other person.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How can we stop an argument from escalating into a fight?
+  user_model_answer: Firstly, I try to avoid personal attacks. I also just calm down and reply based on facts and not on emotions. If I don’t see a resolution, I just agree to disagree and move on.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Who do you think should teach children to respect their teachers?
+  user_model_answer: I think it is the responsibility of parents and grandparents. I think these are basic etiquettes and parents have the utmost responsibility in this regard. If they feel their children disrespect or behave badly with their teachers, they should understand the reasons for the same and if it is unjustified they should tell their children to apologise.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What disagreement do parents and children usually have?
+  user_model_answer: I think it is mostly about freedom and independence like curfew time, screen time, chores and responsibility. There can also be disagreements about academic performance and finally there maybe disputes about lifestyle choices like unhealthy diet, mobile phone usage and friend circle.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Why do some people avoid arguing with others?
+  user_model_answer: I think the two major reasons are lack of confidence and trying to avoid the matter from escalating and spoiling the relationship. Some people just don’t believe they will be able to explain their point of view and fear being misunderstood so they avoid arguing at all. At other times, they just believe they might say something hurtful, which might spoil their friendship.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How do we show respect to others when we disagree with them?
+  user_model_answer: 'Firstly, we should try and listen to their viewpoint without any prejudice or bias. Secondly, we should avoid personal attacks. If they disagree with someone, doesn’t mean they are a bad person. Finally, to avoid it escalating, we can just agree to disagree. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 249 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

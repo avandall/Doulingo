@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Should children have learning routines?
+  user_model_answer: Yes, of course they should have learning routines. These add discipline to life. When children follow routines, they learn to manage time. I believe all routines teach something, so can be a learning experience. For example, a simple routine of a family meal can teach children many things when they share their days happenings with their parents. They learn many social skills and develop a bond with their family. A routine of going to bed in time can develop children’s mental health.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What are the advantages of children having a routine at school?
+  user_model_answer: There are many advantages of having routines at school. It gives students a predictable day at school. So, they feel more confident and secure. It also saves time. They don’t have to ask questions about what to do next. Teachers have already streamlined things for them. It becomes easier for students to become focused and attentive.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Does having a routine make kids feel more secure at school?
+  user_model_answer: Definitely yes. For younger children, a routine engages them in learning and helps them feel safe in their environment, while it helps older children know what to expect and feel more comfortable. This is why classroom routines are important. Routines in the classroom make class time more enjoyable and productive. They offer students a sense of stability. By having classroom rules and procedures that teachers set, their students will know their expectations.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How do people’s routines differ on weekdays and weekends?
+  user_model_answer: Weekdays and weekends are totally different, so their routines are also different. Weekday routines are good, but on weekends people can afford some flexibility. Of course, a person should also plan weekends, otherwise they will disappear without giving you any time for fun and relaxation. A weekend should relax a person after a busy week and also set him up for a successful week ahead. Weekend should incorporate family time, cinema time, outing time, socialising time and all what cannot be done on weekdays.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What daily routines people have at home?
+  user_model_answer: People have daily routines like a family meal, a morning prayer, doing household chores together and so on. Every family has their own routines set up, which make things easier for all members. For example, in my family my father buys vegetables, fruits and grocery, while my mother does the cooking and laundry. My father checks if all doors, windows and main gate is locked before going to bed. I take my dogs out for a walk twice a day. These routines are more or less fixed.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What are the differences in people’s daily routines now and 15 years ago?
+  user_model_answer: Life was slower and simpler in the past. People spent less time on social networking sites than in the past, so they had more time to socialise. Routines included being with other people. Today’s routines are more about spending time with oneself and technology. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 220 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books

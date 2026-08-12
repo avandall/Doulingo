@@ -1,0 +1,190 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Have you ever lost your keys?
+  user_model_answer: Yes I had lost my house keys once and my parents scolded me a lot after that.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you often forget the keys and lock yourself out?
+  user_model_answer: As I mentioned earlier it happened me with once and after that I have been very careful.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think it's a good idea to leave your keys with a neighbour?
+  user_model_answer: I think it depends on the relationship level with the neighbor. If there is a lot of trust amongst neighbors then it is ok to leave the keys.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 109. Numbers What is your favorite number?
+  user_model_answer: My favourite number is seven. It is also my date of my birth. Are you good at remembering phone numbers? It’s difficult for me to memorise phone number because whenever I have to make a call I just look up the person’s name and call their number. Are you good at math? I would say that I am average in maths. For difficult calcualtions, I have to rely on the calculator. Do you usually use numbers? I use numbers everyday, mostly while doing any financial transactions.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you like science?
+  user_model_answer: Yes, I like science. I am very curious by nature and love to know how things work.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. When did you start to learn about science?
+  user_model_answer: I started learning about science right from elementary school.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Which science subject is interesting to you?
+  user_model_answer: Chemistry is the most interesting subject to me. I like doing hands-on experiments and applying classroom learning in the lab. It’s really interesting to see what happens when different substances mix with each other.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kinds of interesting things have you done with science?
+  user_model_answer: I have done many interesting things with science like the volcano experiment where we added vinegar and baking soda in an empty bottle. The reaction created carbon dioxide gas which erupted out of the bottle. It was so cool to watch.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Are you interested in news?
+  user_model_answer: No, I don’t watch or track news these days.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How do you usually find news?
+  user_model_answer: 'www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 326 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts I use an application called inshorts on my smartphone to read the news.'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. How do your friends get news?
+  user_model_answer: They also use the same app but some of them also like watching news on TV
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Have you read the news this morning?
+  user_model_answer: No, I haven’t read the news today because I was preparing for the exam.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Do you often talk with your friends about the news?
+  user_model_answer: Yes, sometimes we like to discuss about political and sports news.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Which do you prefer, e-books or paper books?
+  user_model_answer: I prefer ebooks because they are less expensive and I can easily carry many books on my phone.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. When do you usually read online?
+  user_model_answer: Whenever I get free time I like to read few pages of a book.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Will you read more online in the future?
+  user_model_answer: I don’t want to read a lot online because if I would spend many hours in front of a screen it will not be good for my eyesight.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think paper books will disappear in the future?
+  user_model_answer: No I don think so because there are still many people who prefer reading paper based books.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Where did you go for your last holiday?
+  user_model_answer: I went to Goa for my last holiday. It was in Feb 2020 and was a very memorable holiday. My cousin had invited us to his destination wedding in Goa. We stayed back for four days after the wedding. I enjoyed the beaches, water sport activities, cruises, and casinos. We also visited old Goa and the beautiful churches that display the Portuguese architecture.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like holidays? Why?
+  user_model_answer: I like holidays as they provide me the opportunity to relax and get a break from my demanding job. I also get to spend more time with my family and friends. I feel refreshed and I am much more productive when I get back from the holidays.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Which public holiday do you like the best?
+  user_model_answer: My favorite public holiday is Diwali – the festival of lights. I love lighting our house, eating delicious sweets, meeting my friends and relatives, etc. The atmosphere is so lively, and people are happy all around. The view is beautiful as all houses and shops are decked up with beautiful lights.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do you do on holidays?
+  user_model_answer: 'I usually like to travel on holidays. I love exploring new places, trying different foods, and learning about different traditions and cultures. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 327 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you often stay up late?
+  user_model_answer: Yes, I call myself a night person and I normally don’t sleep before midnight.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Did you stay up late when you were a kid?
+  user_model_answer: No, at that time my parents used to put me to bed early because I had schoold early in the morning.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What do you do when you stay up late?
+  user_model_answer: Normally I like to read online articles or browse through the social media posts.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What does it feel like the next morning if you stay up late?
+  user_model_answer: It doesn’t feel much different now because my morning routine is not that busy. So, I get up late and casually go about things.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you know many small businesses where you live?
+  user_model_answer: Yes there are many small clothing and food businesses in my city.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you prefer buying things in big companies or small businesses?
+  user_model_answer: Although I love to buy branded products from large companies but if I get same quality from small businesses then I don’t mind buying from them.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Have you ever worked in small businesses?
+  user_model_answer: No I have never worked in a small business.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Have you ever thought about starting your own business?
+  user_model_answer: Yes I want to become and entrepreneur in the future and start my own food business.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 116. Language a. What languages do you speak?
+  user_model_answer: I speak Punjabi, Hindi and Englsih. b. When did you learn English? I started learning englsih when I was in 1st standard. Probaly I was around 5 years old at that time. c. Do you think English is difficult to learn? I do not think any language is difficult to learn, it depends a lot on whether a person is giving enough time for practice or not. d. Would you like to learn other languages? Yes I would like to learn French because the country where I am planning to do my higher studies, has French as the second language.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Is there anything that has made you feel happy lately?
+  user_model_answer: 'www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 328 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts Yes,my father gifted me a new phone last month. It was my dream phone and I feel really happy when I use this phone.'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What made you happy when you were little?
+  user_model_answer: When my parents bought me gifts on my birthday I used to feel very happy.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What do you think will make you feel happy in the future?
+  user_model_answer: I’ll be happy in future when I’ll fullfil my dreams and achieve success in life.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. When do you feel happy at work? Why?
+  user_model_answer: Whenver I finish my pending tasks it gives me a sense of accomplishment and happiness.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you feel happy when buying new things?
+  user_model_answer: Yes I have always been happy whenever I have bought something new. There is a different kind of charm to buying new things.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think people are happy when buying new?
+  user_model_answer: Of course yes people always feel happy when they buy something new. For example, almost everyone loves the smell of new car and it makes them smile.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you prefer to use pen or pencil?
+  user_model_answer: I prefer to use pencil because it can be erased, and mistakes can be removed. Also, I love to draw, and pencils are much better for that. They are also cheaper than pens.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. When was the last time you bought pen or pencil?
+  user_model_answer: I bought a pencil set for myself at the beginning of my college year along with other stationery items like notebooks, pens, erasers, sharpeners etc. I usually buy pencils when I run out or if I see a new kind that I don’t already have.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How would you react if someone sent you a pen as a gift?
+  user_model_answer: I would be very happy if someone sends me a pen as a gift because I love to write and for me pens are a sign of creativity. My mom gifted me a set of pens last year that I still use a lot and remember her whenever I write with them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you enjoy your current stage of life?
+  user_model_answer: Yes, I am currently a student and thoroughly enjoying this stage of life. Right now, I just have to think about getting into a good college. I have some personal responsibilities but don’t have to worry about finances, getting a job, buying a house. I think life becomes busy and responsibilities become bigger when you start working.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. In what stage of your life were you the happiest?
+  user_model_answer: 'I think early childhood was the happiest stage of my life. I was carefree, had zero responsibilities, didn’t have to worry about studying and my parents were always there to take care of me. I had a lot of neighborhood friends and I have happy memories of playing all day with them. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 329 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Which stage of your life do you think is the most important?
+  user_model_answer: I think all stages of life are important but childhood is the most important stage. It is crucial for our physical, emotional, and mental development. A child's brain can be molded and whatever one learns during their childhood will determine what kind of a person they will become as adults.

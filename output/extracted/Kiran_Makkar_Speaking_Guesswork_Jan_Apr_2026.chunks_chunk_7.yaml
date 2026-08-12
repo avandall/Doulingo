@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why does modern society need talent of all kinds?
+  user_model_answer: 'Modern society needs talent of all kinds because everyone cannot be proficient in all the things. So, to have a harmonious society there has to be a mix of people with different talents so that they can work together for the benefit of the whole society. ✅ Visa 360° File Check Afraid of visa refusal? Want experts to check your file? 👉 📞 Call us today before submission. Do you know one small mistake can lead to rejection? 👉 📌 Step into our office for a detailed file review. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 34 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think adults can have lots of imagination?
+  user_model_answer: I don’t think imagination depends upon age. Both children and adults can imagine things. The only thing is that children are not restricted by real-world knowledge in their imagination. So, children can sometimes imagine completely impossible things.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think imagination is necessary for scientists?
+  user_model_answer: I think all scientific discoveries are about looking at something from a new or different perspective. So, imagination is certainly important for scientists. Many would have seen an apple fall from a tree before Newton, but he was the first one to relate it to a force.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What kind of jobs need imagination?
+  user_model_answer: I think the biggest field with needs imagination is science. Then, another field in which I think is being a fantasy author. A fantasy author basically puts down his imagination on a piece of paper. I think some of the famous fantasy authors like Tolkien or JK Rowling are some of the people with an endless imagination.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What subjects are helpful for people’s imagination?
+  user_model_answer: 'I think literature can be very helpful to develop imagination. I remember reading Alice in Wonderland was so exciting. It was my first time reading a fantasy novel and I just couldn’t put it down. After reading each chapter, I used to think about what would happen next, and that in turn was nothing but exercising my imagination. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 36 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think artists with talents should focus on their talents?
+  user_model_answer: I honestly think that artists with talents should focus on it only if they are passionate about it because If we are not passionate about something then we are not able to sustain our interest in the particular activity for long. For example, the son or daughter of a famous musician might have innate talent towards music but if they do not have any interest in music they will never become successful musicians.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Is it possible for us to know the children who are 3 or 4 years old will become musicians or painters when they grow up?
+  user_model_answer: I do not think it is possible to predict what a child will grow up to be in the future at such a young age. Children at the age of 3 or 4 are very curious and show their interest in almost everything as they are discovering the world around them. It would be very difficult to identify that they will become an artist in the future or not, even if the child has some innate talent, as most of the parents do not pay much serious attention to what their child is doing.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think parents feel guilty for putting too much pressure on their children?
+  user_model_answer: Well, I believe parents do not feel much guilty for putting their children under pressure because they think that they are preparing their children for the challenges that the real world would bring in the future. Parents have the idea that putting their children under pressure will motivate them to push themselves harder and achieve the impossible in life.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Why people like to watch talent shows?
+  user_model_answer: Honestly, I am not a big fan of talent shows but I think the primary reason why people love watching them is entertainment. The talent shows are full of entertainment which is based on reality as compared to the fictional dramas. People are able to relate a lot with these reality based shows and also they drive a lot of inspiration from such shows. The talent shows sometimes also show the struggling stories of the artists which a lot of people love to watch.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you think it is more interesting to watch famous peoples or ordinary people's show?
+  user_model_answer: 'Well, I have a mixed opinion for this question as both the categories teach us different things. From famous people, we get to know the story behind their struggles, hard work, and how they became successful, which is very motivating but then sometimes I feel that famous people are pretentious and one never gets to know how they are in real life. On the other hand, ordinary people offer us the real side of humanity to which everyone is able to relate in many different ways, be it emotionally or how people actually live. Since many people are able to relate with this so they find ordinary people more interesting. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 38 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: HOME TOWN — Answer Bank
+  topic_tags:
+  - home_town
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: HOME TOWN'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về home town bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - home town
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Where are you from?
+  user_model_answer: I'm from Manchester, which is a city in the north west of England.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you like your home town? (Why?)
+  user_model_answer: Yes, I like living in Manchester because it's where most of my friends live, and ​ lenty
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Would you prefer to live somewhere else? (Why?)
+  user_model_answer: "pattern of weather conditions For the moment I'm happy living here, but at some point I'd like to live in a country of a particular place: \bkhí with a warmer climate, and I'd like to live near a beach! \bhậu"
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think your home town is a good place for young people? (Why?)
+  user_model_answer: Yes, Manchester has lots of things for young people, such as sports facilities, music and cinemas. collected by ielts-nguyenhuyen.com

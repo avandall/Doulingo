@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What kinds of people would still go to the library to read and study?
+  user_model_answer: I think people who need a more formal environment to read and study would still prefer to go the libraries. Moreover, I think people who don’t have a peaceful environment at home, would still go to the libraries. For example, homes with naughty children.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What are the differences between old people and young people when they use the internet?
+  user_model_answer: 'Primarily, the elderly use the internet mainly for practical and communication purposes, while youngsters use it more for social interaction and entertainment. However, as the elderly get more comfortable with technology, the difference is disappearing. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 153 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of competitions do people in your country like to watch?
+  user_model_answer: 'First is of course sports competitions especially cricket competitions like IPL are very popular. Secondly, reality and talent competitions like dance, singing, cooking and comedy shows also enjoy a huge viewership. Finally, quiz competitions like Kaun Banega Crorepati are also very popular. INTRODUCING makkarVISA360 Check - Student Visa Pre-Check Service • Expert review of your educational, financial, and visa documents • In-depth check of your Statement of Purpose (SOP) • Application validated on 50+ critical success parameters • Completed within 1 day — fast, accurate, and stress-free • Avoid rejection due to common filing mistakes • Save thousands of rupees by preventing costly reapplications • Protect your future by submitting an error-free visa application • Bonus services: SOP writing and visa interview preparation • Trusted by students who want their application to be right the first time 💡 All this for just ₹999 — a small step for a big success! Call 836-095-7299
+    Avoid costly mistakes and visa refusals with our Student Visa Pre-Check Service. Our expert team thoroughly reviews your educational documents, financial papers, visa application forms, and Statement of Purpose (SOP) to ensure everything is accurate and complete before you apply. We validate your entire application within just one day, checking it against 50+ critical parameters to eliminate errors that could lead to rejection. With lakhs of students facing visa refusals every year due to incorrect or incomplete information submitted by their visa filing teams, this is your chance to save thousands of rupees and protect your academic future. In addition to the Pre-Check, we also offer professional SOP writing and visa interview preparation to boost your chances of success even further. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 155 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates:
+    www.instagram.com/makkarielts'

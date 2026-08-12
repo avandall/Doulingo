@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Why do some young people refuse to communicate with others?
+  user_model_answer: Some young people refuse to communicate with others because they may feel shy, anxious, or insecure. Social pressures, fear of judgment, or past negative experiences can also make them hesitant to open up. Additionally, some may prefer solitude or feel overwhelmed in social situations.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Should parents consider their children's opinions on everything? Why?
+  user_model_answer: Parents should consider their children's opinions, but it may not always be necessary to agree with them on everything. Listening to their views helps develop their confidence and decision-making skills, and it can improve the parent-child relationship. However, parents should also guide their children when necessary, as they have more experience and knowledge.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. In what industries do you think communication is a necessary skill?
+  user_model_answer: Communication is a necessary skill in almost every industry, but it is especially crucial in fields like marketing, sales, customer service, healthcare, teaching, and media. Effective communication helps build relationships, convey information clearly, and resolve conflicts, all of which are vital for success in these sectors.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Should parents require their children to obey them?
+  user_model_answer: Parents should require their children to follow rules, as discipline helps guide behavior and ensure safety. However, it's important for parents to also explain the reasons behind the rules and allow room for discussion, so children can understand the value of following them rather than just obeying blindly.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do children have strong opinions?
+  user_model_answer: Yes, children can have strong opinions, especially as they grow older and become more exposed to the world. As they develop their personalities and critical thinking skills, they often form views on various issues, although these opinions may be influenced by their environment, upbringing, and peers.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. When do children normally form their own views?
+  user_model_answer: 'Children typically start forming their own views during their pre-teens and early teenage years. This is the time when they become more independent thinkers, question authority, and develop a sense of individuality. Their views are shaped by their experiences, education, and the influence of family and friends. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 265 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

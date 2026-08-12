@@ -1,0 +1,58 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part3_Simon.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do men and women enjoy the same type of leisure activities?
+  user_model_answer: cultural differences, Yes and no. I think both men and women enjoy things like eating in rather than differences in restaurants or going to the cinema, but I'm sure there are other biology; members of a activities that are more popular with one gender. For example, I think particular gender as a more men than women go to football matches.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '1. What types of party do people have, and why are parties something: cột mố c important?'
+  user_model_answer: a good way to bring people People have parties to celebrate special occasions like
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you think parties will become more popular in the people who do not know each future?
+  user_model_answer: 'other well: nói chuyện xã giao với No, I don''t think anything will change. People have always... had parties, and I''m sure they always will in the future. socialize'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Why do you think sport is important?
+  user_model_answer: healthy = having good health and I think sport is important for different reasons. For me,
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '2. Do you think famous sportspeople are good role models order to enjoy yourself: giao lưu for children? role model: hình mẫ u tố t'
+  user_model_answer: I think that sportspeople should be good role models. look up to somebody = to admire or
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do you agree that sports stars earn too much money?
+  user_model_answer: 'behave in the right way: cư xử đúng In my opinion, it''s fair that the best sportspeople earn a lot mực of money. Being a top sportsperson requires hours of willing'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What do you think makes a good lesson? connected with the subject
+  user_model_answer: 'you are discussing or the I think a good lesson is one that is interesting and engaging. By situation you are in: liên quan ''engaging'' I mean that the students should feel involved in the'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you think it's better to have a teacher or to teach thing that you use or have yourself? instead of the one you
+  user_model_answer: 'Well, there''s no substitute for a good teacher. I think you can normally use or have: sự thay teach yourself, but you can learn a lot more quickly with the thế guidance of a teacher. For example, when learning a language, guidance'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you think the traditional classroom will disappear in the often; existing in large future?
+  user_model_answer: 'numbers or in many places: I don''t think it will disappear, but it might become less'

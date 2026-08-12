@@ -1,0 +1,150 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Where do you usually keep things you need?
+  user_model_answer: The things of my day to day need are kept close at hand in my cupboards and chest of drawers.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 131. Boring things 1 What kinds of things are boring to you?
+  user_model_answer: Anything that is slow moving, has a very vague meaning, anything that is slow moving, anything to do with too many numbers- I find them boring. 2 What do you do when you feel bored? I try to distract myself by thinking of happier, funnier things. My best way to get out of boredom is to start daydreaming about imaginary holidays I would take in future. 3 What was the most boring thing you did when you were young? Sit in a religious congregation and listen to the discourses that flowed over my head. 4 Do you think school is boring? No not really. School is a lot of fun for most part of the day especially since one tends to spend time with ones friends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 132. Advertisements 1 Are you interested in watching TV advertisements or internet advertisements?
+  user_model_answer: I like watching both as long as they are not repeated endlessly. 2 What kinds of advertisements do you dislike? I don’t like advertisements that are too long, dark or are repeatedly shown. 3 Do you share advertisements with others? Yes I like to share ads that are funny. 4 Do you want to work in advertising in the future? Yes it’ll be an interesting and creative experience.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like talking with people?
+  user_model_answer: Yes, I am a very social person and I like talking with people. In fact, every day on my commute to college, I like to pick up conversations with my fellow passengers on the bus.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How do you like spending time with your friends?
+  user_model_answer: I like going to the shopping mall, eating out at a restaurant, or watching a movie in the theatre with my friends. I also like playing badminton with my friends.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Would you prefer to study alone or with others?
+  user_model_answer: I like to study alone as I find it easier to concentrate and focus on my studies when I am by myself.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you remember a time when you need to cooperate with others?
+  user_model_answer: I participated in my school’s science fair in 10th grade. I had two more students in my team and each member of our team had a specific task. We worked really well together, and it was because of our cooperation that we got 2nd place in the fair.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What’s your favorite animal? Why?
+  user_model_answer: My favorite animal is the dog. They are friendly, adorable, and entertaining. They make very good companions and are always loyal to their owners.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What is the most popular animal in your country?
+  user_model_answer: Dogs are the most popular pets in my country. Bengal Tiger is the most famous wild animal in India and is also our national animal.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Have you ever had a pet before?
+  user_model_answer: Yes, I have always had dogs as pets. I love dogs and so does everyone in my family. Right now, I have two dogs Nora and Naughty. They are always entertaining me with their antics. Whenever I come home, they are very happy to see me and greet me with a wagging tail.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Where do you prefer to keep your pet, indoors or outdoors?
+  user_model_answer: I prefer to keep my pets indoors. The breed I have is an indoor breed and they can get too hot or cold outside. Also, I treat my dogs like family members and would rather have them inside where I can keep an eye on them. They are very affectionate and follow us from room to room.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you use headphones?
+  user_model_answer: Yes, I use headphones. I use them mainly for listening to music, audiobooks, or when I am on a phone call in a crowded place.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What type of headphones do you use?
+  user_model_answer: I just bought Sony wireless headphones from Amazon. They are convenient as I can keep my phone in my bag and keep my hands free. Also, I don’t have to worry about the wires entangling.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. When would you use headphones?
+  user_model_answer: I would use headphones for listening to music when I am on the bus on my way to work. I also use them while working out at the gym. Sometimes when I have an important assignment, I use them to concentrate on my work and not get distracted.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. In what conditions, you won’t use headphones?
+  user_model_answer: I don’t use headphones when I am driving a car, bike, or motorcycle. They block out our hearing senses and can be distracting. I also don’t use them when I am with friends and family. I think it’s rude to use them while interacting with people and I should be paying full attention to them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like buying shoes? How often?
+  user_model_answer: Yes, I like buying shoes. How often depends on the type of shoes. I buy running shoes every year, dress shoes every 2-3 years, and regular everyday shoes 1-2 times a year depending upon my budget and if there is a good sale/discount.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Have you ever bought shoes online?
+  user_model_answer: Yes, I like shopping online and have bought shoes online but prefer buying them in store. Buying shoes online is tricky as the sizing is sometimes wrong, but most companies offer good exchange policies for such situations.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How much money do you usually spend on shoes?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 308 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I spend 2000-3000Rs on shoes. I wait for good sales before I buy shoes. Most companies mark down their shoes quite a bit during sales and that’s when I prefer to buy them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Which do you prefer, fashionable shoes or comfortable shoes?
+  user_model_answer: I prefer comfortable shoes. I have bought fashionable shoes before, but they make my feet hurt after 1-2 hours. There are shoes like sneakers which can be both comfortable and fashionable.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Would you like to play in a public garden or park?
+  user_model_answer: Yes, I would like to play in a public park or garden. I am an outdoor person and would rather play outside in a park with friends than video games on my computer or phone.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What do you like to do when visiting a park?
+  user_model_answer: I usually go to the park to jog, play cricket or football with my friends. Sometimes, I like to just sit on the bench, read a book and enjoy the fresh air.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How have parks changed today compared to the time when you were a kid?
+  user_model_answer: Yes, parks today offer many more amenities than when I was a kid. They have better playground equipment for children, well-maintained walking/jogging paths and some parks even have soccer/cricket fields.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Would you prefer to play in a personal garden or public garden?
+  user_model_answer: I don’t have a preference. I like to be outdoors and can do it either in a personal or public garden.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What apps have you recently used?
+  user_model_answer: Recently I used an app to create a collage for my phone pictures called PicCollage. I wanted to get some photos printed for my room wall and created some nice photo collages with this app.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What kinds of apps are you usually interested in?
+  user_model_answer: I am usually interested in gaming apps like Pokemon Go, Subway Surf, etc. Besides these, there are some apps I regularly use like social media apps, google maps, whatsapp, video streaming apps and shopping apps, etc.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What was the first app you used?
+  user_model_answer: I think the first app I used was Whatsapp. It’s a great texting app to stay connected with friends and family.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kinds of apps would you like to use in the future?
+  user_model_answer: In the future, I would like to use apps that can help me with my education and career. I want to take some online classes and would like to use education apps like Udemy, edX, etc.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What’s your favorite colour?
+  user_model_answer: My favorite colour is red. I have liked it since I was a child. It’s a fun, bold and bright colour.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What’s the color you dislike? Why?
+  user_model_answer: I don’t like brown. I find it very dull and boring.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What colors do your friends like most?
+  user_model_answer: Most of my friends like blue, red, black, and pink. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 309 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What colour makes you uncomfortable in your room?
+  user_model_answer: In my room, black makes me uncomfortable. I like lighter colors on my room walls as they make my room look brighter.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. What colours do you like?
+  user_model_answer: I like all colors but red is my favorite color.

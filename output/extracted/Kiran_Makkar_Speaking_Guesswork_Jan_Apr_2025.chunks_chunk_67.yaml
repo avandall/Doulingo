@@ -1,0 +1,131 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. What are the differences between your school and other schools?
+  user_model_answer: I have hardly met students from other schools so I cant say much on how the other schools are different
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Is there anything you want to change about your school?
+  user_model_answer: Yes, I would like to add more sports facilites for students, especially for indoor sports. Outer Space and Stars
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Have you ever learnt about outer space and stars?
+  user_model_answer: Yes, there was a chapter on the solar system in my science book. So, I read about the different planets in our solar system
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like science fiction movies? Why?
+  user_model_answer: Yes, I love science fiction movies because they are a great source of entertainment. My favourite science fiction movie is Avatar.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you want to know more about outer space?
+  user_model_answer: Yes, I want to know about black holes and how the universe was formed.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you want to go into outer space in the future?
+  user_model_answer: Yes, I want to see how our planet looks from the space and also to experience zero gravity.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you often (like to) listen to music?
+  user_model_answer: Yes, I often listen to music. I like listening to film songs and Punjabi folk songs.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. When do you listen to music?
+  user_model_answer: Whenever I’m free I listen to music. I have downloaded a few songs in my cell phone. Listening to music relaxes me.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. How much time do you spend listening to music every day?
+  user_model_answer: I spend an hour or two listening to music every day. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 296 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. What kinds of music do you like to listen to?
+  user_model_answer: I like Hindi film songs. I also love Punjabi folk music.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. What's your favorite kind of music?
+  user_model_answer: My favorite genre of music is folk music. I also like film music.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Have you ever been to a concert?
+  user_model_answer: Yes, I have been to a concert once. There is a village near my hometown where a famous Punjabi singer comes once a year to perform for charity. Last year I went with my friends. He performed live. He always has his tambourine in his hand. It was an electrifying performance.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Do you like to listen to live music?
+  user_model_answer: Yes, I do like to listen live music. It is a different experience. In many restaurants and also in marriage functions, they have live music going on, which is very enjoyable. Concerts are also live music.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. When did you start listening to this type of music?
+  user_model_answer: I remember, I specially went for GurdasMaan’s live performance in a concert last year. Before that I had never been for a live music show.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Where do you listen to it?
+  user_model_answer: Concerts may be held in concert halls, which are built for the purpose, or they may be held in any other suitable large building such as a school hall, or a large house. Some concerts are given to very large audiences in the open air. They may take place in a field or in a stadium. The music for these “open-airs”, is usually amplified by loudspeakers, so that large audiences can hear it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. How do you feel when you listen to this music?
+  user_model_answer: I feel very relaxed when I listen to music. I feel as if all my worries and tensions have flown out of my body. I forget everything for sometime.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Have you ever learned to play a musical instrument?
+  user_model_answer: Yes, I tried learning the guitar. My cousin has a guitar, and once I stayed with them a few days in my vacations. But, I found it very difficult.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 12. Is music an important subject at school in India?
+  user_model_answer: Unfortunately, it is not. Music is an optional subject in some schools, but all schools don’t have it.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 13. Did you often listen to music when you were a child? (If yes, give details.)
+  user_model_answer: Yes, I listened to music as a child. Mostly I listened to film music.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. What kinds of music are (most) popular in India?
+  user_model_answer: India is a diverse country. All kinds of music are popular. Some like folk music, some like classical, some like sufi music, some like film music and some like fusion music, which is a blend of Indian classical and western music. A.R.Rehman plays fusion music.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 15. Which singer musician you would like to see in person?
+  user_model_answer: I’d like to meet AR Rehman. I think he is one of the best musicians of our time.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 108. Technology 1 What technology do you often use, computers or cellphones?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 297 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I use a computer rather than a cellphone for most purposes. I think the small screen of the cellphones stresses my eyes. 2 What electronic devices have you bought lately? Recently, my parents bought a smart TV for me. I got really good grades in 12th standard and therefore my parents got me the TV. I use it to stream TV series and movies. 3 Is there any technology you want to buy? Yes, I want to buy an iPhone. A lot of friends tell me that once I use it, I will never be able to use the other phones. I really want to prove them wrong. 4 Is technology important in your life? Yes, technology is a big part of my life. I don’t think I can survive without technology. Every part of life from waking up to sleeping is connected to technology. For example, I use technology for waking up, heating water, cooking, etc. 5
+    Is there any technology you don't like? I don’t know. There are times when I hate technology for example when my friends become glued to their mobile screens instead of spending time with us. However, there is no technology I hate as such. There are technologies I find less useful than others and there are others I find more useful. 6 What do you think are the trends in technology today compared to when you were young? I think the main trend is that technology is changing at a very rapid pace. Earlier, it used to take time for new technologies but nowadays, every year there is a new update.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 109. Social Media 1 Do you or your friends like using social media?
+  user_model_answer: Personally, I don’t use social media a lot, but my friends use it a lot. My friends are particularly crazy about Instagram and Facebook. 2 Do you think you or your friends use too much social media? Again, I don’t but my friends do spend a lot of time on social media. I have heard of my friends spending more than 2-3 hours on these websites every day and I find it absurd. 3 Do you want to work in social media? Why? Personally, I wouldn’t. I am still old-fashioned in this regard. I prefer spending time with my friends face to face rather than online. 4 What's the most popular social media in India? Why? I think it keeps on changing with time. When I was young, there were websites like Orkut which were really popular, then it was taken over by Facebook and today is the era of Instagram and Snapchat. I am not sure why, but it is about the ease of access to these latest apps that make them popular.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 110. Snacks 1 What snacks do you like to eat?
+  user_model_answer: I love to eat both savoury and sweet snacks. My favourite is Lays Masala Magic chips. I think probably eat too much of them to be honest. 2 Did you often eat snacks when you were young? No, my parents were really strict with me eating snacks when I was young. They made sure I only ate healthy home-cooked meals. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 298 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books 3 When do you usually eat snacks now? I normally eat snacks in the evening along with tea. It is the time, we all family members sit together and enjoy tea and snacks. I also eat snacks at night after dinner when I am watching movies. 4 Do you think it is healthy for you to eat snacks? No, it is not very healthy to eat too much of snacks. And that is the problem with snacks, they are so delicious that we tend to overeat. Nowadays, I have started eating baked chips to avoid this.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 111. Singing 1 Do you like singing? Why?
+  user_model_answer: I like singing but in private because I don’t have a nice voice. 2 Have you ever learnt how to sing? No singing is just about having fun for me. I have never taken any lessons for singing. I just sing some popular movie songs. 3 Who do you want to sing for? Again, singing is about having fun. It makes me feel energetic and active somehow. 4 Do you think singing can bring happiness to people? Yes, I think singing can make us happy. I don’t know how but I think singing relieves stress. I think singing takes away our focus from our worries.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 112. Puzzles 1 Did you do puzzles in your childhood?
+  user_model_answer: Yes, I loved doing puzzles in my childhood. I used to solve a lot of jigsaw puzzles when I was young. 2 When do you do puzzles, during your trip or when you feel bored? I think nowadays I do puzzles when I am travelling or when my younger cousins are visiting me. It is really fun to do puzzles with them. 3 Do you like doing word puzzles or number puzzles? Which is more difficult for you? I like doing both word puzzles like Crossword puzzles and games like worldle and number puzzles like Sudoku. However, my English is weaker than my Math and so the word puzzles are much more difficult for me. Also, there is a cultural element to word puzzles sometimes and that makes it difficult for me to solve them. 4 Do you think it is good for old people to do puzzles? I think puzzles are one of the best ways to keep the mind sharp and active. So, I think it is a great idea for old people to solve puzzles.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of public transportation do you usually take?
+  user_model_answer: If I am travelling locally, I normally travel by bus, but if I am travelling farther away, I travel by railways or air. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 299 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books

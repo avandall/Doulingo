@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What is the right age for a child to learn drawing?
+  user_model_answer: I think there is no fixed age for learning drawing, but many children start around the age of two or three. At that age they begin to hold crayons and make shapes. In my family, my nephew started drawing circles at two years old, so I feel early exposure really helps.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Why do most children draw more often than adults do?
+  user_model_answer: According to me, children draw more because they have more free time and fewer responsibilities. Drawing is also a fun way for them to express their imagination. Adults get busy with work and daily tasks, so they often stop doing such activities.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why do some people visit galleries or museums instead of viewing artworks online?
+  user_model_answer: Well, many people prefer visiting museums because the experience feels more real and personal. Seeing the actual size, colour and texture of an artwork gives a different feeling that a screen cannot provide. Some also enjoy the peaceful environment there.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think galleries and museums should be free of charge?
+  user_model_answer: In my opinion, it would be great if they are free because more people, especially students, would visit and learn. However, I also understand that museums need money for maintenance, so maybe a small fee or free entry on certain days can balance both sides.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. How do artworks inspire people?
+  user_model_answer: Artworks inspire people by showing different ideas, emotions and stories. Sometimes a painting or sculpture makes us think about our own life or gives motivation. For example, I once saw a painting of a mountain climber and it made me feel more confident about facing challenges.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What are the differences between reading a book and visiting a museum?
+  user_model_answer: 'Reading a book gives information through words and imagination, whereas a museum shows real objects, pictures and historical items. A book can go deeper in detail, but a museum makes the experience more visual and memorable. Both are useful, but in different ways. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 14 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of advice do parents give to their children?
+  user_model_answer: Parents advice children about various issues like their friend circle, subjects to choose for specialization and sometimes on healthy eating too.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How do experts give advice to others? (example a doctor gives advice to patients)
+  user_model_answer: Experts are specialists in their field and it is best to seek advice from an expert who is proficient. A good teacher will guide the students in the right direction, similarly, a doctor's advice is valuable regarding health issues.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What advice do parents give to teenagers about making friends?
+  user_model_answer: Teenagers need maximum advice as they are vulnerable and can be led astray by bad company. It is very difficult to advise a teenager so parents normally warn their wards to not mingle with friends who are known to be naughty.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Whose advice is more helpful? Parents’ or friends’?
+  user_model_answer: Many times, parent’s advice is valuable whereas on other occasions friends can be more knowledgeable, it varies from situation to situation. Parents are rich in experiences of life and friends are more aware of the changes in modern society. ✅ Visa 360° File Check Service Afraid of visa refusal? Want experts to check your file? 👉 📞 Call us today before submission. Do you know one small mistake can lead to rejection? 👉 📌 Step into our office for a detailed file review. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books

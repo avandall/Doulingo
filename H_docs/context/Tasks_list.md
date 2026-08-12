@@ -22,7 +22,7 @@
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Phụ thuộc |
 |---------|----------|-------|---------|------------|-----------|
 | `TASK-000` | Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) | Phase 0 | P0 | `[ ] TODO` | None |
-| `TASK-001` | Template Ingestion Engine & Vector Embeddings (`scripts/ingest_templates.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-000 |
+| `TASK-001` | YAML Ingestion, Embeddings & Vector Index (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-000 |
 | `TASK-002` | Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-001 |
 | `TASK-003` | Admin CLI & Content Validation Tool (`scripts/admin_content_cli.py`) | Phase 0 | P2 | `[ ] TODO` | TASK-001 |
 | `TASK-004` | Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-000 |
@@ -53,55 +53,264 @@
 
 ---
 
-### 📌 TASK-000: Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.)
+### 📌 TASK-000: Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) — Turso/libSQL Updated
+
+> **Cập nhật:** Schema đã đổi từ Postgres/pgvector → Turso/libSQL. Các acceptance criteria được viết lại cho đúng cú pháp Turso.
 
 #### Metadata
 ```
 Task ID:         TASK-000
-Task Name:       Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.)
+Task Name:       Database Schema Design & Migration (Turso/libSQL)
 Phase:           Phase 0 (Data Foundation)
 Task Type:       feature
 Priority:        P0-Critical
 Trạng thái:      [ ] TODO
-Ngày tạo:        2026-08-11
+Phụ thuộc:       None
+Ngày cập nhật:   2026-08-12
 ```
 
-#### Bối cảnh & Mục tiêu
-- **Why:** Toàn bộ dữ liệu Template A, B, C từ sách IELTS và thông tin người dùng cần được lưu trữ trong Database quan hệ hỗ trợ Vector Search (PostgreSQL + pgvector) theo Schema thiết kế tại mục 7 của `docs/plan.md`.
-- **What:** Tạo module migration `app/db.py` khởi tạo đầy đủ các bảng: `content_units`, `band_tiers`, `function_details`, `function_band_variants`, `scenarios`, `scenario_branches`, `evaluation_hooks`, `sample_dialogues`, `hook_bank`, `vocabulary_lookup`, `user_profile`, `user_content_exposure`.
+#### Bối cảnh & Thay đổi so với bản gốc (Turso/libSQL)
+- **Why:** Chuyển đổi Database từ Postgres/pgvector sang Turso/libSQL để tận dụng native vector search, không pause idle instance và sử dụng Embedded Replica trên Render free tier.
+- **Thay đổi chính:**
+
+| Bản gốc (Postgres) | Bản mới (Turso/libSQL) | Lý do |
+|---|---|---|
+| `VECTOR(1536)` + pgvector | `F32_BLOB(384)` native | Turso dùng libSQL built-in vector, không cần extension |
+| `gen_random_uuid()` | `lower(hex(randomblob(16)))` hoặc generate ở Python | libSQL không có uuid_generate |
+| `TEXT[]` + GIN index | `TEXT` (JSON string) + filter bằng JSON/LIKE | libSQL không có array type |
+| `USING hnsw (embedding vector_cosine_ops)` | `libsql_vector_idx(embedding, 'metric=cosine')` | Turso native index syntax |
+| Pause sau 7 ngày (Supabase) | Không pause | Turso free không có idle pause |
+
+#### DDL hoàn chỉnh (libSQL/Turso syntax)
+
+```sql
+-- ── content_units (bảng cha, dùng chung 3 template type) ──────────────────
+CREATE TABLE IF NOT EXISTS content_units (
+    id              TEXT PRIMARY KEY,        -- UUID string, generate ở Python
+    template_type   TEXT NOT NULL CHECK(template_type IN
+                        ('band_ladder','functional_bank','scenario')),
+    title           TEXT NOT NULL,
+    topic_tags      TEXT NOT NULL DEFAULT '[]',   -- JSON: '["chocolate","food"]'
+    target_band_min REAL,
+    target_band_max REAL,
+    register        TEXT CHECK(register IN ('casual','neutral','formal')),
+    source_citation TEXT,
+    created_at      TEXT DEFAULT (datetime('now')),
+    updated_at      TEXT DEFAULT (datetime('now')),
+    version         INTEGER DEFAULT 1
+);
+-- Filter theo topic: WHERE json_each.value = 'chocolate' (libSQL hỗ trợ json_each)
+-- Hoặc đơn giản hơn: WHERE topic_tags LIKE '%"chocolate"%'
+
+-- ── band_tiers (Template A) ────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS band_tiers (
+    id                      TEXT PRIMARY KEY,
+    content_unit_id         TEXT NOT NULL REFERENCES content_units(id) ON DELETE CASCADE,
+    band_min                REAL NOT NULL,
+    band_max                REAL NOT NULL,
+    can_do_description      TEXT,
+    grammar_required        TEXT DEFAULT '[]',      -- JSON array
+    vocabulary_core         TEXT DEFAULT '[]',      -- JSON array
+    vocabulary_stretch      TEXT DEFAULT '[]',      -- JSON array
+    vocabulary_avoid        TEXT DEFAULT '[]',      -- JSON array
+    sentence_length_target  TEXT,
+    common_errors_to_simulate TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_band_tiers_range ON band_tiers (band_min, band_max);
+
+-- ── function_details (Template B) ─────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS function_details (
+    id               TEXT PRIMARY KEY,
+    content_unit_id  TEXT UNIQUE REFERENCES content_units(id) ON DELETE CASCADE,
+    function_name    TEXT NOT NULL,
+    applicable_topics TEXT DEFAULT '[]'    -- JSON array
+);
+
+CREATE TABLE IF NOT EXISTS function_band_variants (
+    id              TEXT PRIMARY KEY,
+    function_id     TEXT REFERENCES function_details(id) ON DELETE CASCADE,
+    band_min        REAL NOT NULL,
+    band_max        REAL NOT NULL,
+    phrases         TEXT DEFAULT '[]',     -- JSON array
+    grammar_pattern TEXT
+);
+
+-- ── scenarios (Template C) ─────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS scenarios (
+    id               TEXT PRIMARY KEY,
+    content_unit_id  TEXT UNIQUE REFERENCES content_units(id) ON DELETE CASCADE,
+    setting          TEXT,
+    ai_role          TEXT,
+    user_role        TEXT,
+    grammar_required TEXT DEFAULT '[]',
+    vocabulary_core  TEXT DEFAULT '[]',
+    vocabulary_stretch TEXT DEFAULT '[]'
+);
+
+CREATE TABLE IF NOT EXISTS scenario_branches (
+    id              TEXT PRIMARY KEY,
+    scenario_id     TEXT REFERENCES scenarios(id) ON DELETE CASCADE,
+    branch_type     TEXT CHECK(branch_type IN ('low_band','high_band')),
+    condition_rule  TEXT,
+    ai_response_style TEXT,
+    example_text    TEXT
+);
+
+CREATE TABLE IF NOT EXISTS evaluation_hooks (
+    id                TEXT PRIMARY KEY,
+    scenario_id       TEXT REFERENCES scenarios(id) ON DELETE CASCADE,
+    trigger_condition TEXT,
+    ai_reaction       TEXT
+);
+
+-- ── sample_dialogues (bảng trung tâm — retrieval layer query nhiều nhất) ───
+CREATE TABLE IF NOT EXISTS sample_dialogues (
+    id                TEXT PRIMARY KEY,
+    content_unit_id   TEXT NOT NULL REFERENCES content_units(id) ON DELETE CASCADE,
+    band_level        REAL NOT NULL,
+    turn_type         TEXT CHECK(turn_type IN
+                          ('standalone','opening','elaborate','negotiation','closing')),
+    function_tag      TEXT,
+    ai_line           TEXT NOT NULL,
+    user_model_answer TEXT NOT NULL,
+    embedding         F32_BLOB(384),     -- 384 chiều (sentence-transformers all-MiniLM-L6-v2)
+                                         -- hoặc F32_BLOB(1536) nếu dùng OpenAI
+    created_at        TEXT DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_sd_band ON sample_dialogues (band_level);
+CREATE INDEX IF NOT EXISTS idx_sd_cu   ON sample_dialogues (content_unit_id);
+-- Vector index — tạo SAU KHI đã insert đủ dữ liệu và chạy generate_embeddings.py:
+-- CREATE INDEX sd_vec_idx ON sample_dialogues (libsql_vector_idx(embedding, 'metric=cosine'));
+
+-- ── hook_bank (ngân hàng hook / anti-cliche) ──────────────────────────────
+CREATE TABLE IF NOT EXISTS hook_bank (
+    id         TEXT PRIMARY KEY,
+    topic_tags TEXT DEFAULT '[]',   -- JSON array; NULL = dùng chung mọi topic
+    text       TEXT NOT NULL,
+    type       TEXT CHECK(type IN ('hook','anti_cliche'))
+);
+
+-- ── vocabulary_lookup (ngân hàng từ vựng tra nhanh) ───────────────────────
+CREATE TABLE IF NOT EXISTS vocabulary_lookup (
+    id       TEXT PRIMARY KEY,
+    category TEXT NOT NULL,
+    tier     TEXT,
+    terms    TEXT DEFAULT '[]'    -- JSON array
+);
+
+-- ── user_profile (runtime, không phải content template) ───────────────────
+CREATE TABLE IF NOT EXISTS user_profile (
+    user_id               TEXT PRIMARY KEY,
+    band_estimate_overall REAL,
+    band_fluency          REAL,
+    band_lexical          REAL,
+    band_grammar          REAL,
+    band_pronunciation    REAL,
+    recurring_errors      TEXT DEFAULT '[]',   -- JSON array
+    updated_at            TEXT DEFAULT (datetime('now'))
+);
+
+-- ── user_content_exposure (chống lặp) ─────────────────────────────────────
+CREATE TABLE IF NOT EXISTS user_content_exposure (
+    id                 TEXT PRIMARY KEY,
+    user_id            TEXT REFERENCES user_profile(user_id),
+    sample_dialogue_id TEXT REFERENCES sample_dialogues(id),
+    exposed_at         TEXT DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_exposure_user_time
+    ON user_content_exposure (user_id, exposed_at);
+```
+
+#### Câu query retrieval mẫu (Turso/libSQL syntax)
+
+```sql
+-- Retrieval layer mỗi lượt hội thoại (thay thế query Postgres ở plan.md mục 7.4)
+SELECT sd.id, sd.ai_line, sd.user_model_answer, sd.band_level
+FROM vector_top_k('sd_vec_idx', vector('[0.1,0.2,...]'), 8) AS v
+JOIN sample_dialogues sd ON sd.rowid = v.id
+JOIN content_units cu ON sd.content_unit_id = cu.id
+WHERE cu.topic_tags LIKE '%"accommodation"%'
+  AND sd.band_level BETWEEN :band_min AND :band_max
+  AND sd.id NOT IN (
+      SELECT sample_dialogue_id FROM user_content_exposure
+      WHERE user_id = :user_id
+        AND exposed_at > datetime('now', '-30 days')
+  )
+LIMIT 4;
+```
 
 #### Acceptance Criteria
-- [ ] Thiết kế và tạo thành công DDL cho 12 bảng trong `app/db.py`.
-- [ ] Bảng `sample_dialogues` có cột `embedding` kiểu Vector(1536) và chỉ mục HNSW cosine vector index.
-- [ ] Bảng `content_units` hỗ trợ chỉ mục GIN trên `topic_tags` và B-Tree trên `target_band_min/max`.
-- [ ] Đảm bảo script khởi tạo DB chạy mượt mà không lỗi foreign key hay constraint.
+
+- [ ] DDL 12 bảng chạy không lỗi trên Turso thật (kiểm tra bằng `turso db shell`)
+- [ ] Cột `embedding` kiểu `F32_BLOB(384)` — KHÔNG dùng BLOB chung hoặc TEXT
+- [ ] Vector index `sd_vec_idx` tạo được sau khi có ít nhất 1 row có embedding
+- [ ] `topic_tags` lưu JSON string, query được bằng `LIKE '%"<tag>"%'`
+- [ ] Foreign key cascade hoạt động: xoá `content_units` → cascade xoá `band_tiers` và `sample_dialogues`
+- [ ] Script `insert_turso.py --turso-url ... --turso-token ...` insert thành công không lỗi
+- [ ] Script `generate_embeddings.py --turso-url ...` cập nhật được embedding, `length(embedding) = 1536` (384 float × 4 bytes)
+- [ ] Query `vector_top_k` trả về kết quả sau khi đủ data + index
+
+#### Lưu ý triển khai
+
+**Embedded replica (Render free tier):**
+```python
+# app/db.py — dùng embedded replica để đọc nhanh, ghi về cloud
+import libsql_client
+
+client = libsql_client.create_client_sync(
+    url="libsql://your-db.turso.io",
+    auth_token=os.environ["TURSO_TOKEN"],
+    # Embedded replica: sync bản local tại path này
+    # Đọc từ local (µs), ghi sync về cloud tự động
+)
+```
+
+**Chiều embedding:**
+- Development / MVP: dùng `all-MiniLM-L6-v2` (384d, local, miễn phí)
+- Production nếu cần chất lượng cao hơn: migrate sang OpenAI `text-embedding-3-small` (1536d)
+- Phải chọn 1 chiều nhất quán, không mix. Nếu đổi chiều → phải re-embed toàn bộ + đổi schema.
 
 ---
 
-### 📌 TASK-001: Template Ingestion Engine & Vector Embeddings (`scripts/ingest_templates.py`)
+### 📌 TASK-001: YAML Ingestion, Embeddings Generation & Vector Indexing (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`)
 
 #### Metadata
 ```
 Task ID:         TASK-001
-Task Name:       Template Ingestion Engine & Vector Embeddings (`scripts/ingest_templates.py`)
+Task Name:       YAML Ingestion, Embeddings Generation & Vector Indexing
 Phase:           Phase 0 (Data Foundation)
-Task Type:       feature
+Task Type:       feature / data-ingestion
 Priority:        P0-Critical
 Trạng thái:      [ ] TODO
-Ngày tạo:        2026-08-11
+Phụ thuộc:       TASK-000
+Ngày cập nhật:   2026-08-12 (Tích hợp Bước 4, 5, 6 từ README_phase0.md)
 ```
 
-#### Bối cảnh & Mục tiêu
-- **Why:** Các file template tĩnh `.md` (hoặc YAML/JSON bóc tách từ sách) cần được convert tự động và nạp vào DB kèm vector embeddings cho `sample_dialogues`.
-- **What:** Viết script `scripts/ingest_templates.py` đọc dữ liệu Template A (Progressive Band Ladder), Template B (Functional Bank), và Template C (Scenario), tạo record vào `content_units` và tạo vector embedding qua API/Local model cho từng `sample_dialogue`.
+#### Bối cảnh & Quy trình thực thi (Dựa trên `README_phase0.md` Bước 4 -> Bước 6)
+- **Bối cảnh:** User đã hoàn thành Bước 1-3 (Chunking file .md, LLM trích xuất YAML ra `output/extracted/*.yaml`, và Validate YAML). Các file YAML hợp lệ sẵn sàng trong `output/extracted/`.
+- **What (Nhiệm vụ AI trong Ralph Loop):**
+  1. **Bước 4 — Insert YAML vào DB (`scripts/insert_turso.py`):**
+     - Run test `--dry-run`: `python scripts/insert_turso.py output/extracted/ --dry-run`
+     - Run test SQLite local: `python scripts/insert_turso.py output/extracted/ --sqlite content.db`
+     - Verify SQLite data:
+       `sqlite3 content.db "SELECT COUNT(*) FROM sample_dialogues;"`
+       `sqlite3 content.db "SELECT title, target_band_min, target_band_max FROM content_units LIMIT 5;"`
+     - Insert vào Turso thật: `python scripts/insert_turso.py output/extracted/ --turso-url $TURSO_URL --turso-token $TURSO_TOKEN`
+  2. **Bước 5 — Generate Vector Embeddings (`scripts/generate_embeddings.py`):**
+     - Run test local backend (`sentence-transformers` 384d):
+       `python scripts/generate_embeddings.py --sqlite content.db --backend local`
+     - Generate embedding trên Turso thật:
+       `python scripts/generate_embeddings.py --turso-url $TURSO_URL --turso-token $TURSO_TOKEN --backend local` (hoặc `--backend openai`)
+  3. **Bước 6 — Tạo Vector Index (`sd_vec_idx`):**
+     - Thực thi câu lệnh SQL tạo index vector cosine trên Turso database (qua CLI hoặc `libsql_client`):
+       `CREATE INDEX IF NOT EXISTS sd_vec_idx ON sample_dialogues (libsql_vector_idx(embedding, 'metric=cosine'));`
 
 #### Acceptance Criteria
-- [ ] Parse thành công 100% dữ liệu từ các file template mẫu.
-- [ ] Map chính xác thông tin vào `content_units`, `band_tiers`, `function_details`, `scenarios`.
-- [ ] **Map chính xác dữ liệu phụ lục vào `hook_bank` (hook + anti_cliche) và `vocabulary_lookup` (theo category/tier) — 2 bảng này hay bị bỏ sót vì không nằm trong nội dung chính của mỗi file template.** ⬅️ bổ sung
-- [ ] Sinh vector embedding 1536 chiều cho mỗi `sample_dialogue` và lưu vào DB.
-- [ ] Với Template B (gộp nhiều function trong 1 file): mỗi function phải tách thành 1 `content_unit` riêng biệt, KHÔNG gộp chung 1 row.
-- [ ] Xử lý transaction batching để tối ưu thời gian nạp dữ liệu.
+- [ ] Chạy `insert_turso.py` nạp thành công 100% dữ liệu YAML từ `output/extracted/` vào SQLite/Turso DB không có lỗi.
+- [ ] Record trong `content_units`, `band_tiers`, `function_details`, `scenarios`, `sample_dialogues` được tạo đầy đủ.
+- [ ] **Map chính xác dữ liệu phụ lục vào `hook_bank` (hook + anti_cliche) và `vocabulary_lookup` (nếu có trong YAML).**
+- [ ] Script `generate_embeddings.py` tạo và lưu thành công binary blob embedding cho 100% các row `sample_dialogues`.
+- [ ] Vector index `sd_vec_idx` được tạo thành công trên Turso/libSQL sau khi đã nạp đủ embedding.
 
 ---
 

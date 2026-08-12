@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part3_Simon.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you think most people watch TV for education or problems of a group of people that is for entertainment? broadcast every day or several times a
+  user_model_answer: 'I think people watch TV primarily for entertainment. week on television or radio: kịch xà'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Should TV play a role in educating children? How? good behaviour and what is considered
+  user_model_answer: 'to be right or wrong: hợp đạo đức Yes, it definitely should play a role in my opinion. Good fairy tale'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '3. How do you think TV viewing habits change as people recently learnt to walk: trẻ mới biế t đi get older? prefer (v) = ​to like one thing or person'
+  user_model_answer: 'TV viewing habits obviously change a lot as we get older. better than another: thích cái gì hơn'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think films have changed since you were a child? or achieving
+  user_model_answer: 'No, I don’t think films have changed much since I was a child. When I was something: công younger I enjoyed watching action films, and the Hollywood formula for this thức type of film seems to be the same today. For example, I liked the original film-maker'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. As the technology for home viewing improves, do you think people will stop going to the cinema in future? nhà làm phim
+  user_model_answer: No, I don’t think that people will stop going to the cinema. People can replicate
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '1. Is it better to get advice from a friend or from a family something): to give member? somebody a duty,'
+  user_model_answer: I think it depends on the kind of advice that you need. Parents responsibility, etc. that and grandparents probably have more life experience than a causes worry, difficulty or
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What would you say are the characteristics of a good adviser?
+  user_model_answer: 'influenced by personal Well, firstly, a good adviser should be a good listener, someone feelings or opinions; who takes the time to understand the situation before offering considering only facts: advice. Secondly, an adviser should try to be objective, and avoid judging the person who is seeking help. Finally, I think the best khách quan'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Should people make their own work and career decisions, or is somebody to do something, it a good idea to ask for advice about this? it is their responsibility to
+  user_model_answer: 'I’d say that it’s a mixture of both things. Most of us talk to family, do it: thuộc về friends, teachers or colleagues before we make career choices. take ultimate responsibility'

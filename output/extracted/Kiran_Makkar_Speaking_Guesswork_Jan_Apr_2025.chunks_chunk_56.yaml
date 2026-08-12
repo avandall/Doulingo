@@ -1,0 +1,147 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What’s your favorite room in your home?
+  user_model_answer: My favorite room is my own room, because I’ve decorated it according to my taste.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What have you done to your room to make it look nice?
+  user_model_answer: I keep my room spic and span. The walls are painted light pink because it is my favorite color. There are floral curtains.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Who do you live with?
+  user_model_answer: I live with my parents and brother.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Which room does your family spend most of the time in?
+  user_model_answer: My family spends most time in the living room. We have our meals there. We watch TV together and also entertain informal guests in that room.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. How long have you lived there?
+  user_model_answer: I have lived there since my birth.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 8. Do you plan to live there a long time?
+  user_model_answer: Presently I plan to go abroad for my studies. But, but I love my home and would like to come back there.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. (If you answer you haven’t lived there long) What’s the difference between where you are living now and where you have lived in the past?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 250 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. What do you usually do in your house/flat/room?
+  user_model_answer: I do many things in my house. I spend time with my parents, eat there, sleep there, Study there and entertaining guests in my house.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Are the transport facilities to your hometown very good?
+  user_model_answer: Yes, the transport facilities to my house are very good. The bus service is ready frequent and the railway station is also very near.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 12. Do you plan to move?
+  user_model_answer: I plan to go abroad for higher education. Apart from that I do not plan to move.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 13. Would you like to move to another place to live? (Why/why not?)
+  user_model_answer: I plan to go abroad for my higher education. If I like it there, I might think of settling there.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 14. Are you prepared to move?
+  user_model_answer: No, I am not prepared to move.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What’s (the name of) your hometown?
+  user_model_answer: I am from Phagwara, which a small but beautiful town between Jalandhar and Ludhiana.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Is it a big city or a small place?
+  user_model_answer: It is a town with a population of about 1.5 lakhs. It is on the national highway.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. How long have you been living there?
+  user_model_answer: I have been living there since my birth.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Do you like your hometown?
+  user_model_answer: Yes, I love my hometown.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Do you like living there?
+  user_model_answer: Yes, I like living there.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Would you say it’s an interesting place?
+  user_model_answer: Yes, I would say it is an interesting place. The shopping center is very nice. In fact it is called a shoppers paradise. There are many historical places. There are three Sikh temples.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. What do you like (most) about your hometown?
+  user_model_answer: I like everything about my hometown, but what I like the most is that it does on the main road and so it is well connected by roadways and railways
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 9. What’s your favorite part of your hometown?
+  user_model_answer: My favorite part of my hometown is a park, where I go every morning for my morning walk.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. Is there anything you dislike about it?
+  user_model_answer: As such there is nothing I dislike about my hometown, but yes, the drainage system could be improved. Whenever there is rainfall there is a lot of water logging on the roads.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. Do you think you will continue living there for long time?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 251 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Yes, I think I would continue living there for a long time. I wish to go abroad for sometime for my higher education, but would definitely like to come back here.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. Are there any tourist attractions in your hometown?
+  user_model_answer: Yes, there are two Sikh temples, dedicated to the sixth guru of Sikhs. There is an ancient Shiva Temple and there is a famous hotel Haveli, which is very popular among the tourists.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 13. Did your friends also grow up in the same place as you?
+  user_model_answer: Yes, most of my school friends grew up in the same place.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 14. Would you like to live there in the future?
+  user_model_answer: Yes, I would like to live there in the future because it’s a beautiful place.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Hats/caps Do you like to wear hats?
+  user_model_answer: I like wearing hats sometimes especially when I am out in the sun. I like to wear baseball caps when it’s sunny. I also wear warm winter caps like beanies when it gets cold. What kinds of hats do you have? I have different types of hats like baseball caps and beanies. I also have one cowboy hat that my aunt got from Canada. Where do you like to buy hats? I usually buy hats from sports stores or online. I like to try the hats before I buy them, so if it’s a new brand, I prefer to buy them in store. Is wearing hats popular in your country? In my country, wearing hats isn’t that common, but it’s popular for outdoor activities. People do wear warm woolen caps in the winter.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Borrowing/lending How do you feel when people don't return things they borrowed from you?
+  user_model_answer: It is very frustrating when people don’t return the things they borrow from you but I don’t let it bother me too much. Do you like to lend things to others? I don’t mind lending things if I trust the person. Have you ever borrowed money from others? Yes, I have borrowed money a few times from my friends and relatives. I make it a point to return the money on time. Have you borrowed books from others? Yes, I often borrow books from libraries and friends. If I really like a book I borrowed, I buy it later for myself www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 252 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Colors What color makes you uncomfortable in your room?
+  user_model_answer: I don’t like black in my room as it feels too dark and intense for me. I like light colors on the walls. What colors do your friends like most? My friends like shades of blues and green the most. What is the color you dislike? Why? I don’t like fluorescent colors like fluorescent green and yellow as they are too loud for my taste. What's your favorite color? My favorite color is blue as it is very calming. It reminds of the ocean and I find it very soothing to the eyes.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Hobby Do you have the same hobbies as your family members?
+  user_model_answer: Yes, some hobbies I have are same as my family members like cooking and gardening. Do you have a hobby that you've had since childhood? Yes, I love to read and that is a hobby I have had since childhood. Did you have any hobbies when you were a child? Yes, as I mentioned before, I enjoyed reading as a child. I also loved to draw and color. Do you have any hobbies? I like gardening, cooking, reading, hiking and travelling. Swimming. What's the difference between swimming in the pool and swimming in the sea? Swimming in the pool is safer as you are in control. Swimming in the sea can be dangerous as there is a risk of drowning if the currents are too strong. Where do people in your country like to go swimming? People in my country like to go swimming in swimming pools. In villages, people swim in the ponds and rivers. Is it difficult to learn how to swim? It can be tough in the beginning but with proper technique and practice swimming can be learnt easily. It is good to
+    learn it at a younger age than as an adult. Do you like swimming? Yes, I love to swim. It is very good, low impact aerobic exercise and tones the body.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Advertisement What kind of advertising do you like?
+  user_model_answer: www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 253 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I like advertisements that are funny, creative or tell a story. I also like ads that address social issues and challenge stereotypes. Do you like advertisements? I don’t mind ads if they are not too long and intrusive. Do you see a lot of advertising on trains or other transport? Yes, I see a lot of advertising on trains or other transport like buses and autos. I think it is good way to advertise as it can reach a lot of people at once as many people commute daily via public transport. Is there an advertisement that made an impression on you when you were a child? Yes, I remember an ad about Cadbury chocolate where a girl jumps in the middle of a cricket match after the player hits a boundary. She is dancing while eating and enjoying chocolate.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. Feeling bored Do you think childhood is boring or adulthood is boring?
+  user_model_answer: I think adulthood is boring as there more responsibilities and people get busy with repetitive chores and tasks. They don’t have much time to play, be creative and enjoy life. What do you do when you feel bored? When I’m bored, I usually read or watch something on TV. When would you feel bored? I feel bored when I have nothing to do or I am stuck in a routine. Do you often feel bored? No, I have something to do and I am never bored.

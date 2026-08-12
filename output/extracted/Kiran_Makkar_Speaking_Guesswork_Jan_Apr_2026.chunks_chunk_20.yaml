@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2026.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Why are some people willing to try dangerous extreme sports?
+  user_model_answer: According to me, people try dangerous sports because they want thrill and excitement. They feel proud after completing something risky. On the other hand, some people avoid it completely because they value safety more than adventure.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Should people take more into account the risks that extreme sports may bring?
+  user_model_answer: Yes, I think so. Extreme sports can cause serious injuries if precautions are ignored. Wearing proper gear and listening to instructors is very important. Still, some people believe the fun is worth the risk, but I personally feel safety should come first.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Why do people keep inventing new and slightly dangerous sports?
+  user_model_answer: In my opinion, people invent new sports because they get bored of old ones and want something exciting. Another reason is competition, as people like to show they can try something unique. For example, sports like parkour or snowboarding became popular only in recent years.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What risks are there in extreme sports, and who takes these consequences?
+  user_model_answer: 'Well, the main risks are injuries like broken bones or even accidents that can be fatal. The person doing the sport takes most of the consequences, but sometimes their family also suffers if something serious happens. That’s why I feel these sports should only be done under expert supervision. Flight tickets that don’t break your wallet—or your heart ✈💰. Call us today or follow us on instagram.com/makkarielts. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 93 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Can anyone learn how to sing?
+  user_model_answer: Well, I think anyone can learn the basics of singing with practice and training. Some people are naturally gifted, but even without talent, voice lessons can improve a lot. For example, one of my school friends could not sing well earlier, but after coaching he became much better.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What should the government do to help people with musical talent?
+  user_model_answer: According to me, the government should provide scholarships, music schools, and platforms for young artists. This way talented people can focus on their art instead of worrying about money. Organising cultural festivals can also give them exposure.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What kind of music do people like at different ages?
+  user_model_answer: I believe children usually enjoy simple and fun songs, teenagers prefer energetic pop or rap, and older people go for calm or classical music. For example, my grandfather still listens to old Bollywood songs every evening, while my younger cousin only plays hip-hop.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What kind of music is popular in India now and what will be in the future?
+  user_model_answer: 'Right now, Bollywood songs and Punjabi music are very popular in India. In the future, I think fusion music, where Indian and Western styles mix, will be more common. Already we see DJs and singers collaborating on such tracks. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 96 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do Indian parents require their children to learn to play musical instruments?
+  user_model_answer: In my opinion, not all parents, but many encourage children to learn instruments like harmonium, tabla, or guitar. They believe it builds discipline and creativity. Still, some parents don’t push it because they think academics are more important.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Why do some people like to listen to live music while others prefer CDs?
+  user_model_answer: 'Some people enjoy live music because the energy of the crowd and the atmosphere makes it special. Others prefer CDs or online music since it is cheaper, easier, and more comfortable at home. Personally, I enjoy both depending on my mood. CD IELTS, PTE, TOEFL, Duolingo, CELPIP Practice software so real, it feels like the exam— but without the stress 💻😌. Call us today or follow us on instagram.com/makkarielts. https://g.co/kgs/GBYy9Mi - Phagwara https://g.co/kgs/xBR5EKQ - Mohali https://g.co/kgs/9XnhRqa - Jalandhar www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 97 Jan-Apr 2026 Speaking Guesswork (FIRST VERSION) www.makkarielts.com/books Follow us on Instagram for latest updates: www.instagram.com/makkarielts'

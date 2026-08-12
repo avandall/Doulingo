@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: ACCOMMODATION — Answer Bank
+  topic_tags:
+  - accommodation
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: ACCOMMODATION'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về accommodation bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - accommodation
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How long have you lived there? một căn hộ
+  user_model_answer: I've lived there for about five years. It's the first house that I've owned; before that I reflect something
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '3. What do you like about living there? attitude or feeling: phản ánh'
+  user_model_answer: 'I like living there because I think the house reflects my personality: I decorated it decorate something'
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: '4. What sort of accommodation would you most like to live in? it: trang trí ...'
+  user_model_answer: If I could, I'd buy a bigger house near a beach or in the mountains, preferably somewhere with a warm climate.

@@ -1,0 +1,78 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Why are some people very ambitious in their work?
+  user_model_answer: Some people are ambitious at work because they want success, recognition, or financial security. They might also enjoy competing with others or have personal goals to achieve. For instance, a person who wants to start their own company may work hard to gain experience.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What ambitions do children usually have?
+  user_model_answer: Children often dream of becoming something exciting like doctors, astronauts, or athletes. Their ambitions are influenced by role models or things they see on TV. For example, a child who watches cricket might dream of becoming a cricketer. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 89 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you prefer to prepare and organize an activity or just take part in an activity?
+  user_model_answer: I prefer to take part in activities rather than organize them because organizing requires a lot of effort and planning. However, I enjoy organizing when it’s something I am passionate about, like a family gathering or a small event.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How would you feel when you were not well prepared for something?
+  user_model_answer: When I am not well prepared, I feel anxious and nervous because I fear making mistakes. Lack of preparation can also lead to embarrassment if things don’t go as expected.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Do people need others' help when organizing things?
+  user_model_answer: Yes, people often need help when organizing things because it can be challenging to manage everything alone. Tasks like planning, setting up, and coordinating require teamwork for better results.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Does everything need to be well prepared?
+  user_model_answer: Not everything needs to be fully prepared, but important events or tasks do require proper planning. Being prepared helps things run smoothly, but some situations can also work out well spontaneously.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. On what occasions do people need to be organized?
+  user_model_answer: People need to be organized during occasions like weddings, exams, or work presentations. These situations require planning to avoid chaos and ensure success.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. How can parents help children to be organized?
+  user_model_answer: Parents can help children become organized by setting routines and teaching them to manage their time. Encouraging them to keep their study area clean or plan their day can build good habits over time. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 91 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think many old people in your country feel lonely?
+  user_model_answer: Yes, many old people in my country feel lonely, especially those whose children live far away or are too busy with their own lives. They often lack social interaction and companionship, which can make them feel isolated. Spending more time with family can help reduce their loneliness.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What new skills can old people learn?
+  user_model_answer: Old people can learn skills like using smartphones, computers, or even gardening. These activities can keep them mentally active and connected to the world. For example, learning to video call can help them stay in touch with their families.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. What knowledge can children learn from their grandparents?
+  user_model_answer: Children can learn valuable life lessons from their grandparents, such as moral values, family traditions, and patience. Grandparents often share stories from their past, which can teach children about history and resilience.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What skills can young people learn from older people?
+  user_model_answer: Young people can learn skills like cooking, sewing, or managing finances from older people. They can also learn soft skills like problem-solving, communication, and how to stay calm under pressure through the experiences of older generations.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. What kind of help do you think older people need?
+  user_model_answer: Older people often need emotional support, medical care, and help with daily tasks like cooking or shopping. Providing them with companionship and ensuring they feel valued are also important forms of support.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. What can children learn from their parents?
+  user_model_answer: Children can learn discipline, time management, and problem-solving from their parents. Parents also teach children how to make good decisions and develop a strong sense of responsibility. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 93 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books

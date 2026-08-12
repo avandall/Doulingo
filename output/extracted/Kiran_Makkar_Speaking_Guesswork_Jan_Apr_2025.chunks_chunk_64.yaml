@@ -1,0 +1,72 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 79. Music Do a lot of people like music?
+  user_model_answer: Yes, people like music as it relaxes them and li•s their mood. Music brings out so many diﬀerent emo|ons, mo|vates people, and keeps them going. What kind of music do you listen to? I mainly listen to Punjabi songs. They have good lyrics and beats. Diljit Dosanjh, Riaar Sahib and Sidhu Mosseswala are some of my favorite Punjabi singers Is it easy to learn music? I think it’s easy to learn if you are consistent and commi…ed. It requires a lot of prac|ce. Did you have music lessons at school? www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 284 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books I did not have music lessons at school. I wish there was an op|on, but my school curriculum did not include music.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 80. Crowded place Is the city where you live crowded?
+  user_model_answer: No, I live in a small town and it’s not very crowded. I like that I can reach any part of my town in 10- 15 minutes by car. Is there a crowded place near where you live? Yes, my hometown "Phagwara" is about 40km from Ludhiana which is the biggest and most populous city in Punjab. I remember going there with my parents when I was growing up. We would always get stuck in traﬃc. Do you like crowded places? I don’t like crowded places and avoid them if I can. I like going to my grandparents’ village. It is far from the big ci|es and is very peaceful. Do most people like crowded places? I don’t think anyone likes crowded places. There is so much traﬃc and pollu|on. I think people don’t have a choice because these big, crowded ci|es have be…er jobs, schools, restaurants, hospitals, etc. When was the last nme you were in a crowded place? I visited Darjeeling last summer and was surprised to see so many tourists there. It was so crowded and did not feel like a serene hill sta|on.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Who is your favourite celebrity in your country?
+  user_model_answer: The celebrity I like the most is Virat Kohli. He is the number one crcicketer in the world.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. What kind of famous people do you omen see in the news?
+  user_model_answer: I o•en see ﬁlmstarts, poli|cians and sportsperson in the news.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you pay aqennon to famous people in the news?
+  user_model_answer: I do not like to watch news a lot so I do not pay a…en|on to what is happening in the life of celebri|es.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you believe that the news about famous people in the media is true?
+  user_model_answer: Since there is lot of fake news these days, I think it it is diﬃcult to trust if the news about celebri|es is authen|c or not.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Would you like to be a famous person in the news?
+  user_model_answer: No, I would not like to be a famous person because I do not like public a…en|on. Morever I feel that famous people are judged for every single thing they do, so I don’t want that happening to me. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 285 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 83. Running Do you go running a lot?
+  user_model_answer: Yes, I like to go running. It is my preferred form of exercise. At the end of the day, if I go running, it relieves me of all the stress, and I can forget all my troubles for some |me. Running keeps me mentally and physically ﬁt. Where do you usually go running? I prefer to run outside than running on a treadmill in a gym as I like to enjoy the scenery and fresh air. I usually go to the park near my house and do 10-15 laps around the park. Many people are walking and running there, and seeing them keeps me mo|vated. When was the last nme you went running? I go running 4-5 days a week. The last I went running was the day before yesterday. What do you think of running as a sport? Running is an excellent sport. It is not a tradi|onal team sport like soccer, cricket, hockey, etc. People compete in many running events like track and ﬁeld, long-distance running, marathons, sprints, and relay runs. It requires a lot of hard work, discipline, and endurance and is very compe||ve.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 84. Chatting Do you like charng with friends?
+  user_model_answer: Yes, I like cha†ng with friends. I'm a very social person and have a lot of friends. I want to stay in touch with them, and if I can't meet them in person, I call them regularly. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 286 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books What do you usually chat about with friends? If I haven't met a friend in a while, we usually chat about what's new in our lives, what's going on with my work, family, etc. If I meet them regularly, we usually talk about sports, movies/TV series we are watching or books we are reading, etc. We also chat about poli|cs, our families, any new hobbies we picked up and any new restaurants we tried. Do you prefer to chat with a group of people or with only one friend? I prefer to chat with a group of friends. It's more fun when there are a bunch of us. I am okay with having a one-to-one conversa|on, especially if discussing a serious issue
+    or something that can't be shared with everyone. Do you prefer to communicate face-to-face or via social media? I prefer to communicate face-to-face than social media. We can show our feelings and emo|ons be…er in person. O•en, on social media people can interpret your words wrong. Also, there is no privacy, and everyone can see your conversa|on. You can't form deep, meaningful bonds on social media. Do you argue with friends? Yes, I o•en argue with my friends and think such conﬂicts are normal. Every person is en|tled to their own opinion and should put forward their thoughts on what they believe is right or wrong. This may lead to arguments but ul|mately makes friendships stronger and healthier.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 85. Helping others Do you usually help people around you?
+  user_model_answer: Yes, I usually help people around me. I was fortunate to grow up in a very caring and helpful family. I have seen my parents help their rela|ves, friends, neighbors, and even strangers they met. I have learned the same values from them and like to help others. How you should how do you help people around you, such as neighbors' family, and friends? I help my parents at home. I am not good at cooking, but I help my mother with the prep work, like cu†ng vegetables. My father is an avid gardener, and I help him with gardening. I am good at mathema|cs and help my cousins with their math homework. Somedays, I give my neighbor’s son a ride to school on my way to work. Do your parents teach you how to help others? Yes, my parents have always taught me to be compassionate and help others in |mes of need. They also taught me to help others without expec|ng anything in return. Did your parents help you a lot when you were young? Yes, my parents helped and guided me when I was
+    young. I deeply respect them and am grateful to them for being there for me whenever I needed them. What have you done to help the elderly? I like to help the elderly by talking to them and listening to their life stories. It's common for them to feel lonely once they are re|red and are at home. Talking to them and giving them your |me is one way to help them. I also bring over any groceries or medicines they might need. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 287 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 86. Maps Do you omen use maps?
+  user_model_answer: Yes, I use maps o•en. I use them when I am outside my hometown, in ci|es I am not very familiar with. I use Google Maps and Waze. I am not very good with direc|ons, and I get lost if I don’t use a map. Do you use paper maps? I prefer to use GPS apps and don’t use paper maps. I only remember using a paper map recently at Jim Corbe… Na|onal Park, where we went for vaca|on. The phone signal was not good, and we were given a paper map at the entrance to the park. How omen do you use maps on your phone? I use it whenever I have to go to a new place or places I have visited before but don't remember all the routes. In my hometown, I hardly use it as it’s a very small town, and I am familiar with most streets and roads. Do you have maps at home? No, I don’t have maps at home. I do have an old Atlas in our bookshelf, but I don’t use it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 87. Clothing What kind of clothes do you like to wear?
+  user_model_answer: I like to wear jeans and a T-shirt. They are both comfortable and stylish. Some|mes, I have to wear formal suits for special occasions, and although they look nice, they are never comfortable. Do you prefer to wear comfortable and casual clothes or smart clothes? I prefer to wear comfortable and casual clothes. It doesn't mean I like to wear pajamas all day. Comfortable clothes like T-shirts and jeans can be smart and can look put-together. Do you like wearing T-shirts? Yes, I love wearing T-shirts, and graphic T-shirts are my favorite. I like the ones with wi…y quotes on them.

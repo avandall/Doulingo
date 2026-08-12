@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Lessons_for_IELTS_Speaking.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 8. Underline the auxiliary verbs in the follow-up questions below. These are the verbs (and tenses) you will use in your answers. a. Would you recommend this site to a friend?
+  user_model_answer: b. Do you enjoy surfing the net? c. Was it hard to find this site? d. Will you tell other people about this site? e. Did you learn much from it? f. Is it suitable for very young people?
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 14. Look at the following Part 3 question. *If poor people in developing countries had access to the Internet, what kinds of information would be most helpful or of most interest to them?*
+  user_model_answer: The **second conditional** is used for situations that are imagined, not real. *If + past simple (unreal situation) + would (result) + base form verb* or *+ could (= would be able to) + base form verb* **For example:** - *If poor people had access to the Internet (but they don't), they would find weather forecasts most helpful.*
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '1. Look at each photograph and discuss these questions with a partner. (Photographs show: A. Antarctica/Polar region, B. Shanghai/Modern city, C. Amazon rainforest, D. Great Wall of China) a. Where do you think it is?'
+  user_model_answer: b. What kinds of people (or animals) live there? c. What would it be like to live there? d. Would you like to live there? Why/Why not? e. Would you like to visit as a tourist? Why/Why not?

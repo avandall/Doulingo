@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: READING — Answer Bank
+  topic_tags:
+  - reading
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: READING'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về reading bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - reading
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like reading?
+  user_model_answer: Yes, I like reading a lot. I read all sorts of things, including novels, newspapers, magazines, and online articles. pick up... = take hold of and lift or move someone or
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: '2. Do you usually read for leisure or for work purposes? something: cầm ... lên'
+  user_model_answer: Well, I have to do a certain amount of reading as part of my job, but I probably read put something/someone more for enjoyment. I pick up a newspaper most days, and I usually have a book on down = to put an object that the go. you are holding onto the floor or onto another surface, or to
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: "3. What was your favourite book or story when you were a child? stop carrying someone: \bđặt"
+  user_model_answer: The first book that I remember really enjoying was '..........'. It only took me a few cái gì/ai đó xuống days to read because I liked it so much that I couldn't put it down. aspect
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think it's important that children read regularly? idea, a problem, etc.; a way in
+  user_model_answer: 'Definitely. I think reading is possibly the most important skill that children learn. which it may be considered:'

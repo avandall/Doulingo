@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: FRIENDS — Answer Bank
+  topic_tags:
+  - friends
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: FRIENDS'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về friends bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - friends
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Are your friends mostly your age or different ages?
+  user_model_answer: Most of my friends are about the same age as me because we met at school or university. I've got one or two friends who are older or younger that I met through work.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Do you usually see your friends during the week or at weekends?
+  user_model_answer: I tend to meet up with my friends at weekends because everyone's too busy during meet up
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. The last time you saw your friends, what did you do together? ai)
+  user_model_answer: 'It was one of my friends'' birthday last weekend. Six of us went out for a meal to go out for a meal: đi ra ngoài'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. In what ways are your friends important to you?
+  user_model_answer: I think it's important to have friends that you can talk to and share experiences with. My friends make me laugh, but I know I can also rely on them whenever I need help or support.

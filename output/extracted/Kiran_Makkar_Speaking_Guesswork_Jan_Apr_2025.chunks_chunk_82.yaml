@@ -1,0 +1,126 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 9. Some students hate to learn foreign languages, what can teachers do to develop their interest?
+  user_model_answer: Some students hate to learn a foreign language mainly due to lack of interest and uninteresting teaching methods used. Teachers play an important in developing students’ interest. Interactive and fun activities should be included to keep the children involved and interested in learning. If students are taught only from text books and there is a pressure of examination, it leads to students becoming bored or disliking language classes. Teachers should also use contexts and examples to which the students can relate in their day-to-day life. If they understand how the language can help and benefit them, students would be motivated to learn that language.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 10. Some people travel for learning a foreign language, what do you think?
+  user_model_answer: I think that traveling is a very good way to learn a foreign language. It is true that the more we use a language, the better we get at it. So, if travel to a county/region where that language is used, we will interact more with the local people in that language and learn its nuances better. Also, language is related to the culture. If we travel, we learn more about the culture and can learn the language better.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 11. What’s the best way to learn a foreign language?
+  user_model_answer: I think the best way to learn a foreign language in a classroom environment, from a teacher who has in-depth knowledge of that language. The teacher should preferably be a native speaker of that language or should have a high proficiency level in that language. It is very important to incorporate technology and audio-visual methods to teach that language. Also, travelling to that country/region where the language is spoken is also a good way to learn it. These days learning a language through videos and online classes has become very popular, as the students get a chance to interact with the teachers and also with native speakers of that language, through the internet. There are many apps also available, which can be downloaded on smartphones, which help learning a foreign language in a fun and interactive way. For example, the Duolingo app.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 12. Why can some people learn languages fast white others learn slowly?
+  user_model_answer: Some people learn language faster than some others because of the teaching methods used to teach them. Interacting more with the native speakers also helps with learning a language better and faster. Also, there may be a motivating factor, like a job that requires them to learn that language, which makes people learn a language faster than others, who don’t have any motivation behind learning a language.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 13. Does one’s age affect their language learning?
+  user_model_answer: Yes, I think age affects language learning. I thing the learning curve goes down with increasing age. Also, at an older age, people try and compare the new language they are learning with the language they already know. That may cause a hindrance in the learning of a language. People also become more hesitant about making mistakes and feel more embarrassed, at a later age, as compared to young learners. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 352 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Advantages for children to learn languages – Why it is good to learn languages at younger age
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How do you feel about birds? (Why do you feel that way?)
+  user_model_answer: I feel that birds are very special. They are beautiful creations of God. They add diversity to nature.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. How do Indian people feel about birds?
+  user_model_answer: India is a diverse country. Everyone has different feelings. Some love birds, and keep them as pets. Others just admire them flying in the sky. Some even eat birds.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Are there many birds near your home?
+  user_model_answer: Yes, there are birds near my home. I can see pigeons, crows, sparrows and even the cuckoo bird occasionally.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Have you seen many different kinds of birds? (near your home)
+  user_model_answer: Yes, I have seen many different birds. Apart from the birds I see routinely around my house, I have seen peacocks in my neighbouring village. I have also seen some rare birds, in the Chhattbir zoo. There were different varieties of parrots and the ostrich and emu over there.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do any birds have any particular significance in India? For example, does India have a national
+  user_model_answer: bird? Yes, peacock is our national bird. It is a beautiful bird. The male looks very beautiful with its plumes spread out.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you think birds should be protected? (Why? / Why not? How can they be protected?)
+  user_model_answer: Yes, definitely. They are beautiful creations of nature. They add diversity to our environment. Apart from that, they are the best pollinators. Also, birds eat insects. That is why crops are protected. They www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 353 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books are part of our ecological chain. We all know that if any link of our ecological chain is not there, then the whole ecology can collapse. Birds can be protected by having strict laws against catching and selling birds. The NGOs like SPCA, which means Society for prevention of cruelty to animals, and the PFA, which means people for animals can also help in this matter.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 5. Do Indian people like raising (keeping) pet birds?
+  user_model_answer: Yes, they do. Some people keep birds as pets. They keep colourful parrots and pigeons as pets.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Have you ever raised (kept) a pet bird?
+  user_model_answer: No, I have never raised a pet bird. There is a lot of work involved.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often travel by boat?
+  user_model_answer: No, I don’t often travel by boat. I don’t live in the coastal area and where I live people do not travel by boat. Boating is done only in places with water such as the Sukhna Lake.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. Have you ever been on a boat while you were on holidays (on vacation)?
+  user_model_answer: No, I have never traveled to a coastal area for holiday. I never got a chance.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. (Similar to above) Have you ever been on a boat tour while you were on holidays? (Same
+  user_model_answer: question as above. Can be answered differently) No, I have never been on a boat tour, but yes, I did boating once then I went to Chandigarh to visit my relatives. They took me to the Sukhna Lake.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Would you like to go on a boat tour? (Why?/Why not?)
+  user_model_answer: Yes, I would definitely like to go on a boat tour. I think it would be great fun. My relatives live in USA. They told me that there’s a cruise to Alaska. One day I would love to do that cruise.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 6. Where in your country do people most often use boats? (or, travel by boat)
+  user_model_answer: India has a long coastline. The coastline is more than 7000 km. People living near the coast use boats very often.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 7. Do many people in your country own their own boat?
+  user_model_answer: Maybe people living near the shores have their own boats, but people living off shore do not have their own boats.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 8. Would you like to buy a boat?
+  user_model_answer: No, I would not like to buy a boat. I think it would be a waste of money.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. If you had your own boat, what would you do with it?
+  user_model_answer: If I had my own boat, I would buy a house near the beach and do boating everyday. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 354 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. Do you often visit your relatives?
+  user_model_answer: No, I don’t often visit relatives. I visit them once or twice in six months.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. What do you do when visit them?
+  user_model_answer: Whenever we visit relatives, we have lots of fun. We visit some historical places, eat out, watch movies and do lots of other activities.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Do you prefer to spend time with your relatives, or your friends?
+  user_model_answer: I prefer to spend time with my friends. I like the company very much. We have lots of fun together.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. (Similar to above) Who is the more important to you, your relatives / your family, or your friends?
+  user_model_answer: Both are important for me, but my friends are more important than my relatives. Of course, my immediate family is more important then friends..
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you like to plan what you will do each day? (Why?/Why not?)
+  user_model_answer: Yes, I like to plan what I do each day. If I do not plan I tend to procrastinate and then all my work piles up and I start getting stressed.

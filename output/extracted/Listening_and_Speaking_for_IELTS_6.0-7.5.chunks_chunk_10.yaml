@@ -1,0 +1,27 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Read the two responses to the examiner's question. Which response is better? Why?
+  user_model_answer: '**Examiner:** Do you think it''s important for friends to have similar personalities? **Candidate A:** No I don''t think it''s important for friends to have similar personalities. It would be very boring and predictable if friends all had the same personality. I think sometimes the most interesting relationships are the relationships between very different personalities. People sometimes assume that relationships between different personalities can lead to arguments but they don''t have to lead to arguments. For example, one person could be quite sociable whilst the person''s friend isn''t sociable, but together the two friends'' personalities can make a good balance. **Candidate B:** No I don''t think so. It would be very boring and predictable if friends all had the same character. I think sometimes the most interesting relationships are the ones between very different individuals. People sometimes assume that this type of friendship can lead to arguments but they
+    don''t have to. For example, one person could be quite sociable whilst her friend isn''t, but together their personalities can make a good balance.'

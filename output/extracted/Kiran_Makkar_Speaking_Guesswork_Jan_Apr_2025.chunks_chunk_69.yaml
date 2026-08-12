@@ -1,0 +1,100 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Kiran_Makkar_Speaking_Guesswork_Jan_Apr_2025.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you have a talent, or something you are good at?
+  user_model_answer: I think everyone is born with some talent or the other. I have a talent to embroider. 2 Was it mastered recently or when you were young? I was lucky to have discovered it in my school, where the nuns would teach us varied handcrafts like knitting, sewing, painting and embroidering 3 Do you think your talent can be useful for your future work? Why? Yes, my talent like any other talent can be used in time of need whether to earn a living or to pass my time productively.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Do you think anyone in your family has the same talent?
+  user_model_answer: Yes, my mother and aunts have similar talents. In fact it’s from my mother that I learnt a lot of this craft.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. What sports do you like?
+  user_model_answer: I like to watch many sports like cricket, football, tennis, basketball etc, but I love playing cricket and table tennis.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Where did you learn to play?
+  user_model_answer: I think I learnt playing cricket by watching it on TV and from the other children in the neighbourhood. In India, everyone likes to play cricket, so it not very hard to learn it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. Did you do some sports when you were young?
+  user_model_answer: Yes, I have been playing cricket since my childhood. In my childhood, I also used to play hockey and volleyball, but now I don’t.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. Do you think children need more exercise?
+  user_model_answer: Yes certainly. I think the number of children who are unfit and obese is increasing day by day. So, I think it is absolutely necessary that they get more exercise.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. Do you often read books? When?
+  user_model_answer: I do read books and I don’t read as often as I did in the past. Nowadays, I don’t find time to read as much as I did in the past.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Are your reading habits different than in the past?
+  user_model_answer: I think there is one major difference. In my childhood, I didn’t have any stress and worries and I used to read books in one go, without stopping. But, nowadays I am barely able to finish a book in a month. Also, I have gradually shifted from reading fiction to nonfiction. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 303 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. Have you ever read a book that has been adapted into film?
+  user_model_answer: Yes, I have read many such novels. I think Harry Potter is the most famous among the ones that I have read.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. What do you prefer reading books and watching movies?
+  user_model_answer: I prefer watching movies these days because I am not able to find the time to read books. However, I also feel that some movies are not able to do justice to the books. So, it really depends upon the adaptation.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 124. Sport Programs 1 Do you like watching sports programs on TV?
+  user_model_answer: Yes, I enjoy watching sports programs on TV and would rather them than daily soaps. I really enjoy cricket, soccer, and tennis and love to watch sports programs related to them. 2 Do you like to watch live sports games? I have been to the stadium to watch live games, but I would rather watch them on TV at home. Not only it is more economical but also very convenient and comfortable to watch it from my couch at home 3 Who do you like to watch sports games with? I like to watch sports games with my family. We all like to watch cricket together. My mom usually makes our favorite snacks before the game. I feel it’s a very fun way to spend quality time with family. 4 What kinds of games do you expect to watch in the future? I think technology will blend into sports and because of the advancement in VR/AI technology, eSports will become popular. People will be watching e-athletes wearing VR goggles battling against each other instead of traditional sports.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 125. Sitting Down 1 Where is your favorite place to sit?
+  user_model_answer: I love to sit in my sofa chair next to the window. 2 Do you always sit down for a long time? Yes, once I sit down I don’t like to get up frequently. 3 Do you feel sleepy when you are sitting down? Yes, I feel quite lethargic when I sit down in a comfortable seat. 4 When you were a kid, did you usually sit on the floor? Yes, my mom tells me that I sat a lot on the floor when I was a kid. Infact, we didn’t have a dining table back then and we used to have our meals while sitting on the floor.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 126. Old Buildings 1 Have you ever seen some old buildings in the city?
+  user_model_answer: Yes, there are many old buildings in my city, especially in the old city area. 2 Do you think we should preserve old buildings in cities? I am very fond of History and anything old always fascinates me, I always feel we need to take our past along into the future, so old buildings being an important part of our legacy need to be protected. www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 304 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books 3 Do you prefer living in an old building or a modern house? Much as I like to see old buildings and imagine them in their hey days, I prefer to live in a modern house. 4 Are there any old buildings you want to see in the future? Why? Yes, definitely there are many old buildings on my bucket list. Starting with my own country, I’d like to see all the well-known monuments in the length and breadth of my country. Then there are many buildings like the Colossus Colosseum in Rome,
+    The Angkor Wat Temples in Cambodia, Buildings in the forbidden city in Beijing, Hagia Sophia in Turkey, The pyramids of Giza etc.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 127. Meeting places 1 Where is your favorite place to meet with your friends?
+  user_model_answer: I like to explore new places with my friends, they maybe a new restaurant in town or a park we’ve never seen before. 2 Do you think there are some places more suitable for meeting with others? Yes, places that have a relaxed seating, low low level of noise and are comfortable to be in are most suited for meeting others. 3 Are there any differences between your favorite meeting places in the present and in your child- hood? In my childhood places like public parks, loud noisey areas all seemed attractive whereas now I’d prefer quieter and comfortable areas. 4 Why are some meeting places better than others? I think the meeting places that provide a quite ambience are better than the one’s which are very noisy.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 128. Evening time 1 Do you like the morning or evening?
+  user_model_answer: I love both mornings and evenings. 2 What do you usually do in the evening? I like to walk, sit with my family or visit friends in the evenings. 3 What did you do in the evening when you were little? Why? As a child I would just want to go out and play with my friends because morning and afternoon were taken up by school and school related activities. 4 Are there any differences between what you do in the evening. now and what you did in the past? Yes, as I said earlier, evening time in my childhood was synonymous with friends, now I like to be with myself and my family and occasionally with friends in the evenings.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 129. Computers 1 In what conditions would you use a computer?
+  user_model_answer: I think nowadays a computer has become an integral part of our lives, so much so we don’t even realize how often and when we use it. I use my computer throughout the day, to check my mail, to Google any information, to have online meetings or to make reservations for an air or train booking, reserve a table at a restaurant, book a hotel for a holiday or make payments for certain things 2 When was the first time you used a computer? The first time I used a computer was when I was at school. 3 What would your life be like without computers? www.youtube.com/makkarielts www.instagram.com/makkarielts www.makkarielts.com/books 305 Jan-Apr 2025 Speaking Guesswork (FINAL VERSION) www.makkarielts.com/books Nowadays it’s difficult to imagine life without computers, there’ll be low connectivity. One would need so many other things to replace it like a camera, a dictionary, an atlas, a calculator, a watch etc. There’ll be no doorstep delivery, no online classes, no face to face
+    long distance conversations. The list is endless. 4 In what conditions would it be difficult for you to use à computer? When the internet is down or there’s no electricity.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 130. Collecting things 1 Do you collect things?
+  user_model_answer: Yes, much as I would like not to, I must admit I do. 2 Are there any things you keep from childhood? Yes, I have all the cards, letters (written to me) and photographs from my childhood 3 Would you keep old things for a long time? Why? I am a very emotional person so I like to keep things that have an emotional value for me.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 4. Where do you usually keep things you need?
+  user_model_answer: The things of my day to day need are kept close at hand in my cupboards and chest of drawers.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 131. Boring things 1 What kinds of things are boring to you?
+  user_model_answer: Anything that is slow moving, has a very vague meaning, anything that is slow moving, anything to do with too many numbers- I find them boring. 2 What do you do when you feel bored? I try to distract myself by thinking of happier, funnier things. My best way to get out of boredom is to start daydreaming about imaginary holidays I would take in future. 3 What was the most boring thing you did when you were young? Sit in a religious congregation and listen to the discourses that flowed over my head.

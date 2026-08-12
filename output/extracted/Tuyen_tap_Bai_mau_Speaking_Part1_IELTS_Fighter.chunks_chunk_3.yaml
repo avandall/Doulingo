@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: unknown — Answer Bank
+  topic_tags:
+  - unknown
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tuyen_tap_Bai_mau_Speaking_Part1_IELTS_Fighter.md, Topic: unknown'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về unknown bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - unknown
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you often send emails?
+  user_model_answer: Normally it seems like a daily routine for me to write emails to my clients about how to use the system; but if they complain to me about the poor user experience, I sometimes really find myself getting stuck in explaining to comfort them.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. How often do you send e-mails?
+  user_model_answer: I probably write between 5 and 10 work emails every day, and I send emails to friends or family a few times a week.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 5. Do you prefer to write by hand or on a computer?
+  user_model_answer: It depends what I’m doing. I prefer the computer for most things because it’s faster and you can save or copy things, but I still like making notes or writing ideas down by hand.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 6. Do you think emails are useful?
+  user_model_answer: Emails are really useful and important to me. I can use emails to contact people who are staying far away from me, and this really comes in handy as I have lots of foreign friends. Moreover, I can receive notifications of special deals or interesting information through emails by subscribing to any online channels that appeal to me.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 7. Do you think people will still write letters in the future?
+  user_model_answer: Well, if I were to choose between the two, I will probably go with writing an email because I can have plenty of time thinking about how to express my opinion correctly and clearly, besides, the whole conversation can be tracked in the mail list; whereas, making a telephone call usually leads to misunderstanding because sometimes it is not very accurate and obscure.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 1. What kind of places are crowded in where you’re living now?
+  user_model_answer: I’m living in Hanoi so the city seems to be hectic all the time, especially, the old quarter area - the heart of the city where streets are often jam-packed, and if you take a stroll in this area during the weekend, you’ll be surprised by how large the crowd is.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 2. Do you like crowded place?
+  user_model_answer: It depends on what sort of crowded place you’re referring to. I love being in the crowd where people there share the same interests as I do or at least there’s
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 3. When was the last time you were in crowded place?
+  user_model_answer: Last month I took a trip to Ha Long, also a major tourist destination in Vietnam. It was only the beginning of the summer but there were thousands of people on the beach which was jaw-dropping. But then I managed to find a good spot to sit on the shore because it was pretty chaotic down the beach.

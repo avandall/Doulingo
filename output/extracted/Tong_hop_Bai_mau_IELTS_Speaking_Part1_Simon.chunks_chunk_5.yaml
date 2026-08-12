@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: NEIGHBOURS — Answer Bank
+  topic_tags:
+  - neighbours
+  target_band_min: 6.5
+  target_band_max: 8.5
+  register: neutral
+  source_citation: 'Tong_hop_Bai_mau_IELTS_Speaking_Part1_Simon.md, Topic: NEIGHBOURS'
+band_tiers:
+- band_min: 6.5
+  band_max: 8.5
+  can_do_description: Trả lời các câu hỏi Part 1 về neighbours bằng các câu ghép, có lý do và ví dụ cụ thể.
+  grammar_required:
+  - present simple
+  - comparative
+  - linking with and/but
+  vocabulary_core:
+  - neighbours
+  vocabulary_stretch: []
+  sentence_length_target: 2-3 câu/câu trả lời, có mệnh đề phụ
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 1. How well do you know the people who live next door to you?
+  user_model_answer: I know my neighbours quite well. They're really nice people, and I always stop to talk whenever I see them.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 2. How often do you see them?
+  user_model_answer: "I see my neighbours at least a few times a week. We usually see each other when we're It'\uFEFFs difficult to...: Thật"
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: 3. What kinds of problem do people sometimes have with their neighbours? dưỡng
+  user_model_answer: I think the most common problem is probably noise. It's difficult to live next to people favour
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: 4. How do you think neighbours can help each other?
+  user_model_answer: Neighbours can do little things like watching your house if you go on holiday or taking a delivery if something arrives by post when you're not at home. I think these little favours are a good way for neighbours to help each other. collected by ielts-nguyenhuyen.com
