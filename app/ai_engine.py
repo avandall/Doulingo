@@ -9,34 +9,35 @@ Features:
 - LLM-based fallback translation (replaces unreliable Google Translate scraping).
 """
 
-import os
-import re
-import json
-import time
 import datetime
-import random
 import difflib
+import json
+import os
+import random
+import re
+import time
+from typing import Any
+
 import requests
-from typing import List, Dict, Any, Optional
 from dotenv import load_dotenv
 
-from app.scenarios import get_scenario
 from app.characters import get_character
 from app.prompt_factory import get_prompt_factory
+from app.scenarios import get_scenario
 
 load_dotenv()
 
 # Trace Logging & Masked Key Helpers
-KEY_STATUS_CACHE: Dict[str, Dict[str, Any]] = {}
+KEY_STATUS_CACHE: dict[str, dict[str, Any]] = {}
 
-def mask_api_key(key: Optional[str]) -> str:
+def mask_api_key(key: str | None) -> str:
     """Safely mask API Key showing only 4 leading and 4 trailing characters (e.g. gsk_...9aB)."""
     if not key or len(key) < 8:
         return "***"
     return f"{key[:4]}...{key[-4:]}"
 
 # Tracks keys that are currently rate-limited (429/403) to skip on next call
-KEY_EXHAUSTED_CACHE: Dict[str, float] = {}  # key -> epoch timestamp when it was exhausted
+KEY_EXHAUSTED_CACHE: dict[str, float] = {}  # key -> epoch timestamp when it was exhausted
 KEY_COOLDOWN_SECONDS = 60  # How long before retrying an exhausted key
 
 def is_key_exhausted(api_key: str) -> bool:
@@ -344,7 +345,7 @@ class AIEngine:
         t = re.sub(r'[^\w\s]', '', t)
         return re.sub(r'\s+', ' ', t).strip()
 
-    def _compute_deterministic_score(self, user_transcript: str, corrected_text: str) -> Dict[str, int]:
+    def _compute_deterministic_score(self, user_transcript: str, corrected_text: str) -> dict[str, int]:
         u_clean = self._normalize_text_for_comparison(user_transcript)
         c_clean = self._normalize_text_for_comparison(corrected_text)
 
@@ -365,7 +366,7 @@ class AIEngine:
             "overall": max(50, min(100, overall))
         }
 
-    def _get_level_config(self, level: int) -> Dict[str, Any]:
+    def _get_level_config(self, level: int) -> dict[str, Any]:
         """Return the precise level configuration for levels 1-20."""
         lvl = max(1, min(20, level))
         return LEVEL_CONFIGS[lvl]
@@ -433,9 +434,9 @@ RULES (same style as the example above):
     def start_roleplay_greeting(
         self,
         scenario_id: str,
-        character_id: Optional[str],
+        character_id: str | None,
         level: int = 1
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         self.reload_keys()
         scenario = get_scenario(scenario_id)
         if not scenario:
@@ -526,11 +527,11 @@ Output JSON ONLY:
     def process_turn(
         self,
         scenario_id: str,
-        character_id: Optional[str],
+        character_id: str | None,
         user_transcript: str,
-        conversation_history: List[Dict[str, str]],
+        conversation_history: list[dict[str, str]],
         level: int = 1
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         self.reload_keys()
 
         scenario = get_scenario(scenario_id)
@@ -622,10 +623,10 @@ Output JSON ONLY:
 
     def _get_mock_fallback_response(
         self,
-        scenario: Dict[str, Any],
-        character: Dict[str, Any],
+        scenario: dict[str, Any],
+        character: dict[str, Any],
         user_transcript: str
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Generate a realistic mock fallback response when LLM APIs are unavailable/rate-limited."""
         title = scenario.get("title", "Everyday Practice")
         char_name = character.get("name", "AI Partner")
@@ -655,7 +656,7 @@ Output JSON ONLY:
             "xp_gained": 10
         }
 
-    def _professional_vietnamese_localization(self, english_text: str, character_name: str = "", scenario_title: str = "", context_history: Optional[List[str]] = None) -> str:
+    def _professional_vietnamese_localization(self, english_text: str, character_name: str = "", scenario_title: str = "", context_history: list[str] | None = None) -> str:
         """
         Dedicated Professional Vietnamese Localization Engine (Dịch thuật ngữ cảnh văn nói).
         Called LAZILY only when the user clicks the translate button.
@@ -734,9 +735,9 @@ Output JSON ONLY:
 
     def _summarize_or_prune_history(
         self,
-        history: List[Dict[str, str]],
+        history: list[dict[str, str]],
         max_exchanges: int = 15
-    ) -> tuple[List[Dict[str, str]], str]:
+    ) -> tuple[list[dict[str, str]], str]:
         """
         Multi-Turn Context Truncation Guard:
         If conversation history exceeds max_exchanges (default 15 exchanges = 30 messages),
@@ -770,10 +771,10 @@ Output JSON ONLY:
 
     def _build_token_efficient_prompt(
         self,
-        scenario: Dict[str, Any],
-        character: Dict[str, Any],
+        scenario: dict[str, Any],
+        character: dict[str, Any],
         user_transcript: str,
-        history: List[Dict[str, str]],
+        history: list[dict[str, str]],
         turn_count: int,
         level: int
     ) -> str:
@@ -852,7 +853,7 @@ Output JSON ONLY:
   }}
 }}"""
 
-    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
+    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> dict[str, Any] | None:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
@@ -874,7 +875,7 @@ Output JSON ONLY:
             raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         return None
 
-    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
+    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> dict[str, Any] | None:
         url = "https://api.groq.com/openai/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {
@@ -896,7 +897,7 @@ Output JSON ONLY:
             raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         return None
 
-    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
+    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8) -> dict[str, Any] | None:
         url = "https://api.openai.com/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {
@@ -918,7 +919,7 @@ Output JSON ONLY:
             raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         return None
 
-    def _call_ollama(self, prompt: str, temp: float = 0.8) -> Optional[Dict[str, Any]]:
+    def _call_ollama(self, prompt: str, temp: float = 0.8) -> dict[str, Any] | None:
         url = f"{self.ollama_base_url}/api/generate"
         payload = {
             "model": self.ollama_model,
@@ -936,7 +937,7 @@ Output JSON ONLY:
             return self._parse_json_response(text)
         return None
 
-    def _parse_json_response(self, raw_text: str) -> Dict[str, Any]:
+    def _parse_json_response(self, raw_text: str) -> dict[str, Any]:
         text = raw_text.strip()
         if "```json" in text:
             text = text.split("```json")[1].split("```")[0].strip()
@@ -973,10 +974,10 @@ Output JSON ONLY:
         self,
         user_speech: str,
         duration_seconds: int,
-        wpm: Optional[int] = None,
-        pause_count: Optional[int] = None,
-        filler_count: Optional[int] = None
-    ) -> Dict[str, Any]:
+        wpm: int | None = None,
+        pause_count: int | None = None,
+        filler_count: int | None = None
+    ) -> dict[str, Any]:
         words = [w for w in user_speech.strip().split() if len(w) > 0]
         word_count = len(words)
         effective_wpm = wpm if (wpm is not None and wpm > 0) else int((word_count / max(1, duration_seconds)) * 60)
@@ -1016,14 +1017,14 @@ Output JSON ONLY:
 
     async def evaluate_det_speech(
         self,
-        scenario: Dict[str, Any],
+        scenario: dict[str, Any],
         user_speech: str,
         duration_seconds: int = 120,
         mode: str = "read_then_speak",
-        wpm: Optional[int] = None,
-        pause_count: Optional[int] = None,
-        filler_count: Optional[int] = None
-    ) -> Dict[str, Any]:
+        wpm: int | None = None,
+        pause_count: int | None = None,
+        filler_count: int | None = None
+    ) -> dict[str, Any]:
         question_card = scenario.get("question_card", {})
         prompt_text = question_card.get("prompt", scenario.get("description", ""))
         bullet_points = question_card.get("bullet_points", [])
@@ -1147,7 +1148,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
             "acoustic_metrics": acoustic_metrics
         }
 
-    async def transcribe_audio(self, audio_bytes: bytes, filename: str = "speech.webm", fallback_text: str = "") -> Dict[str, Any]:
+    async def transcribe_audio(self, audio_bytes: bytes, filename: str = "speech.webm", fallback_text: str = "") -> dict[str, Any]:
         """
         Transcribes recorded microphone audio using Groq Whisper Large V3 (ultra-fast & accurate for ESL learners).
         Falls back to Gemini Audio or browser STT fallback text if API keys are unavailable.
@@ -1202,7 +1203,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
 
         return {"transcript": fallback_text.strip(), "source": "browser-stt"}
 
-    def get_trace_quota_health(self) -> Dict[str, Any]:
+    def get_trace_quota_health(self) -> dict[str, Any]:
         """Return active key counts, key status cache, and recent 25 trace log entries."""
         logs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
         log_file = os.path.join(logs_dir, "api_trace.log")

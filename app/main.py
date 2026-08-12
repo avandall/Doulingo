@@ -9,31 +9,30 @@ Features:
 - Granular 20-Level Difficulty System with per-level hard constraints.
 """
 
-from fastapi import FastAPI, HTTPException, Query, UploadFile, File, Form
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, StreamingResponse
-from pydantic import BaseModel
-from typing import List, Dict, Optional
+import logging
 import os
-import uuid
 import unicodedata
-import requests
+import uuid
 from urllib.parse import quote
 
-import logging
+import requests
+from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
+from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
-from app.scenarios import list_scenarios, get_scenario
-from app.characters import list_characters, get_character
+from app.ai_engine import ai_engine
+from app.characters import get_character, list_characters
 from app.db import (
     add_custom_scenario,
+    add_user_xp,
+    get_all_saved_words,
     get_custom_scenarios,
     get_translated_word,
-    save_translated_word,
-    get_all_saved_words,
     get_user_stats,
-    add_user_xp,
+    save_translated_word,
 )
-from app.ai_engine import ai_engine
+from app.scenarios import get_scenario, list_scenarios
 from app.tts_service import generate_tts_mp3
 
 logger = logging.getLogger("duolingo_speak.api")
@@ -41,60 +40,60 @@ logger = logging.getLogger("duolingo_speak.api")
 app = FastAPI(title="Duolingo Speak - Unlimited AI Roleplays")
 
 # Global In-Memory Caches for Instant 0ms Word Lookup
-TRANSLATION_CACHE: Dict[str, str] = {}
-IPA_CACHE: Dict[str, str] = {}
+TRANSLATION_CACHE: dict[str, str] = {}
+IPA_CACHE: dict[str, str] = {}
 
 class TurnRequest(BaseModel):
     scenario_id: str
-    character_id: Optional[str] = None
+    character_id: str | None = None
     user_transcript: str
-    conversation_history: List[Dict[str, str]] = []
-    level: Optional[int] = 1
+    conversation_history: list[dict[str, str]] = []
+    level: int | None = 1
 
 class ChatRequest(BaseModel):
-    user_transcript: Optional[str] = None
-    text: Optional[str] = None
-    scenario_id: Optional[str] = "cafe_order"
-    character_id: Optional[str] = None
-    conversation_history: List[Dict[str, str]] = []
-    level: Optional[int] = 1
+    user_transcript: str | None = None
+    text: str | None = None
+    scenario_id: str | None = "cafe_order"
+    character_id: str | None = None
+    conversation_history: list[dict[str, str]] = []
+    level: int | None = 1
 
 class StartScenarioRequest(BaseModel):
     scenario_id: str
-    character_id: Optional[str] = None
-    level: Optional[int] = 1
+    character_id: str | None = None
+    level: int | None = 1
 
 class CustomScenarioRequest(BaseModel):
     title: str
-    category: Optional[str] = "Everyday Life ☕"
-    icon: Optional[str] = "💬"
-    color: Optional[str] = "#1CB0F6"
-    level: Optional[str] = "Beginner"
-    level_code: Optional[str] = "A2"
-    default_character: Optional[str] = "rajesh"
-    description: Optional[str] = "Custom everyday life topic"
-    objective: Optional[str] = "Express your thoughts freely."
-    suggested_vocabulary: Optional[List[str]] = ["Everyday conversation", "Free chat"]
-    mode: Optional[str] = "roleplay"
+    category: str | None = "Everyday Life ☕"
+    icon: str | None = "💬"
+    color: str | None = "#1CB0F6"
+    level: str | None = "Beginner"
+    level_code: str | None = "A2"
+    default_character: str | None = "rajesh"
+    description: str | None = "Custom everyday life topic"
+    objective: str | None = "Express your thoughts freely."
+    suggested_vocabulary: list[str] | None = ["Everyday conversation", "Free chat"]
+    mode: str | None = "roleplay"
 
 class ScenarioImportRequest(BaseModel):
-    scenarios: List[CustomScenarioRequest]
+    scenarios: list[CustomScenarioRequest]
 
 class SentenceTranslateRequest(BaseModel):
     text: str
-    target_lang: Optional[str] = "vi"
-    character_name: Optional[str] = ""
-    scenario_title: Optional[str] = ""
-    context_history: Optional[List[str]] = []
+    target_lang: str | None = "vi"
+    character_name: str | None = ""
+    scenario_title: str | None = ""
+    context_history: list[str] | None = []
 
 class DetSpeechEvalRequest(BaseModel):
     scenario_id: str
     user_speech: str
-    duration_seconds: Optional[int] = 120
-    mode: Optional[str] = "read_then_speak"
-    wpm: Optional[int] = None
-    pause_count: Optional[int] = None
-    filler_count: Optional[int] = None
+    duration_seconds: int | None = 120
+    mode: str | None = "read_then_speak"
+    wpm: int | None = None
+    pause_count: int | None = None
+    filler_count: int | None = None
 
 # NOTE: Google Translate gtx scraping (client=gtx) has been REMOVED.
 # Translation fallback is now handled inside ai_engine._fallback_llm_translate()
@@ -259,7 +258,7 @@ def api_chat(payload: ChatRequest):
 
 @app.post("/api/transcribe_audio")
 async def api_transcribe_audio(
-    file: Optional[UploadFile] = File(None),
+    file: UploadFile | None = File(None),
     fallback_text: str = Form("")
 ):
     """
@@ -279,7 +278,7 @@ async def api_transcribe_audio(
     return result
 
 # In-Memory cache for on-demand sentence translations
-SENTENCE_TRANSLATION_CACHE: Dict[str, str] = {}
+SENTENCE_TRANSLATION_CACHE: dict[str, str] = {}
 
 @app.post("/api/translate_sentence")
 def api_translate_sentence(payload: SentenceTranslateRequest):
@@ -337,7 +336,7 @@ async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
     return result
 
 @app.get("/api/saved_words")
-def api_get_saved_words(target_lang: Optional[str] = Query(None, description="Optional target language filter")):
+def api_get_saved_words(target_lang: str | None = Query(None, description="Optional target language filter")):
     words = get_all_saved_words(target_lang)
     return {"count": len(words), "words": words}
 
@@ -456,8 +455,8 @@ def api_translate_word(
 @app.get("/api/tts")
 async def api_tts(
     text: str = Query(..., description="Text to synthesize"),
-    character_id: Optional[str] = Query(None, description="Character ID"),
-    char_id: Optional[str] = Query(None, description="Character ID alias"),
+    character_id: str | None = Query(None, description="Character ID"),
+    char_id: str | None = Query(None, description="Character ID alias"),
     tld: str = Query("com", description="Top level domain fallback for accent")
 ):
     selected_char = character_id or char_id or "rajesh"
@@ -488,4 +487,4 @@ def read_root():
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)  # nosec B104

@@ -5,8 +5,11 @@ Run with: python3 -m unittest discover -s tests -p "test_*.py"
 """
 
 import unittest
+
 from fastapi.testclient import TestClient
+
 from app.main import app
+
 
 class TestSmokeAPI(unittest.TestCase):
     def setUp(self):

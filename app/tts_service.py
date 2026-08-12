@@ -6,23 +6,25 @@ Supports:
 3. Google TTS (gTTS safety fallback).
 """
 
-import os
-import io
-import re
 import asyncio
 import concurrent.futures
-import requests
-import edge_tts
+import io
 import logging
-from gtts import gTTS
+import os
+import re
+from typing import Any
+
+import edge_tts
+import requests
 from dotenv import load_dotenv
+from gtts import gTTS
 
 load_dotenv()
 logger = logging.getLogger("duolingo_speak.tts")
 
 # ElevenLabs & Azure Neural Voice Character Mappings
 # All voice IDs are CONFIRMED FREE PREMADE voices from the ElevenLabs API.
-CHARACTER_VOICE_MAP = {
+CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
     "duo": {
         "eleven_voice_id": "cgSgspJ2msm6clMCkdW9",
         "eleven_settings": {"stability": 0.5, "similarity_boost": 0.85, "style": 0.5, "use_speaker_boost": True},

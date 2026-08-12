@@ -4,10 +4,10 @@ Persists custom topics, dictionary translations, saved vocabulary, and user stat
 Supports Turso Cloud SQLite (libsql) via TURSO_DATABASE_URL & TURSO_AUTH_TOKEN with local SQLite fallback.
 """
 
+import json
 import os
 import sqlite3
-import json
-from typing import List, Dict, Any, Optional
+from typing import Any
 
 try:
     import libsql_experimental as libsql  # type: ignore
@@ -42,7 +42,7 @@ def get_db_connection():
     return conn
 
 
-def _fetch_all_dicts(cursor) -> List[Dict[str, Any]]:
+def _fetch_all_dicts(cursor) -> list[dict[str, Any]]:
     rows = cursor.fetchall()
     if not rows or not cursor.description:
         return []
@@ -58,7 +58,7 @@ def _fetch_all_dicts(cursor) -> List[Dict[str, Any]]:
     return results
 
 
-def _fetch_one_dict(cursor) -> Optional[Dict[str, Any]]:
+def _fetch_one_dict(cursor) -> dict[str, Any] | None:
     row = cursor.fetchone()
     if not row or not cursor.description:
         return None
@@ -292,7 +292,7 @@ def init_db():
     conn.close()
 
 
-def add_custom_scenario(scenario_data: Dict[str, Any]) -> Dict[str, Any]:
+def add_custom_scenario(scenario_data: dict[str, Any]) -> dict[str, Any]:
     init_db()
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -332,7 +332,7 @@ def delete_custom_scenario(sc_id: str) -> bool:
     return deleted
 
 
-def get_custom_scenarios() -> List[Dict[str, Any]]:
+def get_custom_scenarios() -> list[dict[str, Any]]:
     init_db()
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -374,7 +374,7 @@ def save_translated_word(word: str, target_lang: str, target_label: str, transla
     conn.close()
 
 
-def get_translated_word(word: str, target_lang: str) -> Optional[Dict[str, str]]:
+def get_translated_word(word: str, target_lang: str) -> dict[str, str] | None:
     """Retrieve word translation permanently from DB."""
     init_db()
     conn = get_db_connection()
@@ -394,7 +394,7 @@ def get_translated_word(word: str, target_lang: str) -> Optional[Dict[str, str]]
     return None
 
 
-def get_all_saved_words(target_lang: Optional[str] = None) -> List[Dict[str, Any]]:
+def get_all_saved_words(target_lang: str | None = None) -> list[dict[str, Any]]:
     """Retrieve all saved vocabulary words sorted by most recent."""
     init_db()
     conn = get_db_connection()
@@ -419,7 +419,7 @@ def get_all_saved_words(target_lang: Optional[str] = None) -> List[Dict[str, Any
     ]
 
 
-def get_user_stats() -> Dict[str, Any]:
+def get_user_stats() -> dict[str, Any]:
     """Retrieve user XP total and Streak days from DB."""
     init_db()
     conn = get_db_connection()
@@ -436,7 +436,7 @@ def get_user_stats() -> Dict[str, Any]:
     return {"total_xp": 150, "streak": 5, "last_active_date": ""}
 
 
-def add_user_xp(xp_amount: int) -> Dict[str, Any]:
+def add_user_xp(xp_amount: int) -> dict[str, Any]:
     """Increment user total XP and update active streak."""
     init_db()
     conn = get_db_connection()

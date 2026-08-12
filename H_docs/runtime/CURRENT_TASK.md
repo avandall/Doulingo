@@ -2,20 +2,18 @@
 # Task hiện tại đang thực thi — Context cho AI agent
 
 > **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** Mỗi khi chuyển sang task mới
->
-> ✏️ **HUMAN FILLS THIS FILE.** Ghi chi tiết task đang được giao cho AI.
-> Dùng file này để cung cấp context cụ thể cho task hiện tại mà không cần sửa `Tasks_list.md`.
 
 ---
 
 ## Task đang thực hiện
 
 ```
-Task ID:      [TASK-001]
-Task Name:    [Tên task ngắn gọn]
-Phase:        [Phase 1 / Phase 2 / ...]
-Priority:     [P0-Critical / P1-High / P2-Medium]
-Started:      [YYYY-MM-DD]
+Task ID:      TASK-004
+Task Name:    Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`)
+Phase:        Phase 1 (MVP Pipeline)
+Priority:     P0-Critical
+Started:      2026-08-12
+Status:       [ ] TODO
 ```
 
 ---
@@ -23,55 +21,26 @@ Started:      [YYYY-MM-DD]
 ## Mục tiêu (Why & What)
 
 **Tại sao cần làm task này?**
-- [Lý do 1]
-- [Lý do 2]
+- Nhận giọng nói từ user theo từng chunk câu, giữ lại audio + word-level timestamps để làm đầu vào cho ASR transcript và Scoring Agent.
 
 **Cụ thể cần làm gì?**
-- [Công việc 1]
-- [Công việc 2]
+- Xây dựng `app/asr_processor.py` xử lý streaming audio input, trích xuất text transcript và mảng `word_timestamps`.
 
 ---
 
 ## Acceptance Criteria (Tiêu chí hoàn thành)
 
 Task được coi là DONE khi:
-- [ ] [Tiêu chí 1 — đo lường được, verify được]
-- [ ] [Tiêu chí 2]
-- [ ] Tất cả verification commands chạy PASS 100%
-
----
-
-## Context bổ sung
-
-### Input / Dependencies
-- [Dữ liệu đầu vào, files cần đọc, services cần kết nối]
-
-### Known Constraints
-- [Giới hạn kỹ thuật hoặc nghiệp vụ đặc thù của task này]
-
-### References
-- [Links, docs, examples liên quan]
+- [ ] Xử lý audio stream theo chunk câu ngắn (khuyến nghị cắt theo VAD/silence, không cắt cứng theo thời gian cố định).
+- [ ] Trả về transcript văn bản và word-level timestamps (`word`, `start_time`, `end_time`, `confidence`), timestamps đơn điệu tăng qua toàn bộ session.
+- [ ] Giữ đệm audio gốc phục vụ tính điểm phát âm (Pronunciation GOP).
+- [ ] Chạy `python3 H_docs/scripts/verify.py` pass 100%.
 
 ---
 
 ## Verification Commands
 
 ```bash
-# Lệnh để verify task hoàn thành
-[ví dụ: pytest tests/test_feature.py -v]
-[ví dụ: python3 H_docs/scripts/verify.py]
+python3 H_docs/scripts/verify.py
+pytest tests/
 ```
-
----
-
-## Notes từ Human
-
-> [Ghi chú bổ sung, warnings, hoặc context đặc biệt mà AI cần biết khi làm task này]
-
----
-
-## Lịch sử (History)
-
-| Ngày | Task ID | Trạng thái | Ghi chú |
-|------|---------|------------|---------|
-| [YYYY-MM-DD] | [TASK-001] | [ ] TODO | Khởi tạo |

@@ -4,10 +4,11 @@ Includes International English (IELTS / CEFR) Speaking topics and everyday rolep
 Clean, simple UI titles with open-ended creative story seeds for AI improvisation.
 """
 
-from typing import Dict, List, Any, Optional
+from typing import Any
+
 from app.db import get_custom_scenarios
 
-DEFAULT_SCENARIOS = {
+DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
     # ============================================================
     # IELTS / CEFR GROUP 1: PERSONAL & FAMILY (CÁ NHÂN & GIA ĐÌNH)
     # ============================================================
@@ -288,10 +289,10 @@ DEFAULT_SCENARIOS = {
     }
 }
 
-def list_scenarios() -> List[Dict[str, Any]]:
-    scenarios_list: List[Dict[str, Any]] = []
+def list_scenarios() -> list[dict[str, Any]]:
+    scenarios_list: list[dict[str, Any]] = []
     for sc in DEFAULT_SCENARIOS.values():
-        sc_copy: Dict[str, Any] = dict(sc)
+        sc_copy: dict[str, Any] = dict(sc)
         sc_copy["is_custom"] = False
         scenarios_list.append(sc_copy)
 
@@ -325,9 +326,9 @@ def list_scenarios() -> List[Dict[str, Any]]:
 
     return scenarios_list
 
-def get_scenario(scenario_id: str) -> Optional[Dict[str, Any]]:
+def get_scenario(scenario_id: str) -> dict[str, Any] | None:
     if scenario_id in DEFAULT_SCENARIOS:
-        sc: Dict[str, Any] = dict(DEFAULT_SCENARIOS[scenario_id])
+        sc: dict[str, Any] = dict(DEFAULT_SCENARIOS[scenario_id])
         sc["is_custom"] = False
         return sc
 

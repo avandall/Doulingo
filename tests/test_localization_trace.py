@@ -5,7 +5,9 @@ Run with: uv run python -m unittest discover -s tests -p "test_*.py"
 
 import os
 import unittest
-from app.ai_engine import ai_engine, mask_api_key, log_api_trace
+
+from app.ai_engine import ai_engine, log_api_trace, mask_api_key
+
 
 class TestLocalizationAndTraceLog(unittest.TestCase):
 

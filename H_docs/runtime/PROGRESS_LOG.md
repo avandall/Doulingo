@@ -264,6 +264,102 @@
 - **Action:** Retest AI conversation generation.
 - **State:** ALL_DONE
 
+---
+
+### [ITER-028] 2026-08-12 20:34 — TASK-000 Database Schema Design & Migration (Turso/libSQL)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification, Review, Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Cập nhật `app/db.py`: Bổ sung DDL cho 12 bảng Turso/libSQL schema (`content_units`, `band_tiers`, `function_details`, `function_band_variants`, `scenarios`, `scenario_branches`, `evaluation_hooks`, `sample_dialogues` với `embedding F32_BLOB(384)`, `hook_bank`, `vocabulary_lookup`, `user_profile`, `user_content_exposure`), kích hoạt FK cascade và tạo indexes.
+2. Cập nhật `tests/test_db_turso.py`: Thêm unit test `test_task_000_schema_tables_and_fk_cascade()` kiểm tra sự tồn tại của 12 bảng và tính năng cascade deletion.
+3. Chạy Tier 1 Verification qua `python3 H_docs/scripts/verify.py` — Status: PASS 100%.
+4. Reviewer đã phê duyệt code (ghi nhận tại `H_docs/runtime/DEBATE_LOG.md`).
+5. Đánh dấu `[x] DONE` cho `TASK-000` trong `H_docs/context/Tasks_list.md`.
+6. Thực hiện Phase 6: Git commit code thay đổi (`app/db.py`, `tests/test_db_turso.py`, `H_docs/context/Tasks_list.md`) với message `[TASK-000] feat(db): implement 12 Turso/libSQL database tables, FK cascades, and indexes`.
+7. Thực hiện Phase 7: Cập nhật `PLAN.md`, `CURRENT_TASK.md`, tạo snapshot `ITERATIONS/iter_028.md`, append entry `PROGRESS_LOG.md`, và cập nhật `STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `python3 H_docs/scripts/verify.py` Status PASS, git commit `4f1d93e`.
+
+#### Decisions Made
+- DDL schema sử dụng kiểu `F32_BLOB(384)` cho local `all-MiniLM-L6-v2` embeddings và foreign key cascades (`ON DELETE CASCADE`).
+
+#### Git
+- **Commit:** `4f1d93e` `[TASK-000] feat(db): implement 12 Turso/libSQL database tables, FK cascades, and indexes`
+
+#### Next
+- **Action:** Chuyển sang `TASK-001` (YAML Ingestion, Embeddings Generation & Vector Indexing).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-029] 2026-08-12 22:53 — TASK-001 YAML Ingestion, Embeddings Generation & Vector Indexing
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification, Review, Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Phản biện và review code được Reviewer phê duyệt trong `H_docs/runtime/DEBATE_LOG.md`.
+2. Kiểm tra và bổ sung test suite `tests/test_ingestion.py` phủ 100% quy trình YAML parsing (`scripts/insert_turso.py`), tạo embeddings (`scripts/generate_embeddings.py`), và SQL vector retrieval query simulation.
+3. Chạy Tier 1 Verification qua `python3 H_docs/scripts/verify.py` và `pytest tests/test_ingestion.py` — Status PASS 100%.
+4. Đánh dấu `[x] DONE` cho `TASK-001` trong `H_docs/context/Tasks_list.md`.
+5. Thực hiện Phase 6 (COMMIT): Git commit code thay đổi với commit message `[TASK-001] feat(data-ingestion): implement YAML ingestion, embedding generation, and vector indexing pipeline` (hash: `76f6e88`).
+6. Thực hiện Phase 7 (REPORT): Cập nhật `PLAN.md`, tạo snapshot `ITERATIONS/iter_029.md`, append entry `PROGRESS_LOG.md`, và cập nhật `STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_ingestion.py` (3 passed in 24.14s), `python3 H_docs/scripts/verify.py` Status PASS, git commit `76f6e88`.
+
+#### Decisions Made
+- Multi-table relational indexing with 384d vector embeddings binary blobs for Turso/libSQL database.
+
+#### Git
+- **Commit:** `76f6e88` `[TASK-001] feat(data-ingestion): implement YAML ingestion, embedding generation, and vector indexing pipeline`
+
+#### Next
+- **Action:** Chuyển sang `TASK-002` (Data Ingestion Verification & Retrieval Unit Tests).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-030] 2026-08-12 23:20 — TASK-002 Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Phản biện và review code được Reviewer phê duyệt trong `H_docs/runtime/DEBATE_LOG.md` (Review Result: APPROVED).
+2. Kiểm tra và bổ sung unit tests trong `tests/test_ingestion.py`:
+   - `test_retrieval_query_simulation`: Đã bổ sung simulation cho bảng `user_content_exposure`, filter topic, band level range, exclusion dialogues đã bị expose, và vector similarity sorting.
+   - `test_foreign_key_constraints_integrity`: Đã bổ sung test `PRAGMA foreign_keys = ON`, từ chối insert orphan `content_unit_id` (văng IntegrityError), và cascade delete trên `content_units` xóa sạch `sample_dialogues` và `band_tiers`.
+3. Chạy Tier 1 Verification qua `python3 H_docs/scripts/verify.py` và `pytest tests/test_ingestion.py` — Status PASS 100% (4/4 passed).
+4. Đánh dấu `[x] DONE` cho `TASK-002` trong `H_docs/context/Tasks_list.md`.
+5. Thực hiện Phase 6 (COMMIT): Git commit code `tests/test_ingestion.py` với commit message `[TASK-002] test(ingestion): verify DB record counts, FK cascade, and vector retrieval queries` (hash: `6eb05c0`).
+6. Thực hiện Phase 7 (REPORT): Cập nhật `PLAN.md`, append entry `PROGRESS_LOG.md`, cập nhật `CURRENT_TASK.md`, tạo snapshot `ITERATIONS/iter_030.md`, và cập nhật `STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_ingestion.py` (4 passed in 30.10s), `python3 H_docs/scripts/verify.py` Status PASS, git commit `6eb05c0`.
+
+#### Decisions Made
+- Unit test suite explicitly verifies FK constraint enforcement (`PRAGMA foreign_keys = ON`), orphan rejection, cascading deletes, and complex SQL exposure exclusion retrieval logic.
+
+#### Git
+- **Commit:** `6eb05c0` `[TASK-002] test(ingestion): verify DB record counts, FK cascade, and vector retrieval queries`
+
+#### Next
+- **Action:** Chuyển sang `TASK-003` (Admin CLI & Content Validation Tool — `scripts/admin_content_cli.py`).
+- **State:** IN_PROGRESS
+
+
+
+
 
 
 

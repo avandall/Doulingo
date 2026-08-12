@@ -17,6 +17,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Ensure PATH includes user local bin directory
+user_bin = str(Path.home() / ".local" / "bin")
+if user_bin not in os.environ.get("PATH", ""):
+    os.environ["PATH"] = f"{user_bin}:/usr/local/bin:" + os.environ.get("PATH", "")
+
+
 
 def truncate_log(log_text: str, max_lines: int = 20) -> str:
     """Cắt tỉa log rác, chỉ giữ lại các dòng Error, Traceback và Line chính."""
@@ -38,9 +44,8 @@ def truncate_log(log_text: str, max_lines: int = 20) -> str:
             in_traceback = True
         if (
             in_traceback
-            or line.startswith("E   ")
+            or line.startswith(("E   ", "FAILED "))
             or "Error:" in line
-            or line.startswith("FAILED ")
         ):
             error_lines.append(line)
 
@@ -61,7 +66,7 @@ def run_command(cmd: list[str]) -> tuple[int, str]:
         output = (res.stdout or "") + ("\n" + res.stderr if res.stderr else "")
         return res.returncode, output.strip()
     except Exception as e:
-        return 1, f"Execution failed: {str(e)}"
+        return 1, f"Execution failed: {e!s}"
 
 
 def run_python_checks(target_dir: str = ".") -> list[tuple[str, bool, str]]:
@@ -87,7 +92,7 @@ def run_python_checks(target_dir: str = ".") -> list[tuple[str, bool, str]]:
     # 2. Mypy (Type Check)
     if check_tool_installed("mypy"):
         code, out = run_command(
-            ["mypy", target_dir, "--ignore-missing-imports"]
+            ["mypy", target_dir, "--ignore-missing-imports", "--explicit-package-bases"]
         )
         if code == 0:
             results.append(
@@ -106,7 +111,7 @@ def run_python_checks(target_dir: str = ".") -> list[tuple[str, bool, str]]:
 
     # 3. Bandit (Security Scan)
     if check_tool_installed("bandit"):
-        code, out = run_command(["bandit", "-r", target_dir, "-ll", "-q"])
+        code, out = run_command(["bandit", "-r", target_dir, "-x", "./.venv,.venv", "-ll", "-q"])
         if code == 0:
             results.append(
                 ("Bandit (Security)", True, "No high/medium security issues ✓")

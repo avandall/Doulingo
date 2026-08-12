@@ -1,23 +1,27 @@
-# Implementation Plan — TASK-009: UI Roleplay Simplification & Random Roleplay Placement
+# Implementation Plan — TASK-003: Admin CLI & Content Validation Tool
 
 ## Goal
-Optimize the Roleplay section in the UI by removing redundant/duplicate roleplay topics, moving the "🎲 RANDOM ROLEPLAY" button into the Roleplay section, and removing category filter pills in the Roleplay section.
+Build `scripts/admin_content_cli.py` to validate and import new IELTS book YAML template files into the Turso/SQLite database to prevent schema drift, missing metadata, invalid band levels, and answer formatting issues.
 
-## Proposed Changes
+## Acceptance Criteria
+- [x] CLI supports `validate <file_path>` command to check required fields (`content_unit`, `band_tiers`, `sample_dialogues`).
+- [x] CLI emits warnings/errors for short/long answers (<5 or >300 words) and missing `function_tag`.
+- [x] CLI supports `import <file_path>` command to insert validated content into the SQLite/Turso database (supports `--sqlite` and `--dry-run`).
+- [x] Comprehensive unit tests created in `tests/test_admin_content_cli.py`.
+- [x] `python3 H_docs/scripts/verify.py` passes 100%.
 
-### 1. `static/index.html`
-- Remove `#btn-random-roleplay` from the hero banner (`.hero-actions`).
-- In Section 2 (`EVERYDAY & CREATIVE ROLEPLAY`), insert `#btn-random-roleplay` into the section header box or next to section title.
-- Remove `#roleplay-category-filter-bar` completely (deleting category filter buttons: "Tất cả Roleplay", "Giao tiếp hàng ngày", "Tình huống sáng tạo").
+## Proposed Steps
 
-### 2. `static/js/app.js`
-- Update `initCategoryFilterBar()` to remove event listeners for `#roleplay-category-filter-bar`.
-- Simplify `renderScenarios()` to render roleplay scenarios directly into `#roleplay-scenarios-grid` without checking `roleplayCat`.
-- Ensure `startRandomRoleplay()` selects randomly from available non-IELTS roleplay scenarios (or all roleplays).
+### Step 1: Implement `scripts/admin_content_cli.py` [x] DONE
+- Build CLI tool with `validate` and `import` subcommands using `argparse`.
+- Implement validation logic to inspect `content_unit`, `band_tiers`, and `sample_dialogues`, checking required fields, band ranges, answer length, and `function_tag`.
+- Implement DB import logic for valid YAML files supporting `--sqlite` DB path and `--dry-run` mode.
 
-### 3. `app/scenarios.py`
-- Streamline `DEFAULT_SCENARIOS` roleplay topics (non-IELTS) to eliminate redundant/repetitive items. Keep a clean, essential set of 4-6 distinct everyday roleplay scenarios (e.g. Daily Chat, Cafe & Dining, Travel, Work/Study).
+### Step 2: Implement Unit Tests & Run Verification [x] DONE
+- Create `tests/test_admin_content_cli.py` testing `validate` (valid YAML, invalid YAML, warnings) and `import` commands.
+- Execute `python3 H_docs/scripts/verify.py` to ensure Tier 1 quality checks pass.
 
-## Verification Plan
-- Run `python3 H_docs/scripts/verify.py` to ensure all Python tests pass.
-- Test server runtime via `uv run python main.py` or `pytest`.
+## Status
+- **Current Phase:** COMPLETED (Phase 6 & 7 Done)
+- **Iteration:** 31
+- **Git Commit:** `898e20c` `[TASK-003] feat(admin-cli): implement content validation and DB import tool`

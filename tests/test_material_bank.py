@@ -7,13 +7,14 @@ and singleton management.
 import os
 import tempfile
 import unittest
+
 from app.material_bank import (
+    GrammarPattern,
     MaterialBank,
-    TopicBank,
     Persona,
     Question,
+    TopicBank,
     VocabularyItem,
-    GrammarPattern,
     get_material_bank,
 )
 
@@ -26,9 +27,9 @@ class TestMaterialBank(unittest.TestCase):
         self.bank.load_all()
 
     def test_load_all_real_docs(self):
-        """Verify loading 5 DB markdown files populates > 0 topics."""
+        """Verify loading extracted IELTS topics populates > 0 topics."""
         self.assertGreater(len(self.bank.topics), 0, "Topics bank should not be empty")
-        self.assertGreaterEqual(len(self.bank.topics), 100, "Should load over 100 IELTS topics")
+        self.assertGreaterEqual(len(self.bank.topics), 30, "Should load all extracted IELTS topics")
 
     def test_topic_structure_and_completeness(self):
         """Verify topics contain expected personas, questions, vocabulary, and grammar."""

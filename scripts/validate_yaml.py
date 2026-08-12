@@ -71,7 +71,7 @@ def validate_doc(doc, filepath):
             and isinstance(cu["target_band_min"], (int, float))
             and isinstance(cu["target_band_max"], (int, float))
             and cu["target_band_min"] >= cu["target_band_max"]):
-        errors.append(err(filepath, f"target_band_min >= target_band_max"))
+        errors.append(err(filepath, "target_band_min >= target_band_max"))
 
     tags = cu.get("topic_tags", [])
     if not isinstance(tags, list) or len(tags) == 0:

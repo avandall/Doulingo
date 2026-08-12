@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import yaml
 
 p = Path("output/extracted")

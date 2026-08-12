@@ -1,6 +1,7 @@
 from app.ai_engine import ai_engine
 from app.scenarios import list_scenarios
 
+
 def test_summarize_or_prune_history_under_threshold():
     """Verify history under 30 messages (15 exchanges) is not truncated."""
     history = [

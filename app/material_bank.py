@@ -7,7 +7,8 @@ Provides fast in-memory indexing (< 5ms retrieval) for the Prompt Factory.
 import glob
 import os
 import re
-from typing import Dict, List, Optional, Any
+from typing import Any
+
 from pydantic import BaseModel, Field
 
 
@@ -42,14 +43,14 @@ class TopicBank(BaseModel):
     """Nuclear material bank for a specific topic."""
     topic_id: str = Field(..., description="Normalized topic ID")
     topic_name: str = Field(..., description="Human-readable topic title")
-    target_levels: List[str] = Field(
+    target_levels: list[str] = Field(
         default_factory=lambda: ["5.0-6.0", "6.5+"],
         description="Target IELTS bands supported"
     )
-    personas: List[Persona] = Field(default_factory=list)
-    questions: List[Question] = Field(default_factory=list)
-    vocabulary: List[VocabularyItem] = Field(default_factory=list)
-    grammar_patterns: List[GrammarPattern] = Field(default_factory=list)
+    personas: list[Persona] = Field(default_factory=list)
+    questions: list[Question] = Field(default_factory=list)
+    vocabulary: list[VocabularyItem] = Field(default_factory=list)
+    grammar_patterns: list[GrammarPattern] = Field(default_factory=list)
 
 
 class MaterialBank:
@@ -57,7 +58,7 @@ class MaterialBank:
 
     def __init__(self, docs_dir: str = "docs") -> None:
         self.docs_dir = docs_dir
-        self.topics: Dict[str, TopicBank] = {}
+        self.topics: dict[str, TopicBank] = {}
 
     @staticmethod
     def normalize_id(tid: str) -> str:
@@ -67,15 +68,72 @@ class MaterialBank:
         clean = re.sub(r'[^\w-]', '', clean)
         return clean.strip('-')
 
-    def load_all(self, docs_dir: Optional[str] = None) -> int:
+    def load_all(self, docs_dir: str | None = None) -> int:
         """Parse all DB*.md files in docs_dir and build in-memory TopicBank index."""
         target_dir = docs_dir or self.docs_dir
         files = sorted(glob.glob(os.path.join(target_dir, "DB*.md")))
         
         for filepath in files:
             self._parse_file(filepath)
-            
+
+        if not self.topics:
+            yaml_dir = "output/extracted" if os.path.exists("output/extracted") else target_dir
+            yaml_files = sorted(glob.glob(os.path.join(yaml_dir, "*.yaml")))
+            for yf in yaml_files:
+                self._parse_yaml_file(yf)
+
         return len(self.topics)
+
+    def _parse_yaml_file(self, filepath: str) -> None:
+        """Parse extracted YAML topic file into a TopicBank instance."""
+        import yaml
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                docs = list(yaml.safe_load_all(f))
+            for doc in docs:
+                if not doc or not isinstance(doc, dict):
+                    continue
+                cu = doc.get("content_unit", {})
+                title = cu.get("title", "")
+                if not title:
+                    continue
+                topic_id = self.normalize_id(title)
+                if not topic_id:
+                    topic_id = f"topic-{len(self.topics)+1}"
+
+                topic_bank = self.topics.get(topic_id)
+                if not topic_bank:
+                    topic_bank = TopicBank(
+                        topic_id=topic_id,
+                        topic_name=title,
+                        target_levels=["5.0-6.0", "6.5+"],
+                        personas=[
+                            Persona(id="P1", title="IELTS Examiner", description="Formal IELTS Examiner"),
+                            Persona(id="P2", title="Peer Partner", description="Friendly practice partner"),
+                        ]
+                    )
+                    self.topics[topic_id] = topic_bank
+
+                for sd in doc.get("sample_dialogues", []):
+                    q_text = sd.get("ai_line", "")
+                    if q_text:
+                        topic_bank.questions.append(
+                            Question(id=f"Q_{len(topic_bank.questions)+1}", text=q_text, band=str(sd.get("band_level", "6.0")))
+                        )
+                for bt in doc.get("band_tiers", []):
+                    for v in bt.get("vocabulary_core", []) + bt.get("vocabulary_stretch", []):
+                        if isinstance(v, str):
+                            topic_bank.vocabulary.append(
+                                VocabularyItem(phrase=v, meaning=v, band=f"{bt.get('band_min', 5.0)}-{bt.get('band_max', 7.0)}")
+                            )
+                    for g in bt.get("grammar_required", []):
+                        if isinstance(g, str):
+                            topic_bank.grammar_patterns.append(
+                                GrammarPattern(pattern_id=f"Pattern_{len(topic_bank.grammar_patterns)+1}", pattern=g)
+                            )
+        except Exception:
+            pass
+
 
     def _parse_file(self, filepath: str) -> None:
         """Parse a single markdown database file."""
@@ -137,9 +195,9 @@ class MaterialBank:
         else:
             self._merge_topic(self.topics[topic_id], personas, questions, vocabulary, grammar_patterns)
 
-    def _parse_personas(self, block: str) -> List[Persona]:
+    def _parse_personas(self, block: str) -> list[Persona]:
         """Extract persona pool from topic block."""
-        personas: List[Persona] = []
+        personas: list[Persona] = []
         sec_match = re.search(r'1\.\s*PERSONA POOL(.*?)(?=2\.\s*QUESTION POOL|3\.\s*VOCABULARY|\Z)', block, re.DOTALL | re.IGNORECASE)
         if not sec_match:
             return personas
@@ -156,9 +214,9 @@ class MaterialBank:
 
         return personas
 
-    def _parse_questions(self, block: str) -> List[Question]:
+    def _parse_questions(self, block: str) -> list[Question]:
         """Extract question pool categorized by Band level."""
-        questions: List[Question] = []
+        questions: list[Question] = []
         sec_match = re.search(r'2\.\s*QUESTION POOL(.*?)(?=3\.\s*VOCABULARY|4\.\s*GRAMMAR|\Z)', block, re.DOTALL | re.IGNORECASE)
         if not sec_match:
             return questions
@@ -182,9 +240,9 @@ class MaterialBank:
 
         return questions
 
-    def _parse_vocabulary(self, block: str) -> List[VocabularyItem]:
+    def _parse_vocabulary(self, block: str) -> list[VocabularyItem]:
         """Extract vocabulary pool categorized by Band level."""
-        vocab: List[VocabularyItem] = []
+        vocab: list[VocabularyItem] = []
         sec_match = re.search(r'3\.\s*VOCABULARY.*?(.*?)(?=4\.\s*GRAMMAR|\Z)', block, re.DOTALL | re.IGNORECASE)
         if not sec_match:
             return vocab
@@ -213,9 +271,9 @@ class MaterialBank:
 
         return vocab
 
-    def _parse_grammar(self, block: str) -> List[GrammarPattern]:
+    def _parse_grammar(self, block: str) -> list[GrammarPattern]:
         """Extract grammar patterns from topic block."""
-        grammar: List[GrammarPattern] = []
+        grammar: list[GrammarPattern] = []
         sec_match = re.search(r'4\.\s*GRAMMAR.*?(.*?)(?=#|\Z)', block, re.DOTALL | re.IGNORECASE)
         if not sec_match:
             return grammar
@@ -235,10 +293,10 @@ class MaterialBank:
     def _merge_topic(
         self,
         target: TopicBank,
-        personas: List[Persona],
-        questions: List[Question],
-        vocabulary: List[VocabularyItem],
-        grammar_patterns: List[GrammarPattern]
+        personas: list[Persona],
+        questions: list[Question],
+        vocabulary: list[VocabularyItem],
+        grammar_patterns: list[GrammarPattern]
     ) -> None:
         """Merge additional pool items into existing TopicBank instance without duplication."""
         existing_titles = {p.title.lower() for p in target.personas}
@@ -265,7 +323,7 @@ class MaterialBank:
                 target.grammar_patterns.append(g)
                 existing_pats.add(g.pattern.lower())
 
-    PRESET_MAPPINGS: Dict[str, List[str]] = {
+    PRESET_MAPPINGS: dict[str, list[str]] = {
         "everyday-chat": ["friends", "family-and-friends-bonds", "ielts-speaking-friends", "hobbies"],
         "cafe-dining": ["food", "ielts-speaking-food", "food-health", "ielts-speaking-healthy-eating"],
         "travel-culture": ["travel", "holidays-and-travel", "travel-and-transport", "ielts-speaking-travelling", "culture"],
@@ -283,7 +341,7 @@ class MaterialBank:
         "det-ai-future": ["science-and-technology", "technology", "machines-cycles-and-processes"],
     }
 
-    def get_topic(self, topic_id: str) -> Optional[TopicBank]:
+    def get_topic(self, topic_id: str) -> TopicBank | None:
         """Lookup a topic by topic_id, preset mapping, or keyword search with robust fallback."""
         if not self.topics:
             return None
@@ -314,7 +372,7 @@ class MaterialBank:
 
         return None
 
-    def list_topics(self) -> List[Dict[str, Any]]:
+    def list_topics(self) -> list[dict[str, Any]]:
         """Return a list of summary dictionaries for all loaded topics."""
         return [
             {
@@ -330,7 +388,7 @@ class MaterialBank:
         ]
 
 
-_global_material_bank: Optional[MaterialBank] = None
+_global_material_bank: MaterialBank | None = None
 
 
 def get_material_bank(docs_dir: str = "docs") -> MaterialBank:

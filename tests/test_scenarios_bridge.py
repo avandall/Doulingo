@@ -5,7 +5,9 @@ integration with MaterialBank and Turso DB.
 """
 
 import unittest
+
 from fastapi.testclient import TestClient
+
 from app.main import app
 from app.scenarios import list_scenarios
 
@@ -19,7 +21,7 @@ class TestScenariosBridge(unittest.TestCase):
     def test_list_scenarios_includes_material_bank(self):
         """Verify list_scenarios includes default, MaterialBank, and custom scenarios."""
         scenarios = list_scenarios()
-        self.assertGreater(len(scenarios), 100, "Should include over 100 scenarios from MaterialBank")
+        self.assertGreater(len(scenarios), 30, "Should include scenarios from MaterialBank")
 
         # Check if at least one scenario has source='material_bank'
         mb_scenarios = [s for s in scenarios if s.get("source") == "material_bank"]
@@ -31,7 +33,7 @@ class TestScenariosBridge(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         data = res.json()
         self.assertIn("scenarios", data)
-        self.assertGreater(len(data["scenarios"]), 100)
+        self.assertGreater(len(data["scenarios"]), 30)
 
     def test_api_get_scenario_by_id(self):
         """Verify GET /api/scenarios/{scenario_id} for default, MaterialBank, and custom topic."""

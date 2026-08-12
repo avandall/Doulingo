@@ -7,12 +7,16 @@ diversity of sampled outputs, and safety fallback behavior for non-existent topi
 import time
 import unittest
 
-from app.material_bank import get_material_bank
+from app.material_bank import MaterialBank, get_material_bank
 from app.prompt_factory import PromptFactory, get_prompt_factory
 
 
 class TestPromptFactory(unittest.TestCase):
     """Test suite for PromptFactory dynamic sampling and prompt generation."""
+
+    bank: MaterialBank
+    factory: PromptFactory
+    sample_topic_id: str
 
     @classmethod
     def setUpClass(cls) -> None:

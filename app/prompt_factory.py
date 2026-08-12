@@ -5,17 +5,18 @@ from MaterialBank, blending them with AI Character definitions to generate rich 
 """
 
 import random
-from typing import Dict, List, Optional, Any
+from typing import Any
+
+from app.characters import get_character
 from app.material_bank import (
+    GrammarPattern,
     MaterialBank,
-    TopicBank,
     Persona,
     Question,
+    TopicBank,
     VocabularyItem,
-    GrammarPattern,
     get_material_bank,
 )
-from app.characters import get_character
 
 
 # Map numeric level (1-20) → IELTS band label for MaterialBank filtering.
@@ -45,7 +46,7 @@ def _vocab_count(level: int) -> int:
 class PromptFactory:
     """Dynamic Prompt Builder & Sampling Engine for IELTS / CEFR roleplay dialogues."""
 
-    def __init__(self, material_bank: Optional[MaterialBank] = None) -> None:
+    def __init__(self, material_bank: MaterialBank | None = None) -> None:
         self.material_bank = material_bank
 
     def _get_bank(self) -> MaterialBank:
@@ -58,7 +59,7 @@ class PromptFactory:
         self,
         topic_id: str,
         level: str = "5.0-6.0"
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Sample materials for a given topic and target band level.
 
@@ -69,7 +70,7 @@ class PromptFactory:
         Returns a dictionary containing sampled items with safe fallbacks.
         """
         bank = self._get_bank()
-        topic: Optional[TopicBank] = bank.get_topic(topic_id)
+        topic: TopicBank | None = bank.get_topic(topic_id)
 
         if not topic:
             return {
@@ -92,7 +93,7 @@ class PromptFactory:
             n_vocab = 3
 
         # 1. Sample Persona (1 item)
-        sampled_persona: Optional[Persona] = None
+        sampled_persona: Persona | None = None
         if topic.personas:
             sampled_persona = random.choice(topic.personas)
 
@@ -105,7 +106,7 @@ class PromptFactory:
             vocab_candidates = list(topic.vocabulary)
 
         actual_count = min(len(vocab_candidates), n_vocab)
-        sampled_vocab: List[VocabularyItem] = (
+        sampled_vocab: list[VocabularyItem] = (
             random.sample(vocab_candidates, actual_count) if actual_count > 0 else []
         )
 
@@ -118,7 +119,7 @@ class PromptFactory:
             question_candidates = list(topic.questions)
 
         question_count = min(len(question_candidates), random.randint(1, 2)) if question_candidates else 0
-        sampled_questions: List[Question] = (
+        sampled_questions: list[Question] = (
             random.sample(question_candidates, question_count) if question_count > 0 else []
         )
 
@@ -128,7 +129,7 @@ class PromptFactory:
             if g.pattern.strip() and g.pattern.strip() != "--"
         ]
         grammar_count = min(len(grammar_candidates), random.randint(1, 2)) if grammar_candidates else 0
-        sampled_grammar: List[GrammarPattern] = (
+        sampled_grammar: list[GrammarPattern] = (
             random.sample(grammar_candidates, grammar_count) if grammar_count > 0 else []
         )
 
@@ -146,7 +147,7 @@ class PromptFactory:
         topic_id: str,
         level: str = "5.0-6.0",
         character_id: str = "lily",
-        user_history: Optional[List[Dict[str, str]]] = None
+        user_history: list[dict[str, str]] | None = None
     ) -> str:
         """
         Assemble a System Prompt incorporating Character persona,
@@ -178,7 +179,7 @@ class PromptFactory:
         ]
 
         # -- Section 3: Persona role (if available) --------------------------
-        persona: Optional[Persona] = sampled.get("persona")
+        persona: Persona | None = sampled.get("persona")
         if persona:
             prompt_lines += [
                 "### YOUR ROLE THIS SESSION",
@@ -188,7 +189,7 @@ class PromptFactory:
 
         # -- Section 4: Mandatory Vocabulary Injection -----------------------
         # Phrased as MANDATORY to prevent AI from ignoring soft suggestions.
-        vocab_items: List[VocabularyItem] = sampled.get("vocabulary", [])
+        vocab_items: list[VocabularyItem] = sampled.get("vocabulary", [])
         if vocab_items:
             prompt_lines += [
                 "### MANDATORY VOCABULARY - USE THESE IN YOUR RESPONSES",
@@ -199,7 +200,7 @@ class PromptFactory:
             prompt_lines.append("")
 
         # ── Section 5: Question seeds ────────────────────────────────────────
-        question_items: List[Question] = sampled.get("questions", [])
+        question_items: list[Question] = sampled.get("questions", [])
         if question_items:
             prompt_lines += [
                 "### QUESTION INSPIRATION (adapt freely, never ask verbatim)",
@@ -209,7 +210,7 @@ class PromptFactory:
             prompt_lines.append("")
 
         # ── Section 6: Grammar patterns ──────────────────────────────────────
-        grammar_items: List[GrammarPattern] = sampled.get("grammar_patterns", [])
+        grammar_items: list[GrammarPattern] = sampled.get("grammar_patterns", [])
         if grammar_items:
             prompt_lines += [
                 "### GRAMMAR STRUCTURES TO MODEL IN YOUR SPEECH",
@@ -221,10 +222,10 @@ class PromptFactory:
         return "\n".join(prompt_lines)
 
 
-_global_prompt_factory: Optional[PromptFactory] = None
+_global_prompt_factory: PromptFactory | None = None
 
 
-def get_prompt_factory(material_bank: Optional[MaterialBank] = None) -> PromptFactory:
+def get_prompt_factory(material_bank: MaterialBank | None = None) -> PromptFactory:
     """Singleton getter for PromptFactory instance."""
     global _global_prompt_factory
     if _global_prompt_factory is None:

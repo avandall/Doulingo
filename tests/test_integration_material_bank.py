@@ -6,7 +6,9 @@ and latency performance for Material Bank topics integrated into FastAPI endpoin
 
 import time
 import unittest
+
 from fastapi.testclient import TestClient
+
 from app.main import app
 from app.scenarios import list_scenarios
 

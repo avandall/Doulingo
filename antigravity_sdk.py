@@ -5,7 +5,6 @@ Provides full programmatic control over Antigravity sessions including enable_su
 """
 
 import subprocess
-from typing import Optional, List
 
 
 class AntigravitySDK:
@@ -24,14 +23,14 @@ class AntigravitySDK:
         enable_subagents: bool = True,
         non_interactive: bool = True,
         auto_approve: bool = True,
-        extra_flags: Optional[List[str]] = None,
+        extra_flags: list[str] | None = None,
     ):
         self.enable_subagents = enable_subagents
         self.non_interactive = non_interactive
         self.auto_approve = auto_approve
         self.extra_flags = extra_flags or []
 
-    def build_command(self, prompt: str) -> List[str]:
+    def build_command(self, prompt: str) -> list[str]:
         """Builds the execution command list for Antigravity CLI."""
         cmd = ["antigravity"]
         if self.non_interactive:
@@ -44,7 +43,7 @@ class AntigravitySDK:
         cmd.extend(["--prompt", prompt])
         return cmd
 
-    def run(self, prompt: str, cwd: Optional[str] = None) -> int:
+    def run(self, prompt: str, cwd: str | None = None) -> int:
         """
         Runs an Antigravity agent session with the specified prompt.
         Returns the exit code (0: Success, 1: Retry/Error, 2: Blocked).

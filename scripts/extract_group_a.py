@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 from pathlib import Path
+
 import yaml
 
 VIETNAMESE_QUESTION_PREFIXES = [
@@ -173,7 +174,7 @@ def parse_chunk_text(text: str) -> list[dict]:
         # --- Bước 2: gom câu trả lời từ sau câu hỏi tới trước câu hỏi kế tiếp.
         # Footer/page-break bị BỎ QUA (không dừng thu thập) để không cắt cụt
         # câu trả lời nếu page-break rơi giữa chừng.
-        answer_lines = []
+        answer_lines: list[str] = []
         m = j
         while m < next_start:
             raw = lines[m]
