@@ -131,27 +131,89 @@ def test_embeddings_generation(temp_db_path, sample_yaml_file):
 
 
 def test_retrieval_query_simulation(temp_db_path, sample_yaml_file):
-    """Test simulating retrieval query filtering by topic and band level."""
+    """Test simulating retrieval query filtering by topic, band level, and user exposure exclusion."""
     conn = insert_turso.get_conn_sqlite(temp_db_path)
     insert_turso.process_file(Path(sample_yaml_file), conn, dry_run=False, is_turso=False)
 
-    # Insert dummy embedding for testing
-    dummy_vec = [0.1] * 384
-    blob = generate_embeddings.floats_to_blob(dummy_vec)
-    conn.execute("UPDATE sample_dialogues SET embedding = ?", (blob,))
+    # Create dummy user_content_exposure table for testing exclusion
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS user_content_exposure (
+            id TEXT PRIMARY KEY,
+            user_id TEXT NOT NULL,
+            sample_dialogue_id TEXT NOT NULL,
+            exposed_at TEXT DEFAULT (datetime('now'))
+        );
+    """)
+
+    # Get sample_dialogue IDs
+    cur = conn.cursor()
+    cur.execute("SELECT id, band_level FROM sample_dialogues ORDER BY band_level ASC")
+    rows = cur.fetchall()
+    sd_id_60 = rows[0][0]
+    sd_id_75 = rows[1][0]
+
+    # Insert dummy vector embeddings
+    blob_60 = generate_embeddings.floats_to_blob([0.1] * 384)
+    blob_75 = generate_embeddings.floats_to_blob([0.9] * 384)
+    conn.execute("UPDATE sample_dialogues SET embedding = ? WHERE id = ?", (blob_60, sd_id_60))
+    conn.execute("UPDATE sample_dialogues SET embedding = ? WHERE id = ?", (blob_75, sd_id_75))
+
+    # Mark sd_id_60 as exposed for user_1
+    conn.execute(
+        "INSERT INTO user_content_exposure (id, user_id, sample_dialogue_id) VALUES (?, ?, ?)",
+        ("exp_1", "user_1", sd_id_60),
+    )
     conn.commit()
 
-    cur = conn.cursor()
+    # Query excluding exposed dialogues for user_1 with topic filter
     query = """
         SELECT sd.id, sd.ai_line, sd.user_model_answer, sd.band_level
         FROM sample_dialogues sd
         JOIN content_units cu ON sd.content_unit_id = cu.id
         WHERE cu.topic_tags LIKE '%"hometown"%'
-          AND sd.band_level BETWEEN 5.0 AND 7.0
+          AND sd.band_level BETWEEN 5.0 AND 8.0
+          AND sd.id NOT IN (
+              SELECT sample_dialogue_id FROM user_content_exposure WHERE user_id = 'user_1'
+          )
     """
     cur.execute(query)
     results = cur.fetchall()
     assert len(results) == 1
-    assert results[0][3] == 6.0
+    assert results[0][0] == sd_id_75
+    assert results[0][3] == 7.5
 
     conn.close()
+
+
+def test_foreign_key_constraints_integrity(temp_db_path, sample_yaml_file):
+    """Test Foreign Key enforcement: orphan row rejection & cascade delete."""
+    conn = insert_turso.get_conn_sqlite(temp_db_path)
+    insert_turso.process_file(Path(sample_yaml_file), conn, dry_run=False, is_turso=False)
+
+    cur = conn.cursor()
+
+    # 1. Attempting to insert a sample_dialogue with a non-existent content_unit_id MUST fail
+    with pytest.raises(sqlite3.IntegrityError):
+        cur.execute(
+            """
+            INSERT INTO sample_dialogues (id, content_unit_id, band_level, ai_line, user_model_answer)
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            ("sd_orphan", "non_existent_cu_id", 6.5, "Orphan AI Line", "Orphan Answer"),
+        )
+
+    # 2. Deleting a content_units row MUST cascade delete linked sample_dialogues and band_tiers
+    cur.execute("SELECT id FROM content_units LIMIT 1")
+    cu_id = cur.fetchone()[0]
+
+    cur.execute("DELETE FROM content_units WHERE id = ?", (cu_id,))
+    conn.commit()
+
+    cur.execute("SELECT COUNT(*) FROM sample_dialogues WHERE content_unit_id = ?", (cu_id,))
+    assert cur.fetchone()[0] == 0
+
+    cur.execute("SELECT COUNT(*) FROM band_tiers WHERE content_unit_id = ?", (cu_id,))
+    assert cur.fetchone()[0] == 0
+
+    conn.close()
+
