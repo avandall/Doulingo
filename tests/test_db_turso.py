@@ -98,3 +98,72 @@ def test_turso_fallback_on_invalid_url(monkeypatch):
     res = cursor.fetchone()
     assert res[0] == 1
     conn.close()
+
+
+def test_task_000_schema_tables_and_fk_cascade():
+    """Test TASK-000: 12 Schema tables exist and Foreign Key Cascade functionality."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    schema_tables = [
+        "content_units",
+        "band_tiers",
+        "function_details",
+        "function_band_variants",
+        "scenarios",
+        "scenario_branches",
+        "evaluation_hooks",
+        "sample_dialogues",
+        "hook_bank",
+        "vocabulary_lookup",
+        "user_profile",
+        "user_content_exposure",
+    ]
+
+    for tbl in schema_tables:
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (tbl,))
+        row = cursor.fetchone()
+        assert row is not None, f"Schema table {tbl} should exist"
+
+    # Test FK Cascade
+    cu_id = "test_cu_001"
+    cursor.execute(
+        """
+        INSERT INTO content_units (id, template_type, title, topic_tags, target_band_min, target_band_max)
+        VALUES (?, 'band_ladder', 'Test Topic', '["test"]', 5.0, 7.0)
+        """,
+        (cu_id,),
+    )
+
+    bt_id = "test_bt_001"
+    cursor.execute(
+        """
+        INSERT INTO band_tiers (id, content_unit_id, band_min, band_max)
+        VALUES (?, ?, 5.0, 6.0)
+        """,
+        (bt_id, cu_id),
+    )
+
+    sd_id = "test_sd_001"
+    cursor.execute(
+        """
+        INSERT INTO sample_dialogues (id, content_unit_id, band_level, turn_type, ai_line, user_model_answer)
+        VALUES (?, ?, 5.5, 'opening', 'Hello!', 'Hi there!')
+        """,
+        (sd_id, cu_id),
+    )
+    conn.commit()
+
+    # Delete content unit and verify cascade
+    cursor.execute("DELETE FROM content_units WHERE id = ?", (cu_id,))
+    conn.commit()
+
+    cursor.execute("SELECT COUNT(*) FROM band_tiers WHERE id = ?", (bt_id,))
+    assert cursor.fetchone()[0] == 0, "band_tiers row should be deleted by cascade"
+
+    cursor.execute("SELECT COUNT(*) FROM sample_dialogues WHERE id = ?", (sd_id,))
+    assert cursor.fetchone()[0] == 0, "sample_dialogues row should be deleted by cascade"
+
+    conn.close()
+

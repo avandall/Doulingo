@@ -30,6 +30,7 @@ def get_db_connection():
             # Verify connection is functional
             cursor = conn.cursor()
             cursor.execute("SELECT 1")
+            cursor.execute("PRAGMA foreign_keys = ON;")
             return conn
         except Exception as e:
             print(f"[DB Warning] Turso Cloud connection failed: {e}. Falling back to local SQLite.")
@@ -37,6 +38,7 @@ def get_db_connection():
     os.makedirs(DB_DIR, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
 
@@ -69,7 +71,7 @@ def _fetch_one_dict(cursor) -> Optional[Dict[str, Any]]:
 
 
 def init_db():
-    """Initialize database tables for custom scenarios, word dictionary, saved vocabulary, and user stats."""
+    """Initialize database tables for custom scenarios, word dictionary, saved vocabulary, user stats, and 12 schema tables."""
     conn = get_db_connection()
     cursor = conn.cursor()
 
@@ -126,6 +128,166 @@ def init_db():
         )
     """)
     cursor.execute("INSERT OR IGNORE INTO user_stats (id, total_xp, streak_days, last_active_date) VALUES (1, 150, 5, DATE('now'))")
+
+    # ── 12 Turso/libSQL Schema Tables (TASK-000) ───────────────────────────
+
+    # 1. content_units
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS content_units (
+            id              TEXT PRIMARY KEY,
+            template_type   TEXT NOT NULL CHECK(template_type IN
+                                ('band_ladder','functional_bank','scenario')),
+            title           TEXT NOT NULL,
+            topic_tags      TEXT NOT NULL DEFAULT '[]',
+            target_band_min REAL,
+            target_band_max REAL,
+            register        TEXT CHECK(register IN ('casual','neutral','formal')),
+            source_citation TEXT,
+            created_at      TEXT DEFAULT (datetime('now')),
+            updated_at      TEXT DEFAULT (datetime('now')),
+            version         INTEGER DEFAULT 1
+        )
+    """)
+
+    # 2. band_tiers
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS band_tiers (
+            id                      TEXT PRIMARY KEY,
+            content_unit_id         TEXT NOT NULL REFERENCES content_units(id) ON DELETE CASCADE,
+            band_min                REAL NOT NULL,
+            band_max                REAL NOT NULL,
+            can_do_description      TEXT,
+            grammar_required        TEXT DEFAULT '[]',
+            vocabulary_core         TEXT DEFAULT '[]',
+            vocabulary_stretch      TEXT DEFAULT '[]',
+            vocabulary_avoid        TEXT DEFAULT '[]',
+            sentence_length_target  TEXT,
+            common_errors_to_simulate TEXT
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_band_tiers_range ON band_tiers (band_min, band_max)")
+
+    # 3. function_details
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS function_details (
+            id               TEXT PRIMARY KEY,
+            content_unit_id  TEXT UNIQUE REFERENCES content_units(id) ON DELETE CASCADE,
+            function_name    TEXT NOT NULL,
+            applicable_topics TEXT DEFAULT '[]'
+        )
+    """)
+
+    # 4. function_band_variants
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS function_band_variants (
+            id              TEXT PRIMARY KEY,
+            function_id     TEXT REFERENCES function_details(id) ON DELETE CASCADE,
+            band_min        REAL NOT NULL,
+            band_max        REAL NOT NULL,
+            phrases         TEXT DEFAULT '[]',
+            grammar_pattern TEXT
+        )
+    """)
+
+    # 5. scenarios
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS scenarios (
+            id               TEXT PRIMARY KEY,
+            content_unit_id  TEXT UNIQUE REFERENCES content_units(id) ON DELETE CASCADE,
+            setting          TEXT,
+            ai_role          TEXT,
+            user_role        TEXT,
+            grammar_required TEXT DEFAULT '[]',
+            vocabulary_core  TEXT DEFAULT '[]',
+            vocabulary_stretch TEXT DEFAULT '[]'
+        )
+    """)
+
+    # 6. scenario_branches
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS scenario_branches (
+            id              TEXT PRIMARY KEY,
+            scenario_id     TEXT REFERENCES scenarios(id) ON DELETE CASCADE,
+            branch_type     TEXT CHECK(branch_type IN ('low_band','high_band')),
+            condition_rule  TEXT,
+            ai_response_style TEXT,
+            example_text    TEXT
+        )
+    """)
+
+    # 7. evaluation_hooks
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS evaluation_hooks (
+            id                TEXT PRIMARY KEY,
+            scenario_id       TEXT REFERENCES scenarios(id) ON DELETE CASCADE,
+            trigger_condition TEXT,
+            ai_reaction       TEXT
+        )
+    """)
+
+    # 8. sample_dialogues
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS sample_dialogues (
+            id                TEXT PRIMARY KEY,
+            content_unit_id   TEXT NOT NULL REFERENCES content_units(id) ON DELETE CASCADE,
+            band_level        REAL NOT NULL,
+            turn_type         TEXT CHECK(turn_type IN
+                                  ('standalone','opening','elaborate','negotiation','closing')),
+            function_tag      TEXT,
+            ai_line           TEXT NOT NULL,
+            user_model_answer TEXT NOT NULL,
+            embedding         F32_BLOB(384),
+            created_at        TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_sd_band ON sample_dialogues (band_level)")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_sd_cu ON sample_dialogues (content_unit_id)")
+
+    # 9. hook_bank
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS hook_bank (
+            id         TEXT PRIMARY KEY,
+            topic_tags TEXT DEFAULT '[]',
+            text       TEXT NOT NULL,
+            type       TEXT CHECK(type IN ('hook','anti_cliche'))
+        )
+    """)
+
+    # 10. vocabulary_lookup
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS vocabulary_lookup (
+            id       TEXT PRIMARY KEY,
+            category TEXT NOT NULL,
+            tier     TEXT,
+            terms    TEXT DEFAULT '[]'
+        )
+    """)
+
+    # 11. user_profile
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_profile (
+            user_id               TEXT PRIMARY KEY,
+            band_estimate_overall REAL,
+            band_fluency          REAL,
+            band_lexical          REAL,
+            band_grammar          REAL,
+            band_pronunciation    REAL,
+            recurring_errors      TEXT DEFAULT '[]',
+            updated_at            TEXT DEFAULT (datetime('now'))
+        )
+    """)
+
+    # 12. user_content_exposure
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_content_exposure (
+            id                 TEXT PRIMARY KEY,
+            user_id            TEXT REFERENCES user_profile(user_id),
+            sample_dialogue_id TEXT REFERENCES sample_dialogues(id),
+            exposed_at         TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_exposure_user_time ON user_content_exposure (user_id, exposed_at)")
+
     conn.commit()
     conn.close()
 

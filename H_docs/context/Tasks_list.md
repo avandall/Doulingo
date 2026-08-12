@@ -21,7 +21,7 @@
 
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Phụ thuộc |
 |---------|----------|-------|---------|------------|-----------|
-| `TASK-000` | Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) | Phase 0 | P0 | `[ ] TODO` | None |
+| `TASK-000` | Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) | Phase 0 | P0 | `[x] DONE` | None |
 | `TASK-001` | YAML Ingestion, Embeddings & Vector Index (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-000 |
 | `TASK-002` | Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-001 |
 | `TASK-003` | Admin CLI & Content Validation Tool (`scripts/admin_content_cli.py`) | Phase 0 | P2 | `[ ] TODO` | TASK-001 |
@@ -64,7 +64,7 @@ Task Name:       Database Schema Design & Migration (Turso/libSQL)
 Phase:           Phase 0 (Data Foundation)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Phụ thuộc:       None
 Ngày cập nhật:   2026-08-12
 ```
