@@ -23,8 +23,8 @@
 |---------|----------|-------|---------|------------|-----------|
 | `TASK-000` | Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) | Phase 0 | P0 | `[x] DONE` | None |
 | `TASK-001` | YAML Ingestion, Embeddings & Vector Index (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`) | Phase 0 | P0 | `[x] DONE` | TASK-000 |
-| `TASK-002` | Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-001 |
-| `TASK-003` | Admin CLI & Content Validation Tool (`scripts/admin_content_cli.py`) | Phase 0 | P2 | `[ ] TODO` | TASK-001 |
+| `TASK-002` | Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`) | Phase 0 | P0 | `[x] DONE` | TASK-001 |
+| `TASK-003` | Admin CLI & Content Validation Tool (`scripts/admin_content_cli.py`) | Phase 0 | P2 | `[x] DONE` | TASK-001 |
 | `TASK-004` | Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-000 |
 | `TASK-005` | RAG Retrieval Layer v1 (`app/retrieval.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-001 |
 | `TASK-006` | Prompt Constructor Engine v1 (`app/prompt_constructor.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-005 |
@@ -323,7 +323,7 @@ Task Name:       Data Ingestion Verification & Retrieval Unit Tests (`tests/test
 Phase:           Phase 0 (Data Foundation)
 Task Type:       test
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -348,7 +348,7 @@ Task Name:       Admin CLI & Content Validation Tool (`scripts/admin_content_cli
 Phase:           Phase 0 (Data Foundation)
 Task Type:       tool
 Priority:        P2-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -357,9 +357,9 @@ Ngày tạo:        2026-08-11
 - **What:** Viết công cụ dòng lệnh `scripts/admin_content_cli.py` để validate file template mới trước khi nạp vào DB.
 
 #### Acceptance Criteria
-- [ ] CLI hỗ trợ lệnh `validate <file_path>` kiểm tra các trường bắt buộc (metadata, band_tiers, sample_dialogues).
-- [ ] Cảnh báo nếu câu mẫu quá ngắn hoặc thiếu tag chức năng.
-- [ ] CLI hỗ trợ lệnh `import <file_path>` nạp file đã validate vào DB.
+- [x] CLI hỗ trợ lệnh `validate <file_path>` kiểm tra các trường bắt buộc (metadata, band_tiers, sample_dialogues).
+- [x] Cảnh báo nếu câu mẫu quá ngắn hoặc thiếu tag chức năng.
+- [x] CLI hỗ trợ lệnh `import <file_path>` nạp file đã validate vào DB.
 
 ---
 
