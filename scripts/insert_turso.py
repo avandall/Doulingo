@@ -159,7 +159,7 @@ def insert_doc(doc: dict, conn, dry_run: bool, source_file: str) -> dict:
     )
 
     if dry_run:
-        print(f"\n[DRY RUN] content_units INSERT:")
+        print("\n[DRY RUN] content_units INSERT:")
         print(f"  id={cu_id[:8]}... title={cu_data['title']!r}")
     else:
         conn.execute(cu_sql, cu_params)
@@ -212,7 +212,48 @@ def insert_doc(doc: dict, conn, dry_run: bool, source_file: str) -> dict:
             conn.execute(sd_sql, sd_params)
         stats["sample_dialogues"] += 1
 
+    # ── hook_bank ──────────────────────────────────────────────────────────
+    hook_sql = """
+    INSERT OR IGNORE INTO hook_bank
+        (id, topic_tags, text, type)
+    VALUES (?, ?, ?, ?)
+    """
+    for hook in doc.get("hook_bank", []):
+        hook_params = (
+            new_id(),
+            to_json(hook.get("topic_tags", [])),
+            hook["text"],
+            hook.get("type", "hook"),
+        )
+        if dry_run:
+            print(f"  [DRY RUN] hook_bank INSERT: type={hook.get('type')} text={hook['text'][:30]!r}")
+        else:
+            conn.execute(hook_sql, hook_params)
+        stats.setdefault("hook_bank", 0)
+        stats["hook_bank"] += 1
+
+    # ── vocabulary_lookup ──────────────────────────────────────────────────
+    vocab_sql = """
+    INSERT OR IGNORE INTO vocabulary_lookup
+        (id, category, tier, terms)
+    VALUES (?, ?, ?, ?)
+    """
+    for vocab in doc.get("vocabulary_lookup", []):
+        vocab_params = (
+            new_id(),
+            vocab["category"],
+            vocab.get("tier"),
+            to_json(vocab.get("terms", [])),
+        )
+        if dry_run:
+            print(f"  [DRY RUN] vocabulary_lookup INSERT: category={vocab['category']!r}")
+        else:
+            conn.execute(vocab_sql, vocab_params)
+        stats.setdefault("vocabulary_lookup", 0)
+        stats["vocabulary_lookup"] += 1
+
     return stats
+
 
 
 def process_file(path: Path, conn, dry_run: bool, is_turso: bool):

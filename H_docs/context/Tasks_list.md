@@ -22,7 +22,7 @@
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Phụ thuộc |
 |---------|----------|-------|---------|------------|-----------|
 | `TASK-000` | Database Schema Design & Migration (`content_units`, `sample_dialogues`, etc.) | Phase 0 | P0 | `[x] DONE` | None |
-| `TASK-001` | YAML Ingestion, Embeddings & Vector Index (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-000 |
+| `TASK-001` | YAML Ingestion, Embeddings & Vector Index (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`) | Phase 0 | P0 | `[x] DONE` | TASK-000 |
 | `TASK-002` | Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`) | Phase 0 | P0 | `[ ] TODO` | TASK-001 |
 | `TASK-003` | Admin CLI & Content Validation Tool (`scripts/admin_content_cli.py`) | Phase 0 | P2 | `[ ] TODO` | TASK-001 |
 | `TASK-004` | Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-000 |
@@ -281,7 +281,7 @@ Task Name:       YAML Ingestion, Embeddings Generation & Vector Indexing
 Phase:           Phase 0 (Data Foundation)
 Task Type:       feature / data-ingestion
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Phụ thuộc:       TASK-000
 Ngày cập nhật:   2026-08-12 (Tích hợp Bước 4, 5, 6 từ README_phase0.md)
 ```

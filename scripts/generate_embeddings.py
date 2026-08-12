@@ -41,8 +41,6 @@ import sqlite3
 import struct
 import sys
 import time
-from pathlib import Path
-
 
 # ─── Embedding backends ──────────────────────────────────────────────────────
 
@@ -63,15 +61,20 @@ def embed_openai(texts: list[str], model="text-embedding-3-small") -> list[list[
     return [item.embedding for item in resp.data]
 
 
+_LOCAL_MODEL = None
+
+
 def embed_local(texts: list[str], model_name="all-MiniLM-L6-v2") -> list[list[float]]:
+    global _LOCAL_MODEL
     try:
         from sentence_transformers import SentenceTransformer  # type: ignore
     except ImportError:
         print("Chưa install sentence-transformers. Chạy: pip install sentence-transformers")
         sys.exit(1)
 
-    model = SentenceTransformer(model_name)
-    vecs = model.encode(texts, normalize_embeddings=True, show_progress_bar=True)
+    if _LOCAL_MODEL is None:
+        _LOCAL_MODEL = SentenceTransformer(model_name, device="cpu")
+    vecs = _LOCAL_MODEL.encode(texts, normalize_embeddings=True, show_progress_bar=False)
     return [v.tolist() for v in vecs]
 
 
