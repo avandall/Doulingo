@@ -13,8 +13,10 @@ from app.retrieval import (
     compute_band_window,
     cosine_similarity,
     log_exposure,
+    retrieve_adaptive_dialogues,
     retrieve_dialogues,
 )
+
 from scripts import generate_embeddings, insert_turso
 
 
@@ -256,3 +258,59 @@ def test_retrieve_dialogues_with_vector_embedding(temp_db_conn):
     assert len(results) == 2
     assert results[0].id == "sd_music_a"
     assert results[0].score > results[1].score
+
+
+def test_retrieve_adaptive_dialogues(temp_db_conn):
+    temp_db_conn.execute(
+        """
+        INSERT INTO content_units (id, template_type, title, topic_tags)
+        VALUES ('cu_adapt', 'band_ladder', 'Adaptive Topic', '["adapt"]')
+        """
+    )
+    temp_db_conn.execute(
+        """
+        INSERT INTO sample_dialogues (id, content_unit_id, band_level, ai_line, user_model_answer)
+        VALUES
+            ('sd_easy', 'cu_adapt', 5.0, 'Easy Q?', 'Easy A.'),
+            ('sd_mid', 'cu_adapt', 6.0, 'Mid Q?', 'Mid A.'),
+            ('sd_hard', 'cu_adapt', 7.2, 'Hard Q?', 'Hard A.')
+        """
+    )
+    temp_db_conn.commit()
+
+    # Test "increase": base 6.0 -> (6.0, 7.5) -> matches sd_mid (6.0) and sd_hard (7.2)
+    results_inc = retrieve_adaptive_dialogues(
+        user_id="user_inc",
+        topic_tags=["adapt"],
+        base_band=6.0,
+        difficulty_signal="increase",
+        conn=temp_db_conn,
+        auto_log_exposure=False,
+    )
+    inc_ids = {r.id for r in results_inc}
+    assert "sd_hard" in inc_ids or "sd_mid" in inc_ids
+
+    # Test "decrease": base 6.0 -> (4.5, 6.0) -> matches sd_easy (5.0) and sd_mid (6.0)
+    results_dec = retrieve_adaptive_dialogues(
+        user_id="user_dec",
+        topic_tags=["adapt"],
+        base_band=6.0,
+        difficulty_signal="decrease",
+        conn=temp_db_conn,
+        auto_log_exposure=False,
+    )
+    dec_ids = {r.id for r in results_dec}
+    assert "sd_easy" in dec_ids
+
+    # Test "hold": base 6.0 -> (5.5, 7.0) -> matches sd_mid (6.0)
+    results_hold = retrieve_adaptive_dialogues(
+        user_id="user_hold",
+        topic_tags=["adapt"],
+        base_band=6.0,
+        difficulty_signal="hold",
+        conn=temp_db_conn,
+        auto_log_exposure=False,
+    )
+    hold_ids = {r.id for r in results_hold}
+    assert "sd_mid" in hold_ids
+

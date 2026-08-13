@@ -36,7 +36,7 @@
 | `TASK-012` | Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) | Phase 2 | P1 | `[x] DONE` | TASK-004, TASK-010 |
 | `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[x] DONE` | TASK-012 |
 | `TASK-014` | Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) | Phase 2 | P1 | `[x] DONE` | TASK-013 |
-| `TASK-015` | Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-005, TASK-011, TASK-013 |
+| `TASK-015` | Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) | Phase 2 | P0 | `[x] DONE` | TASK-005, TASK-011, TASK-013 |
 | `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-005, **TASK-007** ⬅️ sửa |
 | `TASK-017` | AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-007, **TASK-006** ⬅️ sửa |
 | `TASK-018` | Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`) | Phase 3 | P2 | `[ ] TODO` | TASK-013, **TASK-012** ⬅️ sửa |
@@ -658,8 +658,9 @@ Task Name:       Adaptive Retrieval & Difficulty Adjustment Integration
 Phase:           Phase 2 (Scoring Agent & Adaptive Difficulty)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 ```
 
 #### Bối cảnh & Mục tiêu
@@ -668,9 +669,9 @@ Ngày tạo:        2026-08-11
 - **Spec chi tiết:** xem `spec-5-task-rui-ro-cao.md`, SPEC 2 mục 2.4 — công thức `compute_band_window()`.
 
 #### Acceptance Criteria
-- [ ] Retrieval query tự động điều chỉnh dải band (`increase` → band window dịch lên; `decrease` → dịch xuống; `hold` → cửa sổ mặc định lệch nhẹ lên).
-- [ ] Đảm bảo câu hỏi lượt tiếp theo phản ánh đúng mức độ điều chỉnh độ khó.
-- [ ] Không phá vỡ cơ chế fallback cascade đã có ở `TASK-005`.
+- [x] Retrieval query tự động điều chỉnh dải band (`increase` → band window dịch lên; `decrease` → dịch xuống; `hold` → cửa sổ mặc định lệch nhẹ lên).
+- [x] Đảm bảo câu hỏi lượt tiếp theo phản ánh đúng mức độ điều chỉnh độ khó.
+- [x] Không phá vỡ cơ chế fallback cascade đã có ở `TASK-005`.
 
 ---
 

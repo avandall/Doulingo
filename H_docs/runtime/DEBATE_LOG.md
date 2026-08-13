@@ -878,6 +878,27 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 14:16
+### Iteration: 43
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-015 Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) and test suite (`tests/test_retrieval.py`) implemented cleanly with `retrieve_adaptive_dialogues` dynamically adjusting band window according to difficulty signals (`increase`, `decrease`, `hold`) without breaking 4-stage fallback cascade.
+- [LOW] Default band window calculation clamps target min/max within absolute bounds [4.0, 9.0].
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi `difficulty_signal` nhận giá trị lạ ngoài `increase`/`decrease`/`hold`?] → [Hàm `compute_band_window` fallback an toàn về nấc `hold` (mặc định lệch nhẹ +0.5), không ném ngoại lệ.]
+2. [Làm thế nào để bảo toàn cơ chế fallback cascade đã xây dựng ở TASK-005?] → [`retrieve_adaptive_dialogues` ủy quyền trực tiếp cho `retrieve_dialogues`, giữ nguyên toàn bộ 4 giai đoạn fallback cascade khi kết quả strict quá ít.]
+3. [Điều gì xảy ra khi `auto_log_exposure` được bật?] → [Mỗi dialogue được retrieve thành công tự động ghi nhận vào `user_content_exposure` DB table, ngăn lặp lại trong 30 ngày tiếp theo.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
 
 
 

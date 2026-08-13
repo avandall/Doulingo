@@ -268,3 +268,31 @@ def retrieve_dialogues(
     finally:
         if close_conn:
             conn.close()
+
+
+def retrieve_adaptive_dialogues(
+    user_id: str,
+    topic_tags: list[str] | str,
+    base_band: float,
+    difficulty_signal: str,
+    query_embedding: list[float] | None = None,
+    limit: int = 4,
+    auto_log_exposure: bool = True,
+    conn: Any = None,
+) -> list[RetrievedDialogue]:
+    """
+    Retrieves sample dialogues adaptively based on user base band estimate and difficulty signal.
+    Computes (band_min, band_max) window using compute_band_window() and delegates to retrieve_dialogues().
+    """
+    band_min, band_max = compute_band_window(base_band, difficulty_signal)
+    return retrieve_dialogues(
+        user_id=user_id,
+        topic_tags=topic_tags,
+        band_min=band_min,
+        band_max=band_max,
+        query_embedding=query_embedding,
+        limit=limit,
+        auto_log_exposure=auto_log_exposure,
+        conn=conn,
+    )
+
