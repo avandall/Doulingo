@@ -159,6 +159,7 @@ def test_retrieval_query_simulation(temp_db_path, sample_yaml_file):
     conn.execute("UPDATE sample_dialogues SET embedding = ? WHERE id = ?", (blob_75, sd_id_75))
 
     # Mark sd_id_60 as exposed for user_1
+    conn.execute("INSERT OR IGNORE INTO user_profile (user_id) VALUES (?)", ("user_1",))
     conn.execute(
         "INSERT INTO user_content_exposure (id, user_id, sample_dialogue_id) VALUES (?, ?, ?)",
         ("exp_1", "user_1", sd_id_60),

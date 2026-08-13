@@ -98,6 +98,25 @@ CREATE TABLE IF NOT EXISTS vocabulary_lookup (
     tier     TEXT,
     terms    TEXT DEFAULT '[]'   -- JSON array
 );
+
+CREATE TABLE IF NOT EXISTS user_profile (
+    user_id               TEXT PRIMARY KEY,
+    band_estimate_overall REAL,
+    band_fluency          REAL,
+    band_lexical          REAL,
+    band_grammar          REAL,
+    band_pronunciation    REAL,
+    recurring_errors      TEXT DEFAULT '[]',
+    updated_at            TEXT DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS user_content_exposure (
+    id                 TEXT PRIMARY KEY,
+    user_id            TEXT REFERENCES user_profile(user_id),
+    sample_dialogue_id TEXT REFERENCES sample_dialogues(id),
+    exposed_at         TEXT DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_exposure_user_time ON user_content_exposure (user_id, exposed_at);
 """
 
 # ─── Helper ─────────────────────────────────────────────────────────────────

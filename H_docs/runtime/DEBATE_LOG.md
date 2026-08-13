@@ -714,6 +714,28 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 07:35
+### Iteration: 33
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-005 RAG Retrieval Layer v1 (`app/retrieval.py`) and test suite (`tests/test_retrieval.py`) implemented with 4-stage fallback cascade, 30-day exposure exclusion, vector similarity calculation, and exposure logging.
+- [LOW] SQLite LIKE clause for JSON array matching requires clean string escaping when matching topic tags — Evidence: `app/retrieval.py:168`
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi user query một topic không tồn tại trong DB?] → [Cascade rơi qua 4 stages và trả về kết quả fallback nới lỏng (hoặc danh sách rỗng nếu DB rỗng), log cảnh báo/lỗi rõ ràng và không crash.]
+2. [Tại sao không tính cosine similarity trong SQLite bằng SQL extension mà lại tính bằng Python?] → [Chạy trên SQLite/libSQL standard fallback mode đảm bảo tính tương thích 100% trên cả in-memory SQLite test fixture và Turso production.]
+3. [Điều gì xảy ra khi `user_content_exposure` bị trùng `sample_dialogue_id`?] → [Log exposure cho phép ghi nhận nhiều lần exposed ở các mốc thời gian khác nhau, chỉ lọc các ID bị exposed trong N ngày gần nhất (`datetime('now', '-30 days')`).]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 
 
 
