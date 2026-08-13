@@ -311,8 +311,39 @@ def init_db():
     """)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_tier2_user_time ON tier2_evaluations (user_id, created_at)")
 
+    # 14. user_bandit_stats (TASK-021: Multi-Armed Bandit Engine)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_bandit_stats (
+            user_id     TEXT NOT NULL,
+            arm_offset  REAL NOT NULL,
+            pull_count  INTEGER DEFAULT 0,
+            total_reward REAL DEFAULT 0.0,
+            avg_reward  REAL DEFAULT 0.0,
+            updated_at  TEXT DEFAULT (datetime('now')),
+            PRIMARY KEY (user_id, arm_offset)
+        )
+    """)
+
+    # 15. user_spaced_repetition (TASK-021: Spaced Repetition Engine)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_spaced_repetition (
+            id              TEXT PRIMARY KEY,
+            user_id         TEXT NOT NULL,
+            item_id         TEXT NOT NULL,
+            item_text       TEXT NOT NULL,
+            item_type       TEXT DEFAULT 'vocabulary',
+            easiness_factor REAL DEFAULT 2.5,
+            interval_days   INTEGER DEFAULT 1,
+            repetitions     INTEGER DEFAULT 0,
+            next_review_at  TEXT DEFAULT (datetime('now')),
+            created_at      TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_sr_user_due ON user_spaced_repetition (user_id, next_review_at)")
+
     conn.commit()
     conn.close()
+
 
 
 
