@@ -962,5 +962,48 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 20:44
+### Iteration: 47
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-019 Real-World Roleplay Simulation Engine (`app/scenarios/simulation_engine.py`), module package `app/scenarios/`, and unit test suite (`tests/test_simulation_engine.py`) implemented cleanly with dynamic branching, evaluation hooks, and adaptive retrieval.
+- [LOW] Fallback scenario helper defaults to standard roleplay when active scenario ID is not found.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi user input không đáp ứng condition_rule của bất kỳ branch nào?] → [Engine tự động fallback về default branch (`low_band` hoặc branch mặc định đầu tiên) đảm bảo conversation flow không bị ngắt quãng.]
+2. [Làm thế nào để bảo toàn backward compatibility với code cũ import `from app.scenarios import DEFAULT_SCENARIOS`?] → [`app/scenarios/__init__.py` re-export đầy đủ tất cả symbols cũ.]
+3. [Evaluation hooks có gây ra side effect ngoài ý muốn không?] → [Hooks chỉ trả về reaction text directive bổ sung cho system prompt khi điều kiện kích hoạt khớp.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 22:28
+### Iteration: 48
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-020 Personal Error Journal & Interleaved Practice Weaver (`app/error_journal.py`), Prompt Constructor integration (`app/prompt_constructor.py`), and test suite (`tests/test_error_journal.py`) implemented cleanly with recurring error tracking (`threshold >= 2`) and targeted prompt directives generation.
+- [LOW] Error matching normalizes strings with `.strip().lower()` for robust deduplication.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra nếu user profile chưa có field `recurring_errors`?] → [`get_user_profile` trả về dictionary mặc định và `ErrorJournalManager` tự động khởi tạo mảng rỗng `[]` an toàn.]
+2. [Làm thế nào để đảm bảo error journal directives không làm quá tải System Prompt?] → [`weave_interleaved_practice_directives` giới hạn tối đa 5 lỗi lặp lại nhiều nhất (`recurring[:5]`).]
+3. [Điều gì xảy ra khi không có lỗi lặp lại vượt ngưỡng threshold=2?] → [Hàm fallback thử tìm lỗi với threshold=1, nếu vẫn không có sẽ trả về `has_directives=False` và chuỗi rỗng.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 
 

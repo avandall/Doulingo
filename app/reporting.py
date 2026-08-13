@@ -124,7 +124,11 @@ def generate_weekly_report(
         recommendations.append("Pay attention to word stress and clear articulation of consonant endings.")
 
     if recurring_errors:
-        recommendations.append(f"Review recurring errors logged: {', '.join(recurring_errors[:3])}.")
+        error_strs = [
+            e.get("error_detail", str(e)) if isinstance(e, dict) else str(e)
+            for e in recurring_errors
+        ]
+        recommendations.append(f"Review recurring errors logged: {', '.join(error_strs[:3])}.")
 
     summary = (
         f"Weekly summary for user '{user_id}': {eval_count} evaluations completed over last {days} days. "

@@ -40,8 +40,8 @@
 | `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[x] DONE` | TASK-005, **TASK-007** ⬅️ sửa |
 | `TASK-017` | AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`) | Phase 3 | P1 | `[x] DONE` | TASK-007, **TASK-006** ⬅️ sửa |
 | `TASK-018` | Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`) | Phase 3 | P2 | `[x] DONE` | TASK-013, **TASK-012** ⬅️ sửa |
-| `TASK-019` | Real-World Roleplay Simulation Engine (`app/scenarios/simulation_engine.py`) | Phase 4 | P1 | `[ ] TODO` | TASK-017, **TASK-001, TASK-015** ⬅️ sửa |
-| `TASK-020` | Personal Error Journal & Interleaved Practice Weaver (`app/error_journal.py`) | Phase 4 | P1 | `[ ] TODO` | TASK-012, **TASK-006** ⬅️ sửa |
+| `TASK-019` | Real-World Roleplay Simulation Engine (`app/scenarios/simulation_engine.py`) | Phase 4 | P1 | `[x] DONE` | TASK-017, **TASK-001, TASK-015** ⬅️ sửa |
+| `TASK-020` | Personal Error Journal & Interleaved Practice Weaver (`app/error_journal.py`) | Phase 4 | P1 | `[x] DONE` | TASK-012, **TASK-006** ⬅️ sửa |
 | `TASK-021` | Multi-Armed Bandit / Adaptive Spaced Repetition Engine (`app/adaptive_engine.py`) | Phase 4 | P2 | `[ ] TODO` | TASK-015, **TASK-001** ⬅️ sửa |
 | `TASK-022` | 🆕 **PII Scrubbing Module** (`app/data_quality/pii_scrubber.py`) | Phase 5 | P0 | `[ ] TODO` | None |
 | `TASK-023` | High-Band User Answer Harvest Pipeline (`app/data_flywheel.py`) | Phase 5 | P2 | `[ ] TODO` | TASK-013, TASK-012, **TASK-022** ⬅️ sửa |
@@ -760,8 +760,9 @@ Task Name:       Real-World Roleplay Simulation Engine
 Phase:           Phase 4 (Real-World Simulations & Interleaved Practice)
 Task Type:       feature
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 Phụ thuộc:       TASK-017, TASK-001, TASK-015 ⬅️ bổ sung TASK-001 (cần dữ liệu scenario đã ingest) và TASK-015 (cần retrieval để lấy nội dung scenario theo band)
 ```
 
@@ -770,9 +771,9 @@ Phụ thuộc:       TASK-017, TASK-001, TASK-015 ⬅️ bổ sung TASK-001 (c�
 - **What:** Xây dựng `app/scenarios/simulation_engine.py` quản lý các branch `low_band` và `high_band` cũng như `evaluation_hooks`.
 
 #### Acceptance Criteria
-- [ ] Hỗ trợ các tình huống nhập vai rẽ nhánh linh hoạt theo chất lượng câu trả lời của user.
-- [ ] Kích hoạt `evaluation_hooks` khi user sử dụng cấu trúc target thành công.
-- [ ] Lấy đúng scenario/branch tương ứng qua Retrieval Layer đã adaptive theo band (`TASK-015`).
+- [x] Hỗ trợ các tình huống nhập vai rẽ nhánh linh hoạt theo chất lượng câu trả lời của user.
+- [x] Kích hoạt `evaluation_hooks` khi user sử dụng cấu trúc target thành công.
+- [x] Lấy đúng scenario/branch tương ứng qua Retrieval Layer đã adaptive theo band (`TASK-015`).
 
 ---
 
@@ -785,7 +786,7 @@ Task Name:       Personal Error Journal & Interleaved Practice Weaver
 Phase:           Phase 4 (Real-World Simulations & Interleaved Practice)
 Task Type:       feature
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 Phụ thuộc:       TASK-012, TASK-006 ⬅️ bổ sung TASK-006 (cần cài chỉ dẫn vào prompt constructor)
 ```

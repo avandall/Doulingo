@@ -40,6 +40,7 @@ class PromptContext:
     difficulty_adjustment: str = "hold"
     entity_memory: dict[str, Any] | list[Any] | None = field(default_factory=dict)
     simulation_directives: str | None = None
+    interleaved_directives: str | None = None
 
 
 def construct_system_prompt(context: PromptContext) -> str:
@@ -81,6 +82,10 @@ def construct_system_prompt(context: PromptContext) -> str:
     # 2.6 Simulation Engine Directives (TASK-019)
     if context.simulation_directives:
         sections.append(f"### ROLEPLAY SIMULATION DIRECTIVES\n{context.simulation_directives}")
+
+    # 2.7 Interleaved Practice Directives (TASK-020)
+    if context.interleaved_directives:
+        sections.append(f"### INTERLEAVED PRACTICE DIRECTIVES\n{context.interleaved_directives}")
 
     # 3. Retrieved Reference Dialogues (RAG Context)
     if context.retrieved_dialogues:
