@@ -273,9 +273,17 @@ def init_db():
             band_grammar          REAL,
             band_pronunciation    REAL,
             recurring_errors      TEXT DEFAULT '[]',
+            entity_memory         TEXT DEFAULT '{}',
             updated_at            TEXT DEFAULT (datetime('now'))
         )
     """)
+
+    # Migration check for entity_memory column if table existed previously
+    try:
+        cursor.execute("ALTER TABLE user_profile ADD COLUMN entity_memory TEXT DEFAULT '{}'")
+    except Exception:
+        pass  # Column already exists
+
 
     # 12. user_content_exposure
     cursor.execute("""

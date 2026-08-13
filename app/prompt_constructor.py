@@ -12,6 +12,9 @@ import logging
 import time
 from dataclasses import dataclass, field
 
+from typing import Any
+
+from app.persona_memory import format_entity_memory_for_prompt, get_persona_identity
 from app.retrieval import RetrievedDialogue
 
 log = logging.getLogger(__name__)
@@ -36,6 +39,7 @@ class PromptContext:
     retrieved_dialogues: list[RetrievedDialogue] = field(default_factory=list)
     character_name: str = "Lily"
     difficulty_adjustment: str = "hold"
+    entity_memory: dict[str, Any] | list[Any] | None = field(default_factory=dict)
 
 
 def construct_system_prompt(context: PromptContext) -> str:
@@ -45,7 +49,8 @@ def construct_system_prompt(context: PromptContext) -> str:
     """
     start_time = time.perf_counter()
 
-    char_name = context.character_name or "Lily"
+    persona = get_persona_identity(context.character_name or "Lily")
+    char_name = persona["name"]
     band = round(context.band_estimate, 1)
     topic = context.topic_tag or "general_conversation"
 
@@ -54,8 +59,10 @@ def construct_system_prompt(context: PromptContext) -> str:
     # 1. Persona & Identity
     sections.append(
         f"### PERSONA & ROLE\n"
-        f"You are {char_name}, a friendly, encouraging, and highly competent AI English speaking partner.\n"
-        f"Your goal is to conduct an interactive IELTS Speaking-style dialogue with the user."
+        f"You are {char_name}, {persona['role']}.\n"
+        f"Personality: {persona['personality']}.\n"
+        f"Accent & Style: {persona['accent_style']}.\n"
+        f"Core Trait: {persona['trait']}"
     )
 
     # 2. Target Profile & Context
@@ -65,6 +72,11 @@ def construct_system_prompt(context: PromptContext) -> str:
         f"- Topic: {topic}\n"
         f"- Current Difficulty Signal: {context.difficulty_adjustment}"
     )
+
+    # 2.5 Long-Term User Entity Memory (TASK-017)
+    memory_formatted = format_entity_memory_for_prompt(context.entity_memory)
+    if memory_formatted:
+        sections.append(memory_formatted)
 
     # 3. Retrieved Reference Dialogues (RAG Context)
     if context.retrieved_dialogues:
@@ -86,13 +98,18 @@ def construct_system_prompt(context: PromptContext) -> str:
         )
 
     # 4. Behavioral Directives & Rules
-    sections.append(
-        f"### BEHAVIORAL DIRECTIVES & CONSTRAINTS\n"
-        f"1. ANTI-VERBATIM REPETITION: DO NOT copy sentences or phrases verbatim from the reference dialogues. Use them as inspiration for vocabulary level and discourse depth.\n"
-        f"2. FOLLOW-UP QUESTION REQUIREMENT: You MUST end your response (`ai_utterance`) with exactly 1 natural follow-up question appropriate for Band {band}.\n"
-        f"3. BAND APPROPRIATENESS: Adjust your vocabulary complexity and sentence structures to match or slightly stretch Band {band}.\n"
-        f"4. NATURALITY: Speak in conversational, spoken English. Avoid robotic or textbook-sounding phrases."
-    )
+    directives = [
+        "### BEHAVIORAL DIRECTIVES & CONSTRAINTS",
+        "1. ANTI-VERBATIM REPETITION: DO NOT copy sentences or phrases verbatim from the reference dialogues. Use them as inspiration for vocabulary level and discourse depth.",
+        f"2. FOLLOW-UP QUESTION REQUIREMENT: You MUST end your response (`ai_utterance`) with exactly 1 natural follow-up question appropriate for Band {band}.",
+        f"3. BAND APPROPRIATENESS: Adjust your vocabulary complexity and sentence structures to match or slightly stretch Band {band}.",
+        "4. NATURALITY: Speak in conversational, spoken English. Avoid robotic or textbook-sounding phrases."
+    ]
+    if memory_formatted:
+        directives.append(
+            "5. ENTITY RECALL: When appropriate, naturally weave the user's personal facts or past events into your conversational response."
+        )
+    sections.append("\n".join(directives))
 
     # 5. Output Schema
     sections.append(JSON_SCHEMA_INSTRUCTION)

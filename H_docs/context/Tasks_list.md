@@ -37,8 +37,8 @@
 | `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[x] DONE` | TASK-012 |
 | `TASK-014` | Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) | Phase 2 | P1 | `[x] DONE` | TASK-013 |
 | `TASK-015` | Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) | Phase 2 | P0 | `[x] DONE` | TASK-005, TASK-011, TASK-013 |
-| `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-005, **TASK-007** ⬅️ sửa |
-| `TASK-017` | AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-007, **TASK-006** ⬅️ sửa |
+| `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[x] DONE` | TASK-005, **TASK-007** ⬅️ sửa |
+| `TASK-017` | AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`) | Phase 3 | P1 | `[x] DONE` | TASK-007, **TASK-006** ⬅️ sửa |
 | `TASK-018` | Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`) | Phase 3 | P2 | `[ ] TODO` | TASK-013, **TASK-012** ⬅️ sửa |
 | `TASK-019` | Real-World Roleplay Simulation Engine (`app/scenarios/simulation_engine.py`) | Phase 4 | P1 | `[ ] TODO` | TASK-017, **TASK-001, TASK-015** ⬅️ sửa |
 | `TASK-020` | Personal Error Journal & Interleaved Practice Weaver (`app/error_journal.py`) | Phase 4 | P1 | `[ ] TODO` | TASK-012, **TASK-006** ⬅️ sửa |
@@ -684,8 +684,9 @@ Task Name:       Embedding Anti-Repetition Engine
 Phase:           Phase 3 (Anti-Repetition, Persona & Memory)
 Task Type:       feature
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 Phụ thuộc:       TASK-005, TASK-007 ⬅️ bổ sung TASK-007 (cần ai_utterance thật để so sánh, không chỉ dữ liệu retrieval)
 ```
 
@@ -709,8 +710,9 @@ Task Name:       AI Persona Identity & Long-Term Entity Memory System
 Phase:           Phase 3 (Anti-Repetition, Persona & Memory)
 Task Type:       feature
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 Phụ thuộc:       TASK-007, TASK-006 ⬅️ bổ sung TASK-006 (cần ghép entity memory vào system prompt)
 ```
 
@@ -719,9 +721,9 @@ Phụ thuộc:       TASK-007, TASK-006 ⬅️ bổ sung TASK-006 (cần ghép e
 - **What:** Module `app/persona_memory.py` tóm tắt các entity/sự kiện từ hội thoại past và lưu vào `user_profile.entity_memory`.
 
 #### Acceptance Criteria
-- [ ] Tự động trích xuất các thông tin quan trọng của user (sở thích, sự kiện cá nhân) dưới dạng entity summary JSON.
-- [ ] Nhúng thông tin entity memory vào System Prompt của Prompt Constructor (`TASK-006`).
-- [ ] AI biết nhắc lại các sự kiện cũ trong hội thoại tự nhiên.
+- [x] Tự động trích xuất các thông tin quan trọng của user (sở thích, sự kiện cá nhân) dưới dạng entity summary JSON.
+- [x] Nhúng thông tin entity memory vào System Prompt của Prompt Constructor (`TASK-006`).
+- [x] AI biết nhắc lại các sự kiện cũ trong hội thoại tự nhiên.
 
 ---
 
