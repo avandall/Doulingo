@@ -773,6 +773,28 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 08:15
+### Iteration: 37
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-009 MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`) and test suite (`tests/test_mvp_pipeline.py`) implemented cleanly connecting ASR, RAG, Prompt Construction, Conversational LLM, and TTS Streamer into FastAPI endpoints (`/api/voice/process_turn`, `/api/voice/process_turn_multipart`, and `/api/topics`).
+- [LOW] Fallback user transcript message "Hello! Let's practice English." is hardcoded when both audio and text inputs are empty.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi client không gửi file audio mà chỉ truyền JSON payload?] → [API tự động nhận dạng `user_transcript` và bỏ qua bước ASR, sau đó tiếp tục xử lý 4 bước pipeline RAG, Prompt, LLM, TTS bình thường.]
+2. [Làm thế nào để đảm bảo endpoint `/api/topics` hoạt động chính xác bất kể DB trả về dict hay SQLite Row?] → [Bổ sung logic check `isinstance(r, dict)` / `hasattr(r, "keys")` linh hoạt khi parse `content_units` và `topic_tags`.]
+3. [Điều gì xảy ra nếu chuỗi JSON `conversation_history` truyền vào `process_turn_multipart` bị lỗi cú pháp?] → [Endpoint bọc `json.loads` trong khối `try...except`, nếu lỗi tự động fallback về danh sách rỗng `[]` mà không làm ngắt kết nối API.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 
 
 

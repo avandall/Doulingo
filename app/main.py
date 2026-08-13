@@ -9,10 +9,13 @@ Features:
 - Granular 20-Level Difficulty System with per-level hard constraints.
 """
 
+import base64
+import json
 import logging
 import os
 import unicodedata
 import uuid
+from typing import Any
 from urllib.parse import quote
 
 import requests
@@ -22,18 +25,24 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from app.ai_engine import ai_engine
+from app.asr_processor import ASRChunkResult, StreamingSessionState
 from app.characters import get_character, list_characters
+from app.conversational_agent import ConversationalAgent
 from app.db import (
     add_custom_scenario,
     add_user_xp,
     get_all_saved_words,
     get_custom_scenarios,
+    get_db_connection,
     get_translated_word,
     get_user_stats,
     save_translated_word,
 )
+from app.prompt_constructor import PromptContext
+from app.retrieval import compute_band_window, retrieve_dialogues
 from app.scenarios import get_scenario, list_scenarios
 from app.tts_service import generate_tts_mp3
+from app.tts_streamer import TTSStreamer
 
 logger = logging.getLogger("duolingo_speak.api")
 
@@ -94,6 +103,207 @@ class DetSpeechEvalRequest(BaseModel):
     wpm: int | None = None
     pause_count: int | None = None
     filler_count: int | None = None
+
+
+class VoiceTurnRequest(BaseModel):
+    user_id: str = "user_demo"
+    topic: str = "general_conversation"
+    band_level: float = 5.5
+    conversation_history: list[dict[str, str]] = []
+    character_id: str | None = "lily"
+    text_only_mode: bool = False
+    user_transcript: str | None = None
+    audio_base64: str | None = None
+
+
+async def _execute_voice_turn_pipeline(
+    user_id: str,
+    topic: str,
+    band_level: float,
+    conversation_history: list[dict[str, str]],
+    character_id: str,
+    text_only_mode: bool,
+    user_transcript: str | None,
+    audio_bytes: bytes | None,
+) -> dict[str, Any]:
+    # 1. ASR Ingestion & Chunk Processor
+    final_transcript = (user_transcript or "").strip()
+    if audio_bytes and len(audio_bytes) > 0:
+        session = StreamingSessionState()
+        chunk_res = ASRChunkResult(transcript="", words=[])
+        session.process_chunk(audio_bytes, chunk_res)
+        asr_text = session.get_transcript().strip()
+        if asr_text:
+            final_transcript = (
+                asr_text if not final_transcript else f"{final_transcript} {asr_text}".strip()
+            )
+
+    if not final_transcript:
+        final_transcript = "Hello! Let's practice English."
+
+    # 2. RAG Retrieval Layer
+    band_min, band_max = compute_band_window(band_level, "hold")
+    retrieved = retrieve_dialogues(
+        user_id=user_id,
+        topic_tags=topic,
+        band_min=band_min,
+        band_max=band_max,
+        limit=4,
+        auto_log_exposure=True,
+    )
+
+    # 3. Prompt Construction
+    context = PromptContext(
+        user_id=user_id,
+        band_estimate=band_level,
+        topic_tag=topic,
+        retrieved_dialogues=retrieved,
+        character_name=character_id or "Lily",
+        difficulty_adjustment="hold",
+    )
+
+    # 4. Conversational Agent Execution
+    agent = ConversationalAgent()
+    agent_response = agent.generate_response(
+        context=context,
+        history=conversation_history,
+        user_utterance=final_transcript,
+    )
+
+    # 5. TTS Audio Synthesis
+    tts_streamer = TTSStreamer(default_char_id=character_id or "lily")
+    tts_result = tts_streamer.generate_audio(
+        text=agent_response.ai_utterance,
+        char_id=character_id or "lily",
+        text_only_mode=text_only_mode,
+    )
+
+    audio_b64 = None
+    if tts_result.audio_bytes:
+        audio_b64 = base64.b64encode(tts_result.audio_bytes).decode("utf-8")
+
+    return {
+        "user_transcript": final_transcript,
+        "ai_utterance": agent_response.ai_utterance,
+        "internal_band_signal": agent_response.internal_band_signal,
+        "topic_tag": agent_response.topic_tag,
+        "difficulty_adjustment": agent_response.difficulty_adjustment,
+        "audio_base64": audio_b64,
+        "text_only_mode": tts_result.text_only_mode,
+        "retrieved_dialogues_count": len(retrieved),
+        "is_fallback": agent_response.is_fallback,
+    }
+
+
+@app.get("/api/topics")
+def api_get_topics():
+    conn = get_db_connection()
+    try:
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT id, title, template_type, topic_tags, target_band_min, target_band_max FROM content_units"
+        )
+        rows = cursor.fetchall()
+        topics_set = set()
+        units = []
+        for r in rows:
+            if isinstance(r, dict):
+                row_dict = r
+            elif hasattr(r, "keys"):
+                row_dict = dict(r)
+            else:
+                row_dict = {
+                    "id": r[0],
+                    "title": r[1],
+                    "template_type": r[2],
+                    "topic_tags": r[3],
+                    "target_band_min": r[4],
+                    "target_band_max": r[5],
+                }
+            units.append(row_dict)
+            raw_tags = row_dict.get("topic_tags", "[]")
+            try:
+                tags = json.loads(raw_tags) if isinstance(raw_tags, str) else raw_tags
+                if isinstance(tags, list):
+                    for t in tags:
+                        if t and isinstance(t, str):
+                            topics_set.add(t.strip())
+            except Exception:
+                pass
+        return {
+            "topics": sorted(list(topics_set)),
+            "content_units_count": len(units),
+            "content_units": units,
+        }
+    finally:
+        conn.close()
+
+
+@app.post("/api/voice/process_turn")
+async def api_voice_process_turn(payload: VoiceTurnRequest):
+    """
+    MVP 5-step Pipeline Endpoint:
+    [1] ASR Ingestion -> [2] RAG Retrieval -> [3] Prompt Constructor -> [4] Conversational Agent -> [5] TTS Output.
+    """
+    audio_bytes = None
+    if payload.audio_base64:
+        try:
+            audio_bytes = base64.b64decode(payload.audio_base64)
+        except Exception:
+            audio_bytes = None
+
+    result = await _execute_voice_turn_pipeline(
+        user_id=payload.user_id,
+        topic=payload.topic,
+        band_level=payload.band_level,
+        conversation_history=payload.conversation_history,
+        character_id=payload.character_id or "lily",
+        text_only_mode=payload.text_only_mode,
+        user_transcript=payload.user_transcript,
+        audio_bytes=audio_bytes,
+    )
+    return result
+
+
+@app.post("/api/voice/process_turn_multipart")
+async def api_voice_process_turn_multipart(
+    file: UploadFile | None = File(None),
+    user_id: str = Form("user_demo"),
+    topic: str = Form("general_conversation"),
+    band_level: float = Form(5.5),
+    conversation_history: str = Form("[]"),
+    character_id: str = Form("lily"),
+    text_only_mode: bool = Form(False),
+    user_transcript: str = Form(""),
+):
+    """
+    Multipart File/Form Upload Variant of the MVP 5-step Pipeline Endpoint.
+    """
+    audio_bytes = None
+    if file:
+        audio_bytes = await file.read()
+
+    history_list: list[dict[str, str]] = []
+    if conversation_history:
+        try:
+            parsed = json.loads(conversation_history)
+            if isinstance(parsed, list):
+                history_list = parsed
+        except Exception:
+            pass
+
+    result = await _execute_voice_turn_pipeline(
+        user_id=user_id,
+        topic=topic,
+        band_level=band_level,
+        conversation_history=history_list,
+        character_id=character_id,
+        text_only_mode=text_only_mode,
+        user_transcript=user_transcript,
+        audio_bytes=audio_bytes,
+    )
+    return result
+
 
 # NOTE: Google Translate gtx scraping (client=gtx) has been REMOVED.
 # Translation fallback is now handled inside ai_engine._fallback_llm_translate()
