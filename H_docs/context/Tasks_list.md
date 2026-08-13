@@ -30,8 +30,8 @@
 | `TASK-006` | Prompt Constructor Engine v1 (`app/prompt_constructor.py`) | Phase 1 | P0 | `[x] DONE` | TASK-005 |
 | `TASK-007` | Conversational Agent & Structured JSON Parser (`app/conversational_agent.py`) | Phase 1 | P0 | `[x] DONE` | TASK-006 |
 | `TASK-008` | TTS Audio Output Streamer (`app/tts_streamer.py`) | Phase 1 | **P0** ⬆️ | `[x] DONE` | TASK-007 |
-| `TASK-009` | MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-004..008 |
-| `TASK-010` | 🆕 **Scoring Threshold Bootstrap & Calibration Config** (`scripts/calibrate_thresholds.py`) | Phase 1.5 | P0 | `[ ] TODO` | TASK-000 |
+| `TASK-009` | MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`) | Phase 1 | P0 | `[x] DONE` | TASK-004..008 |
+| `TASK-010` | 🆕 **Scoring Threshold Bootstrap & Calibration Config** (`scripts/calibrate_thresholds.py`) | Phase 1.5 | P0 | `[x] DONE` | TASK-000 |
 | `TASK-011` | Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-004, TASK-010 |
 | `TASK-012` | Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) | Phase 2 | P1 | `[ ] TODO` | TASK-004, TASK-010 |
 | `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-012 |
@@ -498,8 +498,9 @@ Task Name:       MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`)
 Phase:           Phase 1 (MVP Pipeline)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 ```
 
 #### Bối cảnh & Mục tiêu
@@ -507,9 +508,9 @@ Ngày tạo:        2026-08-11
 - **What:** Cập nhật FastAPI endpoints trong `app/main.py` (`/api/voice/process_turn`, `/api/topics`).
 
 #### Acceptance Criteria
-- [ ] Endpoint `/api/voice/process_turn` nhận audio voice user, chạy full 5 bước pipeline và trả về JSON + audio AI response.
-- [ ] Viết integration test `tests/test_mvp_pipeline.py` mô phỏng full turn.
-- [ ] Integration test pass 100%.
+- [x] Endpoint `/api/voice/process_turn` nhận audio voice user, chạy full 5 bước pipeline và trả về JSON + audio AI response.
+- [x] Viết integration test `tests/test_mvp_pipeline.py` mô phỏng full turn.
+- [x] Integration test pass 100%.
 
 ---
 
@@ -522,7 +523,7 @@ Task Name:       Scoring Threshold Bootstrap & Calibration Config
 Phase:           Phase 1.5 (tiền đề bắt buộc trước Phase 2 — Scoring Agent)
 Task Type:       script + config infra
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11 (mới thêm ở v2)
 ```
 

@@ -794,6 +794,28 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 08:24
+### Iteration: 38
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-010 Scoring Threshold Bootstrap & Calibration Config (`scripts/calibrate_thresholds.py`, `app/scoring/features.py`, `app/scoring/config_loader.py`) and unit tests (`tests/test_calibration.py`) implemented with feature extraction functions (WPM, pause ratio, filler density, MTLD, interpolation), active config loader, Isotonic Regression calibration script, versioned JSON anchors (`config/scoring_anchors.v0.json`, `config/scoring_anchors.v1.json`), and calibration report (`calibration_report.md`).
+- [LOW] MTLD factor calculation relies on standard 0.72 TTR factor boundary — Evidence: `app/scoring/features.py:85`
+
+#### Adversarial Questions
+1. [Điều gì xảy ra nếu tập dữ liệu calibration thiếu một trong các thuộc tính đặc trưng?] → [Isotonic Regression tự động fallback về expert anchors (v0) cho đặc trưng đó, bảo vệ pipeline không bị văng ZeroDivisionError hoặc NaN.]
+2. [Làm thế nào để đảm bảo `load_active_anchors()` luôn chọn đúng phiên bản config active mà không cần sửa code khi release v2, v3?] → [Config loader quét tất cả file `config/scoring_anchors.v*.json`, đọc `status` trong JSON và chọn file có `"status": "active"` hoặc có phiên bản cao nhất.]
+3. [Điều gì xảy ra khi `interpolate_band()` nhận giá trị đặc trưng nằm ngoài dải anchor points?] → [Hàm tự động clamp kết quả về dải band hợp lệ [4.0, 9.0], đảm bảo không bao giờ trả về band âm hoặc > 9.0.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 
 
 
