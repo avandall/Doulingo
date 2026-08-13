@@ -6,9 +6,9 @@ for Conversational Agent responses (`ai_utterance`). Wraps underlying multi-prov
 TTS infrastructure with explicit `text_only_mode` fallback capabilities and error resilience.
 """
 
-from dataclasses import dataclass
 import logging
-from typing import AsyncGenerator
+from collections.abc import AsyncGenerator
+from dataclasses import dataclass
 
 from app.tts_service import generate_tts_mp3, stream_tts_mp3_chunks
 
@@ -86,7 +86,7 @@ class TTSStreamer:
         text: str,
         char_id: str | None = None,
         text_only_mode: bool | None = None,
-    ) -> AsyncGenerator[bytes, None]:
+    ) -> AsyncGenerator[bytes]:
         """Asynchronously stream MP3 audio chunks for low-latency playback.
 
         If text_only_mode is enabled or synthesis fails, yields nothing.
@@ -122,7 +122,7 @@ async def stream_audio_response(
     text: str,
     char_id: str = "lily",
     text_only_mode: bool = False,
-) -> AsyncGenerator[bytes, None]:
+) -> AsyncGenerator[bytes]:
     """Convenience async generator to stream audio chunks for a given response."""
     streamer = TTSStreamer()
     async for chunk in streamer.stream_audio_chunks(

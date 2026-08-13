@@ -4,8 +4,8 @@ Contains standard functions for WPM, pause ratio, filler density, MTLD, and line
 Used identically by calibration scripts and production real-time/deep scoring agents.
 """
 
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Sequence, Union
 
 
 @dataclass
@@ -55,7 +55,7 @@ def compute_pause_ratio(
 
 
 def compute_filler_density(
-    words: Sequence[Union[WordTimestamp, str]]
+    words: Sequence[WordTimestamp | str]
 ) -> float:
     """Calculate filler word density per 100 words using a fixed lexicon (um, uh, umm, erm, hmm)."""
     if not words:
@@ -118,7 +118,7 @@ def compute_mtld(
 
 def interpolate_band(
     value: float,
-    anchors: Sequence[Union[Sequence[float], tuple[float, float]]],
+    anchors: Sequence[Sequence[float] | tuple[float, float]],
     inverse: bool = False,
 ) -> float:
     """

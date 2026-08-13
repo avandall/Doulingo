@@ -11,10 +11,11 @@ reads anchor points from `config_loader` (no magic numbers), and produces
 the authoritative `raw_score` used by `user_profile_engine`.
 """
 
-from dataclasses import dataclass, field
 import re
 import time
-from typing import Any, Sequence
+from collections.abc import Sequence
+from dataclasses import dataclass, field
+from typing import Any
 
 from app.scoring.config_loader import get_anchor_points, load_active_anchors
 from app.scoring.features import (

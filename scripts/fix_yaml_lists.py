@@ -22,7 +22,6 @@ import re
 import shutil
 from pathlib import Path
 
-
 # ── Các regex phát hiện vấn đề ───────────────────────────────────────────────
 
 # Dòng có flow sequence [...] chứa nội dung có khả năng xung đột với YAML parser:

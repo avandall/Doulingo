@@ -16,7 +16,6 @@ from app.retrieval import (
     retrieve_adaptive_dialogues,
     retrieve_dialogues,
 )
-
 from scripts import generate_embeddings, insert_turso
 
 

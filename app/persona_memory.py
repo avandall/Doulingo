@@ -284,7 +284,7 @@ def format_entity_memory_for_prompt(entity_memory: dict[str, Any] | list[Any] | 
     }
 
     for cat_key, label in category_labels.items():
-        if cat_key in entity_memory and entity_memory[cat_key]:
+        if entity_memory.get(cat_key):
             val = entity_memory[cat_key]
             if isinstance(val, list):
                 val_str = ", ".join(str(x) for x in val)

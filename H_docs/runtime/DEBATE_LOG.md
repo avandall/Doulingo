@@ -941,4 +941,26 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 20:13
+### Iteration: 1
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-018 Weekly Performance Reporting Engine (`app/reporting.py`), DB schema table `tier2_evaluations` (`app/db.py`), API endpoint `GET /api/reports/weekly` / `GET /api/reporting/weekly` (`app/main.py`), and test suite (`tests/test_reporting.py`) implemented cleanly.
+- [LOW] Recommendations list generation uses static conditional thresholds on average scores rather than dynamic confidence weighting.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra nếu user chưa có bất kỳ lịch sử Tier 2 evaluation nào trong DB?] → [Hàm `generate_weekly_report` tự động fallback về thông số band hiện tại trong `user_profile` (`band_fluency`, `band_lexical`, v.v.) và trả về `latest_evaluation: None` an toàn mà không crash.]
+2. [Làm thế nào để đảm bảo điểm band từng câu không bị lộ trên giao diện hội thoại chính?] → [Các endpoint `/api/voice/process_turn` chỉ trả về phản hồi hội thoại và chỉ dẫn tổng quát mà không bao gồm bảng điểm chi tiết per-utterance, điểm 4 trục chỉ được persist vào DB `tier2_evaluations` và query thông qua API `/api/reports/weekly` riêng biệt.]
+3. [Điều gì xảy ra khi tham số `days` nhận giá trị âm hoặc 0?] → [Hàm `get_tier2_evaluations_history` sử dụng `max(1, days)` để bảo vệ khỏi truy vấn SQL ngày không hợp lệ.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 

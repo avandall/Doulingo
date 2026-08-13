@@ -46,7 +46,8 @@ def main():
     p = Path(args.dir)
     for fn in p.glob("*.yaml"):
         try:
-            data = yaml.safe_load(open(fn, encoding="utf-8")) or {}
+            with open(fn, encoding="utf-8") as f:
+                data = yaml.safe_load(f) or {}
         except Exception:
             print(f"Skipping unreadable: {fn}")
             continue
@@ -83,7 +84,8 @@ def main():
         if parsed is not None:
             new["raw"] = parsed
 
-        yaml.safe_dump(new, open(fn, "w", encoding="utf-8"), allow_unicode=True)
+        with open(fn, "w", encoding="utf-8") as f:
+            yaml.safe_dump(new, f, allow_unicode=True)
         print(f"Updated: {fn}")
 
 

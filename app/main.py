@@ -232,7 +232,7 @@ def api_get_topics():
             except Exception:
                 pass
         return {
-            "topics": sorted(list(topics_set)),
+            "topics": sorted(topics_set),
             "content_units_count": len(units),
             "content_units": units,
         }

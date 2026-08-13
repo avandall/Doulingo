@@ -11,7 +11,6 @@ and structured JSON output schema into an optimal System Prompt for the Conversa
 import logging
 import time
 from dataclasses import dataclass, field
-
 from typing import Any
 
 from app.persona_memory import format_entity_memory_for_prompt, get_persona_identity

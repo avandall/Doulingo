@@ -39,7 +39,7 @@
 | `TASK-015` | Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) | Phase 2 | P0 | `[x] DONE` | TASK-005, TASK-011, TASK-013 |
 | `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[x] DONE` | TASK-005, **TASK-007** ⬅️ sửa |
 | `TASK-017` | AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`) | Phase 3 | P1 | `[x] DONE` | TASK-007, **TASK-006** ⬅️ sửa |
-| `TASK-018` | Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`) | Phase 3 | P2 | `[ ] TODO` | TASK-013, **TASK-012** ⬅️ sửa |
+| `TASK-018` | Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`) | Phase 3 | P2 | `[x] DONE` | TASK-013, **TASK-012** ⬅️ sửa |
 | `TASK-019` | Real-World Roleplay Simulation Engine (`app/scenarios/simulation_engine.py`) | Phase 4 | P1 | `[ ] TODO` | TASK-017, **TASK-001, TASK-015** ⬅️ sửa |
 | `TASK-020` | Personal Error Journal & Interleaved Practice Weaver (`app/error_journal.py`) | Phase 4 | P1 | `[ ] TODO` | TASK-012, **TASK-006** ⬅️ sửa |
 | `TASK-021` | Multi-Armed Bandit / Adaptive Spaced Repetition Engine (`app/adaptive_engine.py`) | Phase 4 | P2 | `[ ] TODO` | TASK-015, **TASK-001** ⬅️ sửa |
@@ -736,7 +736,7 @@ Task Name:       Weekly Performance Reporting Engine & Hidden Scoring UI
 Phase:           Phase 3 (Anti-Repetition, Persona & Memory)
 Task Type:       feature
 Priority:        P2-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 Phụ thuộc:       TASK-013, TASK-012 ⬅️ bổ sung TASK-012 (báo cáo cần điểm 4 trục chi tiết, không chỉ band tổng)
 ```

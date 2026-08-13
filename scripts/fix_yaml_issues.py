@@ -15,6 +15,8 @@ Backups: original files are saved as `<file>.bak` before overwriting.
 """
 import sys
 from pathlib import Path
+from typing import Any
+
 import yaml
 
 VALID_REGISTERS = {"casual", "neutral", "formal", "academic", "semi-formal"}
@@ -178,7 +180,7 @@ def process_file(p: Path):
         print(f"Skipping (YAML parse error): {p} -> {e}")
         return False
     any_changed = False
-    new_docs = []
+    new_docs: list[Any] = []
     for doc in docs:
         if doc is None:
             new_docs.append(doc)

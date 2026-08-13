@@ -171,26 +171,12 @@ def retrieve_dialogues(
                 where_clauses.append(f"({' OR '.join(topic_conditions)})")
 
             if exposure_days > 0 and user_id:
-                where_clauses.append(
-                    f"""
-                    sd.id NOT IN (
-                        SELECT sample_dialogue_id
-                        FROM user_content_exposure
-                        WHERE user_id = ?
-                          AND exposed_at > datetime('now', '-{int(exposure_days)} days')
-                    )
-                    """
-                )
+                sub_query = f"sd.id NOT IN (SELECT sample_dialogue_id FROM user_content_exposure WHERE user_id = ? AND exposed_at > datetime('now', '-{int(exposure_days)} days'))"  # nosec B608
+                where_clauses.append(sub_query)
                 params.append(user_id)
 
             where_str = " AND ".join(where_clauses)
-            query = f"""
-                SELECT sd.id, sd.content_unit_id, sd.band_level, sd.turn_type,
-                       sd.function_tag, sd.ai_line, sd.user_model_answer, sd.embedding
-                FROM sample_dialogues sd
-                JOIN content_units cu ON sd.content_unit_id = cu.id
-                WHERE {where_str}
-            """
+            query = f"SELECT sd.id, sd.content_unit_id, sd.band_level, sd.turn_type, sd.function_tag, sd.ai_line, sd.user_model_answer, sd.embedding FROM sample_dialogues sd JOIN content_units cu ON sd.content_unit_id = cu.id WHERE {where_str}"  # nosec B608
 
             cursor.execute(query, params)
             rows = cursor.fetchall()

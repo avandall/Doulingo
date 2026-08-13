@@ -4,9 +4,9 @@ TASK-004: Handles streaming audio chunks, cumulative timestamp offsets based on 
 word-level timestamp mapping, and raw audio buffer retention for Pronunciation GOP scoring.
 """
 
-from dataclasses import dataclass, field
 import struct
-from typing import Any, List, Union
+from dataclasses import dataclass, field
+from typing import Any
 
 
 @dataclass
@@ -27,7 +27,7 @@ class ASRChunkResult:
     """
 
     transcript: str
-    words: List[WordTimestamp] = field(default_factory=list)
+    words: list[WordTimestamp] = field(default_factory=list)
 
 
 class StreamingSessionState:
@@ -54,12 +54,12 @@ class StreamingSessionState:
         self.channels: int = channels
 
         self.cumulative_offset_sec: float = 0.0
-        self.all_words: List[WordTimestamp] = []
-        self.transcripts: List[str] = []
+        self.all_words: list[WordTimestamp] = []
+        self.transcripts: list[str] = []
         self._audio_buffer: bytearray = bytearray()
         self._total_samples: int = 0
 
-    def calculate_chunk_duration(self, audio_chunk: Union[bytes, bytearray, List[Any], Any]) -> float:
+    def calculate_chunk_duration(self, audio_chunk: bytes | bytearray | list[Any] | Any) -> float:
         """Calculate exact chunk duration in seconds based on sample count.
 
         Args:
@@ -85,9 +85,9 @@ class StreamingSessionState:
 
     def process_chunk(
         self,
-        audio_chunk: Union[bytes, bytearray, List[Any], Any],
+        audio_chunk: bytes | bytearray | list[Any] | Any,
         asr_result: ASRChunkResult,
-    ) -> List[WordTimestamp]:
+    ) -> list[WordTimestamp]:
         """Process an incoming audio chunk and map its local word timestamps to global session time.
 
         Args:
@@ -109,7 +109,7 @@ class StreamingSessionState:
             self._total_samples += len(audio_chunk)
 
         # Map local words to global timestamps
-        chunk_words: List[WordTimestamp] = []
+        chunk_words: list[WordTimestamp] = []
         for w in asr_result.words:
             global_word = WordTimestamp(
                 word=w.word,
@@ -132,7 +132,7 @@ class StreamingSessionState:
         """Return combined full transcript for the session."""
         return " ".join(self.transcripts)
 
-    def get_word_timestamps(self) -> List[WordTimestamp]:
+    def get_word_timestamps(self) -> list[WordTimestamp]:
         """Return all global word timestamps across the session."""
         return list(self.all_words)
 
@@ -146,7 +146,7 @@ class StreamingSessionState:
             return 0.0
         return self._total_samples / float(self.sample_rate)
 
-    def is_silence_chunk(self, audio_chunk: Union[bytes, bytearray, List[Any], Any], threshold: float = 0.01) -> bool:
+    def is_silence_chunk(self, audio_chunk: bytes | bytearray | list[Any] | Any, threshold: float = 0.01) -> bool:
         """Helper to check if audio chunk represents silence (useful for VAD).
 
         Args:

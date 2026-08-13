@@ -9,10 +9,10 @@ If similarity > threshold (default 0.85), flags the utterance as repetitive and 
 re-generation directive for the LLM.
 """
 
-from dataclasses import dataclass
 import math
 import re
 import time
+from dataclasses import dataclass
 from typing import Any
 
 # Optional sentence_transformers import with fallback

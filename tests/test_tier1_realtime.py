@@ -3,6 +3,7 @@ Unit tests for Tier 1 Real-Time Scoring Agent (`app/scoring/tier1_realtime.py`).
 """
 
 import time
+
 from app.scoring.features import WordTimestamp
 from app.scoring.tier1_realtime import (
     Tier1ScoreResult,

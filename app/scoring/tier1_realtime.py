@@ -4,9 +4,10 @@ Evaluates lightweight fluency and lexical signals (WPM, Pause Ratio, Filler Dens
 Uses anchor points from `config_loader` to interpolate band sub-scores and emit `difficulty_adjustment` signals.
 """
 
-from dataclasses import dataclass, field
 import time
-from typing import Any, Literal, Sequence
+from collections.abc import Sequence
+from dataclasses import dataclass, field
+from typing import Any, Literal
 
 from app.scoring.config_loader import get_anchor_points, load_active_anchors
 from app.scoring.features import (
