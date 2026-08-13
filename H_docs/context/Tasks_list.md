@@ -33,8 +33,8 @@
 | `TASK-009` | MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`) | Phase 1 | P0 | `[x] DONE` | TASK-004..008 |
 | `TASK-010` | 🆕 **Scoring Threshold Bootstrap & Calibration Config** (`scripts/calibrate_thresholds.py`) | Phase 1.5 | P0 | `[x] DONE` | TASK-000 |
 | `TASK-011` | Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) | Phase 2 | P0 | `[x] DONE` | TASK-004, TASK-010 |
-| `TASK-012` | Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) | Phase 2 | P1 | `[ ] TODO` | TASK-004, TASK-010 |
-| `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-012 |
+| `TASK-012` | Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) | Phase 2 | P1 | `[x] DONE` | TASK-004, TASK-010 |
+| `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[x] DONE` | TASK-012 |
 | `TASK-014` | Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) | Phase 2 | P1 | `[ ] TODO` | TASK-013 |
 | `TASK-015` | Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-005, TASK-011, TASK-013 |
 | `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-005, **TASK-007** ⬅️ sửa |
@@ -579,8 +579,9 @@ Task Name:       Deep Scoring Agent — Tier 2 Scorer & Grammar Check
 Phase:           Phase 2 (Scoring Agent & Adaptive Difficulty)
 Task Type:       feature
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 ```
 
 #### Bối cảnh & Mục tiêu
@@ -588,10 +589,10 @@ Ngày tạo:        2026-08-11
 - **What:** Module `app/scoring/tier2_deep.py` chạy nền sau mỗi 5-10 lượt hội thoại, đọc anchor points/rubric từ `TASK-010`.
 
 #### Acceptance Criteria
-- [ ] Sử dụng spaCy đếm số mệnh đề phụ/cấu trúc phức tạp và đếm lỗi ngữ pháp.
-- [ ] Chấm điểm Pronunciation (GOP score hoặc ASR confidence score).
-- [ ] Trả về điểm 4 trục (Fluency, Lexical, Grammar, Pronunciation) quy về thang 0-9.
-- [ ] Đọc ngưỡng/rubric mapping từ config của `TASK-010`, không hardcode song song một bộ số khác với Tier 1.
+- [x] Sử dụng spaCy đếm số mệnh đề phụ/cấu trúc phức tạp và đếm lỗi ngữ pháp.
+- [x] Chấm điểm Pronunciation (GOP score hoặc ASR confidence score).
+- [x] Trả về điểm 4 trục (Fluency, Lexical, Grammar, Pronunciation) quy về thang 0-9.
+- [x] Đọc ngưỡng/rubric mapping từ config của `TASK-010`, không hardcode song song một bộ số khác với Tier 1.
 
 ---
 
@@ -604,8 +605,9 @@ Task Name:       Dynamic User Profile & EMA Band Smoothing Engine
 Phase:           Phase 2 (Scoring Agent & Adaptive Difficulty)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 ```
 
 #### Bối cảnh & Mục tiêu
@@ -614,11 +616,11 @@ Ngày tạo:        2026-08-11
 - **Spec chi tiết:** xem `spec-5-task-rui-ro-cao.md`, SPEC 4.
 
 #### Acceptance Criteria
-- [ ] Áp dụng đúng công thức `EMA(band_cu, raw_score, alpha=effective_alpha)`.
-- [ ] `effective_alpha` tính động theo `word_count_factor × confidence_factor`, KHÔNG áp `alpha=0.2` mù quáng.
-- [ ] Có cơ chế floor-alpha chống "đứng hình" band khi bị skip liên tục ≥ 5 lượt.
-- [ ] Clamp `band` trong khoảng [4.0, 9.0] sau mỗi lần update.
-- [ ] Lưu trữ và cập nhật thành công vào DB `user_profile`.
+- [x] Áp dụng đúng công thức `EMA(band_cu, raw_score, alpha=effective_alpha)`.
+- [x] `effective_alpha` tính động theo `word_count_factor × confidence_factor`, KHÔNG áp `alpha=0.2` mù quáng.
+- [x] Có cơ chế floor-alpha chống "đứng hình" band khi bị skip liên tục ≥ 5 lượt.
+- [x] Clamp `band` trong khoảng [4.0, 9.0] sau mỗi lần update.
+- [x] Lưu trữ và cập nhật thành công vào DB `user_profile`.
 
 ---
 

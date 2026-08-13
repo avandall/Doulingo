@@ -455,3 +455,66 @@ def add_user_xp(xp_amount: int) -> dict[str, Any]:
     conn.commit()
     conn.close()
     return get_user_stats()
+
+
+def get_user_profile(user_id: str) -> dict[str, Any]:
+    """Retrieve user profile from DB. Initializes default profile if missing."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM user_profile WHERE user_id = ?", (user_id,))
+    row = _fetch_one_dict(cursor)
+    conn.close()
+    if row:
+        recurring_errors = row.get("recurring_errors")
+        if isinstance(recurring_errors, str):
+            try:
+                recurring_errors = json.loads(recurring_errors)
+            except Exception:
+                recurring_errors = []
+        return {
+            "user_id": row["user_id"],
+            "band_estimate_overall": row["band_estimate_overall"] if row["band_estimate_overall"] is not None else 6.0,
+            "band_fluency": row["band_fluency"] if row["band_fluency"] is not None else 6.0,
+            "band_lexical": row["band_lexical"] if row["band_lexical"] is not None else 6.0,
+            "band_grammar": row["band_grammar"] if row["band_grammar"] is not None else 6.0,
+            "band_pronunciation": row["band_pronunciation"] if row["band_pronunciation"] is not None else 6.0,
+            "recurring_errors": recurring_errors or [],
+            "updated_at": row.get("updated_at", "")
+        }
+    return {
+        "user_id": user_id,
+        "band_estimate_overall": 6.0,
+        "band_fluency": 6.0,
+        "band_lexical": 6.0,
+        "band_grammar": 6.0,
+        "band_pronunciation": 6.0,
+        "recurring_errors": [],
+        "updated_at": ""
+    }
+
+
+def save_user_profile(user_id: str, profile_data: dict[str, Any]) -> dict[str, Any]:
+    """Save or update user profile into DB."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    band_overall = profile_data.get("band_estimate_overall", 6.0)
+    band_fluency = profile_data.get("band_fluency", 6.0)
+    band_lexical = profile_data.get("band_lexical", 6.0)
+    band_grammar = profile_data.get("band_grammar", 6.0)
+    band_pronunciation = profile_data.get("band_pronunciation", 6.0)
+    recurring_errors = json.dumps(profile_data.get("recurring_errors", []))
+
+    cursor.execute("""
+        INSERT OR REPLACE INTO user_profile (
+            user_id, band_estimate_overall, band_fluency, band_lexical,
+            band_grammar, band_pronunciation, recurring_errors, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+    """, (user_id, band_overall, band_fluency, band_lexical, band_grammar, band_pronunciation, recurring_errors))
+
+    conn.commit()
+    conn.close()
+    return get_user_profile(user_id)
+
