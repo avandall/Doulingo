@@ -227,8 +227,8 @@ def is_boilerplate(text: str) -> bool:
         if p in low:
             return True
     # If the text is mostly keywords list or headings (many short lines), skip
-    lines = [l for l in text.splitlines() if l.strip()]
-    short_lines = sum(1 for l in lines if len(l.strip()) < 60)
+    lines = [line_str for line_str in text.splitlines() if line_str.strip()]
+    short_lines = sum(1 for line_str in lines if len(line_str.strip()) < 60)
     if len(lines) >= 5 and short_lines / len(lines) > 0.6:
         return True
     return False

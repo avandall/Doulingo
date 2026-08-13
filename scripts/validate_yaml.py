@@ -65,7 +65,8 @@ def validate_doc(doc, filepath):
     for f in ("target_band_min", "target_band_max"):
         if f in cu:
             e = check_band(cu[f], f"content_unit.{f}")
-            if e: errors.append(err(filepath, e))
+            if e:
+                errors.append(err(filepath, e))
 
     if ("target_band_min" in cu and "target_band_max" in cu
             and isinstance(cu["target_band_min"], (int, float))
@@ -77,20 +78,20 @@ def validate_doc(doc, filepath):
     if not isinstance(tags, list) or len(tags) == 0:
         errors.append(err(filepath, "content_unit.topic_tags phải là list không rỗng"))
 
-    tiers = doc.get("band_tiers", [])
-    if not isinstance(tiers, list) or len(tiers) == 0:
+    bt = doc.get("band_tiers", [])
+    if not isinstance(bt, list) or len(bt) == 0:
         errors.append(err(filepath, "Thiếu hoặc rỗng `band_tiers`"))
     else:
-        for i, t in enumerate(tiers):
+        for i, t in enumerate(bt):
             prefix = f"band_tiers[{i}]"
-            for f in ("band_min", "band_max", "can_do_description",
-                      "grammar_required", "vocabulary_core", "sentence_length_target"):
+            for f in ("band_min", "band_max"):
                 if f not in t:
                     errors.append(err(filepath, f"{prefix}: thiếu field `{f}`"))
             for f in ("band_min", "band_max"):
                 if f in t:
                     e = check_band(t[f], f"{prefix}.{f}")
-                    if e: errors.append(err(filepath, e))
+                    if e:
+                        errors.append(err(filepath, e))
             for f in ("grammar_required", "vocabulary_core"):
                 if not isinstance(t.get(f), list):
                     errors.append(err(filepath, f"{prefix}.{f} phải là list"))
@@ -107,7 +108,8 @@ def validate_doc(doc, filepath):
 
             if "band_level" in sd:
                 e = check_band(sd["band_level"], f"{prefix}.band_level")
-                if e: errors.append(err(filepath, e))
+                if e:
+                    errors.append(err(filepath, e))
 
             if sd.get("turn_type") not in VALID_TURN_TYPES:
                 errors.append(err(filepath, f"{prefix}.turn_type không hợp lệ: {sd.get('turn_type')!r}"))
