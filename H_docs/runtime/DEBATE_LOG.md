@@ -815,6 +815,28 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 08:45
+### Iteration: 39
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-011 Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) and test suite (`tests/test_tier1_realtime.py`) implemented cleanly with WPM, pause ratio, filler density, self-correction pattern detection, MTLD interpolation, active anchors integration, latency < 300ms guarantee, and guardrails.
+- [LOW] Default marker set in `detect_self_corrections` checks string containment which may match substrings if marker is very short, though word tokenization mitigates false positives.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi audio có ít hơn 5 từ hoặc ASR confidence < 0.6?] → [Cơ chế guardrail trong `evaluate_tier1` lập tức trả về `difficulty_adjustment = "hold"` mà không ép tăng/giảm độ khó bậy bạ.]
+2. [Làm thế nào để đảm bảo thời gian tính toán toàn bộ Tier 1 luôn < 300ms?] → [Benchmark test `test_evaluate_tier1_latency_benchmark` thực thi 50 lượt đo thực tế cho thấy trung bình < 5ms (max < 50ms), đáp ứng dư tiêu chuẩn < 300ms.]
+3. [Điều gì xảy ra khi `mtld` bị None do chuỗi quá ngắn (< 10 từ)?] → [Mảng `bands_to_average` linh hoạt loại bỏ `mtld` và chỉ tính trung bình các sub-band khả dụng mà không gây lỗi ZeroDivisionError.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 
 
 

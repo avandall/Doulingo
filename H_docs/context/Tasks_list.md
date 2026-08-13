@@ -32,7 +32,7 @@
 | `TASK-008` | TTS Audio Output Streamer (`app/tts_streamer.py`) | Phase 1 | **P0** ⬆️ | `[x] DONE` | TASK-007 |
 | `TASK-009` | MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`) | Phase 1 | P0 | `[x] DONE` | TASK-004..008 |
 | `TASK-010` | 🆕 **Scoring Threshold Bootstrap & Calibration Config** (`scripts/calibrate_thresholds.py`) | Phase 1.5 | P0 | `[x] DONE` | TASK-000 |
-| `TASK-011` | Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-004, TASK-010 |
+| `TASK-011` | Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) | Phase 2 | P0 | `[x] DONE` | TASK-004, TASK-010 |
 | `TASK-012` | Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) | Phase 2 | P1 | `[ ] TODO` | TASK-004, TASK-010 |
 | `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-012 |
 | `TASK-014` | Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) | Phase 2 | P1 | `[ ] TODO` | TASK-013 |
@@ -550,8 +550,9 @@ Task Name:       Real-Time Scoring Agent — Tier 1 Scorer (<300ms)
 Phase:           Phase 2 (Scoring Agent & Adaptive Difficulty)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 ```
 
 #### Bối cảnh & Mục tiêu
@@ -561,11 +562,11 @@ Ngày tạo:        2026-08-11
 - **⚠️ Ranh giới kiến trúc quan trọng:** Tier 1 chỉ tạo tín hiệu tạm thời (ephemeral, sống trong session cache), **KHÔNG được gọi trực tiếp hàm EMA của `TASK-013`** và không ghi đè `user_profile.band_estimate_overall`. Band chính thức chỉ cập nhật qua Tier 2.
 
 #### Acceptance Criteria
-- [ ] Tính WPM, pause ratio (`pause > 0.5s / total_speech_time`), filler density, và self-correction pattern.
-- [ ] Tính MTLD (thuật toán chuẩn 2 chiều forward/backward, không dùng TTR thô).
-- [ ] Đọc anchor points từ `config/scoring_anchors.v{active}.json` (không hardcode).
-- [ ] Thời gian xử lý < 300ms.
-- [ ] Đưa ra signal `difficulty_adjustment` ("increase" | "hold" | "decrease"), trả "hold" khi `word_count < 5` hoặc `avg_asr_confidence < 0.6`.
+- [x] Tính WPM, pause ratio (`pause > 0.5s / total_speech_time`), filler density, và self-correction pattern.
+- [x] Tính MTLD (thuật toán chuẩn 2 chiều forward/backward, không dùng TTR thô).
+- [x] Đọc anchor points từ `config/scoring_anchors.v{active}.json` (không hardcode).
+- [x] Thời gian xử lý < 300ms.
+- [x] Đưa ra signal `difficulty_adjustment` ("increase" | "hold" | "decrease"), trả "hold" khi `word_count < 5` hoặc `avg_asr_confidence < 0.6`.
 
 ---
 
