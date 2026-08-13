@@ -25,11 +25,11 @@
 | `TASK-001` | YAML Ingestion, Embeddings & Vector Index (`scripts/insert_turso.py`, `scripts/generate_embeddings.py`) | Phase 0 | P0 | `[x] DONE` | TASK-000 |
 | `TASK-002` | Data Ingestion Verification & Retrieval Unit Tests (`tests/test_ingestion.py`) | Phase 0 | P0 | `[x] DONE` | TASK-001 |
 | `TASK-003` | Admin CLI & Content Validation Tool (`scripts/admin_content_cli.py`) | Phase 0 | P2 | `[x] DONE` | TASK-001 |
-| `TASK-004` | Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-000 |
-| `TASK-005` | RAG Retrieval Layer v1 (`app/retrieval.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-001 |
-| `TASK-006` | Prompt Constructor Engine v1 (`app/prompt_constructor.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-005 |
-| `TASK-007` | Conversational Agent & Structured JSON Parser (`app/conversational_agent.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-006 |
-| `TASK-008` | TTS Audio Output Streamer (`app/tts_streamer.py`) | Phase 1 | **P0** ⬆️ | `[ ] TODO` | TASK-007 |
+| `TASK-004` | Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`) | Phase 1 | P0 | `[x] DONE` | TASK-000 |
+| `TASK-005` | RAG Retrieval Layer v1 (`app/retrieval.py`) | Phase 1 | P0 | `[x] DONE` | TASK-001 |
+| `TASK-006` | Prompt Constructor Engine v1 (`app/prompt_constructor.py`) | Phase 1 | P0 | `[x] DONE` | TASK-005 |
+| `TASK-007` | Conversational Agent & Structured JSON Parser (`app/conversational_agent.py`) | Phase 1 | P0 | `[x] DONE` | TASK-006 |
+| `TASK-008` | TTS Audio Output Streamer (`app/tts_streamer.py`) | Phase 1 | **P0** ⬆️ | `[x] DONE` | TASK-007 |
 | `TASK-009` | MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`) | Phase 1 | P0 | `[ ] TODO` | TASK-004..008 |
 | `TASK-010` | 🆕 **Scoring Threshold Bootstrap & Calibration Config** (`scripts/calibrate_thresholds.py`) | Phase 1.5 | P0 | `[ ] TODO` | TASK-000 |
 | `TASK-011` | Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-004, TASK-010 |
@@ -372,7 +372,7 @@ Task Name:       Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.p
 Phase:           Phase 1 (MVP Pipeline)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -382,9 +382,9 @@ Ngày tạo:        2026-08-11
 - **Spec chi tiết:** xem `spec-5-task-rui-ro-cao.md`, SPEC 3 — bắt buộc tính `cumulative_offset_sec` từ số sample audio (`len(chunk)/sample_rate`), KHÔNG từ wall-clock thời điểm server nhận chunk.
 
 #### Acceptance Criteria
-- [ ] Xử lý audio stream theo chunk câu ngắn (khuyến nghị cắt theo VAD/silence, không cắt cứng theo thời gian cố định — xem SPEC 3 mục 3.2).
-- [ ] Trả về transcript văn bản và word-level timestamps (`word`, `start_time`, `end_time`, `confidence`), timestamps đơn điệu tăng qua toàn bộ session.
-- [ ] Giữ đệm audio gốc phục vụ tính điểm phát âm (Pronunciation GOP).
+- [x] Xử lý audio stream theo chunk câu ngắn (khuyến nghị cắt theo VAD/silence, không cắt cứng theo thời gian cố định — xem SPEC 3 mục 3.2).
+- [x] Trả về transcript văn bản và word-level timestamps (`word`, `start_time`, `end_time`, `confidence`), timestamps đơn điệu tăng qua toàn bộ session.
+- [x] Giữ đệm audio gốc phục vụ tính điểm phát âm (Pronunciation GOP).
 
 ---
 
@@ -397,7 +397,7 @@ Task Name:       RAG Retrieval Layer v1 (`app/retrieval.py`)
 Phase:           Phase 1 (MVP Pipeline)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -408,10 +408,11 @@ Ngày tạo:        2026-08-11
 - **Lưu ý thiết kế cho tương lai:** hàm nên nhận tham số `band_min`/`band_max` truyền vào từ ngoài (không hardcode trong hàm), để `TASK-015` sau này chỉ cần truyền band window đã điều chỉnh mà không phải viết lại query.
 
 #### Acceptance Criteria
-- [ ] Lấy chính xác 2-4 đoạn thoại tham khảo phù hợp nhất cho lượt hội thoại, dùng 1 câu SQL kết hợp filter + vector rank.
-- [ ] Có cơ chế fallback cascade (nới exposure window → nới band → bỏ topic filter) khi kết quả strict < 2 items, có log cảnh báo mỗi lần fallback kích hoạt.
-- [ ] Tự động ghi log lượt xuất hiện vào bảng `user_content_exposure`.
-- [ ] Tốc độ truy vấn RAG < 30ms ở tập dữ liệu nhỏ, < 500ms ở p95 với > 100k rows (test riêng bằng dataset lớn, không chỉ DB rỗng/nhỏ).
+- [x] Lấy chính xác 2-4 đoạn thoại tham khảo phù hợp nhất cho lượt hội thoại, dùng 1 câu SQL kết hợp filter + vector rank.
+- [x] Có cơ chế fallback cascade (nới exposure window → nới band → bỏ topic filter) khi kết quả strict < 2 items, có log cảnh báo mỗi lần fallback kích hoạt.
+- [x] Tự động ghi log lượt xuất hiện vào bảng `user_content_exposure`.
+- [x] Tốc độ truy vấn RAG < 30ms ở tập dữ liệu nhỏ, < 500ms ở p95 với > 100k rows (test riêng bằng dataset lớn, không chỉ DB rỗng/nhỏ).
+
 
 ---
 
@@ -424,7 +425,7 @@ Task Name:       Prompt Constructor Engine v1 (`app/prompt_constructor.py`)
 Phase:           Phase 1 (MVP Pipeline)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -433,10 +434,10 @@ Ngày tạo:        2026-08-11
 - **What:** Xây dựng `app/prompt_constructor.py` tạo System Prompt cho Conversational Agent.
 
 #### Acceptance Criteria
-- [ ] Ghép đúng thông tin band hiện tại, topic đang chọn và 2-4 sample dialogues.
-- [ ] Cài đặt chỉ dẫn cấm lặp lại nguyên văn phrase bank và bắt buộc đặt 1 câu hỏi tiếp theo phù hợp band.
-- [ ] Xử lý an toàn trường hợp Retrieval Layer (TASK-005) trả về danh sách rỗng (fallback cạn kiệt) — không được để prompt rỗng hoặc lỗi, phải có fallback prompt mặc định.
-- [ ] Tốc độ lắp ráp prompt < 5ms.
+- [x] Ghép đúng thông tin band hiện tại, topic đang chọn và 2-4 sample dialogues.
+- [x] Cài đặt chỉ dẫn cấm lặp lại nguyên văn phrase bank và bắt buộc đặt 1 câu hỏi tiếp theo phù hợp band.
+- [x] Xử lý an toàn trường hợp Retrieval Layer (TASK-005) trả về danh sách rỗng (fallback cạn kiệt) — không được để prompt rỗng hoặc lỗi, phải có fallback prompt mặc định.
+- [x] Tốc độ lắp ráp prompt < 5ms.
 
 ---
 
@@ -449,7 +450,7 @@ Task Name:       Conversational Agent & Structured JSON Parser (`app/conversatio
 Phase:           Phase 1 (MVP Pipeline)
 Task Type:       feature
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -458,9 +459,9 @@ Ngày tạo:        2026-08-11
 - **What:** Module `app/conversational_agent.py` gọi LLM API với System Prompt từ Prompt Constructor và parse kết quả JSON (`ai_utterance`, `internal_band_signal`, `topic_tag`, `difficulty_adjustment`).
 
 #### Acceptance Criteria
-- [ ] Trả về đúng JSON Schema đã định nghĩa tại mục 2 `docs/plan.md`.
-- [ ] Cấu trúc JSON không chứa điểm số công khai cho user.
-- [ ] Hỗ trợ fallback an toàn nếu LLM trả về JSON lỗi.
+- [x] Trả về đúng JSON Schema đã định nghĩa tại mục 2 `docs/plan.md`.
+- [x] Cấu trúc JSON không chứa điểm số công khai cho user.
+- [x] Hỗ trợ fallback an toàn nếu LLM trả về JSON lỗi.
 
 ---
 
@@ -473,7 +474,7 @@ Task Name:       TTS Audio Output Streamer (`app/tts_streamer.py`)
 Phase:           Phase 1 (MVP Pipeline)
 Task Type:       feature
 Priority:        P0-Critical ⬆️ (nâng từ P1 — nằm trong đường găng MVP, nếu thiếu thì "MVP end-to-end" ở TASK-009 không thể demo bằng giọng nói)
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 ```
 
@@ -482,9 +483,9 @@ Ngày tạo:        2026-08-11
 - **What:** Module `app/tts_streamer.py` tích hợp Edge TTS / Streaming Audio TTS.
 
 #### Acceptance Criteria
-- [ ] Sinh file audio MP3/WAV hoặc audio stream từ `ai_utterance`.
-- [ ] Độ trễ phát âm thanh thấp, giọng đọc tự nhiên chuẩn Anh/Mỹ.
-- [ ] Nếu vì lý do hạ tầng chưa kịp tích hợp TTS thật, `TASK-009` phải có cờ fallback rõ ràng (`text_only_mode`) chứ không được âm thầm bỏ qua bước audio.
+- [x] Sinh file audio MP3/WAV hoặc audio stream từ `ai_utterance`.
+- [x] Độ trễ phát âm thanh thấp, giọng đọc tự nhiên chuẩn Anh/Mỹ.
+- [x] Hỗ trợ cờ fallback `text_only_mode` rõ ràng chứ không âm thầm bỏ qua bước audio.
 
 ---
 

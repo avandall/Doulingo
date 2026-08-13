@@ -752,7 +752,27 @@ Review Result: APPROVED
 - Non-blocking (MEDIUM/LOW): 1
 
 Review Result: APPROVED
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 08:08
+### Iteration: 36
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-008 TTS Audio Output Streamer (`app/tts_streamer.py`) and unit tests (`tests/test_tts_streamer.py`) implemented with multi-provider support (ElevenLabs/Edge-TTS/gTTS), async streaming chunks, explicit `text_only_mode` fallback, and full exception resilience.
+- [LOW] Default character identifier 'lily' is hardcoded as default argument in streamer helper functions — Evidence: `app/tts_streamer.py:113`
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi dịch vụ TTS bị lỗi kết nối hoặc hạ tầng chưa sẵn sàng?] → [Hàm catch exception và trả về `TTSStreamResult(text_only_mode=True, error_message=...)` thay vì quăng ngoại lệ ra ngoài, giúp pipeline không bị crash.]
+2. [Làm thế nào để hỗ trợ phát âm thanh với độ trễ thấp < 300ms?] → [Phương thức `stream_audio_chunks` sử dụng async generator phát từng chunk MP3 bóc tách từ `stream_tts_mp3_chunks` ngay khi nhận được byte đầu tiên.]
+3. [Điều gì xảy ra khi `text` truyền vào là chuỗi rỗng hoặc chỉ có khoảng trắng?] → [Streamer tự động ghi log `TTS skipped` và chuyển sang `text_only_mode=True` lập tức mà không gọi API tổng hợp giọng nói vô ích.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
+
 
 
 

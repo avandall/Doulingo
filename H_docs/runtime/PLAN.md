@@ -1,27 +1,36 @@
-# Implementation Plan — TASK-003: Admin CLI & Content Validation Tool
+# Implementation Plan — TASK-008: TTS Audio Output Streamer (`app/tts_streamer.py`)
 
 ## Goal
-Build `scripts/admin_content_cli.py` to validate and import new IELTS book YAML template files into the Turso/SQLite database to prevent schema drift, missing metadata, invalid band levels, and answer formatting issues.
+Implement `app/tts_streamer.py` to stream TTS audio output for `ai_utterance`. The module encapsulates multi-provider speech synthesis (ElevenLabs, Edge-TTS, gTTS) into clean streaming and batch audio APIs, providing explicit `text_only_mode` fallback when audio is disabled or unavailable.
 
 ## Acceptance Criteria
-- [x] CLI supports `validate <file_path>` command to check required fields (`content_unit`, `band_tiers`, `sample_dialogues`).
-- [x] CLI emits warnings/errors for short/long answers (<5 or >300 words) and missing `function_tag`.
-- [x] CLI supports `import <file_path>` command to insert validated content into the SQLite/Turso database (supports `--sqlite` and `--dry-run`).
-- [x] Comprehensive unit tests created in `tests/test_admin_content_cli.py`.
-- [x] `python3 H_docs/scripts/verify.py` passes 100%.
+- [x] Implement `TTSStreamResult` dataclass with fields `audio_bytes: bytes | None`, `content_type: str`, `text_only_mode: bool`, `error_message: str | None`.
+- [x] Implement `TTSStreamer` class & module functions:
+  - `generate_audio(text: str, char_id: str = "lily", text_only_mode: bool = False) -> TTSStreamResult`
+  - `stream_audio_chunks(text: str, char_id: str = "lily", text_only_mode: bool = False) -> AsyncIterator[bytes]`
+- [x] Support explicit `text_only_mode` fallback flag without throwing exceptions.
+- [x] Implement robust error handling so TTS service degradation logs warning and returns text-only response cleanly.
+- [x] Implement unit test suite in `tests/test_tts_streamer.py`.
+- [x] `python3 H_docs/scripts/verify.py` passes 100% (Ruff, Mypy, Bandit, Pytest).
 
 ## Proposed Steps
 
-### Step 1: Implement `scripts/admin_content_cli.py` [x] DONE
-- Build CLI tool with `validate` and `import` subcommands using `argparse`.
-- Implement validation logic to inspect `content_unit`, `band_tiers`, and `sample_dialogues`, checking required fields, band ranges, answer length, and `function_tag`.
-- Implement DB import logic for valid YAML files supporting `--sqlite` DB path and `--dry-run` mode.
+### Step 1: Implement `app/tts_streamer.py` [x]
+- Define `TTSStreamResult` dataclass.
+- Implement `TTSStreamer` class with `generate_audio` and `stream_audio_chunks` methods.
+- Integrate with `app.tts_service` for underlying ElevenLabs/Edge-TTS/gTTS synthesis.
+- Handle `text_only_mode` and error fallback gracefully.
 
-### Step 2: Implement Unit Tests & Run Verification [x] DONE
-- Create `tests/test_admin_content_cli.py` testing `validate` (valid YAML, invalid YAML, warnings) and `import` commands.
-- Execute `python3 H_docs/scripts/verify.py` to ensure Tier 1 quality checks pass.
+### Step 2: Implement Unit Tests & Run Verification (Phase 4) [x]
+- Create `tests/test_tts_streamer.py` to test:
+  - Batch audio generation via `generate_audio`.
+  - Async chunk streaming via `stream_audio_chunks`.
+  - `text_only_mode=True` behavior.
+  - Resilience under invalid inputs or service exceptions.
+- Run `python3 H_docs/scripts/verify.py` and verify zero errors.
 
 ## Status
-- **Current Phase:** COMPLETED (Phase 6 & 7 Done)
-- **Iteration:** 31
-- **Git Commit:** `898e20c` `[TASK-003] feat(admin-cli): implement content validation and DB import tool`
+- **Current Phase:** Phase 6 (COMMIT) & Phase 7 (REPORT) DONE
+- **Iteration:** 36
+- **Result:** PASS
+

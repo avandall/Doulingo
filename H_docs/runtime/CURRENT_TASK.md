@@ -1,40 +1,43 @@
 # CURRENT TASK
 # Task hiện tại đang thực thi — Context cho AI agent
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** Mỗi khi chuyển sang task mới
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-13
 
 ---
 
-## Task đang thực hiện
+## Task vừa hoàn thành
 
 ```
-Task ID:      TASK-004
-Task Name:    Streaming ASR Ingestion & Chunk Processor (`app/asr_processor.py`)
+Task ID:      TASK-008
+Task Name:    TTS Audio Output Streamer (`app/tts_streamer.py`)
 Phase:        Phase 1 (MVP Pipeline)
 Priority:     P0-Critical
-Started:      2026-08-12
+Started:      2026-08-13
+Completed:    2026-08-13
+Status:       [x] DONE
+```
+
+---
+
+## Task tiếp theo
+
+```
+Task ID:      TASK-009
+Task Name:    MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`)
+Phase:        Phase 1 (MVP Pipeline)
+Priority:     P0-Critical
 Status:       [ ] TODO
 ```
 
 ---
 
-## Mục tiêu (Why & What)
+## Acceptance Criteria (Đã kiểm tra pass 100%)
 
-**Tại sao cần làm task này?**
-- Nhận giọng nói từ user theo từng chunk câu, giữ lại audio + word-level timestamps để làm đầu vào cho ASR transcript và Scoring Agent.
-
-**Cụ thể cần làm gì?**
-- Xây dựng `app/asr_processor.py` xử lý streaming audio input, trích xuất text transcript và mảng `word_timestamps`.
-
----
-
-## Acceptance Criteria (Tiêu chí hoàn thành)
-
-Task được coi là DONE khi:
-- [ ] Xử lý audio stream theo chunk câu ngắn (khuyến nghị cắt theo VAD/silence, không cắt cứng theo thời gian cố định).
-- [ ] Trả về transcript văn bản và word-level timestamps (`word`, `start_time`, `end_time`, `confidence`), timestamps đơn điệu tăng qua toàn bộ session.
-- [ ] Giữ đệm audio gốc phục vụ tính điểm phát âm (Pronunciation GOP).
-- [ ] Chạy `python3 H_docs/scripts/verify.py` pass 100%.
+- [x] Sinh file audio MP3/WAV hoặc audio stream từ `ai_utterance`.
+- [x] Độ trễ phát âm thanh thấp, giọng đọc tự nhiên chuẩn Anh/Mỹ.
+- [x] Hỗ trợ cờ fallback `text_only_mode` rõ ràng chứ không âm thầm bỏ qua bước audio.
+- [x] Viết unit test suite đầy đủ trong `tests/test_tts_streamer.py`.
+- [x] Chạy `python3 H_docs/scripts/verify.py` pass 100%.
 
 ---
 
@@ -42,5 +45,6 @@ Task được coi là DONE khi:
 
 ```bash
 python3 H_docs/scripts/verify.py
-pytest tests/
+pytest tests/test_tts_streamer.py
 ```
+
