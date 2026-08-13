@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic talk: Transport and Travel Vocabulary"
+  topic_tags: [transport, travel, tourism]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to communicate about familiar topics like transport, but vocabulary is sometimes generic (e.g., 'holiday' vs 'excursion'). Requires development in collocational accuracy."
+    grammar_required: [present_simple, present_perfect, passive_voice_basic]
+    vocabulary_core: [congestion, breakdown, collision, rush hour]
+    vocabulary_stretch: [subsidized, traffic calming measures, cycle lanes]
+    sentence_length_target: "moderate"
+    common_errors_to_simulate: "Confusing nouns with verbs, e.g., 'travel' vs 'journey'; misuse of collocations like 'do a trip' instead of 'take a trip'."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Uses a wider range of topic-specific vocabulary and collocation accurately to describe complex situations."
+    grammar_required: [complex_sentences, passive_voice_advanced, conditional_types]
+    vocabulary_core: [cosmopolitan, unspoilt, breathtaking, overrun]
+    vocabulary_stretch: [off the beaten track, commercialized, touts, remote/isolated]
+    sentence_length_target: "varied/complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Which form of transport is the most popular in your city?"
+    user_model_answer: "The bus is very popular because it's subsidized for students. However, it's very frustrating during rush hour because of the traffic congestion."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is your opinion of mass tourism?"
+    user_model_answer: "I find it quite problematic. Many places are being totally overrun by tourists and become far too commercialized. Personally, I prefer locations that are off the beaten track and still unspoilt."

@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: "Holidays and Travel — Exam Preparation & Vocabulary"
+  topic_tags: ["Holidays and travel", "Exam practice"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 9"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể trả lời các câu hỏi chủ đề quen thuộc nhưng còn hạn chế trong việc sử dụng từ nối và từ vựng mở rộng."
+    grammar_required: 
+      - Present continuous for future plans
+      - "have to/don't have to"
+    vocabulary_core: ["historical sites", "sightseeing", "tourist attractions", "traditional restaurants"]
+    vocabulary_stretch: ["flexible hours", "work experience", "local festivals"]
+    sentence_length_target: "Ngắn đến trung bình, thường thiếu các cấu trúc câu phức để nối ý."
+    common_errors_to_simulate: "Nhầm lẫn giữa tính từ và trạng từ (ví dụ: 'eat good' thay vì 'eat well'), quên sử dụng mạo từ hoặc chia động từ đơn giản."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Are you going to go on a similar trip in the future?"
+    user_model_answer: "Yes, I think so. I really enjoyed my trip because it was beautiful and relaxing. I want to visit more historical sites in the future and maybe try more local food."

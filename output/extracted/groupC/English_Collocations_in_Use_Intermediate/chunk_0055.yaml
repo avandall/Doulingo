@@ -1,0 +1,168 @@
+vocabulary_entry:
+  topic_tags:
+  - daily_life
+  - travel
+  - work
+  - relationships
+  - weather
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 8-13
+  entries:
+  - term: have a baby
+    meaning: to give birth to a baby
+    example: My sister had a baby.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a heart attack
+    meaning: to suffer from a sudden heart failure
+    example: My grandfather had/suffered a heart attack.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have an argument
+    meaning: to have a verbal disagreement with someone
+    example: Did you have an argument / a row?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a row
+    meaning: to have a noisy argument
+    example: Did you have an argument / a row?
+    band_suitability: 6.0+
+    register: informal
+  - term: have an accident
+    meaning: to be involved in an unfortunate vehicle or physical incident
+    example: Did you have an accident?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have fun
+    meaning: to enjoy oneself
+    example: Did you have fun / have a good time?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a break
+    meaning: to stop working for a short time to rest
+    example: Shall we have a break for half an hour or so?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a go
+    meaning: to try something
+    example: Can I have a go/try on it?
+    band_suitability: 6.0+
+    register: informal
+  - term: have a chat
+    meaning: to talk in a friendly, informal way
+    example: Could I have a chat with you about next year?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have difficulty
+    meaning: to find something hard to do
+    example: Are you having difficulty / problems / a problem reading it?
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a trip
+    meaning: to go on a journey
+    example: Next time you take a trip to the coast, why not take the train?
+    band_suitability: 6.0+
+    register: neutral
+  - term: take risks
+    meaning: to do something dangerous or risky
+    example: And why take risks when you’re travelling – take a train and arrive safely.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a holiday
+    meaning: to take time off for leisure or travel
+    example: If you decide to take a holiday in the capital city, you’ll have a more
+      relaxing time.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pay a visit
+    meaning: to go to see someone
+    example: Why not pay a surprise visit to an old friend during an off-peak time?
+    band_suitability: 7.0+
+    register: neutral
+  - term: take advantage of
+    meaning: to make good use of an opportunity
+    example: Click here and take advantage of our special offers.
+    band_suitability: 7.0+
+    register: neutral
+  - term: antique jewellery
+    meaning: old and valuable jewellery
+    example: She has a lot of beautiful antique jewellery.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ancient history
+    meaning: events from the distant past that are no longer relevant
+    example: That’s not news – it’s ancient history!
+    band_suitability: 7.0+
+    register: informal
+  - term: single parents
+    meaning: a person bringing up a child or children without a partner
+    example: Single parents who are raising children without a partner’s support are
+      entitled to financial help.
+    band_suitability: 6.0+
+    register: neutral
+  - term: charge the battery
+    meaning: to supply electrical energy to a battery
+    example: My mobile isn’t working. I need to charge the battery.
+    band_suitability: 6.0+
+    register: neutral
+  - term: earn money
+    meaning: to receive money as payment for work done
+    example: Last year I got a new job and started earning/making a lot more money.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a profit
+    meaning: to make financial gain
+    example: Our company made a profit last year.
+    band_suitability: 7.0+
+    register: formal
+  - term: achieve an ambition
+    meaning: to succeed in fulfilling a lifelong goal
+    example: I even achieved my lifelong ambition of stroking a koala.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a bright future
+    meaning: a happy, successful, and promising time ahead
+    example: a future that is looking happy and successful
+    band_suitability: 7.0+
+    register: neutral
+  - term: a warm welcome
+    meaning: a friendly and enthusiastic reception
+    example: a friendly welcome
+    band_suitability: 6.0+
+    register: neutral
+  - term: freezing cold
+    meaning: extremely cold weather or temperature
+    example: freezing cold
+    band_suitability: 6.0+
+    register: neutral
+  - term: heavy rain
+    meaning: rain that falls in large amounts or strongly
+    example: heavy/driving rain
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

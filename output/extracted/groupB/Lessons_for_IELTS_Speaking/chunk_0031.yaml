@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation — Weak and Strong Forms of 'can' and 'can't'"
+  topic_tags: ["Pronunciation", "Grammar", "Speaking Mechanics"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Learners often use the strong form of 'can' consistently, causing a 'robotic' or unnaturally stressed delivery."
+    grammar_required: ["Auxiliary verbs"]
+    vocabulary_core: 
+      - can
+      - "can't"
+    vocabulary_stretch: ["stress", "vowel sounds"]
+    sentence_length_target: "short"
+    common_errors_to_simulate: "Pronouncing 'can' as /kæn/ in all positions instead of using the weak form /kən/."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Learners naturally vary vowel sounds and rhythm by utilizing weak forms, leading to fluent, native-like connected speech."
+    grammar_required: ["Connected speech patterns"]
+    vocabulary_core: ["weak form", "strong form", "schwa sound"]
+    vocabulary_stretch: ["unstressed", "rhythm"]
+    sentence_length_target: "varied"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you see the difference?"
+    user_model_answer: "Yes, I can (/kæn/) see the difference."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you see the difference?"
+    user_model_answer: "Yes, I can (/kən/) see it, but I can't (/kænt/) explain it clearly."

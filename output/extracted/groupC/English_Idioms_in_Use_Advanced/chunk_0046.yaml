@@ -1,0 +1,128 @@
+vocabulary_entry:
+  topic_tags:
+  - relationships
+  - character
+  - communication
+  - problems
+  - money
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 50
+  entries:
+  - term: that makes two of us
+    meaning: we have the same opinion or are in the same situation
+    example: That makes two of us. Your friend needs to accept your new boyfriend.
+    band_suitability: 6.0+
+    register: informal
+  - term: two of a kind
+    meaning: people who are very similar in character
+    example: Sounds like you and Rick are two of a kind.
+    band_suitability: 7.0+
+    register: neutral
+  - term: two can play at that game
+    meaning: you can retaliate or hurt that person in the same way they hurt you
+    example: They say that two can play at that game, but it'd be better to tell him
+      how you feel.
+    band_suitability: 7.0+
+    register: informal
+  - term: it takes two to tango
+    meaning: both people involved in a bad situation are responsible for it
+    example: Remember, it takes two to tango. Maybe some of it is your fault.
+    band_suitability: 7.0+
+    register: neutral
+  - term: two heads are better than one
+    meaning: it is better to have two people trying to solve a problem than one
+    example: Well, two heads are better than one - why not ask a friend or family
+      member?
+    band_suitability: 6.0+
+    register: neutral
+  - term: two's company, three's a crowd
+    meaning: it is better for two people in a romantic or social situation to be alone
+    example: Remember, two's company, three's a crowd.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put/stick two fingers up at
+    meaning: show that you are angry or have no respect for authority
+    example: Young people these days just put/stick two fingers up at authority.
+    band_suitability: 8.0+
+    register: informal
+  - term: cut both/two ways
+    meaning: to have both positive and negative effects
+    example: 'School tests cut both/two ways: they let teachers monitor progress,
+      but they also prevent teachers from teaching freely.'
+    band_suitability: 8.0+
+    register: neutral
+  - term: know a thing or two about
+    meaning: to know a lot about a subject
+    example: Beata knows a thing or two about local history.
+    band_suitability: 7.0+
+    register: informal
+  - term: two sides of the same coin
+    meaning: two different aspects of the same problem
+    example: Anger and frustration are two sides of the same coin.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have two left feet
+    meaning: to be a very bad dancer
+    example: Don't ask me to dance - I've got two left feet!
+    band_suitability: 7.0+
+    register: informal
+  - term: not have two pennies to rub together
+    meaning: to be very poor
+    example: When my parents first got married, they didn't have two pennies to rub
+      together.
+    band_suitability: 7.0+
+    register: informal
+  - term: not be short of a bob or two
+    meaning: to be quite rich
+    example: Let's ask Mr Ross for a donation to the club. He's not short of a bob
+      or two.
+    band_suitability: 8.0+
+    register: informal
+  - term: two a penny
+    meaning: very common
+    example: Mobile phones are two a penny these days.
+    band_suitability: 8.0+
+    register: neutral
+  - term: like a dog with two tails
+    meaning: very happy
+    example: When he heard he'd passed all his exams, he was like a dog with two tails.
+    band_suitability: 8.0+
+    register: informal
+  - term: like two peas in a pod
+    meaning: very similar (often in appearance)
+    example: Gloria and Manuela are like two peas in a pod - you can tell they're
+      sisters.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be brought down a peg or two
+    meaning: to have something happen to show you that you are not as good as you
+      think you are
+    example: Anna's so arrogant. She needs to be brought down a peg or two.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

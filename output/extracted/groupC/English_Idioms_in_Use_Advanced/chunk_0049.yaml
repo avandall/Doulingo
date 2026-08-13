@@ -1,0 +1,118 @@
+vocabulary_entry:
+  topic_tags:
+  - emotions
+  - personality
+  - feelings
+  - relationships
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 54
+  entries:
+  - term: heart's desire
+    meaning: what you want more than anything else
+    example: It's been her heart's desire ever since she was three years old.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a heart of gold
+    meaning: to be very kind and good-natured
+    example: She's got a heart of gold, hasn't she?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have someone's best interests at heart
+    meaning: to care about someone and want what is best for them
+    example: He only has their best interests at heart.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a heart of stone
+    meaning: to be cold, cruel, and without pity
+    example: You'd have to have a heart of stone not to be upset by it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: strike at the heart of something
+    meaning: to attack the most essential or important part of something
+    example: It aims to strike at the heart of freedom and democracy.
+    band_suitability: 8.0+
+    register: formal
+  - term: not have the heart to (do something)
+    meaning: to be unable to do something because it would upset someone
+    example: I don't have the heart to say no.
+    band_suitability: 6.0+
+    register: neutral
+  - term: cry one's heart out
+    meaning: to cry uncontrollably; to sob a lot
+    example: She cried her heart out!
+    band_suitability: 7.0+
+    register: informal
+  - term: one's heart goes out to someone
+    meaning: to feel deep sympathy for someone
+    example: My heart goes out to them.
+    band_suitability: 7.0+
+    register: neutral
+  - term: my heart bleeds for someone
+    meaning: used to say (often ironically) that you do not feel sorry for someone
+    example: My heart bleeds for her!
+    band_suitability: 8.0+
+    register: informal
+  - term: wear your heart on your sleeve
+    meaning: to make your feelings obvious to others
+    example: You always show your emotions, but this week it would be better for you
+      not to wear your heart on your sleeve.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take heart
+    meaning: to feel encouraged; not to be anxious or afraid
+    example: Take heart - it won't be as bad as you expect.
+    band_suitability: 7.0+
+    register: neutral
+  - term: one's heart isn't in something
+    meaning: to lack enthusiasm or interest in an activity
+    example: Try not to show that your heart isn't in your work this week.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in one's heart of hearts
+    meaning: in your true, most secret thoughts
+    example: In your heart of hearts you know that it is unlikely to last much longer.
+    band_suitability: 8.0+
+    register: neutral
+  - term: harden your heart
+    meaning: to stop your feelings of pity or sympathy from stopping you from doing
+      something hard
+    example: Harden your heart and do it now.
+    band_suitability: 8.0+
+    register: neutral
+  - term: one's heart is in one's boots
+    meaning: to feel extremely unhappy, depressed, or afraid
+    example: Your heart is in your boots when you think of all the work you have to
+      do today.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have a heart
+    meaning: used to urge someone to be kind, fair, or show sympathy
+    example: Have a heart! Tell them what you like about them too.
+    band_suitability: 6.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

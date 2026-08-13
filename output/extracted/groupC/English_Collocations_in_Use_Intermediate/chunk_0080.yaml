@@ -1,0 +1,140 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - reference
+  - general
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: break the silence
+    meaning: to make a silence end, often by speaking
+    example: break the ~ 41
+    band_suitability: 6.0+
+    register: neutral
+  - term: eerie silence
+    meaning: a strange, frightening silence
+    example: eerie ~ 41
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall silent
+    meaning: to stop talking or making noise
+    example: fall silent 8
+    band_suitability: 6.0+
+    register: neutral
+  - term: sing someone's praises
+    meaning: to express great approval or admiration for someone
+    example: ~ someone’s praises 60
+    band_suitability: 8.0+
+    register: neutral
+  - term: single parent
+    meaning: a parent who brings up a child alone without a partner
+    example: single parent 10, 19
+    band_suitability: 6.0+
+    register: neutral
+  - term: sit an exam
+    meaning: to take an exam
+    example: sit an exam 28
+    band_suitability: 6.0+
+    register: neutral
+  - term: sticky situation
+    meaning: a difficult or unpleasant situation
+    example: sticky situation 44
+    band_suitability: 7.0+
+    register: informal
+  - term: skim through a book
+    meaning: to read a book quickly to get a general idea of the content
+    example: skim through a book 23
+    band_suitability: 7.0+
+    register: neutral
+  - term: slap-up meal
+    meaning: a large, very good meal
+    example: slap-up meal 22
+    band_suitability: 8.0+
+    register: informal
+  - term: slash prices
+    meaning: to reduce prices drastically
+    example: slash prices 5
+    band_suitability: 7.0+
+    register: neutral
+  - term: sleep rough
+    meaning: to sleep outdoors, especially because you have no home or money
+    example: sleep rough 39
+    band_suitability: 8.0+
+    register: neutral
+  - term: slender waist
+    meaning: a thin, attractive waist
+    example: slender waist 18
+    band_suitability: 7.0+
+    register: neutral
+  - term: snap decisions
+    meaning: decisions made quickly without careful thought
+    example: snap decisions 17
+    band_suitability: 7.0+
+    register: neutral
+  - term: sneaking suspicion
+    meaning: a feeling that you are not entirely sure about something, often a slight
+      suspicion
+    example: have a sneaking suspicion 56
+    band_suitability: 7.0+
+    register: neutral
+  - term: soak up the sunshine
+    meaning: to enjoy the sun and warm weather
+    example: soak up the sunshine 13
+    band_suitability: 7.0+
+    register: neutral
+  - term: sprawling city
+    meaning: a city that has grown over a large area in an untidy way
+    example: sprawling city 16
+    band_suitability: 8.0+
+    register: neutral
+  - term: squander money
+    meaning: to waste money foolishly
+    example: squander money (on) 37
+    band_suitability: 7.0+
+    register: neutral
+  - term: speak off the record
+    meaning: to express opinions unofficially, not for publication
+    example: ~ off the record 49
+    band_suitability: 8.0+
+    register: neutral
+  - term: splitting headache
+    meaning: a very severe headache
+    example: splitting headache 26
+    band_suitability: 7.0+
+    register: neutral
+  - term: strike up a conversation
+    meaning: to start a conversation with someone
+    example: ~ a conversation 49
+    band_suitability: 7.0+
+    register: neutral
+  - term: strike up a friendship
+    meaning: to begin a friendship
+    example: ~ a friendship 20
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

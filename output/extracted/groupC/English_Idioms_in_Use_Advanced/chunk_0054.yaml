@@ -1,0 +1,158 @@
+vocabulary_entry:
+  topic_tags:
+  - behavior
+  - personality
+  - relationships
+  - success_and_failure
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 59 & 60
+  entries:
+  - term: fall over oneself
+    meaning: very keen and eager
+    example: People were falling over themselves to volunteer as helpers for the president's
+      visit.
+    band_suitability: 8.0+
+    register: informal
+  - term: fall/drop into someone's lap
+    meaning: happen or be given to someone without any effort on their part
+    example: Everything just seems to fall/drop into her lap.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall for someone hook, line and sinker
+    meaning: fallen madly in love with someone
+    example: Fabio seems to have fallen for Elena hook, line and sinker!
+    band_suitability: 8.0+
+    register: informal
+  - term: fall for something hook, line and sinker
+    meaning: completely believed something which was not true
+    example: My colleagues at the office played a joke on me, and I fell for it hook,
+      line and sinker.
+    band_suitability: 8.0+
+    register: informal
+  - term: fall into line
+    meaning: start to accept the rules of an organisation
+    example: I'm afraid you will have to fall into line and accept the company's rules
+      and policy.
+    band_suitability: 7.0+
+    register: neutral
+  - term: Pride comes before a fall
+    meaning: if someone is too confident or arrogant, something bad will happen to
+      show they are not as good as they think
+    example: Pride comes before a fall.
+    band_suitability: 7.0+
+    register: neutral
+  - term: The bigger they are/come, the harder they fall
+    meaning: the more power or success someone has, the harder it will be for them
+      to lose it
+    example: The bigger they are/come, the harder they fall.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a woman/man after my own heart
+    meaning: having the same opinions or interests as me
+    example: She's a woman after my own heart.
+    band_suitability: 7.0+
+    register: neutral
+  - term: come into your own
+    meaning: are very useful or successful in a particular situation
+    example: Bicycles come into their own in rush hour, as they end up moving much
+      faster than cars or buses.
+    band_suitability: 8.0+
+    register: neutral
+  - term: be your own person
+    meaning: behaves as he wants to without being influenced by others
+    example: Rajiv is his own person. Nobody can make him do anything he doesn't want
+      to.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take matters into your own hands
+    meaning: deal with something ourselves because others are failing to act
+    example: The police didn't do anything about the situation, so we decided to take
+      matters into our own hands.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in your own time
+    meaning: when you are ready
+    example: There's no need to hurry. Just give me an answer in your own time.
+    band_suitability: 6.0+
+    register: neutral
+  - term: save your own skin
+    meaning: protect herself from danger or difficulty, regardless of others
+    example: Don't expect her to support you - she only wants to save her own skin.
+    band_suitability: 8.0+
+    register: informal
+  - term: go your own ways
+    meaning: separate
+    example: They've decided they can't live together any longer and are going to
+      go their own ways.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hold your own
+    meaning: be as successful as anyone else
+    example: Fazia is only 14, but she can hold her own in any adult conversation.
+    band_suitability: 7.0+
+    register: neutral
+  - term: blow your own trumpet
+    meaning: boast about your own talents and successes
+    example: He never stops blowing his own trumpet.
+    band_suitability: 8.0+
+    register: informal
+  - term: dig your own grave
+    meaning: cause your own trouble or misfortune through your actions
+    example: His behaviour will cause him a lot of trouble. Yes, he's digging his
+      own grave, isn't he!
+    band_suitability: 8.0+
+    register: neutral
+  - term: of your own making
+    meaning: caused by yourself
+    example: It's his own fault that he's so unpopular... it's of his own making.
+    band_suitability: 7.0+
+    register: neutral
+  - term: feather your own nest
+    meaning: use your position to make money dishonestly or selfishly
+    example: Yes, they suspect him of feathering his own nest.
+    band_suitability: 8.0+
+    register: formal
+  - term: play someone at their own game
+    meaning: use the same methods that an opponent has used against you, often to
+      get revenge
+    example: I suppose they're trying to play him at his own game.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get your own back
+    meaning: get revenge by showing someone how unpleasant they are
+    example: Yes, they want to get revenge by showing him how unpleasant it is. That's
+      exactly it. They're trying to get their own back.
+    band_suitability: 8.0+
+    register: informal
+  - term: an own goal
+    meaning: something which helped the other side rather than themselves
+    example: The government's decision to raise taxes just before the election was
+      very much an own goal.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Expressing Attitude and Exam Techniques"
+  topic_tags: ["Communication", "Attitude Markers", "Exam Technique"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 5"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses basic vocabulary and simple sentences. May struggle to express opinions nuancedly or use cohesive devices to manage time."
+    grammar_required: ["Simple sentence structures", "Basic modal verbs"]
+    vocabulary_core: ["Good", "Bad", "Easy", "Difficult"]
+    vocabulary_stretch: ["Sometimes", "I think", "But"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overusing filler words like 'um/er' without balance; lack of nuance in expressing opinions; repeating basic connectors."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Expresses attitudes with precision using specific markers; manages response time effectively; polite disagreement."
+    grammar_required: ["Complex sentences", "Comparative structures"]
+    vocabulary_core: ["Interestingly", "Arguably", "Undoubtedly"]
+    vocabulary_stretch: ["Technophobes", "State-of-the-art", "Cutting-edge"]
+    sentence_length_target: "Varied; includes clauses for nuanced meaning"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Are social networking sites the most popular way for young people to communicate?"
+    user_model_answer: "Yes, I think so. It is free and easy."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Are social networking sites the most popular way for young people to communicate?"
+    user_model_answer: "Yes, they certainly are. It’s undoubtedly because it is free and simple, which makes it incredibly accessible for everyone."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Are you saying that more and more people are texting to keep in touch?"
+    user_model_answer: "Precisely. It is fast becoming the most popular means of communication, arguably replacing traditional calling."

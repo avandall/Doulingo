@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Basic IELTS Speaking — Education and Career Discussion"
+  topic_tags: ["Education", "Work", "University Major"]
+  target_band_min: 5.5
+  target_band_max: 6.5
+  register: casual
+  source_citation: "Basic_IELTS_Speaking.md, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể giao tiếp các chủ đề quen thuộc nhưng cấu trúc câu còn đơn giản, lặp từ, phản xạ đôi khi còn ngập ngừng."
+    grammar_required: ["Simple Past", "Present Simple"]
+    vocabulary_core: ["major", "course", "job", "study"]
+    vocabulary_stretch: ["roommate", "fulfil requirements", "encouragement"]
+    sentence_length_target: "Short to medium sentences"
+    common_errors_to_simulate: "Lặp lại từ khóa từ câu hỏi; sử dụng các từ nối đơn giản (and, but) quá nhiều."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Thí sinh sử dụng linh hoạt các thì, diễn đạt quan điểm cá nhân mạch lạc với các cụm từ tự nhiên."
+    grammar_required: ["Conditional sentences", "Relative clauses"]
+    vocabulary_core: ["aspects of business", "graduated", "management"]
+    vocabulary_stretch: ["all ears", "hang in there", "for a change", "draw customers"]
+    sentence_length_target: "Complex, compound sentences with varied length"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What did you major in at university?"
+    user_model_answer: "I majored in Business Management. The programme covered many aspects like Marketing, Finance, and Law. I think I enjoyed my major overall."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What did you find most difficult about your studies?"
+    user_model_answer: "To tell you the truth, some subjects were quite challenging. For example, my roommate hated studying English because he was really shy and barely spoke a word in class. As for me, Accounting was just so-so, but I found Marketing the most exciting."

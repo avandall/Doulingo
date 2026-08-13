@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Speaking about the past: used to, would, and Past Tenses"
+  topic_tags: ["Childhood", "Past experiences", "Grammar"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS, Unit 8"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses mostly simple past tense to narrate events. Often relies on basic time markers and may struggle with the difference between habits and single completed actions."
+    grammar_required: ["Past simple", "Basic time adverbs"]
+    vocabulary_core: ["childhood", "school", "remember"]
+    vocabulary_stretch: ["pastime", "routine"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overusing 'would' for past states (e.g., 'I would own a horse'), using 'used to' for present habits (e.g., 'I use to travel...'), or misusing 'would' for one-off actions."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of past structures (used to, would, past continuous, past perfect) to narrate stories and describe habits with precision and accurate nuance."
+    grammar_required: ["Used to vs Would", "Past perfect for sequence", "Past continuous for background"]
+    vocabulary_core: ["childhood memory", "happenings", "narrative"]
+    vocabulary_stretch: ["vividly", "chronological", "interrupted"]
+    sentence_length_target: "Complex sentences with embedded subordinate clauses"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about your childhood."
+    user_model_answer: "When I was young, I would live in a big house. I use to play with my toys every day in the garden. One day I was fall down and hurt my knee."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me about your childhood."
+    user_model_answer: "I remember my granddad often used to take me to school when I was little. I lived quite far away, so he would follow me on foot while I cycled. One day, while I was cycling, I realized he had fallen because he had tripped on some loose paving."

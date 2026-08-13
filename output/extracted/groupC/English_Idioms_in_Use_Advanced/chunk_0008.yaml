@@ -1,0 +1,145 @@
+vocabulary_entry:
+  topic_tags:
+  - similes
+  - describing_people
+  - emotions
+  - work
+  category: idiom
+  source_citation: 'English Idioms in Use Advanced, Unit 9: Similes'
+  entries:
+  - term: as thin as a rake
+    meaning: extremely thin
+    example: My brother's as thin as a rake.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as smooth as silk
+    meaning: extremely smooth
+    example: The baby's skin is as smooth as silk.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as bright as a button
+    meaning: extremely clever
+    example: Pilar is as bright as a button.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as fresh as a daisy
+    meaning: extremely fresh and full of energy
+    example: I slept really well, so I feel as fresh as a daisy this morning.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ran like the wind
+    meaning: ran extremely fast
+    example: George ran like the wind to get the message to Paula.
+    band_suitability: 7.0+
+    register: neutral
+  - term: drives like a maniac
+    meaning: drives fast and badly
+    example: I don't want to go in the car with Lottie. She drives like a maniac!
+    band_suitability: 7.0+
+    register: informal
+  - term: fits like a glove
+    meaning: fits extremely well
+    example: My new sweater fits like a glove.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as clear as crystal
+    meaning: very clearly
+    example: I could hear every word they said as clear as crystal.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as poor as a church mouse
+    meaning: very poor
+    example: Ben claimed to be as poor as a church mouse.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as silent as the grave
+    meaning: totally silent
+    example: As Beth walked in, the house was as silent as the grave.
+    band_suitability: 8.0+
+    register: neutral
+  - term: as dry as a bone
+    meaning: extremely dry or thirsty
+    example: I needed a drink of water. My mouth was as dry as a bone.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as dry as dust
+    meaning: extremely boring
+    example: His lecture was as dry as dust, and everyone was bored.
+    band_suitability: 8.0+
+    register: neutral
+  - term: as red as a beetroot
+    meaning: very red (usually from embarrassment)
+    example: You went as red as a beetroot when Stefan was talking about her.
+    band_suitability: 7.0+
+    register: informal
+  - term: all over someone like a rash
+    meaning: behaving in a very affectionate or possessive way toward someone
+    example: You were all over her like a rash at the party last week.
+    band_suitability: 8.0+
+    register: informal
+  - term: as thick as thieves
+    meaning: very close friends who share secrets
+    example: Have you noticed how Chiara and Rita are as thick as thieves lately?
+    band_suitability: 7.0+
+    register: informal
+  - term: as quick as a flash
+    meaning: very quickly
+    example: Rita said she needed some help and as quick as a flash Chiara volunteered.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as keen as mustard
+    meaning: very enthusiastic or eager
+    example: Chiara volunteered - you know, as keen as mustard.
+    band_suitability: 8.0+
+    register: neutral
+  - term: fighting like cat and dog
+    meaning: arguing violently and often
+    example: They used to hate each other and were always fighting like cat and dog.
+    band_suitability: 7.0+
+    register: informal
+  - term: working like a dog
+    meaning: working extremely hard
+    example: I've been working like a dog, but the boss just came in.
+    band_suitability: 7.0+
+    register: informal
+  - term: a face like thunder
+    meaning: looking very angry
+    example: The boss just came in with a face like thunder.
+    band_suitability: 8.0+
+    register: neutral
+  - term: as stubborn as a mule
+    meaning: very stubborn
+    example: I've tried to argue with him, but he's as stubborn as a mule.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as clear as mud
+    meaning: not clear at all (used sarcastically)
+    example: My teacher's explanations are as clear as mud.
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

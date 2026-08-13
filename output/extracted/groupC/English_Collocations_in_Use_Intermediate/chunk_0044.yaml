@@ -1,0 +1,156 @@
+vocabulary_entry:
+  topic_tags:
+  - walking
+  - movement
+  - starting and finishing
+  - progress
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 50 & 51
+  entries:
+  - term: go on foot
+    meaning: to travel or walk somewhere by walking instead of using a vehicle
+    example: Cathy always preferred to go places on foot rather than driving.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go for a walk
+    meaning: to take a walk for pleasure or exercise
+    example: She loved going for a walk in the park in the early morning.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a stroll
+    meaning: to walk in a slow, relaxed way
+    example: Some were taking a stroll with their dogs.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go for a run
+    meaning: to run for exercise or pleasure
+    example: Cathy preferred to go for a run in the evenings.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a brisk walk
+    meaning: a fast and energetic walk
+    example: In the morning she liked a brisk walk.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pace up and down
+    meaning: to walk back and forth in a small area, often because of nervousness
+      or impatience
+    example: Today she was surprised to see a man pacing up and down beside the lake.
+    band_suitability: 7.0+
+    register: neutral
+  - term: an easy walk
+    meaning: a walk that is neither long nor difficult
+    example: It’s an easy walk into town from here.
+    band_suitability: 6.0+
+    register: neutral
+  - term: heavy steps
+    meaning: loud or forceful steps, often indicating tiredness, anger, sadness, or
+      being large
+    example: I could hear his heavy steps coming down the corridor.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a leisurely stroll
+    meaning: a very relaxed and unhurried walk
+    example: We can go for a leisurely stroll around the park later.
+    band_suitability: 7.0+
+    register: neutral
+  - term: walk briskly
+    meaning: to walk quickly and with energy
+    example: The nurse walked briskly over to the bed.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pick your way cautiously
+    meaning: to walk carefully across a dangerous or difficult area
+    example: She picked her way cautiously along the icy pavement.
+    band_suitability: 8.0+
+    register: neutral
+  - term: wander aimlessly
+    meaning: to walk around with no particular purpose or destination
+    example: I didn’t know what to do, so I just wandered aimlessly around town all
+      morning.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stride purposefully
+    meaning: to walk with long, confident steps and a clear goal
+    example: The president strode confidently across the room.
+    band_suitability: 8.0+
+    register: formal
+  - term: run into problems
+    meaning: to begin to experience difficulties
+    example: It was only when he left school that he began to run into problems.
+    band_suitability: 7.0+
+    register: neutral
+  - term: walks of life
+    meaning: different positions in society or types of jobs
+    example: Many different walks of life appealed to him.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rush headlong into
+    meaning: to start doing something too quickly without thinking
+    example: He didn’t want to rush headlong into something that he would later regret.
+    band_suitability: 8.0+
+    register: neutral
+  - term: make great strides
+    meaning: to make a lot of progress
+    example: After only a month or two he had made great strides and was ready to
+      take his book to a publishing house.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get off on the wrong foot
+    meaning: to make a bad start to a relationship or an activity
+    example: He seemed to get off on the wrong foot with the publishers.
+    band_suitability: 8.0+
+    register: neutral
+  - term: make a promising start
+    meaning: to begin something in a way that suggests future success
+    example: Sally Ambrose made a promising start when she won her first match today.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make an early start
+    meaning: to start a journey or task earlier than usual
+    example: Many people have decided to make an early start to the bank holiday weekend.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get off to a good start
+    meaning: to begin an event or process successfully
+    example: The Glasgow Arts Festival got off to a good start this week.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a close finish
+    meaning: a competition or race where the winner is decided by a very small margin
+    example: Pedro Macarro emerged the winner of today’s Spanish Grand Prix in a very
+      close finish.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a nail-biting finish
+    meaning: an exciting and tense finish where the result is uncertain until the
+      very end
+    example: Claude Roux won the championship yesterday in a nail-biting finish.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

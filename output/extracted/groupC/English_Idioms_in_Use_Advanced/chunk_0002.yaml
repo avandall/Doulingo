@@ -1,0 +1,155 @@
+vocabulary_entry:
+  topic_tags:
+  - travel
+  - social interaction
+  - idioms
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: it's a small world
+    meaning: used when you are surprised to meet someone you know in an unexpected
+      place
+    example: It's a small world!
+    band_suitability: 6.0+
+    register: informal
+  - term: join forces
+    meaning: to work together with someone to achieve a common aim
+    example: My friend suggested that we join forces.
+    band_suitability: 7.0+
+    register: neutral
+  - term: there's safety in numbers
+    meaning: being in a group makes you feel safer or less likely to be attacked/threatened
+    example: There's safety in numbers.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit the road
+    meaning: to begin a journey
+    example: Let's hit the road together.
+    band_suitability: 6.0+
+    register: informal
+  - term: in two minds
+    meaning: unable to decide about something
+    example: I was in two minds whether to go with him.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a whale of a time
+    meaning: to enjoy yourself very much
+    example: We travelled together for six months and had a whale of a time.
+    band_suitability: 8.0+
+    register: informal
+  - term: spend money like there is no tomorrow
+    meaning: to spend money freely and without worrying about the future
+    example: We spent money like there was no tomorrow.
+    band_suitability: 8.0+
+    register: informal
+  - term: twist someone's arm
+    meaning: to persuade someone to do something they are unwilling to do
+    example: I had to twist my dad's arm and persuade him.
+    band_suitability: 7.0+
+    register: informal
+  - term: a flash in the pan
+    meaning: something that happens only once or for a short time and is not repeated
+    example: His first novel was just a flash in the pan.
+    band_suitability: 8.0+
+    register: neutral
+  - term: take a shine to
+    meaning: to begin to like someone or something
+    example: I think Philip has taken a shine to his new babysitter.
+    band_suitability: 8.0+
+    register: neutral
+  - term: safe and sound
+    meaning: not hurt or damaged
+    example: I hope you have a good trip and come home safe and sound.
+    band_suitability: 6.0+
+    register: neutral
+  - term: put your foot in it
+    meaning: to say something by accident that embarrasses or upsets someone
+    example: Oh dear! I think I've put my foot in it!
+    band_suitability: 7.0+
+    register: informal
+  - term: as quiet as a mouse
+    meaning: very quiet
+    example: Her best friend is as quiet as a mouse.
+    band_suitability: 6.0+
+    register: neutral
+  - term: cap in hand
+    meaning: in a humble way, especially when asking for money or a favour
+    example: University goes cap in hand to finance minister.
+    band_suitability: 8.0+
+    register: neutral
+  - term: foot the bill
+    meaning: to pay for something, especially something expensive
+    example: Airline foots the bill for delays and cancellations.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the apple of someone's eye
+    meaning: a person who is loved more than any other
+    example: Rita Soraz is the apple of Hollywood's eye.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bury one's head in the sand
+    meaning: to ignore a difficult situation and hope it will disappear
+    example: Government is burying its head in the sand.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sank like a stone
+    meaning: failed completely
+    example: The singer's second album sank like a stone.
+    band_suitability: 8.0+
+    register: informal
+  - term: prick one's ears up
+    meaning: to start listening carefully
+    example: Yes, that certainly made her prick her ears up.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go up in the world
+    meaning: to become richer or have a better social position than before
+    example: He's certainly gone up in the world!
+    band_suitability: 7.0+
+    register: neutral
+  - term: knock something into shape
+    meaning: to take action to get something into a good condition
+    example: The new finance minister wants to knock the economy into shape.
+    band_suitability: 8.0+
+    register: neutral
+  - term: lick one's wounds
+    meaning: to try to recover from a bad experience
+    example: You'll spend much of this week licking your wounds.
+    band_suitability: 8.0+
+    register: neutral
+  - term: run its course
+    meaning: to come to a natural end
+    example: Do you think that my relationship has run its course?
+    band_suitability: 7.0+
+    register: neutral
+  - term: open the door to
+    meaning: to allow something new to start or happen
+    example: It is hoped the regulations will open the door to better management.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

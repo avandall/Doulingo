@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking: Description and Expressing Preferences"
+  topic_tags: [speaking_strategy, linking_devices, vocabulary_range]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Question Type 1 & 2"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate answers content directly, often recycling words from the question. Lacks linking devices and idiomatic language."
+    grammar_required: [simple_sentences]
+    vocabulary_core: ["like", "enjoy"]
+    vocabulary_stretch: []
+    sentence_length_target: "short"
+    common_errors_to_simulate: "Repeating the examiner's vocabulary (e.g., Q: Do you like animals? A: Yes, I like animals); lack of 'lead-in' phrases; focusing 100% on content without structure."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses a structured approach with lead-in phrases, pointing phrases, and a variety of topic-specific vocabulary."
+    grammar_required: [complex_sentences_with_that, varied_tenses]
+    vocabulary_core: ["keen on", "really into", "big fan of"]
+    vocabulary_stretch: ["enthusiastic about", "adore", "passionate about"]
+    sentence_length_target: "varied/complex"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like animals?"
+    user_model_answer: "Yes, I like animals. I like cats and dogs because they are very lovely."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like animals?"
+    user_model_answer: "Well to be quite honest, in general I would say that I'm actually quite keen on animals, but in particular I would probably have to say that I'm really into domestic pets like dogs. I guess the reason why I'm a fan of dogs is because I adore their loyalty and companionship."

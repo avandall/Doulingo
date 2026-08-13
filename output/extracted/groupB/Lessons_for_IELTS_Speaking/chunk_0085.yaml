@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary: Personality and Appearance — Structural Organization"
+  topic_tags: ["Vocabulary", "Personality", "Appearance", "IELTS Part 2"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, VOCABULARY"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Dùng được từ vựng cơ bản để mô tả ngoại hình (slim, bald) và tính cách (kind, lazy). Tuy nhiên, thường bị lặp từ hoặc nhầm lẫn giữa câu hỏi về ngoại hình và tính cách."
+    grammar_required: ["Present Simple", "What is/does... look like?"]
+    vocabulary_core: ["slim", "kind", "lazy", "athletic"]
+    vocabulary_stretch: ["warm", "anxious", "intolerant"]
+    sentence_length_target: "short-medium (10-15 words)"
+    common_errors_to_simulate: "Nhầm lẫn giữa câu hỏi 'What is he like?' (hỏi tính cách) và 'What does he look like?' (hỏi ngoại hình). Dùng từ mô tả ngoại hình để trả lời cho tính cách."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng từ vựng chính xác, đa dạng để mô tả sắc thái tính cách (e.g., deceitful, charming) và ngoại hình. Cấu trúc câu trả lời trong Part 2 mạch lạc, bám sát các ý trên prompt card."
+    grammar_required: ["Adjectives and adverbs", "Complex structures for describing character traits"]
+    vocabulary_core: ["enthusiastic", "deceitful", "optimistic", "muscular"]
+    vocabulary_stretch: ["cold-hearted", "industrialised", "life expectancy"]
+    sentence_length_target: "long (complex sentences with conjunctions)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What does your grandfather look like?"
+    user_model_answer: "He is a very kind person. He has wrinkles and is a bit overweight, but he looks very happy."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Could you describe the personality of someone you admire?"
+    user_model_answer: "I’d like to talk about my grandmother. Regarding her personality, she is incredibly optimistic despite her age. She's also very patient and kind-hearted, which is why everyone in our family truly admires her."

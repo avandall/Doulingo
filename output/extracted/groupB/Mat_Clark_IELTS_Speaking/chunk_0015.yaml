@@ -1,0 +1,53 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic Vocabulary and Idioms for IELTS Speaking (Topics 37-46)"
+  topic_tags: 
+    - Birthdays
+    - Seasons
+    - Birds
+    - Photography
+    - Flowers
+    - Buildings
+    - Rains
+    - Museums
+    - Relaxation
+    - Cycling
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Topics 37-46"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể sử dụng từ vựng cơ bản nhưng chưa kết nối tốt hoặc dùng sai ngữ cảnh."
+    grammar_required: 
+      - Simple present for habits
+      - Basic sentence structures
+    vocabulary_core: [eat, party, rain, building, relax]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Dùng từ quá đơn giản (ví dụ: 'big party' thay vì 'throw a party'), lặp từ, dùng sai cụm từ cố định (idioms) dẫn đến thiếu tự nhiên."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh sử dụng từ vựng theo chủ đề (topic-specific vocabulary) và thành ngữ một cách tự nhiên và chính xác."
+    grammar_required: 
+      - Complex structures (when/if clauses)
+      - Collocations (e.g., 'throw a party', 'do justice to', 'take a breather')
+    vocabulary_core: [photogenic, picturesque, architectural, contemporary]
+    vocabulary_stretch: [reminiscent of, torrential rain, on the wing, paint the town red]
+    sentence_length_target: "varied, complex sentences with accurate idiomatic usage"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How are birthdays usually celebrated in your country?"
+    user_model_answer: "People have a party and eat food with friends. They get gifts and enjoy the day."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How are birthdays usually celebrated in your country?"
+    user_model_answer: "On their 21st birthday, most people really push the boat out and paint the town red. It's a great opportunity for everyone to let their hair down after a long year of work."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like taking photographs of new places?"
+    user_model_answer: "I do, though I feel that sometimes photographs don't do justice to the beauty of natural places. I prefer to use a camera with a good zoom lens so I can zoom in on fine details."

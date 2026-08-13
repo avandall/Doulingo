@@ -1,0 +1,69 @@
+vocabulary_entry:
+  topic_tags:
+  - technology
+  - weather
+  - emotions
+  category: collocation
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: digital footprints
+    meaning: the information about a particular person that exists on the internet
+      as a result of their online activity
+    example: Every move we make online is recorded, and we leave digital footprints
+      wherever we visit.
+    band_suitability: 6.0+
+    register: neutral
+  - term: financial gain
+    meaning: money that you get from something
+    example: Hackers and scammers know this, and work hard to exploit it for financial
+      gain.
+    band_suitability: 6.0+
+    register: neutral
+  - term: widespread usage
+    meaning: the use of something by a lot of people over a wide area
+    example: Another seismic change in our lives over the past decade has been the
+      widespread usage of social media.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give somebody an insight into something
+    meaning: to provide a clear, deep understanding of a complex situation or subject
+    example: Now, services such as Twitter, Snapchat, TikTok, Instagram, and others
+      give us an insight into the waking lives of others in real-time.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cooped up
+    meaning: confined in a small space; trapped indoors
+    example: Cooped up inside because it's absolutely raining cats and dogs?
+    band_suitability: 7.0+
+    register: informal
+  - term: raining cats and dogs
+    meaning: raining heavily
+    example: Cooped up inside because it's absolutely raining cats and dogs?
+    band_suitability: 7.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

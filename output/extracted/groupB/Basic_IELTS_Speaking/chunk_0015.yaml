@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: "Avoiding Tense and Pronoun Errors"
+  topic_tags: ["Grammar", "Speaking Strategies", "Tenses", "Pronouns"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Using incorrect tenses or personal pronouns"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates at this level often struggle with self-correction and maintaining consistent verb tenses during narrative tasks, frequently confusing pronouns (he/she)."
+    grammar_required: 
+      - Past simple (regular/irregular verbs)
+      - Subject-verb agreement
+    vocabulary_core: ["mother", "kind", "child", "hospital"]
+    vocabulary_stretch: ["take care of"]
+    sentence_length_target: "Short, hesitant sentences"
+    common_errors_to_simulate: "Switching between base form and past tense (e.g., 'she take' instead of 'she took'), incorrect pronoun gender (e.g., 'he' for mother)."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me something about your mother?"
+    user_model_answer: "My mother is very kind to me. When I was a child, she took good care of me. At that time, she worked in a hospital."

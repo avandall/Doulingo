@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Like vs Would Like in IELTS Speaking"
+  topic_tags: ["Grammar", "Hobbies", "Future Plans", "Job Description"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Grammar: Like or would like"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can express simple preferences and future intentions but often confuses 'like' + V-ing/to V with 'would like' + to V."
+    grammar_required: ["Present Simple for habits", "would like for future desires"]
+    vocabulary_core: ["spare time", "enjoy", "ideal job"]
+    vocabulary_stretch: ["solutions", "qualifications"]
+    sentence_length_target: "short simple sentences"
+    common_errors_to_simulate: "Using 'I like to do' for future plans instead of 'I would like to do', or missing the 'would' auxiliary."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses 'would like' and 'like' naturally and accurately within the context of discussing interests and hypothetical future careers."
+    grammar_required: ["would like to + infinitive", "gerunds after like", "modal verbs for hypothetical situations"]
+    vocabulary_core: ["daily duties", "skill set", "professional development"]
+    vocabulary_stretch: ["accommodate", "interpersonal skills", "diverse responsibilities"]
+    sentence_length_target: "complex sentences with relative clauses"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like doing in your spare time?"
+    user_model_answer: "I like to talk with people and I like help them to find solutions to their problems."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What would you like to do in the future?"
+    user_model_answer: "In the future, I'd like to be a TV news reporter because I enjoy the challenge of communicating information to the public."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe your ideal job."
+    user_model_answer: "My ideal job would be a travel agent. I would have to organise flights and accommodation for clients, which requires strong communication skills. I'd like this job because I enjoy doing lots of different things every day."

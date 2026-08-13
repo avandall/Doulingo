@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Discussing Environmental Impact of Tourism"
+  topic_tags: ["Tourism", "Environment", "Solutions"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can give extended answers with some cohesive devices, but may have some hesitation or repetitive structure."
+    grammar_required: 
+      - If-clauses
+      - Modal verbs (can, have to)
+    vocabulary_core: ["negative impact", "transport", "pollution", "resources", "infrastructure"]
+    vocabulary_stretch: ["habitat", "disturbed", "minimise", "sustainable"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Overusing filler words (Mmm, you know), repetitive list-style sentence structure, occasional subject-verb agreement errors."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Speaks fluently with few coherence issues, uses a range of complex sentence structures and discourse markers."
+    grammar_required: 
+      - Passive voice for environmental impacts
+      - Modal verbs for suggestions (ought to, should, need to)
+    vocabulary_core: ["environmental degradation", "mitigate", "responsible tourism", "local infrastructure"]
+    vocabulary_stretch: ["ecological footprint", "stewardship", "short-term gain vs long-term impact"]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Can you tell me about any negative impact that tourism can have on the natural environment?"
+    user_model_answer: "Firstly, if we think about how the tourists get to their destination, they have to travel by plane or car, and this produces air pollution. Then, there is the problem of resources. Tourists use lots of energy, food, and especially water. Also, infrastructure like hotels results in forests being cut down. Tourists make a lot of rubbish and can disturb animal habitats by noise."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "So, what should tourists, or governments, or even individuals, do to minimise or solve these problems?"
+    user_model_answer: "I think the government should implement stricter regulations on hotel construction in sensitive areas. In my view, tourists should be encouraged to travel in an eco-friendly manner to reduce their carbon footprint. Personally, I think we ought to raise awareness about the fragility of the ecosystems we visit so that we don't accidentally cause damage."

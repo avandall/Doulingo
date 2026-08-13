@@ -1,0 +1,182 @@
+vocabulary_entry:
+  topic_tags:
+  - sound
+  - nature
+  - environment
+  - travel
+  - distance
+  - size
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 41 & 42
+  entries:
+  - term: eerie silence
+    meaning: a strange and frightening silence
+    example: At first there was an eerie silence, then there was a rumble of thunder
+      in the distance.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rumble of thunder
+    meaning: a continuous deep, resonant sound of thunder
+    example: At first there was an eerie silence, then there was a rumble of thunder
+      in the distance.
+    band_suitability: 6.0+
+    register: neutral
+  - term: wind whistling
+    meaning: the sound of wind making a high musical sound through narrow spaces
+    example: Soon the wind was whistling through the trees and we could hear the waves
+      crashing on the beach.
+    band_suitability: 6.0+
+    register: neutral
+  - term: waves crashing
+    meaning: waves hitting the shore with a loud noise
+    example: Soon the wind was whistling through the trees and we could hear the waves
+      crashing on the beach.
+    band_suitability: 6.0+
+    register: neutral
+  - term: babbling stream
+    meaning: a small river making a continuous low, murmuring sound
+    example: There was a little babbling stream and birds were singing in the trees.
+    band_suitability: 7.0+
+    register: neutral
+  - term: patter of rain
+    meaning: the sound of light drops of rain falling
+    example: Then we heard the patter of rain on the leaves above us.
+    band_suitability: 7.0+
+    register: neutral
+  - term: piercing cry
+    meaning: a high, loud, and unpleasant cry
+    example: Then suddenly two shots rang out and we heard the piercing cry of a dying
+      bird.
+    band_suitability: 7.0+
+    register: neutral
+  - term: deafening sound
+    meaning: a noise so loud that it is impossible to hear anything else
+    example: We heard the ear-splitting/deafening sound/noise of three huge military
+      aircraft passing low over our heads.
+    band_suitability: 6.0+
+    register: neutral
+  - term: ear-splitting noise
+    meaning: an extremely loud and unpleasant noise
+    example: We heard the ear-splitting/deafening sound/noise of three huge military
+      aircraft passing low over our heads.
+    band_suitability: 7.0+
+    register: neutral
+  - term: excessive noise
+    meaning: an amount of noise that is too much or more than reasonable
+    example: People who make excessive noise after 10 pm are very antisocial.
+    band_suitability: 7.0+
+    register: formal
+  - term: background noise
+    meaning: a noise that you can hear in the background, especially one that you
+      do not pay attention to
+    example: When you work in a big office you get used to constant background noise.
+    band_suitability: 6.0+
+    register: neutral
+  - term: muffled sound
+    meaning: a sound made quieter or less clear, for example by walls
+    example: We could hear the muffled sound of music from the flat above us.
+    band_suitability: 7.0+
+    register: neutral
+  - term: shrill voice
+    meaning: a loud, high voice that is unpleasant or painful to listen to
+    example: Marie has such a shrill voice. I can’t listen to her for long.
+    band_suitability: 7.0+
+    register: neutral
+  - term: raucous laughter
+    meaning: loud, harsh, and unpleasant laughter
+    example: I could hear raucous laughter coming from the party next door.
+    band_suitability: 8.0+
+    register: neutral
+  - term: dull thud
+    meaning: a heavy, low-pitched sound made when something falls
+    example: The heavy box fell off the shelf on to the carpet with a dull thud.
+    band_suitability: 7.0+
+    register: neutral
+  - term: grating noise
+    meaning: a harsh, unpleasant scraping sound
+    example: The big old iron door made a grating noise as it opened.
+    band_suitability: 8.0+
+    register: neutral
+  - term: almighty bang
+    meaning: a very loud explosion or bang
+    example: Suddenly there was a loud / an almighty bang, the lights went out and
+      smoke poured from the back of the TV set.
+    band_suitability: 7.0+
+    register: informal
+  - term: roar of traffic
+    meaning: the continuous loud, deep sound made by heavy traffic
+    example: I couldn’t sleep with the constant roar of the traffic outside my window.
+    band_suitability: 7.0+
+    register: neutral
+  - term: music blaring out
+    meaning: music playing loudly and annoyingly
+    example: Loud music was blaring out of the radio in the kitchen.
+    band_suitability: 6.0+
+    register: informal
+  - term: machine humming
+    meaning: a machine making a continuous low, soft sound
+    example: As we talked to the factory owner, the machines hummed/whirred in the
+      background.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give a sigh
+    meaning: to let out a deep, audible breath expressing sadness, relief, or tiredness
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: give a groan
+    meaning: to make a deep, inarticulate sound in response to pain or despair
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: within commuting distance
+    meaning: close enough to travel to work every day
+    example: We have to live within commuting distance of my husband’s office.
+    band_suitability: 7.0+
+    register: neutral
+  - term: far-off places
+    meaning: distant or remote locations
+    example: Zachary is always travelling to far-off/far-flung places.
+    band_suitability: 6.0+
+    register: neutral
+  - term: far-flung places
+    meaning: places that are a very long distance away
+    example: Zachary is always travelling to far-off/far-flung places.
+    band_suitability: 7.0+
+    register: neutral
+  - term: at close range
+    meaning: from a very short distance
+    example: I’ve never seen a member of the royal family at such close range before.
+    band_suitability: 7.0+
+    register: neutral
+  - term: neighbouring town
+    meaning: a town that is next to or near another town
+    example: Many people who work here actually live in neighbouring towns.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

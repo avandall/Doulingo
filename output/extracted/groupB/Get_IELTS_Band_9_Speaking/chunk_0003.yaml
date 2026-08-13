@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: Addressing Grammatical Mistakes in IELTS Speaking
+  topic_tags:
+  - Grammar
+  - Exam Strategy
+  - Performance Expectations
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: Get_IELTS_Band_9_Speaking.md, I make some grammatical mistakes
+    when I speak English. Is this a problem?
+band_tiers:
+- band_min: 7.0
+  band_max: 9.0
+  can_do_description: Candidates can maintain high fluency and achieve Band 8-9 despite
+    minor grammatical errors or strong accents, provided the errors do not impede
+    communication.
+  grammar_required:
+  - Natural use of contractions
+  - Consistent sentence structures
+  vocabulary_core:
+  - fluency
+  - comprehension
+  - communication
+  vocabulary_stretch:
+  - impede
+  - contractions
+  sentence_length_target: varied
+  common_errors_to_simulate: Small grammatical slips that do not interfere with clarity.
+sample_dialogues:
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 9.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

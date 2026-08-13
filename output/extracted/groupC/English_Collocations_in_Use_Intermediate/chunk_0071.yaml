@@ -1,0 +1,204 @@
+vocabulary_entry:
+  topic_tags:
+  - academic
+  - family
+  - travel
+  - crime
+  - emotions
+  - health
+  - entertainment
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: establish a connection
+    meaning: to create a link or relationship between two or more things
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: estranged husband
+    meaning: a husband who no longer lives with his wife
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: estranged wife
+    meaning: a wife who no longer lives with her husband
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: evaluate critically
+    meaning: to carefully assess the good and bad points of something
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: gather evidence
+    meaning: to collect facts or information to prove something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: provide evidence
+    meaning: to supply information or facts that show something is true
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fail an exam
+    meaning: to be unsuccessful in a test
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: pass an exam
+    meaning: to successfully complete a test
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: sit an exam
+    meaning: to take a test
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: take an exam
+    meaning: to do a test
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: exchange ideas
+    meaning: to share thoughts and opinions with others
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: exchange money
+    meaning: to trade one currency for another
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: excruciating pain
+    meaning: extremely severe physical or mental pain
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: make an excuse
+    meaning: to give a reason for doing something wrong or avoiding something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: take exercise
+    meaning: to do physical activity to stay healthy
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: vigorous exercise
+    meaning: hard and energetic physical activity
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: exhaust fumes
+    meaning: waste gases produced by an engine
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: absolutely exhausted
+    meaning: completely tired out
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: utterly exhausted
+    meaning: totally drained of energy
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: hasty exit
+    meaning: leaving a place quickly, often in a hurry
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: expecting a baby
+    meaning: pregnant
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: lead an expedition
+    meaning: to be in charge of an organized journey for a particular purpose
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: ridiculously expensive
+    meaning: unreasonably high in price
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: extended family
+    meaning: a family that extends beyond the nuclear family, including grandparents,
+      aunts, uncles, and other relatives
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: immediate family
+    meaning: a person's parents, brothers, sisters, husband, and children
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: nuclear family
+    meaning: a family consisting of two parents and their children
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring up a family
+    meaning: to raise children
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: start a family
+    meaning: to have children
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fast food
+    meaning: hot food that can be served very quickly
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fall in love
+    meaning: to start to love someone romantically
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: love at first sight
+    meaning: an instant feeling of romantic love when first meeting someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: catch the flu
+    meaning: to become ill with influenza
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: follow the rules
+    meaning: to obey regulations or instructions
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,123 @@
+vocabulary_entry:
+  topic_tags:
+  - mind
+  - thoughts
+  - feelings
+  - behavior
+  - warnings
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 57
+  entries:
+  - term: bored out of my mind
+    meaning: extremely bored
+    example: Yes, I'm bored out of my mind.
+    band_suitability: 7.0+
+    register: informal
+  - term: put your mind to it
+    meaning: direct all your attention and effort to achieving something
+    example: Yes, she certainly should, if she puts her mind to it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: blew my mind
+    meaning: extremely impressive or surprising; astonished me
+    example: Yes, it blew my mind!
+    band_suitability: 7.0+
+    register: informal
+  - term: in their right mind
+    meaning: sane, sensible, or acting rationally
+    example: Nobody in their right mind would want that responsibility.
+    band_suitability: 7.0+
+    register: neutral
+  - term: out of one's mind
+    meaning: crazy or extremely foolish
+    example: Yes, he's out of his mind!
+    band_suitability: 7.0+
+    register: informal
+  - term: read someone's mind
+    meaning: know exactly what someone is thinking
+    example: You read my mind - let's go!
+    band_suitability: 7.0+
+    register: informal
+  - term: take your mind off it
+    meaning: stop you from worrying or thinking about something unpleasant
+    example: Let's take her to the cinema. That should take her mind off it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: preying on my mind
+    meaning: causing anxiety or continuous worry over a period of time
+    example: I know. It's been preying on my mind all day.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get your head round it
+    meaning: manage to understand something difficult or surprising
+    example: Yes, I can 't get my mind round it either! (You can also say 'I can 't
+      get my head round it'.)
+    band_suitability: 8.0+
+    register: neutral
+  - term: one-track mind
+    meaning: always thinking about only one subject
+    example: I know. He has a terrible one-track mind.
+    band_suitability: 8.0+
+    register: informal
+  - term: cast my mind back
+    meaning: try to remember something that happened in the past
+    example: I'm trying to cast my mind back, but I just can't remember a thing.
+    band_suitability: 8.0+
+    register: neutral
+  - term: mind over matter
+    meaning: using your mind and willpower to overcome physical difficulties
+    example: I know. It's just a question of mind over matter.
+    band_suitability: 8.0+
+    register: neutral
+  - term: mind your Ps and Qs
+    meaning: be very polite in your behavior
+    example: My dad hates bad manners, so mind your Ps and Qs when you meet him.
+    band_suitability: 8.0+
+    register: informal
+  - term: mind your step
+    meaning: walk carefully
+    example: The pavement is very uneven here. Yes, you need to mind your step.
+    band_suitability: 7.0+
+    register: neutral
+  - term: mind your own business
+    meaning: told to someone when you do not want them to ask questions about something
+      private
+    example: Why did you come back so late last night? Mind your own business!
+    band_suitability: 6.0+
+    register: informal
+  - term: mind how you go
+    meaning: take care; used when saying goodbye
+    example: See you later, Grandma. OK. Mind how you go!
+    band_suitability: 7.0+
+    register: informal
+  - term: mind your back
+    meaning: be careful because others are trying to cause problems for you
+    example: Yes, he needs to mind his back in that office.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

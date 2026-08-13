@@ -1,0 +1,64 @@
+vocabulary_entry:
+  topic_tags:
+  - emphasis
+  - opinions
+  - conversational_fillers
+  category: idiom
+  source_citation: 'English Idioms in Use Advanced, Unit 49: Half as emphasis'
+  entries:
+  - term: Not half!
+    meaning: Used to agree emphatically with what someone has said
+    example: 'A: Did you enjoy the party last night? B: Not half!'
+    band_suitability: 7.0+
+    register: informal
+  - term: It isn't half [adjective]
+    meaning: It is very [adjective]
+    example: It isn't half busy in here!
+    band_suitability: 7.0+
+    register: informal
+  - term: half the battle
+    meaning: the most important or difficult part of a process or task
+    example: Yes, they say that's half the battle.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a game and a half
+    meaning: something very special, surprising, or that took a long time
+    example: That was a game and a half, wasn't it!
+    band_suitability: 8.0+
+    register: informal
+  - term: Given half a chance
+    meaning: if I had the opportunity
+    example: Given half a chance, I'd move there tomorrow.
+    band_suitability: 7.0+
+    register: neutral
+  - term: too clever by half
+    meaning: too confident and smart in a way that is annoying to others
+    example: Yes, she's too clever by half.
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

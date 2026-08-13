@@ -1,0 +1,110 @@
+vocabulary_entry:
+  topic_tags:
+  - overpopulation
+  - work-life balance
+  - society
+  - work
+  category: collocation
+  source_citation: Y_tuong_va_Tu_vung_trong_IELTS_Speaking - Nguyen Huyen
+  entries:
+  - term: high birth rate
+    meaning: the number of live births per 1,000 population per year at a high level
+    example: a high birth rate and limited access to family planning, especially in
+      developing countries
+    band_suitability: 6.0+
+    register: neutral
+  - term: mortality rates
+    meaning: the death rate in a given population
+    example: advances in healthcare have reduced mortality rates, allowing more people
+      to live longer
+    band_suitability: 7.0+
+    register: formal
+  - term: resource depletion
+    meaning: the consumption of a resource faster than it can be replenished
+    example: resource depletion, as more people require food, water, and energy
+    band_suitability: 7.0+
+    register: formal
+  - term: environmental degradation
+    meaning: the deterioration of the environment through depletion of resources such
+      as air, water and soil
+    example: environmental degradation due to deforestation and pollution
+    band_suitability: 7.0+
+    register: formal
+  - term: strain on public services
+    meaning: pressure or burden placed on government-funded services like healthcare
+      and education
+    example: urban areas experience overcrowding, leading to issues like increased
+      traffic, pollution, and strain on public services
+    band_suitability: 7.0+
+    register: neutral
+  - term: family planning
+    meaning: the practice of controlling the number of children in a family and the
+      intervals between their births
+    example: to promote family planning and birth control options
+    band_suitability: 6.0+
+    register: neutral
+  - term: demanding workload
+    meaning: a heavy amount of work that needs a lot of effort, time, or attention
+    example: to struggle with a demanding workload or tight deadlines
+    band_suitability: 6.0+
+    register: neutral
+  - term: burnout
+    meaning: extreme tiredness and exhaustion resulting from excessive and prolonged
+      stress
+    example: long working hours often lead to stress and burnout
+    band_suitability: 7.0+
+    register: neutral
+  - term: work-life balance
+    meaning: the division of one's time and focus between working and family or leisure
+      activities
+    example: a healthy work-life balance boosts productivity and mental well-being
+    band_suitability: 6.0+
+    register: neutral
+  - term: relax and recharge
+    meaning: to rest in order to regain energy and strength after working hard
+    example: have time to relax and recharge
+    band_suitability: 6.0+
+    register: neutral
+  - term: quality time
+    meaning: time that you spend giving someone your full attention, especially time
+      spent with family
+    example: to spend quality time with family and friends
+    band_suitability: 6.0+
+    register: neutral
+  - term: flexible hours
+    meaning: working hours that allow employees to choose when they begin and end
+      their workday
+    example: to implement flexible hours or remote work options
+    band_suitability: 6.0+
+    register: neutral
+  - term: tech-driven world
+    meaning: a world dominated and heavily influenced by technology
+    example: to set clear work-life boundaries in a tech-driven world is essential
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

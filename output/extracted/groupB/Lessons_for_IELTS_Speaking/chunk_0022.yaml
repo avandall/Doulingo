@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Focus on Part 2: Describing a movie"
+  topic_tags: ["Movies", "Entertainment", "Speaking Part 2"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Focus on Part 2 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can provide basic information for each bullet point using simple sentences and past tense."
+    grammar_required: ["Past simple for storytelling"]
+    vocabulary_core: ["movie title", "genre", "enjoy"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple clauses"
+    common_errors_to_simulate: "Inconsistent verb tense (switching between past and present), limited range of adjectives to describe feelings."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can extend the answer beyond simple facts by connecting ideas and using varied past tense structures."
+    grammar_required: ["Past simple", "Past continuous for setting scenes", "Relative clauses"]
+    vocabulary_core: ["plot", "performance", "cinematography"]
+    vocabulary_stretch: ["captivating", "thought-provoking", "cinematic experience"]
+    sentence_length_target: "complex, cohesive sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a movie you have seen and enjoyed."
+    user_model_answer: "The movie was called Titanic. I saw it at home with my family last year. It was a romantic movie. I enjoyed it because it was very sad and the music was good."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a movie you have seen and enjoyed."
+    user_model_answer: "The movie I’d like to talk about is 'Inception', a science-fiction thriller that I saw at the cinema a few months ago. It's a complex film directed by Christopher Nolan. What I particularly enjoyed was the unique plot, which kept me on the edge of my seat throughout the entire runtime."

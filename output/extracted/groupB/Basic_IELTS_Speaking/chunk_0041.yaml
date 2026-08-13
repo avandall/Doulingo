@@ -1,0 +1,38 @@
+content_unit:
+  template_type: scenario
+  title: "Dialogue Study — Travel Preferences"
+  topic_tags: ["Travel", "Daily Routine", "Hobbies"]
+  target_band_min: 5.5
+  target_band_max: 7.0
+  register: casual
+  source_citation: "Basic_IELTS_Speaking, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.5
+    band_max: 6.0
+    can_do_description: "Đưa ra thông tin cơ bản về thói quen du lịch, sử dụng câu đơn giản, đôi khi lặp từ vựng."
+    grammar_required: ["Present Simple", "Past Simple", "Frequency adverbs"]
+    vocabulary_core: ["travel", "holiday", "rainy season", "ticket", "mountain"]
+    vocabulary_stretch: ["cautious", "itinerary", "package tour"]
+    sentence_length_target: "Short to medium (8-12 words)"
+    common_errors_to_simulate: "Lỗi chia động từ (go/went), quên giới từ chỉ thời gian/địa điểm, lặp lại cấu trúc 'I like/I don't like'."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Mở rộng câu trả lời bằng cách đưa ra lý do, giải thích chi tiết và dùng từ vựng theo chủ đề linh hoạt."
+    grammar_required: 
+      - Present Perfect
+      - Conditional (If/When)
+      - Modals for deduction
+    vocabulary_core: ["geographical features", "local culture", "soaking in", "itinerary", "home-body"]
+    vocabulary_stretch: ["poke my nose into", "no offence", "count me out", "finances"]
+    sentence_length_target: "Medium to long (15-25 words with complex structures)"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you prefer to travel alone or with others?"
+    user_model_answer: "I prefer to travel alone or with one friend. I really dislike going on package tours because you miss out on so much when you are in a large group."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you usually do when you visit a new place?"
+    user_model_answer: "First, I walk around to explore markets and busy streets. Then, I try local specialty foods. If I’m lucky, I chat with vendors to find the best spots, which helps me plan my itinerary more effectively."

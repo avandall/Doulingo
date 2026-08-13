@@ -275,13 +275,21 @@ def insert_doc(doc: dict, conn, dry_run: bool, source_file: str) -> dict:
 
 
 
-def process_file(path: Path, conn, dry_run: bool, is_turso: bool):
+def process_file(path: Path, conn, dry_run: bool, is_turso: bool, base_dir: Path | None = None):
     text = path.read_text(encoding="utf-8")
     docs = [d for d in yaml.safe_load_all(text) if d is not None]
 
+    if base_dir and base_dir.is_dir():
+        try:
+            rel_file = str(path.relative_to(base_dir))
+        except ValueError:
+            rel_file = str(path)
+    else:
+        rel_file = path.name
+
     total = {"content_units": 0, "band_tiers": 0, "sample_dialogues": 0}
     for doc in docs:
-        stats = insert_doc(doc, conn, dry_run, path.name)
+        stats = insert_doc(doc, conn, dry_run, rel_file)
         for k in total:
             total[k] += stats[k]
 
@@ -296,7 +304,7 @@ def process_file(path: Path, conn, dry_run: bool, is_turso: bool):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("input", type=Path, help="File .yaml hoặc thư mục chứa .yaml")
+    ap.add_argument("input", type=Path, help="File .yaml hoặc thư mục chứa .yaml (hỗ trợ quét đệ quy)")
     ap.add_argument("--dry-run", action="store_true",
                     help="In SQL sẽ chạy, không insert thật")
     ap.add_argument("--sqlite", type=str, metavar="DB_PATH",
@@ -310,14 +318,18 @@ def main():
         print("Cần chọn 1 trong 3 mode: --dry-run | --sqlite <path> | --turso-url + --turso-token")
         sys.exit(1)
 
-    # Lấy danh sách file
+    # Lấy danh sách file (dùng rglob để quét đệ quy qua các subfolder, lọc bỏ folder _bad)
     if args.input.is_dir():
-        files = sorted(args.input.glob("*.yaml")) + sorted(args.input.glob("*.yml"))
+        all_files = sorted(args.input.rglob("*.yaml")) + sorted(args.input.rglob("*.yml"))
+        files = [
+            f for f in all_files
+            if not any(part == "_bad" or part.startswith("_bad") for part in f.parts)
+        ]
     else:
         files = [args.input]
 
     if not files:
-        print("Không tìm thấy file YAML.")
+        print("Không tìm thấy file YAML phù hợp (đã lọc bỏ thư mục _bad).")
         sys.exit(1)
 
     # Setup DB connection
@@ -352,17 +364,26 @@ def main():
 
     # Process
     grand_total = {"content_units": 0, "band_tiers": 0, "sample_dialogues": 0}
+    base_dir = args.input if args.input.is_dir() else None
     for f in files:
         try:
-            total, n_docs = process_file(f, conn, args.dry_run, is_turso)
-            print(f"✓ {f.name}: {n_docs} doc → "
+            if base_dir and base_dir.is_dir():
+                try:
+                    rel_file = str(f.relative_to(base_dir))
+                except ValueError:
+                    rel_file = str(f)
+            else:
+                rel_file = f.name
+            total, n_docs = process_file(f, conn, args.dry_run, is_turso, base_dir=base_dir)
+            print(f"✓ {rel_file}: {n_docs} doc → "
                   f"{total['content_units']} content_units, "
                   f"{total['band_tiers']} band_tiers, "
                   f"{total['sample_dialogues']} sample_dialogues")
             for k in grand_total:
                 grand_total[k] += total[k]
         except Exception as e:
-            print(f"✗ {f.name}: LỖI — {e}")
+            print(f"✗ {f}: LỖI — {e}")
+
 
     print(f"\n{'='*60}")
     print(f"TỔNG: {grand_total['content_units']} content_units | "
@@ -382,3 +403,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

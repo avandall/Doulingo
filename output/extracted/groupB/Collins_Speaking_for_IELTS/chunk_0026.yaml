@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Collins Speaking for IELTS — Topic: Relationships and Sport"
+  topic_tags: [Relationships, Sport, Health, Hobbies]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio Scripts (Track 08-14)"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses idiomatic language (e.g., 'through thick and thin', 'heard a pin drop'), maintains good cohesion, and provides extended, detailed answers with personal reflection."
+    grammar_required: [Present perfect, Modals of possibility, Conditional structures]
+    vocabulary_core: [Reliable, exhilarating, atmosphere, loyalty, mental strength]
+    vocabulary_stretch: [Through thick and thin, up-and-coming, stand being stood up, cool head]
+    sentence_length_target: "Long, complex sentences with varied subordinate clauses."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you expect from a good friend?"
+    user_model_answer: "For me, a good friend has to be reliable. I can't stand being stood up or having my emails and texts ignored. As well as that, a friend should be someone you can have good fun with. I also believe that opposites attract, in friendships just as in romance."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you do to keep fit?"
+    user_model_answer: "I go to the gym twice a week. I don't really enjoy it, to be honest, but it's an easy way to keep fit. I mainly do cardiovascular exercises, rather than muscle building."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is the most popular sport in your country?"
+    user_model_answer: "I'd say the most popular sport is football, as in most countries. Most people have a favourite team who they support through thick and thin. The teams are often English ones, and Manchester United is the most well-known."

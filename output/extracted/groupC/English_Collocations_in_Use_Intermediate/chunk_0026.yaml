@@ -1,0 +1,152 @@
+vocabulary_entry:
+  topic_tags:
+  - work
+  - jobs
+  - career
+  - office
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 30
+  entries:
+  - term: take charge of
+    meaning: to assume control or responsibility for someone or something
+    example: Basically her role is to take charge of her boss, who is not a very organised
+      person.
+    band_suitability: 6.0+
+    register: neutral
+  - term: field telephone calls
+    meaning: to deal with phone calls, deciding which ones to handle and which to
+      pass on
+    example: She spends a lot of time answering the phone and fielding telephone calls
+      on his behalf.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make reservations
+    meaning: to book something (like a table, room, or ticket) in advance
+    example: When her boss has to travel, she makes the reservations for him.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give a presentation
+    meaning: to deliver a talk or display to an audience
+    example: When her boss has to give a presentation, she makes all the preparations
+      that are required.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take the minutes
+    meaning: to write down the official record of what is discussed and decided at
+      a meeting
+    example: She arranges meetings for him and she takes the minutes at the meetings.
+    band_suitability: 7.0+
+    register: formal
+  - term: keep a record of
+    meaning: to write down or store information about events or actions for future
+      reference
+    example: She keeps a record of everything she does at work and sets herself targets.
+    band_suitability: 6.0+
+    register: neutral
+  - term: set targets
+    meaning: to establish goals or objectives to be achieved
+    example: She keeps a record of everything she does at work and sets herself targets.
+    band_suitability: 6.0+
+    register: neutral
+  - term: achieve goals
+    meaning: to successfully accomplish the objectives you aimed for
+    example: She does her best to achieve her goals.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hand in my notice
+    meaning: to formally resign or inform your employer that you are leaving your
+      job
+    example: Today the first thing on her list is 'Hand in my notice'!
+    band_suitability: 7.0+
+    register: neutral
+  - term: take early retirement
+    meaning: to stop working and retire before the usual or statutory age
+    example: But she’s not going to take early retirement.
+    band_suitability: 7.0+
+    register: neutral
+  - term: competitive salary
+    meaning: a pay package that is as good as or better than other companies offer
+      for similar jobs
+    example: A competitive salary and generous benefits are available for the right
+      candidate.
+    band_suitability: 7.0+
+    register: formal
+  - term: generous benefits
+    meaning: extra advantages or perks provided by an employer in addition to salary
+      (e.g., healthcare, pension)
+    example: A competitive salary and generous benefits are available for the right
+      candidate.
+    band_suitability: 7.0+
+    register: formal
+  - term: at short notice
+    meaning: with very little warning or time to prepare
+    example: You must have a good knowledge of current markets, be available to start
+      work at short notice...
+    band_suitability: 7.0+
+    register: neutral
+  - term: team player
+    meaning: a person who works well as a member of a team
+    example: '...and must be a good team player.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: embark on a career
+    meaning: to start a profession or series of connected employment opportunities
+    example: '...for anyone wishing to embark on a career in senior management.'
+    band_suitability: 7.0+
+    register: formal
+  - term: working under stress
+    meaning: handling pressure effectively in a professional environment
+    example: Degree in Business, used to working under stress and meeting deadlines.
+    band_suitability: 6.0+
+    register: neutral
+  - term: meeting deadlines
+    meaning: completing tasks by the required time
+    example: Degree in Business, used to working under stress and meeting deadlines.
+    band_suitability: 6.0+
+    register: neutral
+  - term: dead-end job
+    meaning: a job with low wages and no prospects of promotion or advancement
+    example: Kika started out in a dead-end job in a jam factory...
+    band_suitability: 7.0+
+    register: neutral
+  - term: glittering career
+    meaning: a highly successful, brilliant, and impressive career
+    example: '...but she ended up with a glittering career on the stage...'
+    band_suitability: 8.0+
+    register: neutral
+  - term: lucrative job
+    meaning: a job that produces a lot of money; well-paying
+    example: Stage acting may not be a particularly lucrative job...
+    band_suitability: 7.0+
+    register: neutral
+  - term: rewarding job
+    meaning: a job that provides personal satisfaction or fulfillment
+    example: '...but it has to be one of the most rewarding jobs in the world.'
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

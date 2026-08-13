@@ -1,0 +1,122 @@
+vocabulary_entry:
+  topic_tags:
+  - advice
+  - warning
+  - behavior
+  - decision_making
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 42
+  entries:
+  - term: turn over a new leaf
+    meaning: start to behave in a better or more responsible way
+    example: You've been behaving very badly. It's time to turn over a new leaf and
+      start behaving responsibly.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ring the changes
+    meaning: make something more interesting by changing it in some way
+    example: Well, if you're bored with your job, maybe it's time to ring the changes
+      and look for something new.
+    band_suitability: 8.0+
+    register: neutral
+  - term: put your shoulder to the wheel
+    meaning: make a great effort and work hard
+    example: You'll never pass your exams if you don't work hard. You need to put
+      your shoulder to the wheel and start studying.
+    band_suitability: 8.0+
+    register: neutral
+  - term: reach for the stars
+    meaning: try to achieve your ambitions or something that is very difficult
+    example: My advice to you is to reach for the stars. You can achieve anything
+      you want.
+    band_suitability: 7.0+
+    register: neutral
+  - term: think twice
+    meaning: think carefully before making a decision
+    example: If I were you, I'd think twice before taking the job.
+    band_suitability: 6.0+
+    register: neutral
+  - term: put your money where your mouth is
+    meaning: do something practical about something you believe in, especially give
+      money
+    example: You keep saying you want to give to charity, but now it's time to put
+      your money where your mouth is!
+    band_suitability: 8.0+
+    register: informal
+  - term: tempting fate
+    meaning: causing bad luck for yourself by talking or acting too confidently
+    example: Don't assume you're going to get into university. Buying all your books
+      before you get a place is tempting fate.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bite the bullet
+    meaning: force yourself to do something difficult or unpleasant
+    example: Sandra, you need to bite the bullet and tell her.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stick my neck out
+    meaning: give an opinion which others might not like or which others are afraid
+      to give
+    example: Be careful what you say! I wouldn't stick my neck out if I were you.
+    band_suitability: 8.0+
+    register: informal
+  - term: on thin ice
+    meaning: taking a risk
+    example: I really think you are on thin ice when you criticise your manager so
+      strongly.
+    band_suitability: 7.0+
+    register: neutral
+  - term: upset the apple cart
+    meaning: cause trouble or spoil people's plans
+    example: Let's just agree with the plan. We don't want to upset the apple cart.
+    band_suitability: 8.0+
+    register: neutral
+  - term: tough it out
+    meaning: face a difficult situation without changing your plans or opinions
+    example: I know things are difficult, but you'll just have to tough it out.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bite off more than you can chew
+    meaning: try to do more than you are able to
+    example: It's great that you want to start your own business, but don't bite off
+      more than you can chew.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cross that bridge when we come to it
+    meaning: face a problem when it happens, not now
+    example: Don't worry about paying for your university studies. We'll cross that
+      bridge when we come to it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: trim our sails
+    meaning: spend less money
+    example: Business is not looking good. We have to trim our sails and be more realistic
+      about our costs.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

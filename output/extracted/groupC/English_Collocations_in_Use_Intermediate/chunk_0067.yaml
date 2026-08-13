@@ -1,0 +1,210 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - general vocabulary
+  - phrasal verbs
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: axe jobs
+    meaning: to cut or reduce jobs in a company or organization
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: confirmed bachelor
+    meaning: a man who has decided never to marry
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: back issues
+    meaning: medical problems related to the spine or back
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: pat on the back
+    meaning: praise or approval for something well done
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: back up an argument
+    meaning: to support an argument with evidence or reasons
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: background music
+    meaning: music played quietly in the background while people are doing something
+      else
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: create a bad impression
+    meaning: to make people think negative things about you
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: leave a bad taste in your mouth
+    meaning: to cause a negative feeling or memory that stays after an event
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: balanced diet
+    meaning: a diet containing the right mix of different types of food
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: go bankrupt
+    meaning: to run out of money and be unable to pay debts
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: decisive battle
+    meaning: a battle that has a very important effect on the final result of a war
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: beneficial effect
+    meaning: a helpful or good outcome or impact
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: generous benefits
+    meaning: good perks or financial advantages provided by an employer
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: achieve a personal best
+    meaning: to achieve the best result one has ever achieved in a sport or activity
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: big decision
+    meaning: an important choice that affects your life significantly
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: biting wind
+    meaning: a very cold and sharp wind
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: bitter dispute
+    meaning: an intense and angry argument or disagreement
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bitterly disappointed
+    meaning: extremely unhappy because something was not as good as expected
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: blanket of fog
+    meaning: a thick layer of fog covering an area
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: blissfully happy
+    meaning: extremely happy and peaceful
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: blaze of glory
+    meaning: a dramatic and impressive end or finish to something
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: blood relative
+    meaning: someone related by birth rather than marriage
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: blot out a memory
+    meaning: to try to intentionally forget or erase a memory
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: blow the whistle
+    meaning: to reveal illegal or dishonest activities happening in an organization
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: breathtaking scenery
+    meaning: extremely beautiful natural views
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: breed crime
+    meaning: to cause or encourage crime to develop
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: brief chat
+    meaning: a short conversation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: brutally honest
+    meaning: so honest that it might hurt someone's feelings
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: budget accommodation
+    meaning: cheap places to stay
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: balance the budget
+    meaning: to make sure that income matches expenses
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: bumper-to-bumper traffic
+    meaning: very heavy traffic where cars are moving very slowly close together
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: burning desire
+    meaning: a very strong and intense wish for something
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: burst into tears
+    meaning: to suddenly begin to cry
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: business is booming
+    meaning: business is growing and making a lot of profit quickly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: set up a business
+    meaning: to start a new business
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

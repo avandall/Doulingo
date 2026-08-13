@@ -1,0 +1,63 @@
+content_unit:
+  template_type: scenario
+  title: 'Part 2: Describing an arts or media event'
+  topic_tags:
+  - Arts
+  - Media
+  - Events
+  - Describing Experience
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: 'Listening_and_Speaking_for_IELTS_6.0-7.5.md, Part 2: Describing
+    an arts or media event'
+band_tiers:
+- band_min: 6.0
+  band_max: 6.5
+  can_do_description: Able to describe events using basic past tenses and vocabulary
+    related to arts/media. May struggle with complex descriptive adjectives.
+  grammar_required:
+  - Past Simple
+  - Present Perfect
+  - Adverbs of frequency
+  vocabulary_core:
+  - exhibition
+  - performance
+  - theatre
+  - concert
+  - tickets
+  vocabulary_stretch:
+  - landscape
+  - featuring
+  - admission
+  sentence_length_target: moderate
+  common_errors_to_simulate: Over-reliance on simple 'I liked it' or 'It was good'.
+    Difficulty in paraphrasing the event type.
+- band_min: 7.0
+  band_max: 7.5
+  can_do_description: Able to provide detailed descriptions of artistic events, expressing
+    personal opinions and nuances about the quality of the event.
+  grammar_required:
+  - Passive voice for event description
+  - Relative clauses
+  - Modals for speculation/opinion
+  vocabulary_core:
+  - orchestra
+  - symphony
+  - photographer
+  - dramatic society
+  vocabulary_stretch:
+  - exploring the relationship
+  - featuring
+  - admission policy
+  sentence_length_target: long and complex
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

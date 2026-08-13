@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Oral Exercises: Talking about Home Towns"
+  topic_tags: ["Hometown", "Geography", "Comparison"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Có thể trả lời các câu hỏi cơ bản về địa điểm, thời tiết. Câu trả lời còn ngắn, sử dụng cấu trúc đơn giản, thiếu tính kết nối."
+    grammar_required: 
+      - Present simple
+      - Comparative adjectives (e.g., hotter, more modern)
+    vocabulary_core: ["located in", "famous for", "scenery", "fishing village"]
+    vocabulary_stretch: ["tourist destination", "pace of life"]
+    sentence_length_target: "Simple sentences (10-15 words)"
+    common_errors_to_simulate: "Thiếu mạo từ, dùng sai cấu trúc so sánh, từ vựng lặp lại nhiều lần."
+  - band_min: 6.5
+    band_max: 7.0
+    can_do_description: "Có thể mở rộng câu trả lời bằng cách cung cấp thêm thông tin chi tiết về lịch sử, thay đổi của địa phương và so sánh sự khác biệt."
+    grammar_required: ["Present perfect for changes", "Relative clauses", "Comparative/Superlative structures"]
+    vocabulary_core: ["seafood", "sand dunes", "relaxed", "ancient times"]
+    vocabulary_stretch: ["pace of life", "mould your personality", "historical sights"]
+    sentence_length_target: "Complex sentences with connectors (20+ words)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Could you tell me a bit about your home town?"
+    user_model_answer: "My home town is Phan Thiet. It is in the southeast. It is a quiet fishing village but now it is a tourist destination."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you think is the biggest difference between your home town and Ho Chi Minh City?"
+    user_model_answer: "I think the most significant difference is the pace of life. While Ho Chi Minh City is a bustling metropolis, life in Phan Thiet is much slower, more relaxed, and focuses more on natural scenery."

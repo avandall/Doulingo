@@ -1,0 +1,63 @@
+content_unit:
+  template_type: band_ladder
+  title: Strategies for Paraphrasing, Vague Language and Managing Examiner Interaction
+  topic_tags:
+  - Paraphrasing
+  - Vague Language
+  - Examiner Interaction
+  - Test Procedure
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Mat_Clark_IELTS_Speaking.md, Sections 4.3 - 4.5
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Struggles with precise vocabulary; often stops when a word is
+    forgotten. Tends to use exact numbers or overly simple responses.
+  grammar_required:
+  - Simple sentences
+  - basic conjunctions
+  vocabulary_core:
+  - General nouns
+  - verbs
+  vocabulary_stretch:
+  - None
+  sentence_length_target: Short, simple sentences
+  common_errors_to_simulate: Repeating the same exact question when failing to understand;
+    inability to circumlocute; giving overly precise numbers when a range is sufficient.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to paraphrase effectively when stuck; uses 'vague language'
+    to sound natural and native-like; manages interaction with the examiner appropriately.
+  grammar_required:
+  - Complex sentence structures
+  - natural fillers
+  vocabulary_core:
+  - Idiomatic expressions
+  - vague language markers
+  vocabulary_stretch:
+  - Circumlocution phrases
+  - precise hedging
+  sentence_length_target: Varied, fluid sentences with natural hesitations
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Where do you usually buy your clothes?
+  user_model_answer: I buy clothes at a shop that sells clothes for young people.
+    It is a shop in the mall.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Where do you usually buy your clothes?
+  user_model_answer: I usually pick up items at a craft shop or somewhere like that
+    in the city center. It’s hard to remember the exact name, but it’s a kind of boutique
+    that specializes in casual wear.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: What time did you arrive at the test center?
+  user_model_answer: I arrived at 6:30. It was very enjoyable and informative.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: What time did you arrive at the test center?
+  user_model_answer: I arrived at half six-ish. It was nearly half past six when I
+    got here.

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Language step 1: Prefer - Grammar Structures for Preferences"
+  topic_tags: ["Preference", "Grammar", "Speaking Part 1"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Language step 1: Prefer"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate can state preferences using basic structures but may struggle with consistent verb patterns (to/rather than)."
+    grammar_required: ["prefer + verb-ing", "prefer + to-infinitive"]
+    vocabulary_core: ["cycling", "travelling", "taking the bus"]
+    vocabulary_stretch: ["rather than"]
+    sentence_length_target: "short-medium"
+    common_errors_to_simulate: "Mixing up prepositions: e.g., 'I prefer cycling than taking the bus' (missing 'to') or 'I prefer to cycle to take the bus' (misusing 'to' instead of 'rather than')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses both structures accurately and consistently, demonstrating awareness of the specific connectors required for each form."
+    grammar_required: ["prefer + verb-ing + to/rather than + verb-ing", "prefer + to verb + rather than + verb"]
+    vocabulary_core: ["cycling", "reading", "cooking"]
+    vocabulary_stretch: ["rather than", "prefer X to Y"]
+    sentence_length_target: "medium-long"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you prefer cycling or taking the bus?"
+    user_model_answer: "I prefer cycling to taking the bus."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you prefer cycling or taking the bus?"
+    user_model_answer: "Actually, I prefer to cycle rather than take the bus because it's better for my health."

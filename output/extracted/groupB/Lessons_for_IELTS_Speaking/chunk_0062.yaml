@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Adverbial Phrases of Purpose (to + verb vs for + noun)"
+  topic_tags: ["Grammar", "Leisure Time", "Sentence Structure"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Grammar"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Students at this level often struggle to express purpose, leading to repetitive 'because I like...' structures."
+    grammar_required: 
+      - Infinitive of purpose (to + verb)
+      - Prepositional phrases (for + noun)
+    vocabulary_core: ["relax", "fun", "enjoyment", "spare time"]
+    vocabulary_stretch: ["entertainment", "socialise", "keep in touch"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Confusing 'for' and 'to' (e.g., 'I go to the park for relax' instead of 'to relax' or 'for relaxation')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to naturally integrate adverbial phrases to provide detailed reasons for preferences."
+    grammar_required: ["Complex sentence structures with embedded adverbial clauses"]
+    vocabulary_core: ["leisure time", "relaxation", "communication"]
+    vocabulary_stretch: ["overseas", "creative", "practise"]
+    sentence_length_target: "Variable length, complex sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you like to do in your free time?"
+    user_model_answer: "I like to chat with my friends online for fun."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Why do you study English?"
+    user_model_answer: "I study English in my free time to get good marks and to communicate with my friends."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you do to relax?"
+    user_model_answer: "I often read novels in my spare time for relaxation, but I also use Facebook to keep in touch with friends overseas."

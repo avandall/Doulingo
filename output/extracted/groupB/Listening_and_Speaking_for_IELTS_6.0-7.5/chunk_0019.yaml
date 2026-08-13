@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Environment and Climate Change — Structuring Analytical Answers"
+  topic_tags: [environment, climate_change, natural_disasters]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to provide direct answers with basic linking phrases. Uses standard vocabulary but may rely on repetitive structures."
+    grammar_required: [passive_voice, modals_of_possibility]
+    vocabulary_core: [global_warming, climate_change, disaster, environment, crisis]
+    vocabulary_stretch: [deteriorating, consequences, humanitarian]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Limited range of complex connectors; over-use of simple present tense; failing to distinguish between specific adjectives (e.g., using 'main' instead of 'widespread')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of topic-specific vocabulary and advanced discourse markers. Addresses questions with nuanced explanations, predictions, and comparisons."
+    grammar_required: [future_speculation, conditional_structures, passive_voice]
+    vocabulary_core: [irreversible, far-reaching, ongoing, impending, devastation]
+    vocabulary_stretch: [humanitarian_crisis, environmental_consequences, long-term_damage]
+    sentence_length_target: "complex/varied"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How has the climate changed in your country in recent years?"
+    user_model_answer: "The climate has changed a lot. We have more heat waves and there is less rain. This can cause many problems like a poor harvest."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How has the climate changed in your country in recent years?"
+    user_model_answer: "It’s quite noticeable that the weather patterns have shifted significantly. We are seeing more frequent heat waves and unpredictable rainfall, which has led to serious environmental consequences like a poor harvest, affecting the local economy."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What can individuals do to protect the environment?"
+    user_model_answer: "Personally, I think individuals have a responsibility to act. It would be a good idea if we focused on reducing our carbon footprint, for instance by relying less on fossil fuels in our daily lives."

@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Present Perfect for IELTS Speaking"
+  topic_tags: [Grammar, Present Perfect, IELTS Part 1]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic present perfect structures but often mixes them up with past simple when specifying time."
+    grammar_required: ["have + past participle", "present perfect for life experience"]
+    vocabulary_core: ["newspapers", "magazines", "years", "since"]
+    vocabulary_stretch: ["international news", "teenager"]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Using present perfect with specific past time markers (e.g., 'I have visited London in 2010' instead of 'I visited London in 2010')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses present perfect naturally to connect past experience to the present and distinguishes it correctly from past simple."
+    grammar_required: 
+      - present perfect for duration (since/for)
+      - present perfect for recent events
+    vocabulary_core: ["experience", "connection", "duration"]
+    vocabulary_stretch: ["uncompleted action", "implication"]
+    sentence_length_target: "compound sentences with extra information"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Have you ever read a foreign newspaper?"
+    user_model_answer: "Yes, I have. I read one in the library yesterday."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How long have you lived in your city?"
+    user_model_answer: "I've lived there for 5 years - ever since my family moved from the countryside to look for better work opportunities."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Have you ever bought a magazine?"
+    user_model_answer: "Yes, I have. I actually bought my first magazine when I was a teenager; I've been a regular reader of science magazines since then."

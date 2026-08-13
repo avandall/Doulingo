@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Expressing preferences using love/like/hate + V-ing"
+  topic_tags: ["Education", "School Life", "Grammar"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Can express basic likes and dislikes using simple structures, but often makes collocation errors or misuse of intensifiers."
+    grammar_required: 
+      - Gerunds (V-ing) after preference verbs
+    vocabulary_core: 
+      - love
+      - like
+      - "don't mind"
+      - "don't like"
+      - hate
+    vocabulary_stretch: ["studying", "learning"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Using 'very' before preference verbs (e.g., 'I very like studying...')"
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Uses correct intensifiers like 'really' and begins to provide reasons or examples to extend answers."
+    grammar_required: 
+      - Gerunds (V-ing) after preference verbs
+      - Adverb + Verb collocation
+    vocabulary_core: ["really like", "really love"]
+    vocabulary_stretch: ["providing reasons", "giving examples"]
+    sentence_length_target: "Compound sentences with reasons"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How do you feel about your school subjects?"
+    user_model_answer: "I very like studying maths because it is easy."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How do you feel about your school subjects?"
+    user_model_answer: "I really like studying English because I want to travel to different countries in the future."

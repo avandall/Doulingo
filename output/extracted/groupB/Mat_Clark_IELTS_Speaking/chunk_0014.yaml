@@ -1,0 +1,78 @@
+content_unit:
+  template_type: band_ladder
+  title: 'Mat Clark IELTS Speaking Topics: Vocabulary & Idioms for Everyday Life'
+  topic_tags:
+  - Going out
+  - Animals
+  - Routines
+  - Family
+  - Cooking
+  - Weddings
+  - Transport
+  - Travelling
+  - Names
+  - Food
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Mat_Clark_IELTS_Speaking.md, Topics 27-36
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Sử dụng từ vựng cơ bản, dễ lặp từ. Các thành ngữ (idioms) thường
+    bị dùng sai ngữ cảnh hoặc diễn đạt chưa tự nhiên.
+  vocabulary_core:
+  - habit
+  - routine
+  - relative
+  - transport
+  vocabulary_stretch:
+  - daily grind
+  - run in the family
+  - tie the knot
+  sentence_length_target: Ngắn, cấu trúc câu đơn
+  common_errors_to_simulate: 'Dùng sai giới từ trong thành ngữ (vd: ''run at the family''
+    thay vì ''run in the family''), dùng từ chưa đúng collocations (vd: ''do the housework''
+    thay vì ''do household chores'').'
+  grammar_required: []
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Sử dụng từ vựng đa dạng, chính xác theo chủ đề. Sử dụng thành
+    ngữ tự nhiên để diễn đạt ý tưởng phức tạp hoặc cảm xúc.
+  vocabulary_core:
+  - invigorating
+  - conventional
+  - domesticate
+  - congestion
+  vocabulary_stretch:
+  - in the wee hours
+  - off the beaten track
+  - wolf down
+  - lip-smacking
+  sentence_length_target: Câu phức, kết hợp linh hoạt giữa cụm từ vựng cố định và
+    ý kiến cá nhân
+  grammar_required: []
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Do you like your name?
+  user_model_answer: Yes, I like my name. It is a common name in my country. My parents
+    give it to me when I was born.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do you like your name?
+  user_model_answer: To be honest, my name is nothing out of the ordinary; it's quite
+    run-of-the-mill, actually. I was named after my great-grandfather, which is a
+    tradition in my family, so while it doesn't have a flashy meaning, it holds a
+    lot of sentimental value for me.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: How often do you go out in the evening?
+  user_model_answer: I go out sometimes. Usually on the weekend. I go to café or meet
+    friends.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: How often do you go out in the evening?
+  user_model_answer: I try to head out a few times a week. My regular late-night haunt
+    is a trendy little café nearby, though I usually have to make sure I get home
+    before the wee hours because I have work the next morning.

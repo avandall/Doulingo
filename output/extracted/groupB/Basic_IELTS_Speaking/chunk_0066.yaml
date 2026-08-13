@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Language step 2: Comparatives"
+  topic_tags: ["Grammar", "Comparatives", "Expressing Preferences"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Language step 2: Comparatives"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates use basic comparative adjectives but may struggle with irregular forms or complex structures."
+    grammar_required: ["X + be + comparative + than + Y"]
+    vocabulary_core: ["cheap", "fast", "slow", "easy"]
+    vocabulary_stretch: ["convenient", "sociable"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Forgetting the 'than' after the comparative; adding '-er' to long adjectives (e.g., 'more expensive' becomes 'expensiver')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use a variety of comparative forms, including irregulars and emphatic structures, to justify preferences."
+    grammar_required: ["X + be + comparative + than + Y", "X + be + not as + adjective + as + Y", "much + comparative"]
+    vocabulary_core: ["better", "worse", "further"]
+    vocabulary_stretch: ["convenient", "sociable", "comfortable"]
+    sentence_length_target: "Complex sentences with cohesive justifications"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you prefer cycling or taking the bus?"
+    user_model_answer: "Cycling is so much more convenient than taking the bus if you're not travelling too far. It's often faster because you don't get stuck in traffic, and it's also better for my health than buses."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you prefer chatting online or talking on the phone?"
+    user_model_answer: "I find that chatting online can be more sociable as you can speak to more than one person at the same time. Also, it's often much more fun because you can send smileys, photos and even videos!"

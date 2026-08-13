@@ -1,0 +1,146 @@
+vocabulary_entry:
+  topic_tags:
+  - decision_making
+  - work
+  - problems
+  - behavior
+  - relationships
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: be caught between a rock and a hard place
+    meaning: to be in a difficult situation where there are two equally unpleasant
+      choices
+    example: Whatever I decide to do there will be problems. I'm caught between a
+      rock and a hard place.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be a hard act to follow
+    meaning: to be so good that whoever or whatever replaces you will find it very
+      difficult to be as successful
+    example: Colin was such a good manager that he is going to be a hard act to follow.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be too much like hard work
+    meaning: to be too tiring, difficult, or require too much effort
+    example: I certainly don't want to help my dad plant some rose bushes. It sounds
+      too much like hard work to me.
+    band_suitability: 6.0+
+    register: informal
+  - term: fall from grace
+    meaning: to lose the approval, respect, or power you once had
+    example: It seems that the prime minister's special adviser, Lily Sparks, has
+      fallen from grace, and she is expected to resign soon.
+    band_suitability: 8.0+
+    register: formal
+  - term: fall into line
+    meaning: to start following rules and guidelines; to obey authority
+    example: Everyone had to fall into line and work longer hours for the same pay.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall foul of something
+    meaning: to get into trouble with a person, authority, or law
+    example: The deal fell foul of the export regulations and had to be cancelled
+      at the last minute.
+    band_suitability: 8.0+
+    register: formal
+  - term: fall short of something
+    meaning: to fail to reach a standard, level, or amount
+    example: The report falls short of an outright condemnation of the government's
+      actions, but it does contain strong criticism.
+    band_suitability: 8.0+
+    register: formal
+  - term: fall for something hook, line and sinker
+    meaning: to be completely deceived by a trick or lie, or to fall madly in love
+    example: I didn't realise she was deceiving me, and I fell for it hook, line and
+      sinker.
+    band_suitability: 7.0+
+    register: informal
+  - term: fall apart at the seams
+    meaning: to be in a very bad condition and close to failing completely
+    example: It looks as if the whole system is falling apart at the seams.
+    band_suitability: 7.0+
+    register: informal
+  - term: fall into someone's lap
+    meaning: to be received easily without any effort
+    example: I didn't really have to do anything to get the job. It just fell into
+      my lap.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall over oneself
+    meaning: to be very keen and eager to do something
+    example: If someone falls over themselves to do something, it means they are very
+      keen and eager to do it.
+    band_suitability: 8.0+
+    register: informal
+  - term: a woman/man after my own heart
+    meaning: someone who shares your tastes, views, or desires
+    example: She's very much a woman after my own heart.
+    band_suitability: 7.0+
+    register: neutral
+  - term: blow one's own trumpet
+    meaning: to boast about your own successes and abilities
+    example: He's always blowing his own trumpet, and when they come to my flat, he
+      behaves as if he owns the place.
+    band_suitability: 7.0+
+    register: informal
+  - term: come into one's own
+    meaning: to show how good or talented you really are
+    example: I really think she'd come into her own if they did.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get one's own back
+    meaning: to take revenge on someone for something they did to you
+    example: I must think of a way of getting my own back on Matt for playing that
+      trick on me.
+    band_suitability: 7.0+
+    register: informal
+  - term: save one's own skin
+    meaning: to protect yourself from harm or danger, often at the expense of others
+    example: He told the police who had really planned the burglary, in order to save
+      his own skin.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hold one's own
+    meaning: to remain brave, successful, or capable in a difficult situation
+    example: Tim was smaller than the other judo players, but he held his own.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dig one's own grave
+    meaning: to cause your own failure or problems through your own actions
+    example: You're digging your own grave by putting your boss in such a difficult
+      position.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play someone at their own game
+    meaning: to use the same methods or tactics that an opponent uses against them
+    example: If women want to succeed in politics, they have to play men at their
+      own game.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

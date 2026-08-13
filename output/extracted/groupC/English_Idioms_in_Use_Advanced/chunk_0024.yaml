@@ -1,0 +1,126 @@
+vocabulary_entry:
+  topic_tags:
+  - family
+  - relationships
+  - friends
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: a twinkle in his father's eye
+    meaning: to not have been born yet (humorous)
+    example: It seems like only yesterday that my son Jason was a twinkle in his father's
+      eye
+    band_suitability: 8.0+
+    register: informal
+  - term: fly the nest
+    meaning: to leave home to live independently
+    example: now suddenly he's 18 and about to fly the nest.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the spitting image of
+    meaning: to look very much like someone
+    example: He's the spitting image of his dad now.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a chip off the old block
+    meaning: similar in personality to one of his parents or an older family member
+    example: he's a real chip off the old block!
+    band_suitability: 7.0+
+    register: neutral
+  - term: run in the family
+    meaning: a characteristic shared by many members of a family
+    example: tall men seem to run in the family.
+    band_suitability: 6.0+
+    register: neutral
+  - term: nearest and dearest
+    meaning: one's family
+    example: it's sad when your nearest and dearest move away.
+    band_suitability: 7.0+
+    register: informal
+  - term: flesh and blood
+    meaning: relatives/family members
+    example: It's hard not being able to visit your own flesh and blood very often.
+    band_suitability: 7.0+
+    register: neutral
+  - term: live in each other's pockets
+    meaning: to do everything together / spend all time together
+    example: We never lived in each other's pockets.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go back a long way
+    meaning: to have known each other for a long time
+    example: You and a good friend go back a long way.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give someone the time of day
+    meaning: to refuse to speak to someone because you think you are better than them
+      or do not like them
+    example: your old friend won't even give you the time of day.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have the ear of someone
+    meaning: to have someone in authority ready to listen to your views and ideas
+    example: You have the ear of someone in authority.
+    band_suitability: 8.0+
+    register: formal
+  - term: friends in high places
+    meaning: to know people who are important and influential
+    example: If you have friends in high places...
+    band_suitability: 7.0+
+    register: neutral
+  - term: rub shoulders with
+    meaning: to spend time with important or famous people
+    example: if you often rub shoulders with important people...
+    band_suitability: 7.0+
+    register: neutral
+  - term: fair-weather friend
+    meaning: someone who is your friend only when things are going well for you
+    example: a fair-weather friend will let you down when you need them most.
+    band_suitability: 7.0+
+    register: neutral
+  - term: through thick and thin
+    meaning: through both good and bad situations
+    example: real friends are those who stand by you through thick and thin.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a tower of strength
+    meaning: someone who supports you a lot in difficult situations
+    example: real friends are... a tower of strength in difficult times.
+    band_suitability: 8.0+
+    register: neutral
+  - term: an old flame
+    meaning: someone you had a romantic relationship with in the past
+    example: An old flame makes an appearance this week.
+    band_suitability: 7.0+
+    register: neutral
+  - term: footloose and fancy-free
+    meaning: free and without responsibilities to anyone
+    example: do you want to stay footloose and fancy-free forever?
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

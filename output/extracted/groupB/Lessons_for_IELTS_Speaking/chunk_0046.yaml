@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Describing Places — Comparative Perspectives"
+  topic_tags: ["Hometown", "Environment", "Living Conditions"]
+  target_band_min: 5.5
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Script for Activity 9 - Student B"
+
+band_tiers:
+  - band_min: 5.5
+    band_max: 6.0
+    can_do_description: "Focus on simple, repetitive sentence structures, basic vocabulary for location (crowded, traffic, beach), and frequent use of simple conjunctions (but, and)."
+    grammar_required: ["Simple present tense", "Prepositions of place"]
+    vocabulary_core: ["crowded", "traffic", "pollution", "mountains", "beach"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of complex connectors, repetitive sentence starters (It is... / There are...)"
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Ability to provide detailed descriptions with thematic vocabulary and natural cohesion. Uses varied sentence structures to convey contrasting ideas."
+    grammar_required: ["Relative clauses", "Participial phrases", "Passive voice for description"]
+    vocabulary_core: ["sprawling", "historic", "international", "pollution", "gorgeous"]
+    vocabulary_stretch: ["keep to themselves", "year-round seasons", "surrounded by"]
+    sentence_length_target: "Varied; combination of simple and complex sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you describe the place where you live?"
+    user_model_answer: "I live in an apartment in a big city. It's crowded, lots of traffic at all times of the day causing pollution. It's too hot most of the time. We have some beautiful beaches here in central Florida, but I never get to them any more."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is your hometown like in terms of environment?"
+    user_model_answer: "Well, it's a sprawling suburban area with few stores or highways. There's not much industry, and the environment is not polluted. We get year-round seasons, particularly a gorgeous fall. Unfortunately, the people keep to themselves most of the time, and it's hard to make friends."

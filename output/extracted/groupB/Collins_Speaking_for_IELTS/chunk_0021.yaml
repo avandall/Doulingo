@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Collins Speaking for IELTS: Culture and Modern Society"
+  topic_tags: [festivals, culture, heritage, future_plans]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 10"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phát âm còn rời rạc, chưa sử dụng kỹ thuật nối âm (linking). Sử dụng từ vựng ở mức cơ bản, dễ lặp từ."
+    grammar_required: [present_simple]
+    vocabulary_core: [festival, heritage, celebration, historical]
+    vocabulary_stretch: [archaeology, significance, designation]
+    sentence_length_target: "Ngắn, cấu trúc đơn giản"
+    common_errors_to_simulate: "Không thực hiện nối âm giữa phụ âm và nguyên âm (ví dụ: 'most important' đọc tách rời), phát âm sai các weak forms của 'for', 'and'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng thành thạo kỹ thuật nối âm (linking) giữa các từ, giúp lời nói trôi chảy tự nhiên. Sử dụng đa dạng các thì tương lai (present continuous, be going to) để mô tả kế hoạch."
+    grammar_required: [present_continuous_for_future, be_going_to_for_intent]
+    vocabulary_core: [ascend, anniversary, remnants, elaborate]
+    vocabulary_stretch: [UNESCO_designation, sophisticated, commemorate]
+    sentence_length_target: "Phức hợp, có sử dụng mệnh đề quan hệ và các từ nối"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a festival that you enjoy. You should say: when it occurs, where it occurs, what happens during it, and explain why you enjoy it."
+    user_model_answer: "Our most important festival is without doubt the anniversary of when our King ascended to the throne. It takes place in May, and there are massive celebrations in every city. We usually have a day off, and our national anthem is performed; everyone knows the words, so we all sing along. I enjoy it because it brings the whole community together."

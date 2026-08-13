@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Using broad generalisations — Strategy and Improvement"
+  topic_tags: ["Work", "Communication Strategy"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Using broad generalisations"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Answers tend to rely on broad generalizations or listing items redundantly (e.g., using 'such as' excessively). Ideas are not well-supported."
+    grammar_required: ["Simple present tense", "Basic conjunctions"]
+    vocabulary_core: ["busy", "work", "office"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, fragmented"
+    common_errors_to_simulate: "Overusing list fillers like 'such as', 'and so on'; relying on vague generalizations instead of concrete details."
+  - band_min: 6.5
+    band_max: 7.0
+    can_do_description: "Provides specific examples and explanations to support the main point. Answers are personal, authentic, and show oral ability through content depth rather than 'big' words."
+    grammar_required: ["Complex sentences with causes and effects", "Specific descriptive verbs"]
+    vocabulary_core: ["tasks", "department", "planning"]
+    vocabulary_stretch: ["market analysis", "unpredictable workload"]
+    sentence_length_target: "varied, complex structures"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Are you busy with your work?"
+    user_model_answer: "Yes, I am very busy. Every day I have to work in the office for about 13 hours. Sometimes, I even have to work during public holidays such as the Spring Festival, National Day, May Day, and so on."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Are you busy with your work?"
+    user_model_answer: "Yes, I am quite busy with my work. Every day I have to complete a few tasks like checking the daily work of our department, writing reports and planning for the market. No one knows how much time all these tasks take and what else will come up. Most of the time, I have to work around 13 hours a day."

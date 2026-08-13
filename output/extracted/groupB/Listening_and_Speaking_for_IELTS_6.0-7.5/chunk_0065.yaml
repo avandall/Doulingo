@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Follow-up questions — Matching exercise"
+  topic_tags: ["Money", "Shopping", "Planning"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Follow-up questions"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Thí sinh trả lời trực tiếp vào câu hỏi, sử dụng cấu trúc câu đơn giản và từ vựng thông dụng."
+    grammar_required: ["Present simple", "Future simple"]
+    vocabulary_core: ["save money", "spend", "buy", "expensive"]
+    vocabulary_stretch: ["on credit", "take out a loan"]
+    sentence_length_target: "10-15 words"
+    common_errors_to_simulate: "Lặp từ vựng câu hỏi, thiếu các từ nối để mở rộng câu trả lời."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Thí sinh mở rộng câu trả lời bằng cách đưa ra lý do hoặc tình huống giả định."
+    grammar_required: ["First conditional", "Modals for probability"]
+    vocabulary_core: ["motivated", "afford", "replace"]
+    vocabulary_stretch: ["model", "credit", "loan"]
+    sentence_length_target: "15-25 words"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How do you plan to use this object in the future?"
+    user_model_answer: "I still use it every day and I expect that will continue, at least until I replace it with the next model."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Was it easy to save money for this?"
+    user_model_answer: "I suppose I was motivated to do it quickly so that helped but it still took me a long time to get enough together to afford it."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Are there any other ways to buy things other than saving money?"
+    user_model_answer: "If you haven't got the money you might buy things on credit or take out a loan for an expensive item."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you prefer to spend or save money?"
+    user_model_answer: "I absolutely love shopping, particularly for clothes and music so that's where most of my money goes, I'm afraid."

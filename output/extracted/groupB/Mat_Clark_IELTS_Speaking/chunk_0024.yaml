@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mat Clark IELTS Speaking — Strategies for Cue Card Topics"
+  topic_tags: [IELTS Speaking Part 2, Strategies, Grammar Points]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Sections: Experiences & Place Descriptions"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể mô tả các sự kiện cơ bản nhưng thường gặp khó khăn trong việc kết hợp linh hoạt các thì (tense) hoặc sử dụng các cấu trúc điều kiện để nâng cao độ phức tạp."
+    grammar_required: [Past simple, Present simple, Present perfect]
+    vocabulary_core: [celebration, monument, sculpture, course]
+    vocabulary_stretch: [all mod cons, get to grips with, easier said than done]
+    sentence_length_target: "Ngắn, đơn giản, ít cấu trúc phức hợp."
+    common_errors_to_simulate: "Lạm dụng thì hiện tại cho các câu chuyện quá khứ; thiếu các từ nối để liên kết câu; phát âm sai các từ vựng chuyên ngành (ví dụ: monument, sculpture)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh sử dụng nhuần nhuyễn sự kết hợp giữa các thì (quá khứ để kể chuyện, hiện tại để đưa ra nhận định). Biết cách sử dụng câu điều kiện (if + would/could/might) để nói về dự định tương lai."
+    grammar_required: 
+      - Conditionals (if+would)
+      - Past continuous
+      - Present perfect continuous
+    vocabulary_core: [commemorative, bronze sculpture, enthusiastic, proficiency]
+    vocabulary_stretch: [engraved, dedicated to, a birthday bash, at the outset]
+    sentence_length_target: "Câu dài, có sự kết hợp giữa câu đơn và câu ghép phức hợp."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a happy event in your life."
+    user_model_answer: "It was my 18th birthday. I have a party at my house. Many friends come. We eat cake and listen to music. I am very happy because it is my special day."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a happy event in your life."
+    user_model_answer: "It was my 18th birthday, which was quite a milestone for me. At that time, I was studying for my exams, so I hadn’t had a proper party for a long time. My friends surprised me with a huge birthday bash; I was absolutely thrilled. I don't think I'll ever forget the cake they bought for me, as it was such an unexpected gesture."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a skill you would like to learn in the future."
+    user_model_answer: "I’ve been thinking about learning Japanese. I imagine the grammar would be quite tricky, especially the Kanji scripts. However, if all goes to plan, I would like to start a course next year. I might have some trouble with the pronunciation at first, but I guess I would be able to cope with the writing system eventually."

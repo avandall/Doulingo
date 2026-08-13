@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: "TV and Radio — Describing Programmes and Organising Answers"
+  topic_tags: [TV and radio, Part 1, Part 2, Speaking Skills]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 5"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on providing basic descriptions of programs using core vocabulary (genres) and frequency adverbs. Needs support in organizing long turns and extending answers."
+    grammar_required: 
+      - Adverbs of frequency (always, usually, sometimes, rarely, never)
+      - "Placement of adverbs before main verbs vs after verb 'to be"
+    vocabulary_core: ["documentaries", "game show", "presenter", "soap operas", "contestants", "talk shows", "drama series"]
+    vocabulary_stretch: ["participants", "entertaining", "plots"]
+    sentence_length_target: "Simple sentences extended by explanation/reasoning."
+    common_errors_to_simulate: "Misplacing adverbs of frequency (e.g., 'I watch always' instead of 'I always watch'), repetitive sentence structure ('I like... I like...')."
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Describe an interesting city you know and like."
+    user_model_answer: "I'd like to talk about a programme I learned something from. I learned about the writer's life. I learned she was from a poor family. I learned she had no qualifications from school. Then she lived in different countries. I watched it with my classmates. It was a documentary and it was about a famous writer."

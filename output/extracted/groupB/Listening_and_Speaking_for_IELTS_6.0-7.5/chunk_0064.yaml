@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 2: Describing objects"
+  topic_tags: [Describing objects, Possessions, IELTS Speaking Part 2]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Part 2: Describing objects"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to describe an object using basic adjectives and chronological sequence. Often relies on simple sentence structures and common vocabulary."
+    grammar_required: 
+      - Past simple for origin
+      - present simple for description
+      - used to
+    vocabulary_core: [sentimental value, heirloom, decorative, valuable, model]
+    vocabulary_stretch: [streamlined, antique, scratch]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Repeating simple 'It is/It was' structures; lack of complex prepositional phrases when describing physical appearance."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Able to convey nuances such as the object's history, its functional and emotional value, and personal anecdotes with varied vocabulary."
+    grammar_required: 
+      - Relative clauses
+      - "complex modal structures ('could have been', 'hope to pass')"
+      - passive voice
+    vocabulary_core: [sentimental value, heirloom, aesthetic appeal, functionality]
+    vocabulary_stretch: [exotic, character, streamlined, in pristine condition, inherited]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Describe an object you own that is important to you."
+    user_model_answer: "I have a ring that is very important to me. It was my great-grandmother's, so it is a family heirloom. It is quite old and has some scratches on the gold, but I like it. I wear it for special occasions. It makes my father happy when he sees it on my finger, so it means a lot to me."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe an object you own that is important to you."
+    user_model_answer: "A possession I truly cherish is a small antique chest I found in a local junk shop. It has incredible sentimental value to me, not because it’s expensive, but because of its history. The wood has these charming marks and hand-painted knobs that give it so much character. Even though it wasn't particularly valuable, it’s a beautiful piece for my living room, and visitors are always surprised to learn I picked it up for just five pounds."

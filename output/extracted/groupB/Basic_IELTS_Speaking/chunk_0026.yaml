@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Dialogue Study — Job Satisfaction and Career Choices"
+  topic_tags: ["Work", "Jobs", "Career"]
+  target_band_min: 5.5
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.5
+    band_max: 6.0
+    can_do_description: "Can describe job tasks and reasons for liking/disliking a job using simple structures. May lack complex vocabulary for workplace dynamics."
+    grammar_required: ["Present Simple", "Past Simple for job history", "I guess / I think"]
+    vocabulary_core: ["bookkeeping", "salary", "benefits", "computer company", "workplace"]
+    vocabulary_stretch: ["in my field", "long term", "satisfied"]
+    sentence_length_target: "Short to medium sentences"
+    common_errors_to_simulate: "Repetitive use of 'interesting', difficulty linking complex reasons for career changes."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can discuss career progression, weigh pros and cons of job offers, and talk about future professional goals with more precise vocabulary."
+    grammar_required: ["Conditional sentences", "Complex reporting clauses", "Passive voice for workplace tasks"]
+    vocabulary_core: ["import-export", "joint-venture", "challenging", "opportunities"]
+    vocabulary_stretch: ["contributing to the company", "career trajectory", "dissatisfied", "responsibilities"]
+    sentence_length_target: "Longer, compound-complex sentences with logical connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Why did you choose your current job?"
+    user_model_answer: "I guess I chose it because it was in my field, and the salary and benefits were quite good for a new university graduate."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you think you'll be working in the same job in 10 years' time?"
+    user_model_answer: "Quite possibly. I enjoy the challenges and feel that I am contributing to the company. I'm satisfied with my job for now, and would not be surprised if I stayed for a long time."

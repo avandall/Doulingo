@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: "Expressing Opinions and Sports Vocabulary"
+  topic_tags: ["Sports", "Fitness", "Health", "Opinions"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS, Expressing opinions / Vocabulary: Sports and fitness"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers are understandable but rely on basic structures, limited range of vocabulary, and potential repetitive or flat intonation."
+    grammar_required: 
+      - Simple sentences
+      - Basic modal verbs (can, will)
+    vocabulary_core: ["sport", "healthy", "exercise", "good/bad idea"]
+    vocabulary_stretch: ["nutritious", "cardiovascular", "initiative"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Monotone intonation (low and falling), lack of contrastive stress, overuse of simple adjectives, limited range of opinion phrases."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to use varied intonation to express enthusiasm or sarcasm; uses complex sentence structures and high-level collocations to justify opinions."
+    grammar_required: 
+      - Complex sentences
+      - Advanced modals (would, could, might)
+      - "Inversion (e.g., 'Not only that...')"
+    vocabulary_core: ["nail-biting", "major muscle groups", "cardiovascular exercise", "imposing tax"]
+    vocabulary_stretch: ["nanny state", "fatalities", "combat", "patronised"]
+    sentence_length_target: "Longer, compound-complex sentences with discourse markers"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think about children doing an hour of sport a day?"
+    user_model_answer: "I’m strongly in favour of making all children do at least one hour of sport a day. Obesity among children is a big problem in my country, and this initiative would help combat that."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think the government should tax unhealthy food?"
+    user_model_answer: "I must admit, I think a campaign promoting a balanced diet is better than taxing people, which is just another example of the government acting like a nanny state. I'm sure most people would prefer not to be patronised like that."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is the most interesting sport for you?"
+    user_model_answer: "My answer may surprise you but, in my view, the most interesting sport is figure skating. I'm always on the edge of my seat, willing the skater not to fall. It's so nail-biting."

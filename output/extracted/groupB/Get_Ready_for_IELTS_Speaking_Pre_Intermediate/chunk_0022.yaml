@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: "Get Ready for IELTS Speaking - TV Programmes and Weather"
+  topic_tags: ["Television", "Weather", "Hobbies"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Part 3: Exam practice"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Có thể đưa ra câu trả lời ngắn gọn, trực tiếp. Sử dụng các từ vựng cơ bản về chủ đề. Có xu hướng lặp lại từ hoặc cấu trúc đơn giản."
+    grammar_required: 
+      - Present Simple
+      - Adverbs of frequency (usually, sometimes)
+    vocabulary_core: ["soap operas", "reality TV", "drama series", "popular"]
+    vocabulary_stretch: ["entertainment", "relaxing", "exciting"]
+    sentence_length_target: "Ngắn, câu đơn hoặc câu ghép đơn giản."
+    common_errors_to_simulate: "Lặp từ 'nice', thiếu thông tin bổ trợ, trả lời không khớp hoàn toàn với câu hỏi (ví dụ: hiểu nhầm câu hỏi về sở thích thành câu hỏi về mô tả thời tiết)."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you usually watch on television?"
+    user_model_answer: "I usually watch reality TV shows or game shows. I sometimes watch drama series too."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Why do you think some TV programmes are popular?"
+    user_model_answer: "I think soap operas are popular because we like watching characters in real life. The characters are like friends or neighbours. It’s good entertainment, because it is sometimes relaxing and sometimes exciting."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Can you describe a TV programme you enjoy?"
+    user_model_answer: "I’d like to talk about a TV programme I enjoy watching called Chat Chat. It's a popular talk show and the guests are usually famous actors or singers. Firstly, my favourite parts are the presenter and the music. The presenter is very funny and very good at his job. Finally, I enjoy watching this programme because it is funny, interesting and relaxing."

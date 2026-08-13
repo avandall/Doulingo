@@ -1,0 +1,119 @@
+vocabulary_entry:
+  topic_tags:
+  - leadership
+  - traits
+  - workplace
+  - movies
+  - entertainment
+  - lifestyle
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - IELTS Nguyen Huyen
+  entries:
+  - term: empathetic and compassionate
+    meaning: able to understand and care about other people's feelings and needs
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: relate to others' perspectives
+    meaning: to understand and empathize with how other people see things
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: encourage openness and create a supportive environment
+    meaning: to foster a culture where people feel safe to share ideas and receive
+      help
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: convey ideas and expectations effectively
+    meaning: to communicate thoughts and what is required clearly and successfully
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: give constructive feedback
+    meaning: to offer useful and helpful criticism that encourages improvement
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: foster open communication
+    meaning: to promote and encourage free and honest discussion within a group
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: make informed decisions under pressure
+    meaning: to choose wisely in stressful situations based on good information
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: handle challenges without losing their composure
+    meaning: to deal with difficulties calmly and professionally
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: earn trust and respect
+    meaning: to gain the confidence and admiration of others through one's actions
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: transparency and fairness
+    meaning: openness and just treatment in actions and decision-making
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: inspire others through passion and vision
+    meaning: to motivate people by showing strong enthusiasm and a clear future goal
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: provide an immersive experience
+    meaning: to create an engaging environment that completely draws the audience
+      in
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: state-of-the-art sound systems
+    meaning: audio equipment that uses the most modern and advanced technology
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: amplify the impact
+    meaning: to increase or enhance the effect of something
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: latest blockbusters
+    meaning: the newest extremely popular and commercially successful movies
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: offer an escape from everyday life
+    meaning: to provide a way to temporarily forget about daily routines and stress
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,101 @@
+vocabulary_entry:
+  topic_tags:
+  - colour
+  - light
+  - metaphors
+  - texture
+  - descriptions
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 43 & 44
+  entries:
+  - term: grey area
+    meaning: an unclear area or situation
+    example: The law about re-using pictures from the internet seems to be a grey
+      area.
+    band_suitability: 6.0+
+    register: neutral
+  - term: add colour to
+    meaning: make something less boring
+    example: The trip to Brazil certainly added colour to our rather boring lives.
+    band_suitability: 7.0+
+    register: neutral
+  - term: green issues
+    meaning: environmental topics or problems
+    example: My brother cares a lot about green issues and has volunteered to do conservation
+      work.
+    band_suitability: 6.0+
+    register: neutral
+  - term: blacken someone's name
+    meaning: destroy someone's reputation
+    example: The government tried to blacken his name because he was critical of their
+      policies.
+    band_suitability: 8.0+
+    register: formal
+  - term: shed/throw some light on
+    meaning: explain something or make it easier to understand
+    example: I’m hoping Hilary can shed some light on what happened at work yesterday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cast a shadow over
+    meaning: make a situation or event less happy or cheerful
+    example: My sister’s illness cast a shadow over our New Year family reunion.
+    band_suitability: 8.0+
+    register: neutral
+  - term: under the shadow of
+    meaning: get less attention because someone else is more successful or prominent
+    example: Jim has always been under the shadow of his super-intelligent sister.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go smoothly
+    meaning: happen without any problems or difficulties
+    example: If things go smoothly, they go well.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sharp tongue
+    meaning: habit of saying unkind or critical things
+    example: If someone has a sharp tongue, they say unkind things.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sticky situation
+    meaning: a difficult or tricky position
+    example: If you’re in a difficult position, you can say that you’re in a sticky
+      situation.
+    band_suitability: 7.0+
+    register: informal
+  - term: coarse jokes
+    meaning: vulgar jokes in bad taste
+    example: Coarse jokes are vulgar jokes, jokes in bad taste.
+    band_suitability: 8.0+
+    register: formal
+  - term: velvety sky
+    meaning: a dark and deep sky with a soft, smooth quality
+    example: Velvety sky is dark and deep with a beautiful soft smooth quality like
+      the cloth velvet.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

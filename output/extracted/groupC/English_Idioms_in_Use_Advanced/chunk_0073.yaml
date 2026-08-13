@@ -1,0 +1,436 @@
+vocabulary_entry:
+  topic_tags:
+  - general_vocabulary
+  - idioms
+  - expressions
+  category: idiom
+  source_citation: English Idioms in Use Advanced, pp. 161-162
+  entries:
+  - term: eat sb for breakfast
+    meaning: defeat someone easily in a competition or argument
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: a case in point
+    meaning: an example that proves or illustrates a point
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cross that bridge when you come to it
+    meaning: deal with a problem when it actually happens, not before
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cold / hard cash
+    meaning: money in the form of coins or notes rather than cheques or credit
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: be strapped for cash
+    meaning: having very little money
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: water under the bridge
+    meaning: something from the past that is forgotten or no longer important
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cast your mind back
+    meaning: try to remember something that happened in the past
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: as bright as a button
+    meaning: very clever, intelligent, or cheerful
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: castles in the air
+    meaning: plans or dreams that have very little chance of happening
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: Look on the bright side.
+    meaning: find the good thing in a bad situation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: be a casualty of
+    meaning: be negatively affected or destroyed by something
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: bring home the bacon
+    meaning: earn money to live on
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: fight like cat and dog
+    meaning: argue fiercely all the time
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: bring sb down a peg or two
+    meaning: make someone realize they are not as important as they think
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: like the cat that ate the canary
+    meaning: looking very pleased with yourself because you have done something clever
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: bring the house down
+    meaning: make an audience laugh or applaud very loudly
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: not have a cat in hell's chance
+    meaning: have no chance at all
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: bring to book
+    meaning: punish someone for a crime or wrongdoing
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: put the cat amongst the pigeons
+    meaning: say or do something that causes trouble or makes people angry
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: bring to the table
+    meaning: provide something useful or beneficial in a negotiation or discussion
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: the cat's whiskers
+    meaning: the best person or thing in a particular group
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: in broad daylight
+    meaning: during the day when people can see what is happening
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: A Catch-22 situation
+    meaning: an impossible situation where you cannot do one thing until you do another,
+      but you cannot do the second until you do the first
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: If it ain't broke, don't fix it!
+    meaning: leave something alone if it is working well already
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: catch some z's
+    meaning: sleep
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: Big Brother
+    meaning: an authoritarian government or organization that watches people's lives
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: like a deer/ rabbit caught in the headlights
+    meaning: so frightened or surprised that you cannot move or think
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: cry/ weep buckets
+    meaning: cry a lot
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: an Aladdin's cave
+    meaning: a place that is full of interesting or valuable things
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: be built on sand
+    meaning: built on a weak foundation and likely to fail
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a glass ceiling
+    meaning: an unfair barrier that prevents women or minorities from rising to top
+      positions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: Rome wasn't built in a day.
+    meaning: important things take a lot of time to do properly
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: be/ take centre stage
+    meaning: be the main focus of attention
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bite the bullet
+    meaning: force yourself to do something difficult or unpleasant
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: nearly fall off your chair
+    meaning: be extremely surprised
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: bumper to bumper
+    meaning: traffic so congested that cars are almost touching
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: chalk and cheese
+    meaning: completely different from each other
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: be a bundle of nerves
+    meaning: extremely nervous or anxious
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: a fighting chance
+    meaning: a small but real possibility of success
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: dead and buried
+    meaning: completely finished and forgotten
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fat chance
+    meaning: little or no likelihood of something happening
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: burn the midnight oil
+    meaning: work or study late into the night
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: given half a chance
+    meaning: if the opportunity arose
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: money to burn
+    meaning: extra money to spend on unnecessary things
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: a leopard can't change its spots
+    meaning: someone's basic character never changes
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: burning the candle at both ends
+    meaning: tiring yourself out by staying up late and getting up early
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: ring the changes
+    meaning: make changes to improve or vary something
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: have sth burning a hole in your pocket
+    meaning: be extremely eager to spend money
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: plunge into chaos
+    meaning: suddenly become extremely disorganized or confused
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fiddle while Rome burns
+    meaning: be unconcerned about a serious disaster happening around you
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a chapter of accidents
+    meaning: a series of unfortunate events happening one after another
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: burst a blood vessel
+    meaning: become extremely angry
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: live a charmed life
+    meaning: be very lucky and avoid misfortune continually
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: bury your head in the sand
+    meaning: refuse to admit or deal with a difficult situation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: a wild-goose chase
+    meaning: a hopeless search for something unobtainable
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: mind your own business
+    meaning: not interfere in other people's private affairs
+    example: ''
+    band_suitability: 6.0+
+    register: casual
+  - term: the chattering classes
+    meaning: educated, middle-class people who talk about politics and social issues
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: go bust
+    meaning: go bankrupt
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: cheap and cheerful
+    meaning: inexpensive and of acceptable quality
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hustle and bustle
+    meaning: busy and noisy activity
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: take a rain check
+    meaning: decline an offer now with the hope of accepting it later
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: no ifs and buts
+    meaning: no excuses or arguments accepted
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: turn the other cheek
+    meaning: not retaliate when someone hurts or offends you
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: push the right buttons
+    meaning: do the things necessary to get a positive reaction
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: keep/ play your cards close to your chest
+    meaning: keep your plans or intentions secret
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: let bygones be bygones
+    meaning: forgive and forget past arguments
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bite off more than you can chew
+    meaning: try to do more than you are able to handle
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: rattle sb's cage
+    meaning: annoy or upset someone deliberately
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: be no spring chicken
+    meaning: no longer young
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: take the biscuit/ cake
+    meaning: be the most remarkable or foolish thing imaginable
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: a chip off the old block
+    meaning: someone who resembles their parent in behavior or character
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: the frosting/ icing on the cake
+    meaning: something that makes a good situation even better
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: as poor as a church mouse
+    meaning: extremely poor
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: call a spade a spade
+    meaning: speak directly and truthfully, even if it is blunt
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a second-class citizen
+    meaning: someone treated as inferior to others in a society
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: call to arms
+    meaning: a summons or appeal to fight or act
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: drop a clanger
+    meaning: make a bad mistake or social blunder
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: amid mounting calls
+    meaning: surrounded by increasing requests or demands
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: come clean
+    meaning: confess the truth about something
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: launch a campaign
+    meaning: start an organized course of action to achieve a goal
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 6.5
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

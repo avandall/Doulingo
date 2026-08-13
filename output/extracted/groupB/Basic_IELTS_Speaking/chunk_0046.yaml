@@ -1,0 +1,36 @@
+content_unit:
+  template_type: scenario
+  title: "Basic IELTS Speaking — Hobbies and Leisure Time Dialogue"
+  topic_tags: ["Hobbies", "Leisure time", "Childhood", "Sports"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: casual
+  source_citation: "Basic_IELTS_Speaking.md, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Sử dụng từ vựng thông dụng để mô tả sở thích và thói quen, diễn đạt được các ý kiến cá nhân đơn giản."
+    grammar_required: 
+      - Present Simple
+      - Past Simple
+      - Present Perfect
+      - Modals (can/could)
+    vocabulary_core: ["hustle and bustle", "spare time", "be into something", "fascinated by"]
+    vocabulary_stretch: ["beyond my budget", "keep up with"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Lặp từ vựng cơ bản, thiếu cấu trúc so sánh hoặc các cụm từ nối (connectors) phức tạp."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How do you spend your spare time?"
+    user_model_answer: "I usually go for walks in parks and things like that. I'm really into nature and I love being around trees and water and mountains as much as possible."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "When you were a kid, what were your hobbies?"
+    user_model_answer: "I enjoyed stamp collecting and coin collecting, though I don't do any of that now. I read a lot of books and listened to music constantly."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like city life?"
+    user_model_answer: "I always liked being in the city - feeling the hustle and bustle of city life."

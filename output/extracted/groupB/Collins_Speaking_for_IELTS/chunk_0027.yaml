@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: "Healthy Lifestyles & Education — High-level Model Answers"
+  topic_tags: ["Health", "Exercise", "Education", "Study", "Work"]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio scripts"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses complex sentence structures (conditionals, inversions, modal verbs), sophisticated vocabulary, and coherent discourse markers. Able to express nuance and personal opinions clearly."
+    grammar_required: 
+      - "Conditionals (e.g., 'If children don't hear... they have to hear it from somewhere')"
+      - "Modal verbs for speculation (e.g., 'could', 'might', 'would')"
+      - "Complex structures (e.g., 'Not only can they..., they can...')"
+    vocabulary_core: ["sedentary", "balanced diet", "camaraderie", "legislation", "academic qualifications"]
+    vocabulary_stretch: ["sceptical", "outlawed", "spontaneity", "escapism", "dread"]
+    sentence_length_target: "Varied; includes long, multi-clause complex sentences."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think people in your country are less healthy than they used to be?"
+    user_model_answer: "Yes, definitely. I would argue that the invention of TV has led to people being much too sedentary. It's all too easy to become a couch potato. Also, most people work in offices so they just sit in a chair all day long. People used to work the land and so be on the go from morning till night."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Should governments intervene to force people to be healthier?"
+    user_model_answer: "I'm highly sceptical of the idea that governments should force their citizens to be healthy. People ought to be encouraged to lead healthy lives, but not forced to. I'm unconvinced that trying to force people into healthy habits would work because when bullied like that people tend to resent it."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is the most difficult thing about your studies?"
+    user_model_answer: "At secondary school, the most difficult subject for me was Chemistry. I can't stand Science, and I would dread every lesson! I struggled in Chemistry lessons, and I had to work really hard to pass my exam. For some reason, I just couldn't remember all those chemical symbols and equations no matter how long I spent revising."

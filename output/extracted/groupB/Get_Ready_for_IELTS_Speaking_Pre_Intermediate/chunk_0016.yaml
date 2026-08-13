@@ -1,0 +1,32 @@
+content_unit:
+  template_type: band_ladder
+  title: "Get Ready for IELTS: Speaking - Unit 12 & Review Exercises"
+  topic_tags: ["Possessions", "Healthy lifestyle", "Family", "Daily routine"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 12 & Review 4"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phù hợp với học viên trình độ Pre-Intermediate, tập trung vào việc sử dụng đúng các thì cơ bản (Present Perfect), từ vựng miêu tả đồ vật và thói quen."
+    grammar_required: 
+      - Present perfect (for/since)
+      - Comparatives
+      - "Should/shouldn't for advice"
+    vocabulary_core: 
+      - Adjectives for personality/feelings
+      - Life events vocabulary
+      - Describing objects (material/appearance)
+    vocabulary_stretch: 
+      - Compound adjectives (old-fashioned)
+      - Collocations for healthy lifestyle
+    sentence_length_target: "Simple and compound sentences"
+    common_errors_to_simulate: "Lỗi dùng sai giới từ với Present Perfect (ví dụ: 'I've had it since three years'), nhầm lẫn giữa 'for' và 'since', sai trật tự tính từ (ví dụ: đặt 'leather' trước 'brown')."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe something you own which is very important to you. You should say what it is, what it is made of, how long you have had it and explain why it is important."
+    user_model_answer: "I have a mobile phone. It is made of plastic and glass. I have had it for two years. It is important to me because I use it for chatting online with my family and my friends, and it reminds me of my home."

@@ -1,0 +1,65 @@
+content_unit:
+  template_type: band_ladder
+  title: Part 2 - Describe a long journey
+  topic_tags:
+  - Travel
+  - Journey
+  - Personal Experience
+  target_band_min: 5.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: Get_IELTS_Band_9_Speaking.md, Part 2
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Able to cover the basic bullet points of the task card but often
+    with frequent hesitations and repetitive vocabulary.
+  grammar_required:
+  - Past simple
+  - Basic conjunctions
+  vocabulary_core:
+  - travel
+  - go to
+  - see
+  - nice
+  - fun
+  vocabulary_stretch: []
+  sentence_length_target: short to medium
+  common_errors_to_simulate: Lack of complex connectors; heavy reliance on simple
+    sentence structures; missing details regarding feelings.
+- band_min: 7.0
+  band_max: 9.0
+  can_do_description: Fluently develops the topic with detailed descriptions, sophisticated
+    vocabulary, and a natural flow between ideas.
+  grammar_required:
+  - Narrative tenses (past continuous/perfect)
+  - Conditionals
+  - Complex sentence structures
+  vocabulary_core:
+  - scenery
+  - experience
+  - exhausting
+  - memorable
+  - breathtaking
+  vocabulary_stretch:
+  - a once-in-a-lifetime experience
+  - the journey of a lifetime
+  - unforgettable
+  - vividly remember
+  sentence_length_target: varied and complex
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Describe a long journey that you have made.
+  user_model_answer: I’d like to talk about a trip I took to the northern mountains
+    last summer. It was a long journey by train that lasted for over 15 hours. The
+    scenery was absolutely breathtaking as we passed through deep valleys and lush
+    forests. At the end, although I was physically drained from the long travel, I
+    felt a deep sense of accomplishment and peace.
+- band_level: 7.0
+  turn_type: elaborate
+  ai_line: Would you recommend this as a method of travelling? Why/why not?
+  user_model_answer: Honestly, it depends on what you're looking for. If you're in
+    a rush, a train is definitely not ideal because it's quite time-consuming. However,
+    if you want to soak in the view and disconnect from the hectic pace of modern
+    life, I would highly recommend it.

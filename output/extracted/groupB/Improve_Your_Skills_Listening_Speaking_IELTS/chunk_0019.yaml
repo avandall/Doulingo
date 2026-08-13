@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Linking in Connected Speech"
+  topic_tags: ["pronunciation", "fluency", "linking", "connected speech"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS.md, Pronunciation: linking in connected speech"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate speaks word-by-word with frequent pauses. Lack of connected speech leads to a robotic flow."
+    grammar_required: ["Simple sentences"]
+    vocabulary_core: ["Basic everyday phrases"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, fragmented phrases"
+    common_errors_to_simulate: "Avoiding all linking; unnatural pauses between words; pronouncing each word in isolation."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses connected speech features (linking, intrusion, assimilation) to sound natural and fluid."
+    grammar_required: ["Complex sentence structures"]
+    vocabulary_core: ["Topic-related vocabulary"]
+    vocabulary_stretch: ["Idiomatic expressions", "collocations"]
+    sentence_length_target: "fluently connected sentences"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you describe an embarrassing occasion?"
+    user_model_answer: "This happened about a year ago. I had chosen a pullover in a shop. I joined the queue at the cash desk. 'Could you put the card in the machine, please?' the shop assistant said. I looked for my card but I couldn't find it. My face became redder and redder. I said, 'I'm sorry about this. I'll leave the pullover here.' I rushed out of the store, very embarrassed."

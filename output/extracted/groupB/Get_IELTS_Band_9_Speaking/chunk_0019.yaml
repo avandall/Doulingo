@@ -1,0 +1,33 @@
+content_unit:
+  template_type: band_ladder
+  title: "Answering Part 3 'ideas' questions — Education and Work"
+  topic_tags: ["Education", "Work", "IELTS Speaking Part 3"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Answering Part 3 'ideas' questions"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Candidate can classify questions as 'ideas' vs 'opinion', structure answers logically by presenting 2-3 distinct points, and support points with relevant examples without personal anecdotes."
+    grammar_required: 
+      - Complex sentence structures
+      - Logical connectors (To start with, Another thing, And finally)
+    vocabulary_core: ["Education standards", "Work experience", "Subsidising salaries", "Positive role model"]
+    vocabulary_stretch: ["Welfare", "Appreciate", "Urge", "Managed closely"]
+    sentence_length_target: "Longer, multi-clause sentences explaining mechanisms/processes."
+
+sample_dialogues:
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "How can schools prepare students for work?"
+    user_model_answer: "There are several ways that schools can do this. To start with, they can include examples of work and careers in their lessons, so if the subject is chemistry they could study the career of a successful chemist, for example. Schools could also send pupils on visits to workplaces, to offices or factories, so that the young people can see workers doing their jobs. Another thing they could do, for older pupils, is to organise work experience so that students actually try doing a real job for a few hours or days."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Unemployment among young people is a major problem in many countries. Can you suggest any solutions?"
+    user_model_answer: "Well, I suppose the main solution would be to improve education standards among the young people, by spending more on schools and universities. This would help people find jobs, and hopefully the jobs would be better paid as well. Another step would be to encourage employers to hire more young people, by subsidising their salaries or offering tax breaks to make employing them more affordable."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Why do some young people want to become teachers?"
+    user_model_answer: "I imagine the biggest reason is having an interest in helping children to develop, by teaching them useful knowledge and skills. There is probably also a desire to share an interest in a specific subject, and to expand the knowledge of this subject in society generally. For example, music teachers are very enthusiastic about music and they want more people to appreciate it."

@@ -550,8 +550,313 @@
 #### Git
 - **Commit:** `[TASK-008] feat(tts): implement TTS audio output streamer with low latency and text-only fallback`
 
+---
+
+### [ITER-037] 2026-08-13 08:17 — TASK-009 MVP End-to-End Pipeline & API Endpoints Bridge (`app/main.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6: 748fc5a) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 08:15 — Review Result: APPROVED).
+2. Xây dựng các endpoints FastAPI trong `app/main.py` và integration test suite `tests/test_mvp_pipeline.py` kết nối thành công 5 bước voice pipeline end-to-end:
+   - Endpoint `GET /api/topics` trả về danh sách topic tags chuẩn cùng danh sách content units từ database.
+   - Endpoint `POST /api/voice/process_turn` (JSON body payload) & `/api/voice/process_turn_multipart` (File/Form upload payload) thực thi luồng hội thoại 5 bước:
+     - [1] ASR Ingestion & Chunk Processor (`StreamingSessionState` / `ASRChunkResult` hoặc text fallback)
+     - [2] RAG Retrieval Layer (`retrieve_dialogues` lọc theo band window và chống lặp 30 ngày)
+     - [3] Prompt Construction Engine (`construct_system_prompt` & `PromptContext`)
+     - [4] Conversational Agent LLM (`ConversationalAgent` parse structured JSON response)
+     - [5] TTS Audio Output Streamer (`TTSStreamer` tổng hợp audio MP3 mã hóa base64 và hỗ trợ `text_only_mode` fallback)
+3. Chạy Tier 1 Verification via `python3 H_docs/scripts/verify.py` và `pytest tests/test_mvp_pipeline.py` — Status PASS 100% (4/4 passed in 3.48s).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-009` và thực hiện git commit code `app/main.py`, `tests/test_mvp_pipeline.py`, và `H_docs/runtime/DEBATE_LOG.md` với message `[TASK-009] feat(api): bridge 5-step MVP voice turn pipeline & topics endpoints` (commit hash: `748fc5a`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-009` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_037.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_mvp_pipeline.py` (4 passed in 3.48s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED, git commit `748fc5a`.
+
+#### Decisions Made
+- Hàm helper `_execute_voice_turn_pipeline` tách biệt xử lý pipeline hội thoại 5 bước, cho phép tái sử dụng chung trên cả JSON endpoint (`/api/voice/process_turn`) và Multipart upload endpoint (`/api/voice/process_turn_multipart`).
+- `user_transcript` và `audio_bytes` được kết hợp linh hoạt (nếu có cả 2 hoặc fallback text), giúp client dễ dàng test cả chế độ mô phỏng văn bản và âm thanh thực tế.
+
+#### Git
+- **Commit:** `[TASK-009] feat(api): bridge 5-step MVP voice turn pipeline & topics endpoints` (`748fc5a`)
+
 #### Next
-- **Action:** Chuyển sang `TASK-009` (MVP End-to-End Pipeline & API Endpoints Bridge — `app/main.py`).
+- **Action:** Bắt đầu `TASK-010` (Scoring Threshold Bootstrap & Calibration Config — `scripts/calibrate_thresholds.py`).
 - **State:** IN_PROGRESS
 
+---
+
+### [ITER-038] 2026-08-13 08:24 — TASK-010 Scoring Threshold Bootstrap & Calibration Config (`scripts/calibrate_thresholds.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 08:24 — Review Result: APPROVED).
+2. Xây dựng module `app/scoring/features.py`, `app/scoring/config_loader.py`, script `scripts/calibrate_thresholds.py`, và test suite `tests/test_calibration.py`:
+   - Dataclass `WordTimestamp` và các hàm tính đặc trưng (`compute_wpm`, `compute_pause_ratio`, `compute_filler_density`, `compute_mtld`, `interpolate_band`).
+   - Helper `load_active_anchors()` nạp động config versioned active từ `config/scoring_anchors.v*.json` với fallback `v0`.
+   - Script `calibrate_thresholds.py` thực thi Isotonic Regression calibration fit anchor points từ dữ liệu huấn luyện, xuất ra `config/scoring_anchors.v1.json` và `calibration_report.md`.
+3. Chạy Tier 1 Verification via `python3 H_docs/scripts/verify.py` và `pytest tests/test_calibration.py` — Status PASS 100% (7/7 passed in 1.26s).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-010` trong `Tasks_list.md` và thực hiện git commit code.
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-010` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_038.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_calibration.py` (7 passed in 1.26s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED.
+
+#### Decisions Made
+- `calibrate_thresholds.py` imports 100% of feature extraction functions directly from `app/scoring/features.py` to prevent logic duplication.
+- Active configuration mechanism dynamically selects `"status": "active"` version with fallback to expert estimate `v0` config.
+
+#### Git
+- **Commit:** `[TASK-010] feat(scoring): implement scoring threshold calibration pipeline & versioned anchors config`
+
+#### Next
+- **Action:** Bắt đầu `TASK-011` (Real-Time Scoring Agent — Tier 1 Scorer (<300ms) — `app/scoring/tier1_realtime.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-039] 2026-08-13 08:45 — TASK-011 Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 08:45 — Review Result: APPROVED).
+2. Xây dựng module `app/scoring/tier1_realtime.py` và test suite `tests/test_tier1_realtime.py`:
+   - Dataclass `Tier1ScoreResult` chứa kết quả đánh giá, thời gian xử lý, và chi tiết sub-band.
+   - Helper `detect_self_corrections()` nhận diện cụm từ đánh dấu ("sorry", "i mean", "or rather") và từ lặp liên tiếp ("the the").
+   - Hàm `evaluate_tier1()` tính toán WPM, pause ratio, filler density, self-correction count, và MTLD (khi word count >= 10).
+   - Tích hợp `config_loader` nạp anchor points động từ `config/scoring_anchors.v*.json` để nội suy sub-band.
+   - Cài đặt guardrails phát tín hiệu `difficulty_adjustment` ("increase" | "hold" | "decrease"), tự động trả "hold" khi `word_count < 5` hoặc `avg_asr_confidence < 0.6`.
+3. Chạy Tier 1 Verification via `python3 H_docs/scripts/verify.py` và `pytest tests/test_tier1_realtime.py` — Status PASS 100% (7/7 passed in 0.05s, latency < 5ms).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-011` trong `Tasks_list.md` và thực hiện git commit code (`18317d0`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-011` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_039.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_tier1_realtime.py` (7 passed in 0.05s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED.
+
+#### Decisions Made
+- `evaluate_tier1` calculates sub-bands dynamically and averages only valid available feature sub-bands (omitting MTLD gracefully if word count < 10).
+- Latency benchmark confirms processing overhead is well under 5ms, far exceeding the <300ms requirement.
+
+#### Git
+- **Commit:** `[TASK-011] feat(scoring): implement tier 1 real-time scoring agent with latency under 300ms` (`18317d0`)
+
+#### Next
+- **Action:** Bắt đầu `TASK-012` (Deep Scoring Agent — Tier 2 Scorer & Grammar Check — `app/scoring/tier2_deep.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-040] 2026-08-13 13:40 — TASK-012 Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 13:40 — Review Result: APPROVED).
+2. Xây dựng module `app/scoring/tier2_deep.py` và test suite `tests/test_tier2_deep.py`:
+   - Dataclass `Tier2ScoreResult` chứa điểm 4 trục (fluency, lexical, grammar, pronunciation), `raw_score`, `estimated_band`, latency_ms, và chi tiết grammar_analysis.
+   - Helper `analyze_grammar_spacy()` phân tích số mệnh đề phụ (advcl, relcl, ccomp, xcomp) qua spaCy parser kèm cơ chế rule-based error detection overlay và fallback an toàn khi không có model spaCy.
+   - Hàm `compute_pronunciation_score()` quy đổi ASR word-level confidence score sang thang điểm 4.0 - 9.0.
+   - Hàm `evaluate_tier2()` tổng hợp 4 trục điểm thành `raw_score = 0.3*FC + 0.25*LR + 0.25*GRA + 0.2*PRON`, clamp trong dải [4.0, 9.0], và tích hợp `config_loader` nạp anchor points từ config `v0`/`v1`.
+3. Chạy Tier 1 Verification via `python3 H_docs/scripts/verify.py` và `pytest tests/test_tier2_deep.py` — Status PASS 100% (6/6 passed in 0.02s).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-012` trong `Tasks_list.md` và thực hiện git commit code (`b2e09f8`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-012` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_040.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_tier2_deep.py` (6 passed in 0.02s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED.
+
+#### Decisions Made
+- `analyze_grammar_spacy` combines spaCy dependency trees with regex error detection to handle both syntactic complexity and common grammatical errors gracefully under fallback scenarios.
+- All axis sub-scores and final `raw_score` are strictly clamped within the valid IELTS band window [4.0, 9.0].
+
+#### Git
+- **Commit:** `[TASK-012] feat(scoring): implement tier 2 deep scoring agent & grammar check module` (`b2e09f8`)
+
+#### Next
+- **Action:** Bắt đầu `TASK-013` (Dynamic User Profile & EMA Band Smoothing Engine — `app/user_profile_engine.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-041] 2026-08-13 13:57 — TASK-013 Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6: `7f4c267`) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md`.
+2. Xây dựng module `app/user_profile_engine.py`, DB helpers `get_user_profile` / `save_user_profile` trong `app/db.py`, và test suite `tests/test_user_profile_engine.py`:
+   - Hàm `compute_effective_alpha()` tính toán effective alpha dựa trên `word_count_factor` (linear 0->1 giữa 5-10 từ) và `confidence_factor` (linear 0->1 giữa 0.6-0.95).
+   - Hàm `update_band()` áp dụng EMA `old_band * (1 - alpha) + raw_score * alpha` cho band_estimate_overall và 4 sub-scores (`band_fluency`, `band_lexical`, `band_grammar`, `band_pronunciation`).
+   - Bảo vệ floor-alpha `FLOOR_ALPHA = 0.05` khi bị skip liên tục `consecutive_skip_count >= 5`.
+   - Siết clamp tất cả các điểm band trong dải [4.0, 9.0].
+   - Cập nhật và lưu trữ vào database `user_profile`.
+3. Chạy Tier 1 Verification via `python3 H_docs/scripts/verify.py` và `pytest tests/test_user_profile_engine.py` — Status PASS 100% (6/6 passed in 3.26s, verify status PASS).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-013` trong `Tasks_list.md` và tạo git commit `7f4c267` (`[TASK-013] feat(scoring): implement dynamic user profile & EMA band smoothing engine`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-013` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_041.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_user_profile_engine.py` (6 passed in 3.26s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED, git commit `7f4c267`.
+
+#### Decisions Made
+- Dynamic confidence weighting ensures low-word-count or low-ASR-confidence turns do not distort the user's long-term profile band.
+- Consecutive skip protection prevents freezing user band state during long skip streaks.
+
+#### Git
+- **Commit:** `[TASK-013] feat(scoring): implement dynamic user profile & EMA band smoothing engine` (`7f4c267`)
+
+#### Next
+- **Action:** Bắt đầu `TASK-014` (Cold-Start Diagnostic Probe System — `app/scoring/cold_start.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-042] 2026-08-13 14:07 — TASK-014 Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6: `9455e14`) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 14:07 — Review Result: APPROVED).
+2. Xây dựng module `app/scoring/cold_start.py` và unit test suite `tests/test_cold_start.py`:
+   - Hàm `is_cold_start(turn_count)` phát hiện lượt hội thoại khởi đầu (`turn_count < 3`).
+   - Hàm `get_alpha(turn_count)` trả về $\alpha = 0.5$ cho lượt 0, 1, 2 và chuyển về $\alpha = 0.2$ từ lượt thứ 4 (`turn_count >= 3`).
+   - Hàm `get_diagnostic_probes(limit=3)` truy vấn các câu hỏi mở từ DB (`sample_dialogues` nơi `turn_type = 'opening'`) với fallback an toàn sang 3 câu hỏi mở mặc định (hometown, hobbies, experience).
+   - Lớp `ColdStartManager` và helper `process_cold_start_turn()` tích hợp với `app.user_profile_engine.update_band()`.
+3. Chạy Tier 1 Verification via `python3 H_docs/scripts/verify.py` và `pytest tests/test_cold_start.py` — Status PASS 100% (6/6 passed, total test suite passed 83/83).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-014` trong `Tasks_list.md` và tạo git commit `9455e14` (`[TASK-014] feat(scoring): implement cold-start diagnostic probe system`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-014` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_042.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_cold_start.py` (6 passed), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED, git commit `9455e14`.
+
+#### Decisions Made
+- Diagnostic probe fallback guarantees candidate questions exist even when DB is unpopulated or missing opening dialogues.
+- Cold start alpha switching accelerates initial user band convergence during turns 0..2 before shifting to steady-state EMA.
+
+#### Git
+- **Commit:** `[TASK-014] feat(scoring): implement cold-start diagnostic probe system` (`9455e14`)
+
+#### Next
+- **Action:** Bắt đầu `TASK-015` (Adaptive Retrieval & Difficulty Adjustment Integration — `app/retrieval.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-043] 2026-08-13 14:18 — TASK-015 Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 14:16 — Review Result: APPROVED).
+2. Thêm hàm `retrieve_adaptive_dialogues()` vào `app/retrieval.py` và test suite `test_retrieve_adaptive_dialogues` vào `tests/test_retrieval.py`:
+   - Tính toán cửa sổ dải điểm `(band_min, band_max)` động theo `compute_band_window(base_band, difficulty_signal)`.
+   - Lấy câu hỏi từ `retrieve_dialogues()`, bảo toàn 100% cơ chế 4-stage fallback cascade và tự động ghi log `user_content_exposure`.
+   - Phủ test cases cho cả 3 tín hiệu độ khó `increase`, `decrease`, và `hold`.
+3. Chạy Tier 1 Verification qua `python3 H_docs/scripts/verify.py` và `pytest tests/test_retrieval.py` — Status PASS 100% (9/9 passed in 0.07s).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-015` trong `Tasks_list.md` và tạo git commit.
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-015` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_043.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest tests/test_retrieval.py` (9 passed in 0.07s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED.
+
+#### Decisions Made
+- `retrieve_adaptive_dialogues` delegates directly to `retrieve_dialogues`, maintaining full fallback cascade compatibility and 30-day exposure exclusion logic.
+
+#### Git
+- **Commit:** `[TASK-015] feat(retrieval): implement adaptive retrieval & difficulty adjustment integration`
+
+#### Next
+- **Action:** Bắt đầu `TASK-016` (Embedding Anti-Repetition Engine — `app/anti_repetition.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-044] 2026-08-13 14:43 — TASK-016 Embedding Anti-Repetition Engine (`app/anti_repetition.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6: `0156596`) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 14:41 — Review Result: APPROVED).
+2. Xây dựng module `app/anti_repetition.py` và test suite `tests/test_anti_repetition.py`:
+   - Hàm `cosine_similarity(vec1, vec2)` tính cosine similarity với zero-vector guard clause.
+   - Hàm `check_repetition()` so sánh embedding của candidate utterance với danh sách history utterances/embeddings, tự động phát hiện lặp motif khi similarity >= 0.85.
+   - Trả về `RepetitionCheckResult` với `re_generation_directive` hướng dẫn LLM re-generate ("diễn đạt khác đi, đổi góc nhìn hoặc cấu trúc câu và tránh lặp từ vựng/motif cũ").
+   - Hàm `fetch_user_history_utterances()` và `check_user_repetition()` truy vấn lịch sử tiếp xúc `user_content_exposure` trong DB.
+   - Direct fallback n-gram hashing embedding `fallback_text_embedding()` đảm bảo tốc độ xử lý < 1ms khi model local offline.
+3. Chạy Tier 1 Verification qua `python3 H_docs/scripts/verify.py` và `pytest` (141/141 passed) — Status PASS 100%.
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-016` trong `Tasks_list.md` và tạo git commit `0156596` (`[TASK-016] feat(anti-repetition): implement embedding anti-repetition engine and history checker`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-016` [x] DONE), `H_docs/runtime/PLAN.md`, `H_docs/runtime/CURRENT_TASK.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_044.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest` (141/141 passed in 114.99s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED, git commit `0156596`.
+
+#### Decisions Made
+- `check_repetition` returns an explicit LLM re-generation directive string when cosine similarity exceeds 0.85 threshold, enforcing motif non-repeatability.
+- Fast fallback n-gram hashing embedding provides sub-millisecond execution guarantee (< 15ms limit).
+
+#### Git
+- **Commit:** `[TASK-016] feat(anti-repetition): implement embedding anti-repetition engine and history checker` (`0156596`)
+
+#### Next
+- **Action:** Bắt đầu `TASK-017` (AI Persona Identity & Long-Term Entity Memory System — `app/persona_memory.py`).
+- **State:** IN_PROGRESS
+
+---
+
+### [ITER-045] 2026-08-13 14:54 — TASK-017 AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`)
+
+**Phase:** REPORT (Phase 7)
+**Step:** Verification (Phase 4), Review (Phase 5), Commit (Phase 6: `b61d629`) & Runtime Report (Phase 7)
+**Duration:** ~5 phút
+
+#### Actions Taken
+1. Reviewer đã phê duyệt code trong `H_docs/runtime/DEBATE_LOG.md` (Review Session 2026-08-13 14:49 — Review Result: APPROVED).
+2. Xây dựng module `app/persona_memory.py`, cập nhật schema `app/db.py`, mở rộng prompt constructor `app/prompt_constructor.py`, và unit test suite `tests/test_persona_memory.py`:
+   - Hàm `extract_entities_from_turn()` tự động trích xuất các thông tin quan trọng của user (sở thích, nghề nghiệp, sự kiện cá nhân, địa điểm, từ vựng ưu thích) dưới dạng entity summary JSON.
+   - Thêm cột `entity_memory TEXT DEFAULT '{}'` vào `user_profile` trong `app/db.py` cùng migration check tự động trong `init_db()`.
+   - Các hàm persistence: `get_user_entity_memory()`, `save_user_entity_memory()`, và `update_user_memory_from_turn()`.
+   - Hàm helper `get_persona_identity()` định nghĩa chi tiết nhân vật AI persona (`Lily`, `Rajesh`, `Emma`).
+   - Mở rộng `PromptContext` với `entity_memory` field và tích hợp memory section ("### USER ENTITY MEMORY & PERSONAL FACTS") cũng như quy tắc behavioral directive rule 5 (ENTITY RECALL) trong `app/prompt_constructor.py`.
+3. Chạy Tier 1 Verification qua `python3 H_docs/scripts/verify.py` và `pytest` (156/156 passed in 112.50s) — Status PASS 100% (Ruff 0 errors, Mypy 0 errors, Bandit 0 issues, Pytest 156 passed).
+4. Thực hiện Phase 6 (COMMIT): Đánh dấu `[x] DONE` cho `TASK-017` trong `Tasks_list.md` và tạo git commit `b61d629` (`[TASK-017] feat(persona-memory): implement AI persona identity and long-term entity memory system`).
+5. Thực hiện Phase 7 (REPORT): Cập nhật `H_docs/context/Tasks_list.md` (`TASK-017` [x] DONE), `H_docs/runtime/PLAN.md`, tạo snapshot `H_docs/runtime/ITERATIONS/iter_045.md`, append entry `H_docs/runtime/PROGRESS_LOG.md`, và cập nhật `H_docs/runtime/STATUS.md`.
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pytest` (156/156 passed in 112.50s), `python3 H_docs/scripts/verify.py` Status PASS, DEBATE_LOG.md APPROVED, git commit `b61d629`.
+
+#### Decisions Made
+- `user_profile.entity_memory` JSON field stores structured long-term facts extracted from user utterances with rule-based deduplication heuristics.
+- Persona identity definitions (`Lily`, `Rajesh`, `Emma`) provide consistent character traits, accents, and roles across conversation turns.
+
+#### Git
+- **Commit:** `[TASK-017] feat(persona-memory): implement AI persona identity and long-term entity memory system` (`b61d629`)
+
+#### Next
+- **Action:** Bắt đầu `TASK-018` (Weekly Performance Reporting Engine & Hidden Scoring UI — `app/reporting.py`).
+- **State:** IN_PROGRESS
 

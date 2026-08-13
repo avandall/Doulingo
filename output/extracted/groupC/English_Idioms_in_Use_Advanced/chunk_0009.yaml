@@ -1,0 +1,143 @@
+vocabulary_entry:
+  topic_tags:
+  - binomials
+  - idioms
+  - proverbs
+  - communication
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 10 & 11
+  entries:
+  - term: black and white
+    meaning: a situation that is very clear and simple
+    example: Managing climate change isn't a black and white issue.
+    band_suitability: 7.0+
+    register: neutral
+  - term: neat and tidy
+    meaning: very clean and organized
+    example: Sara's work is always very neat and tidy.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hit and miss
+    meaning: sometimes good, sometimes bad
+    example: If you go for cheaper speakers, the sound quality may be a bit hit and
+      miss.
+    band_suitability: 7.0+
+    register: casual
+  - term: neck and neck
+    meaning: equal (usually in a race or competition)
+    example: They finished the race neck and neck.
+    band_suitability: 7.0+
+    register: neutral
+  - term: wear and tear
+    meaning: damage caused by everyday use
+    example: Tables in the canteen take a lot of wear and tear.
+    band_suitability: 6.0+
+    register: neutral
+  - term: black and blue
+    meaning: very bruised
+    example: After the match, the players' legs were black and blue.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bumper to bumper
+    meaning: very heavy traffic
+    example: The traffic was bumper to bumper all the way to the coast.
+    band_suitability: 7.0+
+    register: neutral
+  - term: little by little
+    meaning: gradually
+    example: Little by little, Vera gained the horse's confidence.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give or take
+    meaning: plus or minus (used for approximation)
+    example: The house must be worth a quarter of a million, give or take a few thousand.
+    band_suitability: 7.0+
+    register: casual
+  - term: here, there and everywhere
+    meaning: in every place
+    example: I've looked here, there and everywhere for my glasses but can't find
+      them.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sixes and sevens
+    meaning: in a state of confusion
+    example: We're at sixes and sevens at work this week.
+    band_suitability: 8.0+
+    register: casual
+  - term: out and about
+    meaning: active, doing usual activities
+    example: Hannah had flu last week, but she's out and about again now.
+    band_suitability: 7.0+
+    register: casual
+  - term: chalk and cheese
+    meaning: totally different
+    example: Although the twins look the same, when you talk to them you realise they're
+      like chalk and cheese.
+    band_suitability: 8.0+
+    register: casual
+  - term: hustle and bustle
+    meaning: crowds and noise of a busy place
+    example: It's great to leave the hustle and bustle of the city at the weekend.
+    band_suitability: 7.0+
+    register: neutral
+  - term: all fingers and thumbs
+    meaning: awkward with hands, unable to do something dexterous
+    example: I can't do up these tiny buttons - I'm all fingers and thumbs today.
+    band_suitability: 8.0+
+    register: casual
+  - term: dribs and drabs
+    meaning: small amounts at a time
+    example: The money for the charity appeal came in in dribs and drabs.
+    band_suitability: 8.0+
+    register: casual
+  - term: blood, sweat and tears
+    meaning: hard work
+    example: It took a lot of blood, sweat and tears to get the business going.
+    band_suitability: 7.0+
+    register: neutral
+  - term: time after time
+    meaning: many times (often annoying)
+    example: I've asked you time after time not to do that.
+    band_suitability: 6.0+
+    register: neutral
+  - term: wax and wane
+    meaning: fluctuate (increase and decrease)
+    example: Her interest in painting waxed and waned over the years.
+    band_suitability: 8.0+
+    register: formal
+  - term: through and through
+    meaning: completely
+    example: She's a city person, through and through.
+    band_suitability: 7.0+
+    register: neutral
+  - term: every nook and cranny
+    meaning: every small place
+    example: We had a great holiday and explored every nook and cranny of the island.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

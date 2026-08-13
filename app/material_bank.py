@@ -78,7 +78,7 @@ class MaterialBank:
 
         if not self.topics:
             yaml_dir = "output/extracted" if os.path.exists("output/extracted") else target_dir
-            yaml_files = sorted(glob.glob(os.path.join(yaml_dir, "*.yaml")))
+            yaml_files = sorted(glob.glob(os.path.join(yaml_dir, "**/*.yaml"), recursive=True))
             for yf in yaml_files:
                 self._parse_yaml_file(yf)
 

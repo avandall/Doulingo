@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "Education and Work — IELTS Speaking Topics & Model Responses"
+  topic_tags: ["Education", "Work", "Holidays"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 7-9"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can answer basic questions about life and habits using simple sentences. Often relies on repetitive structures (I like, I think, I work)."
+    grammar_required: 
+      - Present Simple
+      - Present Continuous
+      - "Basic Modal verbs (can/can't)"
+    vocabulary_core: ["university", "course", "subject", "job", "study"]
+    vocabulary_stretch: ["scholarship", "application form", "tuition"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overusing simple conjunctions (and, but), limited range of transition signals, grammatical inconsistency with subject-verb agreement."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can provide extended answers with coherent development. Uses a mix of simple and complex sentences to explain personal experiences and opinions."
+    grammar_required: 
+      - Present Perfect
+      - Comparison structures
+      - Conditional (If/When)
+      - Modals of obligation (have to/need to)
+    vocabulary_core: ["opportunity", "advantages/disadvantages", "professional", "flexible hours"]
+    vocabulary_stretch: ["well-paid", "coursework", "international company", "career development"]
+    sentence_length_target: "Varied; includes complex clauses using 'because', 'so', 'although'"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think it is a good idea to live with your family when you are studying?"
+    user_model_answer: "Yes, definitely. I live with my family. I enjoy living at home because I can relax and just study. For example, my parents cook meals, wash my clothes and clean my room. I can spend more time studying and I think this is good."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "In your opinion, do people work more now than in the past?"
+    user_model_answer: "That’s interesting. Let me see. I think my parents didn’t have lots of choices. I don’t think my parents’ generation usually travelled for work. Today, I can apply for jobs anywhere in the world using the internet. There are advantages and disadvantages, because today I have lots of different opportunities and it’s sometimes difficult to make a decision."

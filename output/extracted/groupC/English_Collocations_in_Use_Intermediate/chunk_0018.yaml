@@ -1,0 +1,149 @@
+vocabulary_entry:
+  topic_tags:
+  - food
+  - eating_and_drinking
+  - diet
+  - restaurants
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 22
+  entries:
+  - term: nourishing meals
+    meaning: meals which make you healthy and strong
+    example: It’s hard to get them to eat nourishing meals.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fresh produce
+    meaning: foods produced from farming, such as dairy or agricultural items
+    example: The fresh produce is excellent, and they have a big organic food section.
+    band_suitability: 6.0+
+    register: neutral
+  - term: organic food
+    meaning: food produced without using artificial chemicals or pesticides
+    example: They have a big organic food section.
+    band_suitability: 6.0+
+    register: neutral
+  - term: ready meals
+    meaning: meals already prepared or which just need to be heated quickly before
+      eating
+    example: I actually think their ready meals are good too.
+    band_suitability: 6.0+
+    register: neutral
+  - term: food additives
+    meaning: substances added to food to improve its taste, appearance, or preservation
+    example: I can’t believe food additives are good for our long-term health.
+    band_suitability: 7.0+
+    register: neutral
+  - term: processed foods
+    meaning: foods which are changed or treated as part of an industrial operation
+    example: Processed foods in general are probably bad for us.
+    band_suitability: 6.0+
+    register: neutral
+  - term: GM foods
+    meaning: genetically modified foods
+    example: Not to mention GM foods!
+    band_suitability: 7.0+
+    register: neutral
+  - term: perishable food
+    meaning: food which goes bad quickly, such as cheese or fish
+    example: The restaurant was leaving perishable food lying round outside the fridge.
+    band_suitability: 7.0+
+    register: neutral
+  - term: food poisoning
+    meaning: illness caused by eating contaminated food
+    example: Some people got food poisoning, so the authorities closed it down.
+    band_suitability: 6.0+
+    register: neutral
+  - term: substantial meal
+    meaning: a large and filling meal
+    example: Whether it's a light meal or a substantial meal you're looking for...
+    band_suitability: 7.0+
+    register: neutral
+  - term: slap-up meal
+    meaning: an unusually large and good meal
+    example: '...whether you want a slap-up meal, a gourmet meal or just tasty, home-cooked
+      food...'
+    band_suitability: 8.0+
+    register: informal
+  - term: gourmet meal
+    meaning: high-quality meal for people who appreciate fine food and drink
+    example: '...whether you want a slap-up meal, a gourmet meal or just tasty, home-cooked
+      food...'
+    band_suitability: 7.0+
+    register: neutral
+  - term: home-cooked food
+    meaning: food prepared at home from fresh ingredients
+    example: '...or just tasty, home-cooked food, there''s something for everyone...'
+    band_suitability: 6.0+
+    register: neutral
+  - term: quick snack
+    meaning: a small, fast amount of food eaten between meals
+    example: Let’s find a café and have a quick snack.
+    band_suitability: 6.0+
+    register: informal
+  - term: refreshing drink
+    meaning: a drink that makes you feel less hot or tired
+    example: And I could really do with a refreshing drink.
+    band_suitability: 6.0+
+    register: neutral
+  - term: decent meal
+    meaning: a good, satisfying meal
+    example: I’m dying of hunger! I need a decent meal.
+    band_suitability: 6.0+
+    register: neutral
+  - term: healthy appetite
+    meaning: a strong hunger and ability to eat a lot of food
+    example: I know you have a healthy appetite, but you had a hearty breakfast only
+      three hours ago!
+    band_suitability: 7.0+
+    register: neutral
+  - term: hearty breakfast
+    meaning: a large, satisfying, and filling breakfast
+    example: '...you had a hearty breakfast only three hours ago!'
+    band_suitability: 7.0+
+    register: neutral
+  - term: soft drink
+    meaning: a non-alcoholic drink, usually carbonated
+    example: Well, how about having a soft drink and a bag of crisps now...
+    band_suitability: 6.0+
+    register: neutral
+  - term: proper lunch
+    meaning: a full, substantial, and adequate midday meal
+    example: '...and a proper lunch later?'
+    band_suitability: 6.0+
+    register: neutral
+  - term: spoil your appetite
+    meaning: to ruin your hunger so you do not want to eat your main meal
+    example: Crisps will only spoil your appetite.
+    band_suitability: 7.0+
+    register: neutral
+  - term: set menu
+    meaning: a selection of dishes offered at a fixed price
+    example: '...this restaurant looks good and the set menu is reasonably priced.'
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

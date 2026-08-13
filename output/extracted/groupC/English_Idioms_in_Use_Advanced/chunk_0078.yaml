@@ -1,0 +1,86 @@
+vocabulary_entry:
+  topic_tags:
+  - general_vocabulary
+  - idioms_index
+  category: idiom
+  source_citation: English Idioms in Use Advanced, p. 171-172
+  entries:
+  - term: move the goalposts
+    meaning: change the rules or limits of a situation while it is in progress so
+      that it becomes more difficult
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: movers and shakers
+    meaning: people with a lot of power, influence, or energy who make things happen
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: leave no stone unturned
+    meaning: try every possible course of action in order to achieve something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: stick your neck out
+    meaning: take a risk by doing or saying something that other people might not
+      approve of
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: feather your own nest
+    meaning: make yourself rich using your position or power dishonestly
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: turn over a new leaf
+    meaning: change your life by starting to be a better person or stopping bad habits
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: pay over the odds
+    meaning: pay more money for something than it is really worth
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: burn the midnight oil
+    meaning: work or study until late at night
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: think outside the box
+    meaning: think imaginatively using new or different ideas instead of traditional
+      ones
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: play hardball
+    meaning: be fierce and determined in order to get what you want
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

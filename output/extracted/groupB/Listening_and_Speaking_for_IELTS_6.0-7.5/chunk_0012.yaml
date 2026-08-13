@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic Talk — Trends and Cultural Preferences"
+  topic_tags: ["fashion", "music", "arts", "lifestyle"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can express personal tastes using basic adjectives (classic, modern) and simple sentence structures. Often relies on basic linkers like 'because'."
+    grammar_required: 
+      - Prepositions of preference (keen on, fond of, fan of)
+      - Comparative structures
+    vocabulary_core: ["classic", "conservative", "functional", "mainstream"]
+    vocabulary_stretch: ["contemporary", "over the top", "distinctive"]
+    sentence_length_target: "Simple to compound sentences"
+    common_errors_to_simulate: "Misusing prepositions (e.g., 'fond to' instead of 'fond of'), repetitive use of 'like' and 'don't like'."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Can articulate nuanced opinions about art and trends using a wider range of collocations and complex prepositions naturally."
+    grammar_required: 
+      - Subjunctive/preference structures (I would much rather... than...)
+      - Complex prepositional phrases
+    vocabulary_core: ["art-house movie", "high-tech", "designer label", "contemporary"]
+    vocabulary_stretch: ["indifferent to", "appeal to", "passionately", "distinctive style"]
+    sentence_length_target: "Complex sentences with subordinate clauses"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you follow the latest trends in fashion?"
+    user_model_answer: "I don't really follow trends. I prefer simple clothes that don't go out of fashion, so I suppose I am quite conservative in my taste."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you have similar tastes to your friends and family?"
+    user_model_answer: "Not entirely. For instance, my parents have very traditional tastes in music, whereas I’m quite passionate about contemporary art-house films and indie music. We don't really share the same preferences."

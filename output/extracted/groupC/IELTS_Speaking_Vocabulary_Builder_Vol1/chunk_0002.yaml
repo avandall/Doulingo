@@ -1,0 +1,80 @@
+vocabulary_entry:
+  topic_tags:
+  - health
+  - fitness
+  - lifestyle
+  - wellbeing
+  category: collocation
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1 - Health
+  entries:
+  - term: stay healthy
+    meaning: to remain in a good physical condition
+    example: Staying healthy involves making certain choices.
+    band_suitability: 6.0+
+    register: neutral
+  - term: prone to
+    meaning: likely to suffer from an illness or show a negative characteristic
+    example: make you more prone to certain conditions.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play a key role in
+    meaning: to be very important in a process or activity
+    example: many of which play a key role in keeping you healthy
+    band_suitability: 6.0+
+    register: neutral
+  - term: moderate-intensity aerobic activity
+    meaning: physical exercise that gets your heart rate up at a medium level
+    example: 150 minutes of moderate-intensity aerobic activity a week
+    band_suitability: 7.0+
+    register: formal
+  - term: whole foods
+    meaning: food that is unprocessed or refined in a simple, natural form
+    example: Eat more whole foods
+    band_suitability: 7.0+
+    register: neutral
+  - term: artificial ingredients
+    meaning: chemical additives created in a lab to improve taste or preservation
+    example: They don’t contain a lot of added chemicals or artificial ingredients
+    band_suitability: 7.0+
+    register: neutral
+  - term: shelf life
+    meaning: the length of time that food can be stored before it goes bad
+    example: give them a long shelf life.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stay hydrated
+    meaning: to drink enough water to keep your body functioning properly
+    example: Staying hydrated keeps your brain working well.
+    band_suitability: 6.0+
+    register: neutral
+  - term: key to
+    meaning: extremely important for achieving a specific result
+    example: Drinking enough water each day is key to good health.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

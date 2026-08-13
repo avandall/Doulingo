@@ -1,0 +1,180 @@
+vocabulary_entry:
+  topic_tags:
+  - communication
+  - speaking
+  - conversations
+  - work
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 49
+  entries:
+  - term: get to the point
+    meaning: to reach the most important part of a subject or discussion
+    example: Whenever I make a speech I always try to get to the point as quickly
+      as possible.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tell a story
+    meaning: to narrate an event or a series of events
+    example: I could tell a lot of stories about James, my best friend since childhood.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give someone one's word
+    meaning: to make a promise to someone
+    example: I gave him my word that I wouldn't crack any jokes.
+    band_suitability: 7.0+
+    register: neutral
+  - term: crack a joke
+    meaning: to tell a joke
+    example: I gave him my word that I wouldn't crack any jokes.
+    band_suitability: 6.0+
+    register: informal
+  - term: tell a joke
+    meaning: to narrate a funny story or joke
+    example: I'm really bad at telling jokes.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a brief chat
+    meaning: to have a short conversation
+    example: I wonder if I could have a brief chat with you about our new office assistant?
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a quick word
+    meaning: to speak to someone briefly
+    example: I had a quick word with Mel yesterday.
+    band_suitability: 6.0+
+    register: neutral
+  - term: delicate subject
+    meaning: a sensitive topic that needs to be handled with care
+    example: I know it's a delicate subject but I don't think we need to make it a
+      lengthy discussion.
+    band_suitability: 7.0+
+    register: neutral
+  - term: lengthy discussion
+    meaning: a conversation or debate that takes a long time
+    example: I don't think we need to make it a lengthy discussion with everyone involved.
+    band_suitability: 7.0+
+    register: formal
+  - term: raise the subject
+    meaning: to bring up a topic for discussion
+    example: Well, actually, I'm rather glad you raised the subject.
+    band_suitability: 7.0+
+    register: neutral
+  - term: speak off the record
+    meaning: to say something unofficially, not meant to be publicly reported
+    example: Well, speaking off the record, every time you give her instructions...
+    band_suitability: 8.0+
+    register: neutral
+  - term: give instructions
+    meaning: to tell someone how to do something
+    example: Every time you give her instructions, she never seems to understand.
+    band_suitability: 6.0+
+    register: neutral
+  - term: plead ignorance
+    meaning: to claim not to know or be aware of something
+    example: If you challenge her directly she just pleads ignorance.
+    band_suitability: 8.0+
+    register: neutral
+  - term: complain bitterly
+    meaning: to express strong dissatisfaction or resentment
+    example: The other assistants are complaining bitterly that they end up doing
+      her work.
+    band_suitability: 7.0+
+    register: neutral
+  - term: drop a hint
+    meaning: to suggest something indirectly
+    example: One of them dropped a hint that she might resign if nothing is done about
+      it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: tone of voice
+    meaning: the quality or pitch of a person's voice expressing a mood or feeling
+    example: I could tell by the tone of her voice that she was serious.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a word with
+    meaning: to speak to someone, usually to warn or instruct them
+    example: I'll have a word with her and make it clear that she has to improve.
+    band_suitability: 6.0+
+    register: neutral
+  - term: change the subject
+    meaning: to start talking about something else
+    example: Anyway, let's change the subject.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tell the truth
+    meaning: to say what is true rather than lie
+    example: I have to tell you the truth, I've been very busy with other things lately.
+    band_suitability: 6.0+
+    register: neutral
+  - term: ask a favour
+    meaning: to ask someone to do something for you
+    example: In fact I was going to ask you a favour.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get into conversation
+    meaning: to start talking with someone
+    example: I find it difficult to get into conversation with new people.
+    band_suitability: 7.0+
+    register: neutral
+  - term: join in a conversation
+    meaning: to participate in an ongoing discussion
+    example: I find it difficult... to join in a conversation that's already started.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make polite conversation
+    meaning: to talk about trivial or social matters out of politeness
+    example: I want to be able to get to know them and not just make polite conversation.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make an observation
+    meaning: to comment on something you have noticed
+    example: A friend of mine made an interesting observation the other day.
+    band_suitability: 7.0+
+    register: formal
+  - term: apologise profusely
+    meaning: to say sorry a lot or in an exaggerated/heavy manner
+    example: I apologise too profusely if I do something wrong.
+    band_suitability: 8.0+
+    register: neutral
+  - term: strike up a conversation
+    meaning: to begin a conversation with someone
+    example: I heard my friend Margie strike up a conversation with a handsome man.
+    band_suitability: 7.0+
+    register: neutral
+  - term: lull in the conversation
+    meaning: a temporary quiet period during a chat
+    example: Then, after a while, during a lull in the conversation, I heard her whisper
+      softly...
+    band_suitability: 8.0+
+    register: neutral
+  - term: tell a lie
+    meaning: to say something that is not true
+    example: Why did she tell a lie?
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

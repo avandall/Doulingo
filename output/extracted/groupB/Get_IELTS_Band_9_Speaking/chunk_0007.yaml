@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Food and Dishes — Band 5/6 vs Band 9 Comparison"
+  topic_tags: ["Food", "Culture", "Traditional dishes"]
+  target_band_min: 5.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, 4. Tell me about your country's food and dishes."
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers are simple, direct, and rely on basic vocabulary. Sentences are short and lack complex structures or modifiers."
+    grammar_required: ["Present simple tense"]
+    vocabulary_core: ["food", "meat", "dish", "curry"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Lack of elaboration, repetitive structure, limited descriptive language."
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Uses nuance, introduces complex concepts (health reasons, uniqueness of recipe), and demonstrates natural flow."
+    grammar_required: 
+      - Modal verbs
+      - Concessive clauses (although)
+      - Relative clauses
+    vocabulary_core: ["national dish", "recipe", "unique"]
+    vocabulary_stretch: ["tend to", "health reasons"]
+    sentence_length_target: "varied, complex sentence structures"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about your country's food and dishes."
+    user_model_answer: "Our favourite food is meat. Our national dish is a lamb dish, like curry."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Tell me about your country's food and dishes."
+    user_model_answer: "We tend to eat a lot of meat, although these days people are trying to eat less meat for health reasons. We have a national dish which is similar to lamb curry, but made in a unique way. Not many people know the recipe, so eating it is always exciting for us."

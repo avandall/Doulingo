@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 2: Making notes - Strategy and Practice"
+  topic_tags: ["Part 2", "Making Notes", "Strategy"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Part 2: Making notes"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can provide a basic structure using notes; might miss some supporting details or have slight hesitation."
+    grammar_required: ["Past simple for storytelling", "Present perfect for recent events"]
+    vocabulary_core: ["boss", "job offer", "formal letter"]
+    vocabulary_stretch: ["rejection", "HR department", "surprised", "excited"]
+    sentence_length_target: "moderate"
+    common_errors_to_simulate: "Sticking too closely to written notes (reading) rather than speaking naturally."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Uses notes effectively to organize ideas; adds relevant, spontaneous details beyond basic requirements."
+    grammar_required: ["Range of tenses including past perfect for background info"]
+    vocabulary_core: ["communicate", "regularly", "importance"]
+    vocabulary_stretch: ["prolonged wait", "professional context", "maintain connection"]
+    sentence_length_target: "varied, complex sentences"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Describe an important letter you received."
+    user_model_answer: "I received a formal letter from my boss last April. It was a long wait after my interview and I initially thought it was a rejection, but it was actually a job offer. The letter mentioned the start date and the pay, and invited me to the HR department. It was my first job, so I was really pleased and surprised."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Talk about a person you regularly communicate with but don't often see."
+    user_model_answer: "I regularly communicate with my childhood friend who lives abroad. We mostly use instant messaging to share updates about our careers and personal lives. Even though we haven't seen each other in person for three years, our communication is vital because it helps me maintain a sense of stability and connection to my roots, despite the distance."

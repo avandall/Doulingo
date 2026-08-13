@@ -1,0 +1,32 @@
+content_unit:
+  template_type: band_ladder
+  title: "Strategies for Part 1: Addressing Lack of Expansion"
+  topic_tags: ["Part 1", "IELTS Speaking Strategy", "Expansion Techniques"]
+  target_band_min: 5.0
+  target_band_max: 5.5
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking, STRATEGIES FOR PART 1 OF THE SPEAKING TEST"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Candidate answers correctly with no grammatical errors but fails to develop answers beyond a basic level."
+    grammar_required: ["Simple present tense"]
+    vocabulary_core: ["basic nouns", "adjectives"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Lack of expansion (giving only minimal information), relying on the examiner to lead the conversation."
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Let's talk about your home country. What is the climate like?"
+    user_model_answer: "It's hot most of the time. Sometimes there is rain."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Thank you. What are the main industries?"
+    user_model_answer: "Making cars and buses. And there are many factories which make plastic things."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "I see. And what are the main festivals?"
+    user_model_answer: "What does 'festival' mean? ... Oh, ok. Well, our big festival is in summer. I see."

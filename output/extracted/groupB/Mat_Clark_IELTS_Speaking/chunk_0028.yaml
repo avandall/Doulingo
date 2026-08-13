@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mat Clark IELTS Speaking — Part 2 Topic Strategies (Objects & Hobbies)"
+  topic_tags: ["Part 2", "Objects", "Hobbies", "Strategy"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Sections: Objects (10-15), Hobbies (1-5)"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thường chọn các chủ đề quá đơn giản (như xe hơi/bóng đá) khiến việc kéo dài thời gian nói trở nên khó khăn, dẫn đến lặp từ và thiếu ý tưởng."
+    grammar_required: ["Present Simple", "Simple Past"]
+    vocabulary_core: ["buy", "expensive", "like", "popular"]
+    vocabulary_stretch: ["extravagant", "versatile", "durable"]
+    sentence_length_target: "Ngắn, rời rạc"
+    common_errors_to_simulate: "Chọn chủ đề quá đơn giản dẫn đến thiếu từ vựng chuyên sâu; mô tả các hoạt động thể chất cường độ cao khi được hỏi về chủ đề 'relaxation'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng chiến thuật chọn các đối tượng 'không tưởng' (như phi cơ, du thuyền) để phô diễn từ vựng phức tạp và cấu trúc câu điều kiện."
+    grammar_required: 
+      - Conditional structures (If/I would/I might)
+      - Present Perfect (for duration)
+      - Passive voice (long-established techniques)
+    vocabulary_core: ["status symbol", "technical fault", "price-tag"]
+    vocabulary_stretch: ["environmentally sustainable", "long-established", "splash out on"]
+    sentence_length_target: "Phức hợp, sử dụng cấu trúc câu linh hoạt"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a vehicle you would like to own."
+    user_model_answer: "I want to own a car. A Toyota maybe. It is very fast and I like driving it. It is not too expensive and I hope I can buy it one day because I need it for my work."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a vehicle you would like to own."
+    user_model_answer: "If I could choose any vehicle, I’d probably opt for a luxury yacht. It’s definitely a status symbol, though I’m fully aware it’s just a fantasy since the price-tag is astronomical. If I actually owned such a vessel, I would use it to travel along the coastline to escape the daily grind."

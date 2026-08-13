@@ -1,0 +1,141 @@
+vocabulary_entry:
+  topic_tags:
+  - crime
+  - law
+  - police
+  - justice
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 34 & 35
+  entries:
+  - term: apply to all students
+    meaning: to be relevant or pertain to everyone in a group of students
+    example: The rules apply to all students in the college.
+    band_suitability: 6.0+
+    register: neutral
+  - term: stipulate that
+    meaning: to demand or specify a requirement clearly as part of an agreement or
+      rule
+    example: The regulations stipulate that coursework must be handed in on time.
+    band_suitability: 7.0+
+    register: formal
+  - term: comply with regulations
+    meaning: to act in accordance with official rules or directives
+    example: All students must comply with the regulations.
+    band_suitability: 7.0+
+    register: formal
+  - term: carry out an investigation
+    meaning: to conduct a formal inquiry to establish the facts
+    example: The police carry out an investigation.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go on trial
+    meaning: to be formally judged in a court of law
+    example: Bill Sikes goes on trial.
+    band_suitability: 6.0+
+    register: neutral
+  - term: reach a verdict
+    meaning: to come to an official decision in a court case
+    example: The jury reaches its verdict.
+    band_suitability: 7.0+
+    register: formal
+  - term: hardened criminal
+    meaning: a person who has committed many crimes and shows no remorse
+    example: Hickey was a hardened criminal who had committed 12 serious offences.
+    band_suitability: 7.0+
+    register: neutral
+  - term: serve a sentence
+    meaning: to spend a required period of time in prison as a punishment
+    example: He ordered that Hickey should serve a sentence of at least 15 years in
+      prison.
+    band_suitability: 6.0+
+    register: neutral
+  - term: convicted criminal
+    meaning: someone officially declared guilty of a crime in a court of law
+    example: Henry Banks was already a convicted criminal when he was appointed chairman.
+    band_suitability: 7.0+
+    register: neutral
+  - term: criminal record
+    meaning: an official list kept by the police of someone's previous crimes
+    example: Anyone with a criminal record should not be able to get a job where large
+      sums of money are placed in their care.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fight against crime
+    meaning: efforts and actions taken by authorities and society to prevent and stop
+      illegal acts
+    example: In the fight against crime we will not just target serious crime.
+    band_suitability: 6.0+
+    register: neutral
+  - term: target serious crime
+    meaning: to focus efforts and resources on major illegal activities
+    example: In the fight against crime we will not just target serious crime.
+    band_suitability: 7.0+
+    register: neutral
+  - term: tackle crime
+    meaning: to make a determined effort to deal with and solve the problem of crime
+    example: That’s why we’re determined to tackle crime.
+    band_suitability: 6.0+
+    register: neutral
+  - term: combat crime
+    meaning: to actively fight or try to stop criminal activity
+    example: We are doing everything in our power to combat crime.
+    band_suitability: 7.0+
+    register: formal
+  - term: crime rate
+    meaning: the level or number of crimes committed in a particular area over a period
+    example: The crime rate has come down.
+    band_suitability: 6.0+
+    register: neutral
+  - term: juvenile crime
+    meaning: illegal acts committed by minors or young people
+    example: Focused on juvenile crime, because that is where the problem begins.
+    band_suitability: 7.0+
+    register: neutral
+  - term: crime wave
+    meaning: a sudden, sharp increase in the number of crimes committed in an area
+    example: We have all had some experience of the recent crime wave in our cities.
+    band_suitability: 8.0+
+    register: neutral
+  - term: petty crime
+    meaning: minor offenses or crimes that are not considered very serious
+    example: Whether it is petty crime or more serious offences.
+    band_suitability: 6.0+
+    register: neutral
+  - term: spate of burglaries
+    meaning: a large number of burglaries happening suddenly in a short period of
+      time
+    example: We have had a spate of burglaries in this part of the city.
+    band_suitability: 8.0+
+    register: neutral
+  - term: mindless vandalism
+    meaning: senseless and deliberate damage to public or private property
+    example: Police have reported a staggering increase in the number of acts of mindless
+      vandalism.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

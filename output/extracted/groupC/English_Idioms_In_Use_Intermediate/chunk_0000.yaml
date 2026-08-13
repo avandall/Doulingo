@@ -1,0 +1,124 @@
+vocabulary_entry:
+  topic_tags:
+  - general_expressions
+  - idioms_intro
+  category: idiom
+  source_citation: English Idioms in Use Intermediate - Unit 1
+  entries:
+  - term: drive someone round the bend
+    meaning: to make someone angry or frustrated
+    example: That noise is driving me round the bend! It's so annoying!
+    band_suitability: 7.0+
+    register: informal
+  - term: kill two birds with one stone
+    meaning: to produce two useful results by just doing one action
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: in the blink of an eye
+    meaning: in an extremely short time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: a bone of contention
+    meaning: something which people argue and disagree over
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: as dry as a bone
+    meaning: very dry
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: rough and ready
+    meaning: crude and lacking sophistication
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: cool, calm and collected
+    meaning: relaxed, in control, not nervous
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: to cut a long story short
+    meaning: to tell the main points without fine details
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: pass the buck
+    meaning: to shift blame or refuse to accept responsibility
+    example: Government Ministers always pass the buck if they are challenged about
+      poverty.
+    band_suitability: 8.0+
+    register: formal
+  - term: by hook or by crook
+    meaning: using any means necessary to achieve something
+    example: I decided I was going to get a place at university by hook or by crook.
+    band_suitability: 8.0+
+    register: neutral
+  - term: at loggerheads
+    meaning: to disagree very strongly
+    example: The government and the unions are at loggerheads.
+    band_suitability: 8.0+
+    register: neutral
+  - term: pay through the nose
+    meaning: to pay a very large sum of money
+    example: We had to pay through the nose to get our visas quickly.
+    band_suitability: 7.0+
+    register: informal
+  - term: pros and cons
+    meaning: the advantages and disadvantages of something
+    example: Should we fly or go by train? What are the pros and cons?
+    band_suitability: 6.0+
+    register: neutral
+  - term: second thoughts
+    meaning: doubts about a decision already made
+    example: I'm having second thoughts about going on holiday with Jean.
+    band_suitability: 6.0+
+    register: neutral
+  - term: as free as a bird
+    meaning: to feel completely free and without responsibilities
+    example: When I had finished all my exams, I felt as free as a bird.
+    band_suitability: 7.0+
+    register: neutral
+  - term: give someone a free hand
+    meaning: to give someone freedom to act as they wish
+    example: I don't know much about design, so I gave the decorator a free hand.
+    band_suitability: 8.0+
+    register: neutral
+  - term: well-to-do
+    meaning: wealthy; rich
+    example: She comes from a rather well-to-do family.
+    band_suitability: 7.0+
+    register: neutral
+  - term: out of the blue
+    meaning: unexpectedly; without warning
+    example: My old school friend Harriet arrived out of the blue.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,138 @@
+vocabulary_entry:
+  topic_tags:
+  - food
+  - restaurants
+  - senses
+  - cooking
+  - travel
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 45
+  entries:
+  - term: fragrant perfume
+    meaning: a pleasant, sweet smell, often from flowers
+    example: Everywhere you go, the fragrant perfume of Caranza Island’s wild flowers
+      follows you.
+    band_suitability: 6.0+
+    register: neutral
+  - term: distinctive aroma
+    meaning: a clear, easily recognizable smell, typically of food or drink
+    example: the distinctive aroma of the local dishes
+    band_suitability: 7.0+
+    register: neutral
+  - term: appetising aroma
+    meaning: a smell of food that makes you want to eat
+    example: appetising aroma
+    band_suitability: 7.0+
+    register: neutral
+  - term: fresh scent
+    meaning: a clean and pleasant smell, often of herbs or nature
+    example: The fresh scent of herbs is everywhere in the local markets.
+    band_suitability: 6.0+
+    register: neutral
+  - term: acquired taste
+    meaning: something you dislike at first but start to like after trying it several
+      times
+    example: For many people, octopus is an acquired taste.
+    band_suitability: 7.0+
+    register: neutral
+  - term: subtle flavour
+    meaning: a taste that is not noticeable, strong, or obvious
+    example: the subtle flavour of the local vegetable
+    band_suitability: 7.0+
+    register: formal
+  - term: bitter coffee
+    meaning: coffee with a sharp, pungent taste, without sweetness
+    example: I can’t drink bitter coffee.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sour milk
+    meaning: milk that has gone bad or spoiled due to age
+    example: an old carton of milk which had gone sour
+    band_suitability: 6.0+
+    register: neutral
+  - term: acrid smoke
+    meaning: strong-smelling smoke that causes a burning feeling in your throat
+    example: the acrid smoke and noxious fumes from a foul-smelling chemical factory
+    band_suitability: 8.0+
+    register: formal
+  - term: noxious fumes
+    meaning: poisonous gas or smoke that is harmful
+    example: noxious fumes from a foul-smelling chemical factory
+    band_suitability: 8.0+
+    register: formal
+  - term: foul-smelling
+    meaning: having an extremely unpleasant odor
+    example: a foul-smelling chemical factory nearby
+    band_suitability: 6.0+
+    register: neutral
+  - term: body odour
+    meaning: an unpleasant smell on a person’s body caused by sweat
+    example: Body odour can be extremely unpleasant and embarrassing.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strong smell
+    meaning: an intense odor that is easily noticed
+    example: It has a strong smell.
+    band_suitability: 6.0+
+    register: neutral
+  - term: smell off
+    meaning: no longer fresh or good to eat because of being too old
+    example: It smells off to me.
+    band_suitability: 6.0+
+    register: informal
+  - term: overpowering stink
+    meaning: a very strong, extremely unpleasant odor
+    example: There was an overpowering stink coming from the river today.
+    band_suitability: 7.0+
+    register: informal
+  - term: revolting stench
+    meaning: an extremely unpleasant, disgusting, and intense smell
+    example: It’s a revolting stench.
+    band_suitability: 8.0+
+    register: formal
+  - term: whiff of perfume
+    meaning: a slight, brief smell of perfume
+    example: Do I detect a whiff of perfume?
+    band_suitability: 7.0+
+    register: neutral
+  - term: share the same taste
+    meaning: to like the same things
+    example: Hudson and I share the same taste in music.
+    band_suitability: 6.0+
+    register: neutral
+  - term: develop a taste for
+    meaning: to start liking something over time
+    example: She has developed a taste for fast cars.
+    band_suitability: 7.0+
+    register: neutral
+  - term: smell danger
+    meaning: to sense or feel that danger is near
+    example: We smelt danger and decided not to enter the city.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

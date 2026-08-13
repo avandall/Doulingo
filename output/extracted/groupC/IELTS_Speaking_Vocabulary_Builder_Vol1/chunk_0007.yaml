@@ -1,0 +1,139 @@
+vocabulary_entry:
+  topic_tags:
+  - weather
+  - emotions
+  - business
+  - money
+  - shopping
+  category: phrase
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: mood
+    meaning: the way you are feeling at a particular time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: dreary
+    meaning: that makes you feel sad; not bright or interesting
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: chalk something up to something
+    meaning: to consider that something is caused by a particular thing
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: coincidence
+    meaning: the fact of two things happening at the same time by chance, in a surprising
+      way
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: ruin
+    meaning: to damage something so badly that it loses all its value, pleasure, etc.
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: downpour
+    meaning: a heavy fall of rain that often starts suddenly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: precipitation
+    meaning: rain, snow, etc. that falls; the amount of this that falls
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: rain cats and dogs
+    meaning: to rain very heavily
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: isolate
+    meaning: to separate somebody/something physically or socially from other people
+      or things
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: face numerous challenges
+    meaning: to deal with many difficulties or problems
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: mission
+    meaning: particular work that you feel it is your duty to do
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: low-cost
+    meaning: below the usual cost; cheap
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: environmentally friendly
+    meaning: not harmful to the environment, or trying to help the environment
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: reasoning
+    meaning: the process of thinking about things in a logical way; opinions and ideas
+      that are based on logical thinking
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: customer satisfaction
+    meaning: a measure of how happy customers feel when they do business with a company
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: repeat buyer
+    meaning: someone who buys again from a company that they have used before
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: spreading the word
+    meaning: to communicate a message to a lot of people
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: get the most bang for your buck
+    meaning: to get the best value or return for your money
+    example: ''
+    band_suitability: 8.0+
+    register: casual
+  - term: spur of the moment
+    meaning: done suddenly without planning beforehand
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: impulse purchases
+    meaning: buying things suddenly without planning or thinking about it
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

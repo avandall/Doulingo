@@ -1,0 +1,154 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - general_vocabulary
+  - academic_vocabulary
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: reject an idea
+    meaning: to dismiss or refuse to accept an idea
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: reject a suggestion
+    meaning: to refuse to accept a suggestion
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: close relative
+    meaning: a member of your immediate family
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: relaxed atmosphere
+    meaning: a calm, informal, and comfortable environment
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: release a CD
+    meaning: to make a CD available for people to buy
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: relieve pain
+    meaning: to make pain less severe or remove it
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: remain stable
+    meaning: to stay in the same condition without changing
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: remarkable achievement
+    meaning: an impressive and unusual success
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: meet requirements
+    meaning: to fulfill the necessary conditions or demands
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: conduct a research project
+    meaning: to organize and carry out a research study
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: groundbreaking research
+    meaning: very new and original research that makes a big discovery
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: bitterly resent
+    meaning: to feel extremely angry or upset about unfair treatment
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: make a reservation
+    meaning: to arrange to have something kept for you (e.g. table, room)
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: residential area
+    meaning: a district where people live rather than work
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: respect the law
+    meaning: to obey and have regard for the legal system
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: earn a good salary
+    meaning: to receive a high amount of money for your work
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: save money
+    meaning: to keep money rather than spend it
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: save time
+    meaning: to prevent time from being wasted
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: set high standards
+    meaning: to establish a high level of quality or achievement to be attained
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: set targets
+    meaning: to establish specific goals or objectives
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: run into problems
+    meaning: to begin to experience difficulties
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: run out of time
+    meaning: to have no time left to do something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: set up a business
+    meaning: to start a company or enterprise
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: settle a dispute
+    meaning: to end an argument or disagreement successfully
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

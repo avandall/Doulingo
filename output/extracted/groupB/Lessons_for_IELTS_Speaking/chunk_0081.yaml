@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar — Using Relative Clauses for IELTS Speaking"
+  topic_tags: ["Grammar", "Relative Clauses", "Commodities"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking.md, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic relative clauses but might struggle with word order or combining ideas fluently in extended speech."
+    grammar_required: 
+      - "Relative clauses with 'who', 'that', 'which"
+    vocabulary_core: ["commodity", "imported", "refined", "exported"]
+    vocabulary_stretch: ["variety", "extracted", "precious metal"]
+    sentence_length_target: "Short to medium, often relying on simple sentence structures."
+    common_errors_to_simulate: "Forgetting to place the relative clause immediately after the noun it describes; omitting the relative pronoun (e.g., 'The rice we use it is good')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Consistently uses complex sentences with relative clauses to provide accurate descriptions of objects or commodities."
+    grammar_required: ["Embedded relative clauses", "Complex sentence structures"]
+    vocabulary_core: ["commodity", "extracted", "fuel", "refined"]
+    vocabulary_stretch: ["variety of climates", "soil types", "majority of motor vehicles"]
+    sentence_length_target: "Longer, cohesive sentences that combine multiple facts about a single topic."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Describe a commodity that is important to your country."
+    user_model_answer: "Petrol is a commodity that is important to my country. It is used to fuel the majority of motor vehicles, which is important to me in my everyday life."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a commodity that is important to your country."
+    user_model_answer: "One commodity that is vital to my country is copper, which has been used by people for thousands of years. It is mainly extracted from large mines, and then it is exported to other countries that use it to make electrical components."

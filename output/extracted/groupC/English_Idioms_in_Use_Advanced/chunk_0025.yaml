@@ -1,0 +1,125 @@
+vocabulary_entry:
+  topic_tags:
+  - friendship
+  - relationships
+  - personality
+  - behavior
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 26-27
+  entries:
+  - term: not give someone the time of day
+    meaning: to ignore someone or treat them as if they are not important
+    example: My so-called friend Lucy doesn't even give me the time of day any more.
+    band_suitability: 7.0+
+    register: informal
+  - term: through thick and thin
+    meaning: through good times and bad times
+    example: My friend Tessa has been with me through thick and thin.
+    band_suitability: 7.0+
+    register: neutral
+  - term: friends in high places
+    meaning: people in powerful or influential positions who can help you
+    example: I've got friends in high places, you know.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go back a long way
+    meaning: to have known each other for a long time
+    example: My best friend and I go back a long way.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fair-weather friend
+    meaning: someone who is a friend only when things are going well
+    example: I've come to the conclusion that Ben is just a fair-weather friend.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a mine of information
+    meaning: someone who has a lot of knowledge about many different things
+    example: You're right. He's a mine of information.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a man/woman of many parts
+    meaning: a person with many different skills and talents
+    example: That's right. He's a man of many parts.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a whizz kid
+    meaning: a young person who is very clever and successful
+    example: Yes, he's a whizz kid, if ever there was one.
+    band_suitability: 7.0+
+    register: informal
+  - term: get-up and go
+    meaning: energy and enthusiasm
+    example: She's got plenty of get-up and go.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have plenty of strings to one's bow
+    meaning: to have more than one skill or area of knowledge
+    example: Yes, she has plenty of strings to her bow.
+    band_suitability: 8.0+
+    register: formal
+  - term: a glutton for punishment
+    meaning: someone who likes working hard or doing things others find unpleasant
+    example: She's certainly a glutton for punishment.
+    band_suitability: 8.0+
+    register: informal
+  - term: highly strung
+    meaning: very nervous and easily upset
+    example: She's so highly strung that even a loud noise can make her jump.
+    band_suitability: 7.0+
+    register: neutral
+  - term: act/play the fool
+    meaning: to behave in a silly way, often to make people laugh
+    example: He'd be a nicer person if he didn't play the fool so much.
+    band_suitability: 6.0+
+    register: neutral
+  - term: look out for number one
+    meaning: to put oneself first, thinking one is the most important person
+    example: He always looks out for number one.
+    band_suitability: 7.0+
+    register: informal
+  - term: eat someone for breakfast
+    meaning: to speak angrily/critically to easily control or defeat someone
+    example: The lawyers are going to eat the accused man for breakfast.
+    band_suitability: 8.0+
+    register: informal
+  - term: a love rat
+    meaning: a man who has a secret sexual relationship while in a relationship
+    example: Movie star Jake King was exposed as a love rat yesterday.
+    band_suitability: 7.0+
+    register: informal
+  - term: a wet blanket
+    meaning: someone who stops others from enjoying themselves
+    example: Stop being such a wet blanket.
+    band_suitability: 7.0+
+    register: informal
+  - term: a loose cannon
+    meaning: someone who cannot be trusted because they act in an unpredictable way
+    example: Our sales manager is a loose cannon.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

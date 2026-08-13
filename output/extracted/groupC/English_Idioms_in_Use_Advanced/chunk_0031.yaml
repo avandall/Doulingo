@@ -1,0 +1,132 @@
+vocabulary_entry:
+  topic_tags:
+  - daily life
+  - eating
+  - sleeping
+  - routine
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 34
+  entries:
+  - term: square meal
+    meaning: a proper meal with all the types of food your body needs
+    example: You shouldn't just snack - try to have at least one square meal every
+      day.
+    band_suitability: 7.0+
+    register: neutral
+  - term: done to a turn
+    meaning: perfectly cooked
+    example: The meat is delicious. It's done to a turn.
+    band_suitability: 8.0+
+    register: neutral
+  - term: eat like a pig
+    meaning: eats very greedily and unpleasantly
+    example: He has no table manners - he eats like a pig.
+    band_suitability: 7.0+
+    register: informal
+  - term: eat like a horse
+    meaning: eats a lot
+    example: She's quite thin, even though she eats like a horse.
+    band_suitability: 7.0+
+    register: neutral
+  - term: eat like a bird
+    meaning: eats very little
+    example: My grandmother's tiny, and she eats like a bird.
+    band_suitability: 7.0+
+    register: neutral
+  - term: burn the midnight oil
+    meaning: work or study until very late at night
+    example: Try not to burn the midnight oil the night before an exam.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sleep on it
+    meaning: postpone making a decision until after a night's sleep
+    example: Don't decide now - sleep on it and see how you feel in the morning.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be out like a light
+    meaning: fell asleep very quickly
+    example: The little boy went out like a light as soon as he went to bed.
+    band_suitability: 7.0+
+    register: neutral
+  - term: not lose sleep over sth
+    meaning: not worry about something
+    example: It was just a silly argument - I wouldn't lose any sleep over it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: don't know whether I'm coming or going
+    meaning: unable to think clearly or decide what to do because there are so many
+      things to deal with
+    example: I've been really busy. In fact, I don't know whether I'm coming or going!
+    band_suitability: 8.0+
+    register: neutral
+  - term: go out on the town
+    meaning: spend the evening in bars, restaurants or clubs
+    example: They want to go out on the town every night.
+    band_suitability: 7.0+
+    register: neutral
+  - term: give it a miss
+    meaning: not take part
+    example: Last night I suggested I give it a miss, but they wouldn't listen.
+    band_suitability: 7.0+
+    register: informal
+  - term: outstay one's welcome
+    meaning: stayed longer than the host would like
+    example: Sounds like they've outstayed their welcome!
+    band_suitability: 8.0+
+    register: neutral
+  - term: on the hoof
+    meaning: while doing other things
+    example: I don't have time to eat lunch. I just have a sandwich on the hoof.
+    band_suitability: 8.0+
+    register: neutral
+  - term: pass the time of day
+    meaning: have a short, informal conversation or chat
+    example: There's not even a spare moment to pass the time of day with colleagues.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a bad hair day
+    meaning: a day when you feel you look unattractive or everything goes wrong
+    example: I'm having a bad hair day today too!
+    band_suitability: 7.0+
+    register: informal
+  - term: take each day as it comes
+    meaning: deal with things as they happen and not worry about the future
+    example: You just need to take each day as it comes.
+    band_suitability: 7.0+
+    register: neutral
+  - term: creature comforts
+    meaning: physical comforts like a comfortable bed, hot water, food and warmth
+    example: As you know, I like my creature comforts.
+    band_suitability: 8.0+
+    register: neutral
+  - term: on the house
+    meaning: given free by the business
+    example: We went out for a meal and the owner let us have it on the house.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

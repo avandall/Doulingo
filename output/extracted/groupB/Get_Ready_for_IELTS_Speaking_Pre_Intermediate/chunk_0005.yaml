@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Hometown — Improving Part 1 and Part 2 Responses"
+  topic_tags: ["Hometown", "Places in cities", "Describing cities"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 4"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Provides very brief, telegraphic answers (1-2 words). Lacks development and relies on simple, repetitive vocabulary."
+    grammar_required: ["Present simple", "There is/are"]
+    vocabulary_core: ["busy", "dirty", "nice"]
+    vocabulary_stretch: []
+    sentence_length_target: "2-4 words"
+    common_errors_to_simulate: "Ignoring question depth; one-word answers; lack of grammatical expansion."
+  - band_min: 6.0
+    band_max: 7.0
+    can_do_description: "Provides extended answers with supporting details. Uses specific descriptive adjectives and organized structure."
+    grammar_required: 
+      - Present simple
+      - There is/are (with quantifiers)
+      - Past simple
+    vocabulary_core: ["neighbourhood", "tourist attractions", "financial district"]
+    vocabulary_stretch: ["historic centre", "traditional food", "modern", "well-known"]
+    sentence_length_target: "8-15 words"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "How would you describe your hometown?"
+    user_model_answer: "Busy. Dirty. I don't like it."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How would you describe your hometown?"
+    user_model_answer: "My hometown is near the border. It's a busy city and it's famous for its different neighbourhoods. It's got a financial district with lots of tall skyscrapers, and I really like it because there are many small restaurants where you can eat delicious traditional food."

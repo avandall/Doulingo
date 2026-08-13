@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Listening and Speaking — Identifying and avoiding distractors"
+  topic_tags: ["Academic Research", "Test Strategy", "Distractors"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Identifying and avoiding distractors"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Thí sinh nhận diện được thông tin chính nhưng dễ bị đánh lạc hướng bởi các từ khóa xuất hiện trong đề bài."
+    grammar_required: ["Past simple for reporting research", "Present perfect for recent activities"]
+    vocabulary_core: ["research", "admissions", "editorial", "declined"]
+    vocabulary_stretch: ["distractor", "comparative study"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Chọn đáp án dựa trên từ khóa xuất hiện trong bài nghe thay vì hiểu đúng ngữ cảnh phủ định (ví dụ: nghe thấy 'friend' và 'tutor' liền chọn ngay đáp án A dù nội dung là về chuyên ngành khác)."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Thí sinh phân biệt được thông tin chính xác và thông tin gây nhiễu bằng cách hiểu ý nghĩa bao quát của câu thay vì chỉ bám vào từ khóa."
+    grammar_required: 
+      - Complex sentence structures
+      - Conjunctions for contrast (although, however)
+    vocabulary_core: ["correlation", "inaccuracy", "distractor identification"]
+    vocabulary_stretch: ["irrelevant information", "contextual inference"]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How did you identify the correct source of Dan's research idea?"
+    user_model_answer: "Dan mentions he was talking to a friend about her tutor, but that was just a trigger for his thinking. He says he actually decided to carry out the research after reading an editorial piece in Science Today."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Why is choice A (a friend of his tutor's) a distractor in this context?"
+    user_model_answer: "It is a distractor because while the friend and the tutor are mentioned, they are associated with the chemistry department and falling admissions there, not the origin of Dan's specific engineering research idea. The listener must track the logical sequence to avoid being misled by these related keywords."

@@ -1,0 +1,124 @@
+vocabulary_entry:
+  topic_tags:
+  - crime
+  - law
+  - punishment
+  - justice
+  category: idiom
+  source_citation: 'English Idioms in Use Advanced, Unit 28: Crime and punishment'
+  entries:
+  - term: on the fiddle
+    meaning: getting money in an illegal or dishonest way
+    example: I'd never have dreamt Ben was on the fiddle, would you?
+    band_suitability: 8.0+
+    register: informal
+  - term: an inside job
+    meaning: a crime committed by someone from within the organisation affected
+    example: I knew money was going missing, but I never thought it would be an inside
+      job.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have one's hand in the till
+    meaning: stealing money from the business one works for
+    example: Ben seemed so honest, yet he had his hand in the till all the time.
+    band_suitability: 8.0+
+    register: informal
+  - term: pull the wool over someone's eyes
+    meaning: to deceive someone
+    example: Yeah, he pulled the wool over everyone's eyes.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take someone for a ride
+    meaning: to trick or deceive someone
+    example: I can't believe he was taking us all for a ride.
+    band_suitability: 7.0+
+    register: informal
+  - term: line one's own pockets
+    meaning: to make money for oneself in a dishonest way
+    example: He was so strict with us, and yet he was lining his own pockets the whole
+      time!
+    band_suitability: 8.0+
+    register: neutral
+  - term: under the counter
+    meaning: secretly and illegally
+    example: He sacked Jay when he was found selling things under the counter last
+      year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: do a runner
+    meaning: to run away to avoid a difficult situation
+    example: I know! And now Ben has done a runner.
+    band_suitability: 8.0+
+    register: informal
+  - term: the long arm of the law
+    meaning: the police (suggesting it has far-reaching powers)
+    example: Is the long arm of the law doing a good job?
+    band_suitability: 8.0+
+    register: neutral
+  - term: throw the book at someone
+    meaning: to punish someone as severely as possible
+    example: They're too quick to throw the book at people.
+    band_suitability: 8.0+
+    register: informal
+  - term: do a stretch
+    meaning: to have a prison sentence
+    example: Why should someone do a stretch for a minor offence?
+    band_suitability: 8.0+
+    register: informal
+  - term: do time
+    meaning: to spend time in prison
+    example: Doing time just makes people more likely to commit another crime.
+    band_suitability: 7.0+
+    register: informal
+  - term: the boys in blue
+    meaning: the police
+    example: The boys in blue should recruit more reformed criminals.
+    band_suitability: 8.0+
+    register: informal
+  - term: poacher turned gamekeeper
+    meaning: someone whose job involves working against the kind of person they used
+      to be
+    example: There's nothing more effective than a poacher turned gamekeeper!
+    band_suitability: 8.0+
+    register: neutral
+  - term: bring to book
+    meaning: to punish someone
+    example: I think young offenders should always be brought to book.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a short sharp shock
+    meaning: a brief but severe punishment
+    example: A short sharp shock would keep them on the straight and narrow in future.
+    band_suitability: 8.0+
+    register: neutral
+  - term: on the straight and narrow
+    meaning: behaving in an honest, moral way
+    example: A short sharp shock would keep them on the straight and narrow in future.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

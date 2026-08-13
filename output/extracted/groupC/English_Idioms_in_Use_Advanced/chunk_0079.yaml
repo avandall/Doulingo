@@ -1,0 +1,84 @@
+vocabulary_entry:
+  topic_tags:
+  - idioms
+  - advanced_vocabulary
+  - reference_index
+  category: idiom
+  source_citation: English Idioms in Use Advanced, pp. 173-174
+  entries:
+  - term: play sb at their own game
+    meaning: use the same tactics, methods or cheating as an opponent against them
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: keep your finger on the pulse
+    meaning: stay aware of the most recent developments in a particular area or subject
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: push the envelope
+    meaning: extend the limits of what is possible or safe
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: put your money where your mouth is
+    meaning: show that you support something with actions and money, not just words
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: run a tight ship
+    meaning: manage an organization or activity efficiently and strictly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: the rat race
+    meaning: the exhausting, competitive routine of modern urban working life
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: rags to riches
+    meaning: the journey from extreme poverty to great wealth
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: it's not rocket science
+    meaning: used to say that something is not very difficult to understand or do
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: the elephant in the room
+    meaning: an obvious major problem or controversial issue that people avoid discussing
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: see eye to eye
+    meaning: agree fully with someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

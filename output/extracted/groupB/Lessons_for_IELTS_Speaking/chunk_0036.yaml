@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary for Long Turn: Education & Career Goals"
+  topic_tags: ["Education", "Career", "Future Plans"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking.md, VOCABULARY"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can express future goals using basic topic-specific vocabulary (e.g., degree, university, study) but may rely on repetitive structures."
+    grammar_required: 
+      - "Complex sentences with 'because"
+      - "Future intention with 'would love to/hope to"
+    vocabulary_core: ["goal", "expensive", "study", "university", "subject"]
+    vocabulary_stretch: ["reputable", "get ahead", "undergraduate degree"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Lack of fluency markers, simple sentence structure, occasional hesitation when discussing abstract goals."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wider range of collocation and topic-specific vocabulary naturally to describe professional and educational ambitions."
+    grammar_required: 
+      - Relative clauses
+      - "Conditional structures with 'depends on whether"
+      - Gerunds for professional activities
+    vocabulary_core: 
+      - "Master's degree"
+      - run a business
+      - motivated
+      - successful
+    vocabulary_stretch: ["international education", "project management", "import/export business"]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "A course I would love to take in the future is a Master of Business Administration, an MBA."
+    user_model_answer: "This has been my dream for so long, and part of my goal is to study an MBA in an English speaking country, such as Australia or New Zealand, because here in China, a degree from a reputable foreign university really helps you to get ahead."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you normally find it easy or difficult to learn new things?"
+    user_model_answer: "Um, it depends. I think it depends on whether I am interested in what I am learning or not. How motivated I am, you know..."

@@ -1,0 +1,60 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Topics — Environment, Pollution & Languages
+  topic_tags:
+  - Environment
+  - Pollution
+  - Languages
+  target_band_min: 7.0
+  target_band_max: 8.5
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS.md, Audio Scripts Tracks 29-31
+band_tiers:
+- band_min: 7.0
+  band_max: 8.5
+  can_do_description: Candidate demonstrates the ability to speak fluently and at
+    length using a wide range of topic-specific vocabulary and complex sentence structures.
+    They can offer nuanced opinions and develop arguments logically.
+  grammar_required:
+  - Conditional sentences (If... then)
+  - Complex sentences with relative clauses
+  - Modal verbs for speculation
+  vocabulary_core:
+  - ecosystem
+  - carbon footprint
+  - poverty line
+  - uninhabitable
+  - mother tongue
+  vocabulary_stretch:
+  - non-stop
+  - incentivising
+  - toxic waste
+  - repercussions
+  - indispensable
+  sentence_length_target: Varied; combination of complex and compound sentences for
+    argumentation.
+sample_dialogues:
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: Does the responsibility for protecting the environment lie with governments
+    or with individuals?
+  user_model_answer: In my view, the responsibility lies with all of us. However,
+    individuals, at least in my country, aren't taking action of their own accord,
+    and nor are businesses; they're just out to make a profit. Therefore, it falls
+    to governments to force people to be more green, for example by fining companies
+    that release toxic waste into our rivers, or incentivising us to recycle.
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: Do you think we pollute more now than we did fifty years ago?
+  user_model_answer: Well, yes, overall. I'd say, though, that richer countries pollute
+    less themselves but export their pollution elsewhere, by which I mean that they
+    consume foreign products that have a large carbon footprint. It has become fashionable
+    to be green in wealthier nations, especially Western ones, so people make an effort
+    to cycle to work and recycle their waste.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What do you think is the best way to keep in touch with friends?
+  user_model_answer: It depends how far you are from your friends. If you are geographically
+    close, you should meet up face-to-face. Long-distance communication can cause
+    misunderstandings and resentments to build up - when you write, you only have
+    the words on the page, not body language or tone of voice.

@@ -1,0 +1,86 @@
+vocabulary_entry:
+  topic_tags:
+  - idioms
+  - literary_origins
+  - metaphors
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 22
+  entries:
+  - term: an albatross around your neck
+    meaning: a problem that it is difficult to be free of
+    example: 'Someone asks you to take on a big responsibility, but be careful: it
+      may become an albatross around your neck.'
+    band_suitability: 8.0+
+    register: neutral
+  - term: ships that pass in the night
+    meaning: people who come into your life and leave again after a short time
+    example: You meet someone this week who you think will play an important role
+      in your life. But be prepared to say goodbye; you may be like ships that pass
+      in the night.
+    band_suitability: 8.0+
+    register: neutral
+  - term: castles in the air
+    meaning: plans that have very little chance of happening
+    example: You sometimes feel that your hopes and ambitions are just castles in
+      the air.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a Catch-22 situation
+    meaning: an impossible situation where you are prevented from doing one thing
+      until you have done another thing, but you cannot do the other thing until you
+      have done the first
+    example: You find yourself in a Catch-22 situation with someone very close to
+      you.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go the whole hog
+    meaning: do something as completely as possible
+    example: 'Why not go the whole hog: sell your house, leave town and travel the
+      world?'
+    band_suitability: 7.0+
+    register: informal
+  - term: an ivory tower
+    meaning: a situation where you are separated from the ordinary and unpleasant
+      things that happen in life
+    example: Spending all your time studying has put you in an ivory tower.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a storm in a teacup
+    meaning: a situation where people get very angry or worried about something that
+      is not important
+    example: 'There may be a big argument with someone close to you. But don''t worry:
+      it will just be a storm in a teacup.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: call a spade a spade
+    meaning: to tell the truth about something, even if it is not polite or pleasant
+    example: You don't like offending people, but sometimes you have to call a spade
+      a spade.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

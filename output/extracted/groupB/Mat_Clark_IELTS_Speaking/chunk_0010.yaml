@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mat Clark - Advanced Strategies for Yes/No & Would Questions"
+  topic_tags: [IELTS Speaking Part 1, Grammar, Strategy]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Question Type 6 & 7"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers by repeating the question stem (e.g., 'Yes, X is popular because...'), which limits grammar range."
+    grammar_required: [Simple sentences, basic connectors]
+    vocabulary_core: [Yes/No, basic adjectives]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, 1-2 clauses"
+    common_errors_to_simulate: "Repetitive sentence structures; answering with a simple 'Yes' or 'No' followed by only one detail."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses 'Yes and No' balancing structures for complex ideas; uses second conditional correctly."
+    grammar_required: 
+      - Second Conditional (If + past simple, would/could)
+      - complex linking phrases
+    vocabulary_core: [In actual fact, on the one hand, all in all]
+    vocabulary_stretch: [moderation, obesity, significant, variety of diseases]
+    sentence_length_target: "Complex, multi-clause sentences with embedded evaluation"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Is healthy eating important?"
+    user_model_answer: "Yes, healthy eating is important, because it helps you stay fit and avoid getting sick."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is healthy eating important?"
+    user_model_answer: "Well in actual fact, I guess that in many ways it’s fairly important, especially when you consider that a healthy diet can help to prevent a variety of diseases. But you also have to understand that eating unhealthy food in moderation is not overly harmful. So all in all, I guess my answer would have to be yes and no."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Would you like to live near the sea?"
+    user_model_answer: "Yes, definitely. If I lived near the sea, I would be able to eat fresh seafood every day and enjoy the peaceful atmosphere of the beach."

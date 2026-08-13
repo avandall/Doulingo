@@ -1,0 +1,58 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Part 1 - Dealing with 'Types of' and 'Wh-/How Often' Questions
+  topic_tags:
+  - Public Transport
+  - Question Strategy
+  - Complex Structures
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Mat_Clark_IELTS_Speaking.md, Question Types 4 & 5
+band_tiers:
+- band_min: 5.0
+  band_max: 5.5
+  can_do_description: Candidates often give direct, information-focused, and brief
+    responses, failing to expand or use complex structures.
+  grammar_required:
+  - Simple sentences (Subject + Verb + Object)
+  vocabulary_core:
+  - General terms (e.g., 'Chinese restaurants')
+  vocabulary_stretch: []
+  sentence_length_target: Very short (e.g., 'Once a week', 'In the evening')
+  common_errors_to_simulate: Repeating vocabulary from the question (e.g., answering
+    'popular' when asked about 'popular' restaurants), over-generalization, lack of
+    expansion.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Candidates provide structured, expansive answers that utilize
+    conditional logic and situational contrasts to show complexity.
+  grammar_required:
+  - Conditional structures (If... then...)
+  - Complex sentences with linking words
+  vocabulary_core:
+  - Connectors (Whereas, In contrast, In fact, Likewise)
+  vocabulary_stretch:
+  - Functional phrases (e.g., 'It depends on the situation', 'The best bet')
+  - Fillers (e.g., 'like' used as a natural hesitation)
+  sentence_length_target: Medium to long, incorporating multiple clauses and examples.
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: How often do you go to the cinema?
+  user_model_answer: Maybe once a week. It was very enjoyable and informative.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: How often do you go to the cinema?
+  user_model_answer: Well to be honest, I think I would have to say that it really
+    depends. Like for instance, if I have the money, then it’s quite possible that
+    I will watch a movie in the cinema, two or three times a month. Whereas in contrast,
+    if I’m broke, it’s more likely that I’ll watch movies at home on DVD.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What types of public transport are popular in your city?
+  user_model_answer: Of course, it goes without saying that there’s quite a mixed
+    variety of public transport in my city. Though I think the most common-used would
+    potentially be buses. And the explanation for this could be that they are so cheap
+    and reliable. As well as buses, a second variety would be taxis; one exceptional
+    aspect of them is that they are certainly the quickest way to get around town.

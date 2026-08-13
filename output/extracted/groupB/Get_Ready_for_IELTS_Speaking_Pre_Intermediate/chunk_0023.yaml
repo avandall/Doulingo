@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Education and Work — IELTS Speaking Model Answers"
+  topic_tags: ["Education", "Work", "University", "Jobs"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 7 & 8"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Phù hợp với học viên trình độ Pre-Intermediate. Đưa ra câu trả lời trực tiếp, có sử dụng các liên từ cơ bản (because, and, but). Tuy nhiên, câu trả lời còn ngắn, cấu trúc câu chưa đa dạng."
+    grammar_required: 
+      - Present Simple
+      - Past Simple
+      - modal verbs (have to)
+    vocabulary_core: ["subject", "university", "graduate", "teachers", "school"]
+    vocabulary_stretch: ["lectures", "experience", "tuition", "popular"]
+    sentence_length_target: "3-4 clauses per answer"
+    common_errors_to_simulate: "Lặp lại từ vựng của câu hỏi, độ dài câu trả lời ngắn, thiếu các từ nối phức tạp."
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Sử dụng từ vựng liên quan đến chủ đề học thuật và công việc. Có khả năng so sánh quá khứ và hiện tại. Biết sử dụng các cụm từ để kéo dài thời gian suy nghĩ."
+    grammar_required: 
+      - Present Simple
+      - Past Simple
+      - Present Perfect (basic)
+    vocabulary_core: ["literature", "seminars", "presentations", "well-paid", "work experience"]
+    vocabulary_stretch: ["flexible hours", "apply for", "extra tuition"]
+    sentence_length_target: "4-6 clauses with connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like about your university course?"
+    user_model_answer: "I like my course. It is really interesting. I have great teachers and I like learning about new types of literature all the time."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think it's important to study in another country?"
+    user_model_answer: "Yes, definitely. You can learn about a new country and meet new people, and I think we learn about life. It’s very exciting. It’s difficult to study in another language, but many students have extra tuition to help them."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What are your plans for the future?"
+    user_model_answer: "Yes, absolutely. I’d like to be a teacher. I’d like to work with school children and teach them about literature and about plays. I’d like a good job after my course. Or maybe I could write a book."

@@ -1,0 +1,101 @@
+vocabulary_entry:
+  topic_tags:
+  - experience
+  - perception
+  - communication
+  - opinions
+  category: idiom
+  source_citation: English Idioms in Use Intermediate, Unit 6
+  entries:
+  - term: put something down to experience
+    meaning: to accept that a bad situation happened and decide to learn from it
+    example: I've decided to put it down to experience.
+    band_suitability: 7.0+
+    register: neutral
+  - term: know where I stand
+    meaning: to know what one's position or situation is in relation to someone else
+    example: I just want to know where I stand, that's all.
+    band_suitability: 7.0+
+    register: neutral
+  - term: give someone food for thought
+    meaning: to make someone think very seriously about something
+    example: The events / your suggestions have certainly given me food for thought.
+    band_suitability: 7.0+
+    register: neutral
+  - term: learn my lesson
+    meaning: to decide never to let a bad experience happen again
+    example: I've learnt my lesson.
+    band_suitability: 6.0+
+    register: neutral
+  - term: teach someone a lesson
+    meaning: to make someone suffer the consequences of their bad actions so they
+      won't repeat them
+    example: That will teach him/her a lesson.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get the message
+    meaning: to finally become aware of a fact or situation
+    example: I think he/she's got the message.
+    band_suitability: 6.0+
+    register: neutral
+  - term: set/put the record straight
+    meaning: to tell the true facts to someone who has believed something incorrect
+    example: I just want to set/put the record straight.
+    band_suitability: 7.0+
+    register: formal
+  - term: hear it on/through the grapevine
+    meaning: to hear news from someone who heard it from someone else (rumor)
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: a figment of your imagination
+    meaning: something that one has imagined and is not true
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: lose sight of
+    meaning: to forget a central, important fact or truth about something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: what beats me is
+    meaning: something that one cannot understand
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: have second thoughts about
+    meaning: to be no longer sure about a decision previously made
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: the ins and outs of
+    meaning: all the details of a situation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

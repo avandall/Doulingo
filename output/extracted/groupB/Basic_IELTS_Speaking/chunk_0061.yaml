@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Applying language skills for 'How often' questions"
+  topic_tags: ["Frequency", "Sports", "Daily Routines"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Step 2: Applying language skills to elicit the answer"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Answers questions with basic information but lacks detail and structural variety."
+    grammar_required: ["Present Simple", "Adverbs of frequency"]
+    vocabulary_core: ["play sports", "every day"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Over-reliance on simple 'Yes/No' structures without elaboration."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Provides coherent, structured responses with elaborated detail and natural expression."
+    grammar_required: ["Present Simple", "Adverbs of frequency", "Complex sentences with conjunctions"]
+    vocabulary_core: ["a few times a week", "socialise", "keep fit"]
+    vocabulary_stretch: ["team sports", "usually", "sometimes"]
+    sentence_length_target: "Extended sentences with logical connectors"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "How often do you play sports?"
+    user_model_answer: "Yes, I play sports every day."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How often do you play sports?"
+    user_model_answer: "I play sports a few times a week. Usually I play basketball with my friends, but sometimes I play football instead. I think team sports are a great way to socialise and keep fit."

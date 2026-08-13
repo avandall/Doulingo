@@ -1,0 +1,109 @@
+vocabulary_entry:
+  topic_tags:
+  - problems
+  - work
+  - emotions
+  - relationships
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 37
+  entries:
+  - term: take your eye off the ball
+    meaning: lose concentration
+    example: I took my eye off the ball when I was trying to negotiate an important
+      deal.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sweep something under the carpet
+    meaning: hide something embarrassing or wrong that has happened
+    example: Can't you sweep it under the carpet?
+    band_suitability: 7.0+
+    register: neutral
+  - term: make a pig's ear of something
+    meaning: do something very badly
+    example: I'd just have to own up to making a pig's ear of it.
+    band_suitability: 8.0+
+    register: informal
+  - term: lose your touch
+    meaning: lose your previous skill or ability
+    example: He said I was losing my touch.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a slap in the face
+    meaning: something that is hurtful or upsetting
+    example: It was quite a slap in the face because I've brought in lots of good
+      business.
+    band_suitability: 8.0+
+    register: neutral
+  - term: in the cold light of day
+    meaning: later, when feeling calmer and able to think more clearly
+    example: I've thought about it again in the cold light of day.
+    band_suitability: 8.0+
+    register: neutral
+  - term: lose the plot
+    meaning: become confused or behave in a way that is strange or silly
+    example: I'd hate to feel I'd really lost the plot.
+    band_suitability: 8.0+
+    register: informal
+  - term: put someone's nose out of joint
+    meaning: upset or offend someone by getting something they wanted
+    example: If I accept it, it will really put her nose out of joint.
+    band_suitability: 8.0+
+    register: neutral
+  - term: in over my head
+    meaning: in a difficult situation that is too much for me to deal with
+    example: I'm in over my head with debt just now.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in a tight corner / in a tight spot
+    meaning: in a difficult position
+    example: If I don't accept the job I will be in a tight corner financially.
+    band_suitability: 7.0+
+    register: neutral
+  - term: can't see the wood for the trees
+    meaning: am unable to understand a situation because I am too involved in it
+    example: I can't see the wood for the trees at the moment.
+    band_suitability: 8.0+
+    register: neutral
+  - term: pull the rug from under someone's feet
+    meaning: done something that causes difficulties for someone, or suddenly taken
+      away help or support
+    example: This has really pulled the rug from under our feet.
+    band_suitability: 8.0+
+    register: neutral
+  - term: settle a score
+    meaning: punish someone for something they did in the past and that you cannot
+      forgive
+    example: I think he's trying to settle a score after a big argument.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a chapter of accidents
+    meaning: a series of unlucky events
+    example: This is just the latest thing in a chapter of accidents.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

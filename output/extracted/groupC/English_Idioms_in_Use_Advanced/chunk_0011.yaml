@@ -1,0 +1,102 @@
+vocabulary_entry:
+  topic_tags:
+  - academic
+  - formal_language
+  - latin_expressions
+  - french_expressions
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 13
+  entries:
+  - term: ad hoc
+    meaning: not planned but arranged or done when needed
+    example: He was paid on an ad hoc basis.
+    band_suitability: 7.0+
+    register: formal
+  - term: ad infinitum
+    meaning: without end, forever
+    example: Their list of demands seemed to go on ad infinitum.
+    band_suitability: 7.0+
+    register: formal
+  - term: compos mentis
+    meaning: in control of one's actions; mentally healthy
+    example: My grandfather is nearly 100, but he is perfectly compos mentis.
+    band_suitability: 8.0+
+    register: formal
+  - term: de facto
+    meaning: existing in reality but not officially agreed
+    example: Jorge is the de facto head of the organisation.
+    band_suitability: 7.0+
+    register: formal
+  - term: non sequitur
+    meaning: a statement which does not seem to be connected with what was said before
+    example: Keiko's response seemed like a complete non sequitur to me.
+    band_suitability: 8.0+
+    register: formal
+  - term: status quo
+    meaning: the present situation
+    example: The Conservatives favoured maintaining the status quo, while the Liberals
+      hoped for change.
+    band_suitability: 7.0+
+    register: neutral
+  - term: au fait
+    meaning: fully knowledgeable about
+    example: No, I'm not really au fait with them yet.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bete noire
+    meaning: something or someone that the speaker hates most
+    example: I agree. They're my absolute bete noire.
+    band_suitability: 8.0+
+    register: neutral
+  - term: C'est la vie
+    meaning: used when something happens that you do not like but have to accept
+    example: I know. It's always the way. C'est la vie!
+    band_suitability: 7.0+
+    register: informal
+  - term: creme de la creme
+    meaning: the very best
+    example: They really are the creme de la creme.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fait accompli
+    meaning: a decision that has been made or a completed action that cannot be changed
+    example: Yes, he just presented us with a fait accompli.
+    band_suitability: 8.0+
+    register: formal
+  - term: laissez-faire
+    meaning: a policy or attitude of letting things take their own course, without
+      interfering or controlling
+    example: Yes, she has quite a laissez-faire approach, doesn't she?
+    band_suitability: 8.0+
+    register: formal
+  - term: plus ca change
+    meaning: times change, but some things stay the same
+    example: Yes, plus ca change.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

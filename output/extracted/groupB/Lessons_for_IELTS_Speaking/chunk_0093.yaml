@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Expressing Purpose in Part 3"
+  topic_tags: ["Grammar", "Speaking Part 3", "Purpose"]
+  target_band_min: 5.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on simple 'to + infinitive' structures. Often forgets to use modal verbs in clauses or misuses prepositions (e.g., using 'for' with a verb instead of a noun)."
+    grammar_required: ["to + bare infinitive", "for + noun"]
+    vocabulary_core: ["purpose", "reason", "so that"]
+    vocabulary_stretch: ["international relations", "infrastructure"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Using 'for + verb' (e.g., *for increase profit* instead of *to increase profit*) or omitting the modal verb in 'so that' clauses."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of purpose expressions interchangeably. Successfully integrates complex 'so that + modal verb' structures with correct tense agreement (can/could/will/would)."
+    grammar_required: ["so that + modal verb", "to + infinitive", "for + noun"]
+    vocabulary_core: ["upgrade public facilities", "attract overseas visitors"]
+    vocabulary_stretch: ["public transportation system", "international relations"]
+    sentence_length_target: "Compound and complex sentences"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you suggest reasons why governments host international events?"
+    user_model_answer: "I think there are a number of reasons for this. The main purpose is to impress other countries, to raise their status in the world, and to improve international relations. Also, governments like to host big events so that they can attract overseas visitors who will spend a lot of money. They do it for profit as well."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Any country which decides to hold a large international event will need to spend more money on infrastructure. Why?"
+    user_model_answer: "Spending on infrastructure is necessary to upgrade public facilities. They need to build more hotels for accommodation and they also need a good public transportation system so that visitors can get around the city easily."

@@ -1,0 +1,170 @@
+vocabulary_entry:
+  topic_tags:
+  - decisions
+  - choices
+  - problem_solving
+  - planning
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 57
+  entries:
+  - term: make a decision
+    meaning: to decide something
+    example: Have you made a decision yet about the new job?
+    band_suitability: 6.0+
+    register: neutral
+  - term: put off making decisions
+    meaning: to delay deciding something until a later time
+    example: I always put off making decisions till the last possible moment.
+    band_suitability: 6.0+
+    register: neutral
+  - term: detect a hesitation
+    meaning: to notice someone pausing or being uncertain
+    example: I detected a slight hesitation in your last email.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have second thoughts
+    meaning: to start having doubts about a decision you have made
+    example: Are you having second thoughts?
+    band_suitability: 7.0+
+    register: neutral
+  - term: take the decision
+    meaning: to make a formal or official decision (often used by management/authorities)
+    example: You’ve probably heard that the management have taken the decision to
+      close the Madrid office.
+    band_suitability: 7.0+
+    register: formal
+  - term: unanimous decision
+    meaning: a decision that everyone agrees on
+    example: There was a lot of discussion, but apparently it was a unanimous decision
+      in the end.
+    band_suitability: 7.0+
+    register: formal
+  - term: degree of uncertainty
+    meaning: an amount of doubt about what will happen
+    example: There’s always been a degree of uncertainty surrounding the future of
+      the Madrid office.
+    band_suitability: 7.0+
+    register: neutral
+  - term: wise decision
+    meaning: a sensible and smart decision
+    example: Let’s just hope this will now be seen as a wise decision by everyone.
+    band_suitability: 6.0+
+    register: neutral
+  - term: arrive at a decision
+    meaning: to finally reach a conclusion after thinking or discussing
+    example: After weeks of hesitating, it seems Matt has arrived at a decision about
+      the research fund.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sensible decision
+    meaning: a practical and reasonable decision
+    example: I think that’s a sensible decision that combines generosity and sound
+      judgement.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sound judgement
+    meaning: the ability to make reliable, sensible decisions based on good sense
+    example: I think that’s a sensible decision that combines generosity and sound
+      judgement.
+    band_suitability: 8.0+
+    register: formal
+  - term: defend a decision
+    meaning: to argue that a decision you made was right
+    example: He’s also defending his decision to close down the San Antonio project.
+    band_suitability: 7.0+
+    register: neutral
+  - term: reserve judgement
+    meaning: to delay giving an opinion until you know more facts
+    example: However, he’s reserving judgement on the Berlin project until he gets
+      more reliable information.
+    band_suitability: 8.0+
+    register: neutral
+  - term: make a choice
+    meaning: to select one thing over another
+    example: I’m going to have to make a choice soon about next year.
+    band_suitability: 6.0+
+    register: neutral
+  - term: opportunity of a lifetime
+    meaning: a very special opportunity that you may never get again
+    example: Wow! South America! That sounds like the opportunity of a lifetime!
+    band_suitability: 6.0+
+    register: neutral
+  - term: burning desire
+    meaning: a very strong wish or urge to do something
+    example: I don’t have a burning desire to see the world.
+    band_suitability: 8.0+
+    register: neutral
+  - term: consider all the options
+    meaning: to think carefully about all possible choices
+    example: Anyway, I’m going to consider all the options before I decide.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take someone's advice
+    meaning: to act on suggestions given by someone else
+    example: I know you never take my advice but I would strongly advise you to think
+      of the future.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have no option
+    meaning: to have no other choice available
+    example: A lot of people stay at home because they have no option.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tough choice
+    meaning: a difficult decision between two or more options
+    example: I know, I know, but it’s a tough choice.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take the soft option
+    meaning: to choose the easiest course of action instead of a challenging one
+    example: Well, I think you’re just taking the soft option if you choose the bookshop.
+    band_suitability: 8.0+
+    register: informal
+  - term: pass up an opportunity
+    meaning: to let an opportunity go by without taking it
+    example: I can’t believe you’re going to pass up the opportunity of a trip to
+      South America.
+    band_suitability: 7.0+
+    register: neutral
+  - term: face difficult choices
+    meaning: to be in a situation where you have to make hard decisions
+    example: Well, we all face difficult choices now and then.
+    band_suitability: 6.0+
+    register: neutral
+  - term: reject out of hand
+    meaning: to refuse or dismiss something completely and immediately without thinking
+      about it
+    example: Look, just don’t reject South America out of hand.
+    band_suitability: 8.0+
+    register: neutral
+  - term: weigh up the options
+    meaning: to carefully consider the pros and cons of different choices
+    example: I already said I’m going to weigh up the options and come to a decision.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

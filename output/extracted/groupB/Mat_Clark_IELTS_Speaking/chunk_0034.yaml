@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3: Structuring Advantages, Disadvantages, and Problems"
+  topic_tags: ["Strategy", "Part 3", "Advantages", "Disadvantages", "Problems"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Part Three Question Type 5/6"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate can provide basic advantages/disadvantages but often relies on repetitive connectors or simple sentences without deep development."
+    grammar_required: 
+      - "Complex sentences with 'because"
+      - Modal verbs (might, could)
+    vocabulary_core: ["advantage", "disadvantage", "problem", "drawback"]
+    vocabulary_stretch: ["limitation", "shortcoming", "hassle"]
+    sentence_length_target: "Medium"
+    common_errors_to_simulate: "Listing too many points without development; failing to answer the prompt directly; including irrelevant personal anecdotes instead of general analysis."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses sophisticated discourse markers and topic-specific vocabulary to build a coherent, well-structured argument."
+    grammar_required: 
+      - "Advanced linking structures (e.g., 'This is clearly alarming because...')"
+      - Passive voice for academic tone
+    vocabulary_core: ["predicament", "stumbling block", "adverse", "fundamental concern"]
+    vocabulary_stretch: ["repercussions", "perturbing", "unquestionably"]
+    sentence_length_target: "Longer, complex, and cohesive"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What are the disadvantages of train travel?"
+    user_model_answer: "I think it’s fair to say that there are a few negative aspects. I suppose the most unfavorable quality might be that trains are often overcrowded at certain times of year. This is a clear limitation because on a long journey you might not be able to find a seat, which means you have to stand up for hours. At the same time, another stumbling block might be that train tickets are sometimes difficult to buy, especially around Spring Festival, and this can be a hassle because it means you can’t always travel on the actual day that you want to."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What problems are caused by the increase in use of private cars?"
+    user_model_answer: "It’s universally accepted that there are a few hazards involved with the increase in the use of private cars. Essentially, one fundamental concern is probably that it leads to an increase in pollution. This fact is unmistakably perturbing because we are facing huge global pollution problems at the moment."

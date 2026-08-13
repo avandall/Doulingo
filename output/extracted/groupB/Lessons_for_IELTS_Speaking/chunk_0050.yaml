@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Using Contrasting Conjunctions"
+  topic_tags: ["Cooking", "Habits", "Fluency and Coherence"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can link simple ideas using basic conjunctions like 'but'. Often relies on repetitive sentence structures and limited vocabulary to express contrast."
+    grammar_required: ["but", "conjunctions for contrast"]
+    vocabulary_core: 
+      - cooking verbs (cook, stir, fry)
+      - food ingredients
+    vocabulary_stretch: ["savoury", "delicious"]
+    sentence_length_target: "short to medium, simple sentences"
+    common_errors_to_simulate: "Overusing 'but' for every contrast; inability to use more formal connectors like 'whereas' or precise structures like 'but instead'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of cohesive devices flexibly to contrast facts and sequence events. Employs formal markers to improve flow and coherence."
+    grammar_required: ["whereas", "but instead", "complex sentence structures"]
+    vocabulary_core: 
+      - sequencing markers (firstly, then, after that)
+    vocabulary_stretch: ["whereas", "savoury", "instead of", "supermarket"]
+    sentence_length_target: "long, compound-complex sentences with natural pausing"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like the food you ate when you were young?"
+    user_model_answer: "When I was young, I liked sweet food, but now I prefer savoury food. My mother cooked a lot, but I didn't help her."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you like the food you ate when you were young?"
+    user_model_answer: "When I was young, I was quite fond of sweet food; whereas, my tastes have shifted significantly, and I now prefer savoury dishes. My mother never bought processed curry powder from the supermarket; but instead, she insisted on making her own spice blends from scratch."

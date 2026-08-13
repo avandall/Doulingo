@@ -1,0 +1,170 @@
+vocabulary_entry:
+  topic_tags:
+  - numbers
+  - frequency
+  - statistics
+  - graphs
+  - trends
+  - quantities
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 46
+  entries:
+  - term: enormous number / amount
+    meaning: a very large number or amount
+    example: There was an enormous amount of information to read.
+    band_suitability: 6.0+
+    register: neutral
+  - term: substantial number / amount
+    meaning: a large and significant number or amount
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: considerable number / amount
+    meaning: fairly large in size, amount, or number
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: significant number / amount
+    meaning: sufficiently great or important to be worthy of attention
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: surprising number / amount
+    meaning: a quantity that causes surprise or is unexpected
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: minute number / amount
+    meaning: extremely small in number or amount
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: tiny number / amount
+    meaning: very small in number or amount
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: odd numbers
+    meaning: integers that are not divisible by two (e.g., 1, 3, 5)
+    example: 51 is an odd number
+    band_suitability: 6.0+
+    register: neutral
+  - term: even numbers
+    meaning: integers that are divisible by two (e.g., 2, 4, 6)
+    example: 50 is an even number
+    band_suitability: 6.0+
+    register: neutral
+  - term: a decline in the number of
+    meaning: a reduction in the quantity of something
+    example: There’s been a recent decline in the number of boys joining the army.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a drop in the number of
+    meaning: a decrease in the quantity of something
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: an increase in the number of
+    meaning: a rise in the quantity or size of something
+    example: The increase in the number of homeless people is worrying.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a rise in the number of
+    meaning: an upward trend in the quantity of something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: come to a total of
+    meaning: to reach a particular sum when added together
+    example: If we add up all the figures, it comes to a total of 794.
+    band_suitability: 6.0+
+    register: neutral
+  - term: birth rate rises / falls
+    meaning: the frequency of births in a population goes up or down
+    example: Over the last few years the birth rate has been falling.
+    band_suitability: 7.0+
+    register: neutral
+  - term: unit of currency / measurement
+    meaning: a standard quantity used for expressing money or physical units
+    example: The standard unit of currency in most EU countries is the euro.
+    band_suitability: 7.0+
+    register: formal
+  - term: widespread interest / support
+    meaning: interest or support existing among many people or in many places
+    example: There has been widespread support for the government’s new policy on
+      education.
+    band_suitability: 7.0+
+    register: neutral
+  - term: widespread damage / poverty
+    meaning: damage or poverty affecting a large area or many people
+    example: The heavy winds at the weekend have caused widespread damage.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rare disease / bird / species
+    meaning: infrequent and special biological species or illnesses
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: keep asking / interrupting
+    meaning: repeatedly doing something that causes annoyance
+    example: Please don’t keep interrupting me when I’m trying to work.
+    band_suitability: 6.0+
+    register: informal
+  - term: constant interruptions
+    meaning: interferences that happen continuously or very frequently
+    example: I couldn’t get on with my work today because of constant interruptions.
+    band_suitability: 7.0+
+    register: neutral
+  - term: continual complaining
+    meaning: expressing dissatisfaction repeatedly over a period
+    example: Their continual complaining drove us mad.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rise / fall sharply / steeply
+    meaning: to increase or decrease very quickly and by a large amount
+    example: Profits rose sharply in July, but fell sharply in September.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dramatic rise / fall
+    meaning: a sudden and very noticeable increase or decrease
+    example: There was a dramatic rise in the number of students applying to university
+      this year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: increase steadily / gradually
+    meaning: to grow consistently at a smooth, regular, or slow pace
+    example: Numbers of mature students have increased steadily since the 1960s.
+    band_suitability: 7.0+
+    register: neutral
+  - term: remain constant / stable
+    meaning: to stay the same without changing over time
+    example: The number of crimes committed in the city has remained constant since
+      2011.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

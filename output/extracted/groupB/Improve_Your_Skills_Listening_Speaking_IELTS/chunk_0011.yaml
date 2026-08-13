@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic talk: Describing Personal Experiences and Memories"
+  topic_tags: ["Memories", "Experiences", "Personal History"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Topic talk"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can describe past events using basic vocabulary. Often uses generic adjectives (e.g., happy, good) and struggles to categorize experiences accurately."
+    grammar_required: ["Past simple for storytelling", "Basic adjectives"]
+    vocabulary_core: ["happy", "great", "trip", "event"]
+    vocabulary_stretch: ["memorable", "momentous", "exhilarating"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overusing simple adjectives; difficulty collocated adverbs with adjectives (e.g., using 'very' for everything instead of 'thoroughly' or 'highly')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can use a wider range of lexical resources to describe experiences precisely. Uses collocations like 'thoroughly exciting' or 'nerve-racking adventure' to add detail."
+    grammar_required: ["Complex sentences", "Narrative tenses"]
+    vocabulary_core: ["unforgettable", "rewarding", "bizarre", "formal"]
+    vocabulary_stretch: ["thoroughly", "highly", "humbling", "inaugural"]
+    sentence_length_target: "Varied sentence structures with descriptive modifiers"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about an achievement you are proud of."
+    user_model_answer: "I won a school sports prize. It was a very good time and I was very happy."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Tell me about an achievement you are proud of."
+    user_model_answer: "One memorable achievement was winning a school sports prize. It was a thoroughly rewarding experience that taught me a lot about hard work."

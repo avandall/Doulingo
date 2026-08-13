@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Strategies for Part 2 of the Speaking Test"
+  topic_tags: ["IELTS Speaking Part 2", "Exam Strategy"]
+  target_band_min: 5.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, STRATEGIES FOR PART 2 OF THE SPEAKING TEST"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates can provide basic answers but often struggle with verb tense consistency (past vs present) when describing experiences."
+    grammar_required: ["Past Simple", "Present Simple"]
+    vocabulary_core: ["holiday", "trip", "friend", "place"]
+    vocabulary_stretch: []
+    sentence_length_target: "short to medium"
+    common_errors_to_simulate: "Confusing past and present tenses when describing personal experiences; failing to cover all bullet points on the card."
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Candidates maintain consistent tense usage, cover all bullet points, and structure the narrative logically."
+    grammar_required: ["Past Simple", "Present Perfect", "Present Simple"]
+    vocabulary_core: ["frequently", "occasionally", "memorable", "significant"]
+    vocabulary_stretch: ["embarrassing", "awkward", "consistent", "narrative"]
+    sentence_length_target: "varied, complex sentences"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a holiday or trip that you remember well."
+    user_model_answer: "I’d like to talk about a trip I took to Da Lat last summer. It was a getaway with my close friends. We spent most of our time visiting coffee shops and hiking in the pine forests. What makes this trip so memorable is that it was the last time we were all together before we moved to different cities for work."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a building or a place you like to visit regularly."
+    user_model_answer: "There’s a small public library near my apartment that I visit almost every weekend. It’s a quiet place tucked away from the main road. I usually go there to catch up on my reading or finish some paperwork. I visit it regularly because it’s the only place in the city where I can truly focus without any distractions."

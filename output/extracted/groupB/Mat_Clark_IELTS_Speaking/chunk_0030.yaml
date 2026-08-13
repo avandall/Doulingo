@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mat Clark IELTS Speaking - Part 2 Strategy for Various Topics"
+  topic_tags: ["Food", "Clothes", "Weather", "Personality", "Future Plans", "Inventions", "Transport", "Events"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Others 6-14"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates can describe topics in a basic way but often rely on simple present tense or lack specific structures for past events/hypotheticals."
+    grammar_required: ["Used to", "Simple past"]
+    vocabulary_core: ["food", "clothes", "weather", "transport"]
+    vocabulary_stretch: ["heat wave", "cold snap", "down to earth", "aspiration"]
+    sentence_length_target: "Simple and compound sentences"
+    common_errors_to_simulate: "Misunderstanding scope of topics (e.g., confusing public transport with private cars); overusing simple present; struggling with narrative tenses when describing past experiences."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use a mix of tenses naturally, incorporate idiomatic language, and structure their responses with conditional and complex sentence forms."
+    grammar_required: ["Conditional sentences", "Present perfect", "Future forms", "Passive voice for inventions"]
+    vocabulary_core: ["innovation", "revolutionize", "vouch for", "predictable"]
+    vocabulary_stretch: 
+      - build castles in the air
+      - "put one's cards on the table"
+      - a dream come true
+      - unanticipated
+    sentence_length_target: "Complex, varied sentence structures with cohesive devices"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe something good about your personality."
+    user_model_answer: "I would say that I have a reputation for being down to earth. If I am in a difficult predicament, I will always put my cards on the table rather than avoiding the truth. My friends would certainly vouch for my honesty, as I believe it's the foundation of any long-term relationship."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe an important invention before the age of computers."
+    user_model_answer: "I'd like to talk about the telephone. The idea was originally conceived and thought up by an inventor whose name escapes me, but it has truly revolutionized the way we communicate. Life wouldn't be the same without it because it has enabled people to connect instantly regardless of the distance."

@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: "Speaking Part 2 — Describing an Extreme Sport (White-water Rafting)"
+  topic_tags: ["Sports", "Hobbies", "Adventure"]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Speaker 2"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses a range of descriptive vocabulary, expresses personal interest clearly, and links ideas using natural transition phrases."
+    grammar_required: 
+      - Present Perfect for experience
+      - "Conditional structures (I'd like to, I think it'd be)"
+      - Modals for ability/possibility (need to, can)
+    vocabulary_core: ["extreme sport", "keen to try", "amazing", "scary", "thrilling"]
+    vocabulary_stretch: ["white-water rafting", "inflatable rafts", "lifejackets", "wetsuits"]
+    sentence_length_target: "Varied sentence structures with relative clauses (which showed people..., where the water is moving...)"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a sport you would like to try."
+    user_model_answer: "A sport that I'd like to try is white-water rafting. I guess it's more of an extreme sport, really. I've always been keen to try it ever since I saw a programme on television which showed people rafting on this huge river in South America somewhere. It looked amazing, but scary at the same time. To do white-water rafting, I think you need to go with a company who organises it all for you, because you need a lot of stuff: lifejackets, helmets, wetsuits, and all that kind of thing. That's when it gets exciting! I'd love to try it because it looks so exciting and a little bit dangerous at the same time, so I think it'd be quite thrilling."

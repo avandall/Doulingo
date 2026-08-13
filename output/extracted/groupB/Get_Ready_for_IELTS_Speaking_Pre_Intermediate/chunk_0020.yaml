@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking: Family and Free Time — Model Answers"
+  topic_tags: [Family, Free time, Personal information]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Answer Key/Exam Practice"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phù hợp với thí sinh trình độ sơ trung cấp. Có thể trả lời các câu hỏi cơ bản về bản thân, gia đình và sở thích bằng các câu đơn giản, rõ ràng, phát âm dễ hiểu."
+    grammar_required: [Present simple, Past simple basics]
+    vocabulary_core: 
+      - Family members
+      - basic adjectives (large, small, important)
+      - simple verbs (work, live, like)
+    vocabulary_stretch: [only child, manager, language school]
+    sentence_length_target: "Ngắn và trực tiếp (1-2 mệnh đề)"
+    common_errors_to_simulate: "Lặp từ, thiếu sự kết nối (cohesion) giữa các câu, hoặc đưa ra thông tin không liên quan (irrelevant information) trong câu trả lời."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you have a large family?"
+    user_model_answer: "No, it’s a small family. I’m an only child. There are my parents and my grandmother."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Who is important to you in your family?"
+    user_model_answer: "My father is important to me. He works every day but he always helps me with my studies. We like going for walks together."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about an activity you like doing."
+    user_model_answer: "The activity I like doing is watching DVDs. I love watching films. I watch DVDs every weekend and sometimes in the week. I prefer watching films at home to going to the cinema."

@@ -1,0 +1,24 @@
+content_unit:
+  template_type: band_ladder
+  title: "Useful Sentence Structures for Education Topic"
+  topic_tags: ["Education", "Schooling", "Past experiences"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Useful Sentence Structures"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể sử dụng các cấu trúc câu đơn giản, công thức hóa để diễn đạt về trải nghiệm cá nhân trong quá khứ."
+    grammar_required: ["Used to + infinitive", "Simple past tense"]
+    vocabulary_core: ["school subjects", "teacher names", "busy", "favourite"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lạm dụng công thức 'I used to...' quá nhiều hoặc cấu trúc câu bị lặp, thiếu sự kết nối giữa các câu."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me about your school years?"
+    user_model_answer: "My high school years were very busy. I used to study until 10 p.m. every night. My favourite teacher was my History teacher, Mr. Howard, because he was very kind."

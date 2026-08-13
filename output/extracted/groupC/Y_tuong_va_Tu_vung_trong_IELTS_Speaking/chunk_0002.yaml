@@ -1,0 +1,133 @@
+vocabulary_entry:
+  topic_tags:
+  - books
+  - reading
+  - education
+  - technology
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: rely on battery life
+    meaning: depend on the power stored in a battery to function
+    example: don't rely on battery life
+    band_suitability: 6.0+
+    register: neutral
+  - term: improve memory retention and comprehension
+    meaning: enhance the ability to remember information and understand it better
+    example: improve memory retention and comprehension
+    band_suitability: 7.0+
+    register: formal
+  - term: consider bulky and less convenient
+    meaning: thought of as large, heavy, and difficult to carry around
+    example: to consider bulky and less convenient for carrying around
+    band_suitability: 6.0+
+    register: neutral
+  - term: tactile experience
+    meaning: an experience relating to the sense of touch
+    example: readers prefer the tactile experience of holding a paper book
+    band_suitability: 7.0+
+    register: formal
+  - term: contribute to deforestation
+    meaning: help cause the clearing or thinning of forests
+    example: to contribute to deforestation
+    band_suitability: 7.0+
+    register: neutral
+  - term: carbon footprint
+    meaning: the amount of greenhouse gases produced by human activities
+    example: to have a larger carbon footprint due to the production process
+    band_suitability: 7.0+
+    register: neutral
+  - term: highly portable
+    meaning: very easy to carry or move around
+    example: to allow readers to carry thousands of books in one device -> highly
+      portable
+    band_suitability: 6.0+
+    register: neutral
+  - term: adjustable font size and built-in lighting
+    meaning: features that let you change text size and use integrated lights on a
+      screen
+    example: adjustable font size and built-in lighting
+    band_suitability: 6.0+
+    register: neutral
+  - term: cost-effective
+    meaning: providing good value for the money spent
+    example: more cost-effective, with many options for subscription models
+    band_suitability: 7.0+
+    register: neutral
+  - term: experience eye strain or screen fatigue
+    meaning: feel discomfort in the eyes or tiredness from looking at screens
+    example: to experience eye strain or screen fatigue after prolonged reading
+    band_suitability: 7.0+
+    register: neutral
+  - term: contribute to electronic waste
+    meaning: add to discarded electrical or electronic devices
+    example: to contribute to electronic waste
+    band_suitability: 7.0+
+    register: neutral
+  - term: develop critical thinking and analytical skills
+    meaning: build the ability to think clearly and analyze information logically
+    example: to help develop critical thinking and analytical skills
+    band_suitability: 7.0+
+    register: formal
+  - term: improve memory and cognitive abilities
+    meaning: enhance memory function and mental processes of understanding
+    example: to improve memory and cognitive abilities
+    band_suitability: 8.0+
+    register: formal
+  - term: build empathy and emotional intelligence
+    meaning: develop the ability to understand others' feelings and manage one's own
+      emotions
+    example: to build empathy and emotional intelligence
+    band_suitability: 7.0+
+    register: neutral
+  - term: foster social connections
+    meaning: encourage and build relationships and interactions with others
+    example: to foster social connections and shared interests
+    band_suitability: 7.0+
+    register: formal
+  - term: cultural awareness and appreciation
+    meaning: understanding and valuing different cultures
+    example: fosters cultural awareness and appreciation
+    band_suitability: 7.0+
+    register: formal
+  - term: open-minded
+    meaning: willing to consider new ideas and different viewpoints
+    example: to encourage readers to be more open-minded
+    band_suitability: 6.0+
+    register: neutral
+  - term: gain life lessons and insights
+    meaning: obtain valuable knowledge and deep understanding from experiences
+    example: to gain life lessons and insights
+    band_suitability: 7.0+
+    register: neutral
+  - term: escape from stress
+    meaning: a way to get away from worry and pressure
+    example: be an excellent escape from stress
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

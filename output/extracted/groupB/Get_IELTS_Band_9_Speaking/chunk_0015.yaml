@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "After your 2 minute speaking in the Test"
+  topic_tags: ["IELTS Speaking Part 2", "Test Procedure", "Follow-up Questions"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, After your 2 minute speaking in the Test"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate answers clearly but may rely on simpler sentence structures and vocabulary. Focuses on providing a direct, logical response to the examiner's follow-up questions."
+    grammar_required: 
+      - Simple sentences
+      - Basic conjunctions (but, so)
+    vocabulary_core: ["destination", "busy city", "museum", "popular"]
+    vocabulary_stretch: []
+    sentence_length_target: "Brief, 2-step answers"
+    common_errors_to_simulate: "Lack of complex connectors; repetitive phrasing; over-simplification of ideas."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses more precise language and complex structures to qualify their opinions, even in brief answers."
+    grammar_required: 
+      - Subordinating conjunctions (even though, because, which)
+      - Relative clauses
+    vocabulary_core: ["recommendation", "interests", "tourists", "shame"]
+    vocabulary_stretch: ["all interests and all ages", "difficult to see the picture because of..."]
+    sentence_length_target: "Concise yet nuanced 2-step explanation"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Would you recommend Paris as a destination?"
+    user_model_answer: "Yes, I would recommend it. It's a very busy city, but there is a lot to see for people of all interests and all ages, even though there's no air conditioning."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you remember of the art museums?"
+    user_model_answer: "Well, I remember that one museum had the famous painting of the Mona Lisa. It was so popular that it was difficult to see the picture because of all the other tourists in the room, which was a shame because I really wanted to see it."

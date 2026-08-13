@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation — Word Stress in Content Words"
+  topic_tags: ["Pronunciation", "Word Stress", "Speaking Skills"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phát âm từ vựng cơ bản, xu hướng nhấn trọng âm dàn trải đều cho mọi từ trong câu (flat intonation)."
+    grammar_required: ["Simple sentences", "Basic S-V-O structure"]
+    vocabulary_core: ["poverty", "poor", "country", "people", "friendly"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, choppy sentences"
+    common_errors_to_simulate: "Stress tất cả các từ trong câu bằng nhau, không phân biệt content words và structure words, dẫn đến tốc độ nói đều đều, thiếu tự nhiên."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Biết cách nhấn trọng âm (stress) vào các từ mang nội dung chính (nouns, verbs, adjectives) để làm nổi bật thông tin."
+    grammar_required: ["Complex sentences", "Relative clauses"]
+    vocabulary_core: ["standard of living", "well-educated", "natural resource"]
+    vocabulary_stretch: ["epidemic", "government"]
+    sentence_length_target: "Varied, fluid sentences with natural pausing"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What is the poverty situation in Peru?"
+    user_model_answer: "There is a lot of poverty in Peru. It is a very poor country."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What is the poverty situation in Peru?"
+    user_model_answer: "There's a lot of **poverty** in **Peru**. It's a very **poor** **country**, and they have quite a **low** **standard** of **living**."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What are the people like in that country?"
+    user_model_answer: "On the whole, they are quite **well-educated**, and I've heard they're very **friendly**, too."

@@ -1,0 +1,47 @@
+content_unit:
+  template_type: scenario
+  title: "Frequently-Asked Questions: Hobbies and Leisure Time"
+  topic_tags: ["hobbies", "leisure time", "daily routine"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Frequently-Asked Questions"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers are short and simple. Tends to use basic vocabulary and repetitive sentence structures."
+    grammar_required: 
+      - Present simple for habits
+      - Basic conjunctions (and, but)
+    vocabulary_core: ["hobbies", "spend time", "relax", "go out"]
+    vocabulary_stretch: []
+    sentence_length_target: "short (5-10 words)"
+    common_errors_to_simulate: "Lack of complex sentences, overuse of basic verbs, limited range of adverbs."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Answers are extended and show a clear preference or detailed explanation."
+    grammar_required: 
+      - "Complex sentences with 'because', 'although"
+      - Modals (would, might)
+    vocabulary_core: ["entertainment", "leisure activities", "unwind", "prefer"]
+    vocabulary_stretch: ["favourite pastime", "recharge batteries", "sociable", "in preference to"]
+    sentence_length_target: "long (15-25 words)"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "Yes, I like reading books and watching TV in my free time. It is relaxing."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "Well, I'm quite keen on photography. It's a great way for me to capture special moments and get outdoors, which I find very therapeutic after a long week of work."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you prefer relaxing at home or going out in the evening?"
+    user_model_answer: "I prefer staying at home because I am very tired after work. I like to sleep."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you prefer relaxing at home or going out in the evening?"
+    user_model_answer: "Honestly, it depends on my mood. If I've had a hectic week, I'd much rather just curl up with a good book at home, but on weekends, I do enjoy catching up with friends at a nice cafe."

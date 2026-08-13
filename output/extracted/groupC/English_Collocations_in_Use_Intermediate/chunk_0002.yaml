@@ -1,0 +1,120 @@
+vocabulary_entry:
+  topic_tags:
+  - learning_english
+  - vocabulary
+  - collocations
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 1
+  entries:
+  - term: fast cars
+    meaning: automobiles that can travel at high speeds
+    example: fast cars
+    band_suitability: 6.0+
+    register: neutral
+  - term: fast food
+    meaning: hot food prepared quickly and served immediately
+    example: fast food
+    band_suitability: 6.0+
+    register: neutral
+  - term: quick glance
+    meaning: a brief look at something
+    example: a quick glance
+    band_suitability: 6.0+
+    register: neutral
+  - term: quick meal
+    meaning: food eaten rapidly when short on time
+    example: a quick meal
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a photo
+    meaning: to capture an image using a camera
+    example: take a photo
+    band_suitability: 6.0+
+    register: neutral
+  - term: keep to the rules
+    meaning: to obey regulations or guidelines
+    example: keep to / stick to the rules
+    band_suitability: 6.0+
+    register: neutral
+  - term: stick to the rules
+    meaning: to continue obeying regulations without changing
+    example: keep to / stick to the rules
+    band_suitability: 6.0+
+    register: neutral
+  - term: make an effort
+    meaning: to try hard to do something
+    example: You must make an effort and study for your exams
+    band_suitability: 6.0+
+    register: neutral
+  - term: watch TV
+    meaning: to look at television broadcasts
+    example: Did you watch TV last night?
+    band_suitability: 6.0+
+    register: neutral
+  - term: powerful engine
+    meaning: a motor with high capacity and strength
+    example: This car has a very powerful engine.
+    band_suitability: 6.0+
+    register: neutral
+  - term: ancient monuments
+    meaning: historical structures from a very long time ago
+    example: There are some ancient monuments nearby.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a mistake
+    meaning: to do something incorrectly or commit an error
+    example: I made a few mistakes.
+    band_suitability: 6.0+
+    register: neutral
+  - term: smoking is strictly forbidden
+    meaning: smoking is completely prohibited by rules
+    example: smoking is strictly forbidden is more natural than smoking is strongly
+      forbidden.
+    band_suitability: 7.0+
+    register: formal
+  - term: bitterly cold
+    meaning: extremely and uncomfortably cold weather
+    example: It was bitterly cold and pitch dark.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pitch dark
+    meaning: completely dark with no light at all
+    example: It was bitterly cold and pitch dark.
+    band_suitability: 7.0+
+    register: neutral
+  - term: poverty breeds crime
+    meaning: economic deprivation tends to cause criminal activity
+    example: instead of saying poverty causes crime, you can say poverty breeds crime
+    band_suitability: 8.0+
+    register: formal
+  - term: substantial meal
+    meaning: a large, filling, and satisfying meal
+    example: instead of a big meal you can say a substantial meal.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

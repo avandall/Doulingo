@@ -1,0 +1,64 @@
+content_unit:
+  template_type: band_ladder
+  title: Job & Study — Speaking Part 1 Topics
+  topic_tags:
+  - Work
+  - Study
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Hackers_IELTS_Speaking.md, Job & Study
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Thí sinh có thể trả lời các câu hỏi cơ bản về công việc/học
+    tập bằng các câu đơn giản, sử dụng từ vựng ở mức độ giao tiếp thông thường.
+  grammar_required:
+  - Present Simple
+  - Past Simple
+  vocabulary_core:
+  - student
+  - major
+  - business management
+  - work overtime
+  - workload
+  vocabulary_stretch:
+  - priority
+  - frequently
+  - graduate
+  sentence_length_target: Ngắn, cấu trúc S+V+O đơn giản
+  common_errors_to_simulate: 'Nhầm lẫn giữa ''see'' và ''watch'' (ví dụ: I saw TV
+    yesterday), lặp lại câu hỏi của giám khảo, thiếu từ nối giữa các câu.'
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Thí sinh diễn đạt tự nhiên hơn, sử dụng từ nối để mở rộng câu
+    trả lời (giải thích lý do, đưa ví dụ).
+  grammar_required:
+  - Complex sentences
+  - Conditional sentences (implied)
+  vocabulary_core:
+  - frankly speaking
+  - took out a student loan
+  - routine work
+  vocabulary_stretch:
+  - workload is heavy
+  - be expected to work overtime
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: What do you do? (Work or study?)
+  user_model_answer: I’m a student. More specifically, I’m a college student majoring
+    in business management. I’ll graduate next year.
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Why did you choose your job?
+  user_model_answer: Frankly speaking, because the pay was great. When I was in college,
+    I took out a student loan. Therefore, being able to make a lot of money was a
+    priority for me when choosing a job.
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: What do you not like about your job?
+  user_model_answer: The only thing I don’t like is that I am frequently expected
+    to work overtime. Last week, for example, I had to work late 4 out of 5 days.
+    The workload is simply too heavy.

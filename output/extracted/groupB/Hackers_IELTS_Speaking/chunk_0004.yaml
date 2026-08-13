@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Part 1 & 3 — Strategy and Structuring Answers
+  topic_tags:
+  - IELTS Speaking Strategy
+  - Part 1 Techniques
+  - Part 3 Techniques
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Hackers_IELTS_Speaking, Strategy Section
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Thí sinh có xu hướng trả lời ngắn gọn, thiếu sự diễn giải (elaboration),
+    dễ bị giám khảo hỏi lại 'Why?'
+  grammar_required:
+  - Simple sentences
+  - Basic conjunctions (and, but, because)
+  vocabulary_core:
+  - Basic everyday topics (family, home, hobbies)
+  vocabulary_stretch:
+  - None
+  sentence_length_target: 1-2 câu
+  common_errors_to_simulate: Trả lời quá ngắn, chỉ dừng lại ở Yes/No hoặc 1 câu đơn,
+    thiếu ví dụ hoặc lý do dẫn đến việc giám khảo phải hỏi dồn (Why?)
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Thí sinh áp dụng cấu trúc 'Trọng tâm + Diễn giải' (ví dụ, lý
+    do, giải thích chi tiết) để phát triển câu trả lời logic.
+  grammar_required:
+  - Complex sentences
+  - Transition signals (For instance, On the other hand)
+  vocabulary_core:
+  - Topic-related vocabulary
+  vocabulary_stretch:
+  - 'Functional phrases for structuring: ''One good example of this is...'', ''There
+    are several reasons why...'
+  sentence_length_target: 3-5 câu
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Do you wear a watch?
+  user_model_answer: No, I don't. It was very enjoyable and informative.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do you wear a watch?
+  user_model_answer: No, not really. That’s because I feel uncomfortable when I wear
+    one. Besides, I carry my cell phone all the time, so I can check the time on it.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What can old and young people learn from one another?
+  user_model_answer: Younger generations can teach the elderly how to use new technologies.
+    For example, they can show old people how to use a smartphone or set up a social
+    networking account. On the other hand, young people can learn a lot from the wisdom
+    of their elders. That’s because old people have gained plenty of knowledge from
+    their experiences in life that could help young people.

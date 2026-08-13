@@ -1,0 +1,173 @@
+vocabulary_entry:
+  topic_tags:
+  - health
+  - illness
+  - fitness
+  - medical
+  - research
+  - internet
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 26 & 27
+  entries:
+  - term: catch a cold
+    meaning: to become infected with a cold
+    example: I got soaking wet and caught a cold.
+    band_suitability: 6.0+
+    register: neutral
+  - term: contract a disease
+    meaning: to catch or develop a disease
+    example: Uncle Jess contracted malaria while he was working in Africa.
+    band_suitability: 7.0+
+    register: formal
+  - term: develop cancer
+    meaning: to start to suffer from cancer or a medical condition
+    example: My grandfather developed Alzheimer’s disease and could no longer remember
+      things.
+    band_suitability: 7.0+
+    register: formal
+  - term: suffer from asthma
+    meaning: to be badly affected by a medical condition over a period
+    example: She has suffered from asthma all her life.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have an attack of hay fever
+    meaning: to experience a sudden short period of an illness
+    example: She had an attack of hay fever and was sneezing non-stop.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be diagnosed with cancer
+    meaning: to be identified as having a particular illness by a doctor
+    example: He was diagnosed with lung cancer and died a year later.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sustain injuries
+    meaning: to experience or suffer injuries (usually in an accident)
+    example: The driver sustained serious head injuries in the crash.
+    band_suitability: 8.0+
+    register: formal
+  - term: take vigorous exercise
+    meaning: to do physical exercise that is active and energetic
+    example: Do you take regular vigorous exercise?
+    band_suitability: 7.0+
+    register: neutral
+  - term: eat a balanced diet
+    meaning: to consume the correct proportions of different foods for health
+    example: Do you eat a balanced diet?
+    band_suitability: 6.0+
+    register: neutral
+  - term: follow a fitness programme
+    meaning: to adhere to a schedule of physical activities
+    example: Do you follow a personal fitness programme?
+    band_suitability: 6.0+
+    register: neutral
+  - term: stick to a programme
+    meaning: to continue doing something despite difficulties
+    example: Do you always stick to your programme?
+    band_suitability: 6.0+
+    register: neutral
+  - term: keep fit
+    meaning: to stay healthy and physically active
+    example: In general, have you kept fit over the last two years?
+    band_suitability: 6.0+
+    register: neutral
+  - term: terminally ill
+    meaning: ill with a disease that cannot be cured and will cause death
+    example: My poor friend Gina is terminally ill.
+    band_suitability: 7.0+
+    register: neutral
+  - term: excruciating pain
+    meaning: extremely intense and severe pain
+    example: She suffers excruciating pain most of the time.
+    band_suitability: 8.0+
+    register: neutral
+  - term: incurable illness
+    meaning: an illness that cannot be healed or cured
+    example: Apparently it’s an incurable illness that runs in her family.
+    band_suitability: 7.0+
+    register: neutral
+  - term: trivial ailments
+    meaning: minor and insignificant illnesses
+    example: He takes days off even for the most trivial ailments.
+    band_suitability: 8.0+
+    register: formal
+  - term: life-threatening
+    meaning: capable of causing loss of life
+    example: It’s a serious illness, but probably not life-threatening.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dull ache
+    meaning: a continuous, mild (not sharp) pain
+    example: For a few days it was acutely painful, but now it’s just a dull ache.
+    band_suitability: 7.0+
+    register: neutral
+  - term: prescribe tablets
+    meaning: for a doctor to officially advise and provide medicine
+    example: My doctor prescribed me some tablets and they relieved the pain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: relieve pain
+    meaning: to make pain less severe or remove it
+    example: They relieved the pain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take someone ill
+    meaning: to suddenly become sick
+    example: Cora was taken ill the other day.
+    band_suitability: 7.0+
+    register: neutral
+  - term: heavy cold
+    meaning: a very bad cold
+    example: I had a heavy cold and a splitting headache.
+    band_suitability: 6.0+
+    register: neutral
+  - term: splitting headache
+    meaning: a very severe headache
+    example: I had a heavy cold and a splitting headache.
+    band_suitability: 7.0+
+    register: neutral
+  - term: refine your search
+    meaning: to make a web search more accurate
+    example: This can help you to refine your search.
+    band_suitability: 7.0+
+    register: neutral
+  - term: evaluate sites critically
+    meaning: to carefully judge whether internet sources are reliable
+    example: It’s important to evaluate sites critically.
+    band_suitability: 8.0+
+    register: formal
+  - term: subscribe to online journals
+    meaning: to regularly pay for or sign up to receive digital academic publications
+    example: One way to access reliable information is to subscribe to online journals.
+    band_suitability: 7.0+
+    register: neutral
+  - term: back issues
+    meaning: previous editions of a magazine, newspaper, or journal
+    example: You can often search by keyword in back issues to find older articles.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

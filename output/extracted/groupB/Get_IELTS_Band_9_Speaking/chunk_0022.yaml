@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: Marketing Techniques — Ideas Question Analysis
+  topic_tags:
+  - Shopping
+  - Marketing
+  - Consumerism
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: Get_IELTS_Band_9_Speaking.md, How do stores persuade people to
+    spend money?
+band_tiers:
+- band_min: 7.0
+  band_max: 9.0
+  can_do_description: Able to provide a structured, complex argument with clear examples
+    and logical sequencing.
+  grammar_required:
+  - Complex sentences with subordinating conjunctions
+  - Passive voice
+  - Cohesive devices
+  vocabulary_core:
+  - promotions
+  - advertising
+  - product
+  - techniques
+  vocabulary_stretch:
+  - backed up with
+  - emphasises
+  - persuading
+  - powerful indeed
+  sentence_length_target: Long, multi-clause structures
+sample_dialogues:
+- band_level: 8.5
+  turn_type: standalone
+  ai_line: How do stores persuade people to spend money?
+  user_model_answer: They use a variety of methods. They often use promotions which
+    make people buy more, for example '3 for the price of 2' and so on. These offers
+    are usually backed up with advertising, whether on TV, the Internet or in the
+    shop itself, and the advertising emphasises both the quality of the product and
+    the money saving. There is another method too, which is to display the products
+    in an attractive way that encourages shoppers to pick them up and look at them.
+    When they're used together, I think these techniques can be very powerful indeed,
+    and very effective at persuading the public to spend more.

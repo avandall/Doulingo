@@ -1,0 +1,124 @@
+vocabulary_entry:
+  topic_tags:
+  - movies
+  - entertainment
+  - gender_inequality
+  - social_problems
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: unwind after a busy day
+    meaning: to relax after working hard
+    example: a great way to unwind after a busy day
+    band_suitability: 6.0+
+    register: neutral
+  - term: escape from daily life
+    meaning: to get away from the stresses and routines of everyday life
+    example: to provide an enjoyable escape from daily life
+    band_suitability: 6.0+
+    register: neutral
+  - term: lift your mood
+    meaning: to make someone feel happier
+    example: to lift your mood, especially if you’re watching a comedy
+    band_suitability: 6.0+
+    register: neutral
+  - term: broaden their outlook
+    meaning: to expand one's perspective or way of thinking
+    example: to present life lessons or stories that motivate people to overcome challenges
+      or broaden their outlook
+    band_suitability: 7.0+
+    register: neutral
+  - term: gain cultural insights
+    meaning: to get a deep understanding of a culture
+    example: foreign movies help viewers gain cultural insights and learn about the
+      customs and traditions of other countries
+    band_suitability: 7.0+
+    register: neutral
+  - term: emotional intelligence
+    meaning: the capacity to be aware of, control, and express one's emotions, and
+      to handle interpersonal relationships judiciously and empathetically
+    example: increase viewers' empathy and emotional intelligence by helping them
+      understand diverse experiences
+    band_suitability: 7.0+
+    register: formal
+  - term: strengthen bonds
+    meaning: to make a relationship between people stronger
+    example: watch movies with friends or family can be a shared experience that strengthens
+      bonds
+    band_suitability: 6.0+
+    register: neutral
+  - term: conversation starter
+    meaning: something that helps to begin a conversation
+    example: serve as a great conversation starter
+    band_suitability: 6.0+
+    register: neutral
+  - term: gender inequality
+    meaning: unequal treatment or perceptions of individuals based on their gender
+    example: Gender inequality
+    band_suitability: 6.0+
+    register: formal
+  - term: reinforce stereotypes
+    meaning: to make existing ideas or prejudices about a group of people stronger
+    example: to stem from traditional beliefs that reinforce stereotypes about men’s
+      and women’s roles
+    band_suitability: 7.0+
+    register: formal
+  - term: economic independence
+    meaning: having enough income to pay your own way without depending on others
+    example: cản trở họ trong việc đạt được những kỹ năng cần thiết để có được những
+      công việc được trả lương cao và độc lập về kinh tế
+    band_suitability: 7.0+
+    register: formal
+  - term: workplace discrimination
+    meaning: unfair treatment of employees based on prejudice
+    example: workplace discrimination also limits women’s career advancement
+    band_suitability: 7.0+
+    register: formal
+  - term: career advancement
+    meaning: upward progression in one's career
+    example: workplace discrimination also limits women’s career advancement
+    band_suitability: 7.0+
+    register: formal
+  - term: equal access to education
+    meaning: providing the same educational opportunities to all people regardless
+      of gender or background
+    example: to provide equal access to education for girls
+    band_suitability: 6.0+
+    register: formal
+  - term: equal pay legislation
+    meaning: laws that require men and women to be paid the same wage for doing the
+      same job
+    example: to enforce equal pay legislation and anti-discrimination laws
+    band_suitability: 8.0+
+    register: formal
+  - term: awareness campaigns
+    meaning: organized programs designed to inform the public about a specific issue
+    example: awareness campaigns can play a major role in challenging stereotypes
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

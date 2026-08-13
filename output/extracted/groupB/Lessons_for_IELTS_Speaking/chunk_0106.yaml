@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar for Part 3: Expressing Opinions and Using Modals"
+  topic_tags: ["Grammar", "Opinions", "Modal Verbs"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Beginners often answer directly or use repetitive opening phrases. They may struggle with modal verb nuance."
+    grammar_required: 
+      - Present simple
+      - Basic modals (should)
+    vocabulary_core: ["think", "believe"]
+    vocabulary_stretch: ["in favor of", "in my view"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overusing 'I think' at the start of every sentence; failing to vary modal verbs (e.g., sticking only to 'should' and avoiding 'ought to')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use a variety of opening phrases to manage thinking time and signal their position (positive/negative/neutral) clearly."
+    grammar_required: 
+      - Modal verbs (should, ought to)
+      - Complex structures for expressing belief
+    vocabulary_core: 
+      - In my opinion
+      - "As far as I'm concerned"
+    vocabulary_stretch: ["To my mind", "I have my doubts about"]
+    sentence_length_target: "Extended, complex sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you think about the government's role in tourism?"
+    user_model_answer: "I think the government should promote eco-tourism because it is good."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think about the government's role in tourism?"
+    user_model_answer: "As far as I'm concerned, the government ought to promote eco-tourism, but I don't think they should allow development in sensitive environmental areas."

@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Get Ready for IELTS Speaking — Shopping and Possessions (Band 5.0-6.0)"
+  topic_tags: ["Shopping", "Possessions", "Daily life"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Answer Key / Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phù hợp cho trình độ Pre-Intermediate: Trả lời đúng trọng tâm câu hỏi, sử dụng được các thì cơ bản (Present Simple, Present Perfect), bắt đầu dùng được các cấu trúc so sánh đơn giản."
+    grammar_required: 
+      - Present Simple
+      - Present Perfect (for/since)
+      - Comparative adjectives
+    vocabulary_core: ["shopping mall", "possessions", "fashionable", "electronic", "comfortable"]
+    vocabulary_stretch: ["satisfied", "relatable", "connection", "modern"]
+    sentence_length_target: "Sentences of 10-15 words, linked by simple conjunctions (and, because)."
+    common_errors_to_simulate: "Lỗi sai chia động từ với danh từ số ít, thiếu mạo từ (a/an/the), dùng từ nối quá đơn giản (and/but)."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think possessions make people happy?"
+    user_model_answer: "That’s an interesting question. It depends. I think possessions can make people happy, yes. For example, you’re working really hard for your exams and then someone buys you a ‘good luck’ present. In my opinion, I think friends and family make people happier than objects."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What is your most important possession?"
+    user_model_answer: "My most important possession is probably my mobile phone. I always carry it in my bag and I use it every day. I’ve had it for six months. It’s small, modern and red and silver. It’s my connection with my family when I am studying in another country."

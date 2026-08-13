@@ -1,0 +1,34 @@
+content_unit:
+  template_type: scenario
+  title: Topic Talk — Healthy Eating Habits and Vocabulary
+  topic_tags:
+  - Food
+  - Health
+  - Lifestyle
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic talk
+sample_dialogues:
+- band_level: 6.5
+  turn_type: standalone
+  ai_line: Do you think your eating habits are generally healthy or unhealthy?
+  user_model_answer: I try to make a real effort to have a proper sit-down meal every
+    day, but sometimes I’m always eating on the go because of my busy schedule. I
+    think my diet is fairly healthy because I try to eat fresh fruit and vegetables
+    every day, although I admit I sometimes skip breakfast if I'm in a rush.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What are the benefits or drawbacks of a vegetarian diet?
+  user_model_answer: Well, one significant benefit of a vegetarian diet is that it's
+    typically high in fibre and essential vitamins, which can help prevent health
+    issues like heart disease. On the flip side, a potential drawback is that if you're
+    not careful about your protein intake, you might suffer from nutritional deficiencies,
+    though this is easily managed with balanced planning.
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short

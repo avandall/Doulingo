@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Job & Study — Speaking Part 2&3 Sample Answer"
+  topic_tags: ["Job", "Writing", "Career"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Hackers_IELTS_Speaking, Unit 01"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Thí sinh có khả năng trình bày ý kiến mạch lạc nhưng từ vựng còn ở mức độ thông dụng, cấu trúc câu chưa đa dạng."
+    grammar_required: 
+      - Present simple for facts
+      - Modal verbs (can, must)
+    vocabulary_core: ["interesting job", "work in an office", "9-to-5"]
+    vocabulary_stretch: ["novelist", "screenwriter", "natural talent"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Lặp từ 'people', thiếu liên kết giữa các đoạn (transition words), dùng câu đơn quá nhiều."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Sử dụng từ vựng chuyên sâu (collocations) và cấu trúc so sánh đối lập linh hoạt giữa các nhóm lao động."
+    grammar_required: 
+      - "Complex sentences with 'However'/'Although"
+      - Relative clauses
+    vocabulary_core: ["observational skills", "diverse experiences", "creative work"]
+    vocabulary_stretch: ["formal education", "emotional reaction", "widely read"]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Could you tell me about a job that you find interesting and why?"
+    user_model_answer: "There are many interesting jobs these days, but the first thing that comes to mind is being a writer. Surprisingly, none of these writing jobs really requires a specific education; some writers can succeed relying solely on natural talent. However, I find writing particularly compelling because their work is widely read, allowing them to share ideas and cause emotional reactions in a large audience. Furthermore, unlike most people stuck in 9-to-5 office roles, writers enjoy the flexibility to work wherever and whenever they choose."

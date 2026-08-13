@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic Strategy: People and Places - Structural Approaches"
+  topic_tags: [people, places, strategy, grammar]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking, Section: People & Places"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can describe people or places using basic present tenses, but often fails to use complex grammatical structures or narrate past experiences effectively."
+    grammar_required: [present_simple, basic_past_simple]
+    vocabulary_core: [teacher, neighbor, friend, building, city]
+    vocabulary_stretch: [prominent, landmark, youngster, chummy]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Over-reliance on present tense even when describing childhood memories; limited vocabulary repetition."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can effectively integrate a range of past tenses to narrate events and use comparative structures to describe people or places with nuance."
+    grammar_required: [used_to, would_always, past_perfect, comparative_structures]
+    vocabulary_core: [identical, trait, characteristic, multifunctional]
+    vocabulary_stretch: [like_two_peas_in_a_pod, impossible_to_tell_apart, remarkably_similar]
+    sentence_length_target: "Complex, varied sentence structures using linking words (whereas, while, in contrast)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a child that you know."
+    user_model_answer: "I know a kid. He is my cousin. I like him because he is very funny. We play games together. I know him for long time."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a child that you know."
+    user_model_answer: "I've known this kid, my cousin, ever since he was a baby. He's quite an active youngster, and I've always admired his curiosity. We often spend our weekends playing in the park, and I will always remember how he used to try and invent games for us to play together."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Compare two members of your family."
+    user_model_answer: "A tends to be more outgoing, whereas in contrast, B seems to be more reserved. On the one hand, A is usually quite adventurous, while B is often fairly cautious. One remarkable similarity is that they both share a passion for music."

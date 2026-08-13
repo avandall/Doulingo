@@ -1,0 +1,33 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Using Tenses for Hypothetical Situations"
+  topic_tags: [Technology, Fluency, Grammar, Hypothetical Situations]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to describe current possessions but struggles with hypothetical tenses; speech may contain frequent pauses when switching between real and imagined scenarios."
+    grammar_required: [Present Simple, Basic modal verbs]
+    vocabulary_core: [Useful, equipment, technology]
+    vocabulary_stretch: [None]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Confusing Present Simple with Conditional (e.g., 'If I own a car, I use it' instead of 'If I owned... I would use')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to fluidly shift between actual and imagined situations using appropriate conditional structures (would/could) without significant hesitation."
+    grammar_required: 
+      - Second Conditional (If + V2, ...would + V1)
+      - Modals of speculation
+    vocabulary_core: [Reliable, multifunctional, efficient]
+    vocabulary_stretch: [Sophisticated collocations related to tech functionality]
+    sentence_length_target: "Complex, compound-complex sentences with natural flow"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a piece of technology or equipment that you would like to own."
+    user_model_answer: "I would really love to own a smartphone. A smartphone is kind of three things in one - a phone, an iPod, and a computer. It's incredibly useful because you can do so many things. For instance, I would use it to listen to music while commuting, and I could even use it to download films. Although I don't have one yet, I'm really looking forward to getting one because it would make my life much more convenient."

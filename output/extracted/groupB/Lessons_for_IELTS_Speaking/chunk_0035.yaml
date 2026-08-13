@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Warm-up — IELTS Speaking Part 1 Study/Education"
+  topic_tags: ["Study", "Education", "Biology"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, WARM-UP"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate answers basic questions directly but may lack elaboration or natural conversational devices."
+    grammar_required: 
+      - Present simple
+      - Basic conjunctions (because)
+    vocabulary_core: ["study", "subject", "student", "high school"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Giving very brief, robotic answers; failing to expand on reasons."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Candidate uses discourse strategies like repeating parts of the question to add naturalness and gain thinking time."
+    grammar_required: ["Complex sentences", "Cause and effect structures"]
+    vocabulary_core: ["interesting aspect", "applies to", "boring part"]
+    vocabulary_stretch: ["repeatedly", "everyday life"]
+    sentence_length_target: "Longer, expanded sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you work or are you a student?"
+    user_model_answer: "I'm a student at high school."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What subjects are you studying?"
+    user_model_answer: "I'm studying biology, English, maths, physics, and chemistry."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Is biology a difficult subject?"
+    user_model_answer: "No, I don't find it difficult, because I enjoy studying science, and I have a really good teacher."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What's the most interesting aspect of biology?"
+    user_model_answer: "The most interesting aspect? I think it's how biology applies to people and everyday life."

@@ -1,0 +1,142 @@
+vocabulary_entry:
+  topic_tags:
+  - memory
+  - senses
+  - childhood
+  - school
+  - personal qualities
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 54
+  entries:
+  - term: long-term memory
+    meaning: memory of what happened a long time ago
+    example: my long-term memory is terrible these days.
+    band_suitability: 6.0+
+    register: neutral
+  - term: short-term memory
+    meaning: memory of what happened recently
+    example: my short-term memory isn't that brilliant either.
+    band_suitability: 6.0+
+    register: neutral
+  - term: good memory
+    meaning: ability to remember things well
+    example: And I used to have such a good memory!
+    band_suitability: 6.0+
+    register: neutral
+  - term: clean forgotten
+    meaning: completely forgotten
+    example: I’d clean forgotten about her too.
+    band_suitability: 7.0+
+    register: informal
+  - term: mind went blank
+    meaning: I couldn't remember anything.
+    example: My mind went blank.
+    band_suitability: 6.0+
+    register: neutral
+  - term: memories come flooding back
+    meaning: lots of memories returned
+    example: the memories came flooding back.
+    band_suitability: 7.0+
+    register: neutral
+  - term: earliest memory
+    meaning: first memory of something from long ago
+    example: My earliest memory of her is that we all went to the beach.
+    band_suitability: 6.0+
+    register: neutral
+  - term: stir up memories
+    meaning: making old memories come back
+    example: Now you’re stirring up memories for me.
+    band_suitability: 7.0+
+    register: neutral
+  - term: blot out that memory
+    meaning: avoid remembering something unpleasant
+    example: I can see why you wanted to blot out that memory!
+    band_suitability: 8.0+
+    register: neutral
+  - term: vividly remember
+    meaning: remember very clearly and in detail
+    example: I can vividly remember it now though.
+    band_suitability: 7.0+
+    register: neutral
+  - term: unforgettable experience
+    meaning: an experience that is impossible to forget
+    example: the whole weekend was an unforgettable experience.
+    band_suitability: 6.0+
+    register: neutral
+  - term: memories fade
+    meaning: memories get less clear over time
+    example: It’s terrible how memories fade as time passes, isn’t it!
+    band_suitability: 7.0+
+    register: neutral
+  - term: painful memories
+    meaning: memories that cause emotional pain or distress
+    example: I’m happy to lose some of my more painful memories of school.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have the impression
+    meaning: have a belief or idea about something or someone
+    example: I had the impression that he might be a difficult person to work for.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sense tension
+    meaning: feel or be aware of tension in a situation
+    example: I sensed some tension between us.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a feeling
+    meaning: have an intuition or suspicion
+    example: Now I have a feeling that he is trying to make things difficult for me.
+    band_suitability: 6.0+
+    register: neutral
+  - term: trust one's intuition
+    meaning: feel confident that instinctive feelings are correct
+    example: I don’t know whether I should trust my intuition and hand in my resignation.
+    band_suitability: 8.0+
+    register: neutral
+  - term: sensitive to heat
+    meaning: reacting strongly or easily to heat
+    example: I’ve been much more sensitive to heat and sensitive to light than I used
+      to be.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sensitive skin
+    meaning: skin that is easily irritated or upset
+    example: I’ve always had sensitive skin and sensitive teeth.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go numb
+    meaning: losing all feeling in a part of the body
+    example: My hands have also started going numb if I get at all cold.
+    band_suitability: 7.0+
+    register: neutral
+  - term: acute sense of smell
+    meaning: sharp, very good sense of smell
+    example: I used to have an acute sense of smell and acute hearing.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

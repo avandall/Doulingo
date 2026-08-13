@@ -1,0 +1,228 @@
+vocabulary_entry:
+  topic_tags:
+  - family
+  - relationships
+  - friendship
+  - home
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 19 & 20
+  entries:
+  - term: nuclear family
+    meaning: a family consisting of parents and children
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: extended family
+    meaning: a family that extends beyond the nuclear family, including grandparents,
+      aunts, uncles, and cousins
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: close relatives
+    meaning: nearest family members such as parents, children, brothers, or sisters
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: distant relatives
+    meaning: relatives who are not closely related, such as second cousins
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: close family
+    meaning: immediate family members who are your nearest blood relatives
+    example: I don’t have much close/immediate family.
+    band_suitability: 6.0+
+    register: neutral
+  - term: immediate family
+    meaning: your nearest blood relatives
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: blood relative
+    meaning: someone related by birth rather than by marriage
+    example: She’s a distant cousin of mine; she’s not a blood relative.
+    band_suitability: 6.0+
+    register: neutral
+  - term: close-knit family
+    meaning: a family where the members have a very strong and supportive relationship
+      with each other
+    example: We are a very close-knit family.
+    band_suitability: 7.0+
+    register: neutral
+  - term: respectable family
+    meaning: a family that is considered by society to have good character and social
+      standing
+    example: Henry came from a respectable family, so Ella’s parents felt happy about
+      the marriage.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dysfunctional family
+    meaning: a family that is unhappy and does not work in a healthy, supportive way
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: estranged husband/wife
+    meaning: a husband or wife who lives in a different place and has a difficult
+      relationship with their spouse
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: trial separation
+    meaning: a temporary period where a married couple lives apart to see if they
+      want a divorce
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: bitter divorce
+    meaning: a divorce full of anger, arguments, and bad feelings
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: acrimonious divorce
+    meaning: a formal term for a divorce full of anger and bitter arguments
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: broken home
+    meaning: a family home in which the parents have separated or divorced
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: stable home
+    meaning: a family home that is strong, loving, and secure
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: deprived home
+    meaning: a home that lacks necessary things for a pleasant life, such as money,
+      food, or good living conditions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: confirmed bachelor
+    meaning: a man who seems to have no intention of ever marrying
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: start a family
+    meaning: to begin having children
+    example: They are hoping to start a family soon.
+    band_suitability: 6.0+
+    register: neutral
+  - term: expect a baby
+    meaning: to be pregnant
+    example: Astrid is expecting a baby.
+    band_suitability: 6.0+
+    register: neutral
+  - term: single parent
+    meaning: a mother or father bringing up children alone, without a partner
+    example: It’s hard being a single parent.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring up children
+    meaning: to raise children and care for them until they are grown
+    example: Violet had to bring up four young children on her own.
+    band_suitability: 6.0+
+    register: neutral
+  - term: raise a family
+    meaning: to bring up children (more common in US English)
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: apply for custody
+    meaning: to make a legal request for the right to care for a child after a separation
+      or divorce
+    example: The father applied for custody of the children.
+    band_suitability: 8.0+
+    register: formal
+  - term: grant custody
+    meaning: to officially give someone the legal right to care for a child
+    example: The judge granted custody to the mother.
+    band_suitability: 8.0+
+    register: formal
+  - term: provide for your family
+    meaning: to earn enough money to support your family's basic needs
+    example: Nico works very long hours to provide for his family.
+    band_suitability: 7.0+
+    register: neutral
+  - term: set up home
+    meaning: to start an independent life in one's own flat or house
+    example: We’ll set up home on our own soon.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make friends
+    meaning: to form new friendships with people
+    example: When you go to university you will make a lot of new friends.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strike up a friendship
+    meaning: to start a friendship with someone
+    example: Nathan struck up a friendship with a girl he met on holiday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: form a friendship
+    meaning: to create or establish a friendship
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: develop a friendship
+    meaning: to slowly build a friendship over time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: cement a friendship
+    meaning: to strengthen a friendship
+    example: Spending several weeks on holiday together has cemented their friendship.
+    band_suitability: 8.0+
+    register: neutral
+  - term: spoil a friendship
+    meaning: to have a bad effect on a friendship and ruin it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: close friends
+    meaning: friends that you know very well and share a strong bond with
+    example: I’m glad that our children are such close friends.
+    band_suitability: 6.0+
+    register: neutral
+  - term: mutual friends
+    meaning: friends that you share with someone else
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: casual acquaintance
+    meaning: someone you know a little, but not very well
+    example: We’re just casual acquaintances.
+    band_suitability: 7.0+
+    register: neutral
+  - term: keep in contact
+    meaning: to stay in touch with someone
+    example: We must keep in contact when the course ends.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

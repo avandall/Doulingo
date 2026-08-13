@@ -1,0 +1,27 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 2 - Describe something you bought which you were not happy with"
+  topic_tags: ["Shopping", "Consumer experiences", "Personal narrative"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Part 2"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Focus on fluency, coherence, and the use of sophisticated vocabulary to describe personal experiences and post-purchase actions."
+    grammar_required: ["Past tenses for narrative", "Conditional structures for reflection", "Relative clauses"]
+    vocabulary_core: ["dissatisfied", "defective", "refund", "customer service"]
+    vocabulary_stretch: ["substandard", "exasperated", "resolve the issue", "consumer rights"]
+    sentence_length_target: "Complex sentences with cohesive devices"
+
+sample_dialogues:
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Describe something you bought which you were not happy with."
+    user_model_answer: "I’d like to talk about a smartphone I purchased online last year. I was initially quite excited because it was a high-end model at a discounted price. However, when it arrived, I discovered the screen was slightly unresponsive, which was incredibly frustrating. I contacted the customer service department immediately to complain, and although they were initially hesitant, I eventually secured a full refund after sending evidence of the defect. As a result, I’ve become much more cautious about where I shop online."
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Would you buy from the same place or source again?"
+    user_model_answer: "Probably not. While they did resolve the issue, the lack of quality control left a bad taste in my mouth, and I prefer to stick to reputable retailers now."

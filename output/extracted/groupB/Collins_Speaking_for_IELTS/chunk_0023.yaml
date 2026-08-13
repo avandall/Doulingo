@@ -1,0 +1,58 @@
+content_unit:
+  template_type: band_ladder
+  title: Short Answers and Indirect Explanation Strategies
+  topic_tags:
+  - Tourism
+  - Speaking Skills
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Collins_Speaking_for_IELTS.md, Unit 11
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Candidates often answer abruptly with just 'Yes' or 'No'. They
+    may struggle with auxiliary verb usage or over-rely on simple structures.
+  grammar_required:
+  - Yes/No + subject + auxiliary verb
+  vocabulary_core:
+  - Tourism
+  - holiday
+  - travel
+  vocabulary_stretch: []
+  sentence_length_target: short, concise
+  common_errors_to_simulate: Using contracted forms in 'Yes' answers (e.g., 'Yes,
+    I'm' instead of 'Yes, I am'); sounding abrupt by failing to expand on the answer.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Candidates use a range of short answers effectively to show
+    grammatical control and maintain natural flow by adding extra details.
+  grammar_required:
+  - Yes/No + auxiliary + adverbial modifiers
+  - Indirect descriptive phrases
+  vocabulary_core:
+  - infrastructure
+  - seasonal
+  - conservation
+  vocabulary_stretch:
+  - unspoilt
+  - erosion
+  - action-packed
+  - circumlocution
+  sentence_length_target: compound-complex with extensions
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Do you enjoy going on holiday with your parents?
+  user_model_answer: Yes, I do. It was very enjoyable and informative.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Have you been on holiday yet this year?
+  user_model_answer: No, I haven't, but I plan to go and see my family in Iran later
+    in the year. I'm really looking forward to it because I know they'll spoil me
+    rotten!
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Would you recommend that holiday destination?
+  user_model_answer: Without a doubt. It's a kind of hidden gem that most tourists
+    haven't discovered yet.

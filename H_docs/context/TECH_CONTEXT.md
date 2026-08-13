@@ -258,3 +258,20 @@ LIMIT 4;
 - `scikit-learn` (`IsotonicRegression` cho `scripts/calibrate_thresholds.py`)
 - `sentence-transformers` / `openai` embeddings
 - `pytest`, `pytest-asyncio`
+
+---
+
+## 6. Chiến lược Nạp Database & Triển khai (Database Ingestion Strategy)
+
+1. **Phát triển & Integration Test (Môi trường Local / Dev):**
+   - **Tách biệt hoàn toàn:** Tiến độ lập trình các task (`TASK-012` trở đi) **KHÔNG CẦN CHỜ DB Turso thật**.
+   - **SQLite Decoupling:** Toàn bộ test suite (`pytest`) và chạy local sử dụng SQLite in-memory hoặc file local `content.db` (thông qua `scripts/insert_turso.py --sqlite content.db`).
+
+2. **Quy trình Nạp Dữ liệu vào Turso DB thật (Production / Staging):**
+   - Khi DB Turso thật đã được chuẩn bị xong (có `TURSO_URL` và `TURSO_TOKEN`), chạy 2 bước nạp dữ liệu:
+     - **Bước 1 — Ingest YAML metadata & dialogues:**
+       `python scripts/insert_turso.py output/extracted/ --turso-url $TURSO_URL --turso-token $TURSO_TOKEN`
+     - **Bước 2 — Generate Vector Embeddings & Vector Index:**
+       `python scripts/generate_embeddings.py --turso-url $TURSO_URL --turso-token $TURSO_TOKEN --backend local`
+   - **Thời điểm kích hoạt hợp lý:** Nạp ngay khi DB thật sẵn sàng, hoặc bắt buộc hoàn tất trước khi tiến hành **E2E Integration Testing & Deployment (Phase 5)**.
+

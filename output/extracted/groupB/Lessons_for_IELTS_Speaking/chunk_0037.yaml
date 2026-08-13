@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation - Rhythm and Stress"
+  topic_tags: ["Pronunciation", "Education", "Study"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phát âm từ vựng rời rạc, thường quên nhấn trọng âm từ (stress) và nhịp điệu (rhythm), làm câu nói bị đều (monotone)."
+    grammar_required: ["Simple present"]
+    vocabulary_core: ["student", "high school", "biology", "teacher", "science"]
+    vocabulary_stretch: ["interesting", "chemistry", "physics"]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Nhấn trọng âm sai vị trí hoặc nhấn đều tất cả các từ, làm giảm tính tự nhiên của tiếng Anh."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng nhịp điệu tự nhiên, biết nhấn trọng âm vào các từ quan trọng (content words) và lướt các từ hư từ (weak syllables)."
+    grammar_required: ["Complex structures", "Conjunctions"]
+    vocabulary_core: ["subject", "application", "aspect"]
+    vocabulary_stretch: ["biology", "chemistry", "interesting"]
+    sentence_length_target: "compound and complex sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What subjects are you studying at school?"
+    user_model_answer: "I'm studying biology. English, maths, physics, and chemistry."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you like most about your studies?"
+    user_model_answer: "I think it's how biology applies to people and everyday life. I have a really good teacher, so I don't find it difficult."

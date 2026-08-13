@@ -1,0 +1,121 @@
+vocabulary_entry:
+  topic_tags:
+  - animals
+  - wildlife
+  - environment
+  - colors
+  - personality
+  category: collocation
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: safeguard
+    meaning: to protect something/somebody from loss, harm or damage
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: prosperity
+    meaning: the state of being successful, especially in making money
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: forest wildfires
+    meaning: destructive fires occurring in natural forests
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: graze
+    meaning: to put animals in a field so that they can eat the grass there
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fertility
+    meaning: the quality in land or soil of making plants grow well
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: play a key role in
+    meaning: to be very important in helping something happen or succeed
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: replenish
+    meaning: to make something full again by replacing what has been used
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: be associated with something
+    meaning: connected because they happen together or one thing causes the other
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: warfare
+    meaning: the activity of fighting a war
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: deceit
+    meaning: dishonest behaviour intended to make somebody believe something untrue
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: cowardice
+    meaning: fear or lack of courage
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: down-to-earth
+    meaning: practical, reasonable, and friendly
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: renewal
+    meaning: a situation in which something begins again after it stopped
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: abundance
+    meaning: a large quantity that is more than enough
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: refreshing
+    meaning: making you feel less tired or hot
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: elegance
+    meaning: the quality of being attractive and showing a good sense of style
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: formality
+    meaning: a thing that you must do as part of an official process
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

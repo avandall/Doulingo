@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary - Education Topic"
+  topic_tags: [education, vocabulary, school]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, VOCABULARY"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Students can answer basic questions about school life using simple vocabulary provided in the bank."
+    grammar_required: [simple_present, modal_verbs_for_obligation_have_to]
+    vocabulary_core: [subject, homework, maths, rules, strict]
+    vocabulary_stretch: [compulsory, discipline]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Lack of complex connectors; repetition of simple sentence structures (I like..., I have...)."
+  - band_min: 6.0
+    band_max: 7.0
+    can_do_description: "Students can elaborate on school experiences using topic-specific vocabulary and providing reasons."
+    grammar_required: [conjunctions, adjectives_to_describe_feelings]
+    vocabulary_core: [assignments, detention, attendance, uniform]
+    vocabulary_stretch: [compulsory, secondary, entrance_exam]
+    sentence_length_target: "compound sentences using 'because', 'but', 'and'"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What subjects do you not like?"
+    user_model_answer: "I hate maths because it's boring and it's too hard."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Tell me about discipline in your school."
+    user_model_answer: "Our school is very strict. There are lots of rules. You have to wear a uniform and you can't talk in class."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What exams do you take?"
+    user_model_answer: "At the end of Senior High, everyone takes the University Entrance exam. It's really difficult, and we have to do a lot of work."

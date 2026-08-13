@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3 Strategy: Comparing Question Type"
+  topic_tags: [IELTS Speaking Part 3, Exam Strategies, Comparing, Methodology]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Part Three Question Types"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thường liệt kê các điểm khác biệt một cách rời rạc, không kết nối. Gặp khó khăn khi sử dụng cấu trúc so sánh phức tạp hoặc thì (tenses) hỗn hợp."
+    grammar_required: 
+      - simple comparatives (bigger, smaller)
+    vocabulary_core: [different, same, but]
+    vocabulary_stretch: [in contrast, significantly]
+    sentence_length_target: "Ngắn, đơn giản"
+    common_errors_to_simulate: "Chỉ liệt kê danh sách các sự khác biệt thay vì phân tích hoặc so sánh logic; lặp lại từ vựng đơn giản."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Có khả năng phân tích sự tương đồng và khác biệt một cách mạch lạc, sử dụng các từ nối linh hoạt và cấu trúc ngữ pháp phức tạp để so sánh các thời điểm hoặc nhóm xã hội."
+    grammar_required: [mixed tenses, complex comparative structures, conditional sentences]
+    vocabulary_core: [whereas, similarly, conversely, in terms of]
+    vocabulary_stretch: [fundamentally different, bears little resemblance, evolution of]
+    sentence_length_target: "Phức tạp, đa dạng"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Are houses nowadays the same as houses 50 years ago in your country?"
+    user_model_answer: "No, they are different. Houses now are bigger than before. And they have better electricity. Fifty years ago, houses were small and made of wood."
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Are houses nowadays the same as houses 50 years ago in your country?"
+    user_model_answer: "Actually, there's a significant disparity. Whereas houses half a century ago were typically modest, traditional structures, modern housing in urban areas has evolved into high-rise apartments with sophisticated amenities. It's really quite a transformation."

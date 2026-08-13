@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Language and Communication — Comparative and Superlative Structures"
+  topic_tags: [Language, Communication, Globalisation, Technology, Grammar]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 5"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to communicate basic ideas but struggles with complex comparisons. Often makes errors in comparative/superlative morphology or uses incorrect structures (e.g., 'less high' instead of 'not as high')."
+    grammar_required: [comparatives, superlatives]
+    vocabulary_core: [accents, dialects, keep in touch, global, local]
+    vocabulary_stretch: [globalisation, integrated]
+    sentence_length_target: "short to medium"
+    common_errors_to_simulate: "Incorrect use of 'less' with short adjectives (e.g., 'less big' instead of 'not as big'), confusing comparative/superlative forms for irregular adjectives, and over-reliance on basic structures."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of comparative and superlative structures accurately. Effectively uses modifiers like 'significantly', 'marginally', and 'by far' to add precision. Demonstrates control over complex structures like 'the + comparative, the + comparative'."
+    grammar_required: [modifiers of comparatives/superlatives, parallel change structures]
+    vocabulary_core: [fluency, potential, traditional]
+    vocabulary_stretch: [predominantly, integration, significantly]
+    sentence_length_target: "medium to long, complex"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How do you keep in touch with people you know?"
+    user_model_answer: "I keep in touch with my friends by phone. Texting is good because it is faster than writing a letter. I also use Facebook to see my family."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you keep in touch with different people in different ways?"
+    user_model_answer: "Yes, it depends on the relationship. For my close friends, I prefer meeting face-to-face as it’s much more personal, but for colleagues, I mostly use email. The more digital the method, the less personal the communication feels, I think."

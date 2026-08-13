@@ -1,0 +1,130 @@
+vocabulary_entry:
+  topic_tags:
+  - fashion
+  - shopping
+  - trends
+  - work
+  - career
+  - time management
+  category: collocation
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: keep up with
+    meaning: to learn about or be aware of the news, current events, etc.
+    example: Fashion trends change so quickly, though, and it can be tough to keep
+      up with that fast-paced world.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fast-paced
+    meaning: moving, changing or happening very quickly
+    example: It can be tough to keep up with that fast-paced world.
+    band_suitability: 6.0+
+    register: neutral
+  - term: staying ahead of
+    meaning: to remain in front or be more successful than others
+    example: We've put together a list of useful tips for staying ahead of the most
+      important trends in fashion.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stylish
+    meaning: fashionable and attractive
+    example: You'll always be the most informed and stylish person in the room!
+    band_suitability: 6.0+
+    register: neutral
+  - term: runway
+    meaning: the long stage that models walk on during a fashion show
+    example: Pay attention to current runway collections.
+    band_suitability: 6.0+
+    register: neutral
+  - term: haute couture
+    meaning: the business of making fashionable and expensive clothes; the clothes
+      made in this business
+    example: Check out what’s happening in haute couture and ready-to-wear.
+    band_suitability: 8.0+
+    register: formal
+  - term: ready-to-wear
+    meaning: made in standard sizes, not to the measurements of a particular customer
+    example: Ready-to-wear features more wearable items from designers that are mass-produced.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pick up
+    meaning: to get information or a skill by chance rather than by making a deliberate
+      effort
+    example: You can pick up great information, exclusive content, and announcements
+      before anyone else.
+    band_suitability: 6.0+
+    register: informal
+  - term: exclusive content
+    meaning: media or information restricted to a specific audience or platform
+    example: You can pick up great information, exclusive content, and announcements.
+    band_suitability: 7.0+
+    register: neutral
+  - term: window shopping
+    meaning: the activity of looking at the goods in shop windows, usually without
+      intending to buy anything
+    example: Go window shopping regularly.
+    band_suitability: 6.0+
+    register: neutral
+  - term: motivation
+    meaning: the feeling of wanting to do something, especially something that involves
+      hard work and effort
+    example: When you do something you love, the motivation comes from within.
+    band_suitability: 6.0+
+    register: neutral
+  - term: working towards
+    meaning: making efforts to achieve a goal or result
+    example: Once you know what you want, working towards it becomes much easier.
+    band_suitability: 6.0+
+    register: neutral
+  - term: prioritise
+    meaning: to put tasks, problems, etc. in order of importance, so that you can
+      deal with the most important first
+    example: Perform the more important tasks first and the less significant ones
+      later.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on a daily, weekly and monthly basis
+    meaning: occurring every day, week, or month routinely
+    example: Prepare to-do lists of important tasks on a daily, weekly and monthly
+      basis.
+    band_suitability: 7.0+
+    register: neutral
+  - term: delegate
+    meaning: to give part of your work, power or authority to somebody in a lower
+      position than you
+    example: Distribute the tasks among team members based on their level and area
+      of expertise.
+    band_suitability: 8.0+
+    register: formal
+  - term: expertise
+    meaning: expert knowledge or skill in a particular subject, activity or job
+    example: Distribute the tasks among team members based on their level and area
+      of expertise.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

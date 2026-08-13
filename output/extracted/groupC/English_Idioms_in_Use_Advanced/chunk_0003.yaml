@@ -1,0 +1,108 @@
+vocabulary_entry:
+  topic_tags:
+  - idioms
+  - learning_strategies
+  - language
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 2-3
+  entries:
+  - term: knock something into shape
+    meaning: to improve the condition or organization of something
+    example: Could you please help me knock it into shape?
+    band_suitability: 7.0+
+    register: neutral
+  - term: lick your wounds
+    meaning: to spend time recovering from a defeat or disappointment
+    example: It's time you stopped licking your wounds and got back to your normal
+      life.
+    band_suitability: 8.0+
+    register: neutral
+  - term: sink like a stone
+    meaning: to fail completely and very quickly
+    example: it sank like a stone.
+    band_suitability: 7.0+
+    register: neutral
+  - term: domino effect
+    meaning: a situation where one event causes a series of similar events to happen
+    example: There was a kind of domino effect when Jill left the company.
+    band_suitability: 7.0+
+    register: neutral
+  - term: run its course
+    meaning: to develop and finish naturally
+    example: the relationship eventually ran its course
+    band_suitability: 7.0+
+    register: neutral
+  - term: prick up your ears
+    meaning: to start to listen carefully
+    example: The children pricked up their ears when they heard the word 'chocolate'.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go up in the world
+    meaning: to become more successful and richer
+    example: Would Going up in the world be a better name for a mountain-climbing
+      organisation?
+    band_suitability: 7.0+
+    register: neutral
+  - term: debt of honour
+    meaning: a debt that you must pay because of your own conscience rather than legal
+      requirement
+    example: if a headline mentioned a debt of honour...
+    band_suitability: 8.0+
+    register: formal
+  - term: like it or lump it
+    meaning: to accept a situation you do not like because you cannot change it
+    example: The fact remains, that's all we're going to pay him and he can like it
+      or lump it.
+    band_suitability: 7.0+
+    register: informal
+  - term: like a rabbit caught in the headlights
+    meaning: looking very frightened and unable to move or think
+    example: he was like a rabbit caught in the headlights.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get off your backside
+    meaning: to stop being lazy and start doing something
+    example: Joey can be so lazy. I wish he'd get off his backside.
+    band_suitability: 7.0+
+    register: informal
+  - term: know something inside out
+    meaning: to know something very thoroughly
+    example: He knows the system inside out.
+    band_suitability: 6.0+
+    register: neutral
+  - term: the shit hits the fan
+    meaning: when a situation suddenly becomes very difficult or dangerous
+    example: If Greg finds out what you've done, the shit will hit the fan.
+    band_suitability: 8.0+
+    register: slang
+  - term: pigs might fly
+    meaning: used to express disbelief that something will happen
+    example: Oh yes, and pigs might fly!
+    band_suitability: 7.0+
+    register: humorous
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

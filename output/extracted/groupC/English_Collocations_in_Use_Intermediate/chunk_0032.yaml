@@ -1,0 +1,156 @@
+vocabulary_entry:
+  topic_tags:
+  - money
+  - shopping
+  - prices
+  - business
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 37 & 38
+  entries:
+  - term: rock-bottom prices
+    meaning: extremely low prices
+    example: Tablet computers are now selling at rock-bottom prices because there’s
+      so much competition.
+    band_suitability: 6.0+
+    register: neutral
+  - term: prices soar
+    meaning: prices increase very fast
+    example: In just six months the price had soared.
+    band_suitability: 7.0+
+    register: neutral
+  - term: reasonably priced
+    meaning: neither too cheap nor too expensive
+    example: At 275 dollars our four-star hotel seemed reasonably priced.
+    band_suitability: 6.0+
+    register: neutral
+  - term: ridiculous price
+    meaning: a price that is much too high or much too low
+    example: Calling something a ridiculous price may mean it is much too cheap or
+      much too expensive.
+    band_suitability: 6.0+
+    register: informal
+  - term: money is tight
+    meaning: there is not much money available
+    example: Henry and his brother grew up in a family where money was always tight.
+    band_suitability: 6.0+
+    register: informal
+  - term: in short supply
+    meaning: not available in large enough quantities
+    example: Henry hoped that when he was grown-up, money would never be in short
+      supply for him.
+    band_suitability: 7.0+
+    register: neutral
+  - term: steady income
+    meaning: a fixed and regular amount of money earned
+    example: Henry’s brother only wanted a steady income.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make big money
+    meaning: earn a lot of money
+    example: Henry wasn’t interested in just earning a good salary, he wanted to make
+      big money.
+    band_suitability: 6.0+
+    register: informal
+  - term: seriously rich
+    meaning: very rich
+    example: He wanted to be seriously rich.
+    band_suitability: 7.0+
+    register: informal
+  - term: make a withdrawal
+    meaning: take money out of a bank account
+    example: He hardly ever made a withdrawal from it.
+    band_suitability: 6.0+
+    register: formal
+  - term: raise money
+    meaning: collect money for a purpose
+    example: When he left school, he raised enough money through the bank to buy his
+      first shop.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get a good deal
+    meaning: get a bargain
+    example: He got a really good deal because he found a shop that was going cheap.
+    band_suitability: 6.0+
+    register: informal
+  - term: going cheap
+    meaning: selling for a low price
+    example: He found a shop that was going cheap.
+    band_suitability: 6.0+
+    register: informal
+  - term: make a small fortune
+    meaning: make a large amount of money
+    example: By the time he was twenty he had already made a small fortune.
+    band_suitability: 7.0+
+    register: neutral
+  - term: money is tied up
+    meaning: money is not available for spending because it is needed elsewhere
+    example: Most of his money was tied up in his business.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bring about peace
+    meaning: cause peace to happen
+    example: It will be no easy task to bring about peace in the area.
+    band_suitability: 7.0+
+    register: neutral
+  - term: negotiate a peace agreement
+    meaning: talk in order to reach a peace deal
+    example: It can be useful to invite a neutral country to help negotiate a peace
+      agreement.
+    band_suitability: 7.0+
+    register: formal
+  - term: call a truce
+    meaning: agree to stop fighting temporarily
+    example: Although a ceasefire has been called for the duration of the peace negotiations...
+    band_suitability: 8.0+
+    register: neutral
+  - term: sign a peace treaty
+    meaning: officially sign a formal agreement to end a war
+    example: All the countries involved signed a peace treaty in Paris.
+    band_suitability: 7.0+
+    register: formal
+  - term: lasting peace
+    meaning: peace that continues for a long time
+    example: Hopes for a lasting peace are, unfortunately, fading fast.
+    band_suitability: 7.0+
+    register: neutral
+  - term: peace activist
+    meaning: someone who campaigns for peace and against war
+    example: Peace activists around the world staged a series of massive demonstrations.
+    band_suitability: 7.0+
+    register: neutral
+  - term: keep the peace
+    meaning: maintain calm and order
+    example: UN troops were sent into the troubled area to help keep the peace there.
+    band_suitability: 6.0+
+    register: neutral
+  - term: restore order
+    meaning: bring a situation back to a peaceful, organized state
+    example: Soldiers were sent in to restore order after the uprising.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

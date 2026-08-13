@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Dialogue Study — Cultural Traditions (Spring Festival vs. Christmas)"
+  topic_tags: [Culture, Festivals, Traditions, Socializing]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Người học có thể trao đổi thông tin cơ bản về lễ hội nhưng hay lặp từ, dùng cấu trúc câu đơn giản và thiếu các từ nối để làm mượt đoạn hội thoại."
+    grammar_required: [Present simple, Comparatives]
+    vocabulary_core: [festival, tradition, family, celebrate, food]
+    vocabulary_stretch: [lunar calendar, decorations, firecrackers]
+    sentence_length_target: "short-medium (8-12 words)"
+    common_errors_to_simulate: "Dùng từ vựng quá đơn giản (như 'good food' thay vì 'delicacies'), cấu trúc câu lặp đi lặp lại 'It is...', ít sử dụng các trạng từ chỉ tần suất hoặc thời gian."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Người học giải thích được các nét văn hóa đặc trưng, sử dụng từ ngữ chuyên biệt (lunar calendar, customs) và các cấu trúc phức hợp để so sánh hai nền văn hóa."
+    grammar_required: [Present perfect, Passive voice, Relative clauses]
+    vocabulary_core: [tradition, celebrate, customary, importance]
+    vocabulary_stretch: [lunar calendar, festivities, indigenous, ceremonial, cultural significance]
+    sentence_length_target: "medium-long (15-25 words)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me about the most important festival in your country?"
+    user_model_answer: "The most important one is the Spring Festival. It is like the Chinese New Year. We eat dumplings and go to visit our family. It is a very happy time for us."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How have the ways of celebrating the Spring Festival changed over time?"
+    user_model_answer: "While many core traditions remain intact, such as family reunions and home decorations, modernization has brought changes. For instance, the use of firecrackers is now restricted in cities, and busy work schedules often prevent people from returning to their hometowns as frequently as they did in the past."

@@ -1,0 +1,23 @@
+content_unit:
+  template_type: band_ladder
+  title: "Opinion Question: Should we allow TV advertising aimed at children?"
+  topic_tags: ["Society", "Advertising", "Children", "Media"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: "Get_IELTS_Band_9_Speaking, 3. Should we allow TV advertising aimed at children?"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can present a balanced argument with clear linking expressions (on the one hand/on the other hand), acknowledges both sides of an issue, and provides a nuanced personal conclusion."
+    grammar_required: ["Complex sentences with conjunctions", "Modals of possibility/obligation"]
+    vocabulary_core: ["communicate", "customers", "regulated", "authorities"]
+    vocabulary_stretch: ["exploit", "carefully regulated", "the way that adults do"]
+    sentence_length_target: "medium-long"
+
+sample_dialogues:
+  - band_level: 8.5
+    turn_type: standalone
+    ai_line: "Should we allow TV advertising aimed at children?"
+    user_model_answer: "Well, on the one hand, companies should be free to communicate with their customers, and that includes children. We also sometimes forget that children love TV commercials for all the excitement and humour. But on the other hand, children don't have the ability to judge or choose in the way that adults do, and adverts can exploit this. So generally speaking, I think we should allow these adverts, provided they're carefully regulated and controlled by the authorities."

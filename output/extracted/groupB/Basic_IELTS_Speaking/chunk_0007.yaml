@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Enhance Your English Communication Skills — Strategies for IELTS Speaking"
+  topic_tags: ["General Speaking Skills", "Vocabulary", "Grammar", "Future Speculation"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Basic_IELTS_Speaking.md, Enhance Your English Communication Skills"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Focuses on providing clear answers using basic descriptive and comparative language. Often relies on standard tenses."
+    grammar_required: 
+      - Present simple
+      - Basic conditionals (Type 1)
+    vocabulary_core: ["music", "society", "global", "culture"]
+    vocabulary_stretch: ["cultural independence", "awareness"]
+    sentence_length_target: "moderate"
+    common_errors_to_simulate: "Limited use of complex conditional sentences; over-reliance on simple 'I think' structures."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of tenses and complex grammatical structures (e.g., hypothetical conditionals). Demonstrates the ability to speculate on abstract future topics."
+    grammar_required: 
+      - Conditional sentences (Type 2)
+      - Present perfect
+      - Modal verbs for speculation
+    vocabulary_core: ["global issues", "famine", "human rights"]
+    vocabulary_stretch: ["common experience", "joining forces", "less fearful", "cultural independence"]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What future role do you see for music in society?"
+    user_model_answer: "Well, I've always hoped that all the peoples of the world could benefit by sharing their common experience of music. In the past, there have been many examples of musicians joining forces to raise awareness of global issues that result from famine or human rights abuses. If different cultures could see the common features of music in other countries, they may be less fearful of each other and understand one another's cultures better."

@@ -1,0 +1,143 @@
+vocabulary_entry:
+  topic_tags:
+  - feelings
+  - emotions
+  - opinions
+  - daily_routines
+  - actions
+  - studying
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 6-7
+  entries:
+  - term: bitterly disappointed
+    meaning: extremely disappointed in a way that feels painful or upset
+    example: I was bitterly disappointed when I failed the exam.
+    band_suitability: 6.0+
+    register: neutral
+  - term: deeply committed
+    meaning: very dedicated and loyal to a cause, person, or task
+    example: Professor McDellvit was always deeply committed to her students.
+    band_suitability: 7.0+
+    register: formal
+  - term: ridiculously expensive
+    meaning: extremely and unreasonably expensive
+    example: The restaurant was ridiculously expensive. I don’t think we’ll go there
+      again.
+    band_suitability: 6.0+
+    register: informal
+  - term: strongly recommend
+    meaning: to advise someone very firmly to do something
+    example: I would strongly recommend that you learn a foreign language.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make arrangements
+    meaning: to plan or organize preparations for something
+    example: The school can make arrangements for pupils with special needs.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a change
+    meaning: to alter or modify something
+    example: The new manager is planning to make some changes.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a choice
+    meaning: to select one thing or person over another
+    example: Amelia had to make a choice between her career and her family.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a comment
+    meaning: to express an opinion or observation
+    example: Would anyone like to make any comments on the talk?
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a contribution
+    meaning: to help supply or add to something, such as a discussion or project
+    example: She made a useful contribution to the discussion.
+    band_suitability: 7.0+
+    register: formal
+  - term: make a decision
+    meaning: to reach a conclusion or make up one's mind
+    example: I’m glad it’s you who has to make the decision, not me.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make an effort
+    meaning: to try hard to do something
+    example: Michael is really making an effort with his maths this term.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make an excuse
+    meaning: to give a reason (often invented) to explain or avoid something
+    example: I’m too tired to go out tonight. Let’s make an excuse and stay at home.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make friends
+    meaning: to begin friendships with other people
+    example: Caroline is very good at making friends.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make an improvement
+    meaning: to make something better
+    example: Repainting the room has really made an improvement.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a mistake
+    meaning: to do something incorrectly or make an error
+    example: They’ve made a mistake in our bill.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make progress
+    meaning: to develop or improve over a period of time
+    example: Holly is making progress with all her schoolwork.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do your best
+    meaning: to try as hard as you can
+    example: All that matters in the exam is to do your best.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do damage
+    meaning: to harm or ruin something
+    example: The storm did some damage to our roof.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do an experiment
+    meaning: to perform a scientific test
+    example: We are doing an experiment to test how the metal reacts with water.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do someone a favour
+    meaning: to do something helpful for someone
+    example: Could you do me a favour and pick me up some milk from the supermarket?
+    band_suitability: 6.0+
+    register: neutral
+  - term: do harm
+    meaning: to cause physical or psychological injury or damage
+    example: Changing the rules may do more harm than good.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 - Experience and Media Topics"
+  topic_tags: [Experience, Media, Life Events, Hobbies]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Section 4: Media & Experience Topics"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể kể về các chủ đề quen thuộc nhưng thường bị giới hạn ở các thì đơn giản (past/present simple). Dễ mắc lỗi lặp từ vựng và câu cú chưa linh hoạt."
+    grammar_required: [Past simple, Present simple]
+    vocabulary_core: [busy, important, popular, dangerous, watch, read]
+    vocabulary_stretch: [hectic, preparation, masterpiece, catchy, risky]
+    sentence_length_target: "Ngắn, cấu trúc chủ ngữ-động từ đơn giản."
+    common_errors_to_simulate: "Lạm dụng thì hiện tại cho các sự kiện đã qua; thiếu các cấu trúc câu phức (complex sentences); phát âm các từ vựng khó như 'hazardous' hoặc 'orchestra' chưa chuẩn."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng linh hoạt các thì (past perfect, present perfect, used to) để kể chuyện. Dùng từ vựng chuyên sâu (collocations) theo chủ đề một cách tự nhiên."
+    grammar_required: 
+      - Past perfect
+      - Present perfect
+      - "Conditionals (I'd love to/It would), Passive voice"
+    vocabulary_core: [long-running, broadcast, soundtrack, subscription, editorial]
+    vocabulary_stretch: [breathtaking, box-office smash, hardback/paperback version, photo-journalism]
+    sentence_length_target: "Câu dài, kết hợp tốt các mệnh đề quan hệ và cấu trúc so sánh."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Describe something dangerous you would like to do."
+    user_model_answer: "I want to try mountain biking. It is a dangerous sport and I think it is very exciting. I hope I can do it in the future with my friends."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe something dangerous you would like to do."
+    user_model_answer: "I’d love to have the chance to have a go at mountain biking. It would without doubt be quite risky, and it would need a lot of careful preparation, but the experience seems breathtaking. Honestly, I doubt I’ll ever have the chance to actually do it, but it's on my bucket list."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a busy time in your life."
+    user_model_answer: "I remember when I was preparing for the Spring Festival, the shops were really packed out. I felt exhausted because I had been shopping non-stop for a whole week, which was quite a hectic experience for me."

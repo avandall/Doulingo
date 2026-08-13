@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: 'Pronunciation: Linking Sounds and Strategies for Asking for Repetition'
+  topic_tags:
+  - Pronunciation
+  - Linking sounds
+  - Speaking strategies
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Lessons_for_IELTS_Speaking, Pronunciation
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Focuses on producing individual sounds clearly; however, may
+    speak in a choppy rhythm without connecting words, leading to a staccato effect.
+  grammar_required:
+  - Present simple for habits
+  vocabulary_core:
+  - food
+  - diet
+  - healthy
+  - eat
+  vocabulary_stretch:
+  - unhealthy
+  - balanced diet
+  - overweight
+  sentence_length_target: Short, simple sentences
+  common_errors_to_simulate: Lack of linking sounds (e.g., 'milk is' pronounced as
+    'milk' [pause] 'is'); flat intonation when asking for clarification (sounding
+    demanding instead of polite).
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Uses linking sounds naturally to enhance flow; maintains polite,
+    rising intonation when asking for repetition to manage the conversation.
+  grammar_required:
+  - Complex sentence structures
+  - modal verbs for advice (shouldn't)
+  vocabulary_core:
+  - fast food
+  - tasty
+  - breakfast
+  vocabulary_stretch:
+  - worldwide
+  - contain
+  - link
+  - intonation
+  sentence_length_target: Compound and complex sentences
+sample_dialogues:
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: Do you like fast food?
+  user_model_answer: I am sorry. What? It was very enjoyable and informative.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Do you like fast food?
+  user_model_answer: I'm sorry, could you repeat that, please?
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: N/A
+  user_model_answer: 'Chocolate milk is very tasty. (Pronounced: Chocolate milk-is
+    very tasty)'

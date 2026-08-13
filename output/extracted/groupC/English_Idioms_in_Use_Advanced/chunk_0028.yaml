@@ -1,0 +1,124 @@
+vocabulary_entry:
+  topic_tags:
+  - business
+  - management
+  - work
+  - decision-making
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 30-31
+  entries:
+  - term: heads will roll
+    meaning: people will be severely punished, often by losing their jobs
+    example: Following the company's disastrous performance, the CEO has announced
+      that heads will roll.
+    band_suitability: 7.0+
+    register: informal
+  - term: gardening leave
+    meaning: told not to come into work during their notice period, while still being
+      paid
+    example: The managing director has been put on gardening leave since being offered
+      a new job with a rival company.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take [something] to the next level
+    meaning: make something even more special, dramatic, or advanced
+    example: The EatWell restaurant chain takes luxury catering to the next level.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fall into line
+    meaning: start to follow the rules or behave in the required way
+    example: The sales manager has been warned that he will lose his job if he does
+      not fall into line.
+    band_suitability: 7.0+
+    register: neutral
+  - term: under no illusions
+    meaning: to understand the truth about a difficult situation
+    example: The director said that she is under no illusions about how difficult
+      it will be for the company to survive.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bring to the table
+    meaning: raise a point or topic for discussion
+    example: I have two issues to bring to the table at our next meeting.
+    band_suitability: 6.0+
+    register: neutral
+  - term: between a rock and a hard place
+    meaning: a situation where whichever decision you make, there is a problem
+    example: It's hard to know what to do. We're between a rock and a hard place.
+    band_suitability: 7.0+
+    register: neutral
+  - term: tick all the boxes
+    meaning: to have all the characteristics that are required or wanted
+    example: I think Hari is the ideal person for the job. He ticks all the boxes.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the gloves are off
+    meaning: people stop being polite and start to challenge each other in an unpleasant
+      way
+    example: The two managers used to be polite to each other; but now the gloves
+      are off.
+    band_suitability: 8.0+
+    register: informal
+  - term: dog-eat-dog
+    meaning: a situation where people will do anything to succeed, even if it hurts
+      others
+    example: It's a dog-eat-dog world in our line of business.
+    band_suitability: 8.0+
+    register: neutral
+  - term: at the cutting edge
+    meaning: the most up-to-date and advanced stage of development
+    example: We have to try to develop a product that is truly at the cutting edge.
+    band_suitability: 6.0+
+    register: neutral
+  - term: blue-sky thinking
+    meaning: creative thinking that is not limited by current reality
+    example: Management are going away for a weekend of blue-sky thinking about the
+      company's future.
+    band_suitability: 8.0+
+    register: neutral
+  - term: think outside the box
+    meaning: think in an original and imaginative way
+    example: We hired Frank because of his ability to think outside the box.
+    band_suitability: 6.0+
+    register: neutral
+  - term: push the envelope
+    meaning: innovating; going beyond normal boundaries
+    example: We don't want to lose our company's reputation for pushing the envelope.
+    band_suitability: 8.0+
+    register: neutral
+  - term: joined-up thinking
+    meaning: making appropriate connections between different ideas or departments
+    example: Unfortunately, there hasn't been enough joined-up thinking in our approach.
+    band_suitability: 7.0+
+    register: neutral
+  - term: suck it and see
+    meaning: to do something you have not done before to find out if it works
+    example: The idea might work, and it might not. We need to just suck it and see.
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

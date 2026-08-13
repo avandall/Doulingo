@@ -1,0 +1,163 @@
+vocabulary_entry:
+  topic_tags:
+  - presentations
+  - work
+  - jobs
+  - career
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: visual aids
+    meaning: pictures, charts, films, etc. used in a presentation
+    example: Clear visual aids are a great way to make an impact on your audience.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make an impact
+    meaning: to have a powerful effect on someone or something
+    example: Clear visual aids are a great way to make an impact on your audience.
+    band_suitability: 6.0+
+    register: neutral
+  - term: key points
+    meaning: main points or most important ideas
+    example: Think about your key points for each area and try to write these in just
+      a few words.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bullet points
+    meaning: small dots or icons used in lists to itemize information
+    example: You might want to use bullet points to help the audience follow your
+      argument.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pie chart
+    meaning: a circular statistical graphic divided into slices to illustrate numerical
+      proportion
+    example: If you are presenting numbers or data, pie charts, bar charts or graphs
+      are often the clearest way.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bar chart
+    meaning: a chart with rectangular bars with lengths proportional to the values
+      that they represent
+    example: If you are presenting numbers or data, pie charts, bar charts or graphs
+      are often the clearest way.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring to life
+    meaning: to make something more interesting and lively
+    example: Using pictures or animations can help bring the presentation to life.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fulfilling job
+    meaning: a job that makes you feel happy and satisfied because you think it is
+      useful and important
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: high-powered job
+    meaning: an important, powerful and successful job
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: demanding job
+    meaning: a job that requires a lot of effort, skill, or attention
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: steady job
+    meaning: a secure job that is likely to last and provide a regular income
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: permanent job
+    meaning: a job lasting for an indefinite period, not temporary
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: carry out work
+    meaning: to perform or complete a task or job
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: supervise work
+    meaning: to watch over and direct work or workers
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: work closely with
+    meaning: to cooperate very closely with someone on work-related tasks
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: wreck someone's career
+    meaning: to ruin or destroy someone's career
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: embark on a career
+    meaning: to start a career
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: climb the career ladder
+    meaning: to progress in your career to a higher, more successful level
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: promising career
+    meaning: a career that shows signs of future success
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: career takes off
+    meaning: a career starts to become very successful quickly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: team player
+    meaning: a person who co-operates well with other people
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: stimulating working environment
+    meaning: an encouraging, inspiring and interesting place to work
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: job satisfaction
+    meaning: the feeling of pleasure and achievement that you experience in your job
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: generous benefits
+    meaning: good rewards for work, such as salary, company car, and good holiday
+      entitlement
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

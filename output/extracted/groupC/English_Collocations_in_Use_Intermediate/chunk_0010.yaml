@@ -1,0 +1,163 @@
+vocabulary_entry:
+  topic_tags:
+  - metaphors
+  - emotions
+  - feelings
+  - describing people
+  - communication
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 12
+  entries:
+  - term: a sunny smile
+    meaning: a very happy and bright facial expression
+    example: I could tell Maria was in a good mood by the sunny smile on her face.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a sunny face
+    meaning: a happy face showing joy or positivity
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: a face shines with pleasure
+    meaning: someone's face shows they are extremely happy or pleased
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: eyes shine with excitement
+    meaning: someone's eyes show delight or excitement
+    example: The girl’s eyes shone with excitement as she prepared for the party.
+    band_suitability: 7.0+
+    register: neutral
+  - term: someone's face lights up
+    meaning: someone suddenly looks very happy
+    example: The little boy’s eyes lit up when he saw his daddy approaching.
+    band_suitability: 6.0+
+    register: neutral
+  - term: an atmosphere lightens
+    meaning: a situation or mood becomes more relaxed or cheerful
+    example: Let’s put some happy music on to lighten the atmosphere.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dark thoughts
+    meaning: gloomy, unhappy, or sinister thoughts
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: dark days
+    meaning: unpleasant, difficult, or unhappy times in life
+    example: My grandparents lived through the dark days of civil war from 1936 to
+      1939.
+    band_suitability: 7.0+
+    register: neutral
+  - term: someone's face darkens
+    meaning: someone's expression changes to show unhappiness or anger
+    example: Mr Garnham’s expression darkened as he was told the terrible news.
+    band_suitability: 8.0+
+    register: formal
+  - term: ideas flow
+    meaning: ideas are generated easily and without effort during a discussion or
+      meeting
+    example: It was a very successful meeting. The ideas flowed.
+    band_suitability: 7.0+
+    register: neutral
+  - term: conversation flows
+    meaning: a conversation progresses easily and naturally
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: floods of tears
+    meaning: crying a lot; a great amount of tears
+    example: The little girl was in floods of tears. It was such a sad film.
+    band_suitability: 7.0+
+    register: neutral
+  - term: tears stream down someone's face
+    meaning: tears flow continuously down a person's face while crying
+    example: Tears were streaming down her face.
+    band_suitability: 7.0+
+    register: neutral
+  - term: people pour somewhere
+    meaning: a large crowd of people move smoothly and in great numbers
+    example: People poured out of the hall at the end of the lecture.
+    band_suitability: 7.0+
+    register: neutral
+  - term: people trickle somewhere
+    meaning: a small number of people move slowly into a place
+    example: People trickled into the concert hall.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a stream of traffic
+    meaning: a continuous movement or line of vehicles
+    example: There was a stream of traffic outside our room all night.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a heated debate
+    meaning: a discussion in which people disagree angrily and passionately
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: a heated discussion
+    meaning: an intense and somewhat angry discussion between people
+    example: I had a heated conversation with Alice the other day.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a fiery temper
+    meaning: a tendency to become suddenly and easily angry
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: tempers flare
+    meaning: people suddenly become angry with each other
+    example: Tempers flared, I’m afraid, and mine was one of them.
+    band_suitability: 8.0+
+    register: neutral
+  - term: violence flares up
+    meaning: past or dormant violence or conflict suddenly becomes serious again
+    example: Violence has flared up in the capital city.
+    band_suitability: 7.0+
+    register: neutral
+  - term: troubles flare up
+    meaning: problems or conflicts suddenly break out again
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cheeks burn with embarrassment
+    meaning: a person's face becomes hot and red because they feel very embarrassed
+    example: My cheeks were burning with embarrassment.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a blaze of glory
+    meaning: a spectacular, highly successful end or display
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a blaze of publicity
+    meaning: a situation surrounded by a massive, spectacular amount of public attention
+    example: The famous footballer’s divorce was surrounded by a blaze of publicity.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

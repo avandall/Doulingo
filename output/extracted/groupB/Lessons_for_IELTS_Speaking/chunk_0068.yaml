@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Lessons for IELTS Speaking — Vocabulary: Money & Pronunciation /θ/ and /ð/"
+  topic_tags: [Vocabulary, Money, Pronunciation]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, VOCABULARY"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Người học ở trình độ này có thể sử dụng từ vựng cơ bản về chủ đề tiền bạc (save, borrow, lend, earn) nhưng còn hạn chế trong việc sử dụng các cấu trúc phức tạp hoặc collocation."
+    grammar_required: [Present Simple, Past Simple]
+    vocabulary_core: [borrow, earn, save, spend, lend, wealthy, poor, cheap, expensive]
+    vocabulary_stretch: [allowance, bargain, investment]
+    sentence_length_target: "Ngắn, cấu trúc đơn giản"
+    common_errors_to_simulate: "Nhầm lẫn giữa các động từ borrow/lend, phát âm sai các âm cuối, phát âm sai âm /θ/ và /ð/ thành /s/ hoặc /d/."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Có khả năng diễn đạt về các vấn đề tài chính cá nhân một cách mạch lạc, sử dụng từ vựng chính xác và phát âm các âm khó như /θ/ và /ð/ chuẩn xác."
+    grammar_required: [Complex sentences, Modal verbs, Passive voice]
+    vocabulary_core: [invest, bank account, generous, selfish, financial decisions]
+    vocabulary_stretch: [value for money, financial independence, frugality]
+    sentence_length_target: "Đa dạng, kết hợp các mệnh đề phụ"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you lend money to friends?"
+    user_model_answer: "Yes, I sometimes lend money to my friends because they are close to me and I am a generous person."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you lend money to friends?"
+    user_model_answer: "To be honest, I'm quite cautious about that. I usually only lend money to my closest friends, as I’ve found that money matters can sometimes complicate personal relationships."

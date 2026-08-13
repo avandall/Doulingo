@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Extending Answers and Expanding Notes"
+  topic_tags: ["Transportation", "Speaking Part 2", "Cohesion"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 2 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate provides basic information but sentences are short and choppy. Often fails to expand on ideas beyond a simple statement."
+    grammar_required: 
+      - Simple sentences
+      - Basic conjunctions (and, but)
+    vocabulary_core: ["old cars", "traffic", "late", "far"]
+    vocabulary_stretch: ["commute", "break down", "uncomfortable"]
+    sentence_length_target: "Under 10 words per clause"
+    common_errors_to_simulate: "Lack of complex conjunctions; tendency to list points rather than explain them; repetitive sentence structure."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate effectively extends answers using a variety of conjunctions and complex sentence structures to provide logical flow."
+    grammar_required: 
+      - Relative clauses
+      - Conditional (If)
+      - Conjunctions for contrast (although, on the other hand)
+    vocabulary_core: ["frustrating", "journey", "commuters", "break down"]
+    vocabulary_stretch: ["suburb", "conjunctions", "motorway", "take advantage of"]
+    sentence_length_target: "15-25 words per complex sentence"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What problems do you face with transport in your city?"
+    user_model_answer: "There are too many old cars. They break down often and cause traffic problems."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What problems do you face with transport in your city?"
+    user_model_answer: "The trains are quite old, so they often break down. This is problematic because the rail company provides buses when that happens, but the bus journey takes much longer since it stops frequently, which often makes me late for my lectures."

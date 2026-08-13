@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 3: Expressing views and opinions"
+  topic_tags: ["Environment", "Opinion", "Expressing Views"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Part 3: Expressing views and opinions"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can express personal opinions using fixed phrases but may lack depth in justification."
+    grammar_required: 
+      - Modal verbs (would, can)
+      - Present simple for general truths
+    vocabulary_core: ["believe", "agree", "view", "tend to think"]
+    vocabulary_stretch: ["contaminating", "exaggerated", "endangered species"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Overusing basic phrases like 'I think' or 'In my opinion' without varying expression."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Can express complex opinions and link them with strong justifications using varied structural connectors."
+    grammar_required: 
+      - Conditionals (If... would)
+      - Concession clauses (Although)
+    vocabulary_core: ["as far as I can see", "cause for concern", "heavily fined"]
+    vocabulary_stretch: ["emissions", "deforestation", "landfill"]
+    sentence_length_target: "complex sentences with relative clauses"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What is your opinion on the environmental impact of large companies?"
+    user_model_answer: "In my view, the increase in the number of endangered species is a real cause for concern. That's why I am a big supporter of charities that support animal and plant conservation."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think companies are doing enough to protect the environment?"
+    user_model_answer: "I tend to think that some claims about climate change and extreme weather are exaggerated. Although some governments and businesses have taken measures to deal with these issues, I don't think they have gone far enough."

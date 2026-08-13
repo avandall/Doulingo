@@ -1,0 +1,65 @@
+content_unit:
+  template_type: band_ladder
+  title: Dialogue Study — Hometown & Comparing Places
+  topic_tags:
+  - Hometown
+  - Geography
+  - City Comparison
+  - Personal Experience
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Basic_IELTS_Speaking.md, Dialogue Study
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Thường trả lời ngắn gọn, sử dụng từ vựng cơ bản về địa lý. Dễ
+    gặp lỗi lặp từ và câu đơn giản.
+  grammar_required:
+  - Present simple
+  - Comparative adjectives (e.g., colder/hotter)
+  vocabulary_core:
+  - home town
+  - famous
+  - tourist
+  - cold
+  - beautiful
+  vocabulary_stretch:
+  - capital
+  - province
+  - medicinal purposes
+  sentence_length_target: Ngắn, 1-2 mệnh đề
+  common_errors_to_simulate: Thiếu các từ nối (linking words), trả lời thiếu chi tiết,
+    lặp lại cấu trúc 'It is...'
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Có khả năng so sánh hai địa điểm, sử dụng ngôn ngữ diễn đạt
+    quan điểm cá nhân và mô tả chi tiết.
+  grammar_required:
+  - Complex sentences
+  - Passive voice
+  - Modals for speculation (e.g., might/must)
+  vocabulary_core:
+  - hectic
+  - demolished
+  - opportunities
+  - rapidly
+  vocabulary_stretch:
+  - international standard performances
+  - misty morning
+  - longing tea
+  sentence_length_target: Đa dạng, kết hợp mệnh đề quan hệ và cấu trúc so sánh phức
+    tạp
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: What is the weather like in your hometown?
+  user_model_answer: My hometown is Changchun. It is cold in the winter and not too
+    hot in the summer. It is about 32 degrees.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do you prefer living in a big city like Beijing or a smaller city?
+  user_model_answer: Well, while Beijing offers more opportunities for growth and
+    is the centre of politics and culture, I find it quite hectic. I prefer a city
+    like Hangzhou because it strikes a better balance; it’s beautiful and historic,
+    whereas Beijing suffers from pollution and severe traffic congestion.

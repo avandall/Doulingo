@@ -1,0 +1,110 @@
+vocabulary_entry:
+  topic_tags:
+  - business
+  - sailing
+  - idioms
+  category: idiom
+  source_citation: 'English Idioms in Use Advanced, Unit 14: Sailing'
+  entries:
+  - term: on the rocks
+    meaning: in serious difficulty
+    example: When we took over the hotel five years ago, the business was on the rocks.
+    band_suitability: 7.0+
+    register: informal
+  - term: give sth a wide berth
+    meaning: avoid something
+    example: People were giving luxury hotels like ours a wide berth.
+    band_suitability: 8.0+
+    register: neutral
+  - term: cut and run
+    meaning: avoid a difficult situation by leaving suddenly
+    example: The previous owners had decided to cut and run.
+    band_suitability: 8.0+
+    register: informal
+  - term: batten down the hatches
+    meaning: get ready for a difficult situation by preparing in every way possible
+    example: We battened down the hatches by cutting costs as much as possible.
+    band_suitability: 8.0+
+    register: neutral
+  - term: run a tight ship
+    meaning: control a business or organization firmly and effectively
+    example: We did all we could to run a tight ship.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go by the board
+    meaning: be abandoned or ignored
+    example: Holidays and any other luxuries for our own family went by the board.
+    band_suitability: 8.0+
+    register: neutral
+  - term: weather the storm
+    meaning: survive difficult times
+    example: However, we managed to weather the storm and are now making good headway.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make headway
+    meaning: make progress
+    example: We are now making good headway.
+    band_suitability: 6.0+
+    register: neutral
+  - term: in the offing
+    meaning: likely to happen soon
+    example: We have lots of major bookings in the offing.
+    band_suitability: 8.0+
+    register: neutral
+  - term: be taken aback
+    meaning: be very surprised
+    example: We were taken aback when Ben announced his resignation.
+    band_suitability: 7.0+
+    register: neutral
+  - term: leave high and dry
+    meaning: put in a difficult situation which cannot be improved
+    example: Many holidaymakers were left high and dry when the tour company collapsed.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take the wind out of sb's sails
+    meaning: make someone feel less confident by saying or doing something unexpected
+    example: Her teacher's criticism of her performance took the wind out of her sails.
+    band_suitability: 8.0+
+    register: neutral
+  - term: in the wake of sb/sth
+    meaning: following closely behind
+    example: Thousands of people lost their jobs in the wake of the recession.
+    band_suitability: 7.0+
+    register: neutral
+  - term: all hands on deck
+    meaning: everyone must help
+    example: We'll need all hands on deck if we're going to be ready for the party
+      on time.
+    band_suitability: 7.0+
+    register: informal
+  - term: any port in a storm
+    meaning: you must accept any help offered when you are in a difficult situation
+    example: I had no choice but to accept Jan's offer. Any port in a storm, I'm afraid!
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

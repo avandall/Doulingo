@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3 — Offering Solutions with First Conditional"
+  topic_tags: ["Environment", "Transportation", "Urban Planning"]
+  target_band_min: 5.5
+  target_band_max: 7.0
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking, Focus on Part 3 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.5
+    band_max: 6.0
+    can_do_description: "Can suggest basic solutions but may lack complex structures or extended reasoning. Often uses simple, repetitive sentence patterns."
+    grammar_required: 
+      - First Conditional (basic)
+    vocabulary_core: ["parking", "speed limit", "cycle lanes", "pollution"]
+    vocabulary_stretch: ["high-rise", "public transport"]
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Misuse of tenses in conditional clauses (e.g., 'If they will build, people would...')"
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Provides extended, well-structured answers with clear logical consequences and varied vocabulary."
+    grammar_required: 
+      - First Conditional (with modals like might/could)
+    vocabulary_core: ["mitigate", "infrastructure", "congestion", "implement"]
+    vocabulary_stretch: ["alternative transport solutions", "urban planning initiatives"]
+    sentence_length_target: "Longer, complex sentences with subordinate clauses"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "There are too many high-speed crashes. What should be done?"
+    user_model_answer: "If the government lowers the speed limit, there will be fewer high-speed accidents."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "There is not enough parking near the shopping centre. How can we fix this?"
+    user_model_answer: "If they construct more high-rise parking buildings near the shopping centre, people won't have to walk so far from their cars."

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Fluency-based Structural Strategy"
+  topic_tags: ["Part 2", "Strategy", "Fluency", "Coherence"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Fluency-based strategy"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thường gặp khó khăn trong việc duy trì độ dài và tính liên kết của câu trả lời Part 2. Hay bị ngắt quãng do bí ý hoặc thiếu từ nối."
+    grammar_required: ["Present simple", "Past simple"]
+    vocabulary_core: 
+      - Linking words basic (because, and, although)
+    vocabulary_stretch: ["None"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of signposting language; relying on short phrases; pauses to think of the next point instead of using linking structures."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng thành thạo các cấu trúc dẫn dắt (signposting) để kết nối các luận điểm, giúp người nghe dễ theo dõi và tăng điểm Fluency."
+    grammar_required: 
+      - Complex sentences with relative clauses
+      - Conditionals (would/could/might)
+    vocabulary_core: 
+      - Topic-specific vocabulary
+      - Linking phrases (concerning the matter of, what I ought to stress here is that)
+    vocabulary_stretch: 
+      - Advanced collocations
+      - Idiomatic phrases (start the ball rolling)
+    sentence_length_target: "Extended, complex sentences"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe an animal that can be found in your country."
+    user_model_answer: "So to begin with, in reply to the initial point of what type of animal it is, the one I’d pick is the giant panda. Actually there are two types of panda, the lesser or red panda and the commonly known giant panda which is the national symbol of China. Now concerning the matter of where it can be found, and what I ought to stress here is that because it is an endangered species it lives mostly in protected nature reserves in Western China although it is also possible to see them in zoos around the world. Moving on to the business of whether I have seen it, I suppose I should underline the fact that I visited the Panda Sanctuary in Chengdu 2 years ago while I was travelling in Sichuan Province. As a final point, if time permits, I’d like to bring in the point of what other people think of this animal. I guess that most Chinese people feel some sense of patriotism towards the giant panda because it is recognized globally as the archetypal Chinese animal."

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 2: Describe something you bought recently"
+  topic_tags: ["Shopping", "Recent purchase"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Focus on Part 2"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on simple descriptive statements, may struggle with extending answers or using varied vocabulary for value/reasoning."
+    grammar_required: ["Past simple", "Basic conjunctions"]
+    vocabulary_core: ["buy", "bought", "shop", "value", "expensive", "cheap"]
+    vocabulary_stretch: 
+      - all sorts of things
+      - running out of
+      - "can't live without"
+    sentence_length_target: "Simple, compound sentences"
+    common_errors_to_simulate: "Lack of expansion (why/how), over-reliance on basic 'I bought' structure, limited descriptive adjectives."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to expand on reasons, discuss value judgment clearly, and use idiomatic expressions naturally within a coherent narrative."
+    grammar_required: ["Past continuous", "Relative clauses", "Complex sentences for reasoning"]
+    vocabulary_core: ["transaction", "purchase", "cost-effective", "necessity"]
+    vocabulary_stretch: 
+      - all sorts of things
+      - "can't live without"
+      - good value for money
+      - essential items
+    sentence_length_target: "Complex, well-connected sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Describe something you bought recently."
+    user_model_answer: "I recently bought a new pair of headphones. I bought them from an electronics shop in the mall last week. I think it was good value because they were on sale. I bought them because I really like listening to music, which I can't live without."

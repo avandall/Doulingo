@@ -1,0 +1,60 @@
+content_unit:
+  template_type: band_ladder
+  title: Vocabulary for Describing Cities and Environmental Impact
+  topic_tags:
+  - Vocabulary
+  - Cities
+  - Environment
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Lessons_for_IELTS_Speaking.md, VOCABULARY
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Able to use basic nouns and common adjectives to describe city
+    life. Often relies on simple descriptors like 'crowded' or 'dirty'.
+  grammar_required:
+  - Simple present tense
+  - Basic adjectives
+  vocabulary_core:
+  - traffic
+  - stores
+  - pollution
+  - clean
+  - beautiful
+  vocabulary_stretch:
+  - suburban
+  - sprawling
+  sentence_length_target: Short, simple sentences
+  common_errors_to_simulate: Misusing adjectives (e.g., 'the city is pollution' instead
+    of 'polluted'), improper stress placement in multi-syllable words like 'catastrophic'
+    or 'detrimental'.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Uses a wide range of specific collocations and nuanced vocabulary
+    to describe urban environments and environmental issues.
+  grammar_required:
+  - Complex noun phrases
+  - Adjectives with specific nuance
+  vocabulary_core:
+  - bustling
+  - congested
+  - dynamic
+  - overcrowded
+  vocabulary_stretch:
+  - detrimental
+  - catastrophic
+  - appalling
+  - run-down
+  sentence_length_target: Compound-complex sentences with precise lexical choices
+sample_dialogues:
+- band_level: 6.5
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

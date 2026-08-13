@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Native-speaker Style vs. Direct Style — Fluency & Vocabulary Strategies"
+  topic_tags: ["Fluency", "Coherence", "Vocabulary", "Native-speaker features"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking, p.9-13"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers are often too direct, follow a 'black and white' structure, and rely heavily on 'vocabulary recycling' (copying words from the question)."
+    grammar_required: ["Basic SVO structures"]
+    vocabulary_core: ["Yes/No", "Simple descriptive adjectives"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short and limited"
+    common_errors_to_simulate: "Starting answers with 'Yes, I like...' and repeating words from the prompt (e.g., Q: Do you like animals? A: Yes, I like animals because...)"
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses 'conversational filters' and redundant language to sound natural; speaks in 'degrees' rather than absolutes; avoids vocabulary recycling."
+    grammar_required: ["Complex sentence structures", "Hedging language"]
+    vocabulary_core: 
+      - Conversational filters (like, you know, I guess)
+    vocabulary_stretch: 
+      - Degrees of meaning (to some extent, quite fond of, for the most part)
+    sentence_length_target: "Extended, coherent responses"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like watching TV?"
+    user_model_answer: "Yes, I like watching TV because it is relaxing."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like watching TV?"
+    user_model_answer: "For the most part, I would probably say that I quite like watching TV, although it depends on the programs that are on at the time."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like animals?"
+    user_model_answer: "Yes, I like animals, especially dogs."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like animals?"
+    user_model_answer: "Well, I suppose you could say I'm pretty fond of creatures in general, though I've always had a soft spot for dogs in particular."

@@ -1,0 +1,164 @@
+vocabulary_entry:
+  topic_tags:
+  - memory
+  - feelings
+  - agreeing
+  - disagreeing
+  - opinions
+  - disputes
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 54-56
+  entries:
+  - term: blot out a memory
+    meaning: actively try to avoid remembering an unpleasant memory
+    example: I’d rather stir up / flood back / blot out such unpleasant memories.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stir up memories
+    meaning: make memories come to the surface
+    example: Seeing schoolchildren often stirs up all kinds of memories for me.
+    band_suitability: 6.0+
+    register: neutral
+  - term: memories flood back
+    meaning: lots of memories return suddenly
+    example: Sometimes, when I hear certain songs, memories flood back.
+    band_suitability: 6.0+
+    register: neutral
+  - term: mind went blank
+    meaning: temporarily unable to remember anything
+    example: The moment I looked at the exam paper my mind went blank.
+    band_suitability: 6.0+
+    register: informal
+  - term: distinctly remember
+    meaning: remember very clearly and without doubt
+    example: I distinctly remember that we agreed to meet at the gym.
+    band_suitability: 7.0+
+    register: neutral
+  - term: trust your intuition
+    meaning: rely on your instinctive feeling or immediate understanding
+    example: Usually I can trust my intuition to tell me if someone is lying or not.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go along with an idea
+    meaning: accept or agree with an idea or view
+    example: I go along with your view that crime and poverty are linked.
+    band_suitability: 6.0+
+    register: neutral
+  - term: be in complete agreement
+    meaning: share the exact same opinion
+    example: We are in complete agreement over the question of drug abuse in athletics.
+    band_suitability: 6.0+
+    register: formal
+  - term: share an opinion
+    meaning: have the same opinion as someone else
+    example: I share your opinion that sport is over-commercialised.
+    band_suitability: 6.0+
+    register: neutral
+  - term: appreciate someone's point of view
+    meaning: understand someone's perspective even if you don't agree
+    example: I appreciate your point of view, but I still think you are overstating
+      the problem.
+    band_suitability: 7.0+
+    register: neutral
+  - term: enter into an argument
+    meaning: start an argument or discussion
+    example: I’d prefer not to enter into an argument over the result of the elections.
+    band_suitability: 7.0+
+    register: formal
+  - term: come to a compromise
+    meaning: reach an agreement where both sides make concessions
+    example: We disagree over what to do, but I’m sure we can come to / reach a compromise.
+    band_suitability: 6.0+
+    register: neutral
+  - term: settle a dispute
+    meaning: resolve an argument or disagreement
+    example: The management and the union have finally settled their pay dispute.
+    band_suitability: 7.0+
+    register: formal
+  - term: agree to differ
+    meaning: accept that you have different opinions and stop arguing about it
+    example: I don’t think we will ever agree with each other. We’ll just have to
+      agree to differ.
+    band_suitability: 7.0+
+    register: neutral
+  - term: entirely agree
+    meaning: agree completely without any reservation
+    example: I entirely agree with you on the question of nuclear waste.
+    band_suitability: 6.0+
+    register: neutral
+  - term: disagree fundamentally
+    meaning: disagree strongly and at the most basic level
+    example: The two philosophers disagreed fundamentally over the effect of the environment
+      on behaviour.
+    band_suitability: 8.0+
+    register: formal
+  - term: head-on clash
+    meaning: a direct and confrontational disagreement
+    example: I’ve often disagreed strongly with Nancy but I’ve never had such a head-on
+      clash with her before.
+    band_suitability: 8.0+
+    register: formal
+  - term: bitter dispute
+    meaning: a very angry and hostile disagreement
+    example: The bitter dispute between the two groups finally led to violence.
+    band_suitability: 7.0+
+    register: formal
+  - term: heated argument
+    meaning: an argument full of angry and excited feelings
+    example: We had a very heated argument about immigration the other day.
+    band_suitability: 6.0+
+    register: neutral
+  - term: unanimous agreement
+    meaning: agreement where everyone involved agrees completely
+    example: The Regional Education Committee has reached a unanimous agreement on
+      a new system of exams.
+    band_suitability: 7.0+
+    register: formal
+  - term: controversy rages
+    meaning: a public disagreement continues with great intensity
+    example: Controversy continues to exist/rage over the appointment of the new Director.
+    band_suitability: 8.0+
+    register: formal
+  - term: conflict of opinion
+    meaning: a situation where people have differing and clashing opinions
+    example: A conflict of opinion within the National Olympic Association is threatening
+      to delay the project.
+    band_suitability: 7.0+
+    register: formal
+  - term: firmly believe
+    meaning: have a strong and definite belief about something
+    example: I firmly believe that young people should have the right to vote at 16.
+    band_suitability: 6.0+
+    register: neutral
+  - term: contrary to popular belief
+    meaning: used to say that something is true even though many people think it is
+      not
+    example: Contrary to popular belief, it is not true that blondes are dumb.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

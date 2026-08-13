@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: Rounding-off Questions — Strategy and Technique
+  topic_tags:
+  - Rounding-off
+  - Speaking Part 2
+  - Technique
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Lessons_for_IELTS_Speaking.md, Rounding-off questions
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Focuses on providing short, accurate answers using the correct
+    auxiliary verb matching the examiner's question tense.
+  grammar_required:
+  - Yes/No + auxiliary verb
+  - Subject-verb agreement
+  vocabulary_core:
+  - 'Yes'
+  - 'No'
+  - do
+  - does
+  - did
+  - was
+  - would
+  vocabulary_stretch: []
+  sentence_length_target: short (3-5 words)
+  common_errors_to_simulate: Changing the tense of the auxiliary verb; failing to
+    use an auxiliary verb entirely.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to manage rounding-off questions effectively, providing
+    brief but natural expansions for Wh- questions.
+  grammar_required:
+  - Complex tense structures
+  - Brief cohesive devices
+  vocabulary_core:
+  - informative
+  - concise
+  vocabulary_stretch:
+  - relevant
+  - straightforward
+  sentence_length_target: moderate (10-15 words for Wh- questions)
+sample_dialogues:
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: Would you recommend this site to a friend?
+  user_model_answer: Yes, I would. It was very enjoyable and informative.
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: Did you learn much from it?
+  user_model_answer: Yes, I did. It was very enjoyable and informative.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How did you find out about this website?
+  user_model_answer: Oh, I just found it when I was surfing the net one day. My classmate
+    told me about it.

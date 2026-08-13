@@ -1,0 +1,25 @@
+content_unit:
+  template_type: band_ladder
+  title: "Shopping — Why people like sales (Band 8-9)"
+  topic_tags: ["Shopping", "Consumerism"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Why do people like shopping during sale or promotion periods?"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Able to provide a coherent, multi-faceted answer using natural idioms and psychological insights."
+    grammar_required: 
+      - Complex sentence structures (concessive clauses)
+      - Modal verbs for speculation
+    vocabulary_core: ["bargain", "saved money", "heading to the shops"]
+    vocabulary_stretch: ["familiar with the fun of", "following the crowd", "have an urge to"]
+    sentence_length_target: "Longer, connected sentences with discourse markers"
+
+sample_dialogues:
+  - band_level: 8.5
+    turn_type: standalone
+    ai_line: "Why do people like shopping during sale or promotion periods?"
+    user_model_answer: "I think we're all familiar with the fun of finding a bargain and feeling we've saved money. This is probably the main reason. To be frank, I think another reason is the feeling of following the crowd. I mean, if we see thousands of other people heading to the shops, we have an urge to do the same thing even if we don't really need to buy a product. Yes, I think those are the two major reasons."

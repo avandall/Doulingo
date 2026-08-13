@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: Answering Part 3 'opinion' questions — Education and Work
+  topic_tags:
+  - Education
+  - Work
+  - Part 3 Strategy
+  target_band_min: 8.5
+  target_band_max: 9.0
+  register: formal
+  source_citation: Get_IELTS_Band_9_Speaking.md, Answering Part 3 'opinion' questions
+band_tiers:
+- band_min: 9.0
+  band_max: 9.0
+  can_do_description: Candidate demonstrates the ability to present a balanced, logical
+    view by considering multiple sides of an issue before providing a clear, measured
+    conclusion.
+  grammar_required:
+  - Complex sentence structures
+  - Cohesive devices for contrast (In some ways, On the other hand)
+  vocabulary_core:
+  - relevant
+  - distracting
+  - structured
+  - logical conclusion
+  vocabulary_stretch:
+  - rapidly
+  - well-chosen
+  - bring a subject to life
+  sentence_length_target: 4 to 5 sentences per answer
+  common_errors_to_simulate: Avoid being overly emotional, dramatic, or making jokes;
+    do not take a one-sided approach.
+sample_dialogues:
+- band_level: 9.0
+  turn_type: standalone
+  ai_line: Do you think that young people should have detailed career plans?
+  user_model_answer: In some ways, yes, this is important. For example, pupils should
+    think about careers when they choose their exam courses, in addition to what interests
+    them. But on the other hand, it's difficult to have very precise plans at a young
+    age, because people and opportunities change rapidly. Overall, I would say that
+    general intentions are useful, but very detailed career plans are not really relevant.
+- band_level: 9.0
+  turn_type: standalone
+  ai_line: Do you think that teachers should use the Internet as part of school lessons?
+  user_model_answer: I think that this can be useful, for example to show the pupils
+    videos or media reports on subjects they are studying. This helps bring a subject
+    to life. On the other hand, though, I wouldn't want a teacher to be constantly
+    searching or referring to Internet materials during lessons, because it would
+    be distracting or confusing. So I think that well-chosen Internet resources can
+    be a benefit if used carefully.
+- band_level: 9.0
+  turn_type: standalone
+  ai_line: Is it useful to have a gap year between school and university?
+  user_model_answer: Well, a gap year could be useful for some people, for example
+    to help them learn about work or to get experience of other cultures. What's more,
+    if a student does charity work during a gap year, that's a very positive thing
+    for the person and for society. But there are also examples of young people wasting
+    time on gap years, or even having accidents or getting involved in crime. In general,
+    I think these years can only be useful if they are planned and structured properly.

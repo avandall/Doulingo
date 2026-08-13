@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 3: Speculating and speaking hypothetically"
+  topic_tags: [Speculation, Hypothetical, Future, IELTS Speaking Part 3]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Part 3: Speculating and speaking hypothetically"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Thực hiện được các câu trả lời về giả định cơ bản, nhưng cấu trúc câu điều kiện thường bị lặp hoặc sai sót nhỏ (đặc biệt là hỗn hợp các thì). Sử dụng từ vựng suy đoán giới hạn."
+    grammar_required: [First conditional, modal verbs of possibility]
+    vocabulary_core: [It is likely that, probably, will]
+    vocabulary_stretch: [I doubt whether, might]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Nhầm lẫn giữa câu điều kiện loại 2 và loại 3; thiếu các cấu trúc diễn đạt mức độ chắc chắn (hedging) như 'highly likely' hay 'bound to'."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Sử dụng linh hoạt các cấu trúc giả định (câu điều kiện, cấu trúc 'It's quite possible that', 'bound to'). Phân loại rõ ràng mức độ chắc chắn của dự đoán."
+    grammar_required: [Second/Third conditional, mixed conditionals, advanced modal structures]
+    vocabulary_core: [Highly likely, bound to, unlikely]
+    vocabulary_stretch: 
+      - "There's a good likelihood, not the slightest chance of, unless"
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How do you think the tourist industry will develop in the future?"
+    user_model_answer: "I think it will grow more. It's likely that more people travel because flights are becoming cheaper."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How do you think the tourist industry will develop in the future?"
+    user_model_answer: "It's highly likely that the tourist industry will continue to expand as international travel becomes more accessible; however, I doubt whether this growth will be sustainable without stricter environmental regulations."

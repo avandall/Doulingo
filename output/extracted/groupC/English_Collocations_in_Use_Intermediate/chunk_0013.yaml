@@ -1,0 +1,185 @@
+vocabulary_entry:
+  topic_tags:
+  - travel
+  - countryside
+  - tourism
+  - towns_and_cities
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: unspoilt countryside
+    meaning: countryside that has not been changed by industry or modern buildings
+    example: The cottage is in some wonderful unspoilt countryside on the edge of
+      a dense forest.
+    band_suitability: 6.0+
+    register: neutral
+  - term: dense forest
+    meaning: thick forest with many trees close together
+    example: The cottage is on the edge of a dense forest.
+    band_suitability: 6.0+
+    register: neutral
+  - term: snow-covered mountains
+    meaning: mountains covered with snow
+    example: Unfortunately the trees block the view of the snow-covered mountains.
+    band_suitability: 6.0+
+    register: neutral
+  - term: uninterrupted view
+    meaning: a view where nothing blocks what you are looking at
+    example: From most rooms there are uninterrupted views of the castle.
+    band_suitability: 7.0+
+    register: neutral
+  - term: panoramic view
+    meaning: a view over a very wide area
+    example: From the top floor restaurant diners have a panoramic view of the countryside.
+    band_suitability: 7.0+
+    register: neutral
+  - term: spectacular view
+    meaning: a very dramatic and impressive view
+    example: From the balcony there is a spectacular view of the mountains.
+    band_suitability: 6.0+
+    register: neutral
+  - term: enjoy/admire a view
+    meaning: to look at and appreciate a nice view
+    example: We stopped for a few minutes to admire the view.
+    band_suitability: 6.0+
+    register: neutral
+  - term: breathtaking scenery
+    meaning: extremely striking and beautiful views
+    example: The area has some breathtaking scenery – mountains, cliffs, lakes.
+    band_suitability: 6.0+
+    register: neutral
+  - term: dominate the landscape
+    meaning: to be the most noticeable thing in an area because of being big or tall
+    example: The castle dominates the landscape for miles around.
+    band_suitability: 8.0+
+    register: formal
+  - term: beach stretches
+    meaning: a beach extends for a long distance along the coast
+    example: A beautiful beach stretches for miles along the coast.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sandy beach
+    meaning: a beach made of sand rather than rocks or pebbles
+    example: The hotel has its own sandy beach.
+    band_suitability: 6.0+
+    register: neutral
+  - term: secluded beach
+    meaning: a quiet beach without many people
+    example: You’ll love the secluded beaches.
+    band_suitability: 7.0+
+    register: neutral
+  - term: golden sands
+    meaning: sand on a beach that has a golden colour
+    example: You can wander for miles along the golden sands.
+    band_suitability: 7.0+
+    register: neutral
+  - term: peaceful/tranquil countryside
+    meaning: quiet and calm countryside without noise or stress
+    example: You can quickly go from the hustle and bustle of the town to the tranquil
+      countryside.
+    band_suitability: 7.0+
+    register: formal
+  - term: cobbled streets
+    meaning: streets made of a regular pattern of stones
+    example: The city itself has a lot of busy, narrow cobbled streets.
+    band_suitability: 6.0+
+    register: neutral
+  - term: quaint old buildings
+    meaning: buildings that are attractive because they are unusual and old-fashioned
+    example: The old town is a conservation area and it has a lot of quaint old buildings.
+    band_suitability: 7.0+
+    register: neutral
+  - term: upmarket shops
+    meaning: shops for people with expensive tastes
+    example: Doradella Street has a lot of upmarket shops.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tree-lined avenues
+    meaning: streets or roads with trees growing along both sides
+    example: The tree-lined avenues of the residential areas are soon replaced by
+      high-rise flats.
+    band_suitability: 7.0+
+    register: neutral
+  - term: high-rise flats
+    meaning: very tall apartment buildings
+    example: The tree-lined avenues are soon replaced by the high-rise flats of the
+      inner city.
+    band_suitability: 6.0+
+    register: neutral
+  - term: urban wasteland
+    meaning: a city area which is empty and in a bad condition
+    example: Some of the inner-city areas are an urban wasteland and are somewhat
+      dangerous.
+    band_suitability: 8.0+
+    register: neutral
+  - term: no-go areas
+    meaning: areas where the police and other authorities are afraid to enter
+    example: In fact some streets have become no-go areas, with high crime.
+    band_suitability: 8.0+
+    register: neutral
+  - term: run-down buildings
+    meaning: buildings in very bad condition due to lack of care
+    example: Many streets are strewn with litter and there are numerous run-down buildings.
+    band_suitability: 7.0+
+    register: neutral
+  - term: deprived areas
+    meaning: areas not having the things necessary for a pleasant life, like money
+      or good living conditions
+    example: There are some deprived areas round the city centre with huge social
+      problems.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sprawling city
+    meaning: a city that has grown over a large area in an untidy way
+    example: Triope is a sprawling city with bumper-to-bumper traffic all day long.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bumper-to-bumper traffic
+    meaning: traffic so heavy and close that cars are almost touching each other
+    example: Triope is a sprawling city with bumper-to-bumper traffic all day long.
+    band_suitability: 7.0+
+    register: neutral
+  - term: exhaust fumes
+    meaning: waste gases produced by engines
+    example: The exhaust fumes can be a nightmare.
+    band_suitability: 6.0+
+    register: neutral
+  - term: incessant roar
+    meaning: a very loud noise that never stops
+    example: The incessant roar of trucks and buses makes the city centre an extremely
+      noisy place.
+    band_suitability: 8.0+
+    register: neutral
+  - term: shanty towns
+    meaning: very poor areas with houses made from discarded materials like tin and
+      cardboard
+    example: The comfortable suburbs contrast sharply with the poor shanty towns one
+      sees on the way to the airport.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,145 @@
+vocabulary_entry:
+  topic_tags:
+  - weather
+  - climate
+  - environment
+  - travel
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 13
+  entries:
+  - term: unbroken sunshine
+    meaning: only sunshine with no clouds in the sky
+    example: Have had unbroken sunshine ever since we arrived.
+    band_suitability: 6.0+
+    register: neutral
+  - term: scorching hot
+    meaning: extremely hot
+    example: It's just too scorching hot to do anything but lie on the beach.
+    band_suitability: 6.0+
+    register: informal
+  - term: soaking up the sunshine
+    meaning: enjoying the sunshine
+    example: Lie on the beach soaking up the sunshine.
+    band_suitability: 6.0+
+    register: neutral
+  - term: torrential rain
+    meaning: very heavy rain
+    example: It's been pouring with rain - we've had such torrential rain!
+    band_suitability: 6.0+
+    register: neutral
+  - term: freezing cold
+    meaning: extremely cold
+    example: We look out of the tent in freezing cold.
+    band_suitability: 6.0+
+    register: informal
+  - term: thick cloud
+    meaning: dense and heavy clouds covering the sky
+    example: There's thick cloud, and it certainly looks like rain.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strong wind
+    meaning: wind that blows with great force
+    example: Quite a strong wind is blowing too!
+    band_suitability: 6.0+
+    register: neutral
+  - term: weather deteriorates
+    meaning: the weather is getting worse
+    example: The weather is likely to deteriorate later on today.
+    band_suitability: 7.0+
+    register: formal
+  - term: thick/dense fog
+    meaning: fog that is heavy and makes visibility very poor
+    example: There is thick fog on the motorway.
+    band_suitability: 6.0+
+    register: neutral
+  - term: patches of fog/mist
+    meaning: small areas of fog or mist
+    example: There are patches of fog on the east coast.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a blanket of fog/mist
+    meaning: a thick and more extensive layer of fog or mist
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: fog/mist lifts
+    meaning: fog or mist disappears or clears up
+    example: These should lift by midday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: heavy rain
+    meaning: rain falling heavily
+    example: Road conditions are difficult because of the driving rain.
+    band_suitability: 6.0+
+    register: neutral
+  - term: driving rain
+    meaning: rain falling fast and heavily, usually driven by wind
+    example: Road conditions are difficult because of the driving rain.
+    band_suitability: 8.0+
+    register: neutral
+  - term: crisp snow
+    meaning: snow that is fresh and hard
+    example: The snow is lovely and crisp this morning.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hard frost
+    meaning: a severe instance of frost where the ground freezes deeply
+    example: There will be a hard frost tonight.
+    band_suitability: 7.0+
+    register: neutral
+  - term: biting wind
+    meaning: wind that is extremely cold and unpleasant
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: the wind picks up
+    meaning: the wind gets stronger
+    example: It's picking up now and will be very strong by the evening.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the wind dies down
+    meaning: the wind becomes less strong or stops
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: freak weather
+    meaning: weather that is very unusual or unexpected
+    example: Yesterday freak weather conditions hit the south-west of England.
+    band_suitability: 8.0+
+    register: neutral
+  - term: gale-force winds
+    meaning: extremely strong winds
+    example: Gale-force winds caused a lot of damage to property.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rivers burst their banks
+    meaning: rivers overflow due to too much water (flooding)
+    example: Several rivers burst their banks.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

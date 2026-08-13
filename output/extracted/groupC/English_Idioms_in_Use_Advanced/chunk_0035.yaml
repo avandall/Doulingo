@@ -1,0 +1,124 @@
+vocabulary_entry:
+  topic_tags:
+  - argument
+  - conflict
+  - workplace
+  - dispute
+  category: idiom
+  source_citation: 'English Idioms in Use Advanced, Unit 38: Arguing'
+  entries:
+  - term: bone of contention
+    meaning: something which causes a lot of disagreement
+    example: the venue for the training course has become a real bone of contention
+      between us.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a bone to pick with someone
+    meaning: to want to talk about something because you are annoyed
+    example: he's always got a bone to pick with people.
+    band_suitability: 7.0+
+    register: informal
+  - term: argue the toss
+    meaning: to keep disagreeing with something that is already decided
+    example: he'll decide he wants to argue the toss.
+    band_suitability: 8.0+
+    register: informal
+  - term: pick holes in
+    meaning: to find mistakes or problems in something
+    example: he started picking holes in the hotel, saying it wasn't good enough.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put the cat amongst the pigeons
+    meaning: to do something that causes a lot of trouble for other people
+    example: That really put the cat amongst the pigeons!
+    band_suitability: 8.0+
+    register: informal
+  - term: sticking point
+    meaning: a subject which two sides in an argument cannot agree on
+    example: I don't understand why it's become such a sticking point.
+    band_suitability: 7.0+
+    register: neutral
+  - term: out of the question
+    meaning: impossible or not allowed
+    example: changing the venue at this stage is out of the question.
+    band_suitability: 6.0+
+    register: neutral
+  - term: find common ground
+    meaning: topics or areas which the two sides can agree on
+    example: government and rebels find common ground.
+    band_suitability: 7.0+
+    register: formal
+  - term: put one's foot down
+    meaning: to use your authority to tell someone they must (not) do something
+    example: President puts her foot down with new energy minister.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stand one's ground
+    meaning: to refuse to change your opinion or position when others try to persuade
+      you
+    example: Unions stand their ground on 2% wage increase.
+    band_suitability: 7.0+
+    register: neutral
+  - term: toe the line
+    meaning: to do what someone orders or expects you to do
+    example: Ministers told to toe the line on foreign policy.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put someone in their place
+    meaning: to let someone know they are not as important as they think they are
+    example: Chairman put in his place as shareholders reject pay rises.
+    band_suitability: 7.0+
+    register: informal
+  - term: clear the air
+    meaning: to make bad feelings or disagreements disappear
+    example: we've just had a meeting to clear the air.
+    band_suitability: 7.0+
+    register: neutral
+  - term: let sleeping dogs lie
+    meaning: to ignore a bad situation from the past because you don't want new problems
+    example: I'm going to let sleeping dogs lie.
+    band_suitability: 8.0+
+    register: neutral
+  - term: hold out an olive branch
+    meaning: to do or say something to show that you want an argument to end
+    example: The prime minister held out an olive branch to the opposition.
+    band_suitability: 8.0+
+    register: neutral
+  - term: water under the bridge
+    meaning: a problem or disagreement which happened in the past but that no one
+      is upset about any longer
+    example: Tara and I had a lot of arguments last year, but it's all water under
+      the bridge now.
+    band_suitability: 7.0+
+    register: neutral
+  - term: let bygones be bygones
+    meaning: to forget about a disagreement or unpleasant situation and move on
+    example: the two ministers have agreed to let bygones be bygones.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

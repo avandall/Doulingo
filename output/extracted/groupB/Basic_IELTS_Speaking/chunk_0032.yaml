@@ -1,0 +1,41 @@
+content_unit:
+  template_type: scenario
+  title: "Basic IELTS Speaking — Education and Academic Studies"
+  topic_tags: [Education, University Life, Career Goals]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Diễn đạt được các thông tin cơ bản về học vấn, ngành học. Thường dùng câu ngắn, từ vựng thông dụng."
+    grammar_required: 
+      - Simple Present
+      - Past Simple
+      - basic collocations (major in, take courses)
+    vocabulary_core: [major in, graduate, entrance exams, courses]
+    vocabulary_stretch: [independent, responsible, qualified]
+    sentence_length_target: "Ngắn, đơn giản (6-10 từ/câu)"
+    common_errors_to_simulate: "Thiếu mạo từ, dùng sai giới từ sau 'major', lặp từ nối 'and', chia động từ không nhất quán."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Phát triển ý câu trả lời trôi chảy, sử dụng được các cấu trúc phức hợp để giải thích lý do và trải nghiệm cá nhân."
+    grammar_required: 
+      - Complex sentences (because/since/although)
+      - passive voice
+      - past perfect
+    vocabulary_core: [elective courses, intensive, postgraduate, academic interest]
+    vocabulary_stretch: [teaching styles, independent, responsibility, encouragement]
+    sentence_length_target: "Đa dạng, kết hợp nhiều mệnh đề (15-25 từ/câu)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What did you study in university?"
+    user_model_answer: "I studied English and International Trade. I chose this major because I like Business and English."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What would you say was the most interesting course you studied in university?"
+    user_model_answer: "That would definitely be Conversational English. The teachers were very lively and used diverse teaching styles, which made the classes engaging and helped me gain a lot of confidence."

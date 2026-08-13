@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Exam technique: Giving answers of the right length"
+  topic_tags: ["Exam Technique", "IELTS Speaking Part 1", "Response Length"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Exam technique: Giving answers that are the right length"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Candidate provides answers that are too short, failing to elaborate, or answers that are overly abrupt, potentially sounding rude to the examiner."
+    grammar_required: ["Basic sentence structures"]
+    vocabulary_core: ["Personal details", "General daily life"]
+    vocabulary_stretch: []
+    sentence_length_target: "Brief, fragmented sentences"
+    common_errors_to_simulate: "Giving one-word answers; failing to provide examples or reasons; sounding impolite due to lack of conversational markers."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate provides well-balanced answers that are neither too short nor too long. They demonstrate the ability to expand on answers logically and manage hesitation time appropriately."
+    grammar_required: ["Complex sentences", "Subordinate clauses", "Discourse markers"]
+    vocabulary_core: ["Topic-specific vocabulary", "Connectors"]
+    vocabulary_stretch: ["Functional language for thinking time", "Nuanced opinions"]
+    sentence_length_target: "Extended sentences with relevant supporting details"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What do you do for a living?"
+    user_model_answer: "I work in an office."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you do for a living?"
+    user_model_answer: "I work for my family's export business. We primarily deal with coffee exports, so I don't really have a choice—I have to help run the operations there."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What do you find difficult about your job?"
+    user_model_answer: "I don't like the people there."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you find difficult about your job?"
+    user_model_answer: "I'm not sure... er... that's a tricky one. To be honest, the most challenging part is probably the administrative workload, which can be quite overwhelming at times."

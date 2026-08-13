@@ -1,0 +1,210 @@
+vocabulary_entry:
+  topic_tags:
+  - memory
+  - disagreements
+  - opinions
+  - beliefs
+  - arguments
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 54-56
+  entries:
+  - term: long-term memory
+    meaning: the ability to remember things that happened a long time ago
+    example: your long-term memory is very clear, but your short-term memory is less
+      good.
+    band_suitability: 6.0+
+    register: neutral
+  - term: short-term memory
+    meaning: the ability to remember things that happened recently
+    example: your long-term memory is very clear, but your short-term memory is less
+      good.
+    band_suitability: 6.0+
+    register: neutral
+  - term: distinctly remember
+    meaning: to remember something very clearly and in detail
+    example: I can distinctly/vividly remember my first day at school as a child.
+    band_suitability: 7.0+
+    register: neutral
+  - term: completely forgotten
+    meaning: to have no memory of something left at all
+    example: which I’ve completely/clean forgotten.
+    band_suitability: 6.0+
+    register: neutral
+  - term: blot out
+    meaning: to deliberately try to forget an unpleasant memory or thought
+    example: One embarrassing memory which I’d rather blot out is when I took some
+      scissors and cut my own hair.
+    band_suitability: 8.0+
+    register: informal
+  - term: stirs up memories
+    meaning: to make memories come back to your mind
+    example: Seeing schoolchildren often stirs up all kinds of memories for me.
+    band_suitability: 7.0+
+    register: neutral
+  - term: painful memories
+    meaning: unpleasant memories that cause emotional pain or sadness
+    example: I have some painful memories of being forced to do sports, which I hated.
+    band_suitability: 7.0+
+    register: neutral
+  - term: memories come flooding back
+    meaning: memories suddenly return to your mind in large numbers
+    example: Sometimes, when I hear certain songs, memories come flooding back.
+    band_suitability: 8.0+
+    register: neutral
+  - term: enter into an argument
+    meaning: to start or become involved in an argument
+    example: enter into an argument
+    band_suitability: 7.0+
+    register: formal
+  - term: share an opinion
+    meaning: to have the same opinion as someone else
+    example: share an opinion
+    band_suitability: 6.0+
+    register: neutral
+  - term: settle our differences
+    meaning: to end a disagreement and reach a peaceful solution
+    example: settle our differences
+    band_suitability: 7.0+
+    register: neutral
+  - term: see someone's point
+    meaning: to understand the reasons why someone has a particular opinion
+    example: see someone’s point
+    band_suitability: 6.0+
+    register: neutral
+  - term: come to a compromise
+    meaning: to reach an agreement where both sides give up some demands
+    example: come to a compromise
+    band_suitability: 7.0+
+    register: neutral
+  - term: be in agreement
+    meaning: to share the same opinion or view on something
+    example: be in agreement
+    band_suitability: 6.0+
+    register: neutral
+  - term: settle a dispute
+    meaning: to officially end an argument or disagreement
+    example: settle a dispute
+    band_suitability: 7.0+
+    register: formal
+  - term: controversy rages
+    meaning: a public disagreement or discussion continues with great energy or anger
+    example: a controversy rages
+    band_suitability: 8.0+
+    register: formal
+  - term: head-on clash
+    meaning: a direct and forceful confrontation or argument
+    example: a head-on clash
+    band_suitability: 8.0+
+    register: neutral
+  - term: heated argument
+    meaning: an angry and emotional discussion or argument
+    example: a heated argument
+    band_suitability: 6.0+
+    register: neutral
+  - term: unanimous agreement
+    meaning: an agreement where everyone involved gives complete approval
+    example: The committee members reached a unanimous agreement.
+    band_suitability: 8.0+
+    register: formal
+  - term: conflict of opinion
+    meaning: a situation where people have opposing views or beliefs
+    example: a conflict of opinion / because of conflicting opinions
+    band_suitability: 7.0+
+    register: neutral
+  - term: strongly disagreed
+    meaning: to disagree very firmly or intensely
+    example: James and Ben strongly disagreed over the question of climate change.
+    band_suitability: 6.0+
+    register: neutral
+  - term: unshakeable belief
+    meaning: a firm belief that cannot be changed or shaken
+    example: Some of their views are based on their unshakeable belief that they are
+      always right
+    band_suitability: 8.0+
+    register: neutral
+  - term: considered opinion
+    meaning: an opinion that is formed after careful thought
+    example: My own considered opinion is that we should have new elections
+    band_suitability: 8.0+
+    register: formal
+  - term: make assumptions
+    meaning: to accept something as true without having proof
+    example: It is wrong to make assumptions about people before you really get to
+      know them.
+    band_suitability: 6.0+
+    register: neutral
+  - term: colour somebody's judgement
+    meaning: to influence someone's opinion or decision in a negative way
+    example: Recent events have coloured his judgement and he cannot see things objectively
+      any more.
+    band_suitability: 8.0+
+    register: neutral
+  - term: attach importance to
+    meaning: to consider something to be important or significant
+    example: I don’t attach much importance to her comments; she knows nothing about
+      the subject.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cast doubt on
+    meaning: to make something appear uncertain or less reliable
+    example: The new statistics cast doubt on the claim that using mobile phones does
+      not damage children’s health.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have serious misgivings
+    meaning: to have doubts or feelings of anxiety about something
+    example: I have serious misgivings about the new scheme. I don’t think it will
+      work.
+    band_suitability: 8.0+
+    register: neutral
+  - term: poles apart
+    meaning: completely different from each other
+    example: poles apart
+    band_suitability: 7.0+
+    register: neutral
+  - term: sneaking suspicion
+    meaning: a slight feeling that something is true, even without proof
+    example: sneaking suspicion
+    band_suitability: 8.0+
+    register: neutral
+  - term: strong opinions
+    meaning: firm and deeply held views on a subject
+    example: strong opinions
+    band_suitability: 6.0+
+    register: neutral
+  - term: popular belief
+    meaning: an idea or belief that many people hold
+    example: popular belief
+    band_suitability: 6.0+
+    register: neutral
+  - term: firmly believe
+    meaning: to have no doubt about something being true
+    example: firmly believe
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

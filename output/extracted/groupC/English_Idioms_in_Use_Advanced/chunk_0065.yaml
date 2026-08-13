@@ -1,0 +1,187 @@
+vocabulary_entry:
+  topic_tags:
+  - emotions
+  - anger
+  - stress
+  - conflict
+  - relationships
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 36, 37, 38
+  entries:
+  - term: make someone's blood boil
+    meaning: to make someone extremely angry
+    example: Selfish behaviour makes my blood boil.
+    band_suitability: 7.0+
+    register: informal
+  - term: reduce someone to tears
+    meaning: to make someone cry
+    example: The film's sad ending reduced Jess to tears.
+    band_suitability: 7.0+
+    register: neutral
+  - term: see red
+    meaning: to suddenly become very angry
+    example: Cruelty to animals makes me see red.
+    band_suitability: 7.0+
+    register: informal
+  - term: run out of patience
+    meaning: to lose patience, to be no longer willing to wait or endure something
+    example: I am running out of patience with James.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get someone's goat
+    meaning: to annoy or irritate someone
+    example: My brother's laziness gets my goat.
+    band_suitability: 8.0+
+    register: informal
+  - term: kick oneself
+    meaning: to be annoyed with yourself because you did something stupid or missed
+      an opportunity
+    example: I (could have) kicked myself for missing the train.
+    band_suitability: 7.0+
+    register: informal
+  - term: rattle someone's cage
+    meaning: to upset, annoy, or provoke someone
+    example: What's rattled Paul's cage?
+    band_suitability: 8.0+
+    register: informal
+  - term: hot and bothered
+    meaning: worried, nervous, or angry, especially about something unimportant
+    example: I shouldn't let him make me so hot and bothered.
+    band_suitability: 7.0+
+    register: informal
+  - term: not someone's bag
+    meaning: not something that someone likes or is interested in
+    example: Long walks in the countryside are not my bag.
+    band_suitability: 7.0+
+    register: informal
+  - term: burst a blood vessel
+    meaning: to become extremely angry or upset about something
+    example: Your father will burst a blood vessel if you say you're dropping out
+      of university.
+    band_suitability: 8.0+
+    register: informal
+  - term: pull the rug from under someone's feet
+    meaning: to suddenly withdraw support from someone, or cause unexpected trouble
+    example: pull the rug from under (my feet)
+    band_suitability: 8.0+
+    register: neutral
+  - term: can't see the wood for the trees
+    meaning: to be unable to understand the main point because you are too focused
+      on small details
+    example: At the moment we can't see the wood for the trees.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a slap in the face
+    meaning: an unexpected insult or disappointment
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: sweep something under the carpet
+    meaning: to hide a problem or disagreement rather than dealing with it
+    example: There's no point trying to sweep it under the carpet.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put someone's nose out of joint
+    meaning: to upset or offend someone, especially by beating them or taking their
+      place
+    example: I know, it's really put her nose out of joint.
+    band_suitability: 8.0+
+    register: informal
+  - term: lose the plot
+    meaning: to lose control of yourself or your situation, or fail to understand
+      what is happening
+    example: I feel like I'm losing the plot!
+    band_suitability: 8.0+
+    register: informal
+  - term: take your eye off the ball
+    meaning: to stop paying attention to what is happening for a moment
+    example: You can't take your eye off the ball.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in a tight corner / spot
+    meaning: in a difficult situation
+    example: Yes, he's in a tight corner/spot.
+    band_suitability: 7.0+
+    register: neutral
+  - term: water under the bridge
+    meaning: past events that are forgiven and forgotten
+    example: We had a lot of disagreements when we were at school together, but I'm
+      hoping that's all water under the bridge.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bone of contention
+    meaning: a subject which causes disagreement and arguments between people
+    example: The packaging for the new shower gel is a real bone of contention between
+      the marketing department and the production team.
+    band_suitability: 8.0+
+    register: neutral
+  - term: let sleeping dogs lie
+    meaning: to leave a situation as it is in order not to make it worse
+    example: He's not going to apologise, so I'm just going to let sleeping dogs lie.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hold out an olive branch
+    meaning: to offer to make peace or show an intention to reconcile after a disagreement
+    example: He offered to get me a coffee the other day, which I think was his way
+      of holding out an olive branch.
+    band_suitability: 8.0+
+    register: neutral
+  - term: put your foot down
+    meaning: to use your authority to stop something happening
+    example: When I told my dad I was thinking of dropping out of university, he put
+      his foot down.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put the cat amongst the pigeons
+    meaning: to say or do something that causes trouble, worry, or controversy
+    example: That put the cat amongst the pigeons.
+    band_suitability: 8.0+
+    register: informal
+  - term: find some common ground
+    meaning: to find shared interests or opinions between people who disagree
+    example: we managed to find some common ground in terms of product development.
+    band_suitability: 7.0+
+    register: formal
+  - term: toe the line
+    meaning: to follow the rules, orders, or policies of a group or organization
+    example: A group of ministers refused to toe the line and voted against the latest
+      tax bill.
+    band_suitability: 8.0+
+    register: neutral
+  - term: put someone in their place
+    meaning: to show someone that they are not as important or clever as they think
+      they are
+    example: Somebody should really put Rashid in his place.
+    band_suitability: 7.0+
+    register: neutral
+  - term: let bygones be bygones
+    meaning: to forgive someone for something that happened in the past
+    example: After our disagreement, I wanted to let bygones be bygones.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

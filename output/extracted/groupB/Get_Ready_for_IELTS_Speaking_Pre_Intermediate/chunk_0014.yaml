@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "Get Ready for IELTS: Grammar for Speaking (Tense and Comparison)"
+  topic_tags: ["Grammar", "Speaking Part 1", "Speaking Part 3", "Tense Usage", "Comparison"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 11"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Thường xuyên mắc lỗi về thì (tense) khi trả lời câu hỏi của giám khảo, ví dụ dùng thì hiện tại cho câu hỏi quá khứ."
+    grammar_required: 
+      - Past simple
+      - Present simple
+      - Comparative forms (better than, more ... than)
+    vocabulary_core: ["Adjectives ending in -ed/-ing", "Important events"]
+    vocabulary_stretch: ["Comparative structures"]
+    sentence_length_target: "Ngắn, câu đơn"
+    common_errors_to_simulate: "Dùng thì hiện tại thay vì quá khứ (VD: 'Yes, I play sports' thay vì 'I played'); Sai cấu trúc so sánh (VD: 'more important than' thành 'most important than')."
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Bắt đầu nhận diện và sử dụng đúng thì theo câu hỏi. Biết cách sử dụng so sánh để phát triển câu trả lời."
+    grammar_required: ["Past simple for life events", "Present perfect for duration/experience", "Superlatives"]
+    vocabulary_core: ["Feelings", "Sequence markers"]
+    vocabulary_stretch: ["Comparative and superlative adjectives"]
+    sentence_length_target: "Câu phức cơ bản"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Did you play any sports when you were a child?"
+    user_model_answer: "Yes, I play lots of sports."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Did you play any sports when you were a child?"
+    user_model_answer: "Yes, I played lots of sports when I was a child, especially football."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "In your opinion, what are the most important events at school?"
+    user_model_answer: "I think graduation is the most important. Tests are more difficult than homework."

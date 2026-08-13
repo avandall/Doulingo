@@ -1,0 +1,113 @@
+vocabulary_entry:
+  topic_tags:
+  - literature
+  - idioms
+  - idiomatic_expressions
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: the green-eyed monster
+    meaning: jealousy
+    example: Their relationship was ruined by the green-eyed monster.
+    band_suitability: 8.0+
+    register: neutral
+  - term: at one fell swoop
+    meaning: suddenly, at the same time
+    example: By criticising the company and the team's performance, the new manager
+      succeeded in upsetting everyone at one fell swoop.
+    band_suitability: 8.0+
+    register: formal
+  - term: eat someone out of house and home
+    meaning: to eat all the food there is in someone's house
+    example: My nephews came to stay at the weekend and have eaten me out of house
+      and home.
+    band_suitability: 7.0+
+    register: informal
+  - term: make one's hair stand on end
+    meaning: to frighten someone very much
+    example: It was a terrifying film - it made my hair stand on end.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in the twinkling of an eye
+    meaning: in an instant
+    example: Let me finish this email - I'll be with you in the twinkling of an eye.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a wild-goose chase
+    meaning: a search that has no hope of success
+    example: The police were sent on a wild-goose chase, looking for the money that
+      the criminals had already spent.
+    band_suitability: 7.0+
+    register: informal
+  - term: lay it on with a trowel
+    meaning: to praise somebody or something excessively
+    example: The TV presenter laid it on with a trowel when he was introducing that
+      film star.
+    band_suitability: 8.0+
+    register: informal
+  - term: star-crossed lovers
+    meaning: people who are unlucky in love
+    example: The film is a classic love story about star-crossed lovers.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the course of true love never did run smooth
+    meaning: there are always difficulties to face in romantic relationships
+    example: Nick and Maria have broken up again! The course of true love never did
+      run smooth.
+    band_suitability: 8.0+
+    register: neutral
+  - term: an Aladdin's cave
+    meaning: a place full of valuable or interesting objects
+    example: My grandmother's attic was an Aladdin's cave of old paintings and other
+      valuable objects.
+    band_suitability: 8.0+
+    register: neutral
+  - term: Big Brother
+    meaning: a powerful organization or government that watches people all the time
+    example: All the cameras on our streets mean that Big Brother is watching us all
+      the time.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a Man Friday
+    meaning: a helpful and efficient assistant
+    example: When I was learning to play golf, Jack was my Man Friday.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a Jekyll and Hyde character
+    meaning: someone with two opposite sides to their personality (e.g., friendly
+      and aggressive)
+    example: George is a real Jekyll and Hyde character.
+    band_suitability: 8.0+
+    register: neutral
+  - term: Prince Charming
+    meaning: the ideal, handsome man (often used humorously)
+    example: I'm single and still waiting for Prince Charming to appear on his white
+      horse!
+    band_suitability: 7.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

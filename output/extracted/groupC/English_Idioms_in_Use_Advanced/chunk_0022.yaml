@@ -1,0 +1,130 @@
+vocabulary_entry:
+  topic_tags:
+  - education
+  - memory
+  - technology
+  - work
+  - business
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 23-24
+  entries:
+  - term: set one's sights on
+    meaning: to decide that you want something and to work hard to get it
+    example: I've set my sights on achieving a high grade.
+    band_suitability: 7.0+
+    register: neutral
+  - term: catch up on
+    meaning: to do something that you did not have time to do earlier
+    example: I need to catch up on my homework.
+    band_suitability: 6.0+
+    register: neutral
+  - term: learn by rote
+    meaning: to learn something by repeating it until you remember it, without necessarily
+      understanding it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a memory like a sieve
+    meaning: to have a very bad memory
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: jog one's memory
+    meaning: to help someone remember something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: at the cutting edge
+    meaning: at the most recent stage of development in a particular type of work
+      or activity
+    example: The Soundboom 88 software suite is at the cutting edge of audio technology.
+    band_suitability: 8.0+
+    register: formal
+  - term: brainchild
+    meaning: a clever and original idea, plan, or invention
+    example: This new web search engine is the brainchild of Alex Wells.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hot off the press
+    meaning: having just been printed and containing the most recent information
+    example: Hot off the press, this online survey of consumer preferences is essential.
+    band_suitability: 8.0+
+    register: neutral
+  - term: push all the right buttons
+    meaning: to do exactly what is necessary to get the result you want
+    example: The Autoband USB turntable pushes all the right buttons.
+    band_suitability: 8.0+
+    register: informal
+  - term: light years away
+    meaning: to be a very long way away from achieving something
+    example: We're light years away from developing good software.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on the blink
+    meaning: not working correctly
+    example: The main computer is on the blink and needs replacing.
+    band_suitability: 7.0+
+    register: informal
+  - term: throw a spanner in the works
+    meaning: to do something that prevents a plan from succeeding
+    example: Krishnan threw a spanner in the works when he found some faults.
+    band_suitability: 8.0+
+    register: informal
+  - term: not rocket science
+    meaning: not very difficult to do or to understand
+    example: We should be able to sort that out; it's not rocket science.
+    band_suitability: 7.0+
+    register: informal
+  - term: reinvent the wheel
+    meaning: to waste time trying to create something that someone else has already
+      created
+    example: Trying to do it all ourselves may mean we're just reinventing the wheel.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go haywire
+    meaning: to stop working normally and start working in a different and strange
+      way
+    example: If we don't fix things soon, the system will go haywire.
+    band_suitability: 8.0+
+    register: informal
+  - term: small cog in the machine
+    meaning: one part of a large organization
+    example: I'm just a small cog in the machine here.
+    band_suitability: 8.0+
+    register: neutral
+  - term: set the wheels in motion
+    meaning: to do something which will cause a series of actions to start
+    example: The government has set the wheels in motion for a complete reform.
+    band_suitability: 8.0+
+    register: neutral
+  - term: oil the wheels
+    meaning: to make it easier for something to happen
+    example: Government investment has oiled the wheels of economic development.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

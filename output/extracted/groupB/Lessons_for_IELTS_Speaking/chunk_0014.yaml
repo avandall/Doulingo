@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar — Using Adverbs of Frequency"
+  topic_tags: ["Grammar", "Adverbs of Frequency", "Sports & Hobbies"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Grammar - Adverbs of Frequency"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Candidate can use basic adverbs of frequency, but may misplace them in the sentence (e.g., placing 'a lot' before the verb)."
+    grammar_required: ["Subject + Adverb + Verb", "Subject + Verb + Object + Adverbial phrase"]
+    vocabulary_core: ["always", "often", "sometimes", "hardly ever"]
+    vocabulary_stretch: ["quite a lot", "not very much"]
+    sentence_length_target: "Simple, single-clause sentences."
+    common_errors_to_simulate: "Misplacing 'a lot' or 'much' (e.g., 'I a lot play football' instead of 'I play football a lot')."
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate uses adverbs of frequency naturally and places them correctly within the sentence structure."
+    grammar_required: ["Consistent S-V agreement", "Correct placement of adverbs"]
+    vocabulary_core: ["often", "sometimes", "quite a lot"]
+    vocabulary_stretch: ["hardly ever", "not very often"]
+    sentence_length_target: "Compound sentences with connecting words like 'because' or 'but'."
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Do you watch football on television much?"
+    user_model_answer: "I not very watch much."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you watch football on television much?"
+    user_model_answer: "I don't watch it very much, but my dad watches soccer on television with me sometimes."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How often do you go jogging?"
+    user_model_answer: "Well, I try to go quite often but sometimes I just feel like sleeping instead!"

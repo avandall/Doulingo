@@ -1,0 +1,69 @@
+content_unit:
+  template_type: band_ladder
+  title: 'IELTS Speaking Part 1 — Exam Technique: Appropriateness of Answer Length'
+  topic_tags:
+  - Education
+  - Career
+  - Exam Technique
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: 'Collins_Speaking_for_IELTS.md, Unit 3: IELTS Speaking Exam Part
+    1'
+band_tiers:
+- band_min: 5.0
+  band_max: 5.5
+  can_do_description: Provides answers that are grammatically correct but either too
+    brief (lacking development) or irrelevant.
+  grammar_required:
+  - Simple present
+  - Basic past
+  vocabulary_core:
+  - work
+  - student
+  - study
+  vocabulary_stretch: []
+  sentence_length_target: 3-5 words
+  common_errors_to_simulate: Giving one-word answers; failure to expand on the topic;
+    'clunky' phrasing that imposes a strain on the listener.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Provides answers that are of appropriate length, relevant, and
+    well-developed with justifications and examples.
+  grammar_required:
+  - Complex sentences
+  - Conditional constructions
+  - Speculative language
+  vocabulary_core:
+  - rewarding
+  - prestigious
+  - career choice
+  - deadline
+  vocabulary_stretch:
+  - vast numbers
+  - communicator
+  - impending
+  - steadily
+  sentence_length_target: 10-20 words
+sample_dialogues:
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: Do you work or are you a student?
+  user_model_answer: I work. It was very enjoyable and informative.
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: Do you work or are you a student?
+  user_model_answer: I work as a dentist in Budapest. It's a very rewarding job and
+    I earn good money. We get vast numbers of foreigners coming to get dental treatment
+    in Hungary because it's far cheaper here than in many other countries. I could
+    have chosen to be a doctor, but I think I made the right career choice.
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: Why did you choose that course or job?
+  user_model_answer: I didn't choose it. It was very enjoyable and informative.
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: Why did you choose that course or job?
+  user_model_answer: I chose it because French was always my best subject at school
+    and I enjoy meeting new people. I thought interpreting would suit me, as you have
+    to be a good communicator and of course skilled in foreign languages.

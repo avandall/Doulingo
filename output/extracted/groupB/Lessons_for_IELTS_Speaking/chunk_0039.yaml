@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Strategies for Unknown Vocabulary"
+  topic_tags: ["Education", "Fluency and Coherence", "Part 3 Strategy"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate uses basic clarification strategies but may struggle to paraphrase or maintain flow when encountering unfamiliar vocabulary."
+    grammar_required: ["Present simple for general facts", "Present perfect for past changes"]
+    vocabulary_core: ["school subjects", "computer science", "change"]
+    vocabulary_stretch: ["curriculum", "considerably"]
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Stalling, excessive hesitation, or asking the examiner for definitions in a way that breaks the rhythm."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate effectively manages communication breakdowns by using natural clarification techniques and then immediately shifts back to a fluent, detailed response."
+    grammar_required: ["Complex sentences", "Relative clauses", "Modals for hypothesis"]
+    vocabulary_core: ["education system", "methods of teaching", "high status"]
+    vocabulary_stretch: ["alter", "gap year", "characteristics"]
+    sentence_length_target: "Extended with complex connectors"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Could you tell me how you think the high school curriculum has changed in your country since the last century?"
+    user_model_answer: "Oh, curriculum... do you mean what we do at school? The different subjects we study? ... Well, actually, I believe the school curriculum at high school has changed considerably. Students nowadays take subjects which didn't even exist at the beginning of the last century, such as computer science."

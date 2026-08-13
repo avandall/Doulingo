@@ -1,36 +1,38 @@
-# Implementation Plan — TASK-008: TTS Audio Output Streamer (`app/tts_streamer.py`)
+# Implementation Plan — TASK-018: Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`)
 
 ## Goal
-Implement `app/tts_streamer.py` to stream TTS audio output for `ai_utterance`. The module encapsulates multi-provider speech synthesis (ElevenLabs, Edge-TTS, gTTS) into clean streaming and batch audio APIs, providing explicit `text_only_mode` fallback when audio is disabled or unavailable.
+Build `app/reporting.py` to aggregate weekly performance reports across 4 IELTS axes (Fluency, Lexical, Grammar, Pronunciation) using Tier 2 evaluation history (`TASK-012`) and overall profile bands (`TASK-013`). Ensure the main conversation UI hides real-time per-sentence band scores (Hidden Scoring UI) to reduce exam pressure for learners while providing rich weekly analytics via `/api/reports/weekly`.
 
-## Acceptance Criteria
-- [x] Implement `TTSStreamResult` dataclass with fields `audio_bytes: bytes | None`, `content_type: str`, `text_only_mode: bool`, `error_message: str | None`.
-- [x] Implement `TTSStreamer` class & module functions:
-  - `generate_audio(text: str, char_id: str = "lily", text_only_mode: bool = False) -> TTSStreamResult`
-  - `stream_audio_chunks(text: str, char_id: str = "lily", text_only_mode: bool = False) -> AsyncIterator[bytes]`
-- [x] Support explicit `text_only_mode` fallback flag without throwing exceptions.
-- [x] Implement robust error handling so TTS service degradation logs warning and returns text-only response cleanly.
-- [x] Implement unit test suite in `tests/test_tts_streamer.py`.
-- [x] `python3 H_docs/scripts/verify.py` passes 100% (Ruff, Mypy, Bandit, Pytest).
+## Spec & Acceptance Criteria
+- [ ] DB Schema Update (`app/db.py`):
+  - Add `tier2_evaluations` table to log Tier 2 deep evaluations (`id`, `user_id`, `fluency_score`, `lexical_score`, `grammar_score`, `pronunciation_score`, `raw_score`, `created_at`).
+  - Add helper functions `save_tier2_evaluation_record` and `get_tier2_evaluations_history`.
+- [ ] Weekly Performance Reporting Engine (`app/reporting.py`):
+  - Implement `save_tier2_evaluation(user_id: str, score_result: Any, conn: Any = None) -> dict`.
+  - Implement `generate_weekly_report(user_id: str, days: int = 7, conn: Any = None) -> dict[str, Any]`:
+    - Summarizes evaluation count and 4-axis scores (Fluency, Lexical, Grammar, Pronunciation).
+    - Retrieves overall band estimate and recurring errors from `user_profile`.
+    - Generates actionable recommendations and strengths/weaknesses summary.
+- [ ] API Endpoint (`app/main.py`):
+  - `GET /api/reports/weekly` (or `GET /api/reporting/weekly`): Query parameter `user_id` (default "user_demo") & `days` (default 7).
+- [ ] Hidden Scoring UI (`static/js/app.js` & `static/index.html`):
+  - Ensure main conversation view does not render per-turn band score badges.
+  - Provide UI hooks/modal for weekly report viewing.
+- [ ] Unit Tests (`tests/test_reporting.py`):
+  - Test saving Tier 2 evaluation history to DB.
+  - Test `generate_weekly_report` with populated and empty evaluation history.
+  - Test API endpoint `/api/reports/weekly`.
+- [ ] Phase 4 Verification (`python3 H_docs/scripts/verify.py`):
+  - Passes 100% (Ruff, Mypy, Bandit, Pytest).
 
-## Proposed Steps
-
-### Step 1: Implement `app/tts_streamer.py` [x]
-- Define `TTSStreamResult` dataclass.
-- Implement `TTSStreamer` class with `generate_audio` and `stream_audio_chunks` methods.
-- Integrate with `app.tts_service` for underlying ElevenLabs/Edge-TTS/gTTS synthesis.
-- Handle `text_only_mode` and error fallback gracefully.
-
-### Step 2: Implement Unit Tests & Run Verification (Phase 4) [x]
-- Create `tests/test_tts_streamer.py` to test:
-  - Batch audio generation via `generate_audio`.
-  - Async chunk streaming via `stream_audio_chunks`.
-  - `text_only_mode=True` behavior.
-  - Resilience under invalid inputs or service exceptions.
-- Run `python3 H_docs/scripts/verify.py` and verify zero errors.
+## Steps
+- [ ] Step 0: ORIENT & SPEC — Prepare task plan and update context.
+- [ ] Step 1: Add `tier2_evaluations` table & helpers in `app/db.py` and implement `app/reporting.py`.
+- [ ] Step 2: Add API endpoint `/api/reports/weekly` in `app/main.py` and update UI for hidden scoring / weekly report.
+- [ ] Step 3: Implement test suite `tests/test_reporting.py`.
+- [ ] Step 4: Run Phase 4 Verification (`python3 H_docs/scripts/verify.py`) and fix any issues until 100% PASS.
 
 ## Status
-- **Current Phase:** Phase 6 (COMMIT) & Phase 7 (REPORT) DONE
-- **Iteration:** 36
-- **Result:** PASS
-
+- **Current Phase:** PHASE 3 (EXECUTE)
+- **Iteration:** 46
+- **Result:** IN_PROGRESS

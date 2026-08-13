@@ -1,0 +1,272 @@
+vocabulary_entry:
+  topic_tags:
+  - travel
+  - tourism
+  - transport
+  - accommodation
+  - countryside
+  - nature
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 14 & 15
+  entries:
+  - term: travel arrangements
+    meaning: plans and preparations for a journey
+    example: Have you made your travel arrangements for the sales conference yet?
+    band_suitability: 6.0+
+    register: neutral
+  - term: travel agent
+    meaning: a person or company whose job is to make travel arrangements for people
+    example: If you want a good travel agent, I can recommend Atlas World.
+    band_suitability: 6.0+
+    register: neutral
+  - term: business travel
+    meaning: traveling for the purpose of business rather than leisure
+    example: They specialise in business travel.
+    band_suitability: 6.0+
+    register: neutral
+  - term: business trip
+    meaning: a journey made for business purposes
+    example: I know next week is a business trip, but you must do some sightseeing
+      too.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sightseeing
+    meaning: visiting places of interest in a particular location
+    example: I know next week is a business trip, but you must do some sightseeing
+      too.
+    band_suitability: 6.0+
+    register: neutral
+  - term: day trip
+    meaning: a journey to a place and back on the same day
+    example: I suggest we take a day trip to Canamuca.
+    band_suitability: 6.0+
+    register: neutral
+  - term: boat trip
+    meaning: a journey on water in a boat for pleasure
+    example: We can take a boat trip to the island and have lunch there.
+    band_suitability: 6.0+
+    register: neutral
+  - term: safe journey
+    meaning: a polite wish for someone about to travel
+    example: Safe journey!
+    band_suitability: 6.0+
+    register: neutral
+  - term: tiring journey
+    meaning: a trip that makes you feel physically tired
+    example: I’m finally here after an extremely tiring journey!
+    band_suitability: 6.0+
+    register: neutral
+  - term: return journey
+    meaning: the trip back to where you started
+    example: I hope my return journey is better!
+    band_suitability: 6.0+
+    register: neutral
+  - term: outward journey
+    meaning: the first part of a journey, going away from home
+    example: The opposite of return journey is outward journey.
+    band_suitability: 7.0+
+    register: neutral
+  - term: travel brochure
+    meaning: a magazine or booklet with pictures and information about holidays
+    example: I got some travel brochures with details of camping trips.
+    band_suitability: 6.0+
+    register: neutral
+  - term: camping trip
+    meaning: a holiday where you sleep in tents
+    example: I got some travel brochures with details of camping trips.
+    band_suitability: 6.0+
+    register: neutral
+  - term: overnight journey
+    meaning: a trip that lasts through the night
+    example: It’s a long overnight journey from the capital to get there.
+    band_suitability: 6.0+
+    register: neutral
+  - term: in-flight entertainment
+    meaning: films, music, etc., provided for passengers on an airplane
+    example: Palair offers excellent in-flight entertainment, with the latest films
+      and music.
+    band_suitability: 6.0+
+    register: neutral
+  - term: in-flight magazine
+    meaning: a magazine provided by an airline for passengers to read
+    example: The in-flight magazine includes maps and information about major airports.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fasten seatbelts
+    meaning: to buckle your safety belt in a vehicle or plane
+    example: Please fasten your seatbelts.
+    band_suitability: 6.0+
+    register: formal
+  - term: board the plane
+    meaning: to get on an aircraft
+    example: The passenger boarded the plane on time...
+    band_suitability: 6.0+
+    register: neutral
+  - term: connecting flight
+    meaning: a subsequent flight that you catch to reach your final destination after
+      a stopover
+    example: '...she missed her connecting flight in Amsterdam.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: domestic flight
+    meaning: a flight that starts and ends in the same country
+    example: Domestic flights are often more expensive than international ones.
+    band_suitability: 7.0+
+    register: neutral
+  - term: international flight
+    meaning: a flight between different countries
+    example: Domestic flights are often more expensive than international ones.
+    band_suitability: 6.0+
+    register: neutral
+  - term: window seat
+    meaning: a seat next to the window in a plane, train, etc.
+    example: Do you normally prefer a window seat or an aisle seat when you fly?
+    band_suitability: 6.0+
+    register: neutral
+  - term: aisle seat
+    meaning: a seat next to the passage between rows of seats
+    example: Do you normally prefer a window seat or an aisle seat when you fly?
+    band_suitability: 6.0+
+    register: neutral
+  - term: charter flight
+    meaning: a flight on a plane rented for special use
+    example: We managed to get a charter flight; it was half the price of the scheduled
+      flight.
+    band_suitability: 7.0+
+    register: neutral
+  - term: scheduled flight
+    meaning: a regular flight organised by the company which owns the plane
+    example: '...it was half the price of the scheduled flight.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: smooth flight
+    meaning: a comfortable flight without severe turbulence
+    example: We anticipate a smooth flight to Stockholm today.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bumpy flight
+    meaning: a flight with rough movements caused by bad weather or turbulence
+    example: The opposite [of a smooth flight] is a bumpy flight.
+    band_suitability: 6.0+
+    register: neutral
+  - term: family-run hotel
+    meaning: a hotel owned and managed by a family
+    example: We stayed in a small, family-run hotel.
+    band_suitability: 6.0+
+    register: neutral
+  - term: run-down hotel
+    meaning: a hotel in very bad condition due to lack of care
+    example: The Panorama is a rather run-down hotel in a back street.
+    band_suitability: 7.0+
+    register: neutral
+  - term: luxury hotel
+    meaning: an expensive, high-end hotel offering top-class facilities
+    example: The Palace is a luxury hotel on the main square.
+    band_suitability: 6.0+
+    register: neutral
+  - term: smart hotels
+    meaning: fashionable, clean, and expensive hotels
+    example: I can’t afford to stay in smart hotels.
+    band_suitability: 6.0+
+    register: neutral
+  - term: budget accommodation
+    meaning: very cheap places to stay
+    example: I always have to look for budget accommodation.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a reservation
+    meaning: to book a place (hotel, table, etc.) in advance
+    example: I’d advise you to make a reservation before you go.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fully booked
+    meaning: having no rooms or seats left available
+    example: '...get fully booked during the summer.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: surrounding countryside
+    meaning: the rural area around a particular place
+    example: From my room I look out over the surrounding countryside.
+    band_suitability: 6.0+
+    register: neutral
+  - term: gentle landscape
+    meaning: a landscape with nothing extreme or threatening about it
+    example: At home it’s a gentle landscape with open fields.
+    band_suitability: 8.0+
+    register: formal
+  - term: open fields
+    meaning: fields uninterrupted by woods or houses
+    example: At home it’s a gentle landscape with open fields.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bleak landscape
+    meaning: an empty, cold, and unwelcoming landscape
+    example: Here it’s a bleak landscape with rocky mountains in the distance.
+    band_suitability: 8.0+
+    register: formal
+  - term: rocky mountains
+    meaning: mountains covered with rocks
+    example: '...rocky mountains in the distance.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: catch a glimpse of
+    meaning: to see something for a very short time
+    example: '...we caught a glimpse of a kingfisher standing in the water.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: catch sight of
+    meaning: to suddenly see something or someone
+    example: '...it caught sight of us and flew off.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: come into view
+    meaning: to become visible
+    example: '...and St John’s Abbey came into view.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall into ruin
+    meaning: to become heavily damaged or destroyed over time
+    example: The Abbey fell into ruin about three hundred years ago.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dramatic setting
+    meaning: an exciting, impressive, or striking location
+    example: '...it stands in a dramatic setting on a steep slope.'
+    band_suitability: 8.0+
+    register: formal
+  - term: steep slope
+    meaning: a piece of land that rises at a sharp angle
+    example: '...on a steep slope beside a fast-flowing river.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: fast-flowing river
+    meaning: a river moving quickly
+    example: '...beside a fast-flowing river with mountains towering above it.'
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3 — Structuring Opinion and Managing Fluency"
+  topic_tags: ["Work", "Employment", "Opinion", "Fluency"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 8, Part 2: Skills development"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers questions but may rely on simple sentence structures and lack natural transitions or fillers."
+    grammar_required: 
+      - Present simple for general facts
+      - Past simple for experience
+      - "have to/don't have to for obligations"
+    vocabulary_core: ["work experience", "part-time job", "full-time job", "apply for a job"]
+    vocabulary_stretch: ["qualification", "internship", "professional", "requirement"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of fillers leading to long silent pauses; repeating the same vocabulary; difficulty extending answers."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses discourse markers and idiomatic fillers to maintain fluency and manage thinking time."
+    grammar_required: ["Complex sentences with conjunctions", "Modal verbs for speculation"]
+    vocabulary_core: ["advantages and disadvantages", "pros and cons", "theory vs practice"]
+    vocabulary_stretch: ["graduation with honours", "career prospects", "work-life balance"]
+    sentence_length_target: "Variable, including compound and complex sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Many people think that work experience is the best way to learn about a job. What is your point of view?"
+    user_model_answer: "I think work experience is important. I studied business at university and it was hard. But my first job was difficult too. I think studying is good for theories, but work is better for real life."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Many people think that work experience is the best way to learn about a job. What is your point of view?"
+    user_model_answer: "That's an interesting question. Let me think. I definitely think that work experience is an important way to learn about a job. I studied business for three years and I graduated with honours, but I believe your first job is always difficult. There are pros and cons; work experience is excellent for real life, but education gives you the theories."

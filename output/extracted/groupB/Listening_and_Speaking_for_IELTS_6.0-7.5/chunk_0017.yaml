@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Sentence stress in Arts topics"
+  topic_tags: ["Arts", "Pronunciation", "Sentence Stress"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Pronunciation: Sentence stress"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Focus on basic sentence stress, though rhythm may be uneven. Often misses highlighting key content words for emphasis."
+    grammar_required: 
+      - Cleft sentences (What I liked was... / The thing I remember... )
+    vocabulary_core: ["art", "music", "fashion", "traditional", "literature"]
+    vocabulary_stretch: ["contemporary", "orchestral", "attraction", "passionate"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Stress every word equally (monotone); fail to emphasize content words over function words."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Uses sentence stress effectively to convey interest and emphasis, making speech more natural and easier to follow."
+    grammar_required: 
+      - Complex cleft structures
+      - Adverbs of degree (absolutely, particularly, really)
+    vocabulary_core: ["stunning", "fantastic", "amazing", "wonderful"]
+    vocabulary_stretch: ["visual effects", "choral piece", "contemporary art"]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What did you think of the concert?"
+    user_model_answer: "Something I didn't like was the noise."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What did you think of the concert?"
+    user_model_answer: "What I absolutely loved about the play were the wonderful costumes; the thing that really impressed me was the amazing script."

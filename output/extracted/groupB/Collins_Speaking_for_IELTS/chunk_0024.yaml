@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Holidays and Travel — Self-Assessment and Cause-Effect Language"
+  topic_tags: [Holidays, Travel, Cause and Effect]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Holidays and travel"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Communicates basic messages but struggles with lexical variety and complex grammar. Tends to repeat words and relies on common vocabulary."
+    grammar_required: [Basic sentence structures]
+    vocabulary_core: [good, interesting, like]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Hesitation due to over-focus on accuracy; overusing simple, repetitive vocabulary; difficulty expanding answers for long-turn speaking (Part 2)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of vocabulary including collocations and formal/informal registers. Can sustain long turns and use complex grammar structures."
+    grammar_required: [Complex sentence structures, logical sequencing]
+    vocabulary_core: [Formal/Informal register awareness, collocations]
+    vocabulary_stretch: [Idioms, less common lexical items]
+    sentence_length_target: "Varied, complex, well-structured"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What has caused the change in holiday habits?"
+    user_model_answer: "People have more money now, so they go on holiday more. Competition between airlines is good, so prices are lower."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What has caused the change in holiday habits?"
+    user_model_answer: "People have more disposable income than previous generations, which means that most people can now afford to go on holiday. Furthermore, the rapid rise in air travel stems from the creation of low-cost airlines, and competition between them has led to significantly lower prices for passengers."

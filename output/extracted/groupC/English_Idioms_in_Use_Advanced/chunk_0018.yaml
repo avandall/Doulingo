@@ -1,0 +1,119 @@
+vocabulary_entry:
+  topic_tags:
+  - politics
+  - history
+  - mythology
+  - problems
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 20
+  entries:
+  - term: Achilles' heel
+    meaning: A person's only weak point
+    example: I think this party has a great future, but corruption seems to be our
+      Achilles' heel.
+    band_suitability: 7.0+
+    register: neutral
+  - term: open a Pandora's box
+    meaning: To create a situation that will cause many problems
+    example: In his latest speech criticising the prime minister's actions, the finance
+      minister has opened a Pandora's box of political and legal problems.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have the Midas touch
+    meaning: To have the ability to be successful in everything one does
+    example: Our leader has shown that she has the Midas touch when it comes to economic
+      planning.
+    band_suitability: 8.0+
+    register: neutral
+  - term: Trojan horse
+    meaning: Someone or something intended to cause the downfall of an enemy from
+      within
+    example: His appointment to leader has caused many problems within the party,
+      with some members accusing him of being a Trojan horse.
+    band_suitability: 8.0+
+    register: formal
+  - term: sword of Damocles
+    meaning: A situation that is certain to cause a bad event to happen soon
+    example: Another stock market crash is hanging over this government like the sword
+      of Damocles.
+    band_suitability: 8.0+
+    register: formal
+  - term: fiddle while Rome burns
+    meaning: To occupy oneself with unimportant matters during a time of crisis
+    example: I know. It's like they're fiddling while Rome burns.
+    band_suitability: 8.0+
+    register: neutral
+  - term: rest on one's laurels
+    meaning: To be satisfied with past successes and stop trying to achieve more
+    example: We've won an important victory, but we must fight on. Yes, we mustn't
+      rest on our laurels.
+    band_suitability: 7.0+
+    register: neutral
+  - term: leave no stone unturned
+    meaning: To do everything possible to find something or solve a problem
+    example: I'll examine every word in every single document until I find the answer.
+      Yes - leave no stone unturned.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the writing on the wall
+    meaning: An obvious sign that something bad is going to happen
+    example: We knew it was going to end in disaster. It was so obvious! I know -
+      we all saw the writing on the wall.
+    band_suitability: 7.0+
+    register: neutral
+  - term: halcyon days
+    meaning: A very happy or peaceful time in the past
+    example: The early days of our business were such fun, and we were so successful!
+      Yes, they really were the halcyon days.
+    band_suitability: 8.0+
+    register: neutral
+  - term: turn the other cheek
+    meaning: To not react to an insult or attack
+    example: I don't think we should react to their insults. I agree. Let's just turn
+      the other cheek.
+    band_suitability: 7.0+
+    register: neutral
+  - term: Pyrrhic victory
+    meaning: A victory won at such a great cost that it is almost a defeat
+    example: We won our court case, but we've got no money left. No, I agree. It was
+      more of a Pyrrhic victory.
+    band_suitability: 8.0+
+    register: formal
+  - term: fall on one's sword
+    meaning: To accept responsibility for a failure and resign
+    example: So Marco accepted responsibility for the situation and resigned as director?
+      Yes, he decided to fall on his sword.
+    band_suitability: 8.0+
+    register: neutral
+  - term: parting shot
+    meaning: A remark made just as one is leaving, usually to have the final word
+    example: The last thing Edward said to his boss when he left the job was that
+      she was a fool! Yes, that wasn't such a great parting shot, was it?
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

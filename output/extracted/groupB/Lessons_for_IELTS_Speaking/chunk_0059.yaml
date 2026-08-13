@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Lessons for IELTS Speaking — Strategies for Part 2 Long Turn"
+  topic_tags: ["Part 2", "Expressing Reasons", "Personal Experience"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 2 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on providing basic facts but often lacks complex connecting structures (because/so) or personal reflection."
+    grammar_required: 
+      - Simple sentences
+      - Basic conjunctions (so, but)
+    vocabulary_core: ["news", "radio", "newspaper", "funny", "boring"]
+    vocabulary_stretch: ["informative", "sensational"]
+    sentence_length_target: "Short, choppy sentences."
+    common_errors_to_simulate: "Lack of linking words; failing to explain the 'why' behind opinions; repetitive structure."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of linking words (so, because of, however), incorporates personal anecdotes, and expresses feelings/opinions naturally."
+    grammar_required: 
+      - Complex sentences (cause/result)
+      - Used to + verb
+      - Adverbial clauses
+    vocabulary_core: ["well analysed", "informative", "commentaries"]
+    vocabulary_stretch: ["sensational", "explicit content", "uncensored opinions"]
+    sentence_length_target: "Varied sentence length with natural flow."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe your favourite newspaper or magazine."
+    user_model_answer: "My favourite source of news is the student radio station in Auckland. I get news from this station almost every day, depending on whether or not I do much driving, because the radio is in my car. It has really funny hosts, so I like it a lot. Sometimes, the news items or the way they are read is so funny, it makes me really laugh. But the news items are always interesting and informative. I prefer radio as a way of getting news because I don't have time to read a newspaper; the only daily newspaper in this city is very boring – full of crime stories!"

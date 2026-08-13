@@ -1,0 +1,58 @@
+content_unit:
+  template_type: band_ladder
+  title: Festivals — Practice Questions
+  topic_tags:
+  - Festivals
+  - Culture
+  - Celebrations
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Basic_IELTS_Speaking.md, Festivals
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Focus on simple descriptions of festivals using basic present
+    tense; may struggle with explaining reasons or historical changes.
+  grammar_required:
+  - Present Simple
+  - Adverbs of frequency
+  vocabulary_core:
+  - celebrate
+  - festival
+  - holiday
+  - family
+  - food
+  vocabulary_stretch: []
+  sentence_length_target: short, simple sentences
+  common_errors_to_simulate: Lack of complex sentences, repetitive structure, hesitation
+    when explaining the 'why' or 'how' of traditions.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to discuss cultural significance, personal preference,
+    and analyze changes in traditions over time using varied vocabulary.
+  grammar_required:
+  - Used to (for past habits)
+  - Present Perfect (for changes)
+  - Relative clauses
+  vocabulary_core:
+  - traditional
+  - occasion
+  - gather
+  - custom
+  - significance
+  vocabulary_stretch:
+  - cultural identity
+  - festive atmosphere
+  - time-honored tradition
+  sentence_length_target: complex sentences with cohesive devices
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

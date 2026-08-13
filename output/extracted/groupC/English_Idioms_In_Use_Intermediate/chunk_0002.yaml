@@ -1,0 +1,121 @@
+vocabulary_entry:
+  topic_tags:
+  - happiness
+  - emotions
+  - wellbeing
+  - moods
+  category: idiom
+  source_citation: English Idioms In Use Intermediate - Unit 3
+  entries:
+  - term: on cloud nine
+    meaning: extremely happy
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: in seventh heaven
+    meaning: extremely happy
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: over the moon
+    meaning: extremely happy
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: thrilled to bits
+    meaning: extremely happy
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: on top of the world
+    meaning: extremely happy
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: get a (real) kick out of something
+    meaning: very much enjoy doing something
+    example: I get a (real) kick out of going for a run first thing in the morning
+      before anyone else is up.
+    band_suitability: 7.0+
+    register: informal
+  - term: do something for kicks
+    meaning: do something because it is exciting, usually something dangerous
+    example: Kate is keen to have a go at bungee-jumping - just for kicks.
+    band_suitability: 7.0+
+    register: informal
+  - term: jump for joy
+    meaning: be very happy and excited about something that has happened
+    example: Rowena jumped for joy when she heard that she'd won first prize.
+    band_suitability: 6.0+
+    register: neutral
+  - term: be floating/walking on air
+    meaning: be very happy about something good that has happened
+    example: I've been walking on air ever since Chris and I started going out together.
+    band_suitability: 7.0+
+    register: neutral
+  - term: something makes your day
+    meaning: something makes you feel very happy
+    example: It's great to hear from you. It's really made my day.
+    band_suitability: 6.0+
+    register: neutral
+  - term: down in the dumps
+    meaning: very sad and depressed
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: out of sorts
+    meaning: slightly sad or unwell, not in a good mood
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: grin and bear it
+    meaning: accept a difficult situation without complaining
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: put a damper on something
+    meaning: make a situation less enjoyable
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: misery guts
+    meaning: a person who is always unhappy and negative
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: sour grapes
+    meaning: pretending that you don't want something because you can't have it
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: not the end of the world
+    meaning: not as bad as it seems; it's not a disaster
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

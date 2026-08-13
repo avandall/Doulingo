@@ -1,0 +1,136 @@
+vocabulary_entry:
+  topic_tags:
+  - light
+  - dark
+  - color
+  - appearance
+  - environment
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 43 & 44
+  entries:
+  - term: bright colours
+    meaning: vivid and strong colors
+    example: She usually wears bright colours.
+    band_suitability: 6.0+
+    register: neutral
+  - term: subdued colours
+    meaning: soft and gentle colors, not bright
+    example: The room was decorated in subdued colours.
+    band_suitability: 7.0+
+    register: neutral
+  - term: colours clash
+    meaning: colors look ugly or unpleasant when put together
+    example: Those two shirts really clash.
+    band_suitability: 7.0+
+    register: neutral
+  - term: touch of colour
+    meaning: a small amount of color that adds interest
+    example: The red scarf gave a nice touch of colour to her outfit.
+    band_suitability: 7.0+
+    register: neutral
+  - term: colour fades
+    meaning: color becomes less bright over time
+    example: The dark blue colour fades in the wash.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pitch dark
+    meaning: completely dark, with no light at all
+    example: Outside it was pitch dark.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a faint glow
+    meaning: a weak, soft light
+    example: We could see a faint glow in the distance.
+    band_suitability: 7.0+
+    register: neutral
+  - term: green issues
+    meaning: topics and problems related to the environment and conservation
+    example: The politician spoke about various green issues.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a grey area
+    meaning: a situation that is not clear or does not fit into particular rules
+    example: Copyright law on the internet is still a grey area.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cast a shadow
+    meaning: to make a place dark, or to create a negative atmosphere/feeling
+    example: The scandal cast a shadow over his career.
+    band_suitability: 8.0+
+    register: formal
+  - term: blacken someone's name
+    meaning: to damage someone's reputation by saying bad things about them
+    example: He tried to blacken his rival's name in the press.
+    band_suitability: 8.0+
+    register: formal
+  - term: shed light on
+    meaning: to help to explain a situation or make something clearer
+    example: New evidence has shed light on the cause of the accident.
+    band_suitability: 7.0+
+    register: neutral
+  - term: jet black
+    meaning: very dark black, often used to describe hair
+    example: She has striking jet black hair.
+    band_suitability: 7.0+
+    register: neutral
+  - term: smooth skin
+    meaning: skin that is soft and even to the touch
+    example: Babies are known for having smooth skin.
+    band_suitability: 6.0+
+    register: neutral
+  - term: rough skin
+    meaning: skin that feels dry, hard, or uneven
+    example: Working outdoors can lead to rough skin on your hands.
+    band_suitability: 6.0+
+    register: neutral
+  - term: greasy hair
+    meaning: hair that feels oily and unwashed
+    example: He needs to wash his greasy hair.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tender meat
+    meaning: meat that is easy to cut and chew
+    example: The steak was wonderfully tender.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tough meat
+    meaning: meat that is difficult to chew
+    example: The beef was overcooked and very tough.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bumpy flight
+    meaning: an uncomfortable journey in an aircraft due to rough air
+    example: We experienced a very bumpy flight through the storm.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sticky situation
+    meaning: a difficult or awkward situation to deal with
+    example: Lying to his boss put him in a really sticky situation.
+    band_suitability: 7.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

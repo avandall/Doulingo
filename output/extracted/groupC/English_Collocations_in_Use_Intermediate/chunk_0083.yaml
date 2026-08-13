@@ -1,0 +1,374 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - index
+  - vocabulary_reference
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, pp. 189-190
+  entries:
+  - term: vaguely remember
+    meaning: to have a slight, indistinct memory of something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: valid passport
+    meaning: an official travel document that is still legally acceptable for use
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: good value
+    meaning: being worth the money spent on it
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: mindless vandalism
+    meaning: deliberate destruction of property done for no apparent reason
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: vehicle crime
+    meaning: illegal acts involving automobiles, such as theft or damage
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: reach a verdict
+    meaning: for a jury to make a final decision in a court case
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: admire the view
+    meaning: to look at and appreciate a nice landscape or scenery
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: panoramic view
+    meaning: an unbroken view of a wide area surrounding an observer
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: vigorous exercise
+    meaning: physical activity that is intense and energetic
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: violence flares up
+    meaning: suddenly, violent events or behavior begin or increase
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: virtuoso performance
+    meaning: a performance of exceptional technical skill
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: stream of visitors
+    meaning: a continuous flow or stream of people coming to visit
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: visual aids
+    meaning: items like charts, pictures, or videos used to make a presentation clearer
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: vivid imagination
+    meaning: the ability to form lively or creative mental images
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: vividly remember
+    meaning: to remember something clearly and in detail
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: volume of traffic
+    meaning: the amount of vehicles moving along a road or network
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: low wage
+    meaning: a small amount of money paid for work
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: slender waist
+    meaning: a thin, narrow part around the middle of the human body
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: walk briskly
+    meaning: to walk at a quick, energetic pace
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: walk an exam
+    meaning: to pass an exam very easily
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: different walks of life
+    meaning: various levels of social position or occupation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: wander aimlessly
+    meaning: to walk around slowly with no particular purpose or direction
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: desperately want
+    meaning: to want something with great urgency or intensity
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: avert war
+    meaning: to prevent a war from happening
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: declare war
+    meaning: to officially announce that a country is at war with another
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: price war
+    meaning: a competitive struggle where companies repeatedly lower prices
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: give someone a warm welcome
+    meaning: to greet someone in a friendly and enthusiastic manner
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: speak well of
+    meaning: to say positive things about someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: well worth seeing
+    meaning: definitely worth the time to go and look at
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: well-built person
+    meaning: a person with a strong, solid physical body shape
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: whiff of perfume
+    meaning: a slight, brief smell of fragrance
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: worth your while
+    meaning: worth the time or effort spent on an activity
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: whisper softly
+    meaning: to speak very quietly in a soft tone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: blow the whistle
+    meaning: to reveal illegal or dishonest practices to authorities
+    example: ''
+    band_suitability: 8.0+
+    register: idiom
+  - term: turn white
+    meaning: to become pale in the face due to fear or illness
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: wholeheartedly agree
+    meaning: to agree completely and without reservation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: wholesale condemnation
+    meaning: complete and widespread severe disapproval
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: widely acknowledged
+    meaning: generally accepted or recognized by many people
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: widening gulf
+    meaning: an increasing difference or separation between two things or groups
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: capture a wider audience
+    meaning: to attract a larger number of viewers, listeners, or readers
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: widespread damage
+    meaning: destruction affecting a large area or many things
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: widespread poverty
+    meaning: poverty affecting a large portion of the population
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: estranged wife
+    meaning: a wife who is no longer living with her husband
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: win an award
+    meaning: to receive a prize or recognition for achievement
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: win respect
+    meaning: to earn the admiration and approval of others
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: gale force winds
+    meaning: extremely strong winds capable of causing damage
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: wind dies down
+    meaning: for the wind to gradually become less strong
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: wind picks up
+    meaning: for the wind to become stronger
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: window seat
+    meaning: a seat located next to a window on a plane, train, etc.
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: wise choice
+    meaning: a sensible and smart decision
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: withdraw from a course
+    meaning: to officially stop participating in an educational class or program
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a withdrawal
+    meaning: to take money out of a bank account
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: within commuting distance
+    meaning: close enough to travel to work or school daily
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: within walking distance
+    meaning: close enough to walk to easily
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: give someone your word
+    meaning: to make a firm promise to someone
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: keep your word
+    meaning: to fulfill a promise you have made
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: work closely with
+    meaning: to cooperate very closely and directly with someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: stimulating working environment
+    meaning: an inspiring and encouraging place to work
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: break the world record
+    meaning: to achieve a result better than any previous global record
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: think the world of someone
+    meaning: to like, love, or respect someone very much
+    example: ''
+    band_suitability: 8.0+
+    register: idiom
+  - term: world-wide problem
+    meaning: an issue affecting the entire globe
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: worried sick
+    meaning: extremely worried or anxious
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: wreck someone’s career
+    meaning: to completely ruin someone's professional life
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: get off on the wrong foot
+    meaning: to start a relationship or activity badly
+    example: ''
+    band_suitability: 7.0+
+    register: idiom
+  - term: wrongly accuse
+    meaning: to falsely blame someone for doing something wrong
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: young offender
+    meaning: a young person who commits a crime
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: youthful appearance
+    meaning: looking young or having features associated with youth
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: industrial zone
+    meaning: an area of land set aside for factories and industrial businesses
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

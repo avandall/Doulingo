@@ -1,0 +1,106 @@
+vocabulary_entry:
+  topic_tags:
+  - work
+  - career
+  - job choice
+  - employment
+  category: collocation
+  source_citation: Y_tuong_va_Tu_vung_trong_IELTS_Speaking - IELTS Nguyễn Huyền
+  entries:
+  - term: competitive salary
+    meaning: a salary that is as good as or better than other salaries for similar
+      jobs
+    example: to look for a competitive salary and financial security when choosing
+      a job
+    band_suitability: 6.0+
+    register: neutral
+  - term: financial security
+    meaning: the state of having enough money to live comfortably without financial
+      stress
+    example: to look for a competitive salary and financial security when choosing
+      a job
+    band_suitability: 6.0+
+    register: neutral
+  - term: standard of living
+    meaning: the level of wealth, comfort, material goods, and necessities available
+      to a certain socioeconomic class in a certain geographic area
+    example: affect their standard of living
+    band_suitability: 6.0+
+    register: neutral
+  - term: career growth and promotion
+    meaning: opportunities to advance in one's career and achieve a higher position
+      or rank
+    example: opportunities for career growth and promotion are essential for people
+      who want to develop skills
+    band_suitability: 6.0+
+    register: neutral
+  - term: professional development
+    meaning: continuing education and career training after a person has entered the
+      workforce
+    example: jobs that offer professional development programs are attractive to candidates
+    band_suitability: 7.0+
+    register: formal
+  - term: skill enhancement
+    meaning: the process of improving or increasing one's skills
+    example: candidates who prioritize skill enhancement and future advancement
+    band_suitability: 7.0+
+    register: formal
+  - term: flexible hours
+    meaning: working hours that can be adjusted to suit the employee's needs
+    example: jobs with flexible hours or remote work options allow people to manage
+      their professional and personal lives better
+    band_suitability: 6.0+
+    register: neutral
+  - term: remote work
+    meaning: working from home or another location outside of the traditional office
+    example: jobs with flexible hours or remote work options allow people to manage
+      their professional and personal lives better
+    band_suitability: 6.0+
+    register: neutral
+  - term: job satisfaction
+    meaning: a feeling of fulfillment or enjoyment that a person derives from their
+      job
+    example: increase job satisfaction and make work more enjoyable
+    band_suitability: 6.0+
+    register: neutral
+  - term: a sense of purpose
+    meaning: a feeling of having a clear direction and meaning in life or work
+    example: people often look for roles that offer a sense of purpose
+    band_suitability: 7.0+
+    register: neutral
+  - term: commuting time
+    meaning: the time it takes to travel between one's home and place of work
+    example: the location of a job and commuting time are important factors
+    band_suitability: 6.0+
+    register: neutral
+  - term: relocate
+    meaning: to move to a new place and establish one's home or business there
+    example: to relocate for a good position
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

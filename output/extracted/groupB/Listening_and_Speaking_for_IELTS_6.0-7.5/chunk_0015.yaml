@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Using Cleft Sentences for Emphasis"
+  topic_tags: ["Grammar", "Emphasizing", "Speaking Skills"]
+  target_band_min: 6.5
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Using cleft sentences"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can use basic sentence structures correctly but may struggle to add emphasis naturally, leading to a flatter delivery."
+    grammar_required: ["Active voice", "Simple relative clauses"]
+    vocabulary_core: ["like", "because", "impressed"]
+    vocabulary_stretch: []
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Repeating simple subject-verb structures; lack of highlighting key information."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of complex structures including cleft sentences to highlight important points, making the discourse more sophisticated."
+    grammar_required: 
+      - Cleft sentences (The thing that..., The reason why..., What... was...)
+    vocabulary_core: ["modern", "emotional", "talented"]
+    vocabulary_stretch: ["intimate venue", "complicated", "fascinating story"]
+    sentence_length_target: "varied"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What did you think of the concert?"
+    user_model_answer: "I didn't enjoy it because the sound quality was bad."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What did you think of the concert?"
+    user_model_answer: "The reason why I didn't enjoy the concert was that the sound quality was poor."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What impressed you about the show?"
+    user_model_answer: "What really impressed me was the artist's talent."

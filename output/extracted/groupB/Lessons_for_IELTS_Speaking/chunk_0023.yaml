@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3 — Past Habits and Future Predictions"
+  topic_tags: ["Free time", "Technology", "Social change"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 3 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic past structures (Past Simple) and 'used to' to talk about habits. Often relies on simple sentence structures and repetitive vocabulary."
+    grammar_required: ["Past Simple", "Used to + base form"]
+    vocabulary_core: ["free time", "family", "spend time", "activities"]
+    vocabulary_stretch: ["invention", "olden days", "benefits"]
+    sentence_length_target: "short to medium, simple sentences"
+    common_errors_to_simulate: "Confusing 'use to' vs 'used to', limited range of connectors, difficulty shifting between past and future tenses within a single answer."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can use a range of past and future structures accurately. Connects ideas using cohesive devices and provides relevant examples."
+    grammar_required: ["Used to", "Past Simple", "Will + base form", "Modal verbs for future prediction"]
+    vocabulary_core: ["leisure activities", "electronic games", "lifestyle comparison"]
+    vocabulary_stretch: ["human interaction", "technological advancement", "societal change"]
+    sentence_length_target: "complex, multi-clause sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What type of activities did people do in their free time before the invention of radios, televisions, and computers?"
+    user_model_answer: "In the olden days, people used to spend their free time reading or doing activities with their family. Fathers used to teach their sons to make things out of wood, and mothers used to teach their daughters to sew. People used to play traditional games too, such as chess."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "In 50 years' time, do you think things will change much or will we be doing the same activities as now in our free time?"
+    user_model_answer: "I believe we will change. I think people will see the benefits of spending more time talking together instead of just sitting in front of a computer. Maybe more educational games will be invented that need several people to play together, so the whole family will be involved."

@@ -1,0 +1,171 @@
+vocabulary_entry:
+  topic_tags:
+  - politics
+  - news
+  - arguments
+  - opinions
+  - emotions
+  - preferences
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 58 & 59
+  entries:
+  - term: face accusations
+    meaning: to be accused officially of something bad
+    example: A government minister is today facing accusations of taking bribes.
+    band_suitability: 7.0+
+    register: formal
+  - term: heavy hints
+    meaning: strong suggestions
+    example: There have been heavy hints about this for some time.
+    band_suitability: 6.0+
+    register: neutral
+  - term: drop a broad hint
+    meaning: to make an obvious suggestion indirectly
+    example: An article clearly implied that a top political figure was involved and
+      dropped a number of broad hints.
+    band_suitability: 7.0+
+    register: neutral
+  - term: leaked document
+    meaning: an official document unofficially given to the press
+    example: A leaked document published in today’s Moon makes serious allegations.
+    band_suitability: 7.0+
+    register: neutral
+  - term: issue a statement
+    meaning: to make a formal statement to the public or press
+    example: The Minister has issued a statement saying the claims are unfounded.
+    band_suitability: 7.0+
+    register: formal
+  - term: unfounded claims
+    meaning: claims that are untrue and have no basis in reality
+    example: The Minister has issued a statement, saying the claims are unfounded.
+    band_suitability: 7.0+
+    register: formal
+  - term: long-running battle
+    meaning: an argument or conflict that has been going on for a long time
+    example: He claims he has been wrongly accused because of its long-running battle
+      with the government.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put forward a theory
+    meaning: to propose or suggest a theory
+    example: Jones puts forward an interesting theory of language learning.
+    band_suitability: 6.0+
+    register: neutral
+  - term: back up an argument
+    meaning: to support an argument with data or evidence
+    example: Jones backs up his argument with thorough data.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make the point
+    meaning: to present an argument or express an idea clearly
+    example: Jones makes the point that motivation is the key factor.
+    band_suitability: 6.0+
+    register: neutral
+  - term: widely acknowledged
+    meaning: accepted as true or important by many people
+    example: This has been widely acknowledged in general terms for some time.
+    band_suitability: 7.0+
+    register: formal
+  - term: substantiate a claim
+    meaning: to provide evidence to support or prove a claim
+    example: stating clearly that motivation is more important and substantiating
+      this claim with impressive data.
+    band_suitability: 8.0+
+    register: formal
+  - term: strongly deny
+    meaning: to deny something firmly and emphatically
+    example: The PM strongly denied claims of corruption made against him.
+    band_suitability: 6.0+
+    register: neutral
+  - term: disclaim responsibility
+    meaning: to state publicly that you are not responsible for something
+    example: The hotel disclaims all responsibility for guests’ vehicles.
+    band_suitability: 8.0+
+    register: formal
+  - term: reject an idea
+    meaning: to refuse to accept an idea or suggestion
+    example: Ann rejected all Joe’s suggestions about how to decorate their flat.
+    band_suitability: 6.0+
+    register: neutral
+  - term: run contrary to
+    meaning: to be opposite to or in conflict with something
+    example: The research findings run contrary to popular belief.
+    band_suitability: 8.0+
+    register: formal
+  - term: contradictory evidence
+    meaning: evidence that disagrees with or opposes other evidence
+    example: Contradictory evidence made it hard for the jury to reach a verdict.
+    band_suitability: 7.0+
+    register: formal
+  - term: particular liking
+    meaning: a special fondness or preference for something
+    example: I have a particular liking for quiet, relaxing music.
+    band_suitability: 6.0+
+    register: neutral
+  - term: passionate love
+    meaning: an intense, deep love or enthusiasm for something
+    example: Her passionate love of the sea inspired her to sail round the world.
+    band_suitability: 7.0+
+    register: neutral
+  - term: highest regard
+    meaning: a deep sense of respect and admiration for someone
+    example: She has the highest regard for her teacher.
+    band_suitability: 7.0+
+    register: formal
+  - term: sheer enjoyment
+    meaning: complete and unmixed enjoyment
+    example: I will never forget the sheer enjoyment of listening to the children
+      singing.
+    band_suitability: 7.0+
+    register: neutral
+  - term: clear preference
+    meaning: a distinct choice of one thing over others
+    example: Many people expressed a clear preference for organic food.
+    band_suitability: 6.0+
+    register: neutral
+  - term: intense dislike
+    meaning: a very strong feeling of not liking someone or something
+    example: I have an intense dislike of rock music that is played too loud.
+    band_suitability: 7.0+
+    register: neutral
+  - term: instant dislike
+    meaning: a dislike that occurs immediately upon meeting someone
+    example: She took an instant dislike to Mr Peabody, but she did not know why.
+    band_suitability: 7.0+
+    register: neutral
+  - term: huge aversion
+    meaning: a strong feeling of dislike or unwillingness to do something
+    example: He has always had a huge aversion to hard work of any kind.
+    band_suitability: 8.0+
+    register: neutral
+  - term: deep-rooted hatred
+    meaning: a strong, long-established feeling of hatred
+    example: The deep-rooted hatred between the two families goes back several generations.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

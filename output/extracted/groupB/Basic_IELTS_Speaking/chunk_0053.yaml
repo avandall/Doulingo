@@ -1,0 +1,39 @@
+content_unit:
+  template_type: scenario
+  title: "Basic IELTS Speaking — Talking about Friends"
+  topic_tags: [friends, friendship, personal_qualities]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phù hợp với các câu trả lời cơ bản, liệt kê được các tính từ chỉ tính cách (adjectives) và cấu trúc câu đơn giản để mô tả bạn bè."
+    grammar_required: [simple_present_tense, relative_clauses_with_who]
+    vocabulary_core: [loyal, dependable, responsible, easy-going, fun, kind]
+    vocabulary_stretch: [hardworking, intelligent, modest, entertaining]
+    sentence_length_target: "short_to_medium"
+    common_errors_to_simulate: "Lặp từ 'and' liên tục, thiếu mạo từ khi liệt kê tính cách, ngữ pháp thì chưa linh hoạt"
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Có khả năng giải thích lý do (giving reasons) và đưa ra các quan điểm về tình bạn một cách mạch lạc."
+    grammar_required: [complex_sentences, conditional_structures, modals_for_habit]
+    vocabulary_core: [long-standing, sense_of_humour, honest, ambitious]
+    vocabulary_stretch: [critical, dependable, role_model, supportive]
+    sentence_length_target: "medium_to_long"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Could you tell me something about the kind of friend you like best?"
+    user_model_answer: "I like friends who are loyal, dependable, and responsible. Some of my friends I enjoy because they are fun and exciting. My closest friends are people who will never let me down."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you usually look for when you make a new friend?"
+    user_model_answer: "When I make a new friend, I always look for someone who is interested in the same things as me. Also, I like friends who have a good sense of humour, and who really enjoy life."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you prefer friends who are similar to you or different?"
+    user_model_answer: "That's an interesting question. I think I look for someone who is hardworking and intelligent because I want a good example to follow. I prefer friends who are always learning and growing, which helps me improve myself too."

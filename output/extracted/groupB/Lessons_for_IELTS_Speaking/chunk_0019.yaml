@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary for Movies and TV Programmes"
+  topic_tags: ["Movies", "TV", "Entertainment", "Vocabulary"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Vocabulary Section"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates can use basic adjectives and movie types but often confuse -ed and -ing adjectives (e.g., I was terrified vs It was terrifying)."
+    grammar_required: ["Past simple for reviews", "Present simple for facts"]
+    vocabulary_core: ["horror movie", "comedy", "funny", "boring"]
+    vocabulary_stretch: ["amusing", "fascinating", "current affairs"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Confusion between 'bored/boring' or 'terrified/terrifying'; overuse of 'good/bad' instead of specific adjectives."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use a wider range of precise vocabulary and collocations to describe films, demonstrating natural usage of 'based on fact' or 'got my attention'."
+    grammar_required: ["Relative clauses", "Participial phrases"]
+    vocabulary_core: ["documentary", "thriller", "historical movie"]
+    vocabulary_stretch: ["autobiography", "martial arts", "humorous"]
+    sentence_length_target: "Varied complex sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What kind of movies do you like?"
+    user_model_answer: "I like horror movie because I am scary."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What kind of movies do you like?"
+    user_model_answer: "I'm quite into documentaries, especially those based on fact, as they usually get my attention more than pure fiction."

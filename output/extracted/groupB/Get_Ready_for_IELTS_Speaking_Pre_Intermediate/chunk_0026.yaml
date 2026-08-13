@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Unit 11 & 12: Important Events & Possessions (Exam Practice)"
+  topic_tags: [Important Events, Possessions, Hometown, Family]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 11 & 12 Answer Key"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phản hồi câu hỏi cơ bản, sử dụng các cấu trúc thì đơn giản (Past Simple, Present Simple). Cần cải thiện việc kết nối ý bằng các từ nối đơn giản."
+    grammar_required: [Past Simple, Present Simple, Present Perfect with for/since]
+    vocabulary_core: [important event, graduation, hometown, feelings: nervous/excited/bored]
+    vocabulary_stretch: [celebration, challenging, satisfied]
+    sentence_length_target: "Câu ngắn, cấu trúc đơn giản (S+V+O)"
+    common_errors_to_simulate: "Nhầm lẫn giữa Present Simple và Past Simple khi kể chuyện, dùng sai 'for' và 'since', quên chia động từ 'to be' trong 'going to'."
+  - band_min: 6.5
+    band_max: 7.0
+    can_do_description: "Có khả năng kể chuyện chi tiết, sử dụng các từ nối để tạo sự mạch lạc, diễn đạt cảm xúc cá nhân rõ ràng."
+    grammar_required: [Present Perfect, comparative structures, adverbials]
+    vocabulary_core: [graduation, special occasion, traditional food, pretty, harbour]
+    vocabulary_stretch: [tuition, certificate, creative person, significant, memorable]
+    sentence_length_target: "Câu phức (kết hợp các mệnh đề nguyên nhân, kết quả)"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Can you describe an important event in your life?"
+    user_model_answer: "I’d like to describe my graduation from high school in 2010. It was a very significant day for my family because my parents and grandparents were all there. The ceremony took place at the town hall. I felt really satisfied when I passed my exams, especially after a challenging year of extra tuition. It was definitely one of the best days of my life."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think it's important to remember special days?"
+    user_model_answer: "Yes, definitely. Life is very busy, so it’s important to remember special days. I think it’s good to talk about it with your family or friends and look at photos. It makes me feel very happy when I remember those moments."

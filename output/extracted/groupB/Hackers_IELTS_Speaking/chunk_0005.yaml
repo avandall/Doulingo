@@ -1,0 +1,47 @@
+content_unit:
+  template_type: band_ladder
+  title: "Unit 01: Job & Study — Question Strategy and Sample Responses"
+  topic_tags: ["Job", "Study", "IELTS Speaking Part 1", "IELTS Speaking Part 2"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Hackers_IELTS_Speaking, Unit 01 Job & Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể đưa ra câu trả lời trực tiếp nhưng thường sử dụng từ vựng đơn giản, lặp lại từ trong câu hỏi."
+    grammar_required: 
+      - Present Simple
+      - Present Perfect (basic)
+    vocabulary_core: ["student", "work", "major", "job", "graduate"]
+    vocabulary_stretch: ["specifically", "priority", "loan"]
+    sentence_length_target: "Ngắn, chủ yếu là câu đơn hoặc câu ghép cơ bản."
+    common_errors_to_simulate: "Trả lời quá ngắn, không có phần diễn giải (extension), lặp lại cấu trúc 'I am...'"
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh sử dụng cấu trúc nối câu linh hoạt, có phần diễn giải chi tiết (specifically, therefore) và từ vựng chuyên sâu."
+    grammar_required: 
+      - "Complex sentences with 'therefore', 'when/while"
+      - Gerunds as subjects
+    vocabulary_core: ["majoring in", "take out a loan", "business management"]
+    vocabulary_stretch: ["frankly speaking", "priority", "observational skills", "diverse experiences"]
+    sentence_length_target: "Câu phức, có sử dụng trạng từ nối để duy trì mạch lạc."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Are you a student or do you work?"
+    user_model_answer: "I am a student. I am studying business management. I will graduate next year."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Are you a student or do you work?"
+    user_model_answer: "I'm a student. More specifically, I’m a college student majoring in business management, and I’ll be graduating next year."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Why did you choose your job?"
+    user_model_answer: "I chose my job because the pay is great. I needed money to pay my student loan."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Why did you choose your job?"
+    user_model_answer: "Frankly speaking, it's because the pay was great. When I was in college, I took out a student loan, so being able to make a lot of money became my top priority when choosing a job."

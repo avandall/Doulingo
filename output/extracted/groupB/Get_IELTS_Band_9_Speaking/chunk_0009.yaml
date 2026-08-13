@@ -1,0 +1,28 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1 - The 2-Step Strategy"
+  topic_tags: ["Part 1 Strategy", "General Topics"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking, Remember the Part 1 Strategy"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Uses a 2-step process to provide sufficient information (typically 3 sentences). First step provides a direct piece of information, second step adds detail or context to show understanding of the situation."
+    grammar_required: ["Complex sentence structures", "Tense accuracy"]
+    vocabulary_core: ["Topic-specific vocabulary related to lifestyle, home, and future"]
+    vocabulary_stretch: ["Functional phrases to extend answers naturally"]
+    sentence_length_target: "3 sentences per answer"
+    common_errors_to_simulate: "Giving answers that are too short (1-2 words) or unnecessarily long, failing to expand on the topic"
+
+sample_dialogues:
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Let's talk about transport in your country. How do people generally travel around?"
+    user_model_answer: "In my country, most people rely heavily on motorbikes because they are affordable and convenient for narrow streets. However, in larger cities, there has been a significant push to improve public bus systems to reduce traffic congestion. Personally, I prefer using ride-hailing apps as they are much faster during peak hours."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Let's discuss your friends. What do you generally do together when you meet them?"
+    user_model_answer: "Usually, my friends and I like to visit new cafes that have opened up around the city to catch up. Sometimes, if we want to be more active, we head to a local park to play sports or just go for a long walk. It’s important for us to spend time outside of our work environment to maintain a good balance."

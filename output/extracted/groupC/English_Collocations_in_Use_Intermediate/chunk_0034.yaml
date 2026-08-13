@@ -1,0 +1,189 @@
+vocabulary_entry:
+  topic_tags:
+  - environment
+  - poverty
+  - global problems
+  - society
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 39
+  entries:
+  - term: climate change
+    meaning: changes in the earth's weather patterns linked to the greenhouse effect
+    example: Your article on climate change was excellent.
+    band_suitability: 6.0+
+    register: neutral
+  - term: greenhouse gases
+    meaning: gases which cause the greenhouse effect, especially carbon dioxide
+    example: Rising sea levels and the increase in greenhouse gases are the result
+      of our actions.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ecological balance
+    meaning: a stable state of a natural ecosystem
+    example: We are disturbing the ecological balance everywhere.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fish stocks
+    meaning: the number of fish in the oceans or a specific area
+    example: '...as can be seen in the decrease in fish stocks in the oceans.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: exhaust fumes
+    meaning: waste gases produced by engines of vehicles
+    example: Exhaust fumes from millions of vehicles and the burning of fossil fuels
+      are causing irreparable damage.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fossil fuels
+    meaning: fuels such as gas, coal and oil formed from decayed organic matter
+    example: '...the burning of fossil fuels are causing irreparable damage to our
+      environment.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: irreparable damage
+    meaning: damage that cannot be repaired or fixed (also irreversible damage)
+    example: '...are causing irreparable damage to our environment.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: deplete the ozone layer
+    meaning: to reduce or damage the ozone layer
+    example: We must accept that we have seriously depleted the ozone layer in the
+      last few decades.
+    band_suitability: 8.0+
+    register: neutral
+  - term: green politics
+    meaning: political activities or policies focused on protecting the environment
+    example: Embracing green politics may be our best hope in the long term.
+    band_suitability: 7.0+
+    register: neutral
+  - term: short-term measures
+    meaning: actions taken for a short period to deal with an immediate problem
+    example: '...but we need urgent short-term measures too.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: devastating famines
+    meaning: widespread extreme shortages of food causing massive suffering and death
+    example: This has brought devastating famines to some regions...
+    band_suitability: 7.0+
+    register: neutral
+  - term: natural disasters
+    meaning: catastrophic events caused by natural processes of the Earth
+    example: We call these natural disasters, but it is human beings who are causing
+      them.
+    band_suitability: 6.0+
+    register: neutral
+  - term: escaping poverty
+    meaning: managing to move out of a state of being poor
+    example: Millions of people have succeeded in escaping poverty in the last decade.
+    band_suitability: 6.0+
+    register: neutral
+  - term: below the poverty line
+    meaning: having an income below the level considered adequate to live in a country
+    example: '...more people than ever are living below the poverty line...'
+    band_suitability: 6.0+
+    register: neutral
+  - term: lift out of poverty
+    meaning: to help someone improve their economic situation so they are no longer
+      poor
+    example: '...and we must help these people to lift them out of poverty.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: widening gulf
+    meaning: an increasing important difference or division between two groups
+    example: The widening gulf between rich and poor in some countries is often due
+      to external forces...
+    band_suitability: 8.0+
+    register: neutral
+  - term: margins of society
+    meaning: the periphery or edge of society where marginalized, poor, or outcast
+      people live
+    example: Some of the most deprived regions have large populations living on the
+      margins of society...
+    band_suitability: 8.0+
+    register: neutral
+  - term: sleeping rough
+    meaning: living or sleeping outdoors on the streets because you have no home
+    example: We have thousands sleeping rough every night in cities like London and
+      New York...
+    band_suitability: 7.0+
+    register: informal
+  - term: desperate need
+    meaning: an urgent and extreme requirement for help, food, money, or shelter
+    example: '...children and adults who live on the streets are in desperate need...'
+    band_suitability: 6.0+
+    register: neutral
+  - term: golden opportunity
+    meaning: the best possible chance to do something
+    example: Right now, we have a golden opportunity to combat poverty.
+    band_suitability: 7.0+
+    register: neutral
+  - term: combat poverty
+    meaning: to try to stop or reduce poverty
+    example: Right now, we have a golden opportunity to combat poverty.
+    band_suitability: 7.0+
+    register: neutral
+  - term: eradicate poverty
+    meaning: to completely get rid of poverty
+    example: Perhaps we cannot eradicate poverty altogether...
+    band_suitability: 8.0+
+    register: neutral
+  - term: alleviate poverty
+    meaning: to make poverty less severe or serious
+    example: '...but we can certainly alleviate poverty, and that is our challenge.'
+    band_suitability: 8.0+
+    register: formal
+  - term: seek political asylum
+    meaning: to apply for protection in another country for political reasons
+    example: Thousands of people seek political asylum in other countries every year.
+    band_suitability: 7.0+
+    register: formal
+  - term: economic migrants
+    meaning: people who move from one country or region to another to find work or
+      improve their standard of living
+    example: '...some are economic migrants looking for a better life.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: take to the streets
+    meaning: to protest publicly in large groups outdoors
+    example: Hundreds of people took to the streets to demonstrate about third-world
+      debt repayments.
+    band_suitability: 8.0+
+    register: neutral
+  - term: death toll
+    meaning: the number of people who have died in a particular accident, disaster,
+      or war
+    example: A terrible earthquake hit the region last year. The death toll was massive.
+    band_suitability: 7.0+
+    register: neutral
+  - term: child labour
+    meaning: the illegal employment of children in industry or business
+    example: The sexual exploitation of children is a world-wide problem, as is child
+      labour.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Employment and Finances — Present Perfect Simple vs Continuous"
+  topic_tags: [Employment, Finances, Grammar, Present Perfect]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 7"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thường xuyên nhầm lẫn giữa Present Perfect Simple và Continuous. Có xu hướng lạm dụng thì đơn hoặc dùng sai thì cho các trạng từ chỉ thời gian (for/since)."
+    grammar_required: 
+      - Present perfect simple (have + past participle)
+    vocabulary_core: [Have, been, play, work]
+    vocabulary_stretch: [Refurbished, duration]
+    sentence_length_target: "Ngắn, cấu trúc đơn giản"
+    common_errors_to_simulate: "Dùng thì quá khứ đơn thay cho hiện tại hoàn thành khi nói về trải nghiệm chưa kết thúc; lạm dụng thì đơn cho mọi hành động kéo dài (e.g., 'I play soccer for 10 years')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng linh hoạt giữa Simple và Continuous để nhấn mạnh kết quả (Simple) hoặc quá trình/hành động đang diễn ra (Continuous)."
+    grammar_required: 
+      - Present perfect continuous (have/has been + ing)
+    vocabulary_core: [Emphasise, activity, duration]
+    vocabulary_stretch: [Permanent situation, state verbs]
+    sentence_length_target: "Phức hợp, dùng các câu so sánh để làm rõ ngữ cảnh thời gian"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How long have you been involved in your current hobby?"
+    user_model_answer: "I play football for five years. I enjoy it very much."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How long have you been involved in your current hobby?"
+    user_model_answer: "Actually, I've been playing football for about five years now. The reason I use the continuous form is that I'm still very much active in the club and it’s a big part of my weekly routine."

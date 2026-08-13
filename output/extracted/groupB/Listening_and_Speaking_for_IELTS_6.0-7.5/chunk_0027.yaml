@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "Language and Communication — Expressing Agreement and Disagreement"
+  topic_tags: [Language, Communication, Education]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to state simple opinions on abstract topics but rely on basic transition phrases. Tend to agree or disagree directly without nuanced hedging."
+    grammar_required: [Present simple, comparative structures, modal verbs for possibility]
+    vocabulary_core: [official language, mother tongue, fluent, communication]
+    vocabulary_stretch: [cross-cultural, non-verbal, language barrier]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Over-reliance on 'I agree' or 'I disagree' without providing reasoning or balancing arguments."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Able to use a range of cautious and strong agreement/disagreement markers. Effectively balances personal opinion with broader counter-arguments."
+    grammar_required: 
+      - Conditional clauses
+      - complex sentence structures
+      - concessive clauses (even if, while)
+    vocabulary_core: [deteriorated, linguist, academic subject, mental exercise]
+    vocabulary_stretch: [significant misunderstandings, breakdown in communication, strengthen ties]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think learning a foreign language is important?"
+    user_model_answer: "Yes, I agree it is important. If English is your first language, you have more opportunities in life, but I think everyone should learn another language too."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you agree that video conferencing is the same as face-to-face communication?"
+    user_model_answer: "I'm not so sure about that. I think it's not the same as being in the same room with someone; there is always going to be a slight barrier if you are speaking to someone through a screen."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Should all citizens be forced to learn the official language?"
+    user_model_answer: "I agree up to a point. I think everyone should be able to communicate at a basic level in the official language, but they should also be free to use their own language whenever they want."

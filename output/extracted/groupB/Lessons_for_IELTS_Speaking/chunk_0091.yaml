@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation — Focus Stress and Emphasis"
+  topic_tags: ["Pronunciation", "Speaking Skills", "IELTS Strategy"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Speakers at this level often use a flat rhythm, stressing all content words equally without using contrastive or focus stress for emphasis."
+    grammar_required: ["Basic sentence structure"]
+    vocabulary_core: 
+      - Content words (nouns, verbs, adjectives, adverbs)
+    vocabulary_stretch: ["Focus stress", "Emphasis"]
+    sentence_length_target: "Short, rhythmic segments"
+    common_errors_to_simulate: "Monotone speech, failing to highlight specific words, treating all words with equal stress intensity."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Speakers naturally use focus stress to highlight key information, clarify meaning, and create conversational engagement."
+    grammar_required: ["Complex sentence structures with varied intonation"]
+    vocabulary_core: ["Focus stress", "Intonation", "Emphasis"]
+    vocabulary_stretch: ["Contrastive stress", "Dynamic modulation"]
+    sentence_length_target: "Varied, mirroring natural spoken English rhythm"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Where did you go for the Olympic Games?"
+    user_model_answer: "We flew to Beijing for the Olympic Games." # (Flat stress)
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Did you go to London for the Olympic Games?"
+    user_model_answer: "We flew to BEIJING for the Olympic Games." # (Focus stress on location)
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How did you get to the Olympic Games in Beijing?"
+    user_model_answer: "We FLEW to Beijing for the Olympic Games." # (Focus stress on method)

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary for Describing Places and Fluency Strategies"
+  topic_tags: ["Hometown", "Housing", "Fluency"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS, Unit 9"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic descriptive adjectives but often hesitates when searching for specific terminology. Grammar is often limited to simple past/present structures."
+    grammar_required: ["Past simple", "Simple present"]
+    vocabulary_core: ["city", "countryside", "big", "small", "nice"]
+    vocabulary_stretch: ["bustling", "picturesque", "cramped", "high-rise"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Frequent hesitation, long pauses between sentences, over-reliance on simple vocabulary, repetitive sentence structures."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Speaks fluently with few hesitations. Uses sophisticated vocabulary to describe urban/rural settings and effectively compares past and present states."
+    grammar_required: ["Passive voice", "Causative forms", "Used to/Would for past habits"]
+    vocabulary_core: ["urban regeneration", "cosmopolitan", "idyllic", "outskirts"]
+    vocabulary_stretch: ["escalated", "poignancy", "derelict", "vibrant"]
+    sentence_length_target: "Complex, compound sentences with logical connectors"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Would you rather live in a city or in the country?"
+    user_model_answer: "I prefer living in the city. It is very big and there are many shops. In the country, it is too quiet for me and I don't like it because there is not much to do."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Would you rather live in a city or in the country?"
+    user_model_answer: "Personally, I’d opt for city living. My city is incredibly cosmopolitan and vibrant, with everything within easy walking distance. While the countryside is undeniably idyllic, the pace of life is a bit too slow for my liking; I much prefer the hustle and bustle of an urban environment."

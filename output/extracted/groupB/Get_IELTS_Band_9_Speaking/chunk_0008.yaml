@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Weekend Activities — Band 6 vs Band 9 Comparison"
+  topic_tags: ["Hobbies", "Weekends"]
+  target_band_min: 5.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Question 6"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Diễn đạt được ý tưởng cơ bản, câu đơn ngắn, thiếu sự kết nối giữa các câu."
+    grammar_required: ["Simple present tense"]
+    vocabulary_core: ["play tennis", "club", "house"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Cấu trúc câu rời rạc, thiếu từ nối (cohesive devices), vốn từ vựng hạn chế."
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Sử dụng từ nối tự nhiên, cấu trúc câu phức, giải thích chi tiết lý do và cảm xúc."
+    grammar_required: 
+      - "Complex sentences with 'as"
+      - Relative clauses
+    vocabulary_core: ["main activity", "social activities"]
+    vocabulary_stretch: ["To be honest", "look forward to", "as much as"]
+    sentence_length_target: "compound-complex sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like to do at weekends?"
+    user_model_answer: "I play tennis a lot. I go to a club near my house."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "What do you like to do at weekends?"
+    user_model_answer: "My main activity these days is playing tennis, as I belong to a club near my house. There are a lot of social activities as well as the tennis itself. To be honest, I enjoy the social side as much as the sport, so I really look forward to weekends."

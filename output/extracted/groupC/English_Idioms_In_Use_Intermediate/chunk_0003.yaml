@@ -1,0 +1,138 @@
+vocabulary_entry:
+  topic_tags:
+  - anger
+  - emotions
+  - relationships
+  - conflicts
+  category: idiom
+  source_citation: 'English_Idioms_In_Use_Intermediate, Unit 4: Anger'
+  entries:
+  - term: fed up (to the back teeth)
+    meaning: extremely annoyed or bored
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: at your wits' end
+    meaning: so worried or upset that you don't know what to do
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: have had it up to here
+    meaning: have reached the limit of what you can tolerate
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: have/throw a fit
+    meaning: become very angry
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: go off the deep end
+    meaning: become very angry
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: go spare
+    meaning: become very angry
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: do your nut
+    meaning: become very angry
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: blow a fuse
+    meaning: become very angry
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: someone's blood is up
+    meaning: to be very angry and possibly react in a violent way
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: after someone's blood
+    meaning: wanting to catch someone to hurt or punish them
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: out for blood
+    meaning: determined to find someone to attack or blame
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: drive someone up the wall
+    meaning: make someone very angry or very bored
+    example: The neighbours' loud music every night is driving me up the wall.
+    band_suitability: 6.0+
+    register: informal
+  - term: drive/send someone round the bend/twist
+    meaning: make someone very angry or very bored
+    example: His lack of consideration is driving me round the twist.
+    band_suitability: 7.0+
+    register: informal
+  - term: rub someone up the wrong way
+    meaning: make someone annoyed
+    example: Jill always manages to say something to rub her father up the wrong way.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get/put someone's back up
+    meaning: make someone annoyed
+    example: Roger put his sister's back up by saying she would never be a good driver.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ruffle someone's feathers
+    meaning: make someone annoyed
+    example: Jo says what she thinks without worrying about whether she might be ruffling
+      anyone's feathers.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put/send the cat among the pigeons
+    meaning: say or do something that makes a lot of people angry or worried
+    example: Danny put the cat among the pigeons by suggesting that the company might
+      have to make some redundancies.
+    band_suitability: 8.0+
+    register: neutral
+  - term: not be on speaking terms
+    meaning: be so angry with each other that they refuse to speak
+    example: They haven't been on speaking terms for years although neither can remember
+      what they first quarrelled about.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give someone an earful
+    meaning: tell someone how angry you are with them
+    example: The old lady gave the children an earful for nearly knocking her over.
+    band_suitability: 7.0+
+    register: informal
+  - term: give someone a piece of your mind
+    meaning: tell someone how angry you are with them
+    example: He'll give the boys a piece of his mind if he catches them in his garden.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

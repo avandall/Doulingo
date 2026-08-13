@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Special Occasions — IELTS Speaking Part 3 Strategy"
+  topic_tags: [Special occasions, Festivals, Speaking Part 3, Exam skills]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 3: Special occasions"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate understands the topic and attempts to answer but often gives answers that are too short or slightly irrelevant (personal anecdote vs general discussion)."
+    grammar_required: [Past simple tense, basic conjunctions]
+    vocabulary_core: [festivals, weddings, family, celebrate, ceremonies]
+    vocabulary_stretch: [parade, traditional music, cultural importance]
+    sentence_length_target: "4 sentences or more"
+    common_errors_to_simulate: "Giving overly personal anecdotes (e.g., 'I went to a festival') instead of addressing general questions about society; answering with only one or two sentences."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate successfully transitions from personal experience to general social/cultural commentary, provides well-developed points, and maintains coherence."
+    grammar_required: [Complex sentences, diverse verb tenses]
+    vocabulary_core: [social customs, cultural heritage, communal significance]
+    vocabulary_stretch: [societal shifts, traditional customs, commemorative events]
+    sentence_length_target: "Extensive responses with justification"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think special occasions and festivals are important for a society?"
+    user_model_answer: "I went to a festival in my country last year and I enjoyed it. It was important to me because I saw my friends and family."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you think special occasions and festivals are important for a society?"
+    user_model_answer: "Yes, I think they are very important. In my country, we have one or two big festivals where we visit family or remember important people and events. It is a serious thing, but it is also fun and helps us learn about our culture and the world."

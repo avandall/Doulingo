@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Word linking"
+  topic_tags: [pronunciation, linking, fluency]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Pronunciation: Word linking"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Learners often speak with hesitation and limited use of connected speech, making the flow sound choppy."
+    grammar_required: [simple_sentences, compound_sentences]
+    vocabulary_core: [daily_life_topics]
+    vocabulary_stretch: []
+    sentence_length_target: "short-to-medium"
+    common_errors_to_simulate: "Lack of linking between consonant-ending and vowel-beginning words; word-by-word delivery."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Learners produce continuous, natural speech by applying linking techniques, significantly improving prosody."
+    grammar_required: [complex_sentences, linking_devices]
+    vocabulary_core: [thematic_vocabulary]
+    vocabulary_stretch: [idiomatic_phrases]
+    sentence_length_target: "medium-to-long"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What do you like about your local area?"
+    user_model_answer: "What I like most is the fact that it's near the coast because I love the sea. I always try to go there at weekends."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you have any plans for your future?"
+    user_model_answer: "I'd like to get a place of my own as soon as I can. I hope I can take early retirement before I'm sixty."

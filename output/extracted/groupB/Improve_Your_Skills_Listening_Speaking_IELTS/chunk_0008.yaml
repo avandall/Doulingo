@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Speaking Part 1 — Saying where you come from"
+  topic_tags: ["Hometown", "Personal Information", "Speaking Part 1"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Saying where you come from"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers questions with basic facts but tends to be brief and lacks cohesion."
+    grammar_required: ["Simple present for facts", "Used to for past state"]
+    vocabulary_core: ["hometown", "live", "town", "village"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Giving one-word or very short answers without elaboration."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Provides extended answers with relevant details and logical connectors."
+    grammar_required: 
+      - "Complex sentences with 'because"
+      - "Contrastive structures 'used to... but now..."
+    vocabulary_core: ["describe", "feature", "atmosphere"]
+    vocabulary_stretch: ["The great thing about...", "What I like about it is..."]
+    sentence_length_target: "compound and complex sentences with clear justification"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Could you tell me where you come from?"
+    user_model_answer: "I come from Hanoi. It's a big city in Vietnam."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Could you tell me where you come from?"
+    user_model_answer: "I'm originally from Hanoi, which is the capital of Vietnam. I used to live in the old quarter, but I moved to the outskirts recently because it's quieter there."

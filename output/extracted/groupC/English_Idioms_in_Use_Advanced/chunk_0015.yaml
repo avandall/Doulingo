@@ -1,0 +1,114 @@
+vocabulary_entry:
+  topic_tags:
+  - animals
+  - idioms
+  - describing_people
+  - life_situations
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 17
+  entries:
+  - term: the cat's whiskers
+    meaning: to be better than everyone else
+    example: Yes, they think they're the cat's whiskers.
+    band_suitability: 8.0+
+    register: informal
+  - term: not have a cat in hell's chance
+    meaning: to have no chance at all
+    example: With no qualifications or experience? He hasn't got a cat in hell's chance!
+    band_suitability: 7.0+
+    register: informal
+  - term: a dog's life
+    meaning: a life that is hard and unpleasant
+    example: I know, it's a dog's life!
+    band_suitability: 7.0+
+    register: neutral
+  - term: a dog in the manger
+    meaning: someone who keeps something so that others cannot use it, even if they
+      don't want it themselves
+    example: Don't be such a dog in the manger!
+    band_suitability: 8.0+
+    register: neutral
+  - term: flog a dead horse
+    meaning: wasting time trying to do something that won't succeed
+    example: You're flogging a dead horse trying to persuade Kim to move house again.
+    band_suitability: 8.0+
+    register: neutral
+  - term: (straight) from the horse's mouth
+    meaning: information received directly from the person concerned
+    example: Guess what? Juan is going to work in Moscow! I got it straight from the
+      horse's mouth!
+    band_suitability: 7.0+
+    register: neutral
+  - term: until the cows come home
+    meaning: for a very long time
+    example: You can argue until the cows come home, but I'll never agree.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sort the sheep from the goats
+    meaning: to find the people or things of high quality from a group of mixed quality
+    example: Setting the class such a difficult exercise will certainly sort the sheep
+      from the goats.
+    band_suitability: 8.0+
+    register: neutral
+  - term: might as well be hung for a sheep as a lamb
+    meaning: you might as well do something more serious as you are going to be punished
+      anyway
+    example: You might as well be hung for a sheep as a lamb!
+    band_suitability: 8.0+
+    register: neutral
+  - term: shed crocodile tears
+    meaning: to pretend to be upset about something
+    example: Yes, he's shedding crocodile tears to get popular support.
+    band_suitability: 8.0+
+    register: formal
+  - term: sick as a parrot
+    meaning: extremely disappointed
+    example: Yes, he was sick as a parrot, wasn't he?
+    band_suitability: 8.0+
+    register: informal
+  - term: a leopard can't change its spots
+    meaning: a person cannot change their innate character
+    example: No, a leopard can't change its spots.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cry wolf
+    meaning: to raise false alarms
+    example: Yes, he cried wolf once too often.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a wolf in sheep's clothing
+    meaning: someone who seems kind and gentle but is actually dangerous or dishonest
+    example: He really is a wolf in sheep's clothing.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the elephant in the room
+    meaning: an obvious problem or difficult situation that people are avoiding discussing
+    example: That's right. It's certainly the elephant in the room.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

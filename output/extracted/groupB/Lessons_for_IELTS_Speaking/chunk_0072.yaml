@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Wealth, Consumerism, and Materialism"
+  topic_tags: ["Society", "Wealth", "Consumerism", "Technology"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking.md, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to communicate basic ideas with some coherence, but relies on predictable sentence structures and simple linkers."
+    grammar_required: ["Present simple", "Present perfect", "Basic comparative structures"]
+    vocabulary_core: ["wealth", "status", "buy", "money"]
+    vocabulary_stretch: ["affluence", "consumerism", "materialistic"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Lack of complex cohesive devices; repetition of basic vocabulary; hesitant transitions."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to develop topics fully, use a range of cohesive devices naturally, and manage long turns with ease."
+    grammar_required: 
+      - Complex sentences
+      - Passive voice
+      - Contrastive linkers (whereas, while)
+    vocabulary_core: ["wealthy", "purchasing behaviour", "generations"]
+    vocabulary_stretch: ["affluence", "drawback", "materialistic", "previous generations"]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Could you tell me how people express wealth and affluence in your country?"
+    user_model_answer: "I think more and more people are choosing to show their status through expensive things. For example, wealthy people might buy luxury cars or houses to show that they have lots of money."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you believe society nowadays is more materialistic than in previous generations?"
+    user_model_answer: "I think so. For my grandparents' generation, it was all about hard work and saving. Whereas today, people might say that my generation is more interested in immediate consumption. For instance, while my grandparents might have been focused on basic needs, some young people today are more interested in branded gadgets."

@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: Childhood and Upbringing — Model Answers and Vocabulary
+  topic_tags:
+  - Childhood
+  - Upbringing
+  - Memory
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS.md, Tracks 13-14
+band_tiers:
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to provide extended, coherent answers with a wide range
+    of topic-specific vocabulary and idiomatic expressions. Uses a mix of complex
+    sentence structures and personal anecdotes effectively.
+  grammar_required:
+  - Used to / Would for past habits
+  - Present Perfect for experiences
+  - Conditionals
+  vocabulary_core:
+  - vivid memory
+  - upbringing
+  - reminisce
+  - in touch with
+  - well brought up
+  vocabulary_stretch:
+  - rose-tinted glasses
+  - on the tip of my tongue
+  - it all comes flooding back
+  - tearing their hair out
+  - doesn't time fly
+  sentence_length_target: Complex, multi-clause sentences with cohesive devices
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What is your most vivid childhood memory?
+  user_model_answer: Without a doubt it's getting my two pet tortoises for my sixth
+    birthday. It was such a surprise and I was so pleased because none of my friends
+    had such unusual pets. They were tiny - they could both sit in the palm of my
+    hand - and I really enjoyed looking after them.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Is it important for children to have fun?
+  user_model_answer: It is important because I believe children learn a lot through
+    play. They learn about the world around them, they learn how to interact with
+    other people, and they learn about possible dangers through acting them out. Children
+    shouldn't be made to grow up too fast; they should be allowed to experience the
+    world of make-believe first.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Are you still in touch with your childhood friends?
+  user_model_answer: Some of them, yes. We've all moved on and have very different
+    lives now, but it's nice to catch up from time to time and reminisce. Childhood
+    friends feel almost like brothers and sisters, and there's something very special
+    about that relationship.

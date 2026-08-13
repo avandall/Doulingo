@@ -1,0 +1,27 @@
+content_unit:
+  template_type: scenario
+  title: "Practising the Part 3 questions — Shops and Shopping"
+  topic_tags: ["Shops and Shopping", "IELTS Speaking Part 3"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Practising the Part 3 questions"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Phát triển câu trả lời dài từ 4-5 câu, phân biệt được câu hỏi dạng 'opinion' (quan điểm cá nhân) và 'ideas' (đưa ra các khía cạnh/luận điểm khách quan)."
+    grammar_required: ["Complex sentences", "Conditional structures", "Modal verbs for speculation"]
+    vocabulary_core: ["persuade", "sales", "promotion", "facilities", "advertising"]
+    vocabulary_stretch: ["consumerism", "impulse buying", "digital footprint", "accessibility", "marketing strategies"]
+    sentence_length_target: "4-5 sentences per response"
+
+sample_dialogues:
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Which are better, small local shops or big supermarkets?"
+    user_model_answer: "It really depends on what you value as a consumer. Small local shops are excellent for building community ties and often offer more artisanal or locally sourced products that you can't find elsewhere. On the other hand, big supermarkets provide an unparalleled level of convenience and affordability due to their economies of scale. Personally, I think local shops are better for specialized items, while supermarkets are more efficient for the weekly grocery shop."
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "How do stores persuade people to spend money?"
+    user_model_answer: "Stores utilize a variety of psychological tactics to encourage spending. The most common method is the use of sales and promotions, which create a sense of urgency that triggers impulse buying. Furthermore, the layout of a store is often strategically designed to lead shoppers past non-essential items. By leveraging sensory marketing, such as specific lighting or background music, they create an atmosphere that makes the shopping experience feel rewarding."

@@ -1,0 +1,49 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1: Expressing Likes, Dislikes, and Types"
+  topic_tags: [food, hometown, hobbies, daily_life]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Question Types 3 & 4"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates often give simple, list-style answers. They lack native-speaker linking phrases and often rely on basic vocabulary (like, dislike, enjoy, hate) without developing their points."
+    grammar_required: [simple_present, basic_reasoning_connectors]
+    vocabulary_core: [like, dislike, enjoy, love, hate]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Giving overly short, fact-based answers; listing too many items without explanation (e.g., 'I like buses, taxis, trains, and planes'); answering 'No' to questions instead of finding a way to talk about the topic."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use structured responses with advanced linking phrases. They expand their answers by explaining reasons, specific examples, and providing 'to be more precise' clarifications."
+    grammar_required: [complex_sentences, causative_clauses, linking_phrases_for_cohesion]
+    vocabulary_core: [passionate, keen_on, fond_of, detest, loathe, wide_range_of]
+    vocabulary_stretch: 
+      - be_partial_to
+      - "can't_stand, extensive_diversity, prevalent, notorious"
+    sentence_length_target: "varied, extended responses with multiple clauses"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What food do you like?"
+    user_model_answer: "I like pizza and pasta because my girlfriend is Italian and she cooks it."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What food do you like?"
+    user_model_answer: "Well in general I would say that I'm quite passionate about Italian food, to be more specific, I would probably say that I'm really into pizza and pasta. This is mainly because my girlfriend is Italian so she always cooks Italian cuisine at home."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Is there anything you don't like about your hometown?"
+    user_model_answer: "No, I like my city."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is there anything you don't like about your hometown?"
+    user_model_answer: "Of course I think I'd have to say that I'm not so keen on the weather. To be more precise, I really can't stand the summer months. This is due to the fact that the temperatures can get as high as 40 degrees, so it can be quite uncomfortable if you don't have air conditioning."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me about the different types of public transport in your country."
+    user_model_answer: "Of course, it goes without saying that there’s quite a mixed variety of public transport in my city. But I guess the most common would probably be the bus system, as it's the most widely-used and convenient for the majority of citizens."

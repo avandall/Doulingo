@@ -1,0 +1,187 @@
+vocabulary_entry:
+  topic_tags:
+  - daily routine
+  - conversational expressions
+  - habits
+  - problems
+  - behaviour
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 51 & 52
+  entries:
+  - term: at all hours
+    meaning: at all sorts of unusual times
+    example: They come and go at all hours of the day and night.
+    band_suitability: 7.0+
+    register: neutral
+  - term: that's him all over
+    meaning: that's typical of him
+    example: He sleeps really heavily... but that's him all over.
+    band_suitability: 7.0+
+    register: informal
+  - term: all told
+    meaning: in total
+    example: Last night, they woke me up seven times, all told!
+    band_suitability: 7.0+
+    register: neutral
+  - term: for all one cares
+    meaning: and it wouldn't bother someone
+    example: Once he's asleep, the house could be burning down for all he cares.
+    band_suitability: 8.0+
+    register: informal
+  - term: all smiles
+    meaning: unexpectedly friendly and pleasant
+    example: I've tried, and they're all smiles.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get the all-clear
+    meaning: get official permission, usually medical
+    example: I won't get the all-clear to go back to work for another couple of weeks.
+    band_suitability: 7.0+
+    register: neutral
+  - term: all in good time
+    meaning: you just have to be patient
+    example: Oh well. All in good time! It won't be too long before it's all systems
+      go again.
+    band_suitability: 7.0+
+    register: neutral
+  - term: all systems go
+    meaning: everything is busy
+    example: It won't be too long before it's all systems go again.
+    band_suitability: 7.0+
+    register: neutral
+  - term: all in all
+    meaning: taking everything into consideration
+    example: All in all, I think the concert was a success.
+    band_suitability: 6.0+
+    register: neutral
+  - term: all or nothing
+    meaning: completely or not at all
+    example: Tim either loves something or hates it - it's all or nothing with him.
+    band_suitability: 7.0+
+    register: neutral
+  - term: to cap it all
+    meaning: in addition to all the other bad things that have happened
+    example: I've had a really stressful week, and to cap it all I've got to work
+      over the weekend.
+    band_suitability: 8.0+
+    register: neutral
+  - term: in all but name
+    meaning: existing as a fact, but not officially described that way
+    example: Alice runs the business in all but name.
+    band_suitability: 8.0+
+    register: formal
+  - term: an all-time high/low
+    meaning: a record high / low point
+    example: Share prices reached an all-time high/low yesterday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be all in the mind
+    meaning: are imagined; not physically real
+    example: His doctor told him that he isn't really ill - his symptoms are all in
+      the mind.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be all things to all men
+    meaning: please everyone even when this is not possible
+    example: The show would have been better if it hadn't tried to be all things to
+      all people.
+    band_suitability: 8.0+
+    register: neutral
+  - term: all-singing, all-dancing
+    meaning: ambitious and modern, with lots of special features
+    example: There's a new all-singing, all-dancing version of the software, but it's
+      expensive.
+    band_suitability: 8.0+
+    register: informal
+  - term: in next to no time
+    meaning: very quickly
+    example: I'll be home in next to no time.
+    band_suitability: 7.0+
+    register: neutral
+  - term: no end of
+    meaning: lots of
+    example: I found no end of bargains in the sales.
+    band_suitability: 7.0+
+    register: neutral
+  - term: help no end
+    meaning: very much
+    example: It'd help me no end if you did the shopping.
+    band_suitability: 7.0+
+    register: neutral
+  - term: like there was no tomorrow
+    meaning: quickly
+    example: She was spending money like there was no tomorrow.
+    band_suitability: 8.0+
+    register: informal
+  - term: won't take no for an answer
+    meaning: won't let you refuse to come
+    example: You must come to my party. I won't take no for an answer.
+    band_suitability: 7.0+
+    register: neutral
+  - term: no prizes for guessing
+    meaning: it's obvious
+    example: No prizes for guessing who arrived last.
+    band_suitability: 7.0+
+    register: neutral
+  - term: no time like the present
+    meaning: now is the perfect time
+    example: Let's ask her now. No time like the present.
+    band_suitability: 6.0+
+    register: neutral
+  - term: no ifs and buts
+    meaning: do it without arguing
+    example: Go and wash your hands. No ifs and buts.
+    band_suitability: 7.0+
+    register: neutral
+  - term: no strings attached
+    meaning: there'll be no unpleasant or inconvenient demands
+    example: I'll help you. No strings attached, I promise.
+    band_suitability: 8.0+
+    register: neutral
+  - term: no such thing as a free lunch
+    meaning: if someone gives you something, they always expect something in return
+    example: Don't believe their promises. There's no such thing as a free lunch.
+    band_suitability: 8.0+
+    register: neutral
+  - term: no-go area
+    meaning: dangerous places
+    example: Some parts of the city are no-go areas at night.
+    band_suitability: 7.0+
+    register: neutral
+  - term: no news is good news
+    meaning: we'd hear something if there were a problem
+    example: He's not phoned or emailed, but no news is good news.
+    band_suitability: 6.0+
+    register: neutral
+  - term: in no uncertain terms
+    meaning: strongly and directly
+    example: She told me in no uncertain terms that she thought I was making a foolish
+      mistake.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

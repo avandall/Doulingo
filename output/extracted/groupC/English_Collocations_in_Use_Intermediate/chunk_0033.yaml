@@ -1,0 +1,86 @@
+vocabulary_entry:
+  topic_tags:
+  - war
+  - conflict
+  - crime
+  - politics
+  - society
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 38
+  entries:
+  - term: fight a running battle
+    meaning: to fight while moving or over a continuous, lengthy period
+    example: The police fought a running battle with football hooligans in the town
+      centre.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put up a heroic fight
+    meaning: to struggle very bravely and determinedly against difficulties
+    example: The people of the village put up a heroic fight against the construction
+      of the new motorway.
+    band_suitability: 7.0+
+    register: neutral
+  - term: lose the battle
+    meaning: to fail in an attempt to achieve or prevent something
+    example: The people of the village put up a heroic fight against the construction
+      of the new motorway, but finally lost the battle.
+    band_suitability: 6.0+
+    register: neutral
+  - term: offer resistance
+    meaning: to fight back or refuse to submit
+    example: The bank robbers didn’t offer any resistance when the police surrounded
+      them.
+    band_suitability: 7.0+
+    register: formal
+  - term: fight for one's life
+    meaning: to try very hard to stay alive after a severe injury or illness
+    example: The President is fighting for his life tonight in the City hospital after
+      a major operation.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a price war
+    meaning: a situation in which companies compete by continuously lowering prices
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: a war on crime
+    meaning: a concerted effort or campaign to eliminate crime
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fight crime
+    meaning: to take action to prevent or stop illegal acts
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fight a war against poverty
+    meaning: to make a sustained effort to reduce or eliminate poverty
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,61 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Topics: Vocabulary and Idiomatic Expressions (Mat Clark)"
+  topic_tags: 
+    - Hobbies
+    - Sports
+    - Television
+    - Music
+    - Reading
+    - Email
+    - Learning English
+    - Writing
+    - Clothes
+    - School
+    - Restaurants
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Topics 3-13"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Sử dụng từ vựng cơ bản, diễn đạt ý đơn giản. Hay mắc lỗi lặp từ và dùng các từ vựng chung chung (như 'do', 'like', 'boring')."
+    grammar_required: 
+      - Simple sentences
+      - Basic verb tenses (present/past simple)
+    vocabulary_core: ["do hobbies", "play sports", "watch TV", "read books"]
+    vocabulary_stretch: ["leisure pursuit", "physical activity", "telly", "fictional"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lặp từ vựng, dùng sai giới từ, câu trả lời ngắn, thiếu các cấu trúc diễn đạt tự nhiên (idioms)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng thành ngữ (idioms) và collocations tự nhiên để diễn đạt ý kiến. Độ lưu loát cao, từ vựng chính xác theo chủ đề."
+    grammar_required: ["Complex sentences", "Relative clauses", "Perfect tenses"]
+    vocabulary_core: ["unwind", "strenuous", "catchy", "gripping"]
+    vocabulary_stretch: 
+      - idle away the hours
+      - have a crack at
+      - mind-numbing
+      - "blow one's mind"
+      - at the push of a button
+    sentence_length_target: "Compound and complex sentences with natural flow"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "Yes, I like swimming. I usually go to the swimming pool in my free time with my friends. It is very fun."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "Actually, I've recently taken up swimming to improve my health. Whenever I have some spare time, I head to the local pool just to unwind and idle away the hours, which is a great way to relieve stress."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like watching TV?"
+    user_model_answer: "Yes, I watch TV every day. I like watching news and movies. It is not boring."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like watching TV?"
+    user_model_answer: "I do occasionally watch the box to relax, though I tend to channel surf a lot until I find something attention-grabbing. I usually avoid mind-numbing soap operas and prefer watching documentaries."

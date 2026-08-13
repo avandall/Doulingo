@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Childhood and Hometown — High-Level Speaking Samples"
+  topic_tags: ["Childhood", "Upbringing", "Hometown", "Urban change"]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Tracks 19-21"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng từ vựng nâng cao, cấu trúc câu phức và logic lập luận mạch lạc. Biết cách triển khai ý kiến cá nhân với ví dụ và lập luận phản biện."
+    grammar_required: 
+      - "Complex sentence structures (e.g., 'not only... but also', 'while/although')"
+      - Modal verbs of speculation
+      - Conditional structures
+    vocabulary_core: ["nurture", "nostalgic", "leniently", "congested", "idealise"]
+    vocabulary_stretch: ["grapple with", "standstill traffic", "poignancy", "nurture vs nature", "a new lease of life"]
+    sentence_length_target: "Long and varied"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think people often idealise their childhoods?"
+    user_model_answer: "Certainly they do. The older we get, the more nostalgic we get about the past. It's only normal. And why should we dwell on the negatives? I don't think it does any harm to idealise a bit if it makes us happy to remember things in a more positive light. The only danger is that it may make us unhappy with our current lots to believe that everything was so much better back then."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How does a person's childhood influence what kind of adult they become?"
+    user_model_answer: "Well, I suppose the adult you become is influenced by three main factors: firstly, your childhood, that is 'nurture'; then, your genes, that is 'nature'; and last but not least, the choices you make as an adult. To my mind, of all three, nurture has the greatest impact."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you agree with the saying 'children should be seen and not heard'?"
+    user_model_answer: "I'm assuming this means that children should respect their elders and not create havoc by being noisy. I have some sympathy with this view. However, moderation is usually the best course to take. It's a fine balance; children should be allowed to express their points of view and they should be listened to and consulted."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "In what ways has your town or city changed since you were a child?"
+    user_model_answer: "Well, crime has been on the increase since the early 90s. My friends who still live there no longer feel that safe. Also, it has become very congested and traffic is a real problem. When I visit it now, it makes me quite sad thinking how things used to be."

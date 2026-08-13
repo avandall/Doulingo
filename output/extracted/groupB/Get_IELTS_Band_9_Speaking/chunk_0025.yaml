@@ -1,0 +1,27 @@
+content_unit:
+  template_type: band_ladder
+  title: "Internet Shopping — Advantages and Disadvantages"
+  topic_tags: ["Shopping", "Technology", "Internet"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Question 5"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "The candidate provides structured responses using discourse markers ('For one thing', 'Besides that', 'The third advantage') and addresses both sides of the argument logically. Vocabulary is topic-specific and naturally used."
+    grammar_required: ["Complex sentences with conjunctions", "Present tense for general truths"]
+    vocabulary_core: ["advantages", "cheaper", "convenient", "compare products", "risk of fraud"]
+    vocabulary_stretch: ["huge attraction", "in some respects", "payment details", "personal data", "in terms of"]
+    sentence_length_target: "Varied; includes long, multi-clause explanations."
+
+sample_dialogues:
+  - band_level: 8.5
+    turn_type: standalone
+    ai_line: "What are the advantages of Internet shopping over shopping in stores?"
+    user_model_answer: "I can think of 3 big advantages of shopping by Internet. For one thing, it tends to be cheaper than in-store, and that's a huge attraction. Besides that, using the Internet is much quicker and more convenient, because we don't have to travel or spend time in town centres; so it's better for the environment too in some respects. The third advantage is the ability to compare products very quickly for quality and price, and so make the best choice possible."
+  - band_level: 8.5
+    turn_type: standalone
+    ai_line: "Are there any possible disadvantages or risks?"
+    user_model_answer: "Well, the biggest danger is the risk of fraud because criminals access your payment details or other personal data when you buy online. The other problem is that you don't actually see the product until it's delivered, so you might find it's different from what you expect in terms of the colour, the texture and so on. That's quite a common problem, in fact, especially for clothing."

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Get Ready for IELTS Speaking - Model Answers (Pre-Intermediate)"
+  topic_tags: ["Introduction", "Family", "Hometown", "Hobby", "People", "Society"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Answer key - Practice test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers demonstrate clear communication of personal information and opinions. Uses simple sentence structures with some attempts at connecting ideas (e.g., 'But', 'Because')."
+    grammar_required: 
+      - Present simple for habits/facts
+      - Past simple for past experiences
+      - Simple future (going to)
+    vocabulary_core: ["hometown", "friendly", "independent", "popular", "cousins"]
+    vocabulary_stretch: ["scholarship", "coming-of-age ceremony", "application form"]
+    sentence_length_target: "Short to medium length, focus on clarity over complexity"
+    common_errors_to_simulate: "Limited range of connective words (overusing 'and', 'but'), tendency to provide brief or slightly repetitive responses."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about your hometown."
+    user_model_answer: "My hometown is very big. It’s very busy and dirty. There are lots of cars and there’s lots of traffic. But the people are really friendly and it’s a good city for tourists. You can go to the beach, you can go shopping or you can eat in a traditional restaurant."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think we can learn from older generations?"
+    user_model_answer: "Yes, definitely. In my opinion, we can learn lots of things from older generations. Firstly, we can learn about history or tradition and what happened in the past. Secondly, we can listen to advice from people with lots of experience."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a person who helped you."
+    user_model_answer: "I’m going to talk about a teacher from my high school. Her name was Mrs. White. She was a very friendly and kind person. She always listened to students and helped them. She helped me with my application form and she organized a scholarship for me."

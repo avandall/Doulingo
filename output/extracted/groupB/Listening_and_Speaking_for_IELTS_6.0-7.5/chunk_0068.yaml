@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic Talk — Time and Tenses in IELTS Speaking"
+  topic_tags: ["Time", "Past/Present/Future", "Collocations"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Thí sinh có thể sử dụng các thì cơ bản để nói về quá khứ và hiện tại, nhưng thường lặp lại cấu trúc đơn giản."
+    grammar_required: ["Used to", "Present Perfect", "Simple Present"]
+    vocabulary_core: ["spend time", "save time", "waste time", "devote time"]
+    vocabulary_stretch: ["in this day and age", "before long", "short term"]
+    sentence_length_target: "Trung bình (10-15 từ/câu)"
+    common_errors_to_simulate: "Nhầm lẫn giữa thì quá khứ đơn và used to; lạm dụng 'nowadays' ở mọi câu trả lời."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Sử dụng linh hoạt các cấu trúc diễn đạt thời gian, bao gồm các cấu trúc phức tạp về dự đoán và thói quen."
+    grammar_required: 
+      - Inversion (Rarely have I...)
+      - Future predictions (bound to)
+      - Habitual actions (make a habit of)
+    vocabulary_core: ["contemporary", "bygone", "subsequent", "emerging"]
+    vocabulary_stretch: ["are inclined to", "forecast", "do not anticipate"]
+    sentence_length_target: "Dài, phức hợp (15-25 từ/câu)"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What is something you used to enjoy doing when you were young?"
+    user_model_answer: "When I was a child, I used to play football with my friends every afternoon. We spent all our free time in the park. Now I am too busy to do that."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is something you used to enjoy doing when you were young?"
+    user_model_answer: "Until recently, I didn't realize how much I missed my childhood hobbies. I used to be an avid reader; I would spend hours immersed in books, a habit I find difficult to maintain in this day and age due to work commitments."

@@ -1,0 +1,117 @@
+vocabulary_entry:
+  topic_tags:
+  - change
+  - speed
+  - success
+  - failure
+  - cause and effect
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 46-53
+  entries:
+  - term: increase steadily
+    meaning: to go up at a gradual, regular rate
+    example: Sales increased steadily/gradually between January and April.
+    band_suitability: 6.0+
+    register: neutral
+  - term: rise sharply
+    meaning: to increase suddenly and by a large amount
+    example: Sales rose sharply/steeply in May.
+    band_suitability: 6.0+
+    register: neutral
+  - term: dramatic fall
+    meaning: a sudden and very noticeable decrease
+    example: In September there was a dramatic fall in sales.
+    band_suitability: 7.0+
+    register: neutral
+  - term: at breakneck speed
+    meaning: moving extremely fast, often dangerously
+    example: She drove the car at breakneck speed.
+    band_suitability: 8.0+
+    register: informal
+  - term: change the subject
+    meaning: to start talking about something different
+    example: I think it’s time we changed the subject, don’t you?
+    band_suitability: 6.0+
+    register: neutral
+  - term: changed my mind
+    meaning: to alter one's opinion or decision
+    example: I haven't changed my mind.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strike up a conversation
+    meaning: to start a conversation with someone
+    example: On the train I struck up a conversation with an interesting man from
+      Japan.
+    band_suitability: 7.0+
+    register: neutral
+  - term: break into a run
+    meaning: to suddenly start running
+    example: He had to break into a run to catch the bus.
+    band_suitability: 7.0+
+    register: neutral
+  - term: run smoothly
+    meaning: to operate without any problems or difficulties
+    example: We want to ensure that things run smoothly.
+    band_suitability: 6.0+
+    register: neutral
+  - term: got off to a good start
+    meaning: to begin an activity or process successfully
+    example: The conference got off to a good start.
+    band_suitability: 6.0+
+    register: neutral
+  - term: draw to a close
+    meaning: to gradually come to an end
+    example: I hope the meeting will soon draw to a close.
+    band_suitability: 7.0+
+    register: formal
+  - term: hopes were dashed
+    meaning: hopes were completely destroyed or ruined
+    example: My hopes were dashed when I heard the news.
+    band_suitability: 8.0+
+    register: neutral
+  - term: doomed to failure
+    meaning: certain to fail
+    example: The scheme is doomed to failure.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bring out the best in
+    meaning: to cause someone's best qualities to show
+    example: Only the drama teacher managed to bring out the best in me.
+    band_suitability: 7.0+
+    register: neutral
+  - term: spark off
+    meaning: to cause an event or situation, especially a difficult one, to happen
+    example: The policy change sparked off widespread protests.
+    band_suitability: 7.0+
+    register: neutral
+  - term: underlying causes
+    meaning: the real, hidden, or basic causes of a problem
+    example: The government should do something about the underlying causes of crime.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

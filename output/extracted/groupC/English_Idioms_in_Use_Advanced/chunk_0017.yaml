@@ -1,0 +1,133 @@
+vocabulary_entry:
+  topic_tags:
+  - games
+  - sports
+  - work
+  - behavior
+  - idioms
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: dice were loaded against me
+    meaning: to be in a situation where success is unlikely
+    example: I wanted the job in Paris, but I knew the dice were loaded against me
+      because my French isn't very good.
+    band_suitability: 8.0+
+    register: neutral
+  - term: dicing with death
+    meaning: taking a great risk
+    example: You're dicing with death if you let him drive you.
+    band_suitability: 7.0+
+    register: neutral
+  - term: poker-faced
+    meaning: expressionless
+    example: The audience sat there poker-faced all through the play.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hold all the cards
+    meaning: to be in a strong position
+    example: Management found that the union held all the cards in the pay talks.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play one's cards close to one's chest
+    meaning: didn't reveal one's plans
+    example: I kept/played my cards close to my chest in the interview.
+    band_suitability: 8.0+
+    register: neutral
+  - term: play one's ace/trump card
+    meaning: used one's advantage, especially one others did not know about
+    example: The politician played his ace/trump card by promising lower taxes for
+      all.
+    band_suitability: 8.0+
+    register: neutral
+  - term: moving the goalposts
+    meaning: changing the rules in a situation in a way that is not fair
+    example: My boss has just increased my sales targets again! It's so unfair. He
+      just keeps moving the goalposts.
+    band_suitability: 7.0+
+    register: neutral
+  - term: knocked me for six
+    meaning: surprised and upset me
+    example: My colleague Jen has just announced she's leaving, which has completely
+      knocked me for six.
+    band_suitability: 8.0+
+    register: casual
+  - term: get the red card
+    meaning: received official criticism for bad behaviour
+    example: Apparently, she got the red card from Jerry because she was late a few
+      times.
+    band_suitability: 7.0+
+    register: casual
+  - term: not cricket
+    meaning: it's not right or fair behaviour
+    example: It seems unfair to push Jen out just because of something so minor -
+      it's just not cricket!
+    band_suitability: 8.0+
+    register: casual
+  - term: a whole new ball game
+    meaning: a completely different situation
+    example: My new company is a whole new ball game from the last one.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play hardball
+    meaning: be so determined to get what they want that they use unfair methods
+    example: People here like to play hardball. Everybody is always competing against
+      everyone else.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take a rain check
+    meaning: refuse an invitation with the suggestion to do it at another time
+    example: I think I'll have to take a rain check tonight. I promised I'd make the
+      dinner.
+    band_suitability: 6.0+
+    register: neutral
+  - term: not pull any punches
+    meaning: spoke in an honest and direct way without trying to be tactful
+    example: The coach didn't pull any punches when he told the team how badly they
+      had played.
+    band_suitability: 7.0+
+    register: neutral
+  - term: punch-drunk
+    meaning: tired and confused
+    example: The trade fair was so noisy and busy that I felt punch-drunk by the end
+      of the week.
+    band_suitability: 8.0+
+    register: neutral
+  - term: below the belt
+    meaning: an unfair attack
+    example: It was below the belt to mention his rival's marital problems to the
+      journalist.
+    band_suitability: 7.0+
+    register: neutral
+  - term: throw in the sponge/towel
+    meaning: admitting defeat
+    example: Kisho will never agree to throw in the sponge, even if he has lost any
+      chance of winning.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

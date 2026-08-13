@@ -1,0 +1,56 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Topics and Vocabulary Reference (Topics 14-26)"
+  topic_tags: 
+    - Friends
+    - Festivals
+    - New People
+    - The Sea
+    - Computers
+    - Collecting
+    - Dancing
+    - Languages
+    - Weather
+    - Happiness
+    - Shopping
+    - Films
+    - Weekends
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Topics 14-26"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thường sử dụng từ vựng cơ bản, dễ gặp lỗi lặp từ. Cần bổ sung các danh từ/động từ cụ thể thay vì dùng từ chung chung (như 'good', 'nice')."
+    grammar_required: [simple sentences, basic conjunctions]
+    vocabulary_core: [daily objects, common verbs]
+    vocabulary_stretch: [collocations]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Sử dụng từ vựng không tự nhiên, lặp lại từ trong câu hỏi, thiếu các cụm từ cố định (idioms) làm câu trả lời bị khô khan."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng từ vựng theo chủ đề (topic-specific vocabulary) và thành ngữ (idioms) một cách tự nhiên, linh hoạt."
+    grammar_required: [complex structures, varied tenses]
+    vocabulary_core: [idiomatic expressions, collocations]
+    vocabulary_stretch: [topic-specific technical/descriptive words]
+    sentence_length_target: "varied, complex and compound sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like dancing?"
+    user_model_answer: "Yes, I like dancing. I go to the club with friends and we dance to music. It is very fun."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like dancing?"
+    user_model_answer: "To be honest, I'm not really into it because I have two left feet! However, I do enjoy watching break-dancing because it's all the rage among youngsters in my country these days."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Is friendship important to you?"
+    user_model_answer: "Yes, friendship is very important. I have many friends and we talk every day."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is friendship important to you?"
+    user_model_answer: "Absolutely. I’m quite a sociable person, so I usually hang out with my soul mate. I consider my best mate a kind of sounding board whenever I’m going through a rough patch."

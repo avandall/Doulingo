@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Speaking Skills — Communication Methods and Evaluation"
+  topic_tags: ["Communication", "Technology", "Daily Habits"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Speaking skills"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Ability to describe daily habits and provide basic advantages/disadvantages using common adjectives."
+    grammar_required: 
+      - Present simple for habits
+      - Used to for past states
+      - Future tenses (will/going to)
+    vocabulary_core: ["convenient", "immediate", "informal", "time-consuming", "easy to use"]
+    vocabulary_stretch: ["behind the times", "impersonal"]
+    sentence_length_target: "medium (10-15 words per sentence)"
+    common_errors_to_simulate: "Overusing simple conjunctions (and, but) to connect multiple short ideas."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Ability to evaluate communication methods by balancing benefits and drawbacks with complex sentence structures."
+    grammar_required: ["Complex sentences with contrastive conjunctions/connectors", "Passive voice for general opinions"]
+    vocabulary_core: ["interactive", "confidential", "permanent", "temporary"]
+    vocabulary_stretch: ["cost-effective", "formality levels", "instantaneous", "archaic"]
+    sentence_length_target: "long and complex (15-25 words per sentence)"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Which type of communication do you use on a regular basis?"
+    user_model_answer: "I use text messaging every day because it is very convenient and immediate, but I think it is often too informal for serious work."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What are the benefits and drawbacks of using handwritten letters?"
+    user_model_answer: "While handwritten letters are highly personal and permanent, they are essentially time-consuming and often considered behind the times in our modern, fast-paced society."

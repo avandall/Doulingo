@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: "Focus on Part 3: Relationships and Discussion Techniques"
+  topic_tags: ["Relationships", "Friendship", "Part 3 Strategy"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 3 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to provide clear, relevant answers with some justification, but may rely on simple sentence structures or repetitive vocabulary when discussing abstract topics."
+    grammar_required: 
+      - "Complex sentences using 'because', 'although"
+      - Modal verbs for speculation (can, should, might)
+    vocabulary_core: ["honest", "trustworthy", "reliable", "supportive", "influence"]
+    vocabulary_stretch: ["personal details", "face-to-face", "adolescence", "abstract"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Over-reliance on 'I think', lack of discourse markers to structure the argument (e.g., missing 'Firstly', 'On the other hand')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Consistently uses opening statements to frame answers, provides detailed explanations, and maintains a logical flow using cohesive devices."
+    grammar_required: 
+      - Conditional sentences (Type 2)
+      - Passive voice
+      - Range of linking phrases
+    vocabulary_core: ["sociable", "dishonest", "traditional", "influence", "qualities"]
+    vocabulary_stretch: ["in general", "It seems to me that", "a number of", "hard to imagine"]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How important is it for people to have friends?"
+    user_model_answer: "Well, I think having friends is extremely important because everyone needs someone to talk to about their problems; not only that, but we need people to share the good times with as well. I can't imagine how lonely it would be if we didn't have any friends."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What personal qualities do you think a real friend should have?"
+    user_model_answer: "I think there are a number of qualities that a real friend has. Firstly, friends should be honest and trustworthy because you tell them your secrets. Secondly, I think they should be reliable. I also think friends should be caring and supportive so they listen to you when you tell them your troubles."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What are the advantages of forming a relationship on the Internet?"
+    user_model_answer: "Well, the main advantage is that starting a relationship on the Internet is so easy. Even if you are a really shy person, and not very sociable, you can still find friends on the Internet. I think some people find it much, much easier than face-to-face talking."

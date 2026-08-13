@@ -1,0 +1,38 @@
+content_unit:
+  template_type: scenario
+  title: "Dialogue Study — Transportation Comparison"
+  topic_tags: [Transportation, Daily Routine, Advantages/Disadvantages]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phản hồi thông tin cơ bản về thói quen hàng ngày, liệt kê được các phương tiện đi lại nhưng từ vựng còn đơn giản (e.g., 'cheaper', 'faster')."
+    grammar_required: [Present simple, comparative adjectives]
+    vocabulary_core: [traffic jam, public transport, convenient, electric bike]
+    vocabulary_stretch: [approximately, maintenance, carpool]
+    sentence_length_target: "Short to medium, simple compound sentences."
+    common_errors_to_simulate: "Lặp từ 'is' quá nhiều, thiếu các từ nối để giải thích lý do (linking words)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Có khả năng thảo luận ưu nhược điểm (pros/cons) một cách logic, sử dụng các từ nối phức tạp và cấu trúc so sánh đa dạng."
+    grammar_required: 
+      - Conditionals
+      - "complex sentences with 'although/because"
+      - comparative structures
+    vocabulary_core: [stressful, maintenance, insurance, rush hour]
+    vocabulary_stretch: [inconvenient, financial implications, public infrastructure]
+    sentence_length_target: "Longer, well-developed sentences with logical flow."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What are the advantages of riding an electric bike compared to a regular bike?"
+    user_model_answer: "The biggest advantage is that an electric bike is faster than a regular bike, and it's easier than pedalling a bicycle. Compared to a car, an electric bike is cheaper and easier to park."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What are the disadvantages of owning a car?"
+    user_model_answer: "Well, driving a car can be stressful during rush hour, especially if there's a traffic jam. Also, it is much more expensive because you have to pay for gas, insurance, and regular maintenance."

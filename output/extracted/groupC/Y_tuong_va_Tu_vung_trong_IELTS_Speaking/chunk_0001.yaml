@@ -1,0 +1,148 @@
+vocabulary_entry:
+  topic_tags:
+  - advertising
+  - media
+  - art
+  - education
+  - creativity
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: brand awareness
+    meaning: the extent to which consumers are familiar with the qualities or image
+      of a particular brand
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: prime time
+    meaning: the time at which a radio or television audience is expected to be at
+      its highest
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: catchy jingles
+    meaning: short, memorable tunes or songs used in commercials
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: memorable visuals
+    meaning: images or videos that are easily remembered
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: impulse buying
+    meaning: buying goods without planning to do so in advance
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: personalized ads
+    meaning: advertisements targeted to specific individuals based on their data
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: social media algorithms
+    meaning: automated systems that determine what content users see on social platforms
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: high-traffic areas
+    meaning: locations with a large volume of people passing through
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: niche markets
+    meaning: small, specialized segments of a broader market
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: emotional appeal
+    meaning: a method of persuasion that is designed to create an emotional response
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fear of missing out (FOMO)
+    meaning: anxiety that an exciting or interesting event may currently be happening
+      elsewhere
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: unrealistic expectations
+    meaning: beliefs or hopes that are not practical or achievable
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: eco-friendly products
+    meaning: goods not harmful to the environment
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: sustainable lifestyles
+    meaning: ways of living that attempt to reduce an individual's use of earth's
+      natural resources
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: environmental degradation
+    meaning: the deterioration of the environment through depletion of resources
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: cognitive flexibility
+    meaning: the mental ability to switch between thinking about two different concepts
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: self-expression
+    meaning: the expression of one's feelings, thoughts, or ideas in art, music, or
+      writing
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: cultural heritage
+    meaning: the legacy of physical artifacts and intangible attributes of a group
+      or society
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: cultural awareness
+    meaning: understanding of the differences between oneself and people from other
+      countries or backgrounds
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: open-minded
+    meaning: willing to consider new ideas
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: competitive advantage
+    meaning: a condition that puts a company or person in a superior business position
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

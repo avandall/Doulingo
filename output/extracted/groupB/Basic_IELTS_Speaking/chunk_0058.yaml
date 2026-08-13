@@ -1,0 +1,37 @@
+content_unit:
+  template_type: scenario
+  title: "Dialogue Study — Home & Living"
+  topic_tags: ["Home", "Accommodation", "Future Plans"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể mô tả căn hộ cơ bản, sử dụng từ vựng đơn giản về đồ gia dụng và cấu trúc nhà."
+    grammar_required: ["Present simple for facts", "There is/are"]
+    vocabulary_core: ["apartment", "bedroom", "bathroom", "kitchen", "live"]
+    vocabulary_stretch: ["spacious", "appliances", "neighbourhood"]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Quên mạo từ (a/an/the), dùng sai giới từ chỉ vị trí (in the right thay vì on the right)"
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh có thể nói về lý do mua nhà, dự định tương lai và so sánh văn hóa một cách tự nhiên."
+    grammar_required: 
+      - "Complex sentences with 'so/because/which"
+      - "Future intention: 'planning to', 'hope to"
+    vocabulary_core: ["master bedroom", "private", "spacious", "bachelor"]
+    vocabulary_stretch: ["musical talents", "in honour of", "planning ahead"]
+    sentence_length_target: "long, compound-complex sentences with logical connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How many appliances do you have in your house?"
+    user_model_answer: "I have three appliances. A washing machine, a refrigerator and a stove. Most Chinese apartments have these three things."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Why did you choose this place as your home?"
+    user_model_answer: "Well, there are two main reasons. Firstly, I bought this apartment to provide my parents with a place to stay when they visit. Secondly, although I'm a bachelor now, I hope to start a family in the future, so I needed somewhere spacious and safe."

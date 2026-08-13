@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary and Leisure Activities - IELTS Speaking Part 1"
+  topic_tags: ["Hobbies", "Leisure Time", "Vocabulary"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, VOCABULARY"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể liệt kê các sở thích cơ bản bằng từ vựng đơn giản, thường lặp lại cấu trúc câu đơn."
+    grammar_required: 
+      - Present simple
+      - Basic conjunctions (and, but)
+    vocabulary_core: ["fishing", "shopping", "reading", "computer games", "listening to music"]
+    vocabulary_stretch: ["pastimes", "beneficial"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lạm dụng từ nối đơn giản, thiếu từ vựng miêu tả cảm xúc về sở thích (như 'fascinating' hay 'enthralling')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh sử dụng từ vựng chuyên biệt về chủ đề (collocations) và các tính từ mô tả đa dạng."
+    grammar_required: ["Complex sentences", "Relative clauses", "Adverbial modifiers"]
+    vocabulary_core: ["star-gazing", "embroidery", "patchwork quilting"]
+    vocabulary_stretch: ["enthralling", "tranquil", "monotonous", "challenging"]
+    sentence_length_target: "Varied sentence structures with descriptive modifiers"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like to do in your free time?"
+    user_model_answer: "In my free time, I like playing computer games and shopping with my friends. I also like listening to music because it is relaxing."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you like to do in your free time?"
+    user_model_answer: "I’m quite keen on outdoor pastimes like countryside walks and photography. I find them very tranquil compared to my busy work schedule, though I do enjoy some indoor activities like reading novels when the weather is bad."

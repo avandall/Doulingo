@@ -1,0 +1,30 @@
+content_unit:
+  template_type: scenario
+  title: "Technology — Warm-up Questions and Vocabulary"
+  topic_tags: ["Technology", "Communication", "Internet"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, WARM-UP"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to answer basic questions about personal habits using simple sentence structures. Vocabulary is limited to common, everyday tech terms."
+    grammar_required: 
+      - Present Simple for habits
+      - Present Perfect for duration (e.g., How long have you...?)
+    vocabulary_core: ["mobile phone", "laptop", "Internet", "text messaging", "e-mail"]
+    vocabulary_stretch: ["user-friendly", "cutting-edge"]
+    sentence_length_target: "Short to medium, simple coordination"
+    common_errors_to_simulate: "Overusing simple verbs like 'use' or 'have' instead of more precise collocations (e.g., 'access a database', 'surf the net')."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you mostly use your mobile phone for?"
+    user_model_answer: "I mostly use it for text messaging and calling my friends. Sometimes I use it to take photos of my family."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How do you prefer to stay in touch with your friends and family?"
+    user_model_answer: "I prefer to use instant messaging apps because they are very user-friendly. It allows me to send messages and photos quickly, which is much more convenient than using a landline."

@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: Hobbies and Free Time — IELTS Speaking Part 3
+  topic_tags:
+  - Hobbies
+  - Free Time
+  - Lifestyle
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS, Audio scripts 113-115
+band_tiers:
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to provide extended, structured responses using complex
+    vocabulary and nuanced arguments.
+  grammar_required:
+  - Present Perfect
+  - Complex sentences with connectors (although, however, having said that)
+  vocabulary_core:
+  - sedentary
+  - exhilarating
+  - obsessed
+  - constructive
+  - downtime
+  vocabulary_stretch:
+  - lethargic
+  - labour-saving
+  - irony
+  - indulge
+  - acquaintances
+  sentence_length_target: long and complex
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do you think men and women tend to have different types of hobbies?
+  user_model_answer: Yes, I do. The men I know have sports as hobbies. The women usually
+    enjoy more sedentary and peaceful hobbies, like reading or crafts. Having said
+    that, there are of course women who love exhilarating hobbies or are fanatical
+    about cycling or something. And there are men who take up pottery or sewing. There
+    are always exceptions to every rule.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do you think it can be a disadvantage to have too much free time?
+  user_model_answer: Well, they say that the devil makes work for idle hands and I
+    think it's true that the less you have to do the less active you become and the
+    more time you waste. People who have too much time to spare tend to become lazy
+    and lethargic. People who are always on the go, on the other hand, think nothing
+    of fitting one more thing into their busy schedules.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do people have more free time now than in the past?
+  user_model_answer: It's a strange irony that although we now have so many labour-saving
+    devices such as washing machines and dishwashers, we feel we have less free time.
+    Many of my acquaintances are always complaining that they are too busy. But actually
+    I think our ancestors had less free time than us. The average worker hardly ever
+    got any time off and worked six or seven days a week.

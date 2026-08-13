@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Part 3: Asking for clarification and giving yourself thinking time"
+  topic_tags: [food, diet, exam_strategies, interaction]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Part 3: Asking for clarification and giving yourself thinking time"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidates can provide relevant answers but may struggle with spontaneous filler phrases or clarifying complex questions without hesitation."
+    grammar_required: [complex_sentences, modal_verbs_for_speculation]
+    vocabulary_core: [balanced_diet, dietary_supplements, nutrients, processed_food]
+    vocabulary_stretch: [compulsory, artificial, famine, environmental_factors]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Repeating the examiner's question verbatim instead of using natural paraphrasing or hesitation strategies."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidates use a wide range of connective phrases, thinking time fillers, and clarification strategies effectively to maintain flow."
+    grammar_required: [concession_clauses, hypothetical_conditionals]
+    vocabulary_core: [nutritional_value, sustainable_practices, intensive_farming]
+    vocabulary_stretch: [nutritional_deficiency, mass_production, dietary_regime]
+    sentence_length_target: "long_complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think children should be taught how to cook at school?"
+    user_model_answer: "That's an interesting question. I think yes, because unfortunately not all parents have time to teach their children to cook, so they should have classes in food and nutrition at school."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Why do you think there are now more people who have an allergic reaction to some foods?"
+    user_model_answer: "Could you clarify what you mean by 'allergic reaction'? Do you mean specific food allergies or general intolerances? If it's about the rise in cases, I'd say it's likely due to environmental factors—there's so much more pollution now, affecting the air we breathe and the water we drink."

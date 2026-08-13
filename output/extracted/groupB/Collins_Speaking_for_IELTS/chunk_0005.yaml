@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Expressing Opinions and Speaking Exam Techniques"
+  topic_tags: [opinion, health, fitness, studies, work]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 2 & 3"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses basic phrases like 'I think'. Often relies on repetitive vocabulary and struggles to connect ideas smoothly. Frequently uses isolated words."
+    grammar_required: [simple_present, past_simple]
+    vocabulary_core: [opinion_markers, basic_collocations]
+    vocabulary_stretch: [controversial_opinion_phrases]
+    sentence_length_target: "short_to_medium"
+    common_errors_to_simulate: "Overusing 'I think', lack of variety in opinion markers, failing to use collocations, sounding monotonous (bored)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of opinion markers (e.g., 'I'm convinced that', 'As far as I'm concerned'). Employs natural collocations to sound fluent. Uses effective planning for Part 2."
+    grammar_required: [complex_sentences, modal_verbs_for_speculation]
+    vocabulary_core: [academic_collocations, topic_specific_vocabulary]
+    vocabulary_stretch: [idiomatic_expressions, nuanced_discourse_markers]
+    sentence_length_target: "varied_and_complex"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think the government should tax people who are unfit to help pay for their health care?"
+    user_model_answer: "I think it is a bad idea. If you ask me, people should choose what they do with their body. Taxing them is not fair."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think the government should tax people who are unfit to help pay for their health care?"
+    user_model_answer: "As far as I'm concerned, that’s a controversial policy. I'm not convinced that would work because fitness is complex, but I do believe that the government has a duty to encourage people to lead healthy lives through education rather than punishment."

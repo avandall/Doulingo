@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Strategy & Language Structures for Various Topics"
+  topic_tags: ["Hobby", "Activity", "Pastime", "Environment", "Career", "Education"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Sections on Hobby/Activity and Other Part Two Topics"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Describes topics using basic sentence structures, often relying on simple present or past. May struggle with complex vocabulary or conditional sentences."
+    grammar_required: ["Simple past", "Simple present"]
+    vocabulary_core: ["Activity", "Enjoy", "School", "Teacher", "Animal"]
+    vocabulary_stretch: ["Amuse oneself", "Role-play", "On and off"]
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Confusing present and past tenses; repeating simple connectors like 'and' or 'so'; difficulty explaining 'why' due to limited vocabulary."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a mix of tenses (past, present, conditional) accurately. Demonstrates ability to use specific, topic-related terminology and complex structures to expand on ideas for 2 minutes."
+    grammar_required: 
+      - Conditional structures (I would...)
+      - Present perfect
+      - Used to/Would for past habits
+    vocabulary_core: ["Invigorating", "Endangered species", "National symbol"]
+    vocabulary_stretch: ["Exhaust emissions", "Reverse climate change", "Natural habitat"]
+    sentence_length_target: "Complex, compound-complex sentences with logical markers"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe an environmental problem in your country."
+    user_model_answer: "Air pollution is a big problem. It makes people sick. We have many cars and the smoke goes in the air. I hope we stop it soon."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe an environmental problem in your country."
+    user_model_answer: "One of the most pressing issues is air pollution, particularly from car exhaust fumes in urban areas. This problem has been escalating since the 1970s as vehicle ownership surged. If we don't implement stricter international agreements and find sustainable solutions soon, the long-term impact on climate change could be irreversible."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe your ideal job."
+    user_model_answer: "I guess my dream job would be something like a freelance travel journalist. It would allow me to visit remote locations and I would have the opportunity to document diverse cultures. It might even be possible for me to turn my passion for photography into a career."

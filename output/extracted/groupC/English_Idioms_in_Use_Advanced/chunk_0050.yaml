@@ -1,0 +1,127 @@
+vocabulary_entry:
+  topic_tags:
+  - life
+  - experiences
+  - feelings
+  - emotions
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: have the time of your life
+    meaning: enjoyed ourselves very much
+    example: We had the time of our life!
+    band_suitability: 7.0+
+    register: informal
+  - term: get the shock of your life
+    meaning: was very shocked
+    example: I got the shock of my life!
+    band_suitability: 7.0+
+    register: informal
+  - term: scare the life out of someone
+    meaning: frighten someone very much
+    example: That'd scare the life out of me.
+    band_suitability: 7.0+
+    register: informal
+  - term: risk life and limb
+    meaning: do something physically dangerous
+    example: There's no way I'd risk life and limb like that.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the life and soul of the party
+    meaning: was the centre of attention
+    example: He was the life and soul of the party.
+    band_suitability: 7.0+
+    register: neutral
+  - term: come within an inch of your life
+    meaning: nearly died
+    example: He claims he came within an inch of his life doing it!
+    band_suitability: 8.0+
+    register: informal
+  - term: a new lease of life
+    meaning: become more energetic and active; can also be used to describe objects
+      or places as seeming like new again
+    example: Still, we both feel we've got a new lease of life.
+    band_suitability: 8.0+
+    register: neutral
+  - term: see life
+    meaning: experience different, often unexpected things
+    example: I'd love to go travelling and see life!
+    band_suitability: 7.0+
+    register: informal
+  - term: make someone's life a misery
+    meaning: make things difficult for someone, e.g. by talking about something all
+      the time
+    example: I'm going to make my husband's life a misery until he agrees that we
+      can go to Canada.
+    band_suitability: 7.0+
+    register: informal
+  - term: a quiet life
+    meaning: agree to anything to avoid problems
+    example: He'd do anything for a quiet life!
+    band_suitability: 7.0+
+    register: neutral
+  - term: be/live in a dream world
+    meaning: has unrealistic hopes (usually used in continuous form)
+    example: He's living in a dream world if he thinks he'll become a famous pop star.
+    band_suitability: 7.0+
+    register: neutral
+  - term: live a charmed life
+    meaning: been very lucky in life
+    example: James has lived a charmed life; everything he does works out well.
+    band_suitability: 8.0+
+    register: neutral
+  - term: live a lie
+    meaning: living dishonestly by pretending to be something that is not true
+    example: You must tell her you're married - you can't go on living a lie.
+    band_suitability: 7.0+
+    register: neutral
+  - term: live out of a suitcase
+    meaning: not having a permanent place to live
+    example: After a month sleeping on a friend's floor, Becky is tired of living
+      out of a suitcase.
+    band_suitability: 7.0+
+    register: neutral
+  - term: live on borrowed time
+    meaning: existing longer than expected
+    example: The government is living on borrowed time at the moment and is unlikely
+      to survive the next election.
+    band_suitability: 8.0+
+    register: neutral
+  - term: live to tell the tale
+    meaning: successfully dealt with a difficult or frightening experience
+    example: Our walking holiday was awful!... But at least we lived to tell the tale.
+    band_suitability: 8.0+
+    register: neutral
+  - term: live and let live
+    meaning: accept how others live and behave, even though it is different from your
+      way of life
+    example: I wouldn't want to have as many pets as they do but, hey, live and let
+      live!
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

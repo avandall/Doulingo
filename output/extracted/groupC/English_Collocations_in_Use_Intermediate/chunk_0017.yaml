@@ -1,0 +1,156 @@
+vocabulary_entry:
+  topic_tags:
+  - relationships
+  - love
+  - romance
+  - housing
+  - homes
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 20 & 21
+  entries:
+  - term: fall madly in love
+    meaning: to fall deeply and passionately in love with someone
+    example: I fell madly in love with Anton from the moment I met him.
+    band_suitability: 7.0+
+    register: neutral
+  - term: love at first sight
+    meaning: romantic attraction immediately upon first meeting someone
+    example: It was certainly love at first sight.
+    band_suitability: 6.0+
+    register: neutral
+  - term: love of my life
+    meaning: the person whom you love the most in your life
+    example: I knew at once that he was the love of my life.
+    band_suitability: 6.0+
+    register: neutral
+  - term: desperately in love
+    meaning: in love to an intense or overwhelming degree
+    example: He had told me that he was desperately in love with me too.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make a commitment
+    meaning: to promise to support someone or stay in a relationship
+    example: We realised that we wanted to make a commitment to each other.
+    band_suitability: 6.0+
+    register: formal
+  - term: accept someone's proposal
+    meaning: to say yes to an offer of marriage
+    example: When Anton asked me to marry him, I immediately accepted his proposal.
+    band_suitability: 6.0+
+    register: neutral
+  - term: love each other unconditionally
+    meaning: to love completely without any limitations or conditions
+    example: I’m sure we will always love each other unconditionally.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have an affair
+    meaning: to have a secret sexual relationship outside of marriage
+    example: Neither of us would ever consider having an affair with someone else.
+    band_suitability: 6.0+
+    register: neutral
+  - term: spacious accommodation
+    meaning: a place to live that has plenty of space
+    example: Spacious accommodation, fully-fitted kitchen.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fully-fitted kitchen
+    meaning: a kitchen equipped with modern appliances and units
+    example: Spacious accommodation, fully-fitted kitchen.
+    band_suitability: 7.0+
+    register: neutral
+  - term: off-road parking
+    meaning: a designated area to park a vehicle away from the public road
+    example: Off-road parking.
+    band_suitability: 6.0+
+    register: neutral
+  - term: dream home
+    meaning: the house or flat that you consider ideal or perfect
+    example: Luke and I have just moved into our dream home.
+    band_suitability: 6.0+
+    register: neutral
+  - term: spacious living room
+    meaning: a large and comfortable room for relaxing in
+    example: It’s got a spacious living room which has a wonderful view of the park.
+    band_suitability: 6.0+
+    register: neutral
+  - term: cosy study
+    meaning: a small, warm, and comfortable room used for working or reading
+    example: And a cosy study where we can both work.
+    band_suitability: 6.0+
+    register: neutral
+  - term: light, airy bedrooms
+    meaning: bedrooms with plenty of natural light and fresh air
+    example: And there are some lovely light, airy bedrooms which overlook the garden.
+    band_suitability: 7.0+
+    register: neutral
+  - term: basement flat
+    meaning: an apartment located on the floor partly or entirely below ground level
+    example: There is a separate basement flat.
+    band_suitability: 6.0+
+    register: neutral
+  - term: granny flat
+    meaning: a small self-contained apartment attached or close to a main family house
+    example: We might turn into a granny flat for my mother.
+    band_suitability: 7.0+
+    register: neutral
+  - term: build an extension
+    meaning: to add an extra room or part onto an existing building
+    example: If we want to add an extension there’s room for that too.
+    band_suitability: 7.0+
+    register: neutral
+  - term: do up an old house
+    meaning: to repair, repaint, and decorate an old house
+    example: Luke and I have always wanted to do up an old house.
+    band_suitability: 7.0+
+    register: informal
+  - term: house-warming party
+    meaning: a party thrown to celebrate moving into a new home
+    example: I hope you’ll invite me to your house-warming party.
+    band_suitability: 6.0+
+    register: neutral
+  - term: feel homesick
+    meaning: to feel sad because you are away from home
+    example: Moving away from her family made her feel homesick.
+    band_suitability: 6.0+
+    register: neutral
+  - term: welcome someone home
+    meaning: to greet someone warmly upon their return home
+    example: His family are throwing a party to welcome him home.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make yourself at home
+    meaning: to relax and make yourself comfortable in someone else's home
+    example: Come in and make yourself at home while I finish getting dinner ready.
+    band_suitability: 6.0+
+    register: neutral
+  - term: second home
+    meaning: a house used only for weekends, holidays, etc.
+    example: I’d like to buy a second home near the coast.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

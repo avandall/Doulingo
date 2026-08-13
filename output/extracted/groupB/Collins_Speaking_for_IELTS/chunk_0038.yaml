@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1, 2 & 3 — Sample Responses and Topics"
+  topic_tags: [Living, Animals, Food, Achievements]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio scripts 127-129"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses a range of topic-specific vocabulary (e.g., 'culinary traditions', 'national stereotype', 'venomous') and natural, cohesive devices. Able to explain personal opinions and justify reasons with varied sentence structures."
+    grammar_required: 
+      - "Inversion (e.g., 'Only once did I win')"
+      - Conditional sentences
+      - Present perfect for past experience
+    vocabulary_core: [lively, entertainment, phobia, venomous, environment, culinary, stereotype]
+    vocabulary_stretch: [erratic, enthusiastic, ingredient, tournament, opponent]
+    sentence_length_target: "Complex, compound-complex sentences with logical connectors."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is your favourite animal?"
+    user_model_answer: "My favourite animal is the cat. I love cats because they're a lot of fun, very playful, but also seem to have a bit of character. So, it's always quite amusing to try to play with your cat."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Are there any animals you are scared of?"
+    user_model_answer: "I have a phobia of snakes. I reckon it's because of the way the creature looks and they can also be venomous. They're aggressive so if they bite you, you can get very badly hurt. Spiders are another animal I'm terrified of; I hate the fast, erratic way they move."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do people in your country or region eat traditional food or international food?"
+    user_model_answer: "We eat both. I regard it as very important to keep culinary traditions alive, but I also love Chinese food and Japanese food and Indian food, and loads of other cuisines. I like having variety in my diet."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a personal achievement you are proud of."
+    user_model_answer: "Only once did I win my village tennis tournament. It was when I was fifteen years old. It was particularly difficult because, to be honest, I'm not a great tennis player and I always played mainly to have fun and not really to win. But that one year I decided... I made it my goal: I was going to win the village tennis tournament."

@@ -1,0 +1,185 @@
+vocabulary_entry:
+  topic_tags:
+  - appearance
+  - physical description
+  - people
+  - family
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 18
+  entries:
+  - term: round face
+    meaning: a face shaped somewhat like a circle
+    example: My father has a round face and a droopy moustache.
+    band_suitability: 6.0+
+    register: neutral
+  - term: droopy moustache
+    meaning: a mustache that hangs down heavily
+    example: My father has a round face and a droopy moustache.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pointed face
+    meaning: a face that comes to a relatively sharp point at the chin
+    example: My mother has a more pointed face and a straight nose.
+    band_suitability: 7.0+
+    register: neutral
+  - term: straight nose
+    meaning: a nose that does not curve or bend
+    example: My mother has a more pointed face and a straight nose.
+    band_suitability: 6.0+
+    register: neutral
+  - term: oval face
+    meaning: a face shaped like an egg, narrower at the base
+    example: She has an oval face and an upturned nose.
+    band_suitability: 7.0+
+    register: neutral
+  - term: upturned nose
+    meaning: a nose that points slightly upwards at the tip
+    example: She has an oval face and an upturned nose.
+    band_suitability: 7.0+
+    register: neutral
+  - term: slim figure
+    meaning: an attractively thin body shape
+    example: She has a slim figure and a slender waist.
+    band_suitability: 6.0+
+    register: neutral
+  - term: slender waist
+    meaning: an attractively thin waist
+    example: She has a slim figure and a slender waist.
+    band_suitability: 7.0+
+    register: formal
+  - term: lovely complexion
+    meaning: the attractive natural color and smooth quality of a person's skin
+    example: She has a lovely complexion and beautiful sleek hair.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sleek hair
+    meaning: smooth and shiny hair
+    example: She has a lovely complexion and beautiful sleek, shoulder-length hair.
+    band_suitability: 7.0+
+    register: neutral
+  - term: immaculately groomed
+    meaning: appearing extremely tidy and cared for with great attention to detail
+    example: she's always immaculately groomed.
+    band_suitability: 8.0+
+    register: neutral
+  - term: coarse hair
+    meaning: rough hair that is not smooth or soft
+    example: I've got coarse hair and rather broad hips.
+    band_suitability: 7.0+
+    register: neutral
+  - term: broad hips
+    meaning: wide hips
+    example: I've got coarse hair and rather broad hips.
+    band_suitability: 6.0+
+    register: neutral
+  - term: well-built
+    meaning: having a strong, attractive, muscular body
+    example: My father and my two older brothers are all well-built with broad shoulders.
+    band_suitability: 6.0+
+    register: neutral
+  - term: broad shoulders
+    meaning: wide shoulders, usually indicating physical strength in men
+    example: My father and my two older brothers are all well-built with broad shoulders.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go bald
+    meaning: to lose the hair on one's head
+    example: My father is going bald but he still has a very youthful appearance.
+    band_suitability: 6.0+
+    register: neutral
+  - term: youthful appearance
+    meaning: looking young for one's actual age
+    example: he still has a very youthful appearance for someone who is over forty.
+    band_suitability: 7.0+
+    register: neutral
+  - term: thick hair
+    meaning: having a dense amount of hair growing on the scalp
+    example: My brothers both have thick hair and bushy eyebrows.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bushy eyebrows
+    meaning: very thick eyebrows
+    example: My brothers both have thick hair and bushy eyebrows.
+    band_suitability: 7.0+
+    register: neutral
+  - term: chubby cheeks
+    meaning: cheeks that are pleasantly and attractively plump or fat
+    example: he's very cute, with chubby cheeks.
+    band_suitability: 6.0+
+    register: neutral
+  - term: jet-black hair
+    meaning: completely and darkly black hair
+    example: in fact my mother had jet-black hair when she was younger.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go grey
+    meaning: to have hair turning grey due to age
+    example: before she went grey
+    band_suitability: 6.0+
+    register: neutral
+  - term: fair hair
+    meaning: light-colored or blonde hair
+    example: some have fair hair and some have ginger hair.
+    band_suitability: 6.0+
+    register: neutral
+  - term: ginger hair
+    meaning: red or orange-brown colored hair
+    example: some have fair hair and some have ginger hair.
+    band_suitability: 6.0+
+    register: neutral
+  - term: short, dumpy woman
+    meaning: a woman who is short and quite fat (slightly negative)
+    example: A short, dumpy woman was selling flowers at a stall.
+    band_suitability: 7.0+
+    register: informal
+  - term: portly gentleman
+    meaning: a middle-aged or older man who is somewhat fat and round
+    example: A portly gentleman answered the door.
+    band_suitability: 8.0+
+    register: formal
+  - term: lanky youth
+    meaning: a tall, thin young person who tends to move awkwardly
+    example: A lanky youth was standing at the street corner.
+    band_suitability: 8.0+
+    register: neutral
+  - term: dishevelled hair
+    meaning: very untidy hair
+    example: I wouldn’t like people to see me with dishevelled hair and dirty clothes.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bear a striking resemblance
+    meaning: to look remarkably like someone else
+    example: He bears a striking resemblance to his father.
+    band_suitability: 8.0+
+    register: formal
+  - term: striking appearance
+    meaning: an unusual and noticeably attractive appearance
+    example: The lady who entered the room had a very striking appearance.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,137 @@
+vocabulary_entry:
+  topic_tags:
+  - decision_making
+  - opinions
+  - feelings
+  - praise_and_criticism
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 57-60
+  entries:
+  - term: unanimous decision
+    meaning: a decision that everyone agrees on
+    example: Yes, I’m glad it was a unanimous decision.
+    band_suitability: 6.0+
+    register: neutral
+  - term: reserve judgement
+    meaning: to delay giving an opinion until you know more
+    example: Yes, I think it’s best if we all reserve judgement till we see the results.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have second thoughts
+    meaning: to start having doubts about a decision you have made
+    example: Mm, it’s obvious you’re having second thoughts.
+    band_suitability: 6.0+
+    register: neutral
+  - term: leaked document
+    meaning: an official document that has been made public unofficially
+    example: leaked document
+    band_suitability: 7.0+
+    register: neutral
+  - term: long-running battle
+    meaning: a conflict or dispute that has continued for a long time
+    example: long-running battle
+    band_suitability: 7.0+
+    register: neutral
+  - term: heavy hints
+    meaning: strong, obvious suggestions about something
+    example: heavy/broad hints
+    band_suitability: 7.0+
+    register: neutral
+  - term: issue a statement
+    meaning: to make an official statement publicly
+    example: issue a statement
+    band_suitability: 7.0+
+    register: formal
+  - term: serious allegations
+    meaning: formal statements claiming someone has done something wrong
+    example: serious allegations
+    band_suitability: 7.0+
+    register: formal
+  - term: disclaim responsibility
+    meaning: to state publicly that you are not responsible for something
+    example: We disclaim responsibility for valuables that are not left in the hotel
+      safe.
+    band_suitability: 8.0+
+    register: formal
+  - term: unfounded claims
+    meaning: claims that have no basis in fact
+    example: The pop star insisted that the claims made against him were unfounded.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put forward a theory
+    meaning: to suggest or offer a theory for consideration
+    example: In her new book the writer puts forward an interesting theory of art.
+    band_suitability: 7.0+
+    register: neutral
+  - term: back up a theory
+    meaning: to support or prove a theory with evidence
+    example: Recent research backs up McIntyre’s theory.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strong preference
+    meaning: a great liking for one thing over another
+    example: In the survey most people expressed a clear/strong preference for coffee
+      rather than tea.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strong aversion
+    meaning: a strong dislike or opposition to something
+    example: Karl has a huge/strong aversion to people using mobile phones in restaurants.
+    band_suitability: 8.0+
+    register: formal
+  - term: highest regard
+    meaning: a high level of respect for someone
+    example: The staff all have the highest/greatest regard for their managing director.
+    band_suitability: 7.0+
+    register: formal
+  - term: deep-rooted hatred
+    meaning: a strong feeling of hatred that has existed for a long time
+    example: My parents have a deep/deep-rooted hatred for most modern architecture.
+    band_suitability: 8.0+
+    register: neutral
+  - term: take an instant dislike
+    meaning: to dislike someone or something immediately
+    example: Rex took an instant dislike to his new flatmate.
+    band_suitability: 7.0+
+    register: neutral
+  - term: thunderous applause
+    meaning: very loud and enthusiastic clapping
+    example: thunderous
+    band_suitability: 7.0+
+    register: neutral
+  - term: come in for criticism
+    meaning: to receive criticism
+    example: He came in for a lot of criticism.
+    band_suitability: 7.0+
+    register: neutral
+  - term: universal condemnation
+    meaning: criticism and disapproval from everyone
+    example: His comments received universal condemnation.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

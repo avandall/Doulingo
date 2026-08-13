@@ -1,0 +1,112 @@
+vocabulary_entry:
+  topic_tags:
+  - education
+  - health
+  - sports
+  - lifestyle
+  - work
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: do your best
+    meaning: to try as hard as you can
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: do a course
+    meaning: to study a series of lessons to learn a subject
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: do research
+    meaning: to study a subject carefully to discover new information
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: balanced diet
+    meaning: a diet containing a healthy mix of different types of food
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: different walks of life
+    meaning: various levels of social position or types of employment
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: earn a good salary
+    meaning: to receive a high amount of money for working
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: higher education
+    meaning: education at a college or university where subjects are studied at an
+      advanced level
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: enrol on a course
+    meaning: to officially register for a course of study
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: protect the environment
+    meaning: to keep the natural world safe from damage or harm
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: eradicate poverty
+    meaning: to completely get rid of poverty
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: dismal failure
+    meaning: a complete and absolute failure
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: bitterly disappointed
+    meaning: extremely and deeply disappointed
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: heavy rain
+    meaning: rain that falls in large amounts or with great force
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: economic boom
+    meaning: a period of sudden economic growth
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: enhance performance
+    meaning: to improve the quality or standard of how someone performs
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

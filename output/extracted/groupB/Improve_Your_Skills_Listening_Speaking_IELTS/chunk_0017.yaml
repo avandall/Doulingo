@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Planning your talk in Part 2: Structuring responses"
+  topic_tags: ["IELTS Speaking Part 2", "Planning", "Narrative"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Planning your talk in Part 2"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can provide a basic narrative but often lacks structure. Tends to struggle with time management and organization in Part 2."
+    grammar_required: 
+      - Simple past tense for narratives
+      - Basic linking words (first, then)
+    vocabulary_core: ["possession", "lost", "important", "shop", "police"]
+    vocabulary_stretch: ["precautions", "struggle", "realize"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of signposting; forgetting to address all bullet points; pausing excessively because of no notes."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a clear structure (past narrative + future reflection). Effectively uses key words to manage talk time."
+    grammar_required: 
+      - Narrative tenses (past perfect, past continuous)
+      - Future forms for speculation
+    vocabulary_core: ["significant", "valuable", "frustrating", "take precautions"]
+    vocabulary_stretch: ["sentimentally attached", "negligence", "retrace my steps"]
+    sentence_length_target: "Varied; use of complex sentences with cohesive devices"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Describe an important possession that you lost. You should say what it was, where you lost it, what efforts you made to find it, and why it was important."
+    user_model_answer: "Well, I should say first that I lost my handbag. It happened in a shop. To find it, I first went back to the shop, then I checked with the police and looked in the newspaper. Looking back, I realize that it was a very bad day. After that, I bought a new bag. In future I won't be so careless."

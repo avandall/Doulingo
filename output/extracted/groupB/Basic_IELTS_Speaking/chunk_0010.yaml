@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: Giving short answers — Basic IELTS Speaking
+  topic_tags:
+  - Study
+  - Travel
+  - Speaking Techniques
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Basic_IELTS_Speaking, Giving short answers
+band_tiers:
+- band_min: 5.0
+  band_max: 5.5
+  can_do_description: Candidate provides one-word or overly simplistic answers. Lacks
+    ability to elaborate, resulting in minimal demonstration of English proficiency.
+  grammar_required:
+  - Present Simple
+  - Past Simple (basic)
+  vocabulary_core:
+  - Yes/No
+  - Basic noun/verb
+  vocabulary_stretch: []
+  sentence_length_target: 1-3 words
+  common_errors_to_simulate: Giving one-word answers; failing to provide reasons or
+    examples; short, fragmented sentences.
+- band_min: 6.5
+  band_max: 7.0
+  can_do_description: Candidate provides complete sentences, elaborates on ideas,
+    and uses conversational fillers to maintain fluency.
+  grammar_required:
+  - Complex sentence structures
+  - Subordinate clauses (because, although, while)
+  vocabulary_core:
+  - memorise
+  - communicate
+  - difficult
+  - shy
+  vocabulary_stretch:
+  - I would say
+  - That's an interesting question
+  sentence_length_target: 3-4 clauses per answer
+sample_dialogues:
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: What do you find most difficult in your studies?
+  user_model_answer: English. It was very enjoyable and informative.
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: Have you done much travelling in your life?
+  user_model_answer: Yes, I travelled a lot.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: What do you find most difficult in your studies?
+  user_model_answer: I would say, English. It is very hard for me to memorise new
+    words and I am too shy to speak out in class. It has always been difficult for
+    me to communicate in English while my classmates are doing a lot better.

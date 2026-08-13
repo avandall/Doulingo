@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: "Achievements and Workplace Motivation — Band 7-8 Speaking Analysis"
+  topic_tags: ["Achievements", "Workplace", "Motivation", "Education"]
+  target_band_min: 7.0
+  target_band_max: 8.5
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio scripts"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.5
+    can_do_description: "Demonstrates ability to provide extended, thoughtful answers. Uses complex linguistic structures (inversion, modal verbs for speculation, relative clauses) and nuanced vocabulary to express opinions on abstract topics."
+    grammar_required: 
+      - "Third conditional / Mixed conditionals"
+      - "Modal verbs for speculation (would, might, may)"
+      - "Inversion (e.g., 'not only... but...')"
+    vocabulary_core: ["intrinsic motivation", "academic success", "lucrative", "prominent"]
+    vocabulary_stretch: ["hanker after", "shy away from", "personally speaking", "have something invested in"]
+    sentence_length_target: "Longer, compound-complex sentences with logical connectors (nevertheless, whereas, although)."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "In your opinion, is it recognition and prizes that motivate students to succeed, or is it a personal sense of achievement?"
+    user_model_answer: "I would say they hanker after recognition from their teachers and perhaps envy from other students. I know that was the case with me, if I'm honest! It may be, though, that if someone is particularly timid, they would actually shy away from any special recognition of their efforts."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think people in your country take the same pride in their work as they used to?"
+    user_model_answer: "Hmm, that's a tough question. I'm inclined to say 'no'. Because many people in my country now work for huge companies. They may never even have seen their managing director. In the past, companies were not only smaller but tended to be family run, so everyone had something invested, I mean personally speaking, in the business."

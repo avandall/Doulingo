@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Part 2 — Holiday or Trip (Band 9 Analysis)
+  topic_tags:
+  - Travel
+  - Holiday
+  - Memorable event
+  target_band_min: 8.5
+  target_band_max: 9.0
+  register: formal
+  source_citation: Get_IELTS_Band_9_Speaking.md, Band 9 example of Part 2 speaking
+band_tiers:
+- band_min: 9.0
+  band_max: 9.0
+  can_do_description: The candidate provides a fully developed response, covering
+    all bullet points naturally. Demonstrates sophisticated discourse markers, extensive
+    vocabulary, and grammatical complexity.
+  grammar_required:
+  - Complex sentence structures
+  - Varied past tenses
+  - Subordinate clauses
+  vocabulary_core:
+  - panoramic view
+  - eventful experience
+  - marks the end of our studies
+  vocabulary_stretch:
+  - tricky
+  - refreshments
+  - show off
+  - end of an era
+  - stays in my memory
+  sentence_length_target: Long and varied, using natural pauses and connecting phrases.
+sample_dialogues:
+- band_level: 9.0
+  turn_type: standalone
+  ai_line: 'Describe a holiday or trip you remember well. You should say: where you
+    went, what you did, who you went with, and explain why you remember it so well.'
+  user_model_answer: I'm going to talk about a trip that I remember very well, which
+    was a holiday in Paris... In fact, at that time I was eleven years old, and I
+    had just finished my primary school education... we quickly saw all the most important
+    tourist sights such as the Eiffel Tower... which gave us an amazing panoramic
+    view... Personally, I found those evenings just as interesting as the big tourist
+    attractions... I went with a group of classmates, in particular my best friend...
+    I remember it well for lots of reasons. Firstly, it was the end of an era in my
+    life... So, all in all, it was a very eventful experience, and that's why it stays
+    in my memory so clearly.

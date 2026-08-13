@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "People and Places — Grammar and Clarification Strategies"
+  topic_tags: ["People", "Places", "Grammar", "Speaking Strategies"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 9 & 10"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to communicate basic ideas but often uses simple sentence structures and active voice. May struggle to paraphrase accurately, leading to repetition or imprecise vocabulary."
+    grammar_required: 
+      - Simple active voice
+      - Basic passive (be + past participle)
+    vocabulary_core: ["Simple adjectives to describe places/lifestyle", "Common nouns"]
+    vocabulary_stretch: ["basic synonyms for common words"]
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Overusing active voice ('People say...'), inability to use paraphrasing markers (e.g., 'What I mean is...'), repetitive vocabulary."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Effectively uses passive constructions to introduce arguments and opinions. Demonstrates strong paraphrasing skills and the ability to clarify points accurately using complex discourse markers."
+    grammar_required: 
+      - Passive voice for impersonal opinions (It is argued that...)
+      - Causative structure (have/get something done)
+      - Complex sentence structures
+    vocabulary_core: ["Academic and topic-specific vocabulary", "Precise synonyms"]
+    vocabulary_stretch: 
+      - "Discourse markers for reformulation (e.g., 'In other words', 'More accurately')"
+    sentence_length_target: "Complex and varied"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you think about city life?"
+    user_model_answer: "I think cities are dangerous. People say they are bad. I prefer the country lifestyle."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think about city life?"
+    user_model_answer: "It is often argued that cities are dangerous places, but I think that if you're streetwise that needn't be the case. In other words, your personal safety depends more on your awareness than the location itself."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Tell me about your living situation."
+    user_model_answer: "My house is a bit small. What I mean is that it is too small for our family, because there are so many of us. I'm actually having an extension built by a local contractor next month to solve this."

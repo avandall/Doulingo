@@ -1,0 +1,104 @@
+vocabulary_entry:
+  topic_tags:
+  - technology
+  - computers
+  - security
+  - study
+  - education
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 27 & 28
+  entries:
+  - term: install anti-virus software
+    meaning: to put anti-virus programs onto a computer to protect it
+    example: Make sure you install anti-virus software.
+    band_suitability: 6.0+
+    register: neutral
+  - term: block spam
+    meaning: to stop unwanted or junk emails from reaching your inbox
+    example: Some anti-virus products will also help to block spam.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hack into a computer
+    meaning: to get into a computer system illegally
+    example: This could allow someone to hack into your computer and steal personal
+      information.
+    band_suitability: 7.0+
+    register: neutral
+  - term: back up files
+    meaning: to make a copy of your files to ensure they are not lost
+    example: Always back up your files and any documents you are working on.
+    band_suitability: 6.0+
+    register: neutral
+  - term: cloud storage system
+    meaning: an online system used to store data over the internet
+    example: You can upload your files to a cloud storage system or use a memory stick.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sit an exam
+    meaning: to take an official test or examination
+    example: I have to sit/take an exam in biology at the end of term.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take an exam
+    meaning: to do an official test or examination
+    example: I have to sit/take an exam in biology at the end of term.
+    band_suitability: 6.0+
+    register: neutral
+  - term: conduct a research project
+    meaning: to organize and carry out a detailed study of a subject
+    example: Our class carried out / conducted a research project into the history
+      of our school.
+    band_suitability: 7.0+
+    register: formal
+  - term: enrol on a course
+    meaning: to officially register for a class or course of study
+    example: I decided to enrol on / take a course in computer programming.
+    band_suitability: 7.0+
+    register: neutral
+  - term: study for a degree
+    meaning: to spend time learning a subject at a university level to get a qualification
+    example: She studied for / took a degree in engineering.
+    band_suitability: 6.0+
+    register: neutral
+  - term: write an essay
+    meaning: to compose a piece of writing on a particular subject for school or university
+    example: All students have to write an essay/assignment at the end of term.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give a lecture
+    meaning: to deliver an educational talk to an audience, typically students
+    example: Professor Parkinson gave a lecture on the American Civil War.
+    band_suitability: 6.0+
+    register: neutral
+  - term: obtain a qualification
+    meaning: to gain an official official credential or certificate after successfully
+      completing a course or exam
+    example: You will need to obtain/acquire a qualification in social work.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

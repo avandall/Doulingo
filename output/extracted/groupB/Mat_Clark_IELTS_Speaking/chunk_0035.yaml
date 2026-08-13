@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3: Problem and Solution Structures"
+  topic_tags: [Part 3, Problem-Solution, Paraphrasing, Strategies]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Part Three Question Type 7 & Additional Tips"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on providing basic answers, often listing ideas. Likely to struggle with linking structures and may over-explain solutions when only asked for problems."
+    grammar_required: [Simple linking words]
+    vocabulary_core: [Basic nouns/verbs for common topics]
+    vocabulary_stretch: []
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Listing ideas without logical structure, failing to use linking phrases, giving solutions prematurely before being asked."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses structured logical progression (problem -> linking phrase -> solution). Demonstrates effective paraphrasing and uses complex language to explain vocabulary gaps (forget-explain-remember strategy)."
+    grammar_required: [Complex linking structures, varied sentence structures]
+    vocabulary_core: [Topic-specific lexis]
+    vocabulary_stretch: 
+      - Idiomatic expressions
+      - specific terminology (e.g., carbon monoxide)
+    sentence_length_target: "Medium to long, accurate and controlled"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How could these problems [associated with car use] be solved?"
+    user_model_answer: "In my view, there are a number of actions that could be taken. When dealing with the first problem, the easiest way to work it out would be to develop new technology for car engines which does not cause serious air pollution, maybe some special kind of exhaust filter. Taking on the second problem, the most successful way to confront this would be to invest heavily on research into alternative energy resources."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Can you describe the environmental impact of cars?"
+    user_model_answer: "An additional problem with cars is that they produce a lot of... err... I can’t remember the word, but it’s the gas that comes out of the car exhaust... oh yeah... carbon monoxide. That’s what I mean. Actually, I think this idea is best illustrated with the example of oil which is running out at an alarming rate."

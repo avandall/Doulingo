@@ -1,0 +1,144 @@
+vocabulary_entry:
+  topic_tags:
+  - work
+  - business
+  - career
+  - finance
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 29 & 30
+  entries:
+  - term: a cushy number
+    meaning: a job that is very easy
+    example: Clare's babysitting job is such a cushy number.
+    band_suitability: 7.0+
+    register: informal
+  - term: at the top of the ladder
+    meaning: in the highest position in an organisation
+    example: Lily's really at the top of the ladder now.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get a foot in the door
+    meaning: take a job at a low level in an organisation to get a better job there
+      in the future
+    example: I took the job at Linderhoffs to get a foot in the door.
+    band_suitability: 7.0+
+    register: neutral
+  - term: slog one's guts out
+    meaning: work very hard or use a lot of effort
+    example: I slogged my guts out for years in the water company.
+    band_suitability: 8.0+
+    register: informal
+  - term: a sleeping partner
+    meaning: a partner in a company who does not take an active part in management
+    example: He's just a sleeping partner.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a good track record
+    meaning: all the achievements or failures that someone or something has had in
+      the past
+    example: Erica has a good track record as a sales person.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a golden handshake
+    meaning: a large payment to someone when they leave their job
+    example: Did Charlie get a golden handshake when he left the company?
+    band_suitability: 8.0+
+    register: neutral
+  - term: a golden hello
+    meaning: a large payment made to someone when they accept a new job
+    example: She got a very generous golden hello when she started her first job.
+    band_suitability: 8.0+
+    register: neutral
+  - term: do a roaring trade
+    meaning: selling a lot of goods very quickly
+    example: Roaflex is doing a roaring trade.
+    band_suitability: 8.0+
+    register: informal
+  - term: corner the market
+    meaning: become so successful at selling a product that almost no one else can
+      sell it
+    example: They have effectively cornered the market in camping equipment.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go great guns
+    meaning: doing something very successfully
+    example: The company is going great guns.
+    band_suitability: 8.0+
+    register: informal
+  - term: go belly up
+    meaning: fail
+    example: More travel agents will go belly up if the recession continues.
+    band_suitability: 7.0+
+    register: informal
+  - term: go to the wall
+    meaning: be destroyed financially
+    example: Two major operators have already gone to the wall.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go bust
+    meaning: forced to close because of financial problems
+    example: Worldex went bust in February.
+    band_suitability: 7.0+
+    register: informal
+  - term: shut up shop
+    meaning: closing the business
+    example: We're shutting up shop. We can't compete any more.
+    band_suitability: 7.0+
+    register: informal
+  - term: the rat race
+    meaning: a way of life in which people compete with one another for power and
+      money
+    example: I'm getting out of the rat race and retiring to Spain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit a glass ceiling
+    meaning: a point after which you cannot progress in your career
+    example: I realise I've hit a glass ceiling and won't go any further.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a ballpark figure
+    meaning: an estimated price
+    example: What's a ballpark figure for replacing the office furniture?
+    band_suitability: 7.0+
+    register: neutral
+  - term: shoot / soar sky-high
+    meaning: rose dramatically
+    example: Oil prices shot sky-high last month.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take a nosedive
+    meaning: fell suddenly and quickly
+    example: The company's shares took a nosedive yesterday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: across the board
+    meaning: by people at every level / involving everyone
+    example: The impact of the reorganisation will be felt across the board.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

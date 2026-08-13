@@ -1,0 +1,42 @@
+content_unit:
+  template_type: band_ladder
+  title: "Nature and the Environment — Grammar for Speaking"
+  topic_tags: ["Weather", "Climate", "Nature"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Nature and the environment"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates often rely on simple sentences, which limits the ability to show complex relationships between ideas."
+    grammar_required: 
+      - "Simple sentences (e.g., 'It is hot.')"
+    vocabulary_core: ["hot", "cold", "wet", "dry", "rain", "sun"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, fragmented sentences"
+    common_errors_to_simulate: "Overusing simple sentences; failing to link causes and effects; lack of variety in sentence structure."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use complex grammatical structures like cleft sentences and subordinate clauses to emphasize information and demonstrate coherence."
+    grammar_required: 
+      - "Cleft sentences (e.g., 'What I like is...', 'It is... that...')"
+      - "Subordinate clauses (e.g., 'although', 'since', 'whereas')"
+    vocabulary_core: ["torrential rain", "humidity", "snowdrifts", "dehydrated", "mild"]
+    vocabulary_stretch: ["biting winds", "frozen to the bone", "soaked to the skin"]
+    sentence_length_target: "Complex, varied sentence structures"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you do when it's cold outside?"
+    user_model_answer: "I stay in. I watch my favourite films. It is cold outside."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you do when it's cold outside?"
+    user_model_answer: "What we tend to do is stay in and watch our favourite films, because it's usually too cold to go out."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Which season is your favourite?"
+    user_model_answer: "Well, what I like best are the transitions between the seasons, when you first feel the weather begin to change."

@@ -1,0 +1,293 @@
+vocabulary_entry:
+  topic_tags:
+  - weather
+  - travel
+  - landscape
+  - city
+  - environment
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 13-16
+  entries:
+  - term: freezing cold wind
+    meaning: a very cold wind
+    example: There’s a freezing cold / biting wind.
+    band_suitability: 6.0+
+    register: neutral
+  - term: biting wind
+    meaning: a wind that is extremely cold and makes you feel uncomfortable
+    example: There’s a freezing cold / biting wind.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pour with rain
+    meaning: to rain heavily
+    example: At least it’s not pouring with rain today.
+    band_suitability: 6.0+
+    register: neutral
+  - term: torrential rain
+    meaning: heavy rain that falls fast and in large amounts
+    example: We had such torrential rain yesterday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: soak up the sunshine
+    meaning: to enjoy the sun and let it warm you
+    example: I wish I was soaking up the sunshine on a Mediterranean beach.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dense fog
+    meaning: thick fog that is difficult to see through
+    example: It’s probably harder to drive if there is dense fog.
+    band_suitability: 6.0+
+    register: neutral
+  - term: patches of fog
+    meaning: small areas of fog
+    example: However, patches of fog can also be dangerous as you may unexpectedly
+      run into fog.
+    band_suitability: 7.0+
+    register: neutral
+  - term: not a breath of wind
+    meaning: completely calm with no wind at all
+    example: not a breath of wind
+    band_suitability: 7.0+
+    register: neutral
+  - term: a gust of wind
+    meaning: a sudden, strong blow of wind
+    example: a gust of wind
+    band_suitability: 6.0+
+    register: neutral
+  - term: a downpour of rain
+    meaning: a heavy fall of rain
+    example: a downpour of rain
+    band_suitability: 7.0+
+    register: neutral
+  - term: a blanket of snow
+    meaning: a thick, smooth layer of snow covering the ground
+    example: a blanket of snow
+    band_suitability: 7.0+
+    register: neutral
+  - term: make travel arrangements
+    meaning: to plan and organize a journey or trip
+    example: I made all the travel arrangements myself over the internet.
+    band_suitability: 6.0+
+    register: neutral
+  - term: charter flight
+    meaning: a cheap flight on a plane rented for a specific purpose or group
+    example: I got a charter flight and good budget accommodation.
+    band_suitability: 7.0+
+    register: neutral
+  - term: budget accommodation
+    meaning: cheap places to stay
+    example: I got a charter flight and good budget accommodation in San Francisco.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a long, tiring journey
+    meaning: a trip that takes a long time and makes you feel exhausted
+    example: Although it was a long, tiring journey from London, it was worth it.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a day trip
+    meaning: to go on a short trip for one day and return on the same day
+    example: While in San Francisco, I took a day trip to the other side of the Bay.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go on a boat trip
+    meaning: to take a journey on a boat for pleasure
+    example: also went on a boat trip, which was fun.
+    band_suitability: 6.0+
+    register: neutral
+  - term: smooth flight
+    meaning: a flight without sudden movements or turbulence
+    example: I had a smooth flight on the return journey.
+    band_suitability: 6.0+
+    register: neutral
+  - term: chain of snow-covered mountains
+    meaning: a series of mountains connected together covered in snow
+    example: A chain of snow-covered mountains runs down the east of the country.
+    band_suitability: 8.0+
+    register: formal
+  - term: bleak landscape
+    meaning: an empty, cold, and unwelcoming area of land
+    example: Even in summer it is a bleak landscape.
+    band_suitability: 8.0+
+    register: formal
+  - term: dramatic setting
+    meaning: a location that is striking, impressive, and exciting
+    example: It is a dramatic setting which is well worth visiting.
+    band_suitability: 8.0+
+    register: formal
+  - term: spectacular views
+    meaning: very impressive and beautiful views
+    example: It is well worth visiting for anyone who likes spectacular views.
+    band_suitability: 6.0+
+    register: neutral
+  - term: surrounding countryside
+    meaning: the area of land around a particular place
+    example: surrounding countryside
+    band_suitability: 6.0+
+    register: neutral
+  - term: dominate the landscape
+    meaning: to be the most noticeable or prominent feature of an area
+    example: dominates the landscape
+    band_suitability: 8.0+
+    register: formal
+  - term: panoramic view
+    meaning: an unbroken view of a wide area
+    example: panoramic view
+    band_suitability: 7.0+
+    register: neutral
+  - term: secluded beaches
+    meaning: quiet, private beaches that are not near people or crowds
+    example: secluded beaches
+    band_suitability: 7.0+
+    register: neutral
+  - term: breathtaking scenery
+    meaning: extremely beautiful, awe-inspiring natural views
+    example: breathtaking scenery
+    band_suitability: 7.0+
+    register: neutral
+  - term: uninterrupted views
+    meaning: views that are not blocked by anything
+    example: uninterrupted views
+    band_suitability: 7.0+
+    register: neutral
+  - term: high-rise flats
+    meaning: apartments in very tall buildings
+    example: high-rise flats
+    band_suitability: 6.0+
+    register: neutral
+  - term: tree-lined avenue
+    meaning: a wide street with trees growing along both sides
+    example: a tree-lined avenue
+    band_suitability: 7.0+
+    register: neutral
+  - term: city skyline
+    meaning: the outline of buildings against the sky
+    example: a city skyline
+    band_suitability: 6.0+
+    register: neutral
+  - term: quaint old buildings
+    meaning: attractive buildings that are old-fashioned in a pleasing way
+    example: quaint old buildings
+    band_suitability: 7.0+
+    register: neutral
+  - term: relaxed atmosphere
+    meaning: a calm, stress-free environment or feeling
+    example: relaxed atmosphere
+    band_suitability: 6.0+
+    register: neutral
+  - term: lively bar
+    meaning: a bar full of energy, music, and people
+    example: lively bar
+    band_suitability: 6.0+
+    register: neutral
+  - term: imposing building
+    meaning: a building that makes you admire or respect it because of its size or
+      design
+    example: imposing building
+    band_suitability: 8.0+
+    register: formal
+  - term: fashionable club
+    meaning: a popular club frequented by stylish or wealthy people
+    example: fashionable club
+    band_suitability: 6.0+
+    register: neutral
+  - term: over-priced restaurants
+    meaning: restaurants that charge too much money for their food
+    example: over-priced restaurants
+    band_suitability: 6.0+
+    register: neutral
+  - term: urban wasteland
+    meaning: a deserted, damaged, or neglected area in a city
+    example: urban wasteland
+    band_suitability: 8.0+
+    register: neutral
+  - term: no-go area
+    meaning: an area where people are afraid or advised not to go
+    example: no-go area
+    band_suitability: 7.0+
+    register: informal
+  - term: shanty town
+    meaning: a town consisting of poorly built shacks, usually made of cheap materials
+    example: shanty town
+    band_suitability: 7.0+
+    register: neutral
+  - term: run-down buildings
+    meaning: buildings in very bad condition due to lack of care
+    example: run-down buildings
+    band_suitability: 7.0+
+    register: neutral
+  - term: incessant roar of the traffic
+    meaning: the continuous, loud, deep sound made by vehicles
+    example: the incessant roar of the traffic
+    band_suitability: 8.0+
+    register: neutral
+  - term: conservation area
+    meaning: an area designated for the protection of its historical or natural value
+    example: a conservation area
+    band_suitability: 7.0+
+    register: formal
+  - term: sprawling city
+    meaning: a city that has expanded over a large area in an untidy way
+    example: It is a sprawling city covering an enormous area.
+    band_suitability: 8.0+
+    register: neutral
+  - term: upmarket shops
+    meaning: expensive shops selling high-quality goods to wealthy people
+    example: It is full of upmarket shops.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bumper-to-bumper traffic
+    meaning: traffic so crowded that cars are very close and moving slowly
+    example: There was bumper-to-bumper traffic all the way to the airport.
+    band_suitability: 7.0+
+    register: neutral
+  - term: exhaust fumes
+    meaning: waste gases produced by engines of vehicles
+    example: I get asthma from the terrible exhaust fumes in the city centre.
+    band_suitability: 6.0+
+    register: neutral
+  - term: residential area
+    meaning: an area where people live rather than do business
+    example: I live in a residential area.
+    band_suitability: 6.0+
+    register: neutral
+  - term: deprived areas
+    meaning: areas lacking the necessities of life, such as adequate housing or income
+    example: Some of the more deprived areas are not far from the city centre.
+    band_suitability: 7.0+
+    register: formal
+  - term: industrial zones
+    meaning: areas set aside for factories and industrial businesses
+    example: On the outskirts are some industrial zones.
+    band_suitability: 7.0+
+    register: neutral
+  - term: streets strewn with litter
+    meaning: streets covered with scattered rubbish
+    example: The streets were strewn with litter.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

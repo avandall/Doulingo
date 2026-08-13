@@ -1,0 +1,33 @@
+content_unit:
+  template_type: scenario
+  title: Dialogue Study - Talking about School Experiences
+  topic_tags:
+  - School
+  - Education
+  - Memories
+  - Teachers
+  target_band_min: 5.5
+  target_band_max: 7.0
+  register: casual
+  source_citation: Basic_IELTS_Speaking.md, Dialogue Study
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: If you were the president of your middle school, what changes would you
+    like to make?
+  user_model_answer: I'd change the classes to start later in the morning, and then
+    I'd eliminate classes on weekends. I'd make sure there were plenty of clubs for
+    students to join.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: What did you think of your middle school teachers?
+  user_model_answer: For the most part, they were really good—conscientious and knowledgeable.
+    However, there was one teacher I really didn't get along with; she made my life
+    quite miserable, which actually put me off studying History in the long run.
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short

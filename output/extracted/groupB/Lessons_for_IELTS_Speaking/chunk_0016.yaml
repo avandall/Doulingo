@@ -1,0 +1,62 @@
+content_unit:
+  template_type: band_ladder
+  title: Sports — Descriptive Speech and Vocabulary
+  topic_tags:
+  - Sports
+  - Hobbies
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: Lessons_for_IELTS_Speaking, Speaker 1
+band_tiers:
+- band_min: 6.0
+  band_max: 6.5
+  can_do_description: Can provide a clear, detailed description of a sport, explaining
+    rules and personal roles. Uses present tense effectively to describe routine actions.
+  grammar_required:
+  - Present simple for rules
+  - Modal verbs for necessity (need to, can)
+  vocabulary_core:
+  - court
+  - hoops
+  - dribbling
+  - passing
+  - guarding
+  - quarters
+  - referee
+  vocabulary_stretch:
+  - swapped
+  - centre
+  - score points
+  sentence_length_target: Compound sentences with coordinating conjunctions (and,
+    but).
+  common_errors_to_simulate: Repetitive sentence structures; over-reliance on basic
+    conjunctions like 'and' and 'so'; slightly limited range of cohesive devices.
+- band_min: 7.0
+  band_max: 7.5
+  can_do_description: Expands on the topic with personal feelings and social benefits.
+    Uses more sophisticated phrasing for sequences and conditions.
+  grammar_required:
+  - Complex sentences with relative clauses and conditional structures (e.g., 'depending
+    on...')
+  vocabulary_core:
+  - basketball
+  - team member
+  - shooting
+  - excited
+  vocabulary_stretch:
+  - in my team
+  - especially when we're winning
+  - make an effort to
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.5
+  turn_type: standalone
+  ai_line: Could you tell me about a sport that you enjoy playing?
+  user_model_answer: I'm going to speak about basketball. To play it, you need a ball,
+    a court, and two hoops. You need five players on each side. The aim is to get
+    the ball through the hoop. You dribble the ball down the court and pass it to
+    others. The other team tries to stop you by guarding. It is played in four quarters
+    and players can be swapped. It takes about an hour, depending on the referee.
+    I play centre, so I run around a lot. I'm good at shooting. I like it because
+    it makes me feel excited and I like being in a team.

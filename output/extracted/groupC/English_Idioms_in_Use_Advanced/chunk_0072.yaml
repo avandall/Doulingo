@@ -1,0 +1,159 @@
+vocabulary_entry:
+  topic_tags:
+  - general_vocabulary
+  - idioms
+  - advanced_english
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Index pp. 158-160
+  entries:
+  - term: be taken aback
+    meaning: to be shocked or surprised
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: out and about
+    meaning: active and travelling around again after an illness or injury
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: be head and shoulders above sb
+    meaning: much better than someone else
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: be a chapter of accidents
+    meaning: a series of unfortunate events
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: Achilles heel
+    meaning: a weak point or fault in someone or something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: across the board
+    meaning: affecting everyone or everything in a situation or organization
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: get your act together
+    meaning: to organize yourself and start behaving effectively
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: after your own heart
+    meaning: sharing your tastes, ideas, or feelings
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: time after time
+    meaning: repeatedly, on many occasions
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hammer out an agreement
+    meaning: to discuss a problem or situation until you have reached an agreement
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: ahead of its time
+    meaning: more advanced than the period in which it exists or operates
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: ahead of the game
+    meaning: in a better position than others in the same situation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: castles in the air
+    meaning: hopes and dreams that are not realistic or likely to happen
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: clear the air
+    meaning: to remove bad feelings or tension between people
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: rolling in the aisles
+    meaning: laughing uncontrollably
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: an Aladdin's cave
+    meaning: a place that is full of objects of great value or beauty
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: an albatross around your neck
+    meaning: a heavy and inescapable burden or source of anxiety
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: back on track
+    meaning: returning to the right path or schedule after a problem
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: be back to square one
+    meaning: to have to start a process or activity from the beginning again
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bring home the bacon
+    meaning: to earn money to live on
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: drive a hard bargain
+    meaning: to be difficult in negotiations and force someone to agree to your terms
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: be barking up the wrong tree
+    meaning: to have the wrong idea or be pursuing the wrong course of action
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: bite off more than one can chew
+    meaning: to try to do too much or take on a task that is too big
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bite the bullet
+    meaning: to force yourself to do something difficult or unpleasant
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: think outside the box
+    meaning: to think creatively and unconventionally
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

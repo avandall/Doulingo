@@ -1,0 +1,146 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - grammar
+  - types_of_collocation
+  - economy
+  - emotions
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 4
+  entries:
+  - term: bright colour
+    meaning: a vivid and strong color
+    example: Emma always wears red or yellow or some other bright colour.
+    band_suitability: 6.0+
+    register: neutral
+  - term: brief chat
+    meaning: a short, informal conversation
+    example: We had a brief chat about the exams but didn’t have time to discuss them
+      properly.
+    band_suitability: 6.0+
+    register: neutral
+  - term: major problem
+    meaning: a very significant and serious issue
+    example: Unemployment is a major problem for the government at the moment.
+    band_suitability: 6.0+
+    register: neutral
+  - term: key issue
+    meaning: a very important topic or problem
+    example: Improving the health service is another key issue for government.
+    band_suitability: 7.0+
+    register: formal
+  - term: economy boomed
+    meaning: the economy experienced a period of great economic success and rapid
+      growth
+    example: The economy boomed in the 1990s.
+    band_suitability: 7.0+
+    register: neutral
+  - term: launch the product
+    meaning: to introduce a new product to the market
+    example: The company launched the product in 2012.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pose a problem
+    meaning: to present or constitute a problem
+    example: The price increase poses a problem for us.
+    band_suitability: 7.0+
+    register: formal
+  - term: create opportunities
+    meaning: to make new chances or possibilities available
+    example: The internet has created opportunities for our business.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a surge of anger
+    meaning: a sudden, strong feeling of anger
+    example: As Max read the lies about him, he felt a surge of anger.
+    band_suitability: 8.0+
+    register: literary
+  - term: a sense of pride
+    meaning: a feeling of satisfaction in one's achievements or qualities
+    example: Every parent feels a sense of pride when their child does well or wins
+      something.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a pang of nostalgia
+    meaning: a sudden sharp feeling of emotional longing for the past
+    example: I felt a pang of nostalgia when I saw the old photos of the village where
+      I grew up.
+    band_suitability: 8.0+
+    register: neutral
+  - term: swelling with pride
+    meaning: feeling extremely proud
+    example: As Jack went on stage to receive his gold medal for the judo competition
+      you could see his parents swelling with pride.
+    band_suitability: 8.0+
+    register: neutral
+  - term: filled with horror
+    meaning: experiencing a strong feeling of shock or fear
+    example: I was filled with horror when I read the newspaper report of the explosion.
+    band_suitability: 7.0+
+    register: neutral
+  - term: burst into tears
+    meaning: to suddenly start crying
+    example: When she spilt juice on her new skirt the little girl burst into tears.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pull steadily
+    meaning: to pull firmly, evenly, and without sudden jerks
+    example: She pulled steadily on the rope and helped him to safety.
+    band_suitability: 7.0+
+    register: neutral
+  - term: place gently
+    meaning: to put something down with care and softness
+    example: He placed the beautiful vase gently on the window ledge.
+    band_suitability: 6.0+
+    register: neutral
+  - term: whisper softly
+    meaning: to speak very quietly and tenderly
+    example: ‘I love you and want to marry you,’ Dylan whispered softly to Madison.
+    band_suitability: 6.0+
+    register: neutral
+  - term: smile proudly
+    meaning: to smile with a feeling of deep satisfaction or pride
+    example: She smiled proudly as she looked at the photos of her new grandson.
+    band_suitability: 6.0+
+    register: neutral
+  - term: happily married
+    meaning: enjoying a happy marriage
+    example: They are happily married.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fully aware
+    meaning: completely conscious or informed of something
+    example: I am fully aware that there are serious problems.
+    band_suitability: 7.0+
+    register: neutral
+  - term: blissfully unaware
+    meaning: having no idea at all about something, often used about something unpleasant
+    example: Harry was blissfully unaware that he was in danger.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

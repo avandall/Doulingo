@@ -1,0 +1,135 @@
+vocabulary_entry:
+  topic_tags:
+  - social_interaction
+  - conversations
+  - reactions
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 44
+  entries:
+  - term: You may well ask!
+    meaning: used when someone asks you about something which you think is strange,
+      funny or annoying
+    example: 'A: What''s Joe doing these days? B: You may well ask!'
+    band_suitability: 7.0+
+    register: informal
+  - term: Fat chance!
+    meaning: used to express that you think something will definitely not happen
+    example: 'A: Do you think Rosie will come and help us tomorrow morning? B: Fat
+      chance!'
+    band_suitability: 7.0+
+    register: informal
+  - term: Same difference
+    meaning: admitting a minor inaccuracy while insisting the overall meaning is the
+      same
+    example: 'A: Actually, he''s a volleyball player. A: Well, same difference.'
+    band_suitability: 7.0+
+    register: informal
+  - term: Nice work if you can get it!
+    meaning: used to describe an easy or desirable job that one would like to have
+    example: Farah has an amazing job. Nice work if you can get it!
+    band_suitability: 8.0+
+    register: informal
+  - term: That's all we need!
+    meaning: used when an extra bad thing is added to an already bad situation
+    example: They're bad enough, but their kids and dog too? That's all we need!
+    band_suitability: 7.0+
+    register: informal
+  - term: Good riddance
+    meaning: used to express pleasure that someone or something unpleasant has gone
+    example: Petra has resigned. Well, good riddance, I say!
+    band_suitability: 7.0+
+    register: informal
+  - term: Give me a break!
+    meaning: used to express disbelief or annoyance at what someone has said
+    example: Richard says he's going to move to Hollywood. Oh, give me a break!
+    band_suitability: 7.0+
+    register: informal
+  - term: There's no time like the present
+    meaning: it is better to do something immediately rather than wait
+    example: When shall we tell Lily the bad news? Well, there's no time like the
+      present.
+    band_suitability: 6.0+
+    register: neutral
+  - term: The plot thickens
+    meaning: something has happened to make a strange situation even stranger
+    example: Kerry's split up with Matt? Well, the plot thickens - she's going out
+      with James!
+    band_suitability: 8.0+
+    register: informal
+  - term: I thought as much
+    meaning: I suspected that would be the case
+    example: I thought as much! I saw them together this morning.
+    band_suitability: 7.0+
+    register: neutral
+  - term: What is the world coming to?
+    meaning: used when you are shocked by negative events or societal changes
+    example: What is the world coming to? Matt's lovely!
+    band_suitability: 8.0+
+    register: informal
+  - term: Don't get me wrong
+    meaning: said before you criticize someone, to make the criticism less severe
+    example: Don't get me wrong, James is gorgeous, but he's not a very nice person.
+    band_suitability: 6.0+
+    register: neutral
+  - term: Get a life
+    meaning: used to tell someone to stop doing boring things and start doing exciting
+      things
+    example: He's really boring. He needs to get a life!
+    band_suitability: 7.0+
+    register: informal
+  - term: It will all end in tears
+    meaning: something is likely to end badly or result in unhappiness
+    example: I know, it will all end in tears!
+    band_suitability: 7.0+
+    register: neutral
+  - term: You've got me there
+    meaning: used when you do not know the answer to a question
+    example: What does she see in him? You've got me there.
+    band_suitability: 7.0+
+    register: informal
+  - term: Do me a favour!
+    meaning: used when you don't believe what someone has said or disagree very strongly
+    example: Didn't you use to like him? Do me a favour!
+    band_suitability: 7.0+
+    register: informal
+  - term: Wouldn't trust someone as far as I could throw them
+    meaning: to have absolutely no trust in someone
+    example: I wouldn't trust him as far as I could throw him.
+    band_suitability: 8.0+
+    register: informal
+  - term: Fair enough
+    meaning: used to say that you accept someone's point of view
+    example: I was only asking! Fair enough.
+    band_suitability: 6.0+
+    register: neutral
+  - term: Time will tell
+    meaning: the truth will become clear after a period of time
+    example: Time will tell whether they stay together or not.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

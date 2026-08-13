@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: Nature and Environment — Pronunciation and Exam Preparation
+  topic_tags:
+  - Nature
+  - Environment
+  - Pronunciation
+  - Part 3
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS.md, Unit 4
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: 'Phát âm đôi khi chưa chính xác giữa nguyên âm ngắn và dài,
+    dẫn đến hiểu nhầm từ (ví dụ: sleep vs slip, full vs fool).'
+  grammar_required:
+  - Adverbial subordinating conjunctions (Although, While, Because, Whenever, Whatever)
+  vocabulary_core:
+  - consumption
+  - natural resources
+  - unsustainable
+  - ecological footprint
+  vocabulary_stretch:
+  - depletion
+  - unprecedented
+  - repercussions
+  sentence_length_target: Ngắn, cấu trúc đơn giản, ít sử dụng mệnh đề phụ.
+  common_errors_to_simulate: Nhầm lẫn giữa các cặp âm /i:/ và /ɪ/, /u:/ và /ʊ/ khiến
+    người nghe khó phân biệt từ vựng.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Sử dụng phát âm chính xác, phân biệt rõ các nguyên âm dài/ngắn.
+    Sử dụng đa dạng các cấu trúc câu phức (cleft sentences, conjunctions).
+  grammar_required:
+  - Cleft sentences (e.g., What... is...)
+  - Complex subordinating clauses
+  vocabulary_core:
+  - environmental consequences
+  - depletion of resources
+  - soar
+  - offenders
+  vocabulary_stretch:
+  - global ecological footprint
+  - unsustainable rates of consumption
+  sentence_length_target: Đa dạng, kết hợp hài hòa câu đơn và câu phức.
+sample_dialogues:
+- band_level: 6.5
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

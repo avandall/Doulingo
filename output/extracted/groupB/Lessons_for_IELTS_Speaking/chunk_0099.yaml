@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation - Grouping, Linking and Pausing"
+  topic_tags: ["Pronunciation", "Part 3", "Communication Skills"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate often pronounces each word separately or stops in the middle of phrases, leading to robotic delivery."
+    grammar_required: ["Basic sentence structures"]
+    vocabulary_core: ["Linking", "Pauses", "Pitch"]
+    vocabulary_stretch: ["Chunking", "Intonation"]
+    sentence_length_target: "Short, fragmented phrases"
+    common_errors_to_simulate: "Lack of linking between words; pausing in the middle of natural phrases; monotone delivery (no pitch variation)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate effectively uses linking, pauses, and pitch to group information naturally, making the speech easy to follow."
+    grammar_required: ["Complex sentences with clear clause divisions"]
+    vocabulary_core: ["Flow", "Fluency", "Emphasis"]
+    vocabulary_stretch: ["Prosody", "Coherence"]
+    sentence_length_target: "Varied, natural breath groups"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How might the Internet benefit people in developing countries?"
+    user_model_answer: "If people in developing countries / had access to the Internet, / it would be great. / They would find weather forecasts very helpful / because they would know / whether it would be safe / to go out fishing, / for example, / or whether to plant their crops / or harvest them / or whether they should do something else."

@@ -1,0 +1,24 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 - Preparation Strategy"
+  topic_tags: ["Part 2", "Preparation", "Strategy", "Topic Card"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, How to answer the Part 2 topic task"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Candidate demonstrates the ability to effectively use the 1-minute preparation time to structure a cohesive, multi-point response."
+    grammar_required: ["Past tenses for narrative", "Descriptive adjectives"]
+    vocabulary_core: ["holiday", "trip", "memorable", "primary school"]
+    vocabulary_stretch: ["cohesion", "structured notes", "thematic organization"]
+    sentence_length_target: "Variable (long/complex sentences for descriptive parts, short for factual details)"
+    common_errors_to_simulate: "Writing full sentences in prep notes (losing time), deviating from the 4 bullet points, silence during the 2-minute talk."
+
+sample_dialogues:
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Describe a holiday or trip that you remember well: when/where, what you did, who you went with, and why you remember it."
+    user_model_answer: "I’d like to talk about a school trip to Paris back in the summer of 2004. It was right at the end of my primary school years. I traveled with a group of school friends and two teachers. We spent most of our time exploring the city, visiting the Eiffel Tower, hitting various museums, and taking river boat tours. My best friend actually spoke some French, which was a huge help. I remember it so vividly because it was a bittersweet transition period—moving from primary to secondary school. It was an incredibly fun experience, though it was scorching hot and I'll never forget when one of our teachers accidentally broke his arm!"

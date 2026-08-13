@@ -1,0 +1,172 @@
+vocabulary_entry:
+  topic_tags:
+  - idioms
+  - vocabulary
+  - advanced_english
+  category: idiom
+  source_citation: English Idioms in Use Advanced, pp. 125-126
+  entries:
+  - term: feather one's own nest
+    meaning: make yourself rich at the expense of others, or take advantage of a situation
+      to help yourself
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: save one's own skin
+    meaning: protect yourself from harm or difficulty, often at the expense of others
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: dig your own grave
+    meaning: cause your own problems or bring about your own downfall
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: of one's own making
+    meaning: created or caused by oneself
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: in your own time
+    meaning: at your own convenience and without rushing
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hold one's own
+    meaning: be as successful or capable as others in a competition or difficult situation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: be your own person
+    meaning: be independent and make your own decisions without being influenced by
+      others
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: take matters into your own hands
+    meaning: deal with a problem yourself because other people have failed to do so
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: play someone at their own game
+    meaning: use the same tactics or methods that an opponent uses against them
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: score an own goal
+    meaning: do something that is intended to help you but actually causes you harm
+      or makes your situation worse
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: join forces
+    meaning: work together with someone else to achieve a common goal
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: there's safety in numbers
+    meaning: you are safer or more likely to succeed when you are part of a large
+      group
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hit the road
+    meaning: begin a journey or leave a place
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: in two minds
+    meaning: unable to decide between two alternatives or courses of action
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a whale of a time
+    meaning: enjoy yourself very much; have a fantastic time
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: spend money like there was no tomorrow
+    meaning: spend money very quickly and extravagantly without worrying about the
+      future
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: twist someone's arm
+    meaning: persuade someone to do something that they initially do not want to do
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: a flash in the pan
+    meaning: something or someone that is successful for only a short period of time
+      and then fails or disappears
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: take a shine to
+    meaning: begin to like someone or something very much
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: safe and sound
+    meaning: free from harm, danger, or injury, and in good health
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: put your foot in it
+    meaning: say or do something tactless, embarrassing, or upsetting without realizing
+      it
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: as quiet as a mouse
+    meaning: extremely quiet; making no noise at all
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: go up in the world
+    meaning: become more successful, wealthier, or socially prominent
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: lick your wounds
+    meaning: recover from a defeat, failure, or embarrassing experience
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: prick up your ears
+    meaning: listen carefully and attentively, especially when hearing something interesting
+      or unexpected
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: open the door to
+    meaning: create the opportunity or make the way possible for something to happen
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

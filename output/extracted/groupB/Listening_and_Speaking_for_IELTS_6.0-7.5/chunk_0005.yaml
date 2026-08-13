@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic talk: Life Events and Milestones"
+  topic_tags: ["Life Events", "Personal Milestones", "Vocabulary"]
+  target_band_min: 5.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic talk"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Có thể liệt kê các sự kiện đời sống cơ bản nhưng dùng từ vựng hạn chế hoặc lặp lại. Câu trả lời thường ngắn, thiếu ví dụ hoặc giải thích chi tiết."
+    grammar_required: 
+      - "Present Perfect (I've worked)"
+      - "Future intentions (I'd like to, I'm going to)"
+    vocabulary_core: ["career", "degree", "family", "driving test"]
+    vocabulary_stretch: ["voluntary work", "sabbatical"]
+    sentence_length_target: "Ngắn, câu đơn hoặc nối bằng 'and', 'but'."
+    common_errors_to_simulate: "Nhầm lẫn giữa các collocations (ví dụ: dùng 'make a career' thay vì 'change/start a career'), chia động từ sai ở thì quá khứ."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Có thể mô tả các sự kiện cuộc đời một cách trôi chảy, sử dụng tính từ mạnh và các cụm từ cố định (collocations) để tăng độ chính xác và tính biểu cảm."
+    grammar_required: ["Complex sentences", "Relative clauses", "Modals for speculation"]
+    vocabulary_core: ["rewarding", "memorable", "straightforward", "life-changing"]
+    vocabulary_stretch: ["unforgettable", "momentous", "stimulating"]
+    sentence_length_target: "Đa dạng, kết hợp câu phức để giải thích lý do và đưa ra ví dụ minh họa."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me about a challenging experience you remember?"
+    user_model_answer: "A challenging experience was when I took my driving test. I was very nervous and I failed two times. It was very difficult for me to pass."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you tell me about a challenging experience you remember?"
+    user_model_answer: "I’d say that taking my driving test was one of the most challenging experiences I’ve faced. It was incredibly frustrating because, despite practicing for months, I failed twice due to nerves. It was a tough period, but eventually, the sense of achievement when I finally got my license was really rewarding."

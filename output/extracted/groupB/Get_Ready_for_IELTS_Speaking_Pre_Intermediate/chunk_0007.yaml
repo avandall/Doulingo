@@ -1,0 +1,27 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Structuring Responses & Task Card Management"
+  topic_tags: [TV, Radio, Weather, Speaking Part 2]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 5 & 6"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phản hồi đúng trọng tâm thẻ bài (task card), có khả năng kể chuyện nhưng cần cải thiện kỹ năng tổ chức câu trả lời bằng các từ nối (linking phrases) và mở rộng ý."
+    grammar_required: 
+      - "can/can't"
+      - adverbs of frequency
+      - present simple for facts
+    vocabulary_core: ["types of programmes", "seasons", "weather adjectives"]
+    vocabulary_stretch: ["monsoon", "qualifications", "hometown"]
+    sentence_length_target: "Short to medium, simple compound sentences."
+    common_errors_to_simulate: "Bỏ sót một trong các yêu cầu của thẻ bài, quên dùng từ nối, trả lời quá ngắn (không đủ 1-2 phút)."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Talk about a TV programme you enjoy watching. You should say what type of programme it is, your favourite parts, when/where you watch it, and why you enjoy it."
+    user_model_answer: "I'd like to talk about a documentary I learned from. It was about a famous writer. I enjoy watching this series. Firstly, I liked the interviews with her family. A good example is the interview with her sister. I watched it with my classmates at college. We gave a presentation about her life. I learned she was from a poor family and now she writes in her hometown."

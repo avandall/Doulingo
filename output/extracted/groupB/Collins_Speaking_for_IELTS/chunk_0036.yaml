@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Festivals and Culture — Advanced Sample Answers"
+  topic_tags: ["Festivals", "Culture", "Historical Sites"]
+  target_band_min: 7.0
+  target_band_max: 8.5
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS, Tracks 37 & 44"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.5
+    can_do_description: "Candidates provide fluent, extended answers using a wide range of vocabulary and complex grammatical structures. They demonstrate an ability to reflect on cultural nuance and balance arguments."
+    grammar_required: ["Conditional structures", "Passive voice", "Modals of speculation"]
+    vocabulary_core: ["traditions", "heritage", "commemorating", "continuity"]
+    vocabulary_stretch: ["intrigue and deception", "status quo", "dilapidated", "archeological survey", "multicultural"]
+    sentence_length_target: "Long, multi-clause sentences with effective connectors"
+
+sample_dialogues:
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Do you think that it is important for a society or culture to have a sense of continuity with the past?"
+    user_model_answer: "Yes, definitely. Change is necessary, but it is also frightening. For this reason, people continue to rely on their traditions to give them a sense of their roots and to remind them of where they've come from. Commemorating the past is also a way of bringing people together, such as during Independence Day."
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Is it more important to preserve historical sites or make way for the developments of the future?"
+    user_model_answer: "When a developer wants to build a new shopping centre in my country, for example, they are obliged to conduct an archeological survey. If any remains are found, archeologists have to be given time to study it. I think this is marvellous. So I think old and new can work side by side and you don't necessarily have to choose between them."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Are historical sites in your country popular with visitors?"
+    user_model_answer: "They seem to be very popular, yes. The last time I went to visit a historical site myself, I was struck by the number of families there with young children. I don't think these sites are popular with young couples, necessarily, but it looks to me as though when those couples have children they suddenly develop a new appreciation for those places."

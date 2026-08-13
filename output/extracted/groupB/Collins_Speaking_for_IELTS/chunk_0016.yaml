@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Youth — Vocabulary and Exam Technique"
+  topic_tags: [Childhood, Memory, Vocabulary, Pronunciation]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 8"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focus on accuracy of basic past tense narratives. Often struggle with specific vocabulary related to memory and childhood, relying on simple descriptors."
+    grammar_required: [Past simple, used to]
+    vocabulary_core: [remember, childhood, happy, old photos]
+    vocabulary_stretch: [reminisce, rose-tinted glasses, latchkey child]
+    sentence_length_target: "Short, simple sentences with basic conjunctions."
+    common_errors_to_simulate: "Mispronunciation of regular past tense -ed endings (e.g., pronouncing 'wanted' as one syllable instead of /wɒntɪd/), over-reliance on 'I like' or 'I remember'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to use sophisticated collocations about memory and childhood fluently. Uses a range of past tenses and varied sentence structures."
+    grammar_required: 
+      - Past simple
+      - used to
+      - would (for past habits)
+      - past continuous
+    vocabulary_core: [reminisce, upbringing, well brought up]
+    vocabulary_stretch: [vivid impression, on the tip of my tongue, through rose-tinted glasses]
+    sentence_length_target: "Complex, compound sentences with clear chronological flow and topic development."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Most children I know are well brought up."
+    user_model_answer: "No, most children I know are badly brought up. They have bad manners, interrupting adults all the time and not saying please or thank you."

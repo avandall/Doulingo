@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Getting stuck on vocabulary - Paraphrasing techniques"
+  topic_tags: ["vocabulary", "fluency", "strategies"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Getting stuck on vocabulary"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Struggles with specific terminology and may stop speaking when unable to recall a word, leading to silence or tension."
+    grammar_required: ["Simple sentences", "Basic conjunctions"]
+    vocabulary_core: 
+      - "General terms like 'chemical stuff"
+      - Descriptions of function
+    vocabulary_stretch: []
+    sentence_length_target: "short"
+    common_errors_to_simulate: "Stopping completely, showing facial tension, excessive silence when forgetting a specific word."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses paraphrasing techniques effectively to maintain fluency when the precise word is missing. Uses functional language to bridge gaps."
+    grammar_required: ["Complex structures for definitions", "Relative clauses"]
+    vocabulary_core: 
+      - "Precise terminology (e.g., 'insecticide')"
+      - Academic vocabulary
+    vocabulary_stretch: ["Functional fillers", "Circumlocution phrases"]
+    sentence_length_target: "moderate"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you think the vegetables we eat nowadays are safe?"
+    user_model_answer: "We eat different vegetables every day. I don't think that some vegetables are safe because of the insecticide on them."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think the vegetables we eat nowadays are safe?"
+    user_model_answer: "We eat different vegetables every day. But sometimes they are not safe because of the chemical stuff farmers spray on them to kill the insects."

@@ -1,0 +1,104 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - index
+  - vocabulary_reference
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, p. 187-188
+  entries:
+  - term: take responsibility
+    meaning: to accept responsibility for something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a risk
+    meaning: to do something even though there is a chance of failure or danger
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: take your time
+    meaning: to do something without rushing
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make small talk
+    meaning: to talk in a polite way about unimportant things, such as the weather
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: throw a tantrum
+    meaning: to display a sudden fit of bad temper, typically exhibited by a child
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: keep your temper
+    meaning: to stay calm and not get angry
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: lose your temper
+    meaning: to fail to control your anger
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: torrential rain
+    meaning: very heavy rain
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: unbroken sunshine
+    meaning: sunny weather with no clouds in the sky
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: kill time
+    meaning: to spend time doing something while you are waiting for something else
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: save time
+    meaning: to do something so that you do not take as much time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: waste time
+    meaning: to spend time doing unimportant things or not using time well
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: bump into
+    meaning: to meet someone by chance
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: bumper-to-bumper traffic
+    meaning: heavy traffic where cars are very close to each other and move slowly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

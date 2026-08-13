@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1 — Basic Description Strategy (Band 5 vs Band 7)"
+  topic_tags: ["Hometown", "Speaking Strategies", "Part 1"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Question Type 1: Basic Description"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Candidate answers the question directly but provides insufficient detail. The response lacks depth, development, and evidence of higher-level linguistic competence."
+    grammar_required: ["Basic sentence structures", "Simple tenses"]
+    vocabulary_core: ["General city vocabulary"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, direct sentences"
+    common_errors_to_simulate: "Lack of linking words/phrases; absence of idiomatic or redundant language; reliance on very basic grammar; no development of ideas."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate provides extended responses that remain relevant. Demonstrates ability to use complex structures, natural filler/redundant language, and topic-specific vocabulary."
+    grammar_required: ["Mix of tenses", "Complex sentence structures"]
+    vocabulary_core: ["Topic-specific vocabulary"]
+    vocabulary_stretch: ["Idiomatic expressions", "Descriptive adjectives"]
+    sentence_length_target: "Extended, well-developed responses"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Tell me about your hometown."
+    user_model_answer: "I come from Beijing. I am native of this city. Beijing is the capital of China. In Beijing there are many historical buildings. Beijing Duck is very famous – I always eat it with my friends."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me about your hometown."
+    user_model_answer: "Well as you can probably guess I come from Beijing and I have lived here all my life, although at the moment I'm studying in another city – Tianjin. I suppose if I had to describe Beijing, the first thing I would say is that it's absolutely enormous, maybe even one of the biggest cities in Asia I guess. It's so big in fact that even the locals have problems finding their way around. Another significant characteristic is that it offers examples of both classical and contemporary architecture. Actually some of China's most renowned landmarks are 'slap-bang' in the middle of Beijing."

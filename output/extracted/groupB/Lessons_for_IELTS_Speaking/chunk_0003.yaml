@@ -1,0 +1,54 @@
+content_unit:
+  template_type: band_ladder
+  title: "Error Correction - Common Grammar Mistakes in Speaking"
+  topic_tags: ["Grammar", "Speaking Part 1", "Error Correction"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Error correction"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates at this level often make basic grammatical errors involving verb forms and sentence structure. They struggle with infinitive/gerund usage and adverb placement."
+    grammar_required: 
+      - Present Simple
+      - "Verb patterns (like/don't like + V-ing)"
+    vocabulary_core: ["school subjects", "basic likes/dislikes"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Confusion between 'to V' and 'V-ing', incorrect use of 'very' with verbs, missing auxiliary 'do/does' in negatives, improper use of 'be' + base verb."
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Do you like studying history?"
+    user_model_answer: "I don't like learn history because it is not useful to me."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you like studying history?"
+    user_model_answer: "I don't like learning history because it is not useful to me."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "How do you feel about biology?"
+    user_model_answer: "I not like studying biology as it is so difficult for me to understand science."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How do you feel about biology?"
+    user_model_answer: "I don't like studying biology as it is too difficult for me to understand science."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Why are you learning English?"
+    user_model_answer: "I like study English because it's an important language to learn."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Why are you learning English?"
+    user_model_answer: "I like studying English because it's an important language to learn."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What is your favorite subject?"
+    user_model_answer: "I very like studying maths because I want to be a maths teacher."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What is your favorite subject?"
+    user_model_answer: "I really like studying maths because I want to be a maths teacher."

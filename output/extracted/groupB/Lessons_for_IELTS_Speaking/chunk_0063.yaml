@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Structuring a Long Turn"
+  topic_tags: ["Leisure Activity", "Speaking Part 2", "Structure"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 2 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can provide a basic response following the bullet points, but may lack cohesive devices or have a repetitive structure."
+    grammar_required: ["Present simple for habits", "Basic descriptive adjectives"]
+    vocabulary_core: ["favourite", "leisure activity", "friends"]
+    vocabulary_stretch: ["addictive", "spare moment", "keep in touch"]
+    sentence_length_target: "Short, simple sentences with limited connection."
+    common_errors_to_simulate: "Lack of linking words between sections; tendency to list points rather than narrating a flow; overuse of basic fillers like 'actually' or 'well'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Organizes ideas logically using the four-section structure; uses a variety of collocations and conversational phrases to maintain fluency."
+    grammar_required: ["Relative clauses", "Modals of possibility", "Present perfect for connection"]
+    vocabulary_core: ["popular", "stuff", "keep up with"]
+    vocabulary_stretch: ["wait ages", "whatever", "get more popular", "in the future"]
+    sentence_length_target: "Complex, compound-complex sentences with natural signposting."
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Describe your favourite leisure activity. You should say what it is, where and when you do it, who you do it with, and why you enjoy it."
+    user_model_answer: "One of my favourite leisure activities is posting on Twitter. It's a website similar to Facebook where you can share photos, music, and gossip. I use it anywhere—at home, at school, or on the bus—whenever I have a spare moment; it's quite addictive! I always use it with my friends, whether I'm physically with them or not. I like it because it's a great way to keep in touch with friends, even if they live far away, and I don't have to wait ages for photos to load."

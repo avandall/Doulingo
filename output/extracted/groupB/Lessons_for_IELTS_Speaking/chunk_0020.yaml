@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation — Word Stress, Sentence Stress and Linking"
+  topic_tags: ["Pronunciation", "Comparing", "TV Programs"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Student can produce individual words but struggles with sentence rhythm. Words are often produced with equal stress, missing the weak forms (than, as) and linking."
+    grammar_required: 
+      - comparative structures (more/less than, as...as)
+    vocabulary_core: ["funny", "scary", "boring", "exciting", "educational"]
+    vocabulary_stretch: ["documentary", "programme"]
+    sentence_length_target: "Short, staccato sentences."
+    common_errors_to_simulate: "Stressing weak forms like 'than' (/ðæn/ instead of /ðən/) and 'as' (/æz/ instead of /əz/); lack of connected speech/linking."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Student maintains a natural flow, using sentence stress to highlight key information and applying weak forms and linking features correctly."
+    grammar_required: ["complex comparative structures"]
+    vocabulary_core: ["comedy", "documentary", "horror movie", "sports programme"]
+    vocabulary_stretch: ["relaxing", "educational"]
+    sentence_length_target: "Medium to long, rhythmic sentences with natural intonation."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Which do you prefer, the news or sports programs?"
+    user_model_answer: "The news is more interesting than the weather, but it isn't as interesting as a sports programme."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you think horror movies are scarier than the news?"
+    user_model_answer: "An action movie is scarier than the news, but it isn't as scary as a horror movie."

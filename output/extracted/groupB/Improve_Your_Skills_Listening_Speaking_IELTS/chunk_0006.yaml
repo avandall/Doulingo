@@ -1,0 +1,47 @@
+content_unit:
+  template_type: scenario
+  title: Speaking Skills — Identifying Yourself
+  topic_tags:
+  - Introduction
+  - Part 1 Basics
+  - Personal Information
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: formal
+  source_citation: 'Improve_Your_Skills_Listening_Speaking_IELTS, Speaking skills:
+    Identifying yourself'
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Can provide basic personal details, respond to direct questions
+    about identity, and handle initial greetings.
+  grammar_required:
+  - Present Simple
+  - Modals for request (Can/Could)
+  vocabulary_core:
+  - name
+  - identification
+  - passport
+  - call me
+  vocabulary_stretch:
+  - Switzerland
+  sentence_length_target: short, declarative sentences
+  common_errors_to_simulate: Lack of intonation, mechanical responses, difficulty
+    understanding polite request forms like 'Could you tell me...'
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Good afternoon. Can you tell me your name, please?
+  user_model_answer: My name is Benjamin Weiss.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: And what can I call you?
+  user_model_answer: Please call me Ben. It was very enjoyable and informative.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Where do you come from?
+  user_model_answer: I come from Switzerland. It was very enjoyable and informative.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Can you show me your identification, please?
+  user_model_answer: Of course. Here is my passport.

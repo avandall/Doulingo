@@ -1,0 +1,152 @@
+vocabulary_entry:
+  topic_tags:
+  - work
+  - emotions
+  - life decisions
+  - business
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 4
+  entries:
+  - term: run a tight ship
+    meaning: to manage an organization or activity firmly and effectively
+    example: John Hamilton has made a name for himself by running a tight ship at
+      the Ministry of Sport.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go spare
+    meaning: to become very angry
+    example: It was no surprise to his staff that he reportedly 'went spare' when
+      he learnt what had been going on behind his back.
+    band_suitability: 8.0+
+    register: casual
+  - term: behind someone's back
+    meaning: doing something secretly without the other person knowing
+    example: he learnt what had been going on behind his back.
+    band_suitability: 6.0+
+    register: neutral
+  - term: feather one's own nest
+    meaning: to make yourself rich, especially by taking money unfairly
+    example: Two of his leading advisors had been feathering their own nests with
+      government money.
+    band_suitability: 8.0+
+    register: neutral
+  - term: beyond the pale
+    meaning: unacceptable; outside the limits of reasonable behaviour
+    example: Such behaviour is quite beyond the pale.
+    band_suitability: 8.0+
+    register: formal
+  - term: get the sack
+    meaning: to be fired or dismissed from a job
+    example: the two people concerned have already been given the sack.
+    band_suitability: 6.0+
+    register: casual
+  - term: take centre stage
+    meaning: to be the most important or noticeable thing or person
+    example: The new president was/ took centre stage at the meeting.
+    band_suitability: 7.0+
+    register: neutral
+  - term: join forces
+    meaning: to work together with someone else to achieve a common goal
+    example: companies may join forces with one another.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a minefield
+    meaning: a situation that is potentially dangerous or full of hidden problems
+    example: Business people might say that a situation is a minefield.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a casualty of
+    meaning: a person or thing that is badly affected by a difficult situation
+    example: a company is a casualty of a difficult economic situation.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pull rank
+    meaning: to use the power one's position gives to make others do something
+    example: A manager may pull rank on his employees.
+    band_suitability: 8.0+
+    register: neutral
+  - term: take the flak
+    meaning: to receive strong criticism
+    example: he may have to get/ take the flak for a problem.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get one's marching orders
+    meaning: to be told to leave your job or place
+    example: An employee may be given or get his marching orders.
+    band_suitability: 8.0+
+    register: casual
+  - term: see sense / see reason
+    meaning: to become sensible or reasonable
+    example: we talk about seeing sense or seeing reason.
+    band_suitability: 6.0+
+    register: neutral
+  - term: see the light
+    meaning: to suddenly understand something
+    example: To see the light can mean to suddenly understand something.
+    band_suitability: 7.0+
+    register: neutral
+  - term: see red
+    meaning: to suddenly become very angry
+    example: My brother saw red when I broke his phone.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get a black mark
+    meaning: a note that someone has done something bad, which will be remembered
+    example: if you get a black mark for something, it means people think you have
+      done something bad.
+    band_suitability: 8.0+
+    register: neutral
+  - term: at a crossroads
+    meaning: at a stage in life when you have to make an important decision
+    example: If someone is at a crossroads, they are at a stage in life when they
+      have to make an important decision.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get nowhere
+    meaning: to make no progress
+    example: If you say that you are going/ getting nowhere, you mean you are making
+      no progress.
+    band_suitability: 6.0+
+    register: neutral
+  - term: uncharted territory / waters
+    meaning: unknown areas of experience
+    example: something is taking you into uncharted territory/ waters.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have something up your sleeve
+    meaning: to have a secret plan or idea
+    example: If you have something up your sleeve, you have a secret plan or idea.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bluff one's way
+    meaning: to get into or out of a situation by deception
+    example: If you bluff your way into or out of a situation, you get yourself there
+      by deception.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

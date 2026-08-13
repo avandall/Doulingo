@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Health and Fitness - Expressing Enthusiasm"
+  topic_tags: [Sport, Health, Diet, Speaking Part 2]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 2"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to provide basic information about sports or health but lacks variety in tone and emotive language."
+    grammar_required: [Present simple for habits, Basic adjectives]
+    vocabulary_core: [diet, sport, exercise]
+    vocabulary_stretch: [sedentary, metabolism, nutrients]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Monotone voice, lacking stress and intonation patterns; using 'great' or 'good' repeatedly without actual enthusiasm."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of vocabulary and expresses feelings naturally through intonation, stress, and expressive language."
+    grammar_required: [Complex sentences for reasoning, Emphatic structures]
+    vocabulary_core: [enthusiastic, breathtaking, incredible]
+    vocabulary_stretch: [mental strength, sedentary lifestyle, competitive spirit]
+    sentence_length_target: "Varied, with intentional pauses and emphatic stress"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you describe an exciting competition you have witnessed?"
+    user_model_answer: "I watched a tennis match last year. It was in London. One player won after many sets. It was very exciting because they were both good."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you describe an exciting competition you have witnessed?"
+    user_model_answer: "I remember witnessing the Wimbledon final last summer, which was absolutely breathtaking! The tension was palpable; it wasn't just a physical battle, but a mental one too. Seeing one player pull through with a tie-break at the final moment was just incredible—the crowd went wild!"

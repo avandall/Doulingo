@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Employment & Career: Speculation & Vocabulary"
+  topic_tags: [work, job, employment]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 3: Education & Work"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to describe current job and basic duties using simple vocabulary. Often struggles with speculative language or complex grammatical structures regarding unreal situations."
+    grammar_required: [first_conditional, present_tense]
+    vocabulary_core: [office_job, job_satisfaction, career, long_hours, earn_money]
+    vocabulary_stretch: [redundant, self_employed, breadwinner, workaholic]
+    sentence_length_target: "short-to-medium"
+    common_errors_to_simulate: "Missing articles before jobs (e.g., 'I am teacher' instead of 'I am a teacher'); misuse of 'would' for past habits; limited range of speculative phrases."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to discuss hypothetical career paths fluently using varied speculative language and complex conditional structures."
+    grammar_required: [second_conditional, third_conditional, mixed_conditionals, modals_of_deduction]
+    vocabulary_core: [professional_development, responsibility, rewarding, prestigious, monotonous]
+    vocabulary_stretch: [speculate, hazard_a_guess, extremely_unlikely, stand_out]
+    sentence_length_target: "complex, multi-clause"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What would your dream job be?"
+    user_model_answer: "My dream job is to be a teacher. I think it is a good job because I like helping people. It is very important."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What would your dream job be?"
+    user_model_answer: "If I could choose any career, my dream job would be to teach children how to sail. I’d hazard a guess that it’s quite a challenging role, as it involves a lot of responsibility, but I imagine it would be immensely rewarding to see them gain confidence."

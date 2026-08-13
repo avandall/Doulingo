@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: "Basic IELTS Speaking - Part 1 Sample Interview"
+  topic_tags: ["Personal Information", "Hometown", "Travel", "Friendship"]
+  target_band_min: 6.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, 3. A Sample of Part 1 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate answers questions clearly and provides sufficient length. Shows ability to use descriptive adjectives (cheap, delicious, historical) but relies on basic structures."
+    grammar_required: 
+      - Present simple for facts
+      - Modal verbs for possibility (might)
+      - Comparatives
+    vocabulary_core: ["hometown", "capital", "historical sites", "spare time"]
+    vocabulary_stretch: ["treasures", "essential", "difficult moments"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Tendency to give short, repetitive responses; slight hesitation when explaining personal preferences."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidate demonstrates greater fluency and uses natural phrases like 'as the saying goes'. Offers coherent reasons for preferences."
+    grammar_required: 
+      - Relative clauses (who share..., who can listen...)
+      - Complex sentence structures
+    vocabulary_core: ["nature", "relaxed", "interest", "graduated"]
+    vocabulary_stretch: ["A friend in need is a friend indeed", "realise", "comfort"]
+    sentence_length_target: "long"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What part of the country are you from?"
+    user_model_answer: "I am from Chengdu, the capital of Sichuan Province. It is located in southwest China, famous for many historical sites."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What kind of places would you like to visit?"
+    user_model_answer: "I always prefer nature more to historical places. The most exciting thing for me in travelling is to be close to nature. So, the places I like the most are usually mountains, beaches, forests, etc."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Is friendship very important to you and why?"
+    user_model_answer: "Yes, friends are quite important in my life. As the saying goes, 'A friend in need is a friend indeed.' True friends are really treasures. The comfort brought by friends is very essential."

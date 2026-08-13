@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 & Part 3 — Sample Responses & Topics"
+  topic_tags: [Newspaper, Activities, Special Occasions, Hometown, TV, Weather, Studying]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Audio Scripts"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phản hồi trực tiếp vào câu hỏi, sử dụng cấu trúc câu đơn giản, từ vựng theo chủ đề cơ bản. Dễ mắc lỗi lặp từ và thiếu tính kết nối."
+    grammar_required: 
+      - Present Simple
+      - Past Simple (dùng cho mô tả trải nghiệm)
+    vocabulary_core: [Hobbies, Descriptions of places, Daily routine, Academic subjects]
+    vocabulary_stretch: [Traditional, Documentary, Industry, Qualifications]
+    sentence_length_target: "Short to medium (10-15 words per sentence)"
+    common_errors_to_simulate: "Lặp từ 'I like', 'It is'; sử dụng sai thì khi kể về sự kiện quá khứ; thiếu các từ nối (linking words) để mở rộng ý."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "I’d like you to describe a newspaper or magazine you enjoy reading."
+    user_model_answer: "I enjoy reading a magazine called Fab Football. It is about sport, of course, and it’s my favourite sport. The magazine’s got lots of good information. I don’t like reading the letters or adverts. I prefer reading the interviews with famous players, or the news. I read Fab Football every weekend."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How have special occasions such as weddings changed in your country?"
+    user_model_answer: "In my country, I see my family everyday. We all live together. In London, it isn’t possible. I see my uncle sometimes. (Context: Answer focuses on personal experience rather than general trends)"
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like doing when it’s hot?"
+    user_model_answer: "I like going to the beach."

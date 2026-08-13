@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Modal Verbs for Uncertainty and Speculation"
+  topic_tags: [Grammar, Speculation, Uncertainty]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to state facts, but struggles to express degrees of certainty. Often uses simple definitive statements ('It is...', 'It isn't...') where modal nuance is needed."
+    grammar_required: [Basic modal verbs: can, will]
+    vocabulary_core: [life expectancy, diet, wealthy, poor]
+    vocabulary_stretch: [longevity, epidemic, industrialised]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overusing 'maybe' at the start of every sentence; failing to distinguish between 'might/may' (possibility) and 'couldn't' (impossibility)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a range of modal verbs to express levels of certainty and speculation accurately. Able to distinguish between present possibilities and imaginative hypotheticals."
+    grammar_required: 
+      - would
+      - could
+      - may
+      - might
+      - "modal perfects (mightn't have)"
+    vocabulary_core: [uncertainty, possibility, factor, speculation]
+    vocabulary_stretch: [hypothetical scenarios, longevity, nutritious]
+    sentence_length_target: "Complex sentences combining facts with speculative modal phrases"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think lifestyle has an impact on how long people live?"
+    user_model_answer: "Yes, maybe. People who eat fish are healthy. Maybe they live longer."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think lifestyle has an impact on how long people live?"
+    user_model_answer: "Certainly. Diet might have a lot to do with it, as some populations eat lots of vegetables. Also, alcoholism could be a factor in countries where life expectancy is low, though I'm not sure if it's the main cause."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How would countries cope with an aging population?"
+    user_model_answer: "I imagine they would need significantly more hospitals and aged care facilities. Governments might also need to increase pension funds, though that could be difficult depending on the economy."

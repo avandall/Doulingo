@@ -1,0 +1,87 @@
+vocabulary_entry:
+  topic_tags:
+  - holidays
+  - travel
+  - transport
+  - free time
+  category: phrase
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: occupy oneself
+    meaning: to keep busy by doing something
+    example: There are many, many things you can do to occupy yourself.
+    band_suitability: 6.0+
+    register: neutral
+  - term: waste your time
+    meaning: to spend time doing something useless or unnecessary
+    example: Do not waste your time sitting in front of the TV and watching reruns.
+    band_suitability: 6.0+
+    register: neutral
+  - term: broaden/expand/widen someone's horizons
+    meaning: to increase the range of things that someone knows about or has experienced
+    example: You could be broadening your horizons with a brand-new experience.
+    band_suitability: 7.0+
+    register: neutral
+  - term: self-improvement
+    meaning: the process by which a person improves their knowledge, status, character,
+      etc. by their own efforts
+    example: The holidays are a great time to spend on self-improvement.
+    band_suitability: 7.0+
+    register: neutral
+  - term: loved one
+    meaning: a person one loves and especially a member of one's family
+    example: The holidays are a great opportunity to spend time with loved ones.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a quality talk with
+    meaning: to have a deep and meaningful conversation with someone
+    example: You might want to visit your grandparents and have a quality talk with
+      them.
+    band_suitability: 7.0+
+    register: neutral
+  - term: getting stuck in a traffic jam
+    meaning: being unable to move forward in a line of vehicles
+    example: Nothing ruins an otherwise perfect day like getting stuck in a traffic
+      jam.
+    band_suitability: 6.0+
+    register: neutral
+  - term: rush hour
+    meaning: the time when the roads are full of traffic because people are travelling
+      to or from work
+    example: The early morning and late afternoon hours are the worst traffic times
+      in most locations.
+    band_suitability: 6.0+
+    register: neutral
+  - term: steer clear of
+    meaning: to avoid someone or something that seems unpleasant, dangerous, or likely
+      to cause problems
+    example: Leaving just a little bit earlier or later can help you steer clear of
+      tailgating traffic.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

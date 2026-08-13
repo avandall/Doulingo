@@ -1,0 +1,310 @@
+vocabulary_entry:
+  topic_tags:
+  - animals
+  - behaviour
+  - problems
+  - emotions
+  - work
+  - competition
+  - business
+  - politics
+  - success
+  - failure
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: cry wolf
+    meaning: to call for help when you do not need it, with the result that no one
+      believes you when you really need help
+    example: Don't cry wolf or no one will help when you really need it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: shed crocodile tears
+    meaning: to pretend to be sad or to cry when you are not really sad at all
+    example: The minister sheds crocodile tears about homelessness, but does nothing
+      about it.
+    band_suitability: 8.0+
+    register: neutral
+  - term: dog-in-the-manger attitude
+    meaning: an attitude of wanting to keep something that you have no use for, simply
+      so that other people cannot have it
+    example: I hate our neighbours' dog-in-the-manger attitude - they don't want the
+      parking space but they won't let us have it.
+    band_suitability: 8.0+
+    register: neutral
+  - term: until the cows come home
+    meaning: for a very long time
+    example: We can discuss it until the cows come home, but I won't change my mind.
+    band_suitability: 7.0+
+    register: informal
+  - term: a snake in the grass
+    meaning: someone who pretends to be your friend but is really an enemy
+    example: 'A snake in the grass: someone who pretends to be your friend but is
+      really an enemy.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: a big fish in a small pond
+    meaning: an important person in a not very important place
+    example: 'A big fish in a small pond: an important person in a not very important
+      place.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: smell a rat
+    meaning: to suspect that something is wrong or that someone is dishonest
+    example: 'To smell a rat: to suspect something.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: more to it than meets the eye
+    meaning: more complicated or interesting than it first appears
+    example: I wonder what is really behind the president's decision. I'm sure there's
+      more to it than meets the eye.
+    band_suitability: 7.0+
+    register: neutral
+  - term: head and shoulders above
+    meaning: much better than
+    example: Melissa is head and shoulders above her brother when it comes to maths.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put our heads together
+    meaning: to talk to each other to try and solve a problem
+    example: I'm sure we can think of a good present for Jim if we put our heads together.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get your teeth into something
+    meaning: to start dealing with something with a lot of energy and enthusiasm
+    example: Kasia really loves getting her teeth into a new project.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bury your head in the sand
+    meaning: to ignore a problem and hope that it will disappear
+    example: You mustn't bury your head in the sand - problems don't go away if you
+      ignore them.
+    band_suitability: 7.0+
+    register: neutral
+  - term: one in the eye for
+    meaning: a setback or a disappointment for someone, especially someone who has
+      been acting superior
+    example: It was one in the eye for Liliana's brother when she passed her driving
+      test first time - it had taken him five attempts.
+    band_suitability: 8.0+
+    register: informal
+  - term: give my right arm
+    meaning: to be very willing to give something valuable in order to get something
+      you want
+    example: I'd give my right arm to go to Japan with you!
+    band_suitability: 7.0+
+    register: informal
+  - term: teething troubles
+    meaning: minor problems that happen at the start of a new project, job, etc.
+    example: After some teething troubles, the business began to do well.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get your tongue round something
+    meaning: to manage to pronounce a difficult word or phrase
+    example: I find it very hard to get my tongue round some Welsh place names.
+    band_suitability: 7.0+
+    register: neutral
+  - term: point the finger at someone
+    meaning: to blame someone for something bad
+    example: I don't know why they're pointing the finger at me - I'm not guilty.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a good head for figures
+    meaning: to be good at mathematics and dealing with numbers
+    example: I'm not very good at maths, but my brother has a good head for figures.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tread on someone's toes
+    meaning: to upset or offend someone, especially by doing something that is their
+      responsibility
+    example: I hope I'm not treading on your toes, but could I suggest you try a different
+      approach?
+    band_suitability: 8.0+
+    register: neutral
+  - term: make your toes curl
+    meaning: to make you feel extremely embarrassed or ashamed
+    example: Paulo's speech at the wedding made my toes curl!
+    band_suitability: 8.0+
+    register: informal
+  - term: keep your finger on the pulse
+    meaning: to stay informed about what is happening in a particular area
+    example: I don't see how you can keep your finger on the pulse if you never watch
+      TV or listen to the radio.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play/keep your cards close to your chest
+    meaning: to keep your plans or ideas secret
+    example: I played/kept my cards close to my chest and didn't mention that I was
+      going to resign soon.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hold all the cards
+    meaning: to be in a strong position because you have all the advantages
+    example: Masa is so much more qualified and experienced than I am. He holds all
+      the cards if we both apply for the same job.
+    band_suitability: 7.0+
+    register: neutral
+  - term: Monopoly money
+    meaning: money that is treated as if it has no real value because there is so
+      much of it or it is spent carelessly
+    example: He's so rich. He spends money as if it were Monopoly money.
+    band_suitability: 8.0+
+    register: informal
+  - term: the dice are loaded against someone
+    meaning: the circumstances are unfavourable to someone; success is unlikely
+    example: I wanted a job in politics, but felt the dice were loaded against me
+      as I had no personal contacts in the political world.
+    band_suitability: 8.0+
+    register: neutral
+  - term: dicing with death
+    meaning: taking a wild and dangerous risk
+    example: I felt I was dicing with death riding at high speed on the back of his
+      motorbike.
+    band_suitability: 8.0+
+    register: neutral
+  - term: play your ace / play your trump card
+    meaning: to use your best advantage or resource to win an argument or competition
+    example: The barrister played his ace/played his trump card and revealed the final
+      piece of evidence.
+    band_suitability: 8.0+
+    register: neutral
+  - term: move the goalposts
+    meaning: to change the rules or limits of a situation while it is in progress
+      so that it is harder to succeed
+    example: The teacher has moved the goalposts so many times that none of the students
+      knows what the rules are any more.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pull no punches
+    meaning: to speak or act very directly and honestly, without trying to be polite
+    example: Liam is very direct with people; he never pulls any punches.
+    band_suitability: 8.0+
+    register: neutral
+  - term: not cricket
+    meaning: unfair or unacceptable behaviour
+    example: What? The headteacher changed the holiday from a whole day to a half
+      day! Poor kids! It's just not cricket, is it?
+    band_suitability: 8.0+
+    register: informal
+  - term: play hardball
+    meaning: to be tough, uncompromising, and determined to get what you want in a
+      negotiation or conflict
+    example: The two presidential candidates have played hardball recently and have
+      made quite personal attacks on each other.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a whole new ball game
+    meaning: a completely different situation
+    example: Advertising on TV is not the same as it was 20 years ago; it's a whole
+      new ball game now.
+    band_suitability: 7.0+
+    register: neutral
+  - term: punch-drunk
+    meaning: confused, dazed, and unable to think clearly, usually because of too
+      much of something
+    example: Everyone felt punch-drunk after six hours of political debate.
+    band_suitability: 8.0+
+    register: neutral
+  - term: throw in the sponge / towel
+    meaning: to admit defeat and give up
+    example: At 10 pm on the night of the election, the president threw in the sponge/towel
+      and admitted he had lost.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a Trojan horse
+    meaning: someone or something that is inside an organisation or system with the
+      secret intention of destroying it from within
+    example: One famous type of computer virus works like a Trojan horse. It attacks
+      your computer from inside the system.
+    band_suitability: 8.0+
+    register: neutral
+  - term: Achilles' heel
+    meaning: a weak point in someone's character or a system that can be attacked
+      successfully
+    example: He's a good worker in many ways, but planning is his Achilles' heel.
+      He's so disorganised.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the sword of Damocles
+    meaning: an imminent and constant threat of disaster
+    example: New financial regulations are hanging over the banking industry like
+      the sword of Damocles. Bankers are extremely worried.
+    band_suitability: 8.0+
+    register: neutral
+  - term: Pandora's box
+    meaning: a process that once begun generates many complicated and unexpected problems
+    example: She opened a Pandora's box when she started investigating corruption
+      in the building industry.
+    band_suitability: 7.0+
+    register: neutral
+  - term: parting shot
+    meaning: a final remark or insult made just as you are leaving
+    example: Julia's parting shot as she walked out of the room was to say that she
+      never wanted to see any of us ever again.
+    band_suitability: 8.0+
+    register: neutral
+  - term: leave no stone unturned
+    meaning: to try every possible course of action in order to achieve something
+    example: The police left no stone unturned in trying to trace the missing child.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall on your sword
+    meaning: to accept responsibility for a failure or mistake and resign or take
+      the blame
+    example: Piero fell on his sword and accepted full responsibility for the disaster.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have the Midas touch
+    meaning: to have a very successful ability to make money or succeed in whatever
+      you do
+    example: She really has the Midas touch - everything she does is hugely successful.
+    band_suitability: 8.0+
+    register: neutral
+  - term: of epic proportions
+    meaning: extremely large or serious
+    example: It was a task of epic proportions, but everyone tried their hardest to
+      succeed.
+    band_suitability: 8.0+
+    register: neutral
+  - term: rest on your laurels
+    meaning: to be satisfied with what you have already achieved and stop trying
+    example: We should continue to work hard and not rest on our laurels.
+    band_suitability: 8.0+
+    register: neutral
+  - term: turn the other cheek
+    meaning: to not react when someone attacks or insults you
+    example: If we are faced with a violent attack, we should just turn the other
+      cheek and not react.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fiddling while Rome burns
+    meaning: spending time on unimportant things while a disaster is happening
+    example: Doing nothing at this stage would be like fiddling while Rome burns.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

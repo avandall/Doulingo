@@ -1,0 +1,127 @@
+vocabulary_entry:
+  topic_tags:
+  - agreeing
+  - disagreeing
+  - opinions
+  - work
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 45
+  entries:
+  - term: be of the same mind
+    meaning: to have the same opinion as someone else
+    example: Maria doesn't approve of letting children eat sweets and chocolate, and
+      her husband is of the same mind.
+    band_suitability: 7.0+
+    register: neutral
+  - term: You're not wrong!
+    meaning: used to express strong agreement with what someone has just said
+    example: ''
+    band_suitability: 6.0+
+    register: casual
+  - term: Tell me about it!
+    meaning: used to say that you have the same experience or feeling as the person
+      you are talking to
+    example: ''
+    band_suitability: 6.0+
+    register: casual
+  - term: That's about the size of it
+    meaning: used to confirm that a summary of a situation is correct
+    example: ''
+    band_suitability: 7.0+
+    register: casual
+  - term: take the words right out of my mouth
+    meaning: to say exactly what the other person was about to say
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: if you can't beat 'em, join 'em
+    meaning: you decide to do something bad because others are getting an advantage
+      from it and you cannot stop them
+    example: Well, yes, but if you can't beat 'em, join 'em!
+    band_suitability: 7.0+
+    register: casual
+  - term: be on message
+    meaning: to support the official view of an organization
+    example: You must be on message in anything you say to the press.
+    band_suitability: 8.0+
+    register: formal
+  - term: sing from the same hymn sheet
+    meaning: to say the same things in public to show you have the same opinion
+    example: We won't win the next election unless we're all singing from the same
+      hymn sheet.
+    band_suitability: 8.0+
+    register: neutral
+  - term: beg to differ
+    meaning: a polite or formal way of saying you disagree
+    example: I beg to differ. I think the staff will get very tired.
+    band_suitability: 7.0+
+    register: formal
+  - term: a world of difference
+    meaning: a very large difference
+    example: There's a world of difference between expecting people to work twelve
+      hours a day and asking them to work ten.
+    band_suitability: 6.0+
+    register: neutral
+  - term: splitting hairs
+    meaning: arguing about whether unimportant details are exactly correct
+    example: Now you're just splitting hairs.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be at odds with
+    meaning: to have a different opinion from someone
+    example: Well, you're at odds with your staff on this one.
+    band_suitability: 7.0+
+    register: neutral
+  - term: barking up the wrong tree
+    meaning: trying to achieve something in the wrong way or being wrong about the
+      reason for something
+    example: Everyone thinks you're barking up the wrong tree!
+    band_suitability: 7.0+
+    register: casual
+  - term: a lone voice
+    meaning: the only person with a specific opinion
+    example: Hey, I'm not exactly a lone voice!
+    band_suitability: 7.0+
+    register: neutral
+  - term: be torn
+    meaning: to be unable to decide because there are two equally good or bad choices
+    example: Yes, well, now I'm torn.
+    band_suitability: 6.0+
+    register: neutral
+  - term: in two minds
+    meaning: unable to decide
+    example: I'm in two minds as to whether it'd work or not.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pour oil on troubled waters
+    meaning: to try to calm down a difficult or angry situation
+    example: Tom, what do you think? You're usually good at pouring oil on troubled
+      waters.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Informal speech: using signpost phrases"
+  topic_tags: ["Fluency", "Discourse Markers", "Informal Speech"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: casual
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Informal speech: using signpost phrases"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates at this level often struggle with fluency due to frequent pauses or silent hesitation when searching for words."
+    grammar_required: 
+      - Simple sentences
+      - Basic fillers (umm, er)
+    vocabulary_core: ["Basic conversational phrases"]
+    vocabulary_stretch: []
+    sentence_length_target: "short-medium"
+    common_errors_to_simulate: "Excessive silent pauses, frequent repetition of words while thinking, over-reliance on basic fillers like 'umm' or 'uh' instead of functional markers."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use discourse markers effectively to manage the flow of conversation and bridge the gap between thoughts."
+    grammar_required: ["Complex sentences", "Cohesion markers"]
+    vocabulary_core: 
+      - Functional discourse markers (I should say, Let me see)
+    vocabulary_stretch: 
+      - Idiomatic functional phrases (How shall I put it?)
+    sentence_length_target: "varied"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you think about your hometown?"
+    user_model_answer: "Um... it's a small place. Um... it's quite quiet. I don't know how to say it... it is nice."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think about your hometown?"
+    user_model_answer: "How shall I put it? It's quite a small place, but I should say it has a unique charm that's hard to find elsewhere. Let me see, it's generally very quiet, which is perfect for me."

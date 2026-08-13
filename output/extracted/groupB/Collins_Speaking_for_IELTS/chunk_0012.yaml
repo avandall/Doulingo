@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Science and Technology — IELTS Speaking Preparation"
+  topic_tags: [science, technology, electronic equipment, internet]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS, Unit 6"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can talk about common electronic equipment using basic vocabulary. Often struggles with collocations and specific phrasal verbs related to technology."
+    grammar_required: [simple_present, basic_comparatives]
+    vocabulary_core: [gadget, internet, mobile, computer]
+    vocabulary_stretch: [state-of-the-art, cutting-edge, technophile, technophobe]
+    sentence_length_target: "short-to-medium"
+    common_errors_to_simulate: "Treating 'equipment' as a countable noun (e.g., 'an equipment'), misusing phrasal verbs like 'turn up' or 'break down' in context."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can discuss complex topics like AI and modern medicine with precise vocabulary and idiomatic phrasal verbs."
+    grammar_required: [complex_structures, accurate_phrasal_verb_usage]
+    vocabulary_core: [cutting-edge, state-of-the-art, gadgetry]
+    vocabulary_stretch: [technophobe, identity theft, cyber-bullying, indispensable]
+    sentence_length_target: "varied_and_fluid"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Can you tell me about a piece of electronic equipment that you find useful?"
+    user_model_answer: "I use my mobile phone every day. It is a very useful equipment for me because I use it to check my emails and chat with friends on social networking sites."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think is the future of AI?"
+    user_model_answer: "That's an interesting question. While some people are technophobes who fear that AI might dominate our lives, I believe it's becoming indispensable. It's already integrated into modern medicine and research, and I think it will continue to simplify our daily tasks."

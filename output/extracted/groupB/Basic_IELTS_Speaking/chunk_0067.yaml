@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Extra language point: Discourse Markers for Native-like Fluency"
+  topic_tags: ["Discourse Markers", "Fluency", "Cohesion"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Extra language point: Discourse Markers"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate uses basic conjunctions like 'and', 'but', 'because'. Struggles to connect ideas smoothly and relies on simple sentence structures."
+    grammar_required: ["Simple sentences", "Basic conjunctions"]
+    vocabulary_core: ["cheap", "like", "friend", "study"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short and direct"
+    common_errors_to_simulate: "Lack of transition words, repetitive sentence starters, disjointed flow between ideas."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses a range of discourse markers to manage flow and highlight arguments effectively, making speech sound natural."
+    grammar_required: ["Complex sentences", "Relative clauses"]
+    vocabulary_core: ["actually", "in fact", "needless to say", "in addition", "besides"]
+    vocabulary_stretch: ["environmentally friendly", "sociable", "convenient"]
+    sentence_length_target: "Varied; use of subordination for explanation"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Is it better to drive a car or cycle to work?"
+    user_model_answer: "I prefer cycling because it helps me keep fit. It's better for the environment and it's cheaper."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is it better to drive a car or cycle to work?"
+    user_model_answer: "I prefer cycling rather than driving a car because it helps me keep fit; in addition, it's better for the environment and it's also cheaper!"

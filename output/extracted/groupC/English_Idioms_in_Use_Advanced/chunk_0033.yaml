@@ -1,0 +1,116 @@
+vocabulary_entry:
+  topic_tags:
+  - emotions
+  - anger
+  - feelings
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 36
+  entries:
+  - term: make my blood boil
+    meaning: to make someone very angry
+    example: People who are rude to waiters make my blood boil.
+    band_suitability: 7.0+
+    register: neutral
+  - term: see red
+    meaning: to get very angry
+    example: People who talk loudly on their mobiles on the train make me see red.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rattle someone's cage
+    meaning: to make someone angry
+    example: Chewing gum in class really rattles my teacher's cage.
+    band_suitability: 8.0+
+    register: casual
+  - term: burst a blood vessel
+    meaning: to get very angry (often used hyperbolically)
+    example: Mum almost burst a blood vessel when she saw my brother fighting.
+    band_suitability: 8.0+
+    register: casual
+  - term: get my goat
+    meaning: to irritate or annoy someone
+    example: Phone calls from people trying to sell me things I don't want really
+      get my goat.
+    band_suitability: 8.0+
+    register: casual
+  - term: all hot and bothered
+    meaning: angry and worried/agitated
+    example: People who drive too closely behind me make me all hot and bothered.
+    band_suitability: 7.0+
+    register: casual
+  - term: knock someone for six
+    meaning: to shock or upset someone very much
+    example: Losing his job has knocked John for six.
+    band_suitability: 8.0+
+    register: casual
+  - term: wild horses couldn't make me
+    meaning: I would never do something, no matter what
+    example: Wild horses couldn't make me have a filling at the dentist's without
+      an injection.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have a sinking feeling
+    meaning: to feel that something bad is about to happen
+    example: I had a sinking feeling when my teacher asked for my homework.
+    band_suitability: 7.0+
+    register: neutral
+  - term: down in the dumps
+    meaning: to be miserable or unhappy
+    example: Katy has been down in the dumps since she failed her exam.
+    band_suitability: 7.0+
+    register: casual
+  - term: not be your bag / not be your thing
+    meaning: something you are not interested in or do not like
+    example: Playing cards is not my bag.
+    band_suitability: 6.0+
+    register: casual
+  - term: wouldn't give something house room
+    meaning: to dislike or disapprove of something strongly
+    example: The new government wouldn't give house room to those outdated policies.
+    band_suitability: 8.0+
+    register: neutral
+  - term: kick yourself
+    meaning: to be very cross with yourself because you did something stupid
+    example: I could kick myself for forgetting my sister's birthday.
+    band_suitability: 7.0+
+    register: casual
+  - term: reduce to tears
+    meaning: to make someone cry
+    example: Her brother's unkind words reduced her to tears.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be a bundle of nerves
+    meaning: to be extremely nervous
+    example: Amy was a bundle of nerves before her wedding.
+    band_suitability: 7.0+
+    register: casual
+  - term: run out of patience
+    meaning: to begin to feel annoyed because you have waited too long
+    example: I'm running out of patience with these naughty children.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

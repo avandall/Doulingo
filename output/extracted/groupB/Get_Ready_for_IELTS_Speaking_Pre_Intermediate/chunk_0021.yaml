@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3 — Structuring Answers and Festivals"
+  topic_tags: ["Festivals", "Special Occasions", "Speaking Part 3 Strategy"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 3"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Focuses on personal experience rather than abstract concepts. Answers are often short (1-2 sentences) and lack expansion on the social importance."
+    grammar_required: ["Simple past for past events", "Present simple for general facts"]
+    vocabulary_core: ["festival", "parade", "costumes", "celebrate"]
+    vocabulary_stretch: ["traditions", "ceremony"]
+    sentence_length_target: "1-2 sentences"
+    common_errors_to_simulate: "Sticking to personal anecdotes instead of discussing the broader society; repeating the same structures."
+  - band_min: 6.0
+    band_max: 7.0
+    can_do_description: "Able to discuss the importance of events for a society. Can provide multiple points, expand answers by explaining 'why' or providing examples/contrast."
+    grammar_required: 
+      - "Complex sentences with 'because', 'although"
+      - Gerunds for hobbies/activities
+    vocabulary_core: ["society", "community", "traditional", "ceremony"]
+    vocabulary_stretch: ["significant", "cultural heritage", "social cohesion"]
+    sentence_length_target: "4-7 sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think special occasions and festivals are important for a society?"
+    user_model_answer: "I went to a festival in my country last year and I enjoyed it. It was important to me because I saw my friends and family."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you think special occasions and festivals are important for a society?"
+    user_model_answer: "Yes, it is important for people to learn about their country. I think it is interesting to learn about a different society too. When you go to a festival, you remember special events in the past and you celebrate. It is important to celebrate special occasions with your family and people from your country - it makes you happy."

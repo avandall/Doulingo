@@ -1,0 +1,139 @@
+vocabulary_entry:
+  topic_tags:
+  - beliefs
+  - opinions
+  - debates
+  - arguments
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 56
+  entries:
+  - term: firmly believe
+    meaning: to have a strong and definite belief about something
+    example: I firmly believe that young people should have the right to vote at 16.
+    band_suitability: 6.0+
+    register: neutral
+  - term: share an opinion
+    meaning: to have the same opinion as someone else
+    example: I share your opinion on the issue of hunting.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a great believer in
+    meaning: someone who is strongly convinced of the value or truth of something
+    example: I’m a great believer in animals’ rights.
+    band_suitability: 7.0+
+    register: neutral
+  - term: contrary to popular belief
+    meaning: used to say that something is true even though many people think it is
+      not
+    example: Contrary to popular belief, it is not true that blondes are dumb.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have reason to believe
+    meaning: to have good grounds or evidence for thinking something is true
+    example: We have reason to believe that you witnessed the accident.
+    band_suitability: 7.0+
+    register: formal
+  - term: poles apart
+    meaning: completely different in opinions, beliefs, or attitudes
+    example: We are poles apart in our attitudes to life.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a matter of opinion
+    meaning: something that people can have different opinions about rather than a
+      proven fact
+    example: It’s a matter of opinion whether men are better drivers than women.
+    band_suitability: 6.0+
+    register: neutral
+  - term: difference of opinion
+    meaning: a disagreement between people
+    example: I had a difference of opinion with my brother.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sneaking suspicion
+    meaning: a slight feeling that something is true or likely to be true, often without
+      firm proof
+    example: I’ve got a sneaking suspicion you may be right.
+    band_suitability: 8.0+
+    register: neutral
+  - term: make assumptions
+    meaning: to accept something as true without having enough proof
+    example: The writer seems to make assumptions based on an unshakeable belief.
+    band_suitability: 7.0+
+    register: formal
+  - term: unshakeable belief
+    meaning: a firm and completely solid belief that will not change
+    example: She has an unshakeable belief in the superiority of her own value system.
+    band_suitability: 8.0+
+    register: formal
+  - term: colour judgement
+    meaning: to affect someone's opinion or decision, usually in a negative or biased
+      way
+    example: Her own set of beliefs has coloured her judgement.
+    band_suitability: 8.0+
+    register: formal
+  - term: cast doubt on
+    meaning: to cause people to feel uncertain about something
+    example: Other documents cast doubt on her conclusions.
+    band_suitability: 7.0+
+    register: formal
+  - term: opinions are divided
+    meaning: people do not all agree on a particular issue
+    example: Opinions on the issue are divided.
+    band_suitability: 6.0+
+    register: neutral
+  - term: considered opinion
+    meaning: an opinion that has been reached after a lot of careful thought
+    example: My own considered opinion is that the writer is not to be trusted.
+    band_suitability: 8.0+
+    register: formal
+  - term: serious misgivings
+    meaning: feelings of doubt or apprehension about how things will turn out
+    example: I have serious misgivings about her research.
+    band_suitability: 8.0+
+    register: formal
+  - term: give up hope
+    meaning: to stop hoping because you think there is no chance of success
+    example: They’ve given up hope of any survivors.
+    band_suitability: 6.0+
+    register: neutral
+  - term: think hard
+    meaning: to think very carefully about something before making a decision
+    example: We need to think hard about this problem.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hold the view/opinion
+    meaning: to have a particular opinion or belief
+    example: Many people hold the view that technology is improving education.
+    band_suitability: 7.0+
+    register: formal
+  - term: strong opinions
+    meaning: firm and deeply felt views on a subject
+    example: He has strong opinions on many subjects.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

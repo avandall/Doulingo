@@ -1,0 +1,116 @@
+vocabulary_entry:
+  topic_tags:
+  - problems
+  - solutions
+  - work
+  - decision-making
+  category: idiom
+  source_citation: 'English Idioms In Use Intermediate - Unit 9: Dealing with problems'
+  entries:
+  - term: make do
+    meaning: to manage with something that is not as good as you would like
+    example: He had been making do with planks of wood on bricks.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give something a shot/whirl
+    meaning: to give something a try
+    example: He decided to give it a shot.
+    band_suitability: 6.0+
+    register: informal
+  - term: get to grips with something
+    meaning: to make an effort to understand or to deal with a problem or situation
+    example: He was determined to get to grips with it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: to be on the safe side
+    meaning: to take precautions to protect oneself even though it might not be necessary
+    example: To be on the safe side, he asked Ana to check it for him.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get to the bottom of something
+    meaning: to try to discover the truth about a situation
+    example: I think we'd better get to the bottom of it before you put your books
+      on it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: shed/throw light on something
+    meaning: to help people understand a situation
+    example: The recent release of fifty-year-old documents has shed a great deal
+      of light on the political crises.
+    band_suitability: 7.0+
+    register: formal
+  - term: bring something to light
+    meaning: to discover facts that were previously unknown (usually used in passive)
+    example: Some unexpected information about the government has been brought to
+      light.
+    band_suitability: 8.0+
+    register: formal
+  - term: come to light
+    meaning: for facts to become known
+    example: Some surprising facts about the politicians have also come to light.
+    band_suitability: 8.0+
+    register: neutral
+  - term: see the light at the end of the tunnel
+    meaning: to believe that a difficult and unpleasant situation is coming to an
+      end
+    example: At last I feel I can see the light at the end of the tunnel.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in the bag
+    meaning: certain to be achieved
+    example: The job isn't in the bag till you've had an offer in writing.
+    band_suitability: 7.0+
+    register: informal
+  - term: the answer to my prayers
+    meaning: something or someone that you have needed for a long time
+    example: When her parents gave her some money, it was like the answer to her prayers.
+    band_suitability: 8.0+
+    register: neutral
+  - term: wave a magic wand
+    meaning: to find an easy way to solve a problem
+    example: Sarah wanted to wave a magic wand and make her son happy again.
+    band_suitability: 7.0+
+    register: neutral
+  - term: tie up loose ends
+    meaning: to deal with the last few things that need to be done before something
+      is completed
+    example: Just wait while I tie up these loose ends.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall into place
+    meaning: to be understood or to go well
+    example: As I listened to the evidence, everything began to fall into place.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pick up the pieces
+    meaning: to try to return to normal after a difficult situation
+    example: When the business failed, Paul vanished, leaving his partner to pick
+      up the pieces.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

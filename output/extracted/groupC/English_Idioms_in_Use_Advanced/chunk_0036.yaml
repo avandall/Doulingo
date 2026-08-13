@@ -1,0 +1,140 @@
+vocabulary_entry:
+  topic_tags:
+  - journalism
+  - politics
+  - war
+  - advertising
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 39 & 40
+  entries:
+  - term: given the go-ahead
+    meaning: received permission to do something
+    example: Planners are now almost certain to be given the go-ahead to build a new
+      housing estate.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fighting for one's political life
+    meaning: in a situation where one is in danger of losing one's political position
+    example: PM fighting for his political life.
+    band_suitability: 8.0+
+    register: formal
+  - term: mounting calls
+    meaning: increasing demands or requests from many people
+    example: amid mounting calls for his resignation.
+    band_suitability: 7.0+
+    register: formal
+  - term: have blood on one's hands
+    meaning: to be responsible for the death of someone
+    example: Many say he has blood on his hands after the number of civilian deaths.
+    band_suitability: 7.0+
+    register: neutral
+  - term: eleventh-hour
+    meaning: at the latest possible moment; last-minute
+    example: Eleventh-hour agreement reached.
+    band_suitability: 8.0+
+    register: neutral
+  - term: hammer out
+    meaning: to reach an agreement after a long or difficult discussion
+    example: Management and unions have at last managed to hammer out a possible agreement.
+    band_suitability: 7.0+
+    register: neutral
+  - term: war-torn
+    meaning: a country or area that has suffered a lot as a result of war
+    example: The war-torn country of Vorinland has been further plunged into chaos.
+    band_suitability: 7.0+
+    register: neutral
+  - term: plunge into chaos
+    meaning: to be put into an extremely difficult or disorganized situation
+    example: The country has been further plunged into chaos by a series of cross-border
+      raids.
+    band_suitability: 7.0+
+    register: formal
+  - term: under cover of darkness
+    meaning: protected by the fact that it is dark
+    example: The raids took place under cover of darkness last night.
+    band_suitability: 8.0+
+    register: neutral
+  - term: shrouded in mystery
+    meaning: not known or understood
+    example: The motive is as yet shrouded in mystery.
+    band_suitability: 8.0+
+    register: neutral
+  - term: last-ditch attempt
+    meaning: a final, desperate effort to achieve something
+    example: One theory is that it was a last-ditch attempt to sabotage the peace
+      negotiations.
+    band_suitability: 8.0+
+    register: neutral
+  - term: beyond your wildest dreams
+    meaning: more than you could ever imagine or wish for
+    example: The cruise ship Ocean Comet offers luxury beyond your wildest dreams.
+    band_suitability: 7.0+
+    register: neutral
+  - term: do yourself the world of good
+    meaning: to make yourself feel much healthier or happier
+    example: Go on, do yourself the world of good and book now.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take years off someone
+    meaning: to make someone look and feel much younger
+    example: Drinking Corngrass has taken years off me.
+    band_suitability: 7.0+
+    register: neutral
+  - term: living life to the full
+    meaning: experiencing as many good things as possible in life
+    example: Mary still believes in living life to the full.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ahead of its time
+    meaning: has already got features other products will not have for a long time
+      yet
+    example: The Vestbook 3800T is a laptop that is truly ahead of its time.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pack a punch
+    meaning: to be impressively powerful
+    example: The laptop packs an impressive punch with its super-fast processor.
+    band_suitability: 8.0+
+    register: neutral
+  - term: stand out from the crowd
+    meaning: to be different from and better than others so that everyone notices
+      you
+    example: It's getting more and more difficult to stand out from the crowd.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hands down
+    meaning: easily; without a doubt
+    example: The Vedra 2000 beats other cars in its class hands down.
+    band_suitability: 8.0+
+    register: neutral
+  - term: hit the mark
+    meaning: to be successful
+    example: We tried every kind of holiday, but they never quite hit the mark.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

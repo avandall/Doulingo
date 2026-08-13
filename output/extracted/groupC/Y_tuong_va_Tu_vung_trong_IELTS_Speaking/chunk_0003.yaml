@@ -1,0 +1,113 @@
+vocabulary_entry:
+  topic_tags:
+  - celebrities
+  - fame
+  - media
+  - success
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: bring financial stability
+    meaning: to provide a secure and stable financial situation
+    example: to bring financial stability -> an enjoyable life with opportunities
+      for endorsements
+    band_suitability: 6.0+
+    register: neutral
+  - term: enjoy financial independence
+    meaning: to have enough money to support oneself without relying on others
+    example: to enjoy financial independence
+    band_suitability: 6.0+
+    register: neutral
+  - term: afford a luxurious lifestyle
+    meaning: to have enough money to live in a very comfortable and expensive way
+    example: can afford a luxurious lifestyle with access to the greatest experiences
+      and luxuries
+    band_suitability: 7.0+
+    register: neutral
+  - term: raise awareness for important causes
+    meaning: to help people know and understand more about significant social issues
+    example: to have a large platform to raise awareness for important causes and
+      influence positive change
+    band_suitability: 7.0+
+    register: formal
+  - term: open doors to exclusive opportunities
+    meaning: to create chances to access special, limited opportunities
+    example: to open doors to exclusive opportunities and high-profile projects that
+      can advance careers
+    band_suitability: 8.0+
+    register: formal
+  - term: experience public scrutiny
+    meaning: to be subjected to intense critical attention and observation by the
+      public and media
+    example: to experience public scrutiny and a lack of privacy
+    band_suitability: 8.0+
+    register: formal
+  - term: keep up a perfect public image
+    meaning: to maintain an idealized appearance or reputation for the public
+    example: to come with a lot of pressure to keep up a perfect public image
+    band_suitability: 7.0+
+    register: neutral
+  - term: establish real relationships
+    meaning: to form genuine, deep connections with others
+    example: to find it difficult to establish real relationships
+    band_suitability: 6.0+
+    register: neutral
+  - term: showcase exceptional skills
+    meaning: to display outstanding abilities or talents clearly
+    example: to showcase exceptional skills in fields like music, sports, or acting
+    band_suitability: 7.0+
+    register: formal
+  - term: create an online presence
+    meaning: to establish a profile or visibility on the internet and social media
+    example: to create an online presence or go viral
+    band_suitability: 6.0+
+    register: neutral
+  - term: go viral
+    meaning: to spread quickly and widely on the internet through social media
+    example: to create an online presence or go viral
+    band_suitability: 6.0+
+    register: informal
+  - term: gain credibility
+    meaning: to become trusted and believed in by others
+    example: to work together and network with well-known individuals -> get noticed
+      and gain credibility in their field
+    band_suitability: 7.0+
+    register: formal
+  - term: stand out from others
+    meaning: to be much better or more noticeable than other people
+    example: trendsetters and innovative individuals draw attention for their unique
+      contributions, helping them stand out from others
+    band_suitability: 6.0+
+    register: neutral
+  - term: use publicity stunts
+    meaning: to do planned, striking things to attract public attention or media coverage
+    example: to create controversial content or using publicity stunts to attract
+      attention
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

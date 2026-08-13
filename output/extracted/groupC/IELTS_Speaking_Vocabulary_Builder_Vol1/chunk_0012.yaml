@@ -1,0 +1,149 @@
+vocabulary_entry:
+  topic_tags:
+  - globalization
+  - society
+  - economy
+  - culture
+  category: phrase
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: invaluable
+    meaning: extremely useful
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: a diverse range of
+    meaning: a wide variety of different things or people
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: compile
+    meaning: to produce a book, list, or report by bringing together different items
+      or information
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: streaming service
+    meaning: a service that provides unlimited streaming of TV shows, movies, and
+      other programming
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: cuisine
+    meaning: a style of cooking
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: cultural norms
+    meaning: the standards or rules of behavior that are accepted in a particular
+      society
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: exhibition
+    meaning: a collection of things, for example works of art, that are shown to the
+      public
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: reach out to
+    meaning: to communicate with someone, especially by using a phone or sending an
+      email
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: on a budget
+    meaning: spending a limited amount of money
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: globalization
+    meaning: the increase of trade around the world, especially by large companies
+      trading in many countries
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: have access to
+    meaning: to be able to arrive at, get inside, or use something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: multi-national corporations
+    meaning: large companies that operate in several different countries
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: blue collar
+    meaning: referring to workers who generally perform manual labor
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: white collar
+    meaning: referring to workers found in office settings in clerical, administrative,
+      or management roles
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: deindustrialization
+    meaning: the process by which a country or area depends less and less on industry
+      to provide work and income
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: supporter
+    meaning: a person who supports a political party, an idea, or a cause
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: deep-seated
+    meaning: very fixed and strong; difficult to change or destroy
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: manipulate
+    meaning: to control or influence something, often in a dishonest way
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: currency
+    meaning: the system of money that a country uses
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: tolerant
+    meaning: able to accept what other people say or do even if you do not agree with
+      it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: alien
+    meaning: a person who is not a citizen of the country in which they live or work
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

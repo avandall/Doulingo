@@ -1,0 +1,153 @@
+vocabulary_entry:
+  topic_tags:
+  - success
+  - failure
+  - cause and effect
+  - events
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 52 & 53
+  entries:
+  - term: earn the respect
+    meaning: to deserve and win the respect of others through your actions
+    example: Over the years, Henry has earned the respect of his colleagues.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fruits of your hard work
+    meaning: the pleasant results of your hard work
+    example: we all hope he can enjoy the fruits of his many years of hard work.
+    band_suitability: 7.0+
+    register: neutral
+  - term: resounding success
+    meaning: a complete and great success
+    example: His career has been a resounding success.
+    band_suitability: 7.0+
+    register: formal
+  - term: make a contribution
+    meaning: to contribute to something
+    example: he has made an enormous contribution to our profession.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pass exams
+    meaning: to succeed in an examination
+    example: 87% of students passed their exams with grades B or higher
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring out the best
+    meaning: to cause someone's best qualities to be shown
+    example: We believe that Garfham School brings out the best in our boys and girls!
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a breakthrough
+    meaning: to make an important discovery or development
+    example: Our research team has made a breakthrough
+    band_suitability: 7.0+
+    register: neutral
+  - term: take advantage of
+    meaning: to make use of an opportunity
+    example: We must now take advantage of the excellent progress we have made
+    band_suitability: 6.0+
+    register: neutral
+  - term: go badly wrong
+    meaning: to fail completely or have a very bad result
+    example: Our plans went badly wrong.
+    band_suitability: 6.0+
+    register: informal
+  - term: doomed to failure
+    meaning: certain to fail
+    example: The scheme is doomed to failure.
+    band_suitability: 7.0+
+    register: neutral
+  - term: lose one's nerve
+    meaning: to suddenly become too frightened to do something you had planned to
+      do
+    example: I lost my nerve and couldn’t get back on.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go out of business
+    meaning: to stop operating as a business because of lack of money
+    example: A year later he went out of business.
+    band_suitability: 6.0+
+    register: neutral
+  - term: recipe for disaster
+    meaning: a situation that is very likely to end in failure or trouble
+    example: His plans are a recipe for disaster.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cause chaos / havoc / damage
+    meaning: to be the cause of widespread trouble, destruction, or negative situations
+    example: The storm caused chaos / havoc / a lot of damage.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring about a revolution/transformation
+    meaning: to cause a change or transformation to happen
+    example: The discovery of X-rays brought about a revolution/transformation in
+      medical science.
+    band_suitability: 8.0+
+    register: formal
+  - term: spark off riots/demonstrations
+    meaning: to cause sudden, often negative events or reactions to start
+    example: The announcement sparked off riots/demonstrations in the cities.
+    band_suitability: 7.0+
+    register: neutral
+  - term: attract criticism/interest
+    meaning: to draw attention, criticism, or interest from people
+    example: His book has attracted a lot of criticism/interest.
+    band_suitability: 6.0+
+    register: neutral
+  - term: underlying cause
+    meaning: the real, hidden, or foundational cause of a problem
+    example: The underlying cause of the problem was a lack of funds over many years.
+    band_suitability: 8.0+
+    register: formal
+  - term: minimise the impact
+    meaning: to reduce the effect or impact of something
+    example: The government hopes to reduce/minimise the impact of the new taxes.
+    band_suitability: 7.0+
+    register: formal
+  - term: suffer the consequences
+    meaning: to experience the bad results of your actions
+    example: If you make her angry, you’ll have to suffer the consequences.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a major impact
+    meaning: to have a significant effect on someone or something
+    example: Latino singers have had a major impact on pop music this year.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a bad impression
+    meaning: to cause people to have a negative opinion of you upon meeting or seeing
+      you
+    example: Remember that it makes/creates a bad impression if you’re late.
+    band_suitability: 6.0+
+    register: neutral
+  - term: cause a sensation
+    meaning: to cause widespread excitement and interest
+    example: Their love affair caused a sensation.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,137 @@
+vocabulary_entry:
+  topic_tags:
+  - money
+  - finance
+  - business
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 32
+  entries:
+  - term: quids in
+    meaning: making a profit
+    example: If this business idea is as successful as we think it'll be, we'll be
+      quids in for a change.
+    band_suitability: 8.0+
+    register: informal
+  - term: laughing all the way to the bank
+    meaning: making a lot of money easily
+    example: Yes, we'll be laughing all the way to the bank.
+    band_suitability: 7.0+
+    register: informal
+  - term: money for old rope
+    meaning: money that is easily earned
+    example: And it will be so easy too - it really will be money for old rope.
+    band_suitability: 8.0+
+    register: informal
+  - term: live on a shoestring
+    meaning: living on very little money
+    example: I'd love to get a job with a decent salary. I'm tired of living on a
+      shoestring.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rolling in it
+    meaning: have lots of money
+    example: It would be great to be rolling in it, wouldn't it?
+    band_suitability: 7.0+
+    register: informal
+  - term: the breadwinner
+    meaning: person who earns the money the family needs
+    example: Since my husband lost his job, I'm the breadwinner in my family.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring home the bacon
+    meaning: earn the money the family lives on
+    example: Well, I guess I bring home the bacon in my family too.
+    band_suitability: 7.0+
+    register: informal
+  - term: strapped for cash
+    meaning: don't have enough money
+    example: Sorry, mate, I'm a bit strapped for cash at the moment.
+    band_suitability: 6.0+
+    register: informal
+  - term: take someone to the cleaners
+    meaning: got as much money from someone as possible
+    example: She took him to the cleaner's when they got divorced.
+    band_suitability: 8.0+
+    register: informal
+  - term: throw money down the drain
+    meaning: waste money
+    example: We can't afford to throw money down the drain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go for a song
+    meaning: being sold very cheaply
+    example: It was going for a song - I only paid a few hundred pounds.
+    band_suitability: 8.0+
+    register: neutral
+  - term: rags to riches
+    meaning: moving from poverty to wealth
+    example: Enter our rags to riches competition!
+    band_suitability: 7.0+
+    register: neutral
+  - term: scrimp and save
+    meaning: living very economically
+    example: Are you tired of scrimping and saving in order to make ends meet?
+    band_suitability: 7.0+
+    register: neutral
+  - term: make ends meet
+    meaning: have just enough money to pay for the things you need
+    example: Are you tired of scrimping and saving in order to make ends meet?
+    band_suitability: 6.0+
+    register: neutral
+  - term: pay over the odds
+    meaning: paying more than something is worth
+    example: Fed up with paying over the odds for things...?
+    band_suitability: 7.0+
+    register: neutral
+  - term: penny-pinching
+    meaning: spending as little money as possible
+    example: Fed up with... penny-pinching all the time?
+    band_suitability: 7.0+
+    register: neutral
+  - term: cheap and cheerful
+    meaning: cheap but good or enjoyable
+    example: Are you always on the lookout for cheap and cheerful things...?
+    band_suitability: 7.0+
+    register: neutral
+  - term: break the bank
+    meaning: don't cost a lot
+    example: Are you always on the lookout for... things that won't break the bank?
+    band_suitability: 6.0+
+    register: neutral
+  - term: money to burn
+    meaning: excess money
+    example: Would you like to feel you had money to burn?
+    band_suitability: 7.0+
+    register: neutral
+  - term: no-expense-spared
+    meaning: luxury; a lot of money is spent to make it good
+    example: Then enter our competition for a chance to win... a no-expense-spared
+      weekend in Paris.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

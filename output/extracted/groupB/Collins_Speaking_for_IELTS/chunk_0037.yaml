@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Tourism and Holidays — High-Level Speaking Samples"
+  topic_tags: [Tourism, Holidays, Travel, Personal Experience]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio scripts Track 46-52"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses sophisticated vocabulary (e.g., 'detrimental', 'manifold', 'disparage') and complex grammatical structures (inversion, conditional sentences). Able to develop answers with clear explanations and logical progression."
+    grammar_required: [Inversion, Third Conditional, Relative Clauses, Modal verbs for speculation]
+    vocabulary_core: [Tourist destination, sightseeing, infrastructure, local economy]
+    vocabulary_stretch: [manifold, detrimental, disparage, open-minded, objectively, bustling]
+    sentence_length_target: "Varied (combination of short, punchy statements and longer, complex sentences)."
+
+sample_dialogues:
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Do you think it's true that travel broadens the mind?"
+    user_model_answer: "I do, yes. I wouldn't want to disparage people who haven't travelled because that is almost invariably due to a lack of opportunity. I can't help but think that it does make you a more open-minded person, as you see different ways of living, eating, drinking, interacting with others, and it allows you to see your own culture more objectively."
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "What about the negative impacts of tourism?"
+    user_model_answer: "Well, I've seen areas where large numbers of visitors have had a detrimental effect on local habitats. For example, coral reefs in the Caribbean. It's really tragic. The best solution, as far as the wildlife is concerned, would be to ban tourism for a few decades to let the reefs recover, but, of course, the local economy has come to rely on tourism."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is your country popular with tourists?"
+    user_model_answer: "Oh yes, it is. It's a key tourist destination. It isn't popular with sunseekers because, well, we don't get a lot of sun, but people who are into culture and history love it. We get millions of visitors every year."

@@ -1,0 +1,111 @@
+vocabulary_entry:
+  topic_tags:
+  - technology
+  - entertainment
+  - books
+  - theatre
+  - films
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 24 & 25
+  entries:
+  - term: at the cutting edge
+    meaning: at the most advanced stage of development
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hot off the press
+    meaning: just printed and containing the most recent information
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: push the right buttons
+    meaning: to do exactly what is necessary to get the result you want
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: brainchild
+    meaning: an original idea or invention of a particular person
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: roll in the aisles
+    meaning: to laugh a lot
+    example: The show had the audience rolling in the aisles.
+    band_suitability: 8.0+
+    register: informal
+  - term: bring the house down
+    meaning: to be extremely successful and make the audience laugh or clap a lot
+    example: The finale brought the house down.
+    band_suitability: 8.0+
+    register: neutral
+  - term: steal the show
+    meaning: to get all the attention and praise at an event or performance
+    example: Helena Good stole the show with a fantastic performance.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on the edge of your seat
+    meaning: very excited and interested in what happens next
+    example: The plot will keep you on the edge of your seat.
+    band_suitability: 7.0+
+    register: neutral
+  - term: send shivers down someone's spine
+    meaning: to be very moving or scary
+    example: His dramatic performance sent shivers down my spine.
+    band_suitability: 8.0+
+    register: neutral
+  - term: wade through
+    meaning: to finish reading something, but with difficulty
+    example: I eventually managed to wade through all 400 pages.
+    band_suitability: 7.0+
+    register: neutral
+  - term: heavy going
+    meaning: difficult to read or understand
+    example: It was really heavy going.
+    band_suitability: 7.0+
+    register: neutral
+  - term: page-turner
+    meaning: a book that is so exciting that you have to read it quickly
+    example: It's not what I would call a page-turner!
+    band_suitability: 7.0+
+    register: neutral
+  - term: do a hatchet job on
+    meaning: to criticise someone or something strongly and cruelly
+    example: The critics in the Sunday papers certainly did a hatchet job on it.
+    band_suitability: 8.0+
+    register: informal
+  - term: pick holes in
+    meaning: to find mistakes in; to criticise
+    example: It's pretty easy to pick holes in the plot.
+    band_suitability: 7.0+
+    register: neutral
+  - term: armchair critic
+    meaning: someone who criticises without having personal expertise
+    example: It's much easier to be an armchair critic, isn't it?
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

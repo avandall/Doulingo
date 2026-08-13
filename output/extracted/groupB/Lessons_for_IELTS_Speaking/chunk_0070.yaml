@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Focus on Part 3: Abstract Discussion"
+  topic_tags: ["Consumerism", "Wealth", "Societal Trends", "Part 3 Strategy"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking, Focus on Part 3 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to answer abstract questions but may rely on simpler vocabulary and shorter, less complex sentence structures."
+    grammar_required: ["Simple present", "Basic comparatives"]
+    vocabulary_core: ["rich", "buy", "goods", "money"]
+    vocabulary_stretch: ["wealth", "affluence", "status"]
+    sentence_length_target: "Short to medium"
+    common_errors_to_simulate: "Limited ability to expand on abstract concepts; reliance on personal examples instead of generalized societal views."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to discuss abstract societal issues with coherent arguments and precise terminology."
+    grammar_required: ["Complex sentences with conjunctions", "Passive voice for general statements"]
+    vocabulary_core: ["consumerism", "economy", "materialistic", "patterns"]
+    vocabulary_stretch: ["affluence", "purchasing behaviour", "previous generations", "status symbols"]
+    sentence_length_target: "Long and complex with logical connectors"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "In your country, how do people express wealth and affluence?"
+    user_model_answer: "In my country, rich people often buy very big houses or expensive cars to show others that they have a lot of money and a high status."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What are the advantages and disadvantages of consumerism?"
+    user_model_answer: "Well, on the one hand, consumerism is undoubtedly a major driver for the global economy, as it stimulates production and creates jobs. However, the downside is that it often fosters a culture of greed where people constantly desire more than they actually need, which can be quite detrimental to society in the long run."

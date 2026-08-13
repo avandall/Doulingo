@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1: Home & Daily Routine Strategy"
+  topic_tags: ["Accommodation", "House", "Apartment"]
+  target_band_min: 5.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Hackers_IELTS_Speaking.md, Unit: Home & Job/Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể trả lời trực tiếp câu hỏi nhưng diễn giải còn hạn chế, chưa mở rộng ý tưởng đầy đủ."
+    grammar_required: ["Present Simple", "Adjectives for description"]
+    vocabulary_core: ["conveniently located", "noisy neighbor", "content with"]
+    vocabulary_stretch: ["bus stop", "upstairs neighbor"]
+    sentence_length_target: "Ngắn, đơn giản"
+    common_errors_to_simulate: "Trả lời quá ngắn (1 câu), thiếu phần giải thích thêm sau khi trả lời trực tiếp."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh trả lời trực tiếp kèm theo giải thích chi tiết, sử dụng ví dụ để làm rõ ý tưởng."
+    grammar_required: ["Complex sentences with conjunctions", "Subordinate clauses"]
+    vocabulary_core: ["conveniently located", "content with", "noisy neighbor"]
+    vocabulary_stretch: ["provide useful advice", "employee benefits", "major in..."]
+    sentence_length_target: "Trung bình từ 2-3 câu mỗi lần trả lời"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you like about your house or apartment?"
+    user_model_answer: "My apartment is conveniently located. It’s only about 3 minutes from the nearest bus stop."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you not like about your house or apartment?"
+    user_model_answer: "I’m content with nearly everything about my apartment, except for my upstairs neighbor. He is so noisy. For instance, he often plays loud music late at night."

@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Focus on Part 3: Solving Global Commodity Issues"
+  topic_tags: ["environment", "global issues", "commodities", "problem-solving"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 3 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can express opinions on complex global issues using basic logical structures and general vocabulary."
+    grammar_required: 
+      - modal verbs for possibility (can, will)
+      - passive voice (to be produced)
+    vocabulary_core: ["alternative", "fuels", "distribution", "reserves", "population"]
+    vocabulary_stretch: ["commodities", "staples"]
+    sentence_length_target: "medium-length, compound sentences"
+    common_errors_to_simulate: "Lack of complex cohesive devices; tendency to rely on simple 'I think' structures without expanding on the reasoning."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to discuss complex abstract issues (wars, politics, corruption) with specific vocabulary and nuanced perspective."
+    grammar_required: 
+      - complex structures (It is a matter of... that...)
+      - relative clauses
+      - future forms for speculation
+    vocabulary_core: ["alternative vehicle fuels", "natural energy reserves", "production", "distribution"]
+    vocabulary_stretch: ["corruption", "staples", "commodity"]
+    sentence_length_target: "long, complex sentences with varied clause structures"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you think is the main problem with the distribution of basic goods like food or fuel?"
+    user_model_answer: "I think we need to find alternative vehicle fuels that can be cheaply produced, because current ones are too expensive and not enough."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think is the main problem with the distribution of basic goods like food or fuel?"
+    user_model_answer: "It's often a matter of navigating complex factors like wars, politics, and corruption, which significantly hinder the efficient distribution of essential staples to the general population."

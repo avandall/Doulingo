@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Family and Friends — IELTS Speaking Practice"
+  topic_tags: ["Family", "Friendship", "Relationships"]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio Scripts"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to use precise personality adjectives (e.g., 'outgoing', 'judgemental', 'self-assured') and idiomatic expressions ('gone from strength to strength', 'adrenalin junky'). Can maintain coherence using linking devices and providing extended, relevant answers."
+    grammar_required: ["Present perfect for relationships", "Mixed conditionals", "Relative clauses"]
+    vocabulary_core: ["sociable", "reliable", "ambitious", "independent"]
+    vocabulary_stretch: ["inseparable", "judgemental", "cliche", "overwhelmed", "adrenalin junky"]
+    sentence_length_target: "Long, complex sentences with varied structures."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me something about your family."
+    user_model_answer: "Although I live abroad now, my mum's family is from Paris and my dad's family is from Toulouse. So I'm from a very French family. I would say I come from quite a small family, really. For example, I just have one older sister and four cousins, but it's true that my extended family is fairly big."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "In what ways have families changed in the last hundred years?"
+    user_model_answer: "In Western countries, I would say families have become more widely dispersed and less close. People travel more, and then end up living far from their families. I think this is a shame because it means there is a breakdown of communities."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you expect from a good friend?"
+    user_model_answer: "One of my best friends is a guy called Raul. He's very active, a sporty type, involved in hiking and mountain biking - a bit of an adrenalin junky. He's also a very determined person. When he gets into something, he gives one hundred per cent."

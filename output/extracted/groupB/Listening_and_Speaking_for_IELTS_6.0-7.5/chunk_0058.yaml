@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Strong and Weak Forms (IELTS Speaking)"
+  topic_tags: ["Pronunciation", "Speaking Skills", "Fluency"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Pronunciation: Strong and weak forms"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Phát âm rõ ràng nhưng đôi khi còn sử dụng 'strong forms' cho tất cả các từ chức năng (function words), làm cho câu nói nghe thiếu tự nhiên và thiếu nhịp điệu (rhythm)."
+    grammar_required: 
+      - Auxiliary verbs (do, have, be)
+      - Modals (would, could, should)
+    vocabulary_core: 
+      - Function words (to, and, for, but, that, as)
+    vocabulary_stretch: ["Connected speech patterns"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Phát âm quá nhấn mạnh (stress) vào các từ chức năng (ví dụ: phát âm 'to' thành /tuː/ thay vì /tə/ trong câu), dẫn đến nhịp điệu tiếng Anh bị cứng (staccato)."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Sử dụng 'weak forms' thành thạo, giúp câu nói trôi chảy và tạo được nhịp điệu tự nhiên, chuyên nghiệp giống người bản ngữ."
+    grammar_required: ["Complex sentence structures with embedded modals"]
+    vocabulary_core: ["Weak forms of prepositions and conjunctions"]
+    vocabulary_stretch: ["Natural sentence stress and rhythm"]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think teenagers should leave home early?"
+    user_model_answer: "I'd like to leave home one day but I am not sure if I am ready to yet." 
+    # Lưu ý: Band 6 thường phát âm đầy đủ 'I am' thay vì 'I'm' hoặc nhấn mạnh vào 'am/if' một cách không cần thiết.
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think teenagers should leave home early?"
+    user_model_answer: "I'd like to leave home one day but I'm [weak form] not sure if I'm [weak form] ready to yet." 
+    # Lưu ý: Band 7+ sử dụng contraction và weak forms để giảm stress trên các từ chức năng.

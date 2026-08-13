@@ -1,0 +1,90 @@
+vocabulary_entry:
+  topic_tags:
+  - news
+  - work
+  - decision-making
+  - money
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 6 & 7
+  entries:
+  - term: part and parcel
+    meaning: a necessary part of an event or experience which cannot be avoided
+    example: Delivery delays are part and parcel of post office problems.
+    band_suitability: 7.0+
+    register: neutral
+  - term: burning a hole in your pocket
+    meaning: wanting to spend money as soon as you have it
+    example: The fireworks fund is burning a hole in the pocket of the city council.
+    band_suitability: 7.0+
+    register: neutral
+  - term: see eye to eye
+    meaning: to agree with each other
+    example: Opticians fail to see eye to eye on new industry standards.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get your act together
+    meaning: to organise yourself so that you do things efficiently
+    example: Theatre managers finally got their act together to save the theatre.
+    band_suitability: 7.0+
+    register: informal
+  - term: sit on the fence
+    meaning: to delay making a decision when choosing between two options
+    example: Farmers are sitting on the fence regarding the latest reform plans.
+    band_suitability: 7.0+
+    register: neutral
+  - term: back to square one
+    meaning: to start a plan from the beginning because a previous attempt failed
+    example: Designers are back to square one after the computer failed to work.
+    band_suitability: 7.0+
+    register: neutral
+  - term: right off the bat
+    meaning: immediately
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: throw someone a curveball
+    meaning: to surprise someone with something difficult or unpleasant to deal with
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: batting a thousand
+    meaning: doing something extremely well
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: drop the ball
+    meaning: to do something stupid or careless
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: catch some z's
+    meaning: to sleep
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

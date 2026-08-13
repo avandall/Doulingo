@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Describing Precautions and Part 2 Task Practice"
+  topic_tags: ["Precautions", "Past Experiences", "Speaking Part 2"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Describing precautions"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic 'in case' structures but may struggle to link multiple ideas or maintain fluency for 2 minutes."
+    grammar_required: ["in case + clause", "future simple for precautions"]
+    vocabulary_core: ["precautions", "lost", "prevent"]
+    vocabulary_stretch: ["labels", "embassy"]
+    sentence_length_target: "Short to medium, simple compound sentences"
+    common_errors_to_simulate: "Misusing 'in case' with 'will' in the wrong order, limited vocabulary for consequences."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of structures to express precautions naturally; able to elaborate on Part 2 task consistently."
+    grammar_required: ["Complex sentences", "Conditional structures", "Advanced cohesive devices"]
+    vocabulary_core: ["take precautions", "avert a crisis", "be prepared for any eventuality"]
+    vocabulary_stretch: ["unexpected circumstances", "mitigate the risk"]
+    sentence_length_target: "Varied, long with subordinate clauses"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you do to make sure you don't lose your keys?"
+    user_model_answer: "I keep a spare key in a flowerpot in my garden in case I lose my main keys."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you do to make sure you don't lose your keys?"
+    user_model_answer: "To be honest, I'm quite forgetful, so I've taken the precaution of leaving a spare key with my neighbor in case I find myself locked out, which has saved me a few times already."

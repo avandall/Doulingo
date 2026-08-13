@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Food & Preferences — Grammar and Speaking Practice"
+  topic_tags: [Food, Preferences, Grammar, Tenses]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Grammar"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to state basic preferences using 'prefer' and simple comparatives. May struggle with sustaining long turns and mixing tenses accurately."
+    grammar_required: [Present simple for habits, Basic comparative adjectives]
+    vocabulary_core: [food items, restaurant, family]
+    vocabulary_stretch: [delicious, healthy, savoury]
+    sentence_length_target: "Simple sentences (subject-verb-object)"
+    common_errors_to_simulate: "Confusing 'prefer X to Y' with 'prefer X than Y'; inconsistent use of past simple for narrating past events."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to fluently narrate past experiences using a range of descriptive adjectives and correctly combining present/past tenses."
+    grammar_required: [Past simple for narrative, Comparative adjectives with reasons]
+    vocabulary_core: [celebration, ceremony, atmosphere, seafood]
+    vocabulary_stretch: [congratulations, memorable, enjoyable, perfect]
+    sentence_length_target: "Complex sentences using relative clauses and conjunctions"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Which do you prefer: fast food or healthy food?"
+    user_model_answer: "I prefer healthy food as it is more good for my body than fast food."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a meal you enjoyed."
+    user_model_answer: "I’m going to talk about a meal I enjoyed after my graduation. My family and I went to a beautiful restaurant where we had lobster and seafood. It was a very special day because the atmosphere was perfect and we all felt very proud."

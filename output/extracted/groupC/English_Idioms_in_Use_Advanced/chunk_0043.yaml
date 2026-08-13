@@ -1,0 +1,120 @@
+vocabulary_entry:
+  topic_tags:
+  - success
+  - failure
+  - describing_people
+  - describing_situations
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 46-47
+  entries:
+  - term: go down a storm
+    meaning: to be very successful or popular with a group of people
+    example: The chef's new recipes went down a storm with the clientele.
+    band_suitability: 7.0+
+    register: informal
+  - term: go down like a lead balloon
+    meaning: to be very unpopular or unsuccessful
+    example: Lucy James's disappointing first play went down like a lead balloon.
+    band_suitability: 8.0+
+    register: informal
+  - term: come up trumps
+    meaning: to succeed in the end, especially in a way that is surprising or helpful
+    example: She has come up trumps with her second play.
+    band_suitability: 7.0+
+    register: informal
+  - term: on a roll
+    meaning: experiencing a long series of successes
+    example: Catlin is on a roll at the moment; his last play also delighted critics.
+    band_suitability: 7.0+
+    register: informal
+  - term: bone dry
+    meaning: completely dry
+    example: I laid them on the sand, and, in the hot sun, they were soon bone dry.
+    band_suitability: 6.0+
+    register: neutral
+  - term: rock hard
+    meaning: extremely hard
+    example: The cakes I made were a disaster. They were rock hard.
+    band_suitability: 6.0+
+    register: neutral
+  - term: stark naked
+    meaning: completely without clothes
+    example: He lost his shorts in the water and came out of the river stark naked.
+    band_suitability: 7.0+
+    register: informal
+  - term: razor-sharp
+    meaning: very keen, intelligent, or perceptive
+    example: Derek has a razor-sharp sense of humour.
+    band_suitability: 7.0+
+    register: neutral
+  - term: squeaky-clean
+    meaning: having an untarnished or completely honest/moral reputation
+    example: The new prime minister is trying to project a squeaky-clean image.
+    band_suitability: 8.0+
+    register: neutral
+  - term: fighting fit
+    meaning: very healthy and full of energy
+    example: My grandad is 87, but he's fighting fit.
+    band_suitability: 7.0+
+    register: neutral
+  - term: crystal clear
+    meaning: extremely easy to understand or see
+    example: It's crystal clear to me that we need to raise money urgently.
+    band_suitability: 6.0+
+    register: neutral
+  - term: filthy rich
+    meaning: extremely wealthy
+    example: His uncle Peter is filthy rich.
+    band_suitability: 7.0+
+    register: informal
+  - term: in broad daylight
+    meaning: during the day when people could have seen it
+    example: She was robbed in broad daylight in the city centre yesterday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit rock bottom
+    meaning: to reach the lowest and worst possible level
+    example: Things have really hit rock bottom here.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a small fortune
+    meaning: a large sum of money
+    example: The city spent a small fortune on surveillance cameras.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bare-faced lies
+    meaning: obvious untruths
+    example: They just tell bare-faced lies and walk away free.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a mere pittance
+    meaning: a very small sum of money (usually for work or as a fine)
+    example: They get fined a mere pittance.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

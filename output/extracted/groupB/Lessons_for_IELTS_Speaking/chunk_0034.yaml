@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Giving Opinions"
+  topic_tags: ["Advertising", "Opinions", "Fluency and Coherence"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate uses basic opinion markers but often relies on repetitive sentence structures and limited vocabulary to express views."
+    grammar_required: ["Subject-Verb agreement", "Basic present simple"]
+    vocabulary_core: ["good", "bad", "okay", "think"]
+    vocabulary_stretch: ["important", "compete", "professional"]
+    sentence_length_target: "Simple sentences (10-15 words)"
+    common_errors_to_simulate: "Overusing 'I think', lack of discourse markers to connect ideas, repeating the same opinion structures for every question."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses a variety of complex opinion markers and connects arguments smoothly."
+    grammar_required: 
+      - "Complex sentences with 'but', 'although', 'because"
+      - Modal verbs for hedging
+    vocabulary_core: 
+      - In my view
+      - In my opinion
+      - "As far as I'm concerned"
+    vocabulary_stretch: ["excessive", "persuade", "effective", "influence"]
+    sentence_length_target: "Compound-complex sentences (15-25 words)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you think about advertisements that target children?"
+    user_model_answer: "I think that they are bad. I don't think it is good because children are young and they don't know what they need."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you think about advertisements that target children?"
+    user_model_answer: "In my view, it is quite concerning. As far as I'm concerned, children are easily influenced, so I don't believe that companies should specifically target them with products they don't need."

@@ -1,0 +1,47 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1 & 2 — Expanding Answers and Relevance"
+  topic_tags: ["Weather", "IELTS Speaking Part 1", "IELTS Speaking Part 2", "Skill Development"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 6"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Tends to provide very short, sometimes irrelevant answers. Struggles to extend answers beyond basic information."
+    grammar_required: ["Present simple for facts", "Basic sentence structure"]
+    vocabulary_core: 
+      - seasons
+      - weather types (sunny, rainy, hot)
+    vocabulary_stretch: ["favourite", "experience"]
+    sentence_length_target: "Simple sentences (subject + verb + object)"
+    common_errors_to_simulate: "Giving yes/no answers without explanation, repeating the question words rather than providing details, failing to connect sentences."
+  - band_min: 6.0
+    band_max: 7.0
+    can_do_description: "Able to provide relevant answers and consistently extend them with reasons, explanations, or examples."
+    grammar_required: 
+      - "Complex sentences using 'because', 'so', 'although"
+      - "Modal verbs for possibility (can/can't)"
+    vocabulary_core: ["leisure activities", "duration of seasons"]
+    vocabulary_stretch: ["relaxing", "indoor/outdoor activities", "personal preference"]
+    sentence_length_target: "Compound and complex sentences containing at least two clauses"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What do you like doing when it's hot?"
+    user_model_answer: "I like it when it's hot, yes."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What do you like doing when it's hot?"
+    user_model_answer: "I really enjoy going to the beach when it's hot because I can go swimming there and meet up with my friends to cool down."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "How do rainy days make you feel?"
+    user_model_answer: "Yes, rainy days make you feel."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How do rainy days make you feel?"
+    user_model_answer: "I usually feel quite sad on rainy days because I can't go outside to do any sports or enjoy the fresh air."

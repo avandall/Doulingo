@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 - Sample Talks and Topic Analysis"
+  topic_tags: ["Skills", "Childhood", "Famous People", "Sports", "Musicians", "Characters"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Part Two Topics & Analysis"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can provide a clear, coherent response with some uncommon vocabulary, though may lack consistent complexity in grammatical structures."
+    grammar_required: ["Past tenses", "Present perfect", "Basic modals"]
+    vocabulary_core: ["spacious", "isolated", "influential"]
+    vocabulary_stretch: ["martial art", "thatch-roofed", "communal courtyard"]
+    sentence_length_target: "Moderate, with some cohesive devices like 'Moving forward onto', 'Regarding the theme of'."
+    common_errors_to_simulate: "Over-reliance on 'and', awkward transition phrases, inconsistent usage of article 'the'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of vocabulary and complex grammatical structures (conditionals, mixed tenses) naturally to talk about abstract topics."
+    grammar_required: 
+      - Conditional tense (would/could/might)
+      - Present perfect
+      - Passive voice
+    vocabulary_core: ["renowned", "well-respected", "prodigy"]
+    vocabulary_stretch: ["well-being", "demanding", "mythical", "elucidate"]
+    sentence_length_target: "Varied, using sophisticated discourse markers to structure the response (e.g., 'What I ought to stress here is...')."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a useful skill that you would like to learn."
+    user_model_answer: "I’d probably select the Chinese martial art Tai Ji, which is used to promote physical and spiritual well-being. What I ought to stress here is that I would really like to get in shape. It would probably be quite demanding at first, although it might be tough to master some of the complicated breathing exercises."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe your childhood home."
+    user_model_answer: "I’d have to go for the house that I was born in, which was a spacious rural cottage in a mountainous area. The thing that needs to be highlighted here is that it was set in lush fields and was quite isolated. One thing that has always stayed in my mind is the thatched roof which made it nice and cool in the summer."

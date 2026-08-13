@@ -1,0 +1,105 @@
+vocabulary_entry:
+  topic_tags:
+  - power
+  - authority
+  - politics
+  - rules
+  category: idiom
+  source_citation: 'English Idioms in Use Intermediate - Unit 10: Power and authority'
+  entries:
+  - term: take the law into your own hands
+    meaning: to take action that should be taken by the police or courts
+    example: During the recent demonstrations in the city centre, we saw protesters
+      taking the law into their own hands.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be a law unto yourself
+    meaning: to be completely out of control and simply ignore the law
+    example: The most violent group of demonstrators have become a law unto themselves.
+    band_suitability: 8.0+
+    register: neutral
+  - term: lay down the law
+    meaning: to be very firm and clear about the law and enforce it
+    example: What we now need is a firm government that is prepared to lay down the
+      law.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bend the rules
+    meaning: to make special exceptions or allow people to disobey rules
+    example: We need to stop bending the rules when it is a question of commercial
+      interests.
+    band_suitability: 6.0+
+    register: neutral
+  - term: carry the can
+    meaning: to accept the blame or responsibility alone, even when others were involved
+    example: Lily has had to carry the can.
+    band_suitability: 7.0+
+    register: informal
+  - term: get/let someone off the hook
+    meaning: to make someone free from responsibility or a difficult situation
+    example: Jack has been let off the hook.
+    band_suitability: 6.0+
+    register: informal
+  - term: leave someone to their own devices
+    meaning: to allow someone to decide how to act without supervision
+    example: Nobody tells you what to do. You're just left to your own devices.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be at/on the receiving end (of something)
+    meaning: to suffer from or be the target of something unpleasant, like anger or
+      criticism
+    example: I would not want to be on the receiving end of his bad temper.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be at someone's beck and call
+    meaning: to do everything someone tells you to do, whenever they ask
+    example: Carmen is at everyone's beck and call.
+    band_suitability: 8.0+
+    register: neutral
+  - term: get your own way
+    meaning: to persuade other people to let you do what you want
+    example: Bea has got her own way.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go to the polls
+    meaning: to vote in a general election
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: spin doctor
+    meaning: a public relations officer who presents events in a way that suits their
+      side
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hidden agenda
+    meaning: a secret plan or intention behind one's actions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

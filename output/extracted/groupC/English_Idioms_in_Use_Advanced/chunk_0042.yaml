@@ -1,0 +1,107 @@
+vocabulary_entry:
+  topic_tags:
+  - success
+  - failure
+  - business
+  - performance
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 46
+  entries:
+  - term: win one's spurs
+    meaning: to show that one deserves a particular position and has the necessary
+      skills
+    example: Jackson's performance last night proved that he deserves his place in
+      the team.
+    band_suitability: 8.0+
+    register: formal
+  - term: be on a roll
+    meaning: having a successful period
+    example: Red County basketball team has been having a very successful season,
+      with six wins in a row.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ride high
+    meaning: to be very successful
+    example: PCL is one of the most popular businesses to work for this year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go down a storm
+    meaning: to be very popular
+    example: The designer's exclusive dresses sold out within minutes at the New York
+      fashion show.
+    band_suitability: 8.0+
+    register: informal
+  - term: come up trumps
+    meaning: to complete an activity successfully or produce a good result, especially
+      when not expected
+    example: The young player did far better than anyone would have expected in last
+      night's match.
+    band_suitability: 8.0+
+    register: neutral
+  - term: stay ahead of the game
+    meaning: to know more about the most recent developments than competitors
+    example: Shoe company Venco have maintained their lead in the industry for the
+      third year running.
+    band_suitability: 7.0+
+    register: formal
+  - term: go down like a lead balloon
+    meaning: to be very poorly received; people did not like it at all
+    example: The comedian's performance at the Variety Show went down like a lead
+      balloon.
+    band_suitability: 8.0+
+    register: informal
+  - term: a paper tiger
+    meaning: a country or organisation that seems strong but is actually weak
+    example: The disastrous attempt at a military campaign revealed the country as
+      a paper tiger.
+    band_suitability: 8.0+
+    register: formal
+  - term: a double whammy
+    meaning: two bad things happening at the same time
+    example: The president is dealing with the double whammy of losing the election
+      and having his private life discussed.
+    band_suitability: 7.0+
+    register: informal
+  - term: a recipe for disaster
+    meaning: a situation that is sure to become a disaster
+    example: Starting a new business without careful planning is a recipe for disaster.
+    band_suitability: 6.0+
+    register: neutral
+  - term: not cut the mustard
+    meaning: to be unable to deal with difficulties or problems
+    example: Unfortunately, it soon became clear that the new CEO couldn't cut the
+      mustard.
+    band_suitability: 8.0+
+    register: informal
+  - term: be built on sand
+    meaning: to not be firmly established
+    example: The economic crisis will have a huge impact on any business that is built
+      on sand.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

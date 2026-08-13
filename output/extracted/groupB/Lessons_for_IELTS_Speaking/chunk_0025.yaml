@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "WARM-UP: Talking about Family"
+  topic_tags: ["Family", "Vocabulary", "Describing people"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, WARM-UP"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic family vocabulary to describe simple personal characteristics, but answers are often short or lack detailed elaboration."
+    grammar_required: ["Present simple", "Basic adjectives"]
+    vocabulary_core: ["mother", "father", "kind", "generous"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Giving only one adjective, lack of supporting details or examples."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can elaborate on family relationships and personality traits by providing extended information, examples, or specific context."
+    grammar_required: ["Present simple", "Relative clauses", "Adjective phrases"]
+    vocabulary_core: ["kind", "generous", "great cook"]
+    vocabulary_stretch: ["caring", "supportive", "have a great influence on"]
+    sentence_length_target: "compound and complex sentences with connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about your grandmother."
+    user_model_answer: "She is a kind person. She likes cooking."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Tell me about your grandmother."
+    user_model_answer: "Well, she's very kind and generous. She's a great cook, too; she often makes traditional dishes for our family gatherings on weekends."

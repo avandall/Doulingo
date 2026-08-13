@@ -1,0 +1,206 @@
+vocabulary_entry:
+  topic_tags:
+  - behavior
+  - work
+  - anger
+  - idioms
+  - personality
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 3-6
+  entries:
+  - term: know something inside out
+    meaning: know everything about a subject
+    example: Henry will help you deal with these forms. He knows the system inside
+      out.
+    band_suitability: 7.0+
+    register: informal
+  - term: soil your hands
+    meaning: become involved in something unpleasant or bad
+    example: They think he's the boss of the criminal gang, but he never soils his
+      hands by committing crimes personally.
+    band_suitability: 8.0+
+    register: literary
+  - term: get off your backside
+    meaning: stop being lazy
+    example: Joey can be so lazy. I wish he'd get off his backside.
+    band_suitability: 7.0+
+    register: informal
+  - term: pigs might fly
+    meaning: there is no chance at all of something happening
+    example: '''I won''t be late to work ever again.'' ''Oh yes, and pigs might fly!'''
+    band_suitability: 7.0+
+    register: humorous
+  - term: send someone to Coventry
+    meaning: refuse to speak to someone as a punishment
+    example: She had lied to them, and so they sent her to Coventry.
+    band_suitability: 8.0+
+    register: old-fashioned
+  - term: hopping mad
+    meaning: very angry
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: make a name for yourself
+    meaning: become famous or respected for
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: run a tight ship
+    meaning: control something firmly and effectively
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: go spare
+    meaning: be extremely angry
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: behind someone's back
+    meaning: without someone knowing
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: feather your own nest
+    meaning: dishonestly use your position to get money for yourself
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: be beyond the pale
+    meaning: be unacceptable
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: be given the sack
+    meaning: be dismissed from your job
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: have something up your sleeve
+    meaning: have a secret plan or idea ready to use
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: take centre stage
+    meaning: be the main focus of attention
+    example: As the president of a major company, Ross is used to taking centre stage.
+    band_suitability: 7.0+
+    register: neutral
+  - term: see red
+    meaning: become very angry suddenly
+    example: The teacher saw red when Matt refused to do his homework.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take the flak
+    meaning: receive criticism or blame for something
+    example: The errors in the report really weren't Sam's fault, but he took the
+      flak for them.
+    band_suitability: 8.0+
+    register: neutral
+  - term: from the cradle to the grave
+    meaning: for the whole of a person's life
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: clip someone's wings
+    meaning: limit someone's freedom or ambitions
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: the tip of the iceberg
+    meaning: a small noticeable part of a much larger problem or situation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: out of your own pocket
+    meaning: using your own money
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: tie the knot
+    meaning: get married
+    example: They've been engaged for six months but haven't made any plans about
+      when they're going to tie the knot.
+    band_suitability: 7.0+
+    register: informal
+  - term: every Tom, Dick or Harry
+    meaning: used to mean ordinary people in general
+    example: Engineering isn't the kind of job that every Tom, Dick or Harry could
+      do.
+    band_suitability: 8.0+
+    register: informal
+  - term: where there's a will, there's a way
+    meaning: if you are determined enough, you can find a way to achieve what you
+      want
+    example: You'll pass your driving test if you really want to - where there's a
+      will, there's a way.
+    band_suitability: 6.0+
+    register: neutral
+  - term: variety is the spice of life
+    meaning: doing a lot of different things makes life more interesting
+    example: I get bored if I always do the same things at the weekend - variety is
+      the spice of life.
+    band_suitability: 6.0+
+    register: neutral
+  - term: at the top of your voice
+    meaning: speaking or shouting very loudly
+    example: Sh! Be quiet! There's no need to talk at the top of your voice.
+    band_suitability: 6.0+
+    register: neutral
+  - term: easy come, easy go
+    meaning: said to mean that money or things gained easily are lost easily
+    example: He never saves any money. He spends whatever he has. Easy come, easy
+      go is his motto.
+    band_suitability: 7.0+
+    register: neutral
+  - term: cry your eyes out
+    meaning: cry a lot; weep bitterly
+    example: I was so upset when I failed the exam. I cried my eyes out.
+    band_suitability: 7.0+
+    register: informal
+  - term: look on / see the bright side
+    meaning: find something good in a bad situation
+    example: She's a total optimist - she always manages to look on / see the bright
+      side.
+    band_suitability: 6.0+
+    register: neutral
+  - term: be blown away by
+    meaning: be extremely impressed by something
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: be on the same wavelength
+    meaning: share the same ideas and opinions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fringe benefits
+    meaning: extra benefits you get with a job apart from your pay
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,101 @@
+vocabulary_entry:
+  topic_tags:
+  - problems
+  - difficulties
+  - life challenges
+  category: idiom
+  source_citation: English Idioms in Use Intermediate, Unit 8
+  entries:
+  - term: left holding the baby
+    meaning: left to deal with a problem that someone else started
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: brick wall
+    meaning: an obstacle that stops progress
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: stumbling block
+    meaning: an obstacle or difficulty
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: dire straits
+    meaning: in a very difficult situation
+    example: The company is in dire straits.
+    band_suitability: 7.0+
+    register: neutral
+  - term: draw a blank
+    meaning: get no response; be unable to remember or find something
+    example: I hoped I'd find the address I needed in the library, but I drew a blank.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have someone over a barrel
+    meaning: put someone in a difficult position where they have no choice
+    example: I wish I could leave my job, but they've got me over a barrel.
+    band_suitability: 8.0+
+    register: informal
+  - term: face the music
+    meaning: accept the consequences of your actions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: dig yourself into a hole
+    meaning: make a difficult situation worse
+    example: You'd better stop talking or you'll dig yourself into a deeper hole.
+    band_suitability: 7.0+
+    register: neutral
+  - term: spread yourself too thin
+    meaning: try to do too many things at once
+    example: If you take on any more work, you'll be spreading yourself far too thin.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put your foot in it
+    meaning: say something embarrassing
+    example: I wish I hadn't put my foot in it.
+    band_suitability: 7.0+
+    register: informal
+  - term: clutch at straws
+    meaning: try anything to solve a problem
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a fact of life
+    meaning: an unpleasant situation which has to be accepted because it cannot be
+      changed
+    example: Taxes are, unfortunately, a fact of life.
+    band_suitability: 6.0+
+    register: neutral
+  - term: easier said than done
+    meaning: something you say when something seems like a good idea, but is difficult
+      to actually do
+    example: Why don't you take the train to work? ... Easier said than done!
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

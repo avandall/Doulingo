@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Listening skills: Understanding signpost phrases"
+  topic_tags: ["Academic English", "Signposting", "Lecture structure"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Listening skills: Understanding signpost phrases"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate uses basic linking words, but structure may be repetitive or overly simple. Signposting is limited to simple sequencing (firstly, finally)."
+    grammar_required: ["Simple conjunctions", "Basic sequence markers"]
+    vocabulary_core: ["firstly", "finally", "also"]
+    vocabulary_stretch: []
+    sentence_length_target: "short to medium"
+    common_errors_to_simulate: "Overusing 'firstly, secondly, thirdly' without nuanced transition phrases; lacking 'digressing' or 'returning to subject' markers."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate effectively uses a wide range of signpost phrases to guide the listener through complex ideas, including digressions and summaries."
+    grammar_required: ["Cohesive devices", "Complex sentence structures"]
+    vocabulary_core: ["in addition", "to sum up", "by the way"]
+    vocabulary_stretch: ["digressing", "returning to the subject", "furthermore", "nonetheless"]
+    sentence_length_target: "varied, complex"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How do you organize your response when discussing a complex topic?"
+    user_model_answer: "I'd like to begin by highlighting three main aspects. Firstly, it helps us understand the world. Secondly, it aids our role as citizens. In addition, it improves our job performance. By the way, there is much more to this topic, but to sum up, history is a vital subject."

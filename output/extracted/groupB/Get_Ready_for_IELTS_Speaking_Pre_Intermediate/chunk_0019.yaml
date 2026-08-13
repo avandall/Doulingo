@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Health & Important Events — IELTS Speaking Practice"
+  topic_tags: ["Health", "Hobbies", "Important Events", "Education"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Tracks 56-68"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể đưa ra các câu trả lời ngắn, sử dụng thì hiện tại đơn và quá khứ đơn cơ bản. Tuy nhiên, khả năng mở rộng câu trả lời còn hạn chế, thường lặp từ và phụ thuộc vào các cấu trúc đơn giản."
+    grammar_required: 
+      - Present simple
+      - Past simple
+      - "Modal verbs for advice (should/shouldn't)"
+    vocabulary_core: ["healthy", "exercise", "enjoy", "feel", "nervous", "important"]
+    vocabulary_stretch: ["challenging", "delighted", "satisfied", "opposition"]
+    sentence_length_target: "3-5 câu mỗi lượt nói"
+    common_errors_to_simulate: "Nhầm lẫn giữa tính từ đuôi -ed và -ing (vd: I was bored vs the event was boring), chia động từ sau modal verbs (vd: You shouldn't to eat vs You shouldn't eat)."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Thí sinh bắt đầu biết cách phát triển câu trả lời bằng cách đưa ra lý do (because/so) và ví dụ. Sử dụng được các tính từ cảm xúc phong phú hơn."
+    grammar_required: 
+      - Comparatives (more than)
+      - Complex sentences with connectors
+      - Adjectives for feelings
+    vocabulary_core: ["diet", "lifestyle", "celebrate", "experience", "competition"]
+    vocabulary_stretch: ["professional", "atmosphere", "significant", "traditional", "confident"]
+    sentence_length_target: "5-8 câu, có sự kết nối giữa các ý"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How can we encourage young people to be healthy?"
+    user_model_answer: "In my country, young people like playing computer games and eating junk food. I think they should go to the beach and do water sports. We should teach them to cook healthy food."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "In your opinion, is relaxing an important part of being healthy?"
+    user_model_answer: "Definitely. We are always busy travelling to work or college, meeting friends, and doing homework. So, in my opinion, it is essential to slow down and relax. It is beneficial for both our bodies and our minds."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "How did you feel when you travelled on your own for the first time?"
+    user_model_answer: "I was very nervous. I had many bags and I looked for the check-in desk. I felt very tired but then I was excited when I finally travelled."

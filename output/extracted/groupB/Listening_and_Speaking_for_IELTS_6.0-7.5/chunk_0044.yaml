@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 3: Making Generalizations - Candidate Comparison"
+  topic_tags: [science, technology, generalizations]
+  target_band_min: 5.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Part 3: Making generalizations"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Tập trung nhiều vào kinh nghiệm cá nhân hoặc bạn bè, thiếu các từ ngữ khái quát hóa (generalizations), cấu trúc câu đơn giản hơn."
+    grammar_required: [simple sentences, basic conjunctions]
+    vocabulary_core: [crime, online, banking, worried]
+    vocabulary_stretch: []
+    sentence_length_target: "short-to-medium"
+    common_errors_to_simulate: "Quá phụ thuộc vào ví dụ cá nhân (anecdotal evidence) thay vì nói về xu hướng chung (general trends)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng ngôn ngữ khái quát hóa tự nhiên, cấu trúc câu phức tạp hơn, biết cách cân bằng giữa quan điểm chung và ví dụ cụ thể."
+    grammar_required: [modal verbs, hedging expressions, complex sentence structures]
+    vocabulary_core: [advances, scientific knowledge, developments, investment, resources]
+    vocabulary_stretch: [in general, on the whole, as a rule, generally speaking, tends to, liable to]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think life is safer, or more dangerous, with modern technology?"
+    user_model_answer: "Well, I think life is more dangerous as I know many people who have had problems with crime on the Internet. I have a friend who lost some money when she was banking online."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think life is safer, or more dangerous, with modern technology?"
+    user_model_answer: "In general, I would say advances in science and technology have made us more secure in many ways. Increased scientific knowledge tends to make us more aware of dangers, and developments in some areas have meant that we are more able to deal with difficulties. Of course, technology is liable to bring dangers too."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Which area of scientific research do you think is most important and deserves further research and development?"
+    user_model_answer: "There are many worthwhile areas of research but, on the whole, I think anything that develops our knowledge and understanding of health and medicine should have further resources and investment."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Does everybody need to know how to use a computer these days?"
+    user_model_answer: "As a rule, most jobs would require you to have some skills in this area and I believe in many cases it's probably essential. Generally speaking, it's more likely to be older generations who haven't got these skills."

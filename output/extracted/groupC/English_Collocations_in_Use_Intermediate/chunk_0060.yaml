@@ -1,0 +1,149 @@
+vocabulary_entry:
+  topic_tags:
+  - work
+  - career
+  - jobs
+  - research
+  - academic_writing
+  - laws
+  - crime
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 30-34
+  entries:
+  - term: dead-end job
+    meaning: a job that has few prospects of leading somewhere interesting or successful
+    example: dead-end job – a job that has few prospects of leading somewhere interesting
+      or successful
+    band_suitability: 6.0+
+    register: neutral
+  - term: glittering career
+    meaning: an impressive career, one that is admired by many people
+    example: glittering career – an impressive career, one that is admired by many
+      people
+    band_suitability: 7.0+
+    register: neutral
+  - term: career spanning
+    meaning: a career covering a specified and notably long period of time
+    example: career spanning – a career covering a specified and notably long period
+      of time
+    band_suitability: 7.0+
+    register: formal
+  - term: lucrative job
+    meaning: a job where the person earns a lot of money for doing the work
+    example: lucrative job – a job where the person earns a lot of money for doing
+      the work
+    band_suitability: 6.0+
+    register: neutral
+  - term: rewarding job
+    meaning: a job where the person gets a lot of personal satisfaction from doing
+      the work
+    example: rewarding job – a job where the person gets a lot of personal satisfaction
+      – emotional rather than financial – from doing the work
+    band_suitability: 6.0+
+    register: neutral
+  - term: groundbreaking research
+    meaning: very new and original research that makes a significant contribution
+    example: Groundbreaking research, makes a significant contribution to, powerful
+      arguments and shape our thinking all suggest that the writer admires Georgescu’s
+      work.
+    band_suitability: 7.0+
+    register: formal
+  - term: make a significant contribution
+    meaning: to add important new findings or work to a field
+    example: makes a significant contribution to the field
+    band_suitability: 7.0+
+    register: formal
+  - term: powerful arguments
+    meaning: strongly persuasive and convincing points or reasoning
+    example: powerful arguments and shape our thinking
+    band_suitability: 7.0+
+    register: formal
+  - term: shape our thinking
+    meaning: to influence or form the way people think about something
+    example: shape our thinking all suggest that the writer admires Georgescu’s work.
+    band_suitability: 7.0+
+    register: formal
+  - term: strenuously defends
+    meaning: defends something vigorously and with great energy or determination
+    example: Strenuously defends and come under attack both suggest that Partridge’s
+      work has been criticised.
+    band_suitability: 8.0+
+    register: formal
+  - term: come under attack
+    meaning: to be criticized severely
+    example: come under attack both suggest that Partridge’s work has been criticised.
+    band_suitability: 7.0+
+    register: neutral
+  - term: concise summary
+    meaning: a brief and clear summary containing all important information
+    example: The article begins with a concise summary of the background to the research
+      project.
+    band_suitability: 7.0+
+    register: formal
+  - term: irrefutable proof
+    meaning: evidence that cannot be proven wrong; undeniable proof
+    example: Dr Kahn’s results offer/provide irrefutable proof that our theory is
+      correct.
+    band_suitability: 8.0+
+    register: formal
+  - term: carry out a study
+    meaning: to conduct or perform a research study or investigation
+    example: The police carry out an investigation.
+    band_suitability: 6.0+
+    register: neutral
+  - term: play a central role
+    meaning: to be very important in an activity or situation
+    example: played a central role in the development
+    band_suitability: 7.0+
+    register: neutral
+  - term: go into detail
+    meaning: to discuss or examine something fully and thoroughly
+    example: goes into great detail about the methodology
+    band_suitability: 6.0+
+    register: neutral
+  - term: set out an argument
+    meaning: to present an argument or a set of ideas in a clear, organized way
+    example: set out an argument in the opening chapter
+    band_suitability: 7.0+
+    register: formal
+  - term: comply with the regulations
+    meaning: to obey an official rule or regulation
+    example: All students must comply with the regulations.
+    band_suitability: 7.0+
+    register: formal
+  - term: reach a verdict
+    meaning: for a jury to make a final decision in a court case
+    example: The jury reaches its verdict.
+    band_suitability: 7.0+
+    register: neutral
+  - term: face the death penalty
+    meaning: to be at risk of receiving the punishment of death for a crime
+    example: They may face the death penalty.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

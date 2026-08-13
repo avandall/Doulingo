@@ -39,6 +39,7 @@ from app.db import (
     save_translated_word,
 )
 from app.prompt_constructor import PromptContext
+from app.reporting import generate_weekly_report
 from app.retrieval import compute_band_window, retrieve_dialogues
 from app.scenarios import get_scenario, list_scenarios
 from app.tts_service import generate_tts_mp3
@@ -557,6 +558,19 @@ def api_get_user_stats():
 @app.post("/api/user_stats/add_xp")
 def api_add_user_xp(xp: int = Query(10, description="XP amount to add")):
     return add_user_xp(xp)
+
+@app.get("/api/reports/weekly")
+@app.get("/api/reporting/weekly")
+def api_get_weekly_report(
+    user_id: str = Query("user_demo", description="User ID for weekly report"),
+    days: int = Query(7, description="Number of days for weekly reporting period"),
+):
+    """
+    Weekly Performance Reporting Endpoint (TASK-018).
+    Aggregates 4-axis performance metrics (Fluency, Lexical, Grammar, Pronunciation)
+    over the reporting period without exposing real-time per-sentence scores on main UI.
+    """
+    return generate_weekly_report(user_id=user_id, days=days)
 
 @app.get("/api/health/quota")
 @app.get("/api/trace")

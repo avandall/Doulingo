@@ -1,0 +1,90 @@
+vocabulary_entry:
+  topic_tags:
+  - shopping
+  - stress
+  - emotions
+  - money
+  - lifestyle
+  category: phrase
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1 (verywellmind.com)
+  entries:
+  - term: retail therapy
+    meaning: the act of buying special things for yourself in order to feel better
+      when you are unhappy
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: boost your mood
+    meaning: to improve how you are feeling emotionally
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: feeling low
+    meaning: feeling sad, depressed, or lacking energy
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: crave something
+    meaning: to have a very strong desire for something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: impulse
+    meaning: a sudden strong wish or need to do something, without stopping to think
+      about the results
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: arise
+    meaning: to happen; to start to exist
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: frustration
+    meaning: the feeling of being annoyed, upset, or frustrated
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: loss of control
+    meaning: the state of no longer being able to manage or direct one's behavior
+      or situation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: conflict
+    meaning: ' a situation in which people, groups or countries disagree strongly
+      or are involved in a serious argument'
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: counter-productive
+    meaning: having the opposite effect to the one that was intended
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mat Clark IELTS Speaking — Part 2 Strategy & Grammar Applications"
+  topic_tags: [IELTS Speaking Part 2, Past Tenses, Vocabulary Building]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Experience 8-18"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Sử dụng các thì quá khứ đơn giản, thường lặp lại cấu trúc câu cơ bản. Có xu hướng chỉ kể lại sự việc theo trình tự thời gian mà thiếu sự kết nối hoặc nhấn mạnh bằng các thì phức hợp."
+    grammar_required: [Past Simple]
+    vocabulary_core: [party, wedding, travel, important, help]
+    vocabulary_stretch: []
+    sentence_length_target: "Ngắn, câu đơn."
+    common_errors_to_simulate: "Quên chia động từ ở thì quá khứ (ví dụ: 'I go to the party' thay vì 'I went'), dùng thiếu các liên từ chỉ thời gian."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng linh hoạt các thì quá khứ (Past Simple, Past Continuous, Past Perfect) để tạo chiều sâu cho câu chuyện. Sử dụng từ vựng chuyên biệt (uncommon vocabulary) theo chủ đề."
+    grammar_required: [Past Perfect, Past Continuous, Passive Voice, Conditionals]
+    vocabulary_core: [recommendation, guidance, beneficial, compulsory, consequence]
+    vocabulary_stretch: [disgruntled, proprietor, taxing, conscientiously, theatrical performance]
+    sentence_length_target: "Đa dạng, kết hợp giữa câu phức và câu ghép."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a wedding you have attended."
+    user_model_answer: "I went to a wedding last year. It was my friend's wedding. They got married in a hotel. Everyone was happy and we ate a lot of food. It was a typical wedding in my country."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a wedding you have attended."
+    user_model_answer: "I had never attended a wedding reception quite like that before, so I was really thrilled. It was my cousin's wedding, and the ceremony was incredibly elaborate. Towards the end, some guests were quite tipsy because they had been drinking and dancing all day long."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe an important piece of news you received."
+    user_model_answer: "Around that time, I was studying in a local middle school. I had been preparing quite conscientiously for my exams for a while, so I was surprised that I passed because I had found the test incredibly taxing. The news arrived by post; it was actually delivered while I was sitting down to breakfast."

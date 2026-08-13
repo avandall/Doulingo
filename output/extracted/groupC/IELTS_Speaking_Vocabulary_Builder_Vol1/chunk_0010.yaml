@@ -1,0 +1,93 @@
+vocabulary_entry:
+  topic_tags:
+  - city life
+  - urban living
+  - health
+  - environment
+  category: phrase
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: urbanite
+    meaning: a person who lives in a town or city
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: diverse
+    meaning: very different from each other and of various kinds
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: metropolis
+    meaning: a large, important city
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: downside
+    meaning: the disadvantages or less positive aspects of something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: socialize
+    meaning: to meet and spend time with people in a friendly way, in order to enjoy
+      yourself
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: annoyance
+    meaning: the feeling of being slightly angry
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hustle and bustle
+    meaning: noise and activity
+    example: the hustle and bustle of urban life can actually take a toll on our physical
+      and mental health.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take its toll
+    meaning: causes suffering, deaths, or damage
+    example: the hustle and bustle of urban life can actually take a toll on our physical
+      and mental health.
+    band_suitability: 7.0+
+    register: neutral
+  - term: perk
+    meaning: something you receive as well as your wages for doing a particular job
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: anxiety disorder
+    meaning: a mental health condition characterized by excessive anxiety
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: mood disorder
+    meaning: a psychological condition that primarily affects emotional state
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

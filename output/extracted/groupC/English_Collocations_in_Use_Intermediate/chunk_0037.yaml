@@ -1,0 +1,253 @@
+vocabulary_entry:
+  topic_tags:
+  - size
+  - quantities
+  - colours
+  - light
+  - describing things
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 42-43
+  entries:
+  - term: low prices
+    meaning: inexpensive costs for goods or services
+    example: We talk about low prices, low wages, low levels.
+    band_suitability: 6.0+
+    register: neutral
+  - term: low wages
+    meaning: small amounts of money paid for work
+    example: We talk about low prices, low wages, low levels.
+    band_suitability: 6.0+
+    register: neutral
+  - term: low levels
+    meaning: small amounts or positions on a scale
+    example: We talk about low prices, low wages, low levels.
+    band_suitability: 6.0+
+    register: neutral
+  - term: small quantities
+    meaning: small amounts of something
+    example: We say small quantities, small numbers, small amounts, a small increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: small numbers
+    meaning: a small count of items or people
+    example: We say small quantities, small numbers, small amounts, a small increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: small amounts
+    meaning: a little quantity of something
+    example: We say small quantities, small numbers, small amounts, a small increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a small increase
+    meaning: a slight rise in size, amount, or number
+    example: We say small quantities, small numbers, small amounts, a small increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: large quantities
+    meaning: large amounts of something
+    example: The opposite is large quantities, large numbers, large amounts, a large
+      increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: large numbers
+    meaning: a large count of items or people
+    example: The opposite is large quantities, large numbers, large amounts, a large
+      increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: large amounts
+    meaning: a great quantity of something
+    example: The opposite is large quantities, large numbers, large amounts, a large
+      increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a large increase
+    meaning: a substantial rise in size, amount, or number
+    example: The opposite is large quantities, large numbers, large amounts, a large
+      increase.
+    band_suitability: 6.0+
+    register: neutral
+  - term: on a large scale
+    meaning: in a big way or over a wide area
+    example: If you are walking in the mountains you need a large scale map.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on a small scale
+    meaning: in a limited way or over a small area
+    example: The UK has similar problems to the USA, but on a smaller scale.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make small talk
+    meaning: talk socially about unimportant subjects
+    example: I’ve got a lot of little things to do, to make someone look small, to
+      make small talk.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a great deal of
+    meaning: a large amount of something (used with time, money, energy, enthusiasm)
+    example: She has a great deal of time / a great deal of money / a great deal of
+      energy / a great deal of enthusiasm.
+    band_suitability: 7.0+
+    register: neutral
+  - term: major difference
+    meaning: an important or significant distinction
+    example: major/minor difference, major/minor change, major/minor effect
+    band_suitability: 7.0+
+    register: neutral
+  - term: minor difference
+    meaning: a small or unimportant distinction
+    example: major/minor difference, major/minor change, major/minor effect
+    band_suitability: 7.0+
+    register: neutral
+  - term: major change
+    meaning: a significant alteration or transformation
+    example: major/minor difference, major/minor change, major/minor effect
+    band_suitability: 7.0+
+    register: neutral
+  - term: minor change
+    meaning: a small alteration
+    example: major/minor difference, major/minor change, major/minor effect
+    band_suitability: 7.0+
+    register: neutral
+  - term: major effect
+    meaning: a powerful impact or consequence
+    example: major/minor difference, major/minor change, major/minor effect
+    band_suitability: 7.0+
+    register: neutral
+  - term: minor effect
+    meaning: a small impact or consequence
+    example: major/minor difference, major/minor change, major/minor effect
+    band_suitability: 7.0+
+    register: neutral
+  - term: major difficulty
+    meaning: a serious problem or obstacle
+    example: major/minor difficulty, major/minor point, major/minor issues
+    band_suitability: 7.0+
+    register: neutral
+  - term: minor difficulty
+    meaning: a small problem or obstacle
+    example: major/minor difficulty, major/minor point, major/minor issues
+    band_suitability: 7.0+
+    register: neutral
+  - term: major factor
+    meaning: an important element contributing to a result
+    example: major/minor factor
+    band_suitability: 7.0+
+    register: neutral
+  - term: minor factor
+    meaning: a small or insignificant element contributing to a result
+    example: major/minor factor
+    band_suitability: 7.0+
+    register: neutral
+  - term: tall people
+    meaning: people of more than average height
+    example: We talk about tall people, tall trees, tall buildings
+    band_suitability: 6.0+
+    register: neutral
+  - term: tall trees
+    meaning: trees of great height
+    example: We talk about tall people, tall trees, tall buildings
+    band_suitability: 6.0+
+    register: neutral
+  - term: tall buildings
+    meaning: structures of great height
+    example: We talk about tall people, tall trees, tall buildings
+    band_suitability: 6.0+
+    register: neutral
+  - term: high mountains
+    meaning: mountains reaching a great altitude
+    example: high mountains, high prices, high interest rates, high heels, high tide,
+      high jump
+    band_suitability: 6.0+
+    register: neutral
+  - term: high interest rates
+    meaning: large percentages charged for borrowing money
+    example: high mountains, high prices, high interest rates, high heels, high tide,
+      high jump
+    band_suitability: 7.0+
+    register: neutral
+  - term: high heels
+    meaning: shoes with tall, thin heels
+    example: high mountains, high prices, high interest rates, high heels, high tide,
+      high jump
+    band_suitability: 6.0+
+    register: neutral
+  - term: high tide
+    meaning: the state of the tide when at its highest level
+    example: high mountains, high prices, high interest rates, high heels, high tide,
+      high jump
+    band_suitability: 7.0+
+    register: neutral
+  - term: bright colours
+    meaning: vivid and strong colours
+    example: I love bright colours. I have a bright yellow jacket...
+    band_suitability: 6.0+
+    register: neutral
+  - term: subdued colours
+    meaning: colours that are not very bright or strong
+    example: My clothes are so dull, and I always wear subdued colours.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a touch of colour
+    meaning: a small amount of colour added to something
+    example: How can I add a touch of colour to my wardrobe without spending too much
+      money?
+    band_suitability: 7.0+
+    register: neutral
+  - term: a ray of sunlight
+    meaning: a narrow beam of light from the sun
+    example: A ray of sunlight fell on his face and woke him up.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a powerful beam of light
+    meaning: a very strong line of light
+    example: '...a powerful beam of light shone into the room...'
+    band_suitability: 7.0+
+    register: neutral
+  - term: the glare of the sun
+    meaning: a strong, dazzling light from the sun
+    example: '...the glare of the sun would make it difficult to see his way across
+      the desert.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: pitch dark
+    meaning: completely dark with no light at all
+    example: It was pitch dark when she left the house...
+    band_suitability: 7.0+
+    register: neutral
+  - term: faint glow
+    meaning: a weak, soft light
+    example: '...the faint glow of dawn was visible on the horizon.'
+    band_suitability: 8.0+
+    register: neutral
+  - term: pinpoint of light
+    meaning: an extremely small spot of light
+    example: Then she saw a pinpoint of light in the distance.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

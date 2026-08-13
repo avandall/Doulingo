@@ -1,0 +1,168 @@
+vocabulary_entry:
+  topic_tags:
+  - problems
+  - difficulties
+  - work
+  - money
+  - challenges
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 58 & Unit 59
+  entries:
+  - term: more hard than I had bargained for
+    meaning: more difficult than expected
+    example: I've just started working in a clothes shop, but it's proving much harder
+      than I had bargained for.
+    band_suitability: 7.0+
+    register: neutral
+  - term: give someone the hard sell
+    meaning: trying very hard to persuade people to buy something
+    example: I've realised that I'm no good at giving people the hard sell.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hard-and-fast rules
+    meaning: clear rules
+    example: There don't seem to be any hard-and-fast rules for what I should be doing.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hard going
+    meaning: difficult and tiring
+    example: I thought I would love it, but I'm finding it really hard going.
+    band_suitability: 7.0+
+    register: neutral
+  - term: no hard feelings
+    meaning: no anger towards each other
+    example: It was a mutual decision, and we agreed there would be no hard feelings.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hit someone hard
+    meaning: affected someone much worse
+    example: It has hit me much harder than I expected.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hard to swallow
+    meaning: difficult to accept
+    example: My ex seems to be going out a lot and is perfectly happy, which I find
+      hard to swallow.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall on hard times
+    meaning: are finding life difficult through lack of money
+    example: I lost my job last month, so my family has fallen on hard times.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hard up
+    meaning: without much money
+    example: My wife is still working, but we're struggling, and we're really hard
+      up.
+    band_suitability: 7.0+
+    register: informal
+  - term: hard put to
+    meaning: finding it difficult
+    example: I'm finding it difficult to find a new job, and I'm hard put to see a
+      solution.
+    band_suitability: 8.0+
+    register: formal
+  - term: learn the hard way
+    meaning: discover something through a difficult experience
+    example: My younger sister trusts people too easily, but I guess she will learn
+      the hard way that things are not always what they seem.
+    band_suitability: 7.0+
+    register: neutral
+  - term: drive a hard bargain
+    meaning: demand a lot in exchange for the service given
+    example: I hate dealing with salespeople. They always try to drive a hard bargain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hard-pressed
+    meaning: find it difficult (busy/under pressure)
+    example: I've got far too much work this week. I'll be hard-pressed to get it
+      all finished.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a hard nut to crack
+    meaning: a difficult problem to solve
+    example: It will be a hard nut to crack, but I'm going to try.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make hard work of
+    meaning: make something into a major problem
+    example: He always seems to make hard work of anything I ask him to do!
+    band_suitability: 8.0+
+    register: neutral
+  - term: hard done by
+    meaning: unfairly treated
+    example: My brother doesn't have a job, and he feels hard done by because I've
+      got more money than him.
+    band_suitability: 8.0+
+    register: neutral
+  - term: fall from grace
+    meaning: done something which made people in authority stop liking or admiring
+      them
+    example: The minister of education seems to have fallen from grace.
+    band_suitability: 8.0+
+    register: neutral
+  - term: fall into the wrong hands
+    meaning: the wrong people obtain and control them
+    example: Occasionally, secret documents fall into the wrong hands and national
+      security is threatened.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall on deaf ears
+    meaning: was ignored
+    example: Last year, a petition with 10,000 signatures demanding an end to the
+      tax fell on deaf ears.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall through the floor
+    meaning: dropped to a very low level
+    example: House prices have fallen through the floor in the last six months.
+    band_suitability: 8.0+
+    register: neutral
+  - term: fall foul of
+    meaning: broke a law or regulation
+    example: The village carnival fell foul of health and safety regulations and was
+      cancelled.
+    band_suitability: 8.0+
+    register: formal
+  - term: fall short of
+    meaning: did not come up to the standard of
+    example: The minister's statement fell short of an apology.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall into the trap of
+    meaning: done something which seemed like a good idea but was not wise
+    example: The government has fallen into the trap of creating committee after committee.
+    band_suitability: 7.0+
+    register: neutral
+  - term: falling apart at the seams
+    meaning: be in a very bad state and about to fail
+    example: The global banking system seemed to be falling apart at the seams in
+      2009.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Contrast Connectives and Tense Usage in Part 3"
+  topic_tags: ["Society", "Materialism", "Technology", "Purchasing Behavior"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, GRAMMAR"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can answer complex questions but may lack varied contrast connectives or struggle with perfect tense shifts between past and present."
+    grammar_required: 
+      - Simple past vs present simple
+      - Basic connectors (but)
+    vocabulary_core: ["wealth", "status", "shopping", "money"]
+    vocabulary_stretch: ["affluence", "consumerism", "materialistic"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Overusing simple sentences; failing to use contrastive markers like 'whereas' or 'on the other hand' when comparing generations."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Successfully uses contrast connectives to build nuanced arguments and accurately shifts between historical context and current trends."
+    grammar_required: 
+      - Complex contrast connectives (whereas, on the other hand)
+      - Refined tense usage (present perfect for trends)
+    vocabulary_core: ["consumerism", "purchasing behaviour", "materialistic"]
+    vocabulary_stretch: ["affluence", "symbol of status", "boosting the economy"]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you believe society nowadays is more materialistic than in previous generations?"
+    user_model_answer: "I think so, absolutely. I mean, for my grandparents, it was totally different. They had different values, and they were probably more basic values of hard work and family. Whereas today, people might say that my generation is too spoilt, or you know, materialistic. For instance, while my grandparents might have been focused on getting enough food to feed their family, some young people today are more interested in the latest movies and fashion."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How do you think technology has affected purchasing behaviour?"
+    user_model_answer: "It has changed the way people buy things, totally. Take the Internet as an example. People can buy things from all over the world, so they have much more choice. For example, I can buy a book from someone in England or a computer from a company in Hong Kong. Technology has changed shopping patterns considerably, and I think it is a big improvement."

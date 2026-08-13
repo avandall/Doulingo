@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Speaking Fluency and Paraphrasing Techniques"
+  topic_tags: ["Fluency", "Paraphrasing", "Sporting Events"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, WARM-UP"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thường xuyên ngập ngừng, lặp lại từ ngữ, hoặc có những quãng dừng quá dài do thiếu từ vựng/ngữ pháp."
+    grammar_required: ["Simple sentences", "Basic verb tenses"]
+    vocabulary_core: 
+      - Basic sports vocabulary (athletics, swimming, football)
+    vocabulary_stretch: 
+      - None (struggles with precise terminology)
+    sentence_length_target: "Short, fragmented"
+    common_errors_to_simulate: "Dừng lại hoàn toàn khi không nhớ từ, cố gắng nói quá nhanh để che giấu sự ngập ngừng, lặp từ nhiều lần."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Nói trôi chảy, nhịp độ tự nhiên, biết cách sử dụng paraphrasing thay vì dừng lại quá lâu khi bí từ."
+    grammar_required: ["Complex sentence structures", "Accurate use of cohesive devices"]
+    vocabulary_core: 
+      - Sports-related vocabulary (infrastructure, influx, inhabitants)
+    vocabulary_stretch: 
+      - "Paraphrasing (e.g., 'unpaid workers' for 'volunteers')"
+    sentence_length_target: "Varied, connected, coherent"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me about a major sporting event in your country?"
+    user_model_answer: "The... the Olympic... um... in my country... we have... the... um... (silence)... I don't know the word... the big race... the stadium was big."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you tell me about a major sporting event in your country?"
+    user_model_answer: "I’d like to talk about the SEA Games that were hosted in my country a few years ago. It was a massive event that required a significant upgrade to our city's infrastructure to handle the influx of international spectators."

@@ -1,0 +1,142 @@
+vocabulary_entry:
+  topic_tags:
+  - sport
+  - sports
+  - games
+  - fitness
+  - competition
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 25
+  entries:
+  - term: do gymnastics
+    meaning: to perform physical exercises requiring balance, agility, and coordination
+    example: You do gymnastics, judo, weightlifting, aerobics, yoga, wrestling, circuit
+      training, archery, athletics.
+    band_suitability: 6.0+
+    register: neutral
+  - term: play badminton
+    meaning: to take part in the sport of badminton
+    example: You play games, badminton, billiards, hockey, bowls, rugby, golf.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go fishing
+    meaning: to travel to a body of water to catch fish as a leisure activity
+    example: You go fishing, skiing, bowling, cycling, skateboarding, surfing.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do exercises
+    meaning: to perform physical movements to keep healthy or fit
+    example: You do exercises.
+    band_suitability: 6.0+
+    register: neutral
+  - term: win a match
+    meaning: to be successful in a sports match or game
+    example: Sportsmen and sportswomen want to win matches, not lose matches.
+    band_suitability: 6.0+
+    register: neutral
+  - term: train hard
+    meaning: to exercise or practice intensively to prepare for a sport or event
+    example: Before they go in for / enter a competition, athletes train hard.
+    band_suitability: 6.0+
+    register: neutral
+  - term: put up a fight
+    meaning: to offer strong resistance or try hard to achieve something despite difficulties
+    example: They are likely to put up a fight to gain/get a place in the next stage/round
+      of the competition.
+    band_suitability: 7.0+
+    register: neutral
+  - term: break a world record
+    meaning: to achieve a result that is better than any previous record in the world
+    example: Of course, a sportsperson’s ultimate aim is to break the world record
+      in their sport.
+    band_suitability: 7.0+
+    register: neutral
+  - term: set a new world record
+    meaning: to establish a new level of achievement that surpasses previous ones
+    example: If they succeed, they set a new world record and become a world record
+      holder.
+    band_suitability: 7.0+
+    register: neutral
+  - term: come up against fierce competition
+    meaning: to face strong and determined opponents or rivals
+    example: They are sure to come up against fierce/intense competition as they try
+      to achieve their ambitions.
+    band_suitability: 7.0+
+    register: neutral
+  - term: achieve a personal best
+    meaning: to achieve one's own highest score or fastest time yet recorded in an
+      event
+    example: Sometimes they are satisfied if they just achieve a personal best.
+    band_suitability: 7.0+
+    register: neutral
+  - term: enhance performance
+    meaning: to improve or increase the quality of someone's athletic execution
+    example: Some sports people so desperately want to win that they take drugs to
+      enhance their performance.
+    band_suitability: 7.0+
+    register: formal
+  - term: fail a drugs test
+    meaning: to test positive for banned performance-enhancing substances
+    example: This will be discovered when they fail a drugs test.
+    band_suitability: 6.0+
+    register: neutral
+  - term: score a goal
+    meaning: to successfully send the ball into the net or goal area to earn points
+    example: The aim is to score a goal.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tackle an opponent
+    meaning: to challenge or confront an opposing player to gain control of the ball
+    example: Players may tackle an opponent to try to take possession of the ball.
+    band_suitability: 6.0+
+    register: neutral
+  - term: foul an opponent
+    meaning: to commit an illegal action against an opposing player under the rules
+      of the sport
+    example: If you tackle in an illegal way, you foul your opponent.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a penalty
+    meaning: to take a free kick or shot at the goal as a penalty awarded against
+      the opposing team
+    example: This will lead to the referee blowing his whistle and an opponent taking
+      a penalty or taking a free kick.
+    band_suitability: 6.0+
+    register: neutral
+  - term: bring on a substitute
+    meaning: to send a replacement player onto the field during a game
+    example: The manager may decide to drop the player from the team or bring on a
+      substitute.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take the lead
+    meaning: to become the winning team or player in a match or competition
+    example: Both teams hope that they will have taken the lead by half-time.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -164,8 +164,11 @@ def main():
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
 
-    files = sorted(args.input.glob("*.yaml")) + sorted(args.input.glob("*.yml")) \
-        if args.input.is_dir() else [args.input]
+    if args.input.is_dir():
+        files = sorted(args.input.rglob("*.yaml")) + sorted(args.input.rglob("*.yml"))
+        files = [f for f in files if not f.name.endswith(".bak")]
+    else:
+        files = [args.input]
 
     if not files:
         print("Không tìm thấy file YAML nào.")

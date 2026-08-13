@@ -1,0 +1,126 @@
+vocabulary_entry:
+  topic_tags:
+  - communication
+  - idioms
+  - language_awareness
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 5 & 6
+  entries:
+  - term: the tip of the iceberg
+    meaning: a small part of a much bigger problem
+    example: rising unemployment figures are just the tip of the iceberg
+    band_suitability: 7.0+
+    register: neutral
+  - term: from the cradle to the grave
+    meaning: from birth to death
+    example: the state is responsible for its citizens' welfare from the cradle to
+      the grave
+    band_suitability: 8.0+
+    register: formal
+  - term: every Tom, Dick and Harry
+    meaning: everyone; ordinary people (often used to imply a task is not exclusive
+      or special)
+    example: every Tom, Dick and Harry could do that job
+    band_suitability: 7.0+
+    register: casual
+  - term: pay out of one's own pocket
+    meaning: to pay for something using one's own money
+    example: we had to pay for the hotel out of our own pocket
+    band_suitability: 6.0+
+    register: neutral
+  - term: like a bear with a sore head
+    meaning: in a very bad mood
+    example: Freddie keeps shouting at everyone today; he's behaving like a bear with
+      a sore head
+    band_suitability: 8.0+
+    register: casual
+  - term: the good old days
+    meaning: a period in the past that one remembers with nostalgia
+    example: when you remember the past nostalgically, you talk about the good old
+      days
+    band_suitability: 6.0+
+    register: neutral
+  - term: days are numbered
+    meaning: not going to exist or continue for much longer
+    example: Everyone uses mobile phones now, so the days of the land line are numbered.
+    band_suitability: 7.0+
+    register: neutral
+  - term: clip someone's wings
+    meaning: to limit someone's freedom
+    example: To talk about limiting someone's freedom, you can use the idiom to clip
+      someone's wings
+    band_suitability: 8.0+
+    register: neutral
+  - term: spirit of adventure
+    meaning: enthusiasm for adventurous activities
+    example: someone has a spirit of adventure
+    band_suitability: 7.0+
+    register: neutral
+  - term: up-to-the-minute
+    meaning: new or modern
+    example: fashion can be described as up-to-the-minute
+    band_suitability: 7.0+
+    register: neutral
+  - term: at a loss for words
+    meaning: not knowing what to say
+    example: Magda was at a loss for words when her son told her he had quit his new
+      job.
+    band_suitability: 7.0+
+    register: neutral
+  - term: tie the knot
+    meaning: to get married
+    example: you talk about a couple tying the knot
+    band_suitability: 6.0+
+    register: casual
+  - term: sick and tired of something
+    meaning: angry and bored with something
+    example: I'm sick and tired of listening to him complaining all the time.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a mountain out of a molehill
+    meaning: to make a small difficulty seem like a serious problem
+    example: Don't make such a mountain out of a molehill.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fringe benefits
+    meaning: something extra you get because of your job in addition to your pay
+    example: Fringe benefits are something extra you get because of your job in addition
+      to your pay.
+    band_suitability: 8.0+
+    register: formal
+  - term: blown away
+    meaning: to be amazed by something because it is so good
+    example: If you are blown away by something, it amazes you because it is so good.
+    band_suitability: 7.0+
+    register: casual
+  - term: on the same wavelength
+    meaning: to think in the same way as someone else
+    example: If two people are on the same wavelength, they think in the same way.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

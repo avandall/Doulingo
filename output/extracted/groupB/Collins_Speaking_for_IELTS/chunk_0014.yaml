@@ -1,0 +1,55 @@
+content_unit:
+  template_type: band_ladder
+  title: Hobbies — Expressing Preferences and Frequency
+  topic_tags:
+  - Hobbies
+  - Preferences
+  - Frequency
+  - Present Perfect
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Collins_Speaking_for_IELTS.md, Unit 7
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Thường trả lời ngắn gọn, sử dụng từ vựng cơ bản và lặp lại cấu
+    trúc câu đơn giản. Cần mở rộng câu trả lời thay vì chỉ dùng một từ.
+  vocabulary_core:
+  - like
+  - dislike
+  - often
+  - play
+  - go
+  vocabulary_stretch:
+  - keen on
+  - can't stand, crazy about
+  sentence_length_target: Ngắn, thiếu liên kết
+  common_errors_to_simulate: Chỉ trả lời 1-2 từ (Yes/No), thiếu cụm từ chỉ tần suất
+    (frequency phrases), lạm dụng từ đơn lẻ thay vì cụm từ tự nhiên.
+  grammar_required: []
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Sử dụng linh hoạt các cụm từ chỉ tần suất và cấu trúc ngữ pháp
+    như Present Perfect để mô tả sở thích kéo dài.
+  vocabulary_core:
+  - page-turner
+  - thought-provoking
+  - star-studded
+  - hilarious
+  vocabulary_stretch:
+  - I can take it or leave it
+  - it's not my kind of thing, every now and again
+  sentence_length_target: Phức hợp, sử dụng đa dạng các trạng từ chỉ tần suất và cấu
+    trúc thì
+  grammar_required: []
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: How often do you play tennis?
+  user_model_answer: I play tennis occasionally. It was very enjoyable and informative.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: How often do you play tennis?
+  user_model_answer: I actually play tennis every now and again, whenever I can find
+    a court that isn't too busy, which is usually a couple of times a month.

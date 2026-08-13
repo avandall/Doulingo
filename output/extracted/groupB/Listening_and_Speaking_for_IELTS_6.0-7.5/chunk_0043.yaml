@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Speaking Skills — Collocations for Technology and Scientific Discovery"
+  topic_tags: ["Technology", "Science", "Collocations"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Speaking skills"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Sử dụng các cụm từ vựng cơ bản về công nghệ, đôi khi sử dụng collocations còn gượng gạo hoặc chưa chính xác về ngữ cảnh."
+    grammar_required: ["Present Perfect", "Relative clauses"]
+    vocabulary_core: ["gadget", "invention", "technology", "discovery"]
+    vocabulary_stretch: ["cutting-edge", "state-of-the-art", "pioneering"]
+    sentence_length_target: "moderate"
+    common_errors_to_simulate: "Nhầm lẫn giữa các từ đồng nghĩa (ví dụ: dùng 'medical revolution' thay vì 'medical breakthrough')"
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Sử dụng collocations chính xác và tự nhiên để mô tả các phát minh/công nghệ, giúp bài nói có chiều sâu và chuyên nghiệp hơn."
+    grammar_required: ["Complex sentences", "Passive voice for scientific context"]
+    vocabulary_core: ["scientific breakthrough", "technological revolution"]
+    vocabulary_stretch: ["pioneering research", "groundbreaking discovery"]
+    sentence_length_target: "complex and varied"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Describe a scientific breakthrough of the last twenty years which you feel has had a major influence on your life."
+    user_model_answer: "I'd like to talk about a scientific breakthrough, which is the smartphone. It started to become popular about twenty years ago. It had a big effect on communication. This has influenced my life because I use it for everything, like studying and contacting my friends."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a scientific breakthrough of the last twenty years which you feel has had a major influence on your life."
+    user_model_answer: "The scientific breakthrough that has had a profound influence on my life is the development of high-speed mobile internet. This cutting-edge technology emerged prominently over the last two decades. It completely revolutionised how we access information, and it has influenced my life by enabling me to pursue online education from anywhere in the world."

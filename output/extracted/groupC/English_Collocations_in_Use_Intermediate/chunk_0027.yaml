@@ -1,0 +1,174 @@
+vocabulary_entry:
+  topic_tags:
+  - business
+  - work
+  - economy
+  - entrepreneurship
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 31
+  entries:
+  - term: go into business
+    meaning: to start a business
+    example: I set up a small business selling office equipment in 2001. Then in 2003,
+      I went into partnership with my old friend.
+    band_suitability: 6.0+
+    register: neutral
+  - term: set up a business
+    meaning: to start a company or enterprise
+    example: I set up a small business selling office equipment in 2001.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go into partnership
+    meaning: to form a business relationship with someone
+    example: Then in 2003, I went into partnership with my old friend, Ethan Smith.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make a loss
+    meaning: to spend more money than is earned
+    example: We made a loss for the first two years, but then things got better.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a profit
+    meaning: to earn more money than is spent
+    example: We’ve made a profit for most years ever since.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go under
+    meaning: to fail financially
+    example: During the economic recession, a lot of small businesses were going under.
+    band_suitability: 7.0+
+    register: informal
+  - term: go bankrupt
+    meaning: to be unable to pay debts so that assets are sold by court order
+    example: All around us, small firms were going bankrupt.
+    band_suitability: 7.0+
+    register: neutral
+  - term: win a contract
+    meaning: to successfully secure an official agreement to provide goods or services
+    example: In 2010 we won a contract, despite stiff competition, to supply the local
+      government offices.
+    band_suitability: 7.0+
+    register: neutral
+  - term: stiff competition
+    meaning: very severe or strong competition
+    example: In 2010 we won a contract, despite stiff competition, to supply the local
+      government offices.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take on staff
+    meaning: to employ new people
+    example: We took on staff and expanded.
+    band_suitability: 6.0+
+    register: neutral
+  - term: annual turnover
+    meaning: the total amount of business a company does in a year
+    example: Soon we had an annual turnover of more than eighteen million pounds.
+    band_suitability: 8.0+
+    register: formal
+  - term: carry out market research
+    meaning: to conduct research into consumers' needs and preferences
+    example: We always carry out market research before launching a new product.
+    band_suitability: 7.0+
+    register: neutral
+  - term: launch a new product
+    meaning: to introduce a new product to the market
+    example: We always carry out market research before launching a new product.
+    band_suitability: 6.0+
+    register: neutral
+  - term: customer service
+    meaning: the assistance and advice provided by a company to those people who buy
+      or use its products or services
+    example: We also firmly believe in customer service, especially after-sales service.
+    band_suitability: 6.0+
+    register: neutral
+  - term: float a company on the stock market
+    meaning: to start selling shares in a business or company for the first time
+    example: There are rumours that you may float the company on the stock market.
+    band_suitability: 8.0+
+    register: formal
+  - term: go public
+    meaning: to offer a company's shares for sale to the general public for the first
+      time
+    example: At the moment we have no intention of going public.
+    band_suitability: 8.0+
+    register: neutral
+  - term: cease trading
+    meaning: to close a business permanently
+    example: Owing to the economic crisis, many small firms ceased trading.
+    band_suitability: 8.0+
+    register: formal
+  - term: cut-throat competition
+    meaning: very severe and ruthless competition
+    example: There is cut-throat competition in the music industry these days.
+    band_suitability: 8.0+
+    register: neutral
+  - term: market forces
+    meaning: forces not influenced by government that decide price levels in an economy
+    example: Market forces have caused many factories to close as businesses move
+      overseas.
+    band_suitability: 8.0+
+    register: formal
+  - term: go out of business
+    meaning: to stop operating as a business because of financial failure
+    example: Our local bakery has gone out of business.
+    band_suitability: 6.0+
+    register: neutral
+  - term: business is booming
+    meaning: business is doing extremely well
+    example: Business is booming for Internet-based travel companies as most people
+      book travel online.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rival company
+    meaning: a competing company in the same industry
+    example: She resigned and went to work for a rival company.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strike a deal
+    meaning: to negotiate or reach an agreement successfully
+    example: We did/struck a deal with the vendor of the house and got a 15% discount
+      on the price.
+    band_suitability: 7.0+
+    register: neutral
+  - term: balance the budget
+    meaning: to manage revenues and expenses so that they are equal
+    example: It’s quite difficult sometimes to balance the budget because of increased
+      costs.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put in a bid
+    meaning: to offer to do work or supply goods for a particular amount of money
+    example: Our company have put in a bid for the new leisure centre contract.
+    band_suitability: 7.0+
+    register: neutral
+  - term: do business
+    meaning: to engage in commercial activity or trade
+    example: We’re doing a lot of business in Asia these days.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

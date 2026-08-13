@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 Strategy & Topic Handling"
+  topic_tags: ["Part 2", "Strategy", "Topic Preparation", "Vocabulary"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Sections 2.2, 2.3, 2.4"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates provide simple answers to the prompt guidelines, often leading to basic grammar and limited vocabulary usage."
+    grammar_required: ["Simple tenses", "Basic sentence structure"]
+    vocabulary_core: 
+      - Topic-related keywords (basic)
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Focusing on writing 'answers' to prompt questions during preparation time; sticking too closely to the card prompts, which results in simple, non-complex language."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use the preparation time to plan language features (idioms, complex sentences, paraphrasing) rather than just factual answers to prompts."
+    grammar_required: ["Complex sentences", "Variety of tenses", "Subordination"]
+    vocabulary_core: ["Uncommon lexical items", "Topic-specific vocabulary"]
+    vocabulary_stretch: ["Idiomatic expressions", "Paraphrasing"]
+    sentence_length_target: "Varied and complex sentence structures"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe an interesting building in your city."
+    user_model_answer: "I will talk about the old library in my city. It is a Chinese building and it is very old. It is used for reading books. It is interesting because it is historic. I visit it once a month."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe an interesting building in your city."
+    user_model_answer: "I'd like to talk about the city's central library, which is a fascinating example of traditional Chinese architecture. Although it's situated in the heart of our modern business district, its weathered wooden exterior and intricate carvings make it stand out as a historical landmark. Locals primarily frequent it for research, but I find it's a sanctuary from the urban hustle. I try to drop by at least once a month whenever I need to escape the noise."

@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: Analysis of the Band 9 Part 2 Answer
+  topic_tags:
+  - Part 2 Strategy
+  - Examiner Expectations
+  - Content Credibility
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: Get_IELTS_Band_9_Speaking, Analysis of the Band 9 Part 2 Answer
+band_tiers:
+- band_min: 7.0
+  band_max: 9.0
+  can_do_description: Candidate answers all parts of the cue card task clearly, uses
+    credible details, avoids padding, and employs natural, non-academic vocabulary.
+  grammar_required:
+  - Consistent use of past tenses for anecdotes
+  vocabulary_core:
+  - panoramic view
+  - excursions
+  - demanding
+  vocabulary_stretch:
+  - credible
+  - relevant
+  - structured
+  sentence_length_target: Varied, logical flow
+  common_errors_to_simulate: Padding (long irrelevant lists), using overly formal/academic
+    vocabulary that sounds unnatural in speech, inventing details that are too comical
+    or tragic (not credible).
+sample_dialogues:
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 9.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

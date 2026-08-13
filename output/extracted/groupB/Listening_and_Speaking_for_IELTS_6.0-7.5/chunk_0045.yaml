@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation — Sounding interested in Part 3"
+  topic_tags: ["Science", "Pronunciation", "Part 3"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Pronunciation: Sounding interested"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate provides direct answers but lacks intonation variety, resulting in a flat or disinterested tone."
+    grammar_required: ["Simple sentences", "Basic conjunctions"]
+    vocabulary_core: ["scientific developments", "problems", "solve"]
+    vocabulary_stretch: []
+    sentence_length_target: "short to medium"
+    common_errors_to_simulate: "Monotone delivery, lack of emphasis on key words, failing to express opinion with conviction."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidate uses effective intonation and stress to show interest, engagement, and conviction in the argument."
+    grammar_required: ["Complex structures", "Discourse markers"]
+    vocabulary_core: ["far outweigh", "negative consequences", "positive thing"]
+    vocabulary_stretch: ["interfere with nature", "unethical", "prohibiting research"]
+    sentence_length_target: "varied, complex sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think scientific developments often cause more problems than they solve?"
+    user_model_answer: "Scientific developments often cause lots of problems so sometimes they're not worth it."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think scientific developments often cause more problems than they solve?"
+    user_model_answer: "Actually, I would say that it's the other way round - the problems that science solves far outweigh the problems that it may bring."

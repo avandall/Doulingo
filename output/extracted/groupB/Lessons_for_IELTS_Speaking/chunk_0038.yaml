@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Future Goals and Skills — Grammar Structures"
+  topic_tags: [Grammar, Future Goals, Hobbies, Skills]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses basic structures to express future intentions. Often relies on simple 'I want' or 'I like' phrasing."
+    grammar_required: ["I would love to + base verb", "I hope to + base verb"]
+    vocabulary_core: ["goal", "dream", "course", "skill"]
+    vocabulary_stretch: ["achievement", "gear"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of variety in sentence starters; overuse of simple present; difficulty connecting ideas using subordinating conjunctions."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Demonstrates flexibility in expressing intentions and describing hypothetical scenarios with a range of vocabulary."
+    grammar_required: 
+      - Complex sentence structures
+      - "Relative clauses (e.g., 'which runs every Saturday')"
+      - Modals for hypothesis
+    vocabulary_core: ["involve", "significant", "commitment"]
+    vocabulary_stretch: ["balance", "achievement", "wetsuit", "paddle"]
+    sentence_length_target: "Combined sentences using cohesive devices"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you want to learn in the future?"
+    user_model_answer: "I would love to take an MBA course in the future. My goal is to study overseas because I want to run my own business."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me about a skill you would like to learn."
+    user_model_answer: "I'd really like to learn to surf. I've found a course that runs every Saturday where they teach you how to balance and keep safe. Even though people say it's quite difficult and you spend most of your time falling, it seems like a great achievement to finally manage to stay on the board."

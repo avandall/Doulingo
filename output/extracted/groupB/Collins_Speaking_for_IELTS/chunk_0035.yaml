@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: 'IELTS Speaking Topics: Homesickness, Patriotism, and Festivals'
+  topic_tags:
+  - Homesickness
+  - Patriotism
+  - Festivals
+  - City vs Country life
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS.md, Audio Scripts Tracks 25, 30
+band_tiers:
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to use sophisticated vocabulary (e.g., 'acutely', 'utmost
+    importance', 'xenophobia') and complex grammatical structures to explain nuanced
+    arguments. Effectively manages coherence by using linking phrases and signposting.
+  grammar_required:
+  - Conditional structures
+  - Passive voice
+  - Complex relative clauses
+  vocabulary_core:
+  - homesickness
+  - patriotic
+  - cultural centre
+  - tradition
+  vocabulary_stretch:
+  - acutely
+  - hustle and bustle
+  - utmost importance
+  - xenophobia
+  - flipside
+  - inclusive
+  sentence_length_target: Varied (combination of compound-complex sentences with short
+    emphatic statements)
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Is it only children who experience homesickness?
+  user_model_answer: Children probably feel homesickness more acutely because they
+    may never have been away from home before, and because they are still closely
+    attached to their parents. However, many adults also experience culture shock
+    when they visit a new place, which I suppose can be considered a kind of 'adult
+    homesickness'.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Does intense patriotism have any disadvantages?
+  user_model_answer: Oh, undoubtedly. The flipside of patriotism is xenophobia, people
+    disliking others who are from another country and associating all kinds of negative
+    characteristics with them. It’s quite frightening, really, because it could be
+    argued that xenophobia has made it easier for governments to justify going to
+    war.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What is the most important festival in your country?
+  user_model_answer: Our most important festival is without doubt Christmas. We all
+    look forward to it for months, buying presents for our loved ones and decorating
+    our homes. It’s magical for everyone but for children especially.

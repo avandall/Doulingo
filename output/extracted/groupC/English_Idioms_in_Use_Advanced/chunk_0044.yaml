@@ -1,0 +1,145 @@
+vocabulary_entry:
+  topic_tags:
+  - business
+  - relationships
+  - behavior
+  - strategy
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 48 & 49
+  entries:
+  - term: play gooseberry
+    meaning: to be an unwanted third person in a romantic situation
+    example: I went out with my brother and his girlfriend. They didn't really want
+      me there, and it was really boring playing gooseberry.
+    band_suitability: 8.0+
+    register: informal
+  - term: play it cool
+    meaning: behave in a calm way, pretending to be less interested in someone than
+      you really are
+    example: If you really like him, don't make it too obvious. Try to play it cool.
+    band_suitability: 7.0+
+    register: informal
+  - term: play it safe
+    meaning: to be extra careful and not take any risks
+    example: I always take an umbrella with me, even if it's not raining. I like to
+      play it safe!
+    band_suitability: 6.0+
+    register: neutral
+  - term: play dirty
+    meaning: to behave in a dishonest way
+    example: Another restaurant in town plays dirty, saying there are rats in our
+      kitchen.
+    band_suitability: 7.0+
+    register: informal
+  - term: play someone for a fool
+    meaning: to treat someone as if they are stupid
+    example: I'm not stupid - they can't play me for a fool.
+    band_suitability: 7.0+
+    register: informal
+  - term: play for time
+    meaning: to wait or delay until you are ready
+    example: At the moment we're just waiting and playing for time.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play God
+    meaning: to act as if you have control over other people's lives
+    example: Scientists have no right to play God by experimenting on embryos.
+    band_suitability: 8.0+
+    register: formal
+  - term: play second fiddle
+    meaning: to be in a less important or weaker position
+    example: I'm tired of playing second fiddle to my brother.
+    band_suitability: 8.0+
+    register: neutral
+  - term: raise your game
+    meaning: to work harder to achieve something
+    example: Our competitors won an award this week. We're really going to have to
+      raise our game.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the game's up
+    meaning: used to say that someone's secret activities are known and must now stop
+    example: He's got away with lying for a long time, but the game's up now.
+    band_suitability: 8.0+
+    register: informal
+  - term: a game plan
+    meaning: a plan for achieving success
+    example: The marketing campaign isn't working. We need a new game plan.
+    band_suitability: 6.0+
+    register: neutral
+  - term: the name of the game
+    meaning: the most important part of an activity or the quality needed for it
+    example: Good customer service is the name of the game for successful companies.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play games
+    meaning: to try to deceive someone about what you intend to do
+    example: They're never going to sign the contract. They're just playing games.
+    band_suitability: 7.0+
+    register: informal
+  - term: play the game
+    meaning: to behave in a way that is expected or demanded by those in authority
+    example: I don't agree with the changes at work, but I'm not going to complain.
+      I'll just play the game.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play the waiting game
+    meaning: to delay taking action until you see how things develop
+    example: The banks are playing the waiting game until they see how their customers
+      react.
+    band_suitability: 7.0+
+    register: neutral
+  - term: half-baked
+    meaning: not thought through fully (usually referring to a scheme or plan)
+    example: This is another half-baked scheme of the government.
+    band_suitability: 8.0+
+    register: informal
+  - term: half-measures
+    meaning: actions that will achieve only part of what they are intended to achieve
+    example: There can be no half-measures when confronting this serious problem.
+    band_suitability: 8.0+
+    register: formal
+  - term: have half a mind to
+    meaning: to think that you might do something (though you probably won't), often
+      because you are annoyed
+    example: I've half a mind to just walk out of the office and never come back.
+    band_suitability: 8.0+
+    register: neutral
+  - term: not know the half of it
+    meaning: to know a little about something bad, but not the full story
+    example: She thinks she knows what happened, but she doesn't know the half of
+      it.
+    band_suitability: 8.0+
+    register: informal
+  - term: meet someone halfway
+    meaning: to do some of the things someone wants to reach an agreement
+    example: I decided to meet my manager halfway and agreed to go for a couple of
+      days.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

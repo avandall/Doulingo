@@ -1,0 +1,194 @@
+vocabulary_entry:
+  topic_tags:
+  - learning_english
+  - study_habits
+  - vocabulary
+  - dictionaries
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 1-3
+  entries:
+  - term: make a decision
+    meaning: to decide something
+    example: He wants to enrol on a course of some sort but just can’t make a decision
+      about what to study.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take up a profession
+    meaning: to start working in a particular profession
+    example: When I left university I made a decision to take up a profession in which
+      I could be creative.
+    band_suitability: 7.0+
+    register: neutral
+  - term: record company
+    meaning: a company that produces and records music
+    example: I made some more, and sent them to a record company and waited for them
+      to reply.
+    band_suitability: 6.0+
+    register: neutral
+  - term: fast-food restaurant
+    meaning: a restaurant that serves fast food
+    example: So, while I was waiting to become famous, I got a job in a fast-food
+      restaurant.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give someone a lift
+    meaning: to take someone somewhere in your car
+    example: After giving Mark a lift to the airport, Julie made her way home.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make your way
+    meaning: to travel or walk to a place
+    example: After giving Mark a lift to the airport, Julie made her way home.
+    band_suitability: 7.0+
+    register: neutral
+  - term: lead an exciting life
+    meaning: to live a lifestyle full of interesting and exciting events
+    example: What an exciting life he led!
+    band_suitability: 7.0+
+    register: neutral
+  - term: desperately jealous
+    meaning: extremely jealous
+    example: At times Julie felt desperately jealous of him.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take care of
+    meaning: to look after someone or something
+    example: She spent her time doing little more than taking care of him and the
+      children.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get divorced
+    meaning: to legally end a marriage
+    example: Now her sister was getting divorced and would doubtless be making demands
+      on her too.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make demands on
+    meaning: to expect a lot of someone's time, attention, or effort
+    example: Now her sister was getting divorced and would doubtless be making demands
+      on her too.
+    band_suitability: 7.0+
+    register: neutral
+  - term: give someone a call
+    meaning: to telephone someone
+    example: Julie had promised to give her sister a call as soon as she got home.
+    band_suitability: 6.0+
+    register: neutral
+  - term: run a bath
+    meaning: to fill a bath with water for washing
+    example: She decided to run herself a bath first.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sharp pain
+    meaning: a sudden, severe, piercing pain
+    example: She had a sharp pain in her side and hoped that a hot bath might ease
+      the pain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ease the pain
+    meaning: to make pain less severe
+    example: She had a sharp pain in her side and hoped that a hot bath might ease
+      the pain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sharp bend
+    meaning: a sharp or sudden curve in a road
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: sharp contrast
+    meaning: a very obvious difference between two things
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: sharp rise
+    meaning: a sudden and rapid increase
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: secret information
+    meaning: information that is kept hidden from others
+    example: I don’t have access to that kind of secret information.
+    band_suitability: 6.0+
+    register: neutral
+  - term: piece of advice
+    meaning: a useful suggestion or opinion about what to do
+    example: Jim gave me a very useful piece of advice.
+    band_suitability: 6.0+
+    register: neutral
+  - term: desperately worried
+    meaning: extremely worried
+    example: My friend Abigail is desperately worried about her son at the moment.
+    band_suitability: 7.0+
+    register: neutral
+  - term: enrol on a course
+    meaning: to officially register to join a course
+    example: He wants to enrol on a course of some sort.
+    band_suitability: 7.0+
+    register: formal
+  - term: give someone a ring
+    meaning: to telephone someone
+    example: I gave Abigail a ring and we had a long chat about it last night.
+    band_suitability: 6.0+
+    register: informal
+  - term: have a long chat
+    meaning: to talk for a long time in an informal way
+    example: I gave Abigail a ring and we had a long chat about it last night.
+    band_suitability: 6.0+
+    register: neutral
+  - term: study for a degree
+    meaning: to take a course of study at a university to get a qualification
+    example: She said he’d like to study for a degree.
+    band_suitability: 6.0+
+    register: neutral
+  - term: meet the requirements
+    meaning: to fulfill the necessary conditions or demands
+    example: Afraid he won’t meet the requirements for university entry.
+    band_suitability: 7.0+
+    register: formal
+  - term: university entry
+    meaning: admission or acceptance into a university
+    example: Afraid he won’t meet the requirements for university entry.
+    band_suitability: 7.0+
+    register: neutral
+  - term: set up a business
+    meaning: to start a new business
+    example: He’d like to set up his own business in the future.
+    band_suitability: 6.0+
+    register: neutral
+  - term: wise choice
+    meaning: a sensible and good decision
+    example: I agreed that that would be a wise choice.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take somebody up on an offer
+    meaning: to accept an offer that someone has made
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

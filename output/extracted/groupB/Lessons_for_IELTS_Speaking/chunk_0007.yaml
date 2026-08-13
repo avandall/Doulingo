@@ -1,0 +1,65 @@
+content_unit:
+  template_type: band_ladder
+  title: Part 2 Answer — Describing a Person and Past Habits
+  topic_tags:
+  - Person
+  - Education
+  - 'Grammar: Used to'
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: Lessons_for_IELTS_Speaking, Part 2 Answer
+band_tiers:
+- band_min: 6.0
+  band_max: 6.5
+  can_do_description: Able to talk about past experiences with some grammatical errors,
+    focusing on basic descriptions.
+  grammar_required:
+  - Used to + V-inf
+  - Simple past tense
+  - Adjectives for personality
+  vocabulary_core:
+  - primary school
+  - strict
+  - friendly
+  - kind
+  - personality
+  vocabulary_stretch:
+  - old-fashioned
+  - got such a fright
+  - in control
+  sentence_length_target: medium-length sentences
+  common_errors_to_simulate: Misuse of 'did used to' instead of 'didn't use to'; over-reliance
+    on basic 'and' connectors.
+- band_min: 7.0
+  band_max: 7.5
+  can_do_description: Able to use a range of narrative tenses and structures to describe
+    past habits and personal memories fluently.
+  grammar_required:
+  - Used to for past habits/states
+  - Relative clauses
+  - Adverbial phrases
+  vocabulary_core:
+  - patient
+  - gentle
+  - reward
+  - naughty
+  - primary school
+  vocabulary_stretch:
+  - personality
+  - care for
+  - in control
+  - get a fright
+  sentence_length_target: varied sentence structure, connecting past states with personal
+    feelings
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Describe a teacher you had at primary school who was wonderful.
+  user_model_answer: I remember a teacher I had at primary school who was wonderful.
+    From the first day, she was friendly and kind towards us. She was also strict—on
+    the first day, she took out this old-fashioned strap and banged it on the desk.
+    We all got such a fright, but she was just trying to show us she was in control.
+    What I used to enjoy most about her classes was her personality and the fact that
+    she cared for all her students, even the naughty ones. She was like a mother to
+    me, gentle but strict at the same time.

@@ -1,0 +1,41 @@
+content_unit:
+  template_type: scenario
+  title: "Food and Eating Habits - Part 1 Practice"
+  topic_tags: [Food, Daily routine, IELTS Speaking Part 1]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, WARM-UP"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể trả lời câu hỏi Part 1 ngắn gọn, sử dụng từ vựng cơ bản về chủ đề đồ ăn, nhưng cấu trúc câu còn đơn giản, thiếu sự đa dạng."
+    grammar_required: 
+      - Present Simple
+      - simple conjunctions (because)
+    vocabulary_core: [food, eat, cook, breakfast, restaurant]
+    vocabulary_stretch: [flavours, fresh, local markets]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of sentence stress, overly simplistic grammar, limited range of adjectives to describe food."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh trả lời trôi chảy, có nhấn trọng âm (stress) vào từ khóa để làm nổi bật thông tin, sử dụng từ vựng chính xác và phong phú."
+    grammar_required: [Complex sentence structures, comparative/superlative]
+    vocabulary_core: [noodle soup, fast food, home-cooked]
+    vocabulary_stretch: [flavoursome, dining out, preparation, nutritious]
+    sentence_length_target: "Varied sentence length with natural intonation"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like to cook?"
+    user_model_answer: "I never cook because I don't know how. My parents always cook for me."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you prefer to eat out or eat at home?"
+    user_model_answer: "I prefer eating in restaurants to eating at home because you don't have to do the dishes afterwards!"
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Tell me about your favourite food."
+    user_model_answer: "I love all Vietnamese food, but my favourite is probably noodle soup because it has so many flavours."

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Communication Technology — IELTS Part 3 Transcript Analysis"
+  topic_tags: ["Technology", "Communication", "Modern Life"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, TRANSCRIPT"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate provides relevant answers but relies on simple structures and repetitive fillers (e.g., 'you know', 'well'). Ideas are clear but development is somewhat limited."
+    grammar_required: 
+      - Present simple for general facts
+      - Conditional sentences (Type 1)
+      - Modals of possibility
+    vocabulary_core: ["convenient", "instant", "communication technology", "privacy", "internet addiction"]
+    vocabulary_stretch: ["microchip", "socialise", "dominated", "harvest"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Frequent hesitation and repetition; overuse of filler words like 'well', 'you know', 'actually'; slight grammar slips in complex sentences."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidate answers fluently with a good range of vocabulary. Uses cohesive devices effectively to connect complex ideas about technology's societal impact."
+    grammar_required: ["Mixed conditionals", "Relative clauses", "Passive voice for academic tone"]
+    vocabulary_core: ["instantaneous", "negative impact", "availability", "accessibility"]
+    vocabulary_stretch: ["hacking", "developing world", "technological dominance", "societal implications"]
+    sentence_length_target: "varied/complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Can you tell me how modern communication technology has changed people's lives?"
+    user_model_answer: "Well, I think in many ways, it has made our lives easier. Everything is so convenient... and communication nowadays is so instant... you know, it happens immediately. We can contact our friends and family, do our business and banking at any time of the day or night... in any part of the world."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "If poor people in developing countries had access to the Internet in their language, what kinds of information would be most helpful?"
+    user_model_answer: "Firstly, I think they would find weather forecasts most helpful. If they checked the weather forecast, they could find out the best time to go fishing, or plant their crops. Secondly, if they needed to leave their village to find work, they could check job websites. Actually, education is probably the most helpful and the most important."

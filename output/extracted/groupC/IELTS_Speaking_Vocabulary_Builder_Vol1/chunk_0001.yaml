@@ -1,0 +1,94 @@
+vocabulary_entry:
+  topic_tags:
+  - health
+  - sleep
+  - lifestyle
+  - wellbeing
+  category: collocation
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: getting a good night's sleep
+    meaning: having a proper and restful period of sleep during the night
+    example: Sometimes, the pace of modern life barely gives you time to stop and
+      rest. It can make getting a good night’s sleep on a regular basis seem like
+      a dream.
+    band_suitability: 6.0+
+    register: neutral
+  - term: on a regular basis
+    meaning: regularly; occurring in regular time intervals or patterns
+    example: It can make getting a good night’s sleep on a regular basis seem like
+      a dream.
+    band_suitability: 6.0+
+    register: neutral
+  - term: quality sleep
+    meaning: sleep that is deep and restorative
+    example: Not getting enough quality sleep regularly raises the risk of many diseases
+      and disorders.
+    band_suitability: 6.0+
+    register: neutral
+  - term: raise the risk of
+    meaning: to increase the probability of a negative outcome or disease occurring
+    example: Not getting enough quality sleep regularly raises the risk of many diseases
+      and disorders.
+    band_suitability: 7.0+
+    register: neutral
+  - term: heart disease
+    meaning: a medical condition affecting the heart
+    example: These range from heart disease and stroke to obesity and dementia.
+    band_suitability: 6.0+
+    register: neutral
+  - term: stroke
+    meaning: a sudden problem in your brain that changes the flow of blood and makes
+      you unable to move part of your body
+    example: These range from heart disease and stroke to obesity and dementia.
+    band_suitability: 7.0+
+    register: neutral
+  - term: obesity
+    meaning: the quality or fact of being very fat, in a way that is not healthy
+    example: These range from heart disease and stroke to obesity and dementia.
+    band_suitability: 7.0+
+    register: neutral
+  - term: dementia
+    meaning: a brain condition, mostly affecting older people, in which a person has
+      difficulties with memory, thinking, control of the body, etc. that are severe
+      enough to affect daily life
+    example: These range from heart disease and stroke to obesity and dementia.
+    band_suitability: 8.0+
+    register: neutral
+  - term: myth
+    meaning: something that many people believe but that does not exist or is false
+    example: 'Sleep myths and truths: How much sleep you need changes with age.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: recommend
+    meaning: to advise a particular course of action; to advise somebody to do something
+    example: Experts recommend school-age children get at least nine hours a night
+      and teens get between eight and 10.
+    band_suitability: 6.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Focus on Part 3 - Comparing Past/Present and Reasoning"
+  topic_tags: ["Leisure Time", "Part 3 Strategy", "Comparing", "Giving Reasons"]
+  target_band_min: 5.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Focus on Part 3 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers are often simple and lack connective devices. Students struggle with complex structures like comparing past and present."
+    grammar_required: ["Used to + infinitive", "Simple present for facts"]
+    vocabulary_core: ["play", "outside", "inside", "games"]
+    vocabulary_stretch: ["leisure activities", "era"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of transition words; failure to use contrastive conjunctions like 'whereas' or 'however'; repetitive sentence structures."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses complex sentence structures and a variety of cohesive devices to express abstract ideas and comparisons."
+    grammar_required: 
+      - Contrastive conjunctions (whereas, however)
+      - Introductory phrases
+      - Reason/Result connectors (so, because)
+    vocabulary_core: ["leisure activities", "generation", "technology"]
+    vocabulary_stretch: ["energetic", "era", "in my opinion", "it seems to me that"]
+    sentence_length_target: "Complex sentences combining multiple clauses"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How do you think the way people spend their free time has changed over the last 50 years?"
+    user_model_answer: "People used to play cards. However, nowadays they are more likely to use the Internet to play games."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Why do you think the older generation enjoy different leisure activities to the younger generation?"
+    user_model_answer: "In my opinion, the younger generation prefer to use technology in their free time because they grew up in a different era to the older generation."

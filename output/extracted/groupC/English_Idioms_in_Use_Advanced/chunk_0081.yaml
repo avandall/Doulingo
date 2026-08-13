@@ -1,0 +1,111 @@
+vocabulary_entry:
+  topic_tags:
+  - idioms
+  - advanced_vocabulary
+  - phrases_and_expressions
+  category: idiom
+  source_citation: English Idioms in Use Advanced, pp. 177-178
+  entries:
+  - term: take sb to the cleaner's
+    meaning: to defeat someone easily, or to take a lot of their money
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: take the biscuit
+    meaning: to be the most remarkable or foolish of its kind
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: take the flak
+    meaning: to receive direct criticism or blame
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: take the wind out of sb's sails
+    meaning: to make someone feel less confident, usually by saying or doing something
+      unexpected
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: take the words right out of my mouth
+    meaning: to say exactly what someone else was thinking
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: throw a spanner in the works
+    meaning: to do something that prevents a plan from succeeding
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: throw in the sponge
+    meaning: to admit defeat; to give up
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: throw money down the drain
+    meaning: to waste money
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: think outside the box
+    meaning: to think imaginatively using new ideas instead of traditional ones
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: tie the knot
+    meaning: to get married
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: run a tight ship
+    meaning: to manage an organization efficiently and strictly
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: turn over a new leaf
+    meaning: to start behaving in a better way
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: water under the bridge
+    meaning: something that happened in the past and cannot be changed, so it should
+      be forgotten
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: the tip of the iceberg
+    meaning: a small, noticeable part of a large problem
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: leave no stone unturned
+    meaning: to try every possible course of action in order to achieve something
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

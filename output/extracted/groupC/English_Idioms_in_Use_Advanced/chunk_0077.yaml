@@ -1,0 +1,120 @@
+vocabulary_entry:
+  topic_tags:
+  - idioms
+  - advanced_vocabulary
+  - general_expression
+  category: idiom
+  source_citation: English Idioms in Use Advanced, pp. 169-170
+  entries:
+  - term: turn over a new leaf
+    meaning: change your life by starting to be a better person or stopping bad habits
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: in leaps and bounds
+    meaning: very quickly and in large amounts
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: learn the hard way
+    meaning: discover what is best by experiencing an unpleasant situation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: get a new lease of life
+    meaning: become more energetic and active than before
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: leave no stone unturned
+    meaning: try every possible course of action in order to achieve something
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: leave sb high and dry
+    meaning: leave someone in a difficult situation without any help
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: live life to the full
+    meaning: live life in a way that is exciting and full of experiences
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: live on a shoestring
+    meaning: live on very little money
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: look on the bright side
+    meaning: find good things in a bad situation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: a loose cannon
+    meaning: someone who is unpredictable and can cause damage if not controlled
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: lose face
+    meaning: be humiliated or lose respect in the eyes of others
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: make ends meet
+    meaning: have just enough money to pay for the things that you need
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: make a mountain out of a molehill
+    meaning: exaggerate a small problem to make it seem like a serious one
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: burn the midnight oil
+    meaning: stay up working or studying late into the night
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: go the extra mile
+    meaning: make more effort than is expected of you
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: put your money where your mouth is
+    meaning: show that you support something with your actions or money, not just
+      words
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: bite off more than one can chew
+    meaning: try to do something that is too difficult or take on too many commitments
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

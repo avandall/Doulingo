@@ -1,0 +1,150 @@
+vocabulary_entry:
+  topic_tags:
+  - ambition
+  - success
+  - difficulty
+  - efforts
+  - opinions
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Units 40-43
+  entries:
+  - term: stand out from the crowd
+    meaning: to be much better or more noticeable than other people
+    example: Yes, it must be hard to stand out from the crowd these days.
+    band_suitability: 6.0+
+    register: neutral
+  - term: by and large
+    meaning: on the whole; generally
+    example: By and large, the writer uses traditional poetic style.
+    band_suitability: 7.0+
+    register: neutral
+  - term: first and foremost
+    meaning: more than anything else; above all
+    example: First and foremost, we must give a definition of family law before we
+      can apply it to the case in question.
+    band_suitability: 7.0+
+    register: formal
+  - term: a case in point
+    meaning: an example that shows that what you are saying is true
+    example: People who fail at school often succeed in later life. Einstein is a
+      case in point.
+    band_suitability: 8.0+
+    register: formal
+  - term: stand out like a sore thumb
+    meaning: to be very noticeable in an unpleasant or obvious way
+    example: The new building stands out like a sore thumb.
+    band_suitability: 7.0+
+    register: informal
+  - term: go hand in hand
+    meaning: to happen together or be closely related
+    example: Business success often goes hand in hand with good working conditions.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put your shoulder to the wheel
+    meaning: to start working very hard
+    example: Come on, work harder! You have to put your shoulder to the wheel!
+    band_suitability: 8.0+
+    register: informal
+  - term: reach for the stars
+    meaning: to be very ambitious and try to achieve great things
+    example: The teacher told his students to be ambitious and to reach for the stars.
+    band_suitability: 7.0+
+    register: neutral
+  - term: turn over a new leaf
+    meaning: to change your life by starting to be a better person or stopping bad
+      habits
+    example: You need to stop lying and be honest. It's time to turn over a new leaf.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put your money where your mouth is
+    meaning: to show that you believe in something by spending money on it
+    example: The club needs money desperately. Charlie says he wants to help, so he
+      should put his money where his mouth is.
+    band_suitability: 8.0+
+    register: informal
+  - term: bite the bullet
+    meaning: to force yourself to do something difficult or unpleasant that you have
+      been avoiding
+    example: I know you don't want to tell her the bad news, but you have to bite
+      the bullet.
+    band_suitability: 8.0+
+    register: informal
+  - term: bite off more than you can chew
+    meaning: to try to do more than you are able to handle
+    example: I think you've bitten off more than you can chew.
+    band_suitability: 7.0+
+    register: informal
+  - term: stick your neck out
+    meaning: to take a risk by doing or saying something that might be criticized
+      or opposed
+    example: I don't think it's a good idea to stick your neck out.
+    band_suitability: 8.0+
+    register: informal
+  - term: tough it out
+    meaning: to get through a difficult situation without changing your mind or giving
+      up
+    example: I'm sorry, I can't help. I think you'll just have to tough it out.
+    band_suitability: 8.0+
+    register: informal
+  - term: (skating) on thin ice
+    meaning: to be in a risky situation
+    example: I think you're skating on thin ice, criticising her so strongly.
+    band_suitability: 8.0+
+    register: informal
+  - term: a shoulder to cry on
+    meaning: someone who listens sympathetically to your problems
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a chip on your shoulder
+    meaning: to seem angry all the time because you think you have been treated unfairly
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: breathe down someone's neck
+    meaning: to watch someone too closely, especially while they are working
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: be up to your neck in something
+    meaning: to be extremely busy or involved in something
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: a bolt from the blue
+    meaning: a complete and sudden surprise
+    example: Their decision to marry was a real bolt from the blue.
+    band_suitability: 8.0+
+    register: neutral
+  - term: more by luck than judgement
+    meaning: achieved through luck rather than skill or planning
+    example: He passed his driving test first time, but I'd say it was more by luck
+      than judgement.
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

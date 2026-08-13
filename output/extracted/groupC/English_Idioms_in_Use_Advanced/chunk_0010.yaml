@@ -1,0 +1,125 @@
+vocabulary_entry:
+  topic_tags:
+  - life_events
+  - problems
+  - advice
+  - communication
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 11 & 12
+  entries:
+  - term: All's fair in love and war
+    meaning: All behaviour is acceptable in extreme situations, especially in romantic
+      situations and competitions
+    example: 'A: Marta ended her relationship with Jakob, and the next day her friend
+      Ellie met Jakob for a drink. B: All''s fair in love and war!'
+    band_suitability: 7.0+
+    register: neutral
+  - term: It never rains but it pours
+    meaning: Problems always happen together
+    example: 'A: What a day! My car broke down and my wallet has been stolen. B: It
+      never rains but it pours.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: It takes two to tango
+    meaning: Two people are equally responsible for a situation or argument
+    example: 'A: I wonder why Sylvia and Ben have broken up. B: Well, it takes two
+      to tango.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: Rome wasn't built in a day
+    meaning: It takes a long time to do important things properly
+    example: I'm really impatient to finish decorating my flat, but Rome wasn't built
+      in a day!
+    band_suitability: 7.0+
+    register: neutral
+  - term: Better safe than sorry
+    meaning: It is better not to take risks, even if it seems boring or hard work
+    example: We should buy extra travel insurance for our skiing trip. Better safe
+      than sorry.
+    band_suitability: 6.0+
+    register: neutral
+  - term: No pain, no gain
+    meaning: There must be some suffering or hard work in order to succeed
+    example: I have to study hard and do a lot of exams to become an accountant, but
+      no pain no gain.
+    band_suitability: 6.0+
+    register: neutral
+  - term: First come, first served
+    meaning: The first people to arrive will be the ones to get something
+    example: We don't have enough tickets for everybody, so it's a case of first come,
+      first served.
+    band_suitability: 6.0+
+    register: neutral
+  - term: There are plenty more fish in the sea
+    meaning: There are many other people or possibilities available
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: Look on the bright side
+    meaning: Try to see something good in a bad situation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: It's easy to be wise after the event
+    meaning: When you know what happens next, it's easy to say what should have been
+      done
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: It's not over until the fat lady sings
+    meaning: You cannot be sure what will happen until the very end of something
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: Ignorance is bliss
+    meaning: You may be happier sometimes when you do not know all the facts about
+      a situation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: Get your skates on!
+    meaning: Hurry up!
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: Mum's the word
+    meaning: I promise not to tell a secret
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: Good riddance!
+    meaning: I'm happy that something or someone unwanted has gone
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: So far, so good
+    meaning: Things are going well up to this point
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Oral Exercises: Holidays and Festivals (Spring Festival vs Christmas)"
+  topic_tags: [Holidays, Festivals, Culture, Traditions]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can provide basic information about holidays using simple sentence structures and provided vocabulary phrases."
+    grammar_required: [Present simple, Past simple for traditions]
+    vocabulary_core: [gather, tradition, celebrate, ancestral, custom]
+    vocabulary_stretch: [glutinous, unification, superstition]
+    sentence_length_target: "short-to-medium sentences"
+    common_errors_to_simulate: "Lack of complex conjunctions (e.g., repeating 'and' too much), difficulty in explaining the 'why' behind traditions, occasional tense errors when shifting from history to present."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can naturally compare cultural events, explain historical origins of traditions, and express personal preferences with detail."
+    grammar_required: [Relative clauses, passive voice for historical traditions, complex sentences]
+    vocabulary_core: [significant, ritual, gather, ancestry, festive atmosphere]
+    vocabulary_stretch: [scare away evil spirits, smooth year ahead, annual performance]
+    sentence_length_target: "varied, complex sentences with clear cohesion"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do people do during the Spring Festival?"
+    user_model_answer: "Most Vietnamese families go back to their parents' homes. They spend several days together eating square cakes, watching the Tao Quan performance on New Year's Eve, and catching up with each other."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Why are there traditions like cleaning the house or lighting firecrackers?"
+    user_model_answer: "The cleaning tradition comes from ancient times when people thought it was unlucky to clean during the holiday. They believed everything should be done before the new year, so they wouldn't wash away their good fortune. Also, firecrackers were meant to scare away evil spirits with loud noises and bright light."

@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Weak forms of auxiliary verbs - Describing a special meal"
+  topic_tags: ["Pronunciation", "Speaking Part 2", "Describing a meal"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Pronunciation: Weak forms of auxiliary verbs"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate can communicate basic ideas but may over-stress auxiliary verbs, leading to a robotic or less natural rhythm."
+    grammar_required: ["Past perfect", "Passive voice", "Modal verbs"]
+    vocabulary_core: ["restaurant", "main course", "surprise", "special meal"]
+    vocabulary_stretch: ["significance", "outstanding", "redecorate"]
+    sentence_length_target: "Medium length (10-15 words per sentence)"
+    common_errors_to_simulate: "Stressing weak forms like 'was', 'been', 'had' in natural speech, making the sentence flow sound unnatural."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidate uses connected speech effectively, consistently using weak forms for auxiliary verbs to achieve a natural, native-like rhythm."
+    grammar_required: ["Complex sentence structures with auxiliary chains", "Perfect continuous tenses"]
+    vocabulary_core: ["occasions", "dining experience", "ambiance"]
+    vocabulary_stretch: ["significance", "outstanding", "anticipation"]
+    sentence_length_target: "Longer, complex sentences (15-25 words) with varied stress patterns."
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a special meal you had recently."
+    user_model_answer: "I was told to order the fish, and I'd like to have been there earlier, but I've been looking forward to that meal for weeks. We were given a free drink because it was my birthday."

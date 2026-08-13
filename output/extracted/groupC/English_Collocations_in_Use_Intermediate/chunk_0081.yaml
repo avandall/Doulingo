@@ -1,0 +1,128 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - general_vocabulary
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: bear a resemblance
+    meaning: to be similar to someone or something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: substantiate a claim
+    meaning: to provide evidence to prove that a statement is true
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: strong aversion
+    meaning: a strong dislike or opposition to something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: strongly advise
+    meaning: to strongly recommend a course of action
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: studio flat
+    meaning: a small apartment combining living room, bedroom, and kitchen in one
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: subdued colour
+    meaning: a colour that is soft and gentle, not bright or strong
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: change the subject
+    meaning: to start talking about a different topic
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: raise a subject
+    meaning: to bring up a topic for discussion
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: submit an application
+    meaning: to formally send in a document requesting something like a job or course
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: substantial amount
+    meaning: a large amount or quantity of something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: surge of anger
+    meaning: a sudden, powerful increase in the feeling of anger
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: prime suspect
+    meaning: the main person the police think may have committed a crime
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: sneaking suspicion
+    meaning: a feeling that you think is true, even if you are not entirely sure
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: sustain injuries
+    meaning: to experience physical harm or damage to the body
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: swallow your pride
+    meaning: to decide to do something even though it hurts your dignity or ego
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: swell with pride
+    meaning: to feel a very strong sense of pride
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: tackle crime
+    meaning: to try to deal with or solve the problem of crime
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: take advantage of
+    meaning: to make good use of an opportunity or to use someone for your own benefit
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: take into consideration
+    meaning: to keep a factor in mind when making a decision
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

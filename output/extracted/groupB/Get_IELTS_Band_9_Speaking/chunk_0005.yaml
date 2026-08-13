@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Get IELTS Band 9 Speaking - 2-step process for Part 1"
+  topic_tags: ["Part 1 strategy", "2-step response", "Country & Climate", "Industries", "Festivals"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking, How to answer the Part 1 questions using a 2-step process"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Able to provide extended, relevant, and well-structured answers using a 2-step process (initial answer + further/general comment)."
+    grammar_required: ["Complex sentences with cohesive devices", "Accurate use of modal verbs and present tense"]
+    vocabulary_core: ["climate", "industries", "festivals", "religious", "celebrate"]
+    vocabulary_stretch: ["humid", "tend to", "manufacture", "exchange", "principal", "influence"]
+    sentence_length_target: "3 sentences"
+
+sample_dialogues:
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Let's talk about your home country. What is the climate like?"
+    user_model_answer: "It's generally hot and humid, although it rains heavily in October. This has a big influence on our way of life and our industries, because work tends to stop in the rainy season."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "What are the main industries?"
+    user_model_answer: "The main industry is the production of cars and buses, which are mostly exported. Plastic items, especially toys, are important exports as well. In fact, we tend to export most of the products that we manufacture."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "And what are the main festivals?"
+    user_model_answer: "Well, our principal festivals are religious, because most people in my country follow the same religion. We have a three day festival in summer, when people exchange gifts. We also have a national independence day in January. On both festivals, families celebrate together and the shops close for several days. So we need to plan these events carefully, as you can imagine."

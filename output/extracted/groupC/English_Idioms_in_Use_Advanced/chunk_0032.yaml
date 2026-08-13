@@ -1,0 +1,108 @@
+vocabulary_entry:
+  topic_tags:
+  - emotions
+  - happiness
+  - events
+  - success
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 35
+  entries:
+  - term: hit the right note
+    meaning: to be suitable and have the right effect
+    example: The special exhibition at the City Gallery hits exactly the right note.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go down a treat
+    meaning: to be enjoyed by everyone very much
+    example: Wilma Gore's performance of Beatles songs went down a treat with the
+      family audience.
+    band_suitability: 7.0+
+    register: informal
+  - term: go with a swing
+    meaning: to be successful and exciting
+    example: The Tara Dance Festival went with a swing this year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: enter into the spirit of
+    meaning: to show that you are happy to be there and involved
+    example: Everyone entered into the spirit of things at the opening of the museum.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit the jackpot
+    meaning: to be very successful and probably make a lot of money
+    example: Coldplay have certainly hit the jackpot with this, their third number
+      one album.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit the spot
+    meaning: to taste good and make everyone satisfied
+    example: The exciting dishes at the Hantown Food Festival certainly hit the spot
+      with everyone.
+    band_suitability: 7.0+
+    register: informal
+  - term: have stars in one's eyes
+    meaning: to be very excited about the future and think you are going to be famous
+    example: I know, she's really got stars in her eyes, hasn't she!
+    band_suitability: 8.0+
+    register: neutral
+  - term: blow one's mind
+    meaning: to make someone feel extremely excited or surprised
+    example: Yeah, it really blew my mind the first time I heard it!
+    band_suitability: 7.0+
+    register: informal
+  - term: a dream come true
+    meaning: something that happened, although it was not likely that it would
+    example: Yes, it's a dream come true! I can't believe my luck.
+    band_suitability: 6.0+
+    register: neutral
+  - term: be on a high
+    meaning: to have been feeling very happy and excited
+    example: Yes, he's been on a high ever since he got the news, hasn't he?
+    band_suitability: 7.0+
+    register: informal
+  - term: as happy as Larry
+    meaning: very happy indeed
+    example: Yes, he's as happy as Larry.
+    band_suitability: 8.0+
+    register: informal
+  - term: full of the joys of spring
+    meaning: very happy indeed
+    example: Yes, he seems to be full of the joys of spring!
+    band_suitability: 8.0+
+    register: neutral
+  - term: music to one's ears
+    meaning: something that makes you feel happy when you hear it
+    example: Wow, that's music to my ears. Great news!
+    band_suitability: 7.0+
+    register: neutral
+  - term: happy-go-lucky
+    meaning: someone who is always happy and never worries
+    example: Yes, he's such a happy-go-lucky person.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

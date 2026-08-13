@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic Talk: Family and Personal Relationships"
+  topic_tags: ["Family", "Relationships", "Personalities"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to discuss familiar topics like family and personality using basic sentence structures, but might struggle with natural idiomatic collocations or complex phrasal verbs."
+    grammar_required: ["Present simple for general facts", "Adjectives for character description"]
+    vocabulary_core: ["nuclear family", "extended family", "strict", "lenient", "role model"]
+    vocabulary_stretch: ["sibling rivalry", "foster parents", "widowed", "look up to"]
+    sentence_length_target: "Simple and compound sentences"
+    common_errors_to_simulate: "Misusing phrasal verbs related to family, e.g., 'look after' vs 'look up to'; relying on basic adjectives like 'happy' or 'good' instead of specific character adjectives."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Uses a wider range of vocabulary and natural phrasal verbs to describe relationships and personal histories. Demonstrates ability to extend answers with reasons and examples."
+    grammar_required: ["Relative clauses", "Complex sentences for contrast and cause-effect"]
+    vocabulary_core: ["take after", "get on with", "settle down", "look back on"]
+    vocabulary_stretch: ["resourceful", "cynical", "laid-back", "ambitious", "fond memories"]
+    sentence_length_target: "Complex, multi-clause sentences with clear connectors"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Which family member do you take after the most?"
+    user_model_answer: "I think I take after my father. We are both quite calm and we don't get angry easily. We like the same hobbies, like football."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Which family member do you take after the most?"
+    user_model_answer: "The family member I take after most is my grandfather. We are both quite sociable and enjoy meeting people. We are also both very optimistic, always trying to look on the bright side of things. However, he is much wittier than I am; he’s always telling jokes, whereas I find that quite difficult."

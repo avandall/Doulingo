@@ -1,0 +1,186 @@
+vocabulary_entry:
+  topic_tags:
+  - everyday_verbs
+  - changes
+  - actions
+  - personal_experiences
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 8 & 9
+  entries:
+  - term: do your best
+    meaning: to try as hard as you can
+    example: Do you do your best to be on time when meeting a friend?
+    band_suitability: 6.0+
+    register: neutral
+  - term: do the cooking
+    meaning: to prepare and cook meals
+    example: Do you ever do the cooking at home?
+    band_suitability: 6.0+
+    register: neutral
+  - term: make excuses
+    meaning: to give reasons for not doing something
+    example: Do you make excuses if someone asks you to do a big favour for them?
+    band_suitability: 6.0+
+    register: neutral
+  - term: do a favour
+    meaning: to do something helpful for someone
+    example: Do you make excuses if someone asks you to do a big favour for them?
+    band_suitability: 6.0+
+    register: neutral
+  - term: make comments
+    meaning: to express an opinion or remark
+    example: Do you ever make negative comments about your friends’ hair, clothes,
+      etc?
+    band_suitability: 6.0+
+    register: neutral
+  - term: make friends
+    meaning: to begin friendships with people
+    example: I was able to make new friends.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go mad
+    meaning: to become crazy or mentally ill
+    example: People go mad/bald/grey/blind/deaf.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go bald
+    meaning: to lose the hair on one's head
+    example: People go mad/bald/grey/blind/deaf.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go grey
+    meaning: to have hair that is turning grey with age
+    example: People go mad/bald/grey/blind/deaf.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go blind
+    meaning: to lose one's sight
+    example: People go mad/bald/grey/blind/deaf.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go deaf
+    meaning: to lose one's hearing
+    example: People go mad/bald/grey/blind/deaf.
+    band_suitability: 7.0+
+    register: neutral
+  - term: turn red
+    meaning: for skin to become red (due to embarrassment, heat, etc.)
+    example: He was very embarrassed and his face went red.
+    band_suitability: 6.0+
+    register: neutral
+  - term: turn white
+    meaning: for hair to lose its colour and become white
+    example: The news gave his mother such a shock that her hair turned white overnight.
+    band_suitability: 7.0+
+    register: neutral
+  - term: become pregnant
+    meaning: to be expecting a baby
+    example: She gave up smoking when she became pregnant.
+    band_suitability: 7.0+
+    register: formal
+  - term: become involved
+    meaning: to take part in something
+    example: I would like to become involved in raising money for charity.
+    band_suitability: 7.0+
+    register: formal
+  - term: become depressed
+    meaning: to start feeling very unhappy and despondent
+    example: He became depressed after his wife’s death.
+    band_suitability: 7.0+
+    register: neutral
+  - term: become extinct
+    meaning: no longer in existence
+    example: Dinosaurs became extinct thousands of years ago.
+    band_suitability: 7.0+
+    register: neutral
+  - term: become famous
+    meaning: to be known or recognized by many people
+    example: Our local baker’s has become famous for its apple tarts.
+    band_suitability: 6.0+
+    register: neutral
+  - term: become homeless
+    meaning: to be without a home
+    example: More people have become homeless this year than in any previous year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall ill
+    meaning: to become sick
+    example: She fell ill and was taken to hospital.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fall silent
+    meaning: to stop talking and become quiet
+    example: Everyone fell silent when they heard the shocking news.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have an accident
+    meaning: to be involved in an unfortunate incident unexpectedly
+    example: Mr Grey had an accident last night but he’s OK now.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have an argument
+    meaning: to exchange angry or heated views
+    example: We had an argument / a row about how to fix the car.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a break
+    meaning: to pause work or an activity to rest
+    example: Let’s have a break when you finish this exercise.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a chat
+    meaning: to engage in an informal conversation
+    example: I hope we’ll have time to have a chat after the meeting.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have difficulty
+    meaning: to find something hard to do
+    example: The class had difficulty understanding what to do.
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a nightmare
+    meaning: to experience a frightening dream
+    example: I had a nightmare last night.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a feeling
+    meaning: to have an intuitive impression or hunch
+    example: I have a feeling that something is wrong.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have fun
+    meaning: to enjoy oneself
+    example: I’m sure you’ll have fun on the school trip.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have a party
+    meaning: to hold a social gathering
+    example: Let’s have a party at the end of term.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,196 @@
+vocabulary_entry:
+  topic_tags:
+  - academic writing
+  - arguments
+  - research
+  - opinions
+  - study
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 32 & 33
+  entries:
+  - term: come under attack
+    meaning: to be criticized strongly
+    example: Partridge strenuously defends her theory, which has come under attack
+      recently in several journals.
+    band_suitability: 7.0+
+    register: formal
+  - term: go into great detail
+    meaning: to write or speak about something very thoroughly and thoroughly
+    example: She argues that the Prime Minister played a central role in the political
+      crisis, and goes into great detail to support her argument.
+    band_suitability: 7.0+
+    register: formal
+  - term: irrefutable proof
+    meaning: absolute proof that is impossible to prove wrong
+    example: Nathan Peel attempts to establish a connection between mobile phone use
+      and physical damage, but he does not offer irrefutable proof.
+    band_suitability: 8.0+
+    register: formal
+  - term: key factor
+    meaning: the most important element in a situation
+    example: The invention of the steam engine was the key factor in the birth of
+      the industrial revolution.
+    band_suitability: 6.0+
+    register: neutral
+  - term: clear illustration
+    meaning: a very obvious example or demonstration of something
+    example: This is a clear illustration of the importance of a strong monetary policy.
+    band_suitability: 7.0+
+    register: formal
+  - term: tentative explanation
+    meaning: an explanation given by someone who is not totally certain that it is
+      correct
+    example: The figures offer a tentative explanation of the causes of acid rain
+      pollution.
+    band_suitability: 8.0+
+    register: formal
+  - term: broadly support the view
+    meaning: to generally agree with a perspective or argument
+    example: The statistics broadly support the view that the economy is heading towards
+      recession.
+    band_suitability: 7.0+
+    register: formal
+  - term: strong tendency
+    meaning: a high probability of behaving or happening in a certain way
+    example: There is a strong tendency in the work of some linguists to suggest that
+      spoken language is inferior to written language.
+    band_suitability: 7.0+
+    register: formal
+  - term: carry out a detailed study
+    meaning: to perform a thorough and comprehensive research project
+    example: We must first gather evidence, then carry out a detailed study of all
+      the factors that play a part in social conditioning.
+    band_suitability: 7.0+
+    register: formal
+  - term: supporting evidence
+    meaning: information or facts that help prove a claim is true
+    example: You cannot expect your claim to be accepted if you cannot offer supporting
+      evidence.
+    band_suitability: 6.0+
+    register: neutral
+  - term: challenge a theory
+    meaning: to question or dispute the validity of a scientific or academic idea
+    example: Simon Hart challenges the theory of social change put forward by Professor
+      Kemp.
+    band_suitability: 7.0+
+    register: formal
+  - term: acknowledge sources
+    meaning: to publicly express gratitude or give credit to the origin of information
+    example: It is important in academic writing always to acknowledge your sources.
+    band_suitability: 7.0+
+    register: formal
+  - term: put forward a theory
+    meaning: to propose or suggest an idea or explanation
+    example: Someone puts forward a theory or proposes a theory.
+    band_suitability: 6.0+
+    register: neutral
+  - term: draw a distinction
+    meaning: to show or note the difference between two things
+    example: In this chapter, I draw a distinction between societies where democracy
+      has developed slowly and those where it came about quickly.
+    band_suitability: 7.0+
+    register: formal
+  - term: make reference to
+    meaning: to mention someone or something
+    example: Later, I shall make reference to the work of Georgi Perelmutter, a leading
+      figure in the field of zoology.
+    band_suitability: 7.0+
+    register: formal
+  - term: take into consideration
+    meaning: to think about a particular fact or detail when making a decision or
+      judgment
+    example: We also need to take into consideration the economic history of Latin
+      America as a whole.
+    band_suitability: 7.0+
+    register: formal
+  - term: make a case for
+    meaning: to argue that something is the right thing to do
+    example: This chapter makes a case for re-assessing the assassination of President
+      Kennedy.
+    band_suitability: 8.0+
+    register: formal
+  - term: assess the significance
+    meaning: to evaluate how important or meaningful something is
+    example: Many studies have attempted to assess the significance of diet in the
+      prevention of cancer.
+    band_suitability: 8.0+
+    register: formal
+  - term: lay emphasis on
+    meaning: to give special importance or prominence to something
+    example: Wastov lays emphasis on examining the vital first three years of a child's
+      development.
+    band_suitability: 7.0+
+    register: formal
+  - term: lend support to the view
+    meaning: to provide evidence or backing for an opinion or belief
+    example: These statistics lend support to the view that attitudes to the environment
+      are changing fundamentally.
+    band_suitability: 8.0+
+    register: formal
+  - term: hold firmly to the belief
+    meaning: to keep a strong conviction about something
+    example: Some economists hold firmly to the belief that a certain level of unemployment
+      is inevitable.
+    band_suitability: 8.0+
+    register: formal
+  - term: draw an analogy
+    meaning: to make a comparison between things which have similar features to help
+      explain an idea
+    example: The book draws an analogy between the birth of the universe and a lottery.
+    band_suitability: 8.0+
+    register: formal
+  - term: draw parallels
+    meaning: to say that something is very similar to something else
+    example: It also draws parallels between the formation of new stars and the birth
+      and death of flowers.
+    band_suitability: 8.0+
+    register: formal
+  - term: adopt the position
+    meaning: to take a specific stance or attitude towards an issue
+    example: The author takes up / adopts the position that the universe cannot have
+      any beginning or end.
+    band_suitability: 8.0+
+    register: formal
+  - term: argue convincingly
+    meaning: to present an argument in a way that makes people believe it is true
+    example: He argues convincingly that the universe has a unique nature.
+    band_suitability: 7.0+
+    register: formal
+  - term: draw attention to
+    meaning: to make someone notice something
+    example: He draws attention to new research which suggests that other universes
+      may also exist.
+    band_suitability: 7.0+
+    register: neutral
+  - term: draw the conclusion
+    meaning: to decide something after considering all the facts
+    example: He draws the conclusion that science alone cannot solve the mystery of
+      the universe.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

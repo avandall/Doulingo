@@ -1,0 +1,108 @@
+vocabulary_entry:
+  topic_tags:
+  - family
+  - gender roles
+  - internet
+  - technology
+  - lifestyle
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: breadwinner
+    meaning: the member of a family who earns the money to support the family
+    example: men were typically the breadwinners, and women were often the caregivers
+    band_suitability: 6.0+
+    register: neutral
+  - term: dual-income households
+    meaning: families where both adults work and earn an income
+    example: gender equality has led to more dual-income households where both partners
+      work
+    band_suitability: 7.0+
+    register: neutral
+  - term: shared responsibilities
+    meaning: tasks and duties that are divided equally among people
+    example: many families now have shared responsibilities for household chores and
+      child-rearing
+    band_suitability: 6.0+
+    register: neutral
+  - term: child-rearing
+    meaning: the process of raising and bringing up children
+    example: breaking away from traditional roles in child-rearing
+    band_suitability: 7.0+
+    register: neutral
+  - term: work-life balance
+    meaning: the division of one's time and focus between working and family or personal
+      life
+    example: flexible work options have allowed parents to balance work and family
+      life better
+    band_suitability: 6.0+
+    register: neutral
+  - term: changing societal norms
+    meaning: shifting standards of acceptable behavior in a society
+    example: changing societal norms (greater gender equality)
+    band_suitability: 7.0+
+    register: formal
+  - term: instant communication
+    meaning: communicating immediately without delay using technology
+    example: to enable instant communication through messaging apps and video calls
+    band_suitability: 6.0+
+    register: neutral
+  - term: bridge the gap
+    meaning: to reduce or connect the distance or difference between two things or
+      people
+    example: bridge the gap between distant family members and friends
+    band_suitability: 7.0+
+    register: neutral
+  - term: self-paced learning
+    meaning: learning at a speed that is comfortable for the individual
+    example: digital resources and e-learning platforms enable self-paced learning
+    band_suitability: 7.0+
+    register: neutral
+  - term: remote work
+    meaning: working from outside a traditional office, such as from home
+    example: digital collaboration tools and virtual meetings allow people to work
+      remotely
+    band_suitability: 6.0+
+    register: neutral
+  - term: e-commerce platforms
+    meaning: websites or apps that allow buying and selling of goods over the internet
+    example: online shopping through e-commerce platforms has become common
+    band_suitability: 6.0+
+    register: neutral
+  - term: consumer behavior
+    meaning: the study of how people buy, use, and dispose of products and services
+    example: transformed consumer behavior -> people opt for online purchases
+    band_suitability: 7.0+
+    register: formal
+  - term: screen time
+    meaning: the amount of time spent using a device with a screen such as a smartphone
+      or computer
+    example: high screen time and exposure to misinformation on social media
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

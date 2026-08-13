@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "The Formula for 'Do you prefer X to Y?' Questions"
+  topic_tags: ["Preferences", "Comparisons"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, The formula"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers the question directly but lacks complexity in comparing the two options; may rely on simple sentences."
+    grammar_required: ["prefer + verb-ing", "prefer + to verb"]
+    vocabulary_core: ["prefer", "faster", "better"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Forgetting to compare the two options, using incorrect preposition after prefer."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Provides a structured response, uses comparatives effectively, and provides logical reasoning."
+    grammar_required: ["comparative adjectives", "complex sentence structures"]
+    vocabulary_core: ["advantage", "convenience", "benefit"]
+    vocabulary_stretch: ["more efficient", "significantly", "far outweigh"]
+    sentence_length_target: "Varied sentence length with connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you prefer travelling by bus or by car?"
+    user_model_answer: "I prefer to go by car. It is faster than the bus and I like it more."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you prefer travelling by bus or by car?"
+    user_model_answer: "I personally prefer travelling by car. While the bus is cheaper, the car is far more convenient as it allows me to control my own schedule and travel directly to my destination without multiple stops."

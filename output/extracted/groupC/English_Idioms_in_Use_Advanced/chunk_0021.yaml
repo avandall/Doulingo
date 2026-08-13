@@ -1,0 +1,128 @@
+vocabulary_entry:
+  topic_tags:
+  - education
+  - learning
+  - study
+  - memory
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 23
+  entries:
+  - term: set one's sights on (something)
+    meaning: decide to achieve something
+    example: Tom had set his sights on going to university.
+    band_suitability: 7.0+
+    register: neutral
+  - term: not up to scratch
+    meaning: not reaching a satisfactory standard or quality
+    example: his teachers told him his grades were not up to scratch.
+    band_suitability: 7.0+
+    register: neutral
+  - term: burn the candle at both ends
+    meaning: going to bed late and getting up early (usually to work or study)
+    example: decided to work harder, burning the candle at both ends.
+    band_suitability: 8.0+
+    register: informal
+  - term: in leaps and bounds
+    meaning: progressing rapidly
+    example: his work improved in leaps and bounds.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on track
+    meaning: working on and likely to achieve something
+    example: all his teachers thought he was on track for a place at university.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have ground to make up
+    meaning: have a lot of work to do to catch up with others
+    example: he had a lot of ground to make up in order to improve.
+    band_suitability: 7.0+
+    register: neutral
+  - term: work round the clock
+    meaning: work all the time
+    example: he didn't work round the clock.
+    band_suitability: 7.0+
+    register: neutral
+  - term: learn (something) off by heart
+    meaning: learn something so that you can remember it perfectly
+    example: I usually try to learn new expressions off by heart.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a memory like a sieve
+    meaning: a very bad memory
+    example: I've got a memory like a sieve.
+    band_suitability: 8.0+
+    register: informal
+  - term: jog one's memory
+    meaning: help someone to remember or remind someone
+    example: If I have a few key words or an image, it jogs my memory.
+    band_suitability: 7.0+
+    register: neutral
+  - term: word for word
+    meaning: using exactly the same words
+    example: I can repeat them word for word.
+    band_suitability: 6.0+
+    register: neutral
+  - term: learn by rote
+    meaning: learn something to be able to repeat it exactly, even if you do not understand
+      it
+    example: we were always taught to learn by rote.
+    band_suitability: 7.0+
+    register: formal
+  - term: go in one ear and out the other
+    meaning: be forgotten immediately
+    example: Most things just go in one ear and out the other.
+    band_suitability: 8.0+
+    register: informal
+  - term: stick in one's mind
+    meaning: be easily remembered
+    example: I find that helps the words stick in my mind better.
+    band_suitability: 7.0+
+    register: neutral
+  - term: you can't teach an old dog new tricks
+    meaning: it's difficult to make someone change their way of doing things, especially
+      if they have been doing it for a long time
+    example: You can't teach an old dog new tricks.
+    band_suitability: 8.0+
+    register: informal
+  - term: teach your grandmother to suck eggs
+    meaning: giving advice to someone about something they know more about than you
+    example: You're teaching your grandmother to suck eggs!
+    band_suitability: 8.0+
+    register: informal
+  - term: learn one's lesson
+    meaning: to learn from a negative experience not to do something again
+    example: I've learnt my lesson and won't be doing that again.
+    band_suitability: 6.0+
+    register: neutral
+  - term: teach someone a lesson
+    meaning: to show someone as a result of experience what not to do
+    example: The next time he arrives late, just go without him - that will teach
+      him a lesson.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

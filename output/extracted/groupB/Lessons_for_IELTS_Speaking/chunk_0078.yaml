@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Future Predictions & Employment"
+  topic_tags: ["Future Trends", "Employment", "Fluency and Coherence"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Students at this level can make basic predictions using 'will/won't' but may struggle to link ideas with coherent time markers, leading to repetitive sentence structures."
+    grammar_required: 
+      - "will/won't + base form verb"
+    vocabulary_core: ["workplace", "employment", "salaries", "training"]
+    vocabulary_stretch: ["career advancement", "pay parity", "job security"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Lack of complex time phrases (e.g., using 'in future' instead of 'in the years to come'), limited use of discourse markers to connect predictions."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to discuss future trends fluently using a variety of future time markers and sophisticated collocations related to the workplace."
+    grammar_required: 
+      - "will/won't + base form verb"
+      - modal variations for probability (may/might/could)
+    vocabulary_core: ["working conditions", "shift work", "annual leave"]
+    vocabulary_stretch: ["pay parity", "career advancement", "employment relations"]
+    sentence_length_target: "Extended sentences with clear logical flow and time indicators."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you think the average workplace will be like in the future?"
+    user_model_answer: "In the future, many people will work from home. We won't go to the office because technology will be better."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you think the average workplace will be like in the future?"
+    user_model_answer: "Over the next decade, I think the traditional office will vanish. In years to come, remote work will be the norm, which will certainly improve working conditions for many, although it might make job security a bit more complicated to manage."

@@ -1,0 +1,137 @@
+vocabulary_entry:
+  topic_tags:
+  - human body
+  - communication
+  - personality
+  - work
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 18
+  entries:
+  - term: bury your head in the sand
+    meaning: refuse to think about unpleasant facts or problems
+    example: You should face up to your problems. Don't just bury your head in the
+      sand.
+    band_suitability: 7.0+
+    register: neutral
+  - term: head and shoulders above
+    meaning: a lot better than
+    example: Kate is head and shoulders above her twin sister when it comes to passing
+      exams.
+    band_suitability: 7.0+
+    register: neutral
+  - term: one in the eye for
+    meaning: a disappointment for (someone)
+    example: It was one in the eye for his critics when he won the tennis tournament.
+    band_suitability: 8.0+
+    register: casual
+  - term: have a good head for
+    meaning: to be good at something (usually business, figures, or heights)
+    example: My dad has a good head for figures.
+    band_suitability: 7.0+
+    register: neutral
+  - term: more to this than meets the eye
+    meaning: more difficult to understand or involves more things than one thought
+    example: There's more to this news story than meets the eye.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bite your tongue
+    meaning: stop yourself from saying something which you really wanted to say
+    example: I just bit my tongue and said nothing.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get my tongue round
+    meaning: to pronounce (difficult words/names)
+    example: As an English speaker, I find it difficult to get my tongue round Scandinavian
+      names.
+    band_suitability: 8.0+
+    register: neutral
+  - term: put our heads together
+    meaning: plan something together
+    example: Let's put our heads together and organise a surprise birthday party.
+    band_suitability: 7.0+
+    register: neutral
+  - term: teething troubles
+    meaning: problems in the early stages of doing something new
+    example: After some teething troubles, our new wireless network is working well.
+    band_suitability: 8.0+
+    register: neutral
+  - term: gone to his head
+    meaning: made someone think they are very important, often making them less pleasant
+    example: I think the success of his first film has gone to his head.
+    band_suitability: 7.0+
+    register: neutral
+  - term: get my teeth into
+    meaning: become involved in something enthusiastically
+    example: I've enjoyed getting my teeth into a new subject.
+    band_suitability: 8.0+
+    register: neutral
+  - term: lose face
+    meaning: lose the respect of others
+    example: She won't apologise because she doesn't want to lose face.
+    band_suitability: 7.0+
+    register: formal
+  - term: my face didn't fit
+    meaning: my appearance or personality was not suitable for the job
+    example: I don't know why I didn't get the job. Perhaps my face just didn't fit.
+    band_suitability: 8.0+
+    register: casual
+  - term: face-saving
+    meaning: done so that other people will continue to respect you
+    example: In a face-saving exercise, the minister agreed to meet the demands.
+    band_suitability: 8.0+
+    register: formal
+  - term: give my right arm for
+    meaning: would very much like to have or do something
+    example: I would give my right arm for a job in the film industry.
+    band_suitability: 7.0+
+    register: casual
+  - term: tread on your toes
+    meaning: do something that could upset someone by getting involved in their area
+      of responsibility
+    example: I don't want to tread on your toes, but would it be OK if I added a few
+      paragraphs?
+    band_suitability: 8.0+
+    register: neutral
+  - term: point the finger at
+    meaning: accuse someone of being responsible for something
+    example: The media tend to point the finger at the government for most of the
+      current problems.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make my toes curl
+    meaning: made you feel extremely embarrassed or ashamed for someone else
+    example: He gave an awful speech. It made my toes curl.
+    band_suitability: 8.0+
+    register: casual
+  - term: keep your finger on the pulse
+    meaning: stay up-to-date with current events
+    example: You have to read the newspapers daily if you want to keep your finger
+      on the pulse.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

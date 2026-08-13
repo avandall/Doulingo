@@ -1,0 +1,127 @@
+vocabulary_entry:
+  topic_tags:
+  - technology
+  - internet
+  - children
+  - leadership
+  - skills
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: expose children to online dangers
+    meaning: to put children in a situation where they are affected by risks on the
+      internet
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: cyberbullying
+    meaning: the use of electronic communication to bully a person
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: emotional distress
+    meaning: a state of emotional suffering or mental pain
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: online predators
+    meaning: individuals who use the internet to locate and groom vulnerable people,
+      especially children
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: malicious intent
+    meaning: a desire to cause harm to others
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: exposure to misinformation
+    meaning: coming into contact with false or inaccurate information
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: malicious software
+    meaning: software designed to disrupt, damage, or gain unauthorized access to
+      a computer system
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: excessive screen time
+    meaning: spending too much time using devices with screens like phones, TVs, or
+      computers
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: social isolation
+    meaning: a complete or near-complete lack of contact with people and society
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: mental well-being
+    meaning: a state of mental health where an individual realizes their own abilities
+      and copes with normal stresses
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: attention span
+    meaning: the length of time for which a person is able to concentrate on something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: digital literacy
+    meaning: the ability to use information and communication technologies effectively
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: innate traits
+    meaning: qualities or characteristics that someone is born with
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: decision-making
+    meaning: the action or process of making important decisions
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hands-on experience
+    meaning: knowledge or skill gained by doing something rather than just reading
+      or studying about it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: build resilience
+    meaning: to develop the capacity to recover quickly from difficulties
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: innate potential
+    meaning: natural ability or capacity that has not yet developed
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

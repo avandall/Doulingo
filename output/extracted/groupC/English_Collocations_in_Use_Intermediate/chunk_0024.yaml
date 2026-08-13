@@ -1,0 +1,181 @@
+vocabulary_entry:
+  topic_tags:
+  - education
+  - study
+  - learning
+  - presentations
+  - academic
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 28 & 29
+  entries:
+  - term: pass an exam
+    meaning: to be successful in an exam or test
+    example: I’m happy to say that you have all passed your maths test.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sit an exam
+    meaning: to take an exam
+    example: At what age do children in your country sit their final school exams?
+    band_suitability: 6.0+
+    register: neutral
+  - term: do homework
+    meaning: to complete school assignments outside of class
+    example: I did my homework.
+    band_suitability: 6.0+
+    register: informal
+  - term: attend lectures
+    meaning: to go to educational talks or classes
+    example: You must attend all the lectures to complete the course.
+    band_suitability: 6.0+
+    register: formal
+  - term: class be held
+    meaning: for a class to take place in a specific location
+    example: Next week’s class will be held in Room 405.
+    band_suitability: 6.0+
+    register: formal
+  - term: hand in an essay
+    meaning: to submit an assignment or piece of writing to a teacher
+    example: You have to hand in your essays on Friday.
+    band_suitability: 6.0+
+    register: neutral
+  - term: submit an application
+    meaning: to officially send in an application form
+    example: You have to submit your application by December 1st.
+    band_suitability: 7.0+
+    register: formal
+  - term: withdraw from a course
+    meaning: to officially stop taking a course of study
+    example: If you want to withdraw from the course, you have to go to the College
+      Office.
+    band_suitability: 7.0+
+    register: formal
+  - term: keep a vocabulary notebook
+    meaning: to maintain a written record of new words and phrases
+    example: Do you keep a vocabulary notebook?
+    band_suitability: 6.0+
+    register: neutral
+  - term: first draft
+    meaning: the initial version of a piece of writing
+    example: I did the first draft of my essay last week.
+    band_suitability: 6.0+
+    register: neutral
+  - term: final draft
+    meaning: the completed and polished version of a piece of writing
+    example: I did the final draft this week.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give feedback
+    meaning: to provide comments and evaluation on someone's work
+    example: Then the teacher gives us feedback after about a week.
+    band_suitability: 6.0+
+    register: neutral
+  - term: continuous assessment
+    meaning: a system where coursework is judged continually rather than by one final
+      exam
+    example: We don’t have exams at my school. We have continuous assessment.
+    band_suitability: 7.0+
+    register: formal
+  - term: higher education
+    meaning: education at a college or university after leaving school
+    example: After secondary school, 30% of the population go on to higher education.
+    band_suitability: 7.0+
+    register: formal
+  - term: tertiary education
+    meaning: formal education following secondary school (synonym for higher education)
+    example: 30% of the population go on to higher/tertiary education.
+    band_suitability: 8.0+
+    register: formal
+  - term: further education
+    meaning: education for adults beyond the age of compulsory school education
+    example: 20% of adults do some sort of further education course.
+    band_suitability: 7.0+
+    register: formal
+  - term: recognise foreign qualifications
+    meaning: to officially accept educational certificates obtained in another country
+    example: Does your government recognise foreign qualifications for school teachers?
+    band_suitability: 7.0+
+    register: formal
+  - term: do a degree
+    meaning: to study for a university qualification
+    example: The oldest one did a degree in Economics.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do research
+    meaning: to study a subject in detail to discover new information
+    example: She is now doing some research on taxation laws.
+    band_suitability: 6.0+
+    register: neutral
+  - term: get a degree
+    meaning: to successfully complete a university course
+    example: She got her bachelor’s degree last year.
+    band_suitability: 6.0+
+    register: neutral
+  - term: hold someone's attention
+    meaning: to keep an audience interested in a presentation
+    example: Make sure that what you say is at the right level to hold/keep their
+      attention.
+    band_suitability: 7.0+
+    register: neutral
+  - term: connect with an audience
+    meaning: to establish a good relationship with the people listening
+    example: An interactive presentation is a good way to connect with your audience.
+    band_suitability: 7.0+
+    register: neutral
+  - term: body language
+    meaning: non-verbal communication through gestures, posture, and facial expressions
+    example: Don’t forget that body language is really important too.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make eye contact
+    meaning: to look directly into the eyes of other people
+    example: You should make eye contact with about five or six different people.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tone of voice
+    meaning: the quality or pitch of a person's voice when speaking
+    example: Your tone of voice is important and you will be easier to understand
+      if you sound calm.
+    band_suitability: 6.0+
+    register: neutral
+  - term: public speaking
+    meaning: the act of giving a speech or presentation to a live audience
+    example: Even people who are used to public speaking can feel nervous.
+    band_suitability: 6.0+
+    register: neutral
+  - term: deal with questions
+    meaning: to answer and respond to questions from an audience
+    example: Even people who are used to public speaking can feel nervous about dealing
+      with questions.
+    band_suitability: 6.0+
+    register: neutral
+  - term: give out handouts
+    meaning: to distribute informational sheets of paper to an audience
+    example: If you prepare handouts, it’s better to give them out at the end.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

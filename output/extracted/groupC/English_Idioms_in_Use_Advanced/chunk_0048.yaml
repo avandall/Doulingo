@@ -1,0 +1,180 @@
+vocabulary_entry:
+  topic_tags:
+  - appearance
+  - age
+  - personality
+  - difficulties
+  - success
+  - control
+  - experience
+  - competition
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: be no oil painting
+    meaning: is not pretty
+    example: Lottie is a beautiful woman, but her daughter is no oil painting.
+    band_suitability: 8.0+
+    register: informal
+  - term: be no spring chicken
+    meaning: is not young any more
+    example: She loves windsurfing and paragliding, even though she's no spring chicken.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be no/nobody's fool
+    meaning: is clever and not easily deceived
+    example: He'll never believe your lies - he's no/ nobody's fool.
+    band_suitability: 8.0+
+    register: neutral
+  - term: be no joke
+    meaning: is serious or difficult
+    example: It's no joke driving on those steep, narrow mountain roads.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be no picnic
+    meaning: was difficult and unpleasant
+    example: Trekking across the desert in temperatures of over 40 degrees was no
+      picnic for the explorers.
+    band_suitability: 8.0+
+    register: neutral
+  - term: hand something to someone on a plate
+    meaning: he got it very easily and did not have to work for it
+    example: He was the only candidate for the job, and he got it. It was handed to
+      him on a plate.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have/get the upper hand
+    meaning: gained power and control
+    example: Our team played well from the start, and we soon had the upper hand.
+    band_suitability: 8.0+
+    register: neutral
+  - term: an old hand
+    meaning: is very experienced at something
+    example: Let's ask Ellie to be club president as she has so much experience. She's
+      an old hand at running organisations.
+    band_suitability: 8.0+
+    register: neutral
+  - term: win hands down
+    meaning: won very easily
+    example: Laura's opponent in the badminton final played badly, so Laura won hands
+      down.
+    band_suitability: 8.0+
+    register: neutral
+  - term: have to hand it to someone
+    meaning: you have to admire what she did, even if you don't admire everything
+      about her
+    example: I know she's arrogant, but she has broken three world records. You have
+      to hand it to her!
+    band_suitability: 8.0+
+    register: neutral
+  - term: have someone eating out of the palm of your hand
+    meaning: had complete control of them
+    example: He's a great comedian. He had the audience eating out of the palm of
+      his hand.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bite the hand that feeds you
+    meaning: treating somebody badly who helps you in some way, often by giving you
+      money
+    example: Refusing to speak to your uncle when he has been so generous to you is
+      biting the hand that feeds you.
+    band_suitability: 8.0+
+    register: neutral
+  - term: one's hands are tied
+    meaning: I'm not free to do what I'd like to do
+    example: I'd like to pay you more, but my hands are tied.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play into someone's hands
+    meaning: unintentionally gave them an advantage
+    example: The minister's accidental reference to tax increases in an interview
+      played into the opposition's hands.
+    band_suitability: 8.0+
+    register: neutral
+  - term: reject out of hand
+    meaning: completely reject something
+    example: The government have rejected out of hand the allegation that torture
+      has been used in prisons.
+    band_suitability: 8.0+
+    register: formal
+  - term: lay a hand on someone
+    meaning: hurt or physically attack
+    example: If you lay a hand on me, I will report you to the police.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be dealt a lousy hand
+    meaning: are very unlucky in life
+    example: He lost his job, then his house was flooded. Some people are dealt a
+      lousy hand.
+    band_suitability: 8.0+
+    register: neutral
+  - term: show one's hand
+    meaning: told people their plans when they were a secret before
+    example: They gave their opponents an advantage by naming the team before the
+      final. They shouldn't have shown their hand so early.
+    band_suitability: 8.0+
+    register: neutral
+  - term: count on the fingers of one hand
+    meaning: they were very small in number
+    example: Very few people supported her. You could count them on the fingers of
+      one hand.
+    band_suitability: 8.0+
+    register: neutral
+  - term: give someone a big hand
+    meaning: applaud them by clapping
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hand over the reins
+    meaning: you give the power you had to another person
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: off one's hands
+    meaning: you are not responsible for them any more
+    example: Her children are off her hands now. One is married and the other is at
+      university.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sit on one's hands
+    meaning: you do nothing about a problem that needs to be solved
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: lay hands on something
+    meaning: find something
+    example: I know I have a map of Dublin somewhere, but I can't lay my hands on
+      it at the moment.
+    band_suitability: 7.0+
+    register: neutral
+  - term: put one's hand on one's heart
+    meaning: tell someone something truthfully
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

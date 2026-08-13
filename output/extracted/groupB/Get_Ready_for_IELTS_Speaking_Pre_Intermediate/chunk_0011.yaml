@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3: Exam Strategies and Skill Development"
+  topic_tags: ["IELTS Speaking Part 3", "Exam Strategy", "General Skills"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 8"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh ở mức này cần tập trung vào việc hiểu đúng câu hỏi và duy trì sự trôi chảy cơ bản. Có thể gặp khó khăn khi diễn đạt ý tưởng trừu tượng hoặc so sánh."
+    grammar_required: ["Be going to for plans", "Present simple for habits"]
+    vocabulary_core: 
+      - Topic-specific vocabulary (work, holidays)
+    vocabulary_stretch: ["Basic linking words"]
+    sentence_length_target: "Ngắn, đơn giản"
+    common_errors_to_simulate: "Im lặng khi không hiểu câu hỏi, quá nhiều khoảng lặng (pauses), lặp từ vựng cơ bản."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh có khả năng mở rộng câu trả lời bằng cách suy luận, so sánh và đưa ra quan điểm cá nhân một cách tự nhiên."
+    grammar_required: ["Complex sentence structures", "Speculative language"]
+    vocabulary_core: ["Topic-specific vocabulary", "Collocations"]
+    vocabulary_stretch: ["Functional phrases to gain thinking time"]
+    sentence_length_target: "Đa dạng, có sự kết nối giữa các câu"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "In your opinion, is it a good idea for families to work together?"
+    user_model_answer: "I think it can be good because you trust your family members. However, sometimes it is difficult to separate work and home life."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "In your opinion, is it a good idea for families to work together?"
+    user_model_answer: "That's an interesting question. Well, from my perspective, working with family has its pros and cons. On the one hand, there's a strong bond of trust, but on the other hand, it might lead to conflicts if they can't balance their professional and personal relationship."

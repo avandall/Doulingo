@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Identifying synonyms and paraphrases"
+  topic_tags: ["listening_strategy", "synonyms", "paraphrasing"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Identifying synonyms and paraphrases"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Understand direct information but may struggle when the speaker uses complex paraphrasing."
+    grammar_required: ["present simple", "future forms for plans"]
+    vocabulary_core: ["meet", "lecture", "student"]
+    vocabulary_stretch: ["postgraduate", "canteen", "argument"]
+    sentence_length_target: "short-medium"
+    common_errors_to_simulate: "Expecting to hear exact keywords from the question in the audio, ignoring synonyms."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Recognize shifts in meaning through synonyms and paraphrases in academic/formal contexts."
+    grammar_required: ["passive voice", "modal verbs for suggestions"]
+    vocabulary_core: ["theories", "support", "evidence"]
+    vocabulary_stretch: ["paraphrase", "underlying", "validation"]
+    sentence_length_target: "complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Where do Mel and Andrew agree to meet?"
+    user_model_answer: "They agree to meet in the canteen."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What did Mrs McKee lack regarding her argument on sea levels?"
+    user_model_answer: "She didn't have any empirical data or evidence to substantiate her claims about rising sea levels."

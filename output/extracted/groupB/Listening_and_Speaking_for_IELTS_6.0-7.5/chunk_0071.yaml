@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Stress in compound adjectives"
+  topic_tags: ["Pronunciation", "Compound Adjectives", "IELTS Speaking Part 3"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Pronunciation: Stress in compound adjectives"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate can use compound adjectives but may misplace word stress depending on sentence position, causing minor disruptions to natural rhythm."
+    grammar_required: 
+      - Compound adjectives (e.g., long-term, mass-produced)
+    vocabulary_core: ["best-selling", "far-reaching", "long-term", "part-time"]
+    vocabulary_stretch: ["cost-effective", "cross-cultural", "time-consuming"]
+    sentence_length_target: "Medium (8-12 words)"
+    common_errors_to_simulate: "Stressing both parts of the compound adjective equally (e.g., MASS-PRODUCED) regardless of whether it precedes a noun or stands alone."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidate demonstrates flexible use of compound adjectives with correct word stress patterns, contributing to a natural, steady flow of speech."
+    grammar_required: ["Adjectives functioning as pre-modifiers vs predicative adjectives"]
+    vocabulary_core: ["non-verbal", "long-lasting", "old-fashioned", "up-to-date"]
+    vocabulary_stretch: ["custom-made"]
+    sentence_length_target: "Long (12-20 words)"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What are the advantages and disadvantages of students working part-time?"
+    user_model_answer: "Well, the main advantage of having a part-time job is financial independence, but it can be quite time-consuming, which might affect academic performance."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What is the most cost-effective way to travel in your country?"
+    user_model_answer: "In my opinion, taking the bus is the most cost-effective way to get around; it's much cheaper than owning a car or taking taxis."

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: scenario
+  title: "Topic talk — Describing objects and complaints"
+  topic_tags: [Objects, Shopping, Complaints]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS, Topic talk"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Have you ever bought anything which was damaged? What did you do?"
+    user_model_answer: "Yes, I bought a camera online once. When it arrived, the zoom lens didn't work properly and the screen was slightly scratched. I was really annoyed, so I contacted the shop assistant and asked for a refund."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Can you describe an object you have bought?"
+    user_model_answer: "It’s a rectangular object, made mainly of plastic and glass. It’s quite small and lightweight. I bought it because I needed something to store my digital files. Unfortunately, the prong was slightly twisted when it arrived, which was quite frustrating."
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can describe objects using basic adjectives (damaged, broken, scratched). Often uses repetitive structures and basic adverbs."
+    grammar_required: [Simple past, present perfect for experiences]
+    vocabulary_core: [damaged, broken, torn, ripped, scratched]
+    vocabulary_stretch: [shattered, jammed, wobbly]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Inconsistent use of past tense when narrating complaints; misuse of adjectives (e.g., 'the glass is breaked')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wider range of precise adjectives and adverbs to describe faults and intensity of damage."
+    grammar_required: [Past perfect for sequence of events, complex sentences with causal connectors]
+    vocabulary_core: [shattered, jammed, leaking, twisted]
+    vocabulary_stretch: [contents crushed, completely shattered, severely cracked, slightly faded]
+    sentence_length_target: "varied, complex structures"

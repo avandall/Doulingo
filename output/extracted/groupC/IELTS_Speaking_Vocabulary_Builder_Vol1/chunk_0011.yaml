@@ -1,0 +1,52 @@
+vocabulary_entry:
+  topic_tags:
+  - culture
+  - travel
+  - lifestyle
+  - globalization
+  category: phrase
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1 (wikihow.com)
+  entries:
+  - term: cultural norms
+    meaning: standards or accepted behaviors within a specific culture
+    example: They can give you ideas about international destinations, cuisine, and
+      cultural norms.
+    band_suitability: 7.0+
+    register: formal
+  - term: expose yourself to
+    meaning: to experience new things or give yourself the opportunity to experience
+      them
+    example: It’s the best way to expose yourself to new cultures.
+    band_suitability: 6.0+
+    register: neutral
+  - term: on a budget
+    meaning: spending a limited amount of money
+    example: Look for volunteer opportunities abroad to head overseas on a budget.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

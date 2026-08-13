@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2: Describing Objects and Media (Strategy and Vocabulary)"
+  topic_tags: ["Media", "Objects", "Speaking Part 2"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Media 8 - Object 9"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on simple listing of features and functions. Often struggles with consistent tense usage and lacks complex sentence structures."
+    grammar_required: ["Simple past for describing origins", "Present simple for current state"]
+    vocabulary_core: ["useful", "buy", "see", "hard", "like"]
+    vocabulary_stretch: ["handy", "versatile", "multifunctional", "indispensable"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Over-reliance on simple 'listing' sentences (e.g., 'It is a phone. It is useful. I use it for calling.'); difficulty switching between past tenses for background and present for current usage."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to integrate complex language and varied tenses naturally. Uses specific vocabulary to describe objects (e.g., antique, fragile, ornamental) rather than generic terms."
+    grammar_required: 
+      - Mixed tenses (Present Perfect, Used to, Past Passive)
+      - Complex sentence structures
+    vocabulary_core: ["valuable", "assemble", "antique", "precious"]
+    vocabulary_stretch: ["multi-functional", "energy conservation", "hand-down", "from scratch"]
+    sentence_length_target: "Varied, complex compound sentences with cohesive devices"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a website that you have used."
+    user_model_answer: "I use Baidu.com. It is a big website. I use it to search for information. I found it when I used the computer at school. I don't use other websites like this."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a website that you have used."
+    user_model_answer: "I’ve been using Baidu for about two years now. It’s essentially a multi-functional, web-based community that offers everything from music downloads to message forums. I first discovered it quite by accident when I followed a link from another site, and honestly, it’s become indispensable to me—I couldn't imagine navigating the web without its various features."

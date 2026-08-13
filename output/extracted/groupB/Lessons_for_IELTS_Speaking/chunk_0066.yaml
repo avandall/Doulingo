@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation and Future Predictions — Contractions and Modal Verbs"
+  topic_tags: ["Pronunciation", "Future", "Grammar"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, PRONUNCIATION"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Student uses simple future (will) but often forgets contractions, resulting in a robotic or formal-sounding delivery that is less natural."
+    grammar_required: ["will", "can", "simple sentence structures"]
+    vocabulary_core: ["future", "predictions", "study"]
+    vocabulary_stretch: ["virtual", "likelihood"]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Avoiding contractions (e.g., 'I will' instead of 'I'll'); failure to correctly position adverbs like 'probably' or 'definitely'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Student uses contractions naturally to achieve a conversational rhythm. Effectively uses a range of modal verbs to express degrees of certainty."
+    grammar_required: 
+      - "will/won't"
+      - might
+      - may
+      - could
+      - ability (be able to)
+    vocabulary_core: ["definitely", "probably"]
+    vocabulary_stretch: ["likelihood", "possibility", "auxiliary verbs"]
+    sentence_length_target: "complex sentences combining modal verbs and adverbs"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you think learning will be like in the future?"
+    user_model_answer: "I will learn using the Internet. It will be easier. I will not go to school."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think learning will be like in the future?"
+    user_model_answer: "Well, I'm sure I won't have to go to school anymore. Everything will probably be done via the Internet in virtual classrooms, and it'll definitely be much easier to acquire new skills."

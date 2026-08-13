@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Paraphrasing — Strategy for Vocabulary Retrieval"
+  topic_tags: ["Paraphrasing", "Vocabulary", "Strategies"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Paraphrasing"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Struggles with specific vocabulary but can use basic circumlocution (explaining a word using other words)."
+    grammar_required: 
+      - Simple present tense
+      - "Relative clauses with 'that"
+    vocabulary_core: ["device", "thing", "kind of"]
+    vocabulary_stretch: ["cursor", "gadget"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Repeating simple words (thing, stuff), frequent pausing to search for words, over-reliance on basic fillers like 'you know'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to paraphrase fluently when lacking specific terms, maintaining communication without long pauses."
+    grammar_required: ["Complex sentence structures", "Varied relative clauses"]
+    vocabulary_core: ["functional description", "purpose-oriented vocabulary"]
+    vocabulary_stretch: ["mechanism", "application", "utility"]
+    sentence_length_target: "Varied sentence length with natural flow"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you explain what a mouse is?"
+    user_model_answer: "It's a thing you use to move the arrow on the computer screen."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Can you explain what a mouse is?"
+    user_model_answer: "It's a handheld device that allows you to control the cursor and navigate through various interfaces on a computer monitor."

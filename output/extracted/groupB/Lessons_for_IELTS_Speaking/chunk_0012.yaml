@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary for Sports and Fitness"
+  topic_tags: [sports, vocabulary, fitness]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Vocabulary"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Understand basic verb collocations (play/go/do) but may make errors with sports requiring specific verbs like 'athletics' or 'swimming'."
+    grammar_required: ["Present Simple for habits", "Verb + gerund collocations"]
+    vocabulary_core: ["play", "go", "do", "football", "swimming", "basketball"]
+    vocabulary_stretch: ["equipment", "exercise", "regularly"]
+    sentence_length_target: "Simple and compound sentences"
+    common_errors_to_simulate: "Confusing verbs (e.g., 'play swimming' instead of 'go swimming', 'do football' instead of 'play football')"
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of specific vocabulary (adjectives/nouns) and precise verb collocations to describe sporting events."
+    grammar_required: ["Complex sentences with conjunctions", "Adverbial phrases of frequency"]
+    vocabulary_core: ["exhilarating", "nail-biting", "spectator", "championship", "tournament"]
+    vocabulary_stretch: ["nerve-racking", "dynamic", "confinement", "associated with"]
+    sentence_length_target: "Varied sentence length including subordinate clauses"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you prefer to exercise alone or with friends?"
+    user_model_answer: "I like to exercise with my friends because it is more fun. We play football in the park every Sunday."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me more about ping-pong. What equipment do you need for it?"
+    user_model_answer: "Oh, ping-pong is a quite exhilarating game to play. I really like playing it because you don't need a lot of equipment—just a table, some bats, a net, and a ball. It's a very dynamic sport."

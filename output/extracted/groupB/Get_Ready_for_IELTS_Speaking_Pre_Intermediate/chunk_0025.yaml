@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Health and Lifestyle — IELTS Speaking Part 1, 2, 3 Model Answers"
+  topic_tags: [Health, Hobbies, Lifestyle, Sports]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Exam practice"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phù hợp với thí sinh trình độ Pre-Intermediate, câu trả lời rõ ràng, sử dụng cấu trúc ngữ pháp cơ bản (I like, I prefer, It is important to)."
+    grammar_required: 
+      - Present Simple
+      - Present Continuous
+      - Modals (should, have to)
+    vocabulary_core: [keep fit, healthy diet, team sports, hobby, professional]
+    vocabulary_stretch: [challenging, focus my mind, sponsor, lifestyle]
+    sentence_length_target: "3-4 câu/ý"
+    common_errors_to_simulate: "Lặp từ vựng, câu trả lời đôi khi bị ngắn hoặc thiếu ví dụ cụ thể, lỗi chia động từ ở ngôi thứ 3 số ít."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Phát triển ý tốt hơn với các từ nối, đưa ra được các so sánh (now vs past) và dẫn chứng cụ thể."
+    grammar_required: 
+      - Comparative structures
+      - "complex sentences with 'because/although"
+      - "future plans 'going to"
+    vocabulary_core: [encourage, interesting question, difference between, in my opinion]
+    vocabulary_stretch: [relevant, in contrast, professional athlete, sedentary]
+    sentence_length_target: "4-6 câu/ý"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you like playing sports?"
+    user_model_answer: "Yes, I like playing golf. I always play at the weekend with my friends. I often go to the gym too. It’s important to keep fit."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Are there many differences between sports now and in the past?"
+    user_model_answer: "That’s an interesting question. There are lots of differences between sports now and in the past. I think money is one big difference. For example, big companies sponsor some sports competitions and competitors can win lots of money."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How can people be encouraged to lead a healthy lifestyle?"
+    user_model_answer: "Firstly, I think we should encourage young people to be healthy. It’s important to stay healthy. We should use the media and famous people to encourage young people. For example, TV shows can show people exciting sports."

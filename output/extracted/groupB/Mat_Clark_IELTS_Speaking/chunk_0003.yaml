@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: Fluency, Coherence, and Lexical Resource — Band 6 vs Band 7/8 Comparison
+  topic_tags:
+  - IELTS Speaking Assessment Criteria
+  - Fluency and Coherence
+  - Lexical Resource
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Mat_Clark_IELTS_Speaking.md, Fluency and Coherence & Lexical Resource
+band_tiers:
+- band_min: 6.0
+  band_max: 6.0
+  can_do_description: Candidate produces native-speaker style features in longer answers,
+    but with noticeable hesitation, repetition, and some incorrect use of linking
+    phrases.
+  grammar_required:
+  - Fairly complex and accurate
+  vocabulary_core:
+  - Topic-specific vocabulary
+  - Ability to paraphrase/explain gaps
+  vocabulary_stretch:
+  - None explicitly required
+  sentence_length_target: Longer responses
+  common_errors_to_simulate: Focusing too heavily on information content while lacking
+    cohesive devices/linking phrases; overuse of basic adjectives (e.g., 'big').
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Produces long, relevant responses easily using a wide range
+    of flexible linkers; minimal impact of hesitation on meaning.
+  grammar_required:
+  - Complex and accurate
+  vocabulary_core:
+  - Range of vocabulary for various topics
+  - Collocations
+  vocabulary_stretch:
+  - Uncommon words
+  - Idiomatic language
+  - Phrasal verbs
+  - Slang
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: What do you like about your hometown?
+  user_model_answer: My hometown is Wuhan. Wuhan is very modern so I like the buildings.
+    All over the city there are lots of new interesting buildings being built. When
+    I was younger most of the buildings looked the same so it wasn't as attractive
+    as it is nowadays.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What do you like about your hometown?
+  user_model_answer: Well you know, my hometown is Wuhan and you might not know this
+    but Wuhan is a very modern, so I suppose I would have to say I like the buildings.
+    Actually, all over the city there are lots of new interesting buildings being
+    built. In fact, it's quite interesting to consider that when I was younger most
+    of the building looked the same, so you know it wasn't as attractive as it is
+    nowadays.

@@ -1,0 +1,170 @@
+vocabulary_entry:
+  topic_tags:
+  - personality
+  - character
+  - behaviour
+  - relationships
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 16-17
+  entries:
+  - term: relaxed atmosphere
+    meaning: a calm and informal mood or environment in a place
+    example: Which of the collocations in the box have a positive meaning (+) and
+      which have a negative meaning (–)?
+    band_suitability: 6.0+
+    register: neutral
+  - term: lively bar
+    meaning: a bar that is full of life, energy and activity
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: over-priced restaurants
+    meaning: restaurants that charge too much money for their food
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: urban wasteland
+    meaning: an area in a city that is empty, damaged, and unused
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: no-go area
+    meaning: an area that people are afraid to enter or that is controlled by a particular
+      group
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: imposing building
+    meaning: a building that makes you admire and respect it because of its size,
+      style, etc.
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: shanty town
+    meaning: a very poor area where the houses are made of cheap, unsafe materials
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: fashionable club
+    meaning: a club that is popular at a particular time among stylish people
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: run-down buildings
+    meaning: buildings in very bad condition because they have not been cared for
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: good company
+    meaning: enjoyable to spend time with
+    example: You are good company but you may have a selfish streak.
+    band_suitability: 6.0+
+    register: neutral
+  - term: selfish streak
+    meaning: a part of someone's character that makes them act in a selfish way sometimes
+    example: You are good company but you may have a selfish streak.
+    band_suitability: 7.0+
+    register: neutral
+  - term: outgoing personality
+    meaning: friendly, socially confident, and enjoying the company of other people
+    example: You have an outgoing personality and a good sense of humour.
+    band_suitability: 6.0+
+    register: neutral
+  - term: vivid imagination
+    meaning: an ability to imagine things very clearly and easily
+    example: You have a vivid imagination, but you tend to lose your temper too easily.
+    band_suitability: 6.0+
+    register: neutral
+  - term: razor-sharp mind
+    meaning: an extremely clever and quick-thinking mind
+    example: You are highly intelligent with a razor-sharp mind.
+    band_suitability: 8.0+
+    register: neutral
+  - term: snap decisions
+    meaning: quick decisions made suddenly without careful thought
+    example: You have a tendency to make snap decisions.
+    band_suitability: 7.0+
+    register: neutral
+  - term: strong sense of responsibility
+    meaning: a serious awareness of your obligations towards others
+    example: You have a strong sense of responsibility and always keep your word.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bear a grudge
+    meaning: to continue to feel angry or resentful towards someone for something
+      they did in the past
+    example: October You are good at keeping secrets and never bear a grudge.
+    band_suitability: 8.0+
+    register: neutral
+  - term: keep your temper
+    meaning: to manage to stay calm and not get angry
+    example: You find it hard to keep your temper if you think someone is making a
+      fool out of you.
+    band_suitability: 6.0+
+    register: neutral
+  - term: brutally honest
+    meaning: honest in a very direct way that may hurt someone's feelings
+    example: You can be brutally honest and sometimes hurt others’ feelings.
+    band_suitability: 7.0+
+    register: neutral
+  - term: play a joke/trick
+    meaning: to do something to deceive or trick someone for fun
+    example: The children played a joke on the teacher by hiding under their desks.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a joke
+    meaning: to not be upset or offended when someone plays a joke on you
+    example: Fortunately, the teacher could take a joke and didn’t punish them.
+    band_suitability: 6.0+
+    register: neutral
+  - term: swallow your pride
+    meaning: to decide to do something even though it is embarrassing for you
+    example: Isabella swallowed her pride and admitted that she was wrong.
+    band_suitability: 8.0+
+    register: neutral
+  - term: throw a tantrum
+    meaning: to behave in a very uncontrolled, angry manner (usually used of children)
+    example: The child threw a tantrum when I wouldn’t buy him any sweets.
+    band_suitability: 7.0+
+    register: neutral
+  - term: lose your patience
+    meaning: to stop being able to stay calm and become angry
+    example: Finally I lost my patience and shouted at her.
+    band_suitability: 6.0+
+    register: neutral
+  - term: come to terms with
+    meaning: to accept a difficult or sad situation psychologically
+    example: Nick has found it hard to come to terms with his illness.
+    band_suitability: 8.0+
+    register: neutral
+  - term: reveal your true character
+    meaning: to show what you are really like underneath
+    example: Daniel’s failure to support her has certainly revealed his true character.
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

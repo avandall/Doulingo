@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1, 2 & 3 — Job and Holiday Topics"
+  topic_tags: ["Work", "Holidays", "Travel", "Experience"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Model Answers"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Diễn đạt được các ý cơ bản về công việc, trải nghiệm cá nhân bằng câu đơn và câu ghép đơn giản. Dùng từ vựng mô tả trực tiếp."
+    grammar_required: 
+      - Present Simple
+      - Past Simple
+      - Be going to (future)
+    vocabulary_core: ["well-paid", "flexible hours", "colleagues", "friendly", "helpful"]
+    vocabulary_stretch: ["qualification", "background of the job", "temporary"]
+    sentence_length_target: "Ngắn, cấu trúc lặp lại (I think..., It is...)"
+    common_errors_to_simulate: "Lặp từ vựng cơ bản, thiếu các từ nối phức tạp giữa các câu, thì của động từ đôi khi chưa nhất quán."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Phát triển ý trả lời bằng cách đưa ra lý do và ví dụ minh họa rõ ràng. Sử dụng các cụm từ mở đầu câu để tăng tính kết nối."
+    grammar_required: 
+      - "Complex sentences with 'because', 'so', 'if"
+      - Contrastive structures (In the past vs Today)
+    vocabulary_core: ["tourist attractions", "historical sites", "flexible hours", "work experience"]
+    vocabulary_stretch: 
+      - argument
+      - qualification
+      - definitely
+      - absolutely
+      - specialized vocabulary (e.g., ancient ruins)
+    sentence_length_target: "Câu phức, có sử dụng các mệnh đề phụ để giải thích ý tưởng."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you enjoy your work?"
+    user_model_answer: "Yes, I enjoy my work. My job is great because I help people every day. I work for a private hospital. It is very well-known in my country. It is a friendly place to work."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you think it's a good idea for families to work together?"
+    user_model_answer: "That’s an interesting question. In my opinion, I don’t think it’s a good idea for families to work together. For example, I have to work very hard in my job and I often feel sad or angry. But then I go home to my family and it’s OK. It would be difficult if I had an argument at work, with my family, and then the argument continued at home."

@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: Answering sentence completion questions — Strategy & Practice
+  topic_tags:
+  - IELTS Listening
+  - Sentence Completion
+  - Technique
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Improve_Your_Skills_Listening_Speaking_IELTS, Answering sentence
+    completion questions
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Focuses on literal listening; struggles with identifying grammatical
+    word forms required for gaps.
+  grammar_required:
+  - Basic parts of speech
+  - Noun phrases
+  vocabulary_core:
+  - numbers
+  - dates
+  - basic descriptors
+  vocabulary_stretch:
+  - linking phrases
+  sentence_length_target: Short, direct word/number responses
+  common_errors_to_simulate: Ignoring word count constraints (e.g., writing too many
+    words), failing to identify the correct part of speech.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: High proficiency in predicting information types and following
+    discourse markers to locate answers.
+  grammar_required:
+  - Predicting word class (adj/noun/verb) based on context
+  vocabulary_core:
+  - predictive synonyms
+  - paraphrased meaning
+  vocabulary_stretch:
+  - discourse markers
+  - structural signals
+  sentence_length_target: Concise, accurate extraction
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: 'Complete the sentence: The handout covers __________ general topics.'
+  user_model_answer: several It was very enjoyable and informative.
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: 'Complete the sentence: As well as students of history, there are students
+    of __________ at the lecture.'
+  user_model_answer: archaeology It was very enjoyable and informative.
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: 'Complete the sentence: The lecturer''s own motivation for studying history
+    is that she finds it __________.'
+  user_model_answer: fascinating It was very enjoyable and informative.

@@ -1,0 +1,60 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Part 2 & 3 — Studying & Education
+  topic_tags:
+  - Education
+  - Studying
+  - Exam Strategy
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 7
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Answers the task but tends to repeat vocabulary. Limited range
+    of descriptive language.
+  vocabulary_core:
+  - study
+  - learn
+  - subject
+  - graduate
+  vocabulary_stretch:
+  - scholarship
+  - coursework
+  - tuition
+  common_errors_to_simulate: Repeating the same adjective (e.g., 'nice') multiple
+    times; failing to extend answers in Part 3 beyond 1-2 sentences.
+  grammar_required: []
+  sentence_length_target: short
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to avoid repetition by using a range of adjectives and
+    adverbs to express opinion and add nuance.
+  vocabulary_core:
+  - relevant
+  - academic
+  - finance
+  - interest
+  vocabulary_stretch:
+  - definitely
+  - fortunately
+  - unfortunately
+  - improvement
+  sentence_length_target: 4 or more sentences for Part 3
+  grammar_required: []
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Are your friends or family interested in the subject too?
+  user_model_answer: Yes, yes they are. My father and my brother studied law at university,
+    and they think it is a very nice subject. My mother thinks it is nice and always
+    asks me questions about law. I have lots of friends on the course, and we want
+    to get a nice job when we graduate.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Are your friends or family interested in the subject too?
+  user_model_answer: Yes, they are quite interested. My father and brother studied
+    law, and they find it an important and challenging subject. My mother is also
+    curious about it and asks me questions. Many of my friends are on the course,
+    and we’re all focused on securing interesting positions once we graduate.

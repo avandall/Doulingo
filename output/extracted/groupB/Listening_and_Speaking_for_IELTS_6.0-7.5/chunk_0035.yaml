@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Nominalization in Paraphrasing - Academic Style"
+  topic_tags: ["Academic Style", "Paraphrasing", "Nominalization", "Grammar"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Nominalization in paraphrasing"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses simple, direct sentence structures (Subject + Verb + Object). Often uses clauses where academic English prefers nouns."
+    grammar_required: ["Active voice", "Simple relative clauses"]
+    vocabulary_core: ["basic vocabulary related to food and farming"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, direct sentences"
+    common_errors_to_simulate: "Over-reliance on 'people' as a subject; excessive use of verbs instead of noun phrases (e.g., 'because the population is growing' vs 'due to population growth')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Demonstrates high level of lexical resource by condensing information into noun phrases (Nominalization) to create a concise, formal tone."
+    grammar_required: ["Nominalization", "Complex noun phrases", "Passive constructions"]
+    vocabulary_core: ["Academic collocations", "Formal abstract nouns"]
+    vocabulary_stretch: ["Feasibility", "Concerns", "Availability"]
+    sentence_length_target: "Integrated, information-dense sentences"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How has food supply changed?"
+    user_model_answer: "Because the world population is growing and there are more environmental problems, people are worried that we cannot feed everyone."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How has food supply changed?"
+    user_model_answer: "Global population growth and increasing environmental concerns have led to doubts about the long-term feasibility of maintaining supplies of basic foodstuffs."

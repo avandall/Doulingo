@@ -1,0 +1,141 @@
+vocabulary_entry:
+  topic_tags:
+  - law
+  - crime
+  - punishment
+  - rules
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 34
+  entries:
+  - term: observe the law
+    meaning: to obey the law (formal)
+    example: We must all observe the law at all times.
+    band_suitability: 7.0+
+    register: formal
+  - term: obey the law
+    meaning: to follow the rules of the legal system
+    example: People who refuse to obey the law should be punished.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pass a law
+    meaning: to officially approve a new law
+    example: A new law has been passed forbidding the use of mobile phones while driving.
+    band_suitability: 6.0+
+    register: neutral
+  - term: introduce a law
+    meaning: to bring in a new law
+    example: A new law has been introduced forbidding the use of mobile phones while
+      driving.
+    band_suitability: 6.0+
+    register: neutral
+  - term: act within the law
+    meaning: to behave legally without breaking any rules
+    example: The company acted within the law as regards the rights of its employees.
+    band_suitability: 7.0+
+    register: formal
+  - term: uphold the law
+    meaning: to support and maintain the law
+    example: It is the job of the police to uphold the law.
+    band_suitability: 7.0+
+    register: formal
+  - term: enforce the law
+    meaning: to make sure that people obey the law
+    example: It is the job of the police to enforce the law.
+    band_suitability: 7.0+
+    register: formal
+  - term: comply with regulations
+    meaning: to do what the rules or regulations say
+    example: We have to comply with the regulations concerning the testing of equipment.
+    band_suitability: 7.0+
+    register: formal
+  - term: bend the rules
+    meaning: to break the rules in a way that is not considered important
+    example: I hope we can bend the rules and let her take the exam on another day.
+    band_suitability: 7.0+
+    register: informal
+  - term: carry out an investigation
+    meaning: to conduct a formal inquiry into something
+    example: Police are carrying out an investigation into a major theft in a factory
+      in Woodvale.
+    band_suitability: 7.0+
+    register: neutral
+  - term: appear in court
+    meaning: to be present in a court of law for a legal proceeding
+    example: The trial starts today but the witnesses will be appearing in court tomorrow.
+    band_suitability: 6.0+
+    register: neutral
+  - term: go on trial
+    meaning: to be judged in a court of law for a crime
+    example: George Arthur Lode, accused of murdering his wife, went on trial today.
+    band_suitability: 6.0+
+    register: neutral
+  - term: reach a verdict
+    meaning: to make a formal decision in a court about whether someone is guilty
+      or not
+    example: The jury are expected to take several days to reach a verdict.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a fair trial
+    meaning: an impartial and just legal proceeding
+    example: It now seems impossible that Harold Graves can receive a fair trial,
+      given the media publicity surrounding his case.
+    band_suitability: 6.0+
+    register: neutral
+  - term: face a heavy fine
+    meaning: to be required to pay a large amount of money as a punishment
+    example: People who park on double yellow lines face a heavy fine.
+    band_suitability: 6.0+
+    register: neutral
+  - term: face the death penalty
+    meaning: to face the punishment of being executed for a crime
+    example: If he is found guilty of murder, he will have to face the death penalty.
+    band_suitability: 7.0+
+    register: neutral
+  - term: act as a deterrent
+    meaning: to serve as something that discourages people from doing something illegal
+    example: People often support the death penalty because they say it acts as a
+      deterrent.
+    band_suitability: 8.0+
+    register: formal
+  - term: suffer the consequences
+    meaning: to experience the bad results of your actions
+    example: Anyone who commits a crime has to suffer the consequences.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a harsh sentence
+    meaning: a very severe punishment given by a judge
+    example: Some judges are more likely to give harsh sentences than others.
+    band_suitability: 7.0+
+    register: neutral
+  - term: win a case
+    meaning: to be successful in a legal dispute in court
+    example: You will need a very good lawyer if you are going to have any hope of
+      winning your case.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

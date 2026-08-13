@@ -1,0 +1,44 @@
+content_unit:
+  template_type: band_ladder
+  title: "Education — School Experiences and Memories"
+  topic_tags: [Education, School, Childhood]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Có khả năng trả lời các câu hỏi về thông tin cá nhân và quá khứ đơn giản. Tuy nhiên, câu trả lời thường ngắn, thiếu sự phát triển ý tưởng."
+    grammar_required: 
+      - Past simple
+      - "used to' for past habits"
+    vocabulary_core: [nursery school, elementary school, middle school, subjects, teacher, carefree]
+    vocabulary_stretch: [comprehension, stressful, university entrance exam]
+    sentence_length_target: "Ngắn, đơn câu"
+    common_errors_to_simulate: "Lạm dụng thì hiện tại khi kể chuyện quá khứ, lặp từ, dùng câu đơn quá nhiều."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Có khả năng kết hợp các thì quá khứ (used to, past simple) để kể chuyện mạch lạc. Sử dụng từ vựng đa dạng về chủ đề giáo dục."
+    grammar_required: 
+      - Past simple vs Past continuous
+      - "used to' + verb"
+      - "complex sentences with 'because/although"
+    vocabulary_core: [study habits, listening comprehension, stressful, accessible, career prospects]
+    vocabulary_stretch: [demanding, academic pressure, extracurricular activities, educational framework]
+    sentence_length_target: "Câu phức, kết hợp các câu đơn và câu ghép"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Where did you go to elementary school? Where was it located?"
+    user_model_answer: "My elementary school was located just 5 minutes away from my house."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What kinds of activities did you do after school in middle school?"
+    user_model_answer: "When I was in middle school, I used to spend most of my time studying. Occasionally, I would join some sports activities, but that was only when I had free time."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What did you spend most of your time on when you were in high school?"
+    user_model_answer: "I remember that I spent a lot of time trying to improve my English. This was very challenging for me because I had a lot of trouble with listening comprehension."

@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic talk: Describing Accommodation"
+  topic_tags: [accommodation, home, town]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS.md, Topic talk"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Answers questions directly but often lacks detail or complex sentence structures. Tendency to use simple, repetitive vocabulary."
+    grammar_required: [simple sentences, basic conjunctions]
+    vocabulary_core: [house, flat, room, city]
+    vocabulary_stretch: [detached, bungalow, terraced]
+    sentence_length_target: "Short, simple statements"
+    common_errors_to_simulate: "Lack of expansion (only answering the question); using repetitive basic adjectives like 'good' or 'nice'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Provides extended answers by adding reasons, consequences, or descriptive clauses. Uses a variety of specific vocabulary and cohesive devices."
+    grammar_required: 
+      - relative clauses (which/with)
+      - complex sentences with because/so
+    vocabulary_core: [spacious, peaceful, residential, dynamic]
+    vocabulary_stretch: [chic, tranquil, spectacular, well-connected]
+    sentence_length_target: "Extended, complex sentences with descriptive modifiers"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Where do your host family live?"
+    user_model_answer: "The family I'm staying with live in a chic part of town."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Where do your host family live?"
+    user_model_answer: "The family I'm staying with live in a very chic part of town, which is a really residential area with tree-lined streets and not many cars."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Is your accommodation modern or old-fashioned?"
+    user_model_answer: "The house is very high tech."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is your accommodation modern or old-fashioned?"
+    user_model_answer: "The house is very high tech, with plasma screens, remote controls for the lighting and wireless computers."

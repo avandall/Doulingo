@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking: Pronunciation of Weak Forms & Vocabulary Nuances"
+  topic_tags: ["Pronunciation", "Vocabulary", "Exam Technique"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS, Unit 1 & 2"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on basic meaning but often lacks natural rhythm due to over-stressing function words (prepositions, auxiliaries). Vocabulary usage is often inappropriate due to a lack of awareness of register (slang vs. formal)."
+    grammar_required: ["Basic tenses", "Common prepositions"]
+    vocabulary_core: ["Basic sports/family terms"]
+    vocabulary_stretch: ["Collocations", "Synonyms"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Using strong forms for all function words (e.g., pronouncing 'for' as /fɔː/ in all positions); using overly informal slang (e.g., 'mate', 'bloke') in an exam setting."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses weak forms naturally to maintain flow and rhythm. Demonstrates control over register, choosing neutral/appropriate synonyms over slang or overly formal/archaic language."
+    grammar_required: ["Accurate use of tenses", "Flexible sentence structures"]
+    vocabulary_core: ["Topic-specific collocations", "Context-appropriate synonyms"]
+    vocabulary_stretch: 
+      - Nuanced vocabulary (connotations)
+      - Idiomatic phrases used appropriately
+    sentence_length_target: "Complex, varied sentence lengths with natural pausing"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How do you keep fit?"
+    user_model_answer: "I am going TO gym FOR hours. My mate likes jogging, but I think it is boring."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How do you keep fit?"
+    user_model_answer: "I usually work out at the gym /ət/ for /fə/ about an hour. It's a great way to stay active, and I find that it really helps me clear my head after a long day."

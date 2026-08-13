@@ -1,0 +1,155 @@
+vocabulary_entry:
+  topic_tags:
+  - law
+  - crime
+  - justice
+  - war
+  - peace
+  - environment
+  - time
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 34-40
+  entries:
+  - term: reach a verdict
+    meaning: to reach a decision in a court of law about whether someone is guilty
+      or not
+    example: The jury reached a verdict of guilty.
+    band_suitability: 6.0+
+    register: formal
+  - term: harsh punishments
+    meaning: severe penalties given for crimes
+    example: It might act as a deterrent with harsh punishments.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a heavy fine
+    meaning: a large amount of money that must be paid as a punishment
+    example: The offender had to pay a heavy fine.
+    band_suitability: 6.0+
+    register: neutral
+  - term: comply with regulations
+    meaning: to obey rules or laws
+    example: Everyone must comply with these regulations.
+    band_suitability: 7.0+
+    register: formal
+  - term: carry out an investigation
+    meaning: to conduct a formal inquiry to find out the truth about something
+    example: The police are carrying out an investigation into the bank robbery.
+    band_suitability: 6.0+
+    register: neutral
+  - term: act within the law
+    meaning: to conduct oneself legally without breaking any laws
+    example: Our company always acts within the law.
+    band_suitability: 7.0+
+    register: formal
+  - term: juvenile offender
+    meaning: a young person who commits a crime
+    example: A young/juvenile offender was sent to a youth center.
+    band_suitability: 7.0+
+    register: formal
+  - term: hardened criminal
+    meaning: a criminal who is fully used to crime and unlikely to change
+    example: The prison is designed to hold hardened criminals.
+    band_suitability: 8.0+
+    register: neutral
+  - term: serve a sentence
+    meaning: to spend a period of time in prison as punishment
+    example: He had to serve a sentence of five years.
+    band_suitability: 6.0+
+    register: neutral
+  - term: commit a crime
+    meaning: to do something illegal
+    example: It is a serious matter to commit a crime.
+    band_suitability: 6.0+
+    register: neutral
+  - term: criminal record
+    meaning: an official record of crimes that a person has committed
+    example: The job applicant had no criminal record.
+    band_suitability: 6.0+
+    register: neutral
+  - term: all-out war
+    meaning: a complete and total war involving all available weapons and resources
+    example: It soon turned into all-out war.
+    band_suitability: 8.0+
+    register: neutral
+  - term: fierce fighting
+    meaning: very intense and violent battle or combat
+    example: There was fierce fighting in the capital city yesterday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: call a ceasefire
+    meaning: to make an agreement to stop fighting temporarily
+    example: Peacekeeping forces are expected to enter the city as soon as a ceasefire
+      is called.
+    band_suitability: 7.0+
+    register: neutral
+  - term: declare war
+    meaning: to announce officially that one country is at war with another
+    example: The military forces today declared war against the guerillas.
+    band_suitability: 6.0+
+    register: formal
+  - term: restore order
+    meaning: to bring a situation back to a peaceful and law-abiding state
+    example: Armed troops were sent in to restore order after the riots.
+    band_suitability: 7.0+
+    register: formal
+  - term: sign a peace treaty
+    meaning: to officially sign a formal agreement to end a war
+    example: The two sides signed a peace treaty last July.
+    band_suitability: 7.0+
+    register: formal
+  - term: climate change
+    meaning: long-term shifts in global temperatures and weather patterns
+    example: Climate change is leading to the melting of the polar ice caps.
+    band_suitability: 6.0+
+    register: neutral
+  - term: exhaust fumes
+    meaning: waste gases produced by engines of vehicles
+    example: There are more and more cars emitting exhaust fumes.
+    band_suitability: 6.0+
+    register: neutral
+  - term: have the time of your life
+    meaning: to enjoy yourself very much
+    example: It was fantastic. I had the time of my life.
+    band_suitability: 7.0+
+    register: informal
+  - term: in the not too distant future
+    meaning: soon; in a short time
+    example: I’ll try to come and see you in the not too distant future.
+    band_suitability: 7.0+
+    register: neutral
+  - term: from dawn till dusk
+    meaning: from early morning until late evening
+    example: They worked hard from dawn till dusk.
+    band_suitability: 8.0+
+    register: neutral
+  - term: run out of time
+    meaning: to have no time left
+    example: We had to hurry because we were about to run out of time.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

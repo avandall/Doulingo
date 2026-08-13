@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Pronunciation Skills & Test Format"
+  topic_tags: [pronunciation, speaking_format, marking_criteria]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, The Skills Required for a Pronunciation 7"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate has basic delivery but lacks effective use of prosodic features (volume, pitch, speed, chunking) to convey meaning; speech may sound flat or mechanical."
+    grammar_required: ["Basic structures", "Simple sentence formation"]
+    vocabulary_core: ["Personal background words", "Routine daily vocabulary"]
+    vocabulary_stretch: 
+      - None (focus on accuracy)
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Monotone voice, inability to group words into meaningful chunks, ignoring intonation for emphasis, overly formal at inappropriate times."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of pronunciation features to enhance meaning, including natural rhythm, chunking, and varied intonation."
+    grammar_required: ["Complex structures", "Effective use of connecting words"]
+    vocabulary_core: ["Topic-specific vocabulary", "Varied descriptive language"]
+    vocabulary_stretch: ["Idiomatic expressions", "Collocations"]
+    sentence_length_target: "Variable length, complex sentences with natural pausing"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me your full name please?"
+    user_model_answer: "Oh, well, my name is Mo Wenwei. It's a very special name, actually, my grandfather gave it to me because he wanted me to be successful... [long irrelevant story]"
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you tell me your full name please?"
+    user_model_answer: "My name is Mo Wenwei."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "I used to be quite into Yoga but more recently I've been getting into ballet dancing."
+    # Note: Example demonstrates slowing down on 'used to' and 'more recently' for emphasis.

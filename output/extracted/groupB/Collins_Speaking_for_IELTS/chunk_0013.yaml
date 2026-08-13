@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: "Science and Technology — Coherence and Sentence Stress"
+  topic_tags: ["Science and Technology", "Coherence", "Pronunciation"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 6"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on producing speech but may lack clear rhythmic structure; relies on repeating nouns rather than using pronouns for cohesion."
+    grammar_required: ["Subject pronouns", "Object pronouns"]
+    vocabulary_core: 
+      - Content words (nouns, main verbs, adjectives, adverbs)
+    vocabulary_stretch: 
+      - Function words (prepositions, articles, auxiliary verbs)
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Stressing all words equally, lack of weak forms (schwa sound), repetitive use of nouns instead of pronouns, lack of cohesive devices."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses natural sentence stress with appropriate weak forms; uses cohesive devices and pronouns effectively to avoid repetition."
+    grammar_required: ["Complex pronoun usage", "Cohesive linkers"]
+    vocabulary_core: ["Natural rhythm and intonation"]
+    vocabulary_stretch: 
+      - "Advanced cohesive phrases (e.g., 'Last but not least', 'On the other hand')"
+    sentence_length_target: "Variable length, complex structures"
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What are the advantages of keyhole surgery?"
+    user_model_answer: "I believe keyhole surgery is one of the most significant developments in modern medicine. There are numerous advantages. First of all, the surgeon can operate through tiny incisions so there is less scarring. Then, surgeons can perform very delicate operations in this way. Last but not least, recovery time is much quicker due again to the small incisions. So, as you see, it really is a brilliant development."

@@ -1,0 +1,145 @@
+vocabulary_entry:
+  topic_tags:
+  - music
+  - entertainment
+  - arts
+  - hobbies
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 24
+  entries:
+  - term: big hit
+    meaning: a very successful song, album, or film
+    example: hoping for another big hit
+    band_suitability: 6.0+
+    register: neutral
+  - term: massive hit
+    meaning: an extremely successful song, album, or film
+    example: After their massive hit in 2015 with Megalith
+    band_suitability: 7.0+
+    register: neutral
+  - term: huge following
+    meaning: a very large group of loyal fans or supporters
+    example: They have a huge following and are due to go on tour later this year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go on tour
+    meaning: to travel to different places to perform concerts
+    example: are due to go on tour later this year
+    band_suitability: 6.0+
+    register: neutral
+  - term: making a big impact
+    meaning: having a strong, powerful effect or influence
+    example: Bloom are already making a big impact.
+    band_suitability: 7.0+
+    register: neutral
+  - term: background music
+    meaning: music played quietly in the background while people are doing other things
+    example: If you’re looking for background music, then this is not for you
+    band_suitability: 6.0+
+    register: neutral
+  - term: live performance
+    meaning: a performance in front of an audience, not recorded beforehand
+    example: tracks from their live performance at the Delaya Stadium
+    band_suitability: 6.0+
+    register: neutral
+  - term: easy listening
+    meaning: music that is not serious or difficult, and pleasant to listen to
+    example: For fans of easy listening and catchy tunes, this is all you need.
+    band_suitability: 6.0+
+    register: neutral
+  - term: catchy tunes
+    meaning: melodies that are pleasant and easy to remember
+    example: For fans of easy listening and catchy tunes, this is all you need.
+    band_suitability: 6.0+
+    register: neutral
+  - term: sentimental performance
+    meaning: a performance full of tender, romantic, or nostalgic emotions
+    example: MacRoy gives a sentimental performance of these old love songs.
+    band_suitability: 7.0+
+    register: neutral
+  - term: pop idol
+    meaning: a famous and adored singer of pop music
+    example: he’s not exactly a pop idol but his adoring fans will love it
+    band_suitability: 6.0+
+    register: neutral
+  - term: adoring fans
+    meaning: fans who love and admire someone very much
+    example: his adoring fans will love it
+    band_suitability: 7.0+
+    register: neutral
+  - term: piece of music
+    meaning: a musical composition
+    example: This is a rock symphony, an extraordinary piece of music.
+    band_suitability: 6.0+
+    register: neutral
+  - term: record company
+    meaning: a company that produces and markets recorded music
+    example: their record company has released this album
+    band_suitability: 6.0+
+    register: neutral
+  - term: double album
+    meaning: an album issued on two vinyl records or CDs
+    example: Bust-out’s new double album features Jola V
+    band_suitability: 6.0+
+    register: neutral
+  - term: up-tempo numbers
+    meaning: songs played at a fast, lively beat
+    example: Jola’s up-tempo numbers just add to the excitement.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go solo
+    meaning: to leave a group or band to perform independently
+    example: Jola used to be with Chicago hip-hop band Frenzy, but went solo in 2015.
+    band_suitability: 6.0+
+    register: neutral
+  - term: musical talent
+    meaning: natural ability or skill in music
+    example: He’s got no musical talent whatsoever.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take up an instrument
+    meaning: to start learning to play a musical instrument
+    example: I’ve taken up the guitar.
+    band_suitability: 6.0+
+    register: neutral
+  - term: live music
+    meaning: music played live in front of an audience
+    example: I love live music.
+    band_suitability: 6.0+
+    register: neutral
+  - term: tune the instrument
+    meaning: to adjust an instrument to the correct pitch
+    example: the first week was all about tuning the instrument
+    band_suitability: 7.0+
+    register: neutral
+  - term: play a piece
+    meaning: to perform a musical composition
+    example: I’ve got to play a piece for my teacher next week.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,133 @@
+vocabulary_entry:
+  topic_tags:
+  - storytelling
+  - socialising
+  - work
+  - surprises
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 43
+  entries:
+  - term: to say the least
+    meaning: used to indicate that something is more serious or important than your
+      words suggest
+    example: The office party was embarrassing, to say the least.
+    band_suitability: 7.0+
+    register: neutral
+  - term: from the word go
+    meaning: from the very start
+    example: It all went wrong from the word go.
+    band_suitability: 7.0+
+    register: neutral
+  - term: at stake
+    meaning: at risk of being lost
+    example: There was a lot at stake in terms of getting to know my new colleagues.
+    band_suitability: 7.0+
+    register: formal
+  - term: to put it mildly
+    meaning: used to describe something as more extreme than your words suggest
+    example: I started talking to someone who was, to put it mildly, one of the most
+      boring people I've ever met.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the penny dropped
+    meaning: suddenly understood
+    example: The penny dropped when she said, 'He's my husband.'
+    band_suitability: 7.0+
+    register: informal
+  - term: for good measure
+    meaning: in addition
+    example: I later discovered that, for good measure, he's also a director of the
+      company.
+    band_suitability: 8.0+
+    register: neutral
+  - term: drop a clanger
+    meaning: said something very embarrassing
+    example: I can't believe I dropped such a clanger.
+    band_suitability: 8.0+
+    register: informal
+  - term: by luck than judgement
+    meaning: by chance rather than skill
+    example: I'm sure I got my job more by luck than judgement.
+    band_suitability: 8.0+
+    register: neutral
+  - term: to say nothing of
+    meaning: and in addition there is/was
+    example: My CV wasn't very good, to say nothing of the disastrous interview.
+    band_suitability: 8.0+
+    register: formal
+  - term: fall off one's chair
+    meaning: was extremely surprised
+    example: I nearly fell off my chair when they offered me the job.
+    band_suitability: 7.0+
+    register: informal
+  - term: into the bargain
+    meaning: as well as other things mentioned
+    example: I even got a company car into the bargain.
+    band_suitability: 7.0+
+    register: neutral
+  - term: there's a lot to be said for
+    meaning: there is much in favour of
+    example: There's a lot to be said for not worrying about things until you know
+      the final outcome.
+    band_suitability: 7.0+
+    register: neutral
+  - term: for a split second
+    meaning: for a very brief moment
+    example: John told me he'd won the lottery and for a split second I believed him!
+    band_suitability: 6.0+
+    register: neutral
+  - term: between you and me
+    meaning: said when you are going to tell someone something confidential
+    example: Between you and me, I think Kate's thinking of dropping out of university.
+    band_suitability: 6.0+
+    register: informal
+  - term: a bolt from the blue
+    meaning: an unexpected and very surprising event
+    example: Guess who I bumped into on the way to work? Sara! It was a real bolt
+      from the blue.
+    band_suitability: 8.0+
+    register: neutral
+  - term: at first glance
+    meaning: when you first look at it
+    example: The exam looked really easy at first glance, but it was actually really
+      difficult.
+    band_suitability: 6.0+
+    register: neutral
+  - term: when all's said and done
+    meaning: said when you are about to say the most important fact in a situation
+    example: They may seem a strange couple, but when all's said and done, they're
+      really happy together.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a turn-up for the books
+    meaning: a strange or surprising event
+    example: That's a real turn-up for the books - I just got a pay rise I wasn't
+      expecting.
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

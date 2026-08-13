@@ -1,0 +1,34 @@
+content_unit:
+  template_type: scenario
+  title: "Transportation — Conversation Practice"
+  topic_tags: ["Transportation", "Work", "Commuting"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Learners can construct basic sentences about transportation using conditional 'if' clauses and simple comparative structures."
+    grammar_required: 
+      - Conditional sentences (If + present simple)
+      - Comparatives (longer than, as...as)
+    vocabulary_core: ["traffic", "transportation", "accident", "advantage", "disadvantage"]
+    vocabulary_stretch: ["gridlock", "intersection", "tangle"]
+    sentence_length_target: "Short to medium, compound sentences"
+    common_errors_to_simulate: "Misusing comparatives (e.g., 'more long than'), omitting articles before transportation modes, difficulty expressing hypothetical situations clearly."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How do you usually get to work?"
+    user_model_answer: "I usually take the bus. If the weather is very bad, I have to leave home earlier."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "If you ride your bike, how long does it take to get to work?"
+    user_model_answer: "It takes about 30 minutes. One advantage of riding a bike to work is that I don't have to worry about traffic."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How much time does it usually take you to get to work?"
+    user_model_answer: "If there's no traffic, it can take as little as 20 minutes. But if the traffic is bad, it can take twice as long."

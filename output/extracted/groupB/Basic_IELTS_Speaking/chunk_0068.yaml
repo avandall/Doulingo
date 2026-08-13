@@ -1,0 +1,29 @@
+content_unit:
+  template_type: band_ladder
+  title: "The Formula for Habit Questions - Basic IELTS Speaking"
+  topic_tags: ["Daily Routine", "Habits", "Speaking Strategy"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, The formula"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on providing basic facts about habits using simple present tense and basic time markers."
+    grammar_required: ["Present Simple", "Adverbs of frequency"]
+    vocabulary_core: ["often", "sometimes", "every day"]
+    vocabulary_stretch: 
+      - sequence markers (before, then)
+    sentence_length_target: "short, declarative sentences"
+    common_errors_to_simulate: "Missing adverbs of frequency, failing to specify time of day or frequency, monotone sentence structure."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you usually do in your free time?"
+    user_model_answer: "I often meet up with my classmates. Before class starts we talk. We then go to bed."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you do in the evening?"
+    user_model_answer: "I ride my bike every day at 2 o'clock. We have dinner together in the evening."

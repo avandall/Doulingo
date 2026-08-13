@@ -1,0 +1,33 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 1: Developing Extended Answers with Linking Expressions"
+  topic_tags: ["Part 1", "Familiar Topics", "Linking Words"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Part 1: Talking about familiar topics"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can give basic extended answers using simple conjunctions like 'and', 'so', 'because' to connect clauses."
+    grammar_required: ["Simple sentences", "Basic conjunctions"]
+    vocabulary_core: ["Linking expressions: and, so, because"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, connected clauses"
+    common_errors_to_simulate: "Over-reliance on 'and', repetitive sentence structure, missing complex transitions."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Uses a wider range of linking devices to produce coherent, extended answers without excessive effort."
+    grammar_required: 
+      - Complex sentences
+      - Relative clauses (which, that)
+    vocabulary_core: ["Linking expressions: because, so, which, however"]
+    vocabulary_stretch: ["Transition signals for contrast and consequence"]
+    sentence_length_target: "Variable length with cohesive devices"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How do you usually travel to school or work?"
+    user_model_answer: "I came by bus. I had to take two different buses because my home is on the other side of the city and the whole journey took about 45 minutes. I like travelling by bus but I don't do it very often because I usually walk or cycle to school, which is really near my home."

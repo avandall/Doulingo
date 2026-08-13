@@ -1,0 +1,31 @@
+content_unit:
+  template_type: band_ladder
+  title: "Focus on Part 2: Descriptive Long Turn"
+  topic_tags: ["Education", "People", "IELTS Speaking Part 2"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, Focus on Part 2 of the IELTS Speaking Test"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to speak for the required time but may rely on limited structure or lack sufficient specific examples."
+    grammar_required: ["Past tenses for description", "Basic descriptive adjectives"]
+    vocabulary_core: ["teacher", "subject", "classes", "remember"]
+    vocabulary_stretch: ["inspirational", "memorable", "knowledgeable"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Repeating simple sentence structures, running out of ideas before 1 minute, lack of 'why' explanations."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Fluently expands on points using personal examples and anecdotes to maintain the 1-2 minute long turn."
+    grammar_required: ["Complex sentences", "Narrative tenses", "Relative clauses"]
+    vocabulary_core: ["subject matter", "enthusiastic", "academic approach"]
+    vocabulary_stretch: ["leave a lasting impression", "pedagogical style", "a mentor figure"]
+    sentence_length_target: "long and varied"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe a teacher you remember from your past. You should say: What the teacher looked like, what subjects she taught, what you enjoyed about her classes, and why you remember her."
+    user_model_answer: "I’d like to talk about my high school English teacher, Mrs. Hanh. She was quite tall and always dressed very professionally, which gave her a very authoritative yet approachable air. She taught us Literature, and what I really loved about her classes was the way she brought the texts to life; she wouldn't just read from the book, but she would act out scenes or encourage us to debate the characters' motivations. I remember her so vividly because she was the one who encouraged me to start writing, and she actually took the time to read my extra essays even when she didn't have to."

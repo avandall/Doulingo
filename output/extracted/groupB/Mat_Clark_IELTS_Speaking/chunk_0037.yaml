@@ -1,0 +1,41 @@
+content_unit:
+  template_type: scenario
+  title: Mat Clark – Full Mock Test Practice (Interview 2 & 3)
+  topic_tags:
+  - films
+  - birthdays
+  - childhood home
+  - help
+  - houses
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Mat_Clark_IELTS_Speaking.md, Mock Interview Transcripts
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How often do you watch films?
+  user_model_answer: I’m quite a movie buff, actually. I try to catch a film at least
+    once a week, usually over the weekend when I have a bit of downtime after a busy
+    week of work.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Do you prefer watching films alone or with someone else?
+  user_model_answer: It really depends on the genre. If it’s a gripping thriller or
+    a complex drama, I prefer watching it alone so I can fully immerse myself in the
+    plot without distractions. However, for comedies or light-hearted movies, it’s
+    definitely more fun to watch with friends.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: What are the advantages of living in an old house?
+  user_model_answer: Well, for one thing, old houses often have a unique character
+    and architectural charm that modern apartments simply lack. Beyond the aesthetics,
+    they tend to be built with more robust materials, and they often come with a sense
+    of history that makes them feel more like a home rather than just a living space.
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short

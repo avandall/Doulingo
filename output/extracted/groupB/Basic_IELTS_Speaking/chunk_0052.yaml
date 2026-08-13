@@ -1,0 +1,57 @@
+content_unit:
+  template_type: band_ladder
+  title: Useful Words and Expressions - Describing Friends
+  topic_tags:
+  - Relationships
+  - Vocabulary
+  - Friends
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: Basic_IELTS_Speaking, Useful Words and Expressions
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Can describe simple qualities of a friend using basic phrases
+    (e.g., 'someone I can talk to'). Limited range of adjectives.
+  grammar_required:
+  - Relative clauses with 'who/whose
+  vocabulary_core:
+  - friend
+  - trust
+  - honest
+  - good listener
+  vocabulary_stretch:
+  - good-natured
+  - well-intentioned
+  - hospitable
+  sentence_length_target: Short, simple sentences
+  common_errors_to_simulate: Overusing simple adjectives like 'good' or 'nice'; difficulty
+    with relative clause structures.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Able to use precise collocations and nuanced vocabulary to define
+    relationships (e.g., 'bosom friend', 'intimate').
+  grammar_required:
+  - Relative clauses
+  - Phrasal verbs (keep in touch, drift out of touch)
+  vocabulary_core:
+  - companion
+  - acquaintance
+  - intimate
+  vocabulary_stretch:
+  - bosom friend
+  - constructive suggestion
+  - warm-hearted
+  sentence_length_target: Complex sentences using relative clauses and varied phrasal
+    verbs
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

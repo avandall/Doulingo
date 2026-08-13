@@ -1,0 +1,175 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - vocabulary
+  - english_usage
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: groundbreaking research
+    meaning: new and very important research
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: legal battle
+    meaning: a dispute fought in a court of law
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bear a grudge
+    meaning: to continue to feel angry or unfriendly towards someone who has done
+      something to upset you
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: guarantee success
+    meaning: to make success certain
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hack into someone's computer
+    meaning: to illegally gain access to a computer system
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: jet-black hair
+    meaning: hair of a very dark, glossy black color
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: shoulder-length hair
+    meaning: hair that reaches down to the shoulders
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: blissfully happy
+    meaning: extremely happy
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: lasting happiness
+    meaning: happiness that continues for a long time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hard frost
+    meaning: severe freezing weather
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hasty conclusion
+    meaning: a conclusion reached too quickly without enough consideration
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hardened criminal
+    meaning: a criminal who is experienced and unlikely to change their ways
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: do harm
+    meaning: to cause damage or injury
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: harsh critic
+    meaning: someone who expresses very severe disapproval
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: heavy cold
+    meaning: a severe cold
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: heavy rain
+    meaning: a lot of rain falling quickly
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: high interest rates
+    meaning: large percentages charged on borrowed money
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: high-powered job
+    meaning: an important and powerful job
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: higher education
+    meaning: education at a college or university
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: highly competitive
+    meaning: involving fierce competition
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: drop a hint
+    meaning: to suggest something indirectly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit the headlines
+    meaning: to appear prominently in the news
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: heated argument
+    meaning: an angry and emotional discussion or debate
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: home-cooked food
+    meaning: food prepared and cooked at home
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: brutally honest
+    meaning: being extremely honest, often in a way that is painful to hear
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: dash someone's hopes
+    meaning: to completely destroy someone's hopes or expectations
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: immaculately groomed
+    meaning: appearing extremely neat, tidy, and well-cared-for in appearance
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: life-threatening illness
+    meaning: an illness that is very severe and likely to cause death
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

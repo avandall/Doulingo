@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Word stress in -ion nouns"
+  topic_tags: ["environment", "pronunciation", "word-stress"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Pronunciation: Word stress in -ion nouns"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Phát âm từ vựng đa âm tiết (kết thúc bằng -ion) đôi khi bị sai trọng âm, dẫn đến nhịp điệu chưa tự nhiên."
+    grammar_required: ["Present Simple", "Wh-questions"]
+    vocabulary_core: ["global warming", "air quality", "environment"]
+    vocabulary_stretch: ["deterioration", "contribution", "conserve"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Nhấn trọng âm sai vị trí vào các danh từ đuôi -ion (thường nhấn nhầm vào âm tiết trước đuôi -ion thay vì chính âm tiết đó hoặc âm trước nó)."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Sử dụng từ vựng học thuật chính xác với trọng âm từ ổn định, tạo dòng chảy ngôn ngữ tự nhiên."
+    grammar_required: ["Complex sentence structures", "Conditional sentences"]
+    vocabulary_core: ["exaggerate", "consumption", "population", "recommendation"]
+    vocabulary_stretch: ["environmental impact", "resource management"]
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What type of human activity contributes to global warming?"
+    user_model_answer: "I think that industrial pollution and the destruction of the rainforest are the main activities that cause global warming."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Has the population in your home town increased or decreased in recent years?"
+    user_model_answer: "Actually, the population has grown significantly, which has led to a noticeable deterioration in air quality due to the increase in traffic."

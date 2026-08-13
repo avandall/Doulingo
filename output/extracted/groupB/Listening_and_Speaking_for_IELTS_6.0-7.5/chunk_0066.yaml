@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Pronunciation: Word stress in nouns and verbs"
+  topic_tags: [Pronunciation, Word Stress, Vocabulary]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Pronunciation: Word stress in nouns and verbs"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Learners often struggle with inconsistent word stress, failing to distinguish between noun/verb pairs (e.g., 'increase' as a noun vs 'increase' as a verb), which can impact intelligibility."
+    grammar_required: [Nouns, Verbs, Passive voice for contrast]
+    vocabulary_core: [refund, produce, present, increase, object, import, refuse, contract, record, protest]
+    vocabulary_stretch: []
+    sentence_length_target: "Short to medium complex sentences"
+    common_errors_to_simulate: "Applying the same stress pattern (usually first syllable) to both nouns and verbs regardless of grammatical category, leading to mechanical-sounding speech."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Learners demonstrate control over word stress and intonation patterns to convey meaning clearly, particularly using stress shift to differentiate word classes."
+    grammar_required: [Advanced grammatical structures in Speaking Part 3]
+    vocabulary_core: [refund, produce, present, increase, object, import, refuse, contract, record, protest]
+    vocabulary_stretch: [defect, financial records, working conditions]
+    sentence_length_target: "Fluently linked complex sentences with natural rhythm"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "If you bought something which had a defect, would you take it back and ask for a refund?"
+    user_model_answer: "Yes, I would definitely return it. If the goods are faulty, I think it is reasonable to expect the shop to give me a full refund."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Has there been an increase in the cost of public transport in your town recently?"
+    user_model_answer: "Actually, there has been a significant increase in ticket prices. Many people are protesting because the service quality hasn't improved, so they object to paying more."

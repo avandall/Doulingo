@@ -1,0 +1,39 @@
+content_unit:
+  template_type: scenario
+  title: "Dialogue Study — Friendship and Socializing"
+  topic_tags: [friends, socializing, relationships]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: casual
+  source_citation: "Basic_IELTS_Speaking.md, Dialogue Study"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể giao tiếp cơ bản, trả lời được các câu hỏi về sở thích cá nhân nhưng còn lặp từ, dùng cấu trúc câu đơn giản, chưa linh hoạt trong việc diễn đạt suy nghĩ phức tạp."
+    grammar_required: 
+      - simple present
+      - basic modals (can, have to)
+    vocabulary_core: [friends, eat, together, help]
+    vocabulary_stretch: [fortunate, characteristic, middle school]
+    sentence_length_target: "short to medium (5-12 words)"
+    common_errors_to_simulate: "Lạm dụng 'and', trả lời quá ngắn, thiếu các từ nối để mở rộng ý (cohesion markers)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh diễn đạt trôi chảy, dùng được các cấu trúc câu phức (conditional, relative clauses), từ vựng tự nhiên và có ý kiến cá nhân rõ ràng."
+    grammar_required: 
+      - first/second conditionals
+      - "complex sentences with 'that/which/who"
+    vocabulary_core: [close ties, plan ahead, honest, understand]
+    vocabulary_stretch: [manage to, keep in touch, no matter what, appreciate]
+    sentence_length_target: "long and complex (15+ words)"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you prefer to spend time with a group of friends or with just one close friend?"
+    user_model_answer: "I like both. Sometimes I go out with a group to have fun and eat good food. Sometimes I prefer to be with one close friend so we can talk about personal things."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What, in your opinion, makes a true friend?"
+    user_model_answer: "For me, a true friend is someone who truly understands me and is there to support me no matter what happens. I think honesty is key, as I need to feel comfortable being myself around them without being judged."

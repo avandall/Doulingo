@@ -296,8 +296,24 @@ def init_db():
     """)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_exposure_user_time ON user_content_exposure (user_id, exposed_at)")
 
+    # 13. tier2_evaluations (TASK-018: Weekly Reporting Engine)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS tier2_evaluations (
+            id                  TEXT PRIMARY KEY,
+            user_id             TEXT NOT NULL,
+            fluency_score       REAL NOT NULL,
+            lexical_score       REAL NOT NULL,
+            grammar_score       REAL NOT NULL,
+            pronunciation_score REAL NOT NULL,
+            raw_score           REAL NOT NULL,
+            created_at          TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_tier2_user_time ON tier2_evaluations (user_id, created_at)")
+
     conn.commit()
     conn.close()
+
 
 
 def add_custom_scenario(scenario_data: dict[str, Any]) -> dict[str, Any]:
@@ -525,4 +541,75 @@ def save_user_profile(user_id: str, profile_data: dict[str, Any]) -> dict[str, A
     conn.commit()
     conn.close()
     return get_user_profile(user_id)
+
+
+def save_tier2_evaluation_record(
+    user_id: str,
+    fluency: float,
+    lexical: float,
+    grammar: float,
+    pronunciation: float,
+    raw_score: float,
+    eval_id: str | None = None,
+) -> dict[str, Any]:
+    """Log a Tier 2 evaluation record into tier2_evaluations table."""
+    import uuid
+
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    record_id = eval_id or f"t2_eval_{uuid.uuid4().hex[:10]}"
+    cursor.execute(
+        """
+        INSERT INTO tier2_evaluations (
+            id, user_id, fluency_score, lexical_score, grammar_score,
+            pronunciation_score, raw_score, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+        """,
+        (
+            record_id,
+            user_id,
+            float(fluency),
+            float(lexical),
+            float(grammar),
+            float(pronunciation),
+            float(raw_score),
+        ),
+    )
+    conn.commit()
+    conn.close()
+
+    return {
+        "id": record_id,
+        "user_id": user_id,
+        "fluency_score": float(fluency),
+        "lexical_score": float(lexical),
+        "grammar_score": float(grammar),
+        "pronunciation_score": float(pronunciation),
+        "raw_score": float(raw_score),
+    }
+
+
+def get_tier2_evaluations_history(
+    user_id: str, days: int = 7
+) -> list[dict[str, Any]]:
+    """Retrieve Tier 2 evaluations history for a user over the past N days."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    query = """
+        SELECT id, user_id, fluency_score, lexical_score, grammar_score,
+               pronunciation_score, raw_score, created_at
+        FROM tier2_evaluations
+        WHERE user_id = ?
+          AND created_at >= datetime('now', '-' || ? || ' days')
+        ORDER BY created_at ASC
+    """
+    cursor.execute(query, (user_id, int(days)))
+    rows = _fetch_all_dicts(cursor)
+    conn.close()
+    return rows
+
 

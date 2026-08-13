@@ -1,0 +1,118 @@
+vocabulary_entry:
+  topic_tags:
+  - failure
+  - plans
+  - success_and_failure
+  - problems
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 56
+  entries:
+  - term: dead and buried
+    meaning: finished or ended completely
+    example: As far as I'm concerned, that idea is now dead and buried.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the kiss of death
+    meaning: an event or action that caused a plan or project to fail
+    example: That was the kiss of death to our plan to buy a place in the city centre.
+    band_suitability: 8.0+
+    register: informal
+  - term: dead in the water
+    meaning: failed and will never succeed
+    example: No. The city council ran out of money, and the whole plan is dead in
+      the water.
+    band_suitability: 7.0+
+    register: neutral
+  - term: as dead as a dodo
+    meaning: not existing, popular, or important any more
+    example: That's as dead as a dodo. They stopped publishing it about a year ago.
+    band_suitability: 8.0+
+    register: informal
+  - term: dead wood
+    meaning: members of a group who are not useful any more and who should be removed
+    example: If you want my opinion, there's too much dead wood. We need some new
+      people.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a dead duck
+    meaning: not successful or useful
+    example: Oh, it's a dead duck. Everyone voted against it.
+    band_suitability: 8.0+
+    register: informal
+  - term: deal a death blow
+    meaning: cause something to fail completely
+    example: The economic recession has dealt a death blow to many small businesses.
+    band_suitability: 8.0+
+    register: neutral
+  - term: dead to the world
+    meaning: in a deep sleep
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: sick to death of something
+    meaning: annoyed by something because you have experienced it for too long
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: a fate worse than death
+    meaning: the worst thing that can happen to you
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: a living death
+    meaning: a life so full of suffering that it would be better to be dead
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: a matter of life and death
+    meaning: a very serious situation where people might die
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: in the dead of night
+    meaning: in the middle of the night
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: over my dead body
+    meaning: used to say you will do everything you can to prevent something
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: a death trap
+    meaning: a vehicle, building, or machine that is so dangerous it could cause people
+      to die
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: at death's door
+    meaning: nearly dead
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

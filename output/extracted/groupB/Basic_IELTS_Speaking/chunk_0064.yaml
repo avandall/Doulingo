@@ -1,0 +1,30 @@
+content_unit:
+  template_type: band_ladder
+  title: "Basic IELTS Speaking — Model Answers: Modes of Transport & Communication"
+  topic_tags: ["Transport", "Communication", "Preferences"]
+  target_band_min: 6.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Model answers"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 7.0
+    can_do_description: "Diễn đạt được sở thích cá nhân, sử dụng từ so sánh (more convenient/better than) và đưa ra lý do giải thích rõ ràng."
+    grammar_required: 
+      - Comparatives (more than, better than)
+      - Present simple for habits
+    vocabulary_core: ["cycling", "convenient", "traffic jams", "means of transport", "chatting online", "sociable"]
+    vocabulary_stretch: ["stuck in traffic", "at the same time"]
+    sentence_length_target: "Complex sentences using 'because' and 'as'"
+    common_errors_to_simulate: "Lặp từ nối đơn giản (also, and), cấu trúc so sánh đôi khi thiếu từ bổ trợ, thiếu các cấu trúc diễn đạt ý kiến chuyên sâu hơn."
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you prefer to travel by bike or by bus?"
+    user_model_answer: "I prefer cycling to travelling by bus. Cycling is so much more convenient than taking the bus if you're not travelling too far. Actually, it's often better to go by bike because you don't get stuck in traffic jams! Cycling is also better for my health than all other means of transport, including buses."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you prefer chatting online or talking on the phone?"
+    user_model_answer: "I certainly, I prefer chatting online. I nearly always find that chatting online can be more sociable as you can speak to more than one person at the same time. Also, chatting online is often much more fun because you can send smileys, photos and even videos!"

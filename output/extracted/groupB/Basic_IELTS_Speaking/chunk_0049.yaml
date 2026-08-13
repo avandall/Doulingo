@@ -1,0 +1,45 @@
+content_unit:
+  template_type: scenario
+  title: Hobbies and Interests — Oral Exercises
+  topic_tags:
+  - Hobbies
+  - Daily Routine
+  - Personal Interests
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: casual
+  source_citation: Basic_IELTS_Speaking.md, Oral Exercises
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Can express personal preferences and provide simple reasons
+    using provided sentence structures.
+  grammar_required:
+  - Present simple for habits
+  - Gerunds (enjoy + -ing)
+  - Simple conjunctions (because, and)
+  vocabulary_core:
+  - unwind
+  - hectic
+  - relaxing
+  - keep fit
+  - spare time
+  vocabulary_stretch:
+  - challenging
+  - peaceful
+  - passionate
+  - fell in love with
+  sentence_length_target: Short to medium, compound sentences
+  common_errors_to_simulate: Repetitive sentence starters (I like... I like...), limited
+    variety in adjectives to describe feelings.
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: What other things are you interested in?
+  user_model_answer: I enjoy tennis, badminton, and volleyball. And I love painting,
+    too. Whenever I am painting, it makes me feel so relaxed and happy.
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Which one is your favourite hobby?
+  user_model_answer: My favourite hobby is swimming because it helps me keep fit,
+    and also makes me have more energy to handle anything that comes my way!

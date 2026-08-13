@@ -1,0 +1,84 @@
+vocabulary_entry:
+  topic_tags:
+  - advertising
+  - children
+  - consumerism
+  - health
+  category: collocation
+  source_citation: Y tuong va Tu vung trong IELTS Speaking - Nguyen Huyen
+  entries:
+  - term: press their parents to purchase
+    meaning: to repeatedly ask or demand parents to buy something
+    example: children want to own the items they see in ads -> press their parents
+      to purchase these unnecessary items
+    band_suitability: 6.0+
+    register: neutral
+  - term: unhealthy eating habits
+    meaning: poor dietary patterns that negatively affect health
+    example: to promote junk food, sugary snacks, or fast food -> unhealthy eating
+      habits
+    band_suitability: 6.0+
+    register: neutral
+  - term: childhood obesity
+    meaning: excessive body fat in children
+    example: unhealthy eating habits -> childhood obesity and other long-term health
+      issues
+    band_suitability: 7.0+
+    register: formal
+  - term: long-term health issues
+    meaning: medical problems that persist over a long period
+    example: childhood obesity and other long-term health issues
+    band_suitability: 6.0+
+    register: neutral
+  - term: put a lot of pressure on family spending
+    meaning: to create financial burden for a household
+    example: to put a lot of pressure on family spending -> cause financial strain
+    band_suitability: 7.0+
+    register: neutral
+  - term: financial strain
+    meaning: difficulty in meeting financial obligations due to a shortage of money
+    example: cause financial strain
+    band_suitability: 7.0+
+    register: formal
+  - term: strict regulations
+    meaning: firm and exact rules that must be obeyed
+    example: should be strict regulations on advertising aimed at children
+    band_suitability: 7.0+
+    register: formal
+  - term: excessive exposure to ads
+    meaning: seeing or hearing advertisements too much
+    example: to protect children from excessive exposure to ads
+    band_suitability: 7.0+
+    register: neutral
+  - term: educational value
+    meaning: the usefulness of something for learning and development
+    example: to promote products with educational value (books, puzzles, and creative
+      games)
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

@@ -1,0 +1,128 @@
+vocabulary_entry:
+  topic_tags:
+  - career
+  - relationships
+  - crime
+  - travel
+  - work
+  - lifestyle
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: climb the career ladder
+    meaning: to progress in your career
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: embark on a career
+    meaning: to start a career
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: glittering career
+    meaning: a very successful and impressive career
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: ruin someone's career
+    meaning: to completely spoil someone's professional life
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: carry out an investigation
+    meaning: to perform or conduct an investigation
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: cast doubt on
+    meaning: to make something seem uncertain or less trustworthy
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: catch a cold
+    meaning: to become ill with a cold
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: catch a glimpse of
+    meaning: to see someone or something for a very short time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cause chaos
+    meaning: to create a situation of extreme confusion and disorder
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cement a friendship
+    meaning: to make a relationship stronger and more permanent
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: close-knit family
+    meaning: a family where the members have strong emotional ties and support each
+      other
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: come to terms with
+    meaning: to gradually accept a sad or difficult situation
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: come up against fierce competition
+    meaning: to face strong rivals in a contest or market
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: commit an offence
+    meaning: to do something illegal
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: combat poverty
+    meaning: to try to stop or reduce poverty
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: make a comparison
+    meaning: to examine the ways in which things are similar or different
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: supremely confident
+    meaning: extremely confident
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: conflict of opinion
+    meaning: a disagreement between people with different views
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

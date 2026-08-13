@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Giving Extended Answers — Analysis of Cohesion and Detail"
+  topic_tags: ["Extended answers", "Linking words", "Cohesion"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Giving extended answers"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Able to provide full sentences with basic conjunctions (and, but, because). Can link ideas within a single paragraph."
+    grammar_required: ["Present simple", "Connectors of reason and contrast"]
+    vocabulary_core: ["cinema", "shopping centre", "expensive", "finances"]
+    vocabulary_stretch: ["special effects", "spectator", "tournaments"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Tendency to list facts without clear transition signals; overuse of 'and' as the primary linking word."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Produces extended responses by incorporating reasons, examples, and personal circumstances. Uses varied linking words to maintain flow."
+    grammar_required: 
+      - Complex sentences
+      - Subordinate clauses (if, because, although)
+    vocabulary_core: ["budgeting", "leisure activities", "academic commitments"]
+    vocabulary_stretch: ["subsequently", "consequently", "on one surface but not necessarily on another"]
+    sentence_length_target: "long and varied"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What do you do for entertainment?"
+    user_model_answer: "I like going to the cinema if it's a new film because it's much better to see it on a large screen and going with friends means we can talk about it afterwards. I live in a small village 30 km away, so going to the cinema is quite expensive."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you work or are you a student?"
+    user_model_answer: "I'm a student so most of my time is spent at lectures. But I have a job in a local cafe near the university to help pay for things. I work three evenings a week and I can eat there on the evenings I work, which helps with my finances."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Which sports are you interested in?"
+    user_model_answer: "I play badminton and I'm a member of my college team. As a spectator I enjoy going to see my local football team and watching bigger matches on television. I like watching tennis tournaments too."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How often do you go shopping?"
+    user_model_answer: "I like going shopping with my sister. There's a big shopping centre in the town where we live and we often go there at the weekend. If I need to buy something expensive like new shoes then I'll go with my mum, because she can pay for them!"

@@ -1,0 +1,149 @@
+vocabulary_entry:
+  topic_tags:
+  - preferences
+  - likes_and_dislikes
+  - praising
+  - criticising
+  - opinions
+  category: collocation
+  source_citation: English Collocations in Use Intermediate (Units 59 & 60)
+  entries:
+  - term: state a preference
+    meaning: to express a choice or desire for a particular thing
+    example: You can state your preference for a special low fat menu.
+    band_suitability: 6.0+
+    register: neutral
+  - term: cater for everyone's tastes
+    meaning: to provide what is wanted or needed by every different type of person
+    example: They have great in-flight entertainment too – they try to cater for everyone’s
+      tastes.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take pride in
+    meaning: to feel proud of something you have done or are connected with
+    example: They seem to take pride in their service.
+    band_suitability: 6.0+
+    register: neutral
+  - term: relish the thought
+    meaning: to greatly enjoy the thought of something that is going to happen
+    example: I don’t relish the thought of a twelve-hour flight with no leg-room.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take pleasure in
+    meaning: to find enjoyment in doing something
+    example: They seem to take pleasure in looking after you.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take offence
+    meaning: to become upset or angry because someone has insulted or disrespected
+      you
+    example: I think most people take offence if they’re just treated like a number.
+    band_suitability: 7.0+
+    register: neutral
+  - term: warm welcome
+    meaning: a friendly and enthusiastic greeting
+    example: They’re too lazy to give them a warm welcome when they step on board.
+    band_suitability: 6.0+
+    register: neutral
+  - term: all-time favourite
+    meaning: the best or most liked thing of all time in a particular category
+    example: Goldfinger is my absolute/all-time favourite.
+    band_suitability: 6.0+
+    register: informal
+  - term: ardent fan
+    meaning: a very enthusiastic and devoted supporter of someone or something
+    example: She’s an ardent/dedicated fan of American football.
+    band_suitability: 7.0+
+    register: neutral
+  - term: keen admirer
+    meaning: someone who strongly respects and likes a person or thing
+    example: I’m a keen admirer of the new President.
+    band_suitability: 7.0+
+    register: neutral
+  - term: thunderous applause
+    meaning: very loud and enthusiastic clapping
+    example: The thunderous applause at the end of last night’s performance was richly
+      deserved.
+    band_suitability: 8.0+
+    register: formal
+  - term: outstanding performance
+    meaning: an exceptionally good performance
+    example: James King, in particular, gave an outstanding performance.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take full credit
+    meaning: to accept all the praise or responsibility for a success
+    example: The cast cannot take full credit for its success.
+    band_suitability: 7.0+
+    register: neutral
+  - term: critical acclaim
+    meaning: enthusiastic praise from professional reviewers and critics
+    example: He has received critical acclaim many times in the past.
+    band_suitability: 8.0+
+    register: formal
+  - term: rave reviews
+    meaning: very enthusiastic reviews
+    example: He justly deserves all the rave reviews he will undoubtedly receive.
+    band_suitability: 7.0+
+    register: informal
+  - term: standing ovation
+    meaning: an occasion when the audience stands up to clap at the end of a performance
+    example: The orchestra received a standing ovation for their performance.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sing someone's praises
+    meaning: to talk about someone with great approval and enthusiasm
+    example: He’s always singing your praises to me.
+    band_suitability: 8.0+
+    register: informal
+  - term: pat on the back
+    meaning: praise or approval for something well done
+    example: You deserve a pat on the back for such excellent marks!
+    band_suitability: 7.0+
+    register: informal
+  - term: harsh criticism
+    meaning: severe and strong disapproval
+    example: The play came in for some harsh criticism.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sharply critical
+    meaning: expressing strong and direct disapproval
+    example: The writer is sharply critical of our political system.
+    band_suitability: 7.0+
+    register: neutral
+  - term: severely condemned
+    meaning: strongly and formally expressed disapproval
+    example: The banker was severely condemned for his dishonesty.
+    band_suitability: 8.0+
+    register: formal
+  - term: universal condemnation
+    meaning: widespread and total disapproval by almost everyone
+    example: The country’s aggressive behaviour has earned universal condemnation.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

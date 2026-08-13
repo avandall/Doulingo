@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Fluency and Coherence — Suggesting Solutions in Part 3"
+  topic_tags: ["Problems and Solutions", "Fluency and Coherence", "Government Policy"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking, FLUENCY AND COHERENCE"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on simple structures and basic modal verbs to propose solutions; often repetitive."
+    grammar_required: 
+      - Modal verbs (can, could, should)
+    vocabulary_core: ["solution", "problem", "need to"]
+    vocabulary_stretch: ["prevent", "staples"]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Over-reliance on 'I think we should...' without elaborating on the 'why' or 'how'."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses sophisticated phrases to introduce solutions and demonstrates logical flow when discussing complex issues."
+    grammar_required: 
+      - "It's a matter of + gerund"
+      - Complex sentence structures
+    vocabulary_core: ["distribution", "government policy", "reserves"]
+    vocabulary_stretch: ["corruption", "prevents", "population", "staples"]
+    sentence_length_target: "extended, compound-complex sentences"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "How can we solve the problem of food distribution in some parts of the world?"
+    user_model_answer: "It's a matter of getting around the wars, politics, and corruption that prevent the distribution of staples to the general population."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How can we solve the problem of increasing petrol prices?"
+    user_model_answer: "I think the government should find new energy and we need to use less petrol for our cars."

@@ -1,0 +1,28 @@
+content_unit:
+  template_type: band_ladder
+  title: "Free Time & Special Occasions — Basic Grammar & Part 2 Structure"
+  topic_tags: ["Free Time", "Special Occasions", "Grammar", "Speaking Part 2"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 2 & 3"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Phù hợp với học viên bắt đầu, tập trung vào thì hiện tại đơn và quá khứ đơn, biết cách liệt kê thông tin cơ bản theo task card."
+    grammar_required: ["Present simple for general habits", "Past simple for finished actions", "Prepositions of time: on, at, every"]
+    vocabulary_core: ["Hobbies", "Free time activities", "Special occasions", "Family/Friends"]
+    vocabulary_stretch: ["Connectors: because, but, then, too"]
+    sentence_length_target: "Simple sentences, aiming for compound sentences using 'and', 'but', 'because'"
+    common_errors_to_simulate: "Quên chia động từ ngôi thứ 3 số ít (e.g., 'he like' thay vì 'he likes'), sai cấu trúc thì quá khứ của động từ bất quy tắc, lạm dụng cấu trúc câu đơn ngắn."
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Tell me about something you like doing."
+    user_model_answer: "I like going to museums. It's very relaxing."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you watch DVDs?"
+    user_model_answer: "Yes. I like watching DVDs at the weekend. But I don't like watching TV."

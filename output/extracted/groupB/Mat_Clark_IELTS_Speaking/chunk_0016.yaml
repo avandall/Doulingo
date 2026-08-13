@@ -1,0 +1,51 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Topics and Vocabulary Banks"
+  topic_tags: 
+    - Healthy eating
+    - Hotels
+    - Outdoor activities
+    - Memories of the past
+    - Childhood
+    - Colours
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Topics 47-52"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể trả lời các câu hỏi chủ đề cơ bản, bắt đầu sử dụng một số từ vựng theo chủ đề nhưng có thể lặp lại hoặc dùng sai ngữ cảnh."
+    grammar_required: [simple sentences, basic conjunctions]
+    vocabulary_core: [healthy food, stay in a hotel, happy childhood]
+    vocabulary_stretch: [nutritious, luxurious, reminisce, vibrant]
+    sentence_length_target: "Ngắn, cấu trúc đơn giản, hay bị ngắt quãng do bí từ."
+    common_errors_to_simulate: "Sử dụng sai collocations (ví dụ: 'live in a hotel' thay vì 'stay in a hotel'), dùng từ vựng quá đơn giản, thiếu các thành ngữ (idioms) tự nhiên."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh sử dụng từ vựng linh hoạt, phản xạ nhanh và sử dụng thành ngữ một cách tự nhiên để nâng cao band điểm."
+    grammar_required: [complex sentences, varied verb tenses]
+    vocabulary_core: [wholesome, creature comforts, formative years, signify]
+    vocabulary_stretch: 
+      - pig out
+      - "at one's beck and call, hark back to, red tape, green with envy"
+    sentence_length_target: "Câu phức, có sử dụng các mệnh đề quan hệ và các cụm từ nối để kéo dài câu trả lời."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like staying in hotels?"
+    user_model_answer: "Yes, I like. It is very comfortable and I can live in a hotel when I go travel."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like staying in hotels?"
+    user_model_answer: "I’m quite keen on it, actually. When I stay in a high-end hotel, I really enjoy the creature comforts and the fact that the staff are always at your beck and call—it makes me feel like I’m getting the royal treatment."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like to think about the past?"
+    user_model_answer: "Yes, sometimes I think about my childhood memories because it was very happy."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you like to think about the past?"
+    user_model_answer: "To be honest, I’m not the sort of person who likes to hang on to old memories. I prefer to live for the here and now, although occasionally I do hark back to my formative years."

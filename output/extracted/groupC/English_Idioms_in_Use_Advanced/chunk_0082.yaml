@@ -1,0 +1,85 @@
+vocabulary_entry:
+  topic_tags:
+  - general
+  - advanced_vocabulary
+  - idioms
+  category: idiom
+  source_citation: English Idioms in Use Advanced, page 179
+  entries:
+  - term: uncharted territory / waters
+    meaning: a completely new and unfamiliar situation or place
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: win hands down
+    meaning: to win very easily
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: be on the same wavelength
+    meaning: to share the same ideas and opinions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: weather the storm
+    meaning: to survive a difficult situation
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a wolf in sheep's clothing
+    meaning: someone who appears friendly or harmless but is actually dangerous
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cry wolf
+    meaning: to call for help when you do not need it, so that people do not believe
+      you when you really do need help
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: work like a dog
+    meaning: to work extremely hard
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: throw a spanner in the works
+    meaning: to do something that ruins a plan or prevents something from succeeding
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: reinvent the wheel
+    meaning: to waste time trying to create something that already exists
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: wear your heart on your sleeve
+    meaning: to make your feelings obvious to other people
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

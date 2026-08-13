@@ -1,0 +1,100 @@
+vocabulary_entry:
+  topic_tags:
+  - knowledge
+  - understanding
+  - memory
+  - communication
+  category: idiom
+  source_citation: 'English Idioms In Use Intermediate, Unit 5: Knowing and understanding'
+  entries:
+  - term: know something inside out
+    meaning: know every detail of something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: know your stuff
+    meaning: have a very good knowledge of a subject
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: have a familiar ring to it
+    meaning: sound familiar; think you have heard it before
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: ring a bell
+    meaning: have a vague memory of something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: know the meaning of the word
+    meaning: understand what something really means (usually used in negative)
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: not have a clue
+    meaning: not know at all
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: not have the faintest idea
+    meaning: really not know at all
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: not have the foggiest (idea)
+    meaning: absolutely not know at all
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: can't for the life of me
+    meaning: can't remember at all
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: be out of touch with
+    meaning: used to know about it, but don't know the latest developments
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: doesn't ring any bells
+    meaning: it is unfamiliar; don't think I've ever heard it before
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: put two and two together
+    meaning: conclude from the facts one knows
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: get (hold of) the wrong end of the stick
+    meaning: came to the wrong conclusion
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

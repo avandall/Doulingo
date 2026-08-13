@@ -1,0 +1,199 @@
+vocabulary_entry:
+  topic_tags:
+  - news
+  - media
+  - money
+  - crime
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 35, 36, 37
+  entries:
+  - term: crime wave
+    meaning: a sudden increase in the number of crimes committed in an area
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: petty crime
+    meaning: relatively minor crimes such as small theft or vandalism
+    example: The police are doing all they can to tackle petty crime in the city centre.
+    band_suitability: 6.0+
+    register: neutral
+  - term: serious crime
+    meaning: major illegal acts such as murder, armed robbery, or major drug trafficking
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: tackle crime
+    meaning: to try to deal with or stop criminal activities
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: act of terrorism
+    meaning: a violent and unlawful act intended to cause terror or political disruption
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: spate of
+    meaning: a sudden rush or number of similar unpleasant events happening in a short
+      time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: mindless vandalism
+    meaning: senseless and deliberate destruction or damage of public or private property
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: a story breaks
+    meaning: news begins to become known to the public
+    example: The singer was out of the country when the story about his wife broke.
+    band_suitability: 7.0+
+    register: neutral
+  - term: news comes in
+    meaning: latest information or updates are received by a news agency
+    example: 'TV newscaster: News has just come in of an earthquake.'
+    band_suitability: 6.0+
+    register: neutral
+  - term: news leaks out
+    meaning: secret information becomes known to the public accidentally or illegally
+    example: Although the two stars tried to keep their relationship secret, news
+      of it soon leaked out.
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit the headlines
+    meaning: to become prominent in the news
+    example: The scandal is expected to hit the headlines tomorrow.
+    band_suitability: 7.0+
+    register: neutral
+  - term: make headlines
+    meaning: to receive widespread media attention as an important news item
+    example: A dramatic story like that will make headlines world-wide.
+    band_suitability: 6.0+
+    register: neutral
+  - term: front-page headline
+    meaning: a major news story printed on the first page of a newspaper
+    example: The scandal was the front-page headline in all the newspapers.
+    band_suitability: 6.0+
+    register: neutral
+  - term: the latest news
+    meaning: the most recent updates or information about an event
+    example: The latest news from the earthquake zone is more hopeful.
+    band_suitability: 6.0+
+    register: neutral
+  - term: item of news
+    meaning: a single piece of news or a single report
+    example: The main item of news today is the earthquake in Broskva City.
+    band_suitability: 6.0+
+    register: neutral
+  - term: run a story
+    meaning: to publish or broadcast a news report
+    example: The Daily Times recently ran a story about an affair between a famous
+      rock star and a politician.
+    band_suitability: 7.0+
+    register: neutral
+  - term: flick through the newspaper
+    meaning: to turn the pages of a newspaper quickly to look at the main articles
+    example: He flicked through the newspaper as he didn’t have time to read it properly.
+    band_suitability: 6.0+
+    register: informal
+  - term: give the go-ahead
+    meaning: to give permission for something to proceed
+    example: In a surprising turn of events last night, the government agreed to plans
+      for the development of the City.
+    band_suitability: 7.0+
+    register: neutral
+  - term: anti-smoking campaign
+    meaning: an organized effort to discourage people from smoking
+    example: The Minister for Health today outlined plans for a national anti-smoking
+      campaign.
+    band_suitability: 6.0+
+    register: neutral
+  - term: launch a campaign
+    meaning: to start an organized course of action to achieve a goal
+    example: The government intends to launch the campaign in the new year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: keep a close watch on
+    meaning: to monitor someone or something very carefully
+    example: Our reporter in St Pips is keeping a close watch on the situation...
+    band_suitability: 7.0+
+    register: neutral
+  - term: peace talks end in failure
+    meaning: diplomatic negotiations to end a conflict fail to reach an agreement
+    example: Peace talks between the Eastern Liberation Army and the government of
+      Karavia broke down last night.
+    band_suitability: 8.0+
+    register: formal
+  - term: loss of life
+    meaning: deaths resulting from an accident, disaster, or conflict
+    example: Fortunately there was no loss of life.
+    band_suitability: 7.0+
+    register: formal
+  - term: spend money
+    meaning: to give money as payment for goods or services
+    example: Juan spends a lot of money on travelling.
+    band_suitability: 6.0+
+    register: neutral
+  - term: save money
+    meaning: to keep money for future use rather than spending it
+    example: We’re saving a little money each month to buy a new car next year.
+    band_suitability: 6.0+
+    register: neutral
+  - term: waste money
+    meaning: to use money carelessly or on unnecessary things
+    example: Sara wasted/squandered all her money on clothes and fast cars.
+    band_suitability: 6.0+
+    register: neutral
+  - term: squander money
+    meaning: to spend large sums of money in a reckless and wasteful way
+    example: Sara wasted/squandered all her money on clothes and fast cars.
+    band_suitability: 8.0+
+    register: formal
+  - term: change money
+    meaning: to exchange one currency for another
+    example: You can change some money at the airport.
+    band_suitability: 6.0+
+    register: neutral
+  - term: throw money around
+    meaning: to spend money in an obvious, careless, and boastful way on unnecessary
+      things
+    example: If Jim keeps on throwing his money around like that, he soon won’t have
+      any left.
+    band_suitability: 7.0+
+    register: informal
+  - term: throw money at a problem
+    meaning: to try to solve a problem by spending a lot of money, often inefficiently
+    example: The government think they can solve the problem by throwing money at
+      it.
+    band_suitability: 8.0+
+    register: neutral
+  - term: donate money
+    meaning: to give money voluntarily to help a charity or organization
+    example: The business donates a lot of money each year to charity.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

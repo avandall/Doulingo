@@ -1,0 +1,109 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - general_vocabulary
+  - language_reference
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: make a decision
+    meaning: to decide about something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make an effort
+    meaning: to try very hard to do something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a mistake
+    meaning: to do something wrong
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make progress
+    meaning: to develop or improve
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: lose your temper
+    meaning: to suddenly become very angry
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: fall in love
+    meaning: to start to love someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: love at first sight
+    meaning: an immediate attraction to someone when you first meet them
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: make a profit
+    meaning: to earn more money than it costs to run a business
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: change your mind
+    meaning: to change your opinion or decision
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: long-term memory
+    meaning: the part of your memory where information is stored for a long time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: memories fade
+    meaning: memories slowly become less clear over time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: stir up memories
+    meaning: to make you remember things from the past
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: make a breakthrough
+    meaning: to make an important discovery or change
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: save money
+    meaning: to keep money so that you can use it later
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: waste money
+    meaning: to spend money in a careless or unnecessary way
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

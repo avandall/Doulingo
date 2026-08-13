@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Discussing familiar topics — Part 1 Preparation"
+  topic_tags: ["personal information", "hobbies", "daily life"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Improve_Your_Skills_Listening_Speaking_IELTS.md, Discussing familiar topics"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Provides basic, direct answers. Often uses short sentences and limited range of vocabulary."
+    grammar_required: ["Present simple", "Past simple", "Basic adverbs of frequency"]
+    vocabulary_core: ["town", "hobby", "TV programme", "travel"]
+    vocabulary_stretch: ["sentimental value", "current affairs"]
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Giving one-word answers; failure to elaborate; repetitive sentence structure."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Answers in full sentences with supporting details and reasons. Uses varied vocabulary and natural phrasing."
+    grammar_required: ["Complex sentences with conjunctions", "Relative clauses", "Modals for preference"]
+    vocabulary_core: ["admire", "precious", "relaxing", "transport"]
+    vocabulary_stretch: ["sentimental value", "current affairs", "elaborate"]
+    sentence_length_target: "extended answers with explanation/reasoning"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "Yes, I like playing piano."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Do you have any hobbies?"
+    user_model_answer: "I really enjoy playing jazz piano in my spare time. It’s a great way for me to relax after a long day of work."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What is your most precious object?"
+    user_model_answer: "My ring. It was my grandmother's."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What is your most precious object?"
+    user_model_answer: "I have a beautiful ring that belonged to my grandmother. It has a lot of sentimental value for me, so it's very special."

@@ -1,0 +1,42 @@
+content_unit:
+  template_type: scenario
+  title: Basic IELTS Speaking — Travelling and Holidays
+  topic_tags:
+  - Travelling
+  - Holidays
+  - Planning
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: Basic_IELTS_Speaking, Oral Exercises
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Phát triển câu trả lời dựa trên các cụm từ gợi ý (suggested
+    phrases). Có thể duy trì hội thoại liên tục nhưng câu văn còn đơn giản.
+  grammar_required:
+  - Present Simple
+  - Present Perfect
+  - Modals (could/should)
+  vocabulary_core:
+  - sightseeing
+  - natural beauty
+  - picky
+  - travel partners
+  vocabulary_stretch:
+  - take a risk
+  - nothing ventured, nothing gained
+  sentence_length_target: 2-3 mệnh đề kết nối bằng 'and', 'but', 'because'
+  common_errors_to_simulate: Lạm dụng từ nối đơn giản (and, but), thiếu linh hoạt
+    trong cấu trúc câu phức, đôi khi lặp lại ý của người đối thoại.
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: What do you like to do when you go on a trip?
+  user_model_answer: For me, my favourite thing to do on a trip is to do some sightseeing,
+    and also to take time to visit some places of natural beauty.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Is there anything you dislike about travelling?
+  user_model_answer: Yes, one thing I dislike is eating new foods. I'm really picky
+    about food. I hate trying foods that I've never tried before.

@@ -1,0 +1,61 @@
+content_unit:
+  template_type: scenario
+  title: Practising Part 2 Speaking - Strategy & Topic Tasks
+  topic_tags:
+  - Part 2
+  - Strategy
+  - Speaking Practice
+  target_band_min: 6.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: Get_IELTS_Band_9_Speaking.md, Practising Part 2 Speaking
+band_tiers:
+- band_min: 6.0
+  band_max: 7.0
+  can_do_description: Can provide a coherent talk following the 4 bullet points but
+    may struggle with timing or depth in all sections.
+  grammar_required:
+  - Past tenses for anecdotes
+  - Simple cohesive devices
+  vocabulary_core:
+  - party
+  - journey
+  - school
+  - meal
+  vocabulary_stretch:
+  - occasion
+  - commute
+  - destination
+  - vivid memory
+  sentence_length_target: medium
+  common_errors_to_simulate: Running out of time before finishing all bullet points,
+    repetition of basic connectors.
+- band_min: 7.5
+  band_max: 9.0
+  can_do_description: Can speak fluently for 2 minutes, developing ideas naturally
+    while covering all prompts effectively.
+  grammar_required:
+  - Complex structures
+  - Narrative tenses
+  - Passive voice where appropriate
+  vocabulary_core:
+  - event
+  - natural habitat
+  - regularly
+  - experience
+  vocabulary_stretch:
+  - significance
+  - commuter
+  - scenic
+  - reminisce
+  sentence_length_target: long and varied
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 8.5
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

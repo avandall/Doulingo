@@ -1,0 +1,197 @@
+vocabulary_entry:
+  topic_tags:
+  - films
+  - books
+  - literature
+  - entertainment
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Unit 23
+  entries:
+  - term: international food
+    meaning: 'food from around the world (note: do not use world-wide food)'
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: Chinese/Mexican/French cuisine
+    meaning: the traditional cooking and style of food of a specific country or culture
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: bad review
+    meaning: a critical evaluation expressing dislike for a book or film
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: based on a true story
+    meaning: derived from actual events and people
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: capture an atmosphere
+    meaning: successfully represent or convey a specific mood or feeling
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: deal with a topic
+    meaning: to be about a particular subject
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: opening/closing scenes
+    meaning: the first or final parts of a film
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: opening/closing chapters
+    meaning: the first or final parts of a book
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: happy ending
+    meaning: a conclusion where everything turns out well for the main characters
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: highly recommended
+    meaning: strongly suggested to others because it is very good
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: go on the stage
+    meaning: become an actor in theatre or film
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: historical drama
+    meaning: a movie or play set in the past
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: the big screen
+    meaning: cinema films in general
+    example: I think historical dramas work particularly well on the big screen.
+    band_suitability: 6.0+
+    register: neutral
+  - term: special effects
+    meaning: illusions or visual tricks used in a film, often created using technology
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: male lead
+    meaning: the main male part in a film or play
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: female lead
+    meaning: the main female part in a film or play
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: play the role of
+    meaning: act as a specific character
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: cameo role
+    meaning: a small but special part in a film, often played by a famous actor
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: give an excellent performance
+    meaning: act very well in a role
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: nominate for an Oscar
+    meaning: put on the official list of people or films who may receive an Academy
+      Award
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: box-office hit
+    meaning: an extremely successful film with audiences
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: play to full houses
+    meaning: perform in cinemas or theatres with no empty seats
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: cast a film
+    meaning: select the actors for a film
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: star in a film
+    meaning: play the main part in a film
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: shoot a film
+    meaning: film or record a movie
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a film
+    meaning: produce a movie
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: be engrossed/absorbed in a book
+    meaning: giving all your attention to a book
+    example: Claudia was so engrossed/absorbed in her book that she didn’t hear me.
+    band_suitability: 7.0+
+    register: neutral
+  - term: compulsive reading
+    meaning: books or articles so interesting that you cannot stop reading them
+    example: Many people find articles about the private lives of film stars compulsive
+      reading.
+    band_suitability: 8.0+
+    register: neutral
+  - term: bedtime reading
+    meaning: reading material that is suitable to look at right before going to sleep
+    example: I don’t think a horror story makes good bedtime reading.
+    band_suitability: 6.0+
+    register: neutral
+  - term: an easy read
+    meaning: a book that is relaxing and simple to read
+    example: Detective stories are good for train journeys as they’re an easy read.
+    band_suitability: 6.0+
+    register: neutral
+  - term: flick/skim through a book
+    meaning: look quickly through a book without reading it in detail
+    example: Mona flicked/skimmed through the book without reading it in detail.
+    band_suitability: 6.0+
+    register: neutral
+  - term: beautifully written
+    meaning: written with a high level of skill and artistic quality
+    example: The book is beautifully written – I highly recommend it.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

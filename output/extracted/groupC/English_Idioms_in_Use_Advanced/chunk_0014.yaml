@@ -1,0 +1,120 @@
+vocabulary_entry:
+  topic_tags:
+  - transport
+  - work
+  - life-choices
+  - success
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 16
+  entries:
+  - term: run out of steam
+    meaning: lose energy or interest in something you were previously enthusiastic
+      about
+    example: He worked extremely hard at first, but, after a couple of years, he ran
+      out of steam and lost interest in his studies.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go off the rails
+    meaning: start behaving in a way that is not socially acceptable or is disorganized
+    example: His tutor worried that he had gone off the rails.
+    band_suitability: 7.0+
+    register: informal
+  - term: down the line
+    meaning: at a point in time in the future
+    example: Now, six months down the line, he is back on track towards gaining an
+      excellent degree.
+    band_suitability: 6.0+
+    register: neutral
+  - term: be back on track
+    meaning: returning to the correct path to achieve something after a period of
+      difficulty
+    example: He is back on track towards gaining an excellent degree and fulfilling
+      his dreams.
+    band_suitability: 6.0+
+    register: neutral
+  - term: at the wheel
+    meaning: to be the driver or the person in control
+    example: I saw their car this morning but couldn't make out who was at the wheel.
+    band_suitability: 7.0+
+    register: neutral
+  - term: in the driving seat
+    meaning: to be in control of a situation
+    example: Although the general manager is officially in charge, everyone knows
+      his deputy is really in the driving seat.
+    band_suitability: 7.0+
+    register: neutral
+  - term: life in the fast lane
+    meaning: a life that is active, exciting and sometimes dangerous
+    example: I've had enough of life in the fast lane, so I'm moving to the countryside.
+    band_suitability: 7.0+
+    register: neutral
+  - term: do a U-turn
+    meaning: a complete change of policy or opinion, especially in politics
+    example: Initially, the minister was against increasing road tax, but he has now
+      done a U-turn.
+    band_suitability: 7.0+
+    register: neutral
+  - term: step up a gear
+    meaning: to start working or performing more effectively or quickly
+    example: After half-time, the team stepped up a gear and managed to score three
+      goals.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be flying high
+    meaning: to be very successful
+    example: The company had some initial problems but now it is flying high.
+    band_suitability: 7.0+
+    register: neutral
+  - term: fly by the seat of your pants
+    meaning: to do something difficult without much experience or formal training
+    example: We had no business experience before opening the shop, so we were really
+      flying by the seat of our pants.
+    band_suitability: 8.0+
+    register: informal
+  - term: do something on autopilot
+    meaning: to do something without thinking because you have done it so many times
+    example: I've written so many references now that I can more or less do it on
+      autopilot.
+    band_suitability: 7.0+
+    register: informal
+  - term: take a nosedive
+    meaning: to fall or go down suddenly and quickly
+    example: Share prices took a nosedive last week.
+    band_suitability: 7.0+
+    register: neutral
+  - term: be on a collision course
+    meaning: to behave in a way that is likely to cause a major disagreement or fight
+    example: The two countries are on a collision course.
+    band_suitability: 8.0+
+    register: formal
+  - term: come to a standstill
+    meaning: to stop completely
+    example: Production has come to a standstill because of the strike.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

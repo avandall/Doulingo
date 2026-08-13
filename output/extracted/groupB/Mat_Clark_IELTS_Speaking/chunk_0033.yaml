@@ -1,0 +1,77 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Part 3 — Structuring Predictions, Reasons, and Advantages
+  topic_tags:
+  - Predictions
+  - Why_Questions
+  - Advantages
+  - Part_3_Strategy
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: Mat_Clark_IELTS_Speaking.md, Prediction & Why & Advantages Structures
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Answers the question but relies on basic structures, repeats
+    vocabulary from the prompt, and lacks formal linking phrases.
+  grammar_required:
+  - Future tenses (will/going to)
+  vocabulary_core:
+  - reason
+  - advantage
+  - cheap
+  - fast
+  vocabulary_stretch: []
+  sentence_length_target: Short, simple sentences
+  common_errors_to_simulate: Repeating words from the question (e.g., 'the advantage
+    is...'); lack of discourse markers to connect ideas; simplistic vocabulary (good,
+    bad, many reasons).
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Uses complex linking structures and varied vocabulary to replace
+    generic terms like 'reason' or 'advantage'. Demonstrates coherence through signposting.
+  grammar_required:
+  - Modal verbs of probability (might/could/may/would)
+  - complex future structures
+  vocabulary_core:
+  - factor
+  - motivation
+  - incentive
+  - benefit
+  - merit
+  - plus point
+  vocabulary_stretch:
+  - envisage
+  - transpire
+  - rationale
+  - subsequent
+  sentence_length_target: Complex, compound-complex sentences with cohesive devices
+sample_dialogues:
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: Why do so many people want to be famous?
+  user_model_answer: In my opinion there are many reasons. Firstly people think they
+    can make more money, live in a big house, drive an expensive car and travel around
+    the world.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Why do so many people want to be famous?
+  user_model_answer: In my opinion I guess I would have to say that there are probably
+    a number of factors involved. Primarily, one key motivation would be because they
+    think they would be able to make more money. As well as this, a subsequent incentive
+    might be because they want to live in a big house and drive an expensive car.
+- band_level: 5.5
+  turn_type: standalone
+  ai_line: What are the advantages of travelling by train?
+  user_model_answer: I think there are many advantages; for example it is quite cheap,
+    it’s usually faster than road travel, you can usually take a train to any destination
+    and you can sleep on the train.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What are the advantages of travelling by train?
+  user_model_answer: Well, I suppose that there are quite a few clear benefits, but
+    I would probably say that for the most part, the one thing that really stands
+    out is that trains are really cheap. I guess that another obvious plus point is
+    that it is much faster than travelling by road. Along with this, a further merit
+    is that you can sleep quite comfortably on long train journeys.

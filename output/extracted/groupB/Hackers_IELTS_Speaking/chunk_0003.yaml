@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Hackers IELTS Speaking — Dealing with Exam Issues & Job/Study Vocabulary"
+  topic_tags: [exam_strategy, job, study, vocabulary]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Hackers_IELTS_Speaking.md, Phụ lục 1 & Unit 01"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể giao tiếp cơ bản nhưng thường xuyên mắc lỗi dùng từ (word choice) và bị động khi gặp từ vựng khó."
+    grammar_required: [simple_sentences, basic_tenses]
+    vocabulary_core: [borrow, lend, job, study, major]
+    vocabulary_stretch: [drawback, workload, qualified, temporary_positions]
+    sentence_length_target: "Short to medium sentences"
+    common_errors_to_simulate: "Nhầm lẫn giữa lend (cho mượn) và borrow (mượn); lặp từ nhiều lần; trả lời câu hỏi cụt ngủn."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh sử dụng từ vựng chính xác, linh hoạt; có khả năng ứng biến khi không hiểu câu hỏi bằng các cụm từ yêu cầu giải thích lịch sự."
+    grammar_required: [complex_sentences, passive_voice, perfect_tenses, conditionals]
+    vocabulary_core: [professionals, decent_money, nine-to-five, job_market]
+    vocabulary_stretch: [scratched_the_surface, stuck_with_it, pay_off, qualified_applicants]
+    sentence_length_target: "Complex, compound sentences with logical connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Can you tell me about your job?"
+    user_model_answer: "I work at an office. The only bad thing is overtime work. It is very heavy these days."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Can you tell me about your job?"
+    user_model_answer: "I currently have a nine-to-five job. Although it's stable, the large amount of overtime work is the only drawback. Recently, my workload has become quite heavy, which is a bit challenging."
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What do you think of your major?"
+    user_model_answer: "I read things for my major. It is hard but I am happy."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What do you think of your major?"
+    user_model_answer: "I chose to major in economics, and honestly, even after four years, I feel I’ve barely scratched the surface of the subject. Math was tough at first, but I'm glad I stuck with it."

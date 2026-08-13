@@ -1,0 +1,103 @@
+vocabulary_entry:
+  topic_tags:
+  - travel
+  - holidays
+  - work
+  - actions
+  - manners
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: take a holiday
+    meaning: to go away on vacation
+    example: We’re so glad we decided to take a holiday here.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a trip
+    meaning: to go on a journey or excursion
+    example: Yesterday we took a trip to the mountains.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a liking to
+    meaning: to start to like someone or something
+    example: '...got off when we saw one that we took a liking to.'
+    band_suitability: 7.0+
+    register: neutral
+  - term: take a risk
+    meaning: to do something even though you know something bad could happen
+    example: Of course, we were taking a risk as we didn’t know exactly what we’d
+      find there.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take an interest in
+    meaning: to show interest in someone or something
+    example: Some kids took an interest in us and showed us some great places.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take a chance
+    meaning: to do something risky in the hope that it will succeed
+    example: I’d take a chance and leave if I were you.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take a dislike to
+    meaning: to start to dislike someone or something
+    example: '...where the boss has taken a dislike to you!'
+    band_suitability: 7.0+
+    register: neutral
+  - term: take advantage of
+    meaning: to make good use of an opportunity
+    example: Take advantage of being in London – there are always plenty of jobs there.
+    band_suitability: 6.0+
+    register: neutral
+  - term: take action
+    meaning: to do something to deal with a problem or situation
+    example: You’ll soon find something else, so take action, that’s my advice!
+    band_suitability: 7.0+
+    register: neutral
+  - term: pay attention
+    meaning: to watch, listen to, or think about someone or something carefully
+    example: You must pay attention to the teacher.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pay a compliment
+    meaning: to say something nice to someone to praise them
+    example: I was trying to pay her a compliment but she misunderstood.
+    band_suitability: 6.0+
+    register: neutral
+  - term: pay your (last) respects
+    meaning: to formally show your respect for someone who has died
+    example: At a funeral people pay their last respects to the person who has died.
+    band_suitability: 8.0+
+    register: formal
+  - term: pay tribute
+    meaning: to praise someone publicly for their achievements
+    example: When Jack retired, his boss made a speech paying tribute to all he had
+      done for the company.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

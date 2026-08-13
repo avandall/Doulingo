@@ -1,0 +1,61 @@
+content_unit:
+  template_type: band_ladder
+  title: Language Learning and Internet Usage - Band 7+ Samples
+  topic_tags:
+  - Language Learning
+  - Internet
+  - Technology
+  target_band_min: 7.0
+  target_band_max: 8.5
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS.md, Track 35 & 38
+band_tiers:
+- band_min: 7.0
+  band_max: 8.5
+  can_do_description: Candidate demonstrates the ability to use idiomatic expressions,
+    complex grammatical structures, and coherent argumentative flow to answer abstract
+    questions.
+  grammar_required:
+  - Complex sentences
+  - Relative clauses
+  - Conditional structures (hypothetical)
+  - Passive voice for academic tone
+  vocabulary_core:
+  - essential
+  - intricately connected
+  - immerse
+  - inevitable
+  - disadvantaged
+  vocabulary_stretch:
+  - lingua franca
+  - backlash
+  - holds much sway
+  - technophile
+  - on second thoughts
+  sentence_length_target: Variable (varying between concise direct answers and extended
+    complex explanations)
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Is it considered important in your country to learn foreign languages?
+  user_model_answer: 'More than just important, it''s considered essential. The English
+    poet John Donne said ''no man is an island'', and I think in this day and age
+    that is also true of countries: we are all intricately connected. A country that
+    wants to do business abroad and export its goods has to know how to communicate
+    with foreigners, and that means speaking foreign languages.'
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Why do you think people feel it is important to continue speaking their
+    local languages?
+  user_model_answer: There is a backlash in some quarters against the spread of English.
+    One way this is expressed is by the insistence on maintaining local languages.
+    A local language is more than just words. It links a community with its past,
+    with its heritage, and so if you stop speaking your language, you lose a part
+    of yourself.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Do you think older people are scared of new technology?
+  user_model_answer: Some older people embrace new technology. My granddad, for example,
+    was a technophile and wanted to keep up to speed with the latest technology. However,
+    I would say that most older people don't bother learning about new technology
+    simply because they can't see what it would bring to their lives.

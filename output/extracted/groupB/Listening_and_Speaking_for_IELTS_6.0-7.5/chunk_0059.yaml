@@ -1,0 +1,41 @@
+content_unit:
+  template_type: scenario
+  title: Listening Comprehension — Festival Details
+  topic_tags:
+  - festivals
+  - events
+  - listening_practice
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: Listening_and_Speaking_for_IELTS_6.0-7.5.md, 2.18
+band_tiers:
+- band_min: 6.0
+  band_max: 7.5
+  can_do_description: Candidates can identify specific factual information (frequency,
+    quantity, advice) from a listening transcript.
+  grammar_required:
+  - simple present for facts
+  - quantifiers (one or two, many)
+  vocabulary_core:
+  - festival
+  - programme
+  - leaflet
+  - reserve
+  - events
+  vocabulary_stretch:
+  - suitable
+  - popular
+  sentence_length_target: N/A
+  common_errors_to_simulate: Misinterpreting frequency adverbs or quantity markers
+    in fast-paced audio.
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

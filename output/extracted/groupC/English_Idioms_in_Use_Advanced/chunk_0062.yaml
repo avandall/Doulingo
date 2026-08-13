@@ -1,0 +1,67 @@
+vocabulary_entry:
+  topic_tags:
+  - work
+  - business
+  - career
+  - employment
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 29
+  entries:
+  - term: at the top of the ladder
+    meaning: at the highest and most successful level in a profession or career
+    example: 1 at the top of the ladder
+    band_suitability: 7.0+
+    register: neutral
+  - term: a sleeping / silent partner
+    meaning: someone who invests money in a business but does not take part in its
+      daily management
+    example: 3 a sleeping/ silent partner
+    band_suitability: 8.0+
+    register: formal
+  - term: a golden handshake
+    meaning: a large sum of money given to someone when they leave a company or retire
+    example: 2 a golden handshake
+    band_suitability: 8.0+
+    register: neutral
+  - term: a foot in the door
+    meaning: an initial entry into a profession, organisation, or business
+    example: 4 a foot in the door
+    band_suitability: 7.0+
+    register: neutral
+  - term: a track record
+    meaning: all the past achievements, successes, or failures of a person or organisation
+    example: 1 No. If you have a good track record, you have a history of success,
+      not failure.
+    band_suitability: 7.0+
+    register: formal
+  - term: a cushy number
+    meaning: a job that is easy and well-paid
+    example: 2 No. A cushy number is a very easy job.
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

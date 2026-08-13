@@ -1,0 +1,49 @@
+content_unit:
+  template_type: scenario
+  title: Warm-up — Basic Personal Introduction Questions
+  topic_tags:
+  - Personal Information
+  - Introduction
+  - Study
+  - Work
+  target_band_min: 4.0
+  target_band_max: 5.5
+  register: neutral
+  source_citation: Lessons_for_IELTS_Speaking, WARM-UP
+band_tiers:
+- band_min: 4.0
+  band_max: 5.0
+  can_do_description: Learner can provide basic personal information such as name,
+    origin, and occupation using simple, memorized phrases.
+  grammar_required:
+  - Present Simple
+  - Verb to be
+  vocabulary_core:
+  - student
+  - study
+  - job
+  - English
+  - name
+  vocabulary_stretch:
+  - important language
+  sentence_length_target: short (5-10 words)
+  common_errors_to_simulate: Lack of fluency, reliance on short subject-verb phrases,
+    repetition of simple sentence structures.
+sample_dialogues:
+- band_level: 4.5
+  turn_type: standalone
+  ai_line: What's your family name?
+  user_model_answer: My family name is Wang.
+- band_level: 4.5
+  turn_type: standalone
+  ai_line: Where do you come from?
+  user_model_answer: I come from Beijing. It was very enjoyable and informative.
+- band_level: 4.5
+  turn_type: standalone
+  ai_line: Why are you studying English?
+  user_model_answer: I need to improve my English because it's an important language
+    to learn.
+- band_level: 4.5
+  turn_type: standalone
+  ai_line: Are you a student or do you have a job?
+  user_model_answer: I am a student at New Oriental Foreign Language School.

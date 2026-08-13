@@ -1,0 +1,135 @@
+vocabulary_entry:
+  topic_tags:
+  - crime
+  - criticism
+  - decision_making
+  - emotions
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: commit a crime
+    meaning: to do something illegal
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fight crime
+    meaning: to take action against illegal activities
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: juvenile crime
+    meaning: illegal acts committed by young people
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: petty crime
+    meaning: minor crimes that are not very serious
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: tackle crime
+    meaning: to try to deal with illegal activities
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: constructive criticism
+    meaning: criticism that is useful and intended to help or improve something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: constant criticism
+    meaning: criticism that happens all the time or repeatedly
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a contribution
+    meaning: to give money, help, or a useful service to something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: gain control
+    meaning: to get the power to direct or manage something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: controversial decision
+    meaning: a decision that causes a lot of disagreement or discussion
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: have a conversation
+    meaning: to talk with someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: heated conversation
+    meaning: a conversation full of anger and strong emotions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: make polite conversation
+    meaning: to talk about trivial or safe topics in social situations
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: cause damage
+    meaning: to harm or spoil something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: dead-end job
+    meaning: a job with low wages and no prospects of promotion or improvement
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: demanding job
+    meaning: a job that requires a lot of effort, skill, or attention
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: arrive at a decision
+    meaning: to reach a conclusion or make a choice after thinking
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: come to a decision
+    meaning: to decide something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a decision
+    meaning: to choose between alternatives
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: snap decisions
+    meaning: decisions made quickly without careful thought
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

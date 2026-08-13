@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 1: Improving Answer Quality"
+  topic_tags: [Family, Free time, Speaking Part 1]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate, Unit 1 & 2"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate can provide basic personal information but answers are often too short. Needs to expand using descriptions or extra details."
+    grammar_required: [Present simple, possessive adjectives]
+    vocabulary_core: [Family members, free time activities]
+    vocabulary_stretch: [Adjectives for description]
+    sentence_length_target: "2-3 full sentences"
+    common_errors_to_simulate: "Giving one-word answers, unnatural pauses, overuse of simple sentences without connectors."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate provides full answers with relevant descriptions and explanations, maintaining a natural flow and speed."
+    grammar_required: [Complex sentence structures, precise verb emphasis]
+    vocabulary_core: [Thematic vocabulary for everyday topics]
+    vocabulary_stretch: 
+      - "Adverbs of emphasis like 'really"
+      - prefer
+    sentence_length_target: "Expanded responses with multiple clauses"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "Do you have any brothers or sisters?"
+    user_model_answer: "Yes, I have two sisters. Their names are Ela and Liz."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you have any brothers or sisters?"
+    user_model_answer: "Yes, I have two sisters. Their names are Ela and Liz. Ela looks like my mother and they are both very kind."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like doing in your free time?"
+    user_model_answer: "I like using the internet and reading."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What do you like doing in your free time?"
+    user_model_answer: "I really like using the internet to chat with my friends, but honestly, my favourite thing is going shopping. It depends on how much free time I have, though."

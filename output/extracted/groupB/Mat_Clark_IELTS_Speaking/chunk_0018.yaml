@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 - Strategic Preparation and Execution"
+  topic_tags: [speaking_strategy, part_2, preparation, grammar, vocabulary]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Section 2.5 Part Two Strategy"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on providing basic answers, often limited by simple sentence structures, repetitive vocabulary, and frequent tense errors."
+    grammar_required: [simple_past, simple_present]
+    vocabulary_core: [basic_descriptive_adjectives, general_topic_words]
+    vocabulary_stretch: []
+    sentence_length_target: "short_simple_sentences"
+    common_errors_to_simulate: "Ignoring tense requirements (e.g., using present for a past event), repeating the same common words (e.g., 'interesting'), and lack of linking words."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to manage the two-minute talk effectively by using strategic preparation, specific vocabulary, and accurate grammatical range tailored to the prompt."
+    grammar_required: [conditional_tenses, complex_sentence_structures, varied_tense_use]
+    vocabulary_core: [topic_specific_terms, collocations]
+    vocabulary_stretch: [idiomatic_expressions, academic_synonyms]
+    sentence_length_target: "varied_length_with_cohesion"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a vehicle you would like to own."
+    user_model_answer: "I want to own a car. It is very fast and cool. I see many cars on the street. It is good for going to work. I like it because it is comfortable."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a vehicle you would like to own."
+    user_model_answer: "If I were to choose a vehicle I'd love to own, it would definitely be a helicopter. I know it sounds like a luxury, but honestly, if I were a millionaire, I would prioritize the convenience of avoiding traffic. It would enable me to explore areas that are otherwise inaccessible by road."

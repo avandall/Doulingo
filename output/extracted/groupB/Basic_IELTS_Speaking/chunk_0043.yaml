@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "Useful Sentence Structures — Travelling"
+  topic_tags: ["Travelling", "Sentence Structure", "Basic Speaking"]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Useful Sentence Structures"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Người học có thể diễn đạt ý kiến cơ bản về chủ đề du lịch bằng cách sử dụng các cấu trúc câu phức hợp đơn giản."
+    grammar_required: 
+      - Simple sentences with conjunctions (because)
+      - Gerund phrases as subjects/objects
+      - To-infinitive phrases
+    vocabulary_core: ["travelling", "favourite", "dislike", "attracted to"]
+    vocabulary_stretch: ["local market", "keen on"]
+    sentence_length_target: "Short to medium (10-15 words)"
+    common_errors_to_simulate: "Lặp từ 'like', dùng cấu trúc câu quá đơn giản, thiếu các từ nối phức tạp hơn ngoài 'because'."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you like travelling?"
+    user_model_answer: "I dislike travelling because I usually get sick."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What do you like best about travelling?"
+    user_model_answer: "The best thing about travelling is learning new things."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What is your favourite thing to do on a trip?"
+    user_model_answer: "My favourite thing to do when I go on a trip is to visit the local market."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What kind of places do you prefer?"
+    user_model_answer: "The places I am always attracted to are those that are natural, like beaches, forests, and mountains."

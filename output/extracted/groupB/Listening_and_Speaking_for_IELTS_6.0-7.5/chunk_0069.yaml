@@ -1,0 +1,56 @@
+content_unit:
+  template_type: band_ladder
+  title: Understanding structure and flow in academic/professional talks
+  topic_tags:
+  - Time management
+  - Signposting language
+  - Presentation skills
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: Listening_and_Speaking_for_IELTS_6.0-7.5.md, Understanding structure
+    and flow
+band_tiers:
+- band_min: 6.0
+  band_max: 6.5
+  can_do_description: Can use basic sequencing words (firstly, next) but may struggle
+    with maintaining flow when shifting topics or digressing.
+  grammar_required:
+  - Simple signposting phrases
+  - Future tense for outlining
+  vocabulary_core:
+  - firstly
+  - next
+  - to conclude
+  vocabulary_stretch:
+  - implications
+  - effective
+  sentence_length_target: Short, simple sentences
+  common_errors_to_simulate: Lack of linking words between complex ideas; repeating
+    the same transition word (e.g., 'and then' for everything).
+- band_min: 7.0
+  band_max: 7.5
+  can_do_description: Uses a wide range of cohesive devices to structure a talk; effectively
+    manages digressions and returns to the main topic.
+  grammar_required:
+  - Complex signposting
+  - Cohesive transition markers
+  vocabulary_core:
+  - furthermore
+  - moving on to
+  - to sum up
+  vocabulary_stretch:
+  - incidentally
+  - case study
+  - delegate
+  sentence_length_target: Varying length with clear logical markers
+sample_dialogues:
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 8.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.

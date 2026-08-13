@@ -1,0 +1,112 @@
+vocabulary_entry:
+  topic_tags:
+  - age
+  - relationships
+  - lifestyle
+  - achievements
+  - success
+  - money
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 10 & 11
+  entries:
+  - term: ancient history
+    meaning: history of the distant past
+    example: She studied ancient history.
+    band_suitability: 6.0+
+    register: neutral
+  - term: antique furniture
+    meaning: old and valuable furniture
+    example: This shop sells antique furniture.
+    band_suitability: 6.0+
+    register: neutral
+  - term: elderly person
+    meaning: an old person (more polite than 'old')
+    example: I helped an elderly person who was trying to cross the road.
+    band_suitability: 6.0+
+    register: formal
+  - term: single parent
+    meaning: a parent living without a partner
+    example: Donna is a single parent; it’s difficult for her to work full time.
+    band_suitability: 6.0+
+    register: neutral
+  - term: solitary figure
+    meaning: a single person on their own in a setting
+    example: There was just one solitary figure on the otherwise deserted beach.
+    band_suitability: 7.0+
+    register: neutral
+  - term: sole survivor
+    meaning: the only person who survives an accident or disaster
+    example: She was the sole survivor of the crash.
+    band_suitability: 7.0+
+    register: neutral
+  - term: only child
+    meaning: a child without brothers or sisters
+    example: I am an only child; I sometimes wonder what it would be like.
+    band_suitability: 6.0+
+    register: neutral
+  - term: gain control
+    meaning: to get power or authority over something
+    example: The Socialist Party gained control of the National Assembly.
+    band_suitability: 7.0+
+    register: formal
+  - term: gain a reputation
+    meaning: to become known for a particular quality or skill
+    example: Her paintings gained recognition thanks to a major exhibition.
+    band_suitability: 7.0+
+    register: formal
+  - term: win a prize
+    meaning: to achieve first place or success in a competition
+    example: He won a medal in the 2016 Olympic Games.
+    band_suitability: 6.0+
+    register: neutral
+  - term: win an election
+    meaning: to get the most votes in a political vote
+    example: The Conservative Party won the 2015 General Election.
+    band_suitability: 6.0+
+    register: neutral
+  - term: earn a salary
+    meaning: to receive money for work done
+    example: I earn $2110 a month.
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a profit
+    meaning: to earn more money than it costs to run a business
+    example: The company made a profit last year.
+    band_suitability: 6.0+
+    register: neutral
+  - term: achieve success
+    meaning: to reach a successful goal through effort
+    example: It’s difficult to achieve success in international sport.
+    band_suitability: 7.0+
+    register: neutral
+  - term: beat an opponent
+    meaning: to defeat someone in a game or battle
+    example: He defeated his opponent in the tennis final.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

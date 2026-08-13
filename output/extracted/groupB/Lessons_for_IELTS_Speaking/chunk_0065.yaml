@@ -1,0 +1,40 @@
+content_unit:
+  template_type: scenario
+  title: "Technology - Predicting the Future and Discussing Daily Gadgets"
+  topic_tags: ["Technology", "Future", "Everyday Life"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking, WARM-UP"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can express simple opinions about technology using future 'will' or 'might'. Vocabulary is limited to common gadgets. Often lacks complex structures or cohesive devices."
+    grammar_required: 
+      - "Will/won't for predictions"
+      - Might for possibility
+    vocabulary_core: ["technology", "Internet", "computer", "phone", "easier"]
+    vocabulary_stretch: ["virtual classrooms", "personal mini-aeroplanes", "download", "convenient"]
+    sentence_length_target: "Short to medium (10-15 words)"
+    common_errors_to_simulate: "Repetitive use of 'I think...', lack of connection between sentences, confusing 'will' with 'be going to' in prediction contexts."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can speculate about future trends with more sophisticated modal verbs and adverbs. Demonstrates a wider range of vocabulary related to functionality and personal impact."
+    grammar_required: 
+      - Modal verbs (could, might, should)
+      - Conditional sentences
+      - Future passive structures
+    vocabulary_core: ["technological possessions", "functionality", "digitization"]
+    vocabulary_stretch: ["virtual interaction", "automated systems", "essential", "indispensable"]
+    sentence_length_target: "Complex, varied sentence structures"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How might life be different in the year 2040?"
+    user_model_answer: "I think life will be very different. Maybe we won't go to school anymore because everything will be on the Internet in virtual classrooms. It will be easier to learn."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What piece of technology is most important to you and why?"
+    user_model_answer: "I would say my smartphone is indispensable. It's not just for communication; I use it for navigation, online banking, and entertainment. It makes my daily life incredibly convenient because I can access almost any information instantly."

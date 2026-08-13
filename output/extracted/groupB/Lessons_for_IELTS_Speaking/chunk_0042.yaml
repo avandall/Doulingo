@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Giving Advice with Should and Ought to"
+  topic_tags: ["Environment", "Grammar", "Advice"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Grammar Section"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Understand and use basic modal verbs for advice correctly. Can form simple positive, negative, and interrogative sentences."
+    grammar_required: 
+      - Subject + should/ought to + base verb
+      - "Basic negative forms (shouldn't)"
+    vocabulary_core: ["environment", "carbon footprint", "recycle", "reuse", "waste"]
+    vocabulary_stretch: ["drastically", "conserve", "fossil fuels"]
+    sentence_length_target: "Simple compound sentences"
+    common_errors_to_simulate: "Confusing 'ought to' with 'should' in negative forms; misuse of base verb after modal (e.g., 'should to do')."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Use modal verbs for advice flexibly and naturally within coherent arguments. Able to paraphrase advice effectively."
+    grammar_required: ["Complex sentence structures with embedded modal clauses"]
+    vocabulary_core: ["carbon footprint", "sustainability", "environmental impact"]
+    vocabulary_stretch: ["drastically", "conserve", "fossil fuels", "brush hut"]
+    sentence_length_target: "Complex sentences with coordinating and subordinating conjunctions"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What can people do to help the environment?"
+    user_model_answer: "I think we should recycle our goods and we ought to travel by bike instead of car."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What can people do to help the environment?"
+    user_model_answer: "In my opinion, we should try to reduce our carbon footprint drastically. For instance, we ought to reuse items rather than just recycling them, as the energy required for processing waste is quite significant."

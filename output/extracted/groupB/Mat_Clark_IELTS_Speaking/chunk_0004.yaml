@@ -1,0 +1,43 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mat Clark IELTS Speaking — Grammar and Pronunciation Assessment Criteria"
+  topic_tags: ["IELTS Speaking Criteria", "Grammar", "Pronunciation", "Band Scores"]
+  target_band_min: 6.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Grammatical Range and Accuracy & Pronunciation"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.0
+    can_do_description: "Communicates clearly but uses a mixture of basic and complex structures; grammar errors occur but do not hinder meaning; pronunciation is clear enough to be understood."
+    grammar_required: 
+      - Basic structures
+      - Some complex structures
+      - Perfect and continuous tenses (partial)
+    vocabulary_core: ["General vocabulary"]
+    vocabulary_stretch: []
+    sentence_length_target: "Mix of short and medium-length sentences"
+    common_errors_to_simulate: "Lack of perfect and continuous tenses; tendency to produce too many simple/basic sentences; errors in complex sentence construction."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Produces many error-free sentences; uses a wide range of complex structures, subordinate clauses, and tenses; pronunciation uses stress and intonation to convey meaning effectively."
+    grammar_required: 
+      - Wide range of sentence structures
+      - Subordinate clauses
+      - Modals (would, could, should, may)
+      - Range of tenses
+    vocabulary_core: ["Common academic/topic vocabulary"]
+    vocabulary_stretch: 
+      - Colossal (uncommon lexical items)
+    sentence_length_target: "Predominantly complex sentences"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Where do you come from?"
+    user_model_answer: "I come from Chongqing. Chongqing is a mountain city. It is located in on the Chang Jiang River."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Where do you come from?"
+    user_model_answer: "I come from Chongqing, which is a mountain city located on the Chang Jiang River."

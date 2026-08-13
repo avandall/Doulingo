@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "People and Places — IELTS Speaking Strategy and Suffixes"
+  topic_tags: [Hometown, Places, City, Suffixes]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS.md, Unit 9"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can answer basic questions about hometown. Often struggles with range of vocabulary and tends to overuse simple or negative descriptions."
+    grammar_required: 
+      - Present Simple
+      - Past Simple (used to)
+    vocabulary_core: 
+      - "basic city adjectives like 'peaceful"
+      - congested
+      - built up
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Exclusively negative attitudes when describing hometown; lack of word formation (suffixes) to vary expression."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses natural, varied language to describe changes in a town. Effectively uses contractions for fluency and demonstrates precise word forms (noun/adjective/verb suffixes)."
+    grammar_required: [Past Simple vs Present Simple, accurate use of used to]
+    vocabulary_core: [Suffixes: -ness, -ism, -hood, -ment, -ship]
+    vocabulary_stretch: [Specific vocabulary related to urban development and personal preference]
+    sentence_length_target: "Complex, fluent sentences with natural phrasing"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "How has your town changed since you first visited it?"
+    user_model_answer: "It used to be peaceful but now it's built up and congested. There is not much for young people to do there."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How has your town changed since you first visited it?"
+    user_model_answer: "Well, the town has seen significant development. While it used to be a quiet, peaceful area, it's become quite built-up and congested lately. However, there's been an improvement in facilities, which I suppose is a positive change for the residents."

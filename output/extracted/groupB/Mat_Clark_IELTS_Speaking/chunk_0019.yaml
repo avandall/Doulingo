@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Fluency-based Strategy & Linking Structures"
+  topic_tags: ["Speaking Part 2", "Strategy", "Fluency", "Coherence"]
+  target_band_min: 7.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Fluency-based Strategy"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates use a 'fluency-based strategy' by incorporating complex linking phrases and redundant language to extend response length and coherence."
+    grammar_required: 
+      - Complex sentence structures
+      - Conditional tenses (would/if)
+      - Embedded clauses
+    vocabulary_core: ["world-renowned", "blockbuster success", "childhood idol", "superstar"]
+    vocabulary_stretch: ["dream come true", "classy", "kick off", "get cracking"]
+    sentence_length_target: "Long and complex sentences connected by transition phrases."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a famous person you would like to meet. You should say: Who the person is, Why he/she is famous, Why you would like to meet this celebrity, What you would like to do if you met this person."
+    user_model_answer: "I guess I could begin by saying something about who this person is, and I think I would have to choose the superstar Jackie Chan from Hong Kong. Going on to my next point which is why he is famous, I really need to add that he is a world-renowned martial arts film star as well as being a successful director. In fact he was probably the first Chinese actor to achieve blockbuster success in Hollywood. And now with reference to why I would like to meet this celebrity, the point I want to make here is that I have always been a big fan of martial arts movies, so if I had the chance to meet one of my childhood idols, it would be a dream come true. And so finally then, if I have time, in answer to the question of what I would like to do if I met him, really I should mention that I would probably ask him to teach me a few special Kung Fu tricks and I would possibly invite him out for dinner at a classy restaurant or something like that."

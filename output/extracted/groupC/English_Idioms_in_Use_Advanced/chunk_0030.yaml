@@ -1,0 +1,149 @@
+vocabulary_entry:
+  topic_tags:
+  - money
+  - society
+  - politics
+  - power
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: money for old rope
+    meaning: money earned with very little effort
+    example: Working as a security guard is money for old rope, unless someone actually
+      tries to break in.
+    band_suitability: 7.0+
+    register: informal
+  - term: strapped for cash
+    meaning: having little or no money
+    example: When I was a student, I was always strapped for cash, so I had to get
+      part-time jobs.
+    band_suitability: 6.0+
+    register: informal
+  - term: laughing all the way to the bank
+    meaning: making a lot of money easily
+    example: It was an instant success, and now they're laughing all the way to the
+      bank.
+    band_suitability: 7.0+
+    register: informal
+  - term: bring home the bacon
+    meaning: earn the money that is needed to live
+    example: Well, someone has to bring home the bacon!
+    band_suitability: 7.0+
+    register: neutral
+  - term: going for a song
+    meaning: very cheap
+    example: It was going for a song at only £80.
+    band_suitability: 7.0+
+    register: neutral
+  - term: living on a shoestring
+    meaning: living on very little money
+    example: I'm tired of living on a shoestring. I need to earn more money.
+    band_suitability: 7.0+
+    register: neutral
+  - term: rolling in it
+    meaning: extremely rich
+    example: He must be absolutely rolling in it.
+    band_suitability: 7.0+
+    register: informal
+  - term: pay over the odds
+    meaning: pay more for something than it is really worth
+    example: There's no point in paying over the odds for it - it's just not worth
+      it.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a self-made man
+    meaning: person who is rich and successful because they have worked hard, not
+      because they were born into a rich family
+    example: Andrew Carnegie is the typical self-made man.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the chattering classes
+    meaning: educated people who enjoy discussing social, political and cultural issues
+    example: He's really popular among the chattering classes.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a second-class citizen
+    meaning: someone treated as if they are less important than others in society
+    example: Pensioners often feel they are treated as second-class citizens by younger
+      people.
+    band_suitability: 7.0+
+    register: neutral
+  - term: the grass roots
+    meaning: ordinary people in a political or sporting organisation, not the leaders
+    example: Football managers often go to smaller clubs to recruit new players from
+      the grass roots.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the silent majority
+    meaning: the large number of people who do not express their opinions publicly
+    example: I don't think their new policy represents the views of the silent majority.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the men in grey suits
+    meaning: people in business or politics with a lot of influence or power, although
+      they are not well known
+    example: The men in grey suits have a lot to do if they are to win back public
+      confidence.
+    band_suitability: 8.0+
+    register: neutral
+  - term: public enemy number one
+    meaning: something or someone that a lot of people dislike or disapprove of
+    example: Smoking has become public enemy number one since the introduction of
+      the smoking ban.
+    band_suitability: 7.0+
+    register: neutral
+  - term: new kid on the block
+    meaning: someone who is new in a place or organisation
+    example: I've only been working here for a few weeks, so I really feel like the
+      new kid on the block.
+    band_suitability: 6.0+
+    register: informal
+  - term: movers and shakers
+    meaning: the people with power and influence
+    example: It seems like all the movers and shakers were at the president's post-election
+      party.
+    band_suitability: 8.0+
+    register: neutral
+  - term: the power behind the throne
+    meaning: someone with no official position but who secretly controls it
+    example: Apparently his wife is the power behind the throne.
+    band_suitability: 8.0+
+    register: neutral
+  - term: pull the strings
+    meaning: be in control, often secretly
+    example: I'm sure she pulls the strings.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on the gravy train
+    meaning: a way of making money quickly and easily, often dishonestly through one's
+      position
+    example: It looks like there's another few years for Mr Big and his government
+      on the gravy train.
+    band_suitability: 8.0+
+    register: informal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

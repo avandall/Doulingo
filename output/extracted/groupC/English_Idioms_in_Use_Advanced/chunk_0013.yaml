@@ -1,0 +1,140 @@
+vocabulary_entry:
+  topic_tags:
+  - war
+  - conflict
+  - work
+  - business
+  - problems
+  category: idiom
+  source_citation: English Idioms in Use Advanced, Unit 14-15
+  entries:
+  - term: cut and run
+    meaning: to leave a situation quickly rather than deal with it
+    example: Are you more likely to cut and run if things are going badly?
+    band_suitability: 7.0+
+    register: informal
+  - term: give a wide berth
+    meaning: to avoid someone or something because they are unpleasant or dangerous
+    example: I try to avoid the city centre on Saturdays if I possibly can.
+    band_suitability: 7.0+
+    register: neutral
+  - term: weather the storm
+    meaning: to get through a difficult situation or period of problems
+    example: Despite the financial problems, I am confident that the company will
+      succeed in weathering the storm.
+    band_suitability: 7.0+
+    register: neutral
+  - term: batten down the hatches
+    meaning: to prepare for a difficult situation or problem
+    example: There's trouble ahead, so we'd better batten down the hatches.
+    band_suitability: 8.0+
+    register: neutral
+  - term: go by the board
+    meaning: to be rejected or ignored; to be abandoned (plans)
+    example: Amy's plans to buy a new car were abandoned when she lost her job.
+    band_suitability: 8.0+
+    register: neutral
+  - term: make good headway
+    meaning: to make progress in what you are trying to achieve
+    example: It's a long journey, but we're making good headway.
+    band_suitability: 7.0+
+    register: neutral
+  - term: run a tight ship
+    meaning: to control an organization, project, or business in a firm and efficient
+      way
+    example: Asim controls the business in a firm and efficient way.
+    band_suitability: 7.0+
+    register: neutral
+  - term: on the rocks
+    meaning: to be in a very difficult situation and likely to fail (often a relationship
+      or business)
+    example: The business is doing so badly that I'm tempted to cut and run.
+    band_suitability: 7.0+
+    register: informal
+  - term: all hands on deck
+    meaning: everyone is needed to help in a particular situation
+    example: I'd like all hands on deck for the next few hours, please.
+    band_suitability: 7.0+
+    register: neutral
+  - term: take the wind out of someone's sails
+    meaning: to make someone feel less confident or less sure of themselves by saying
+      or doing something unexpected
+    example: The bad reviews of his first album took the wind out of the singer's
+      sails.
+    band_suitability: 8.0+
+    register: neutral
+  - term: take the warpath
+    meaning: to be very angry and ready to argue or fight
+    example: Parents are very angry and have decided to take action immediately.
+    band_suitability: 8.0+
+    register: informal
+  - term: shot yourself in the foot
+    meaning: to unintentionally do or say something foolish which made your situation
+      worse
+    example: I think you shot yourself in the foot by leaving your old job before
+      getting a new one.
+    band_suitability: 7.0+
+    register: informal
+  - term: shot down in flames
+    meaning: to immediately criticise an idea and refuse to accept it
+    example: When I suggested raising the membership fee, Sergio shot me down in flames.
+    band_suitability: 8.0+
+    register: informal
+  - term: hang/hold fire
+    meaning: to delay making a decision
+    example: I think we should hang fire before making any rash decisions about redundancies.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a fighting chance
+    meaning: a small but real possibility of success
+    example: Now that I have a PhD, I've at least got a fighting chance of getting
+      a teaching job.
+    band_suitability: 7.0+
+    register: neutral
+  - term: a flash in the pan
+    meaning: something that happened only once and was not repeated; a one-off success
+    example: Winning the cup in 1998 was just a flash in the pan.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a baptism of fire
+    meaning: a very difficult first experience of something
+    example: Our new IT manager had a baptism of fire on her first day at work.
+    band_suitability: 8.0+
+    register: neutral
+  - term: run the gauntlet
+    meaning: to face a lot of people who are criticising or attacking you
+    example: As she left the studio, Dana Freen had to run the gauntlet of reporters.
+    band_suitability: 8.0+
+    register: neutral
+  - term: steal a march on someone
+    meaning: to get an advantage by acting before your rivals do
+    example: Zetec stole a march on its rivals by launching its new car model six
+      months earlier.
+    band_suitability: 8.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

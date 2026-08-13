@@ -1,0 +1,39 @@
+content_unit:
+  template_type: band_ladder
+  title: "People & Relationships — Modifying Adjectives and Expanding Answers"
+  topic_tags: [personality, relationships, family]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS, Unit 1: Family matters"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Tends to provide short, list-like answers. Often uses basic adjectives without modification. Struggles to explain the 'why' behind character traits."
+    grammar_required: [simple_present, simple_past]
+    vocabulary_core: [ambitious, outgoing, reliable, clever]
+    vocabulary_stretch: []
+    sentence_length_target: "short, simple sentences"
+    common_errors_to_simulate: "Using negative adjectives (e.g., 'he is stingy') directly without softening, which sounds overly rude or blunt in English."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to modify adjectives appropriately to sound more natural. Effectively expands on character traits with relevant examples or explanations."
+    grammar_required: [present_perfect_simple, past_habitual_would, complex_sentences]
+    vocabulary_core: [hard-working, self-assured, open-minded]
+    vocabulary_stretch: [terribly blunt, can be a bit impatient, not very reliable]
+    sentence_length_target: "compound and complex sentences with natural linking"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What is your friend like?"
+    user_model_answer: "He is very outgoing and he is creative. He is also sometimes a bit stingy."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What is your friend like?"
+    user_model_answer: "She's really outgoing and sociable – she's always going out with friends and colleagues. On the other hand, she can be a bit impatient if things don't happen as quickly as she expects."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me about your relationship with your brother."
+    user_model_answer: "We've never fallen out, actually. We grew up together and share a lot of memories, although we've grown a bit apart since I moved away for university."

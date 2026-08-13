@@ -1,0 +1,26 @@
+content_unit:
+  template_type: band_ladder
+  title: "Opinion Question — Disabled Access in Shops"
+  topic_tags: ["Society", "Equality", "Disabled Facilities"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Question 6"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Able to present a balanced view with nuanced arguments, using complex structures and logical connectors."
+    grammar_required: 
+      - Subjunctive mood (it would be...)
+      - Complex sentences with relative clauses
+      - Contrastive structures (On the other hand)
+    vocabulary_core: ["disabled access", "facilities", "historic buildings", "remote sites"]
+    vocabulary_stretch: ["incredibly expensive", "make an exception", "wherever possible"]
+    sentence_length_target: "long, compound-complex sentences"
+
+sample_dialogues:
+  - band_level: 8.5
+    turn_type: standalone
+    ai_line: "Should all shops have facilities for disabled people?"
+    user_model_answer: "There are two sides to this. I agree with people who say that disabled access should be available wherever possible, so that disabled people can go shopping just like everyone else. That's only fair, of course. But on the other hand, some shops are in locations where it would be impossible or incredibly expensive to install things like lifts and ramps, for example in historic buildings or in remote sites. I think we need to make an exception for places like that, but all other shops should certainly have these facilities."

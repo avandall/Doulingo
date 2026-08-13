@@ -1,0 +1,164 @@
+vocabulary_entry:
+  topic_tags:
+  - general_vocabulary
+  - collocations_index
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, pp. 157-159
+  entries:
+  - term: absolute beginner
+    meaning: someone who is starting to learn something for the very first time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: drug abuse
+    meaning: the habitual taking of illegal drugs
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: accept an offer
+    meaning: to say yes to an offer or proposal
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: have access to
+    meaning: to be able to use or get something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: budget accommodation
+    meaning: cheap and affordable places to stay
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: deny an accusation
+    meaning: to state that something you are accused of is not true
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: dull ache
+    meaning: a continuous, not very sharp pain
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: aches and pains
+    meaning: minor pains that continue for a long time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: achieve your goals
+    meaning: to successfully complete what you aimed to do
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: casual acquaintance
+    meaning: someone you know slightly, but not a close friend
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: acquire a qualification
+    meaning: to gain a skill or official certificate through learning or experience
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: acrid smoke
+    meaning: strong, unpleasant smoke that stings the eyes and throat
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: acrimonious divorce
+    meaning: a divorce full of anger, arguments, and bad feeling
+    example: ''
+    band_suitability: 8.0+
+    register: formal
+  - term: ancient monument
+    meaning: a very old structure or building of historical importance
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: seething with anger
+    meaning: experiencing deep, suppressed anger
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: antique furniture
+    meaning: old, valuable furniture pieces
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: apply for a job
+    meaning: to make a formal request for employment
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: keep an appointment
+    meaning: to attend a pre-arranged meeting or visit
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: healthy appetite
+    meaning: a strong desire or hunger for food
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: thunderous applause
+    meaning: very loud and enthusiastic clapping
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: submit an application
+    meaning: to officially send in a request or form
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: attract attention
+    meaning: to make people notice you or something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: auburn hair
+    meaning: reddish-brown hair
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: asylum seeker
+    meaning: someone who leaves their country for political reasons and applies for
+      sanctuary elsewhere
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: attend a lecture
+    meaning: to go to an educational talk at a university or college
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: win an award
+    meaning: to receive a prize for an achievement
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

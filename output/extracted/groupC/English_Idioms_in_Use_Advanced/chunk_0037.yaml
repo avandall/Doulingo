@@ -1,0 +1,127 @@
+vocabulary_entry:
+  topic_tags:
+  - advertising
+  - business
+  - formal_writing
+  - argumentation
+  category: idiom
+  source_citation: English Idioms in Use Advanced
+  entries:
+  - term: come clean
+    meaning: to tell the truth about something that has been kept secret
+    example: It's time to come clean and admit you have a dust problem!
+    band_suitability: 7.0+
+    register: neutral
+  - term: a smart move
+    meaning: a wise or clever action
+    example: Selling your house was a smart move.
+    band_suitability: 6.0+
+    register: neutral
+  - term: there's no time like the present
+    meaning: used to say it is a good idea to do something immediately
+    example: There's no time like the present.
+    band_suitability: 6.0+
+    register: neutral
+  - term: first and foremost
+    meaning: more than anything else; used to emphasize the most important point
+    example: First and foremost, it must be emphasised that there are several reasons
+      for this change.
+    band_suitability: 7.0+
+    register: formal
+  - term: on balance
+    meaning: after considering all the facts or opinions
+    example: On balance, the general public seems to be in favour of the proposal.
+    band_suitability: 7.0+
+    register: formal
+  - term: on no account
+    meaning: not for any reason (used for emphasis)
+    example: On no account should their conclusions be accepted.
+    band_suitability: 8.0+
+    register: formal
+  - term: last but not least
+    meaning: important even though mentioned last
+    example: Last but not least, the impracticalities of the proposal created many
+      problems.
+    band_suitability: 7.0+
+    register: formal
+  - term: in the final analysis
+    meaning: used to emphasize what is most important or true in a situation
+    example: In the final analysis, although this is an innovative idea, it is not
+      one that we can consider.
+    band_suitability: 8.0+
+    register: formal
+  - term: conventional wisdom
+    meaning: something that people generally believe is true, though often false
+    example: The conventional wisdom is that only children can learn a second language.
+    band_suitability: 8.0+
+    register: formal
+  - term: a contradiction in terms
+    meaning: an expression that is confusing because the words seem to have opposite
+      meanings
+    example: Many people claim that a good adult language learner is a contradiction
+      in terms.
+    band_suitability: 8.0+
+    register: formal
+  - term: a case in point
+    meaning: a good example of something just described
+    example: Adult learners can also master a language. My brother is a case in point.
+    band_suitability: 7.0+
+    register: formal
+  - term: as a matter of course
+    meaning: describes what normally happens or is normally done
+    example: Adults, as a matter of course, have more difficulties than children with
+      pronunciation.
+    band_suitability: 7.0+
+    register: formal
+  - term: point the way
+    meaning: to suggest how something might be done in a better way
+    example: A recently published document points the way to more teaching of languages.
+    band_suitability: 8.0+
+    register: formal
+  - term: set the stage
+    meaning: to make something more likely to happen
+    example: This document sets the stage for radical changes.
+    band_suitability: 7.0+
+    register: formal
+  - term: beg the question
+    meaning: to cause you to ask a particular question
+    example: However, this begs the question as to how enough teachers will be found.
+    band_suitability: 8.0+
+    register: formal
+  - term: set in motion
+    meaning: to start something
+    example: Some changes in teacher training are about to be set in motion.
+    band_suitability: 7.0+
+    register: formal
+  - term: open the door to
+    meaning: to let something new start
+    example: It is hoped that these will open the door to more successful language
+      teaching.
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

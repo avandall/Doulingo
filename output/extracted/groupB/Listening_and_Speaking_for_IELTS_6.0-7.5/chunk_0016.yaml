@@ -1,0 +1,38 @@
+content_unit:
+  template_type: scenario
+  title: "Talking about likes and preferences - Arts and Entertainment"
+  topic_tags: ["arts", "entertainment", "personal experience", "likes and preferences"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Talking about likes and preferences"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can talk about personal experiences with some hesitation. Capable of describing events but may lack range in vocabulary to express complex preferences."
+    grammar_required: 
+      - Past simple for storytelling
+      - "Basic opinion phrases (e.g., I liked, I didn't like)"
+    vocabulary_core: ["event", "attended", "impressed", "enjoyed"]
+    vocabulary_stretch: ["memorable", "fascinating", "dull"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Repetitive use of 'I liked it because', limited range of adjectives to describe feelings."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Able to speak fluently at length. Uses a variety of descriptive vocabulary and specific phrases to explain preferences and impressions."
+    grammar_required: 
+      - Narrative tenses (past continuous/perfect)
+      - Adverbial modifiers for emphasis
+    vocabulary_core: ["exhibition", "atmosphere", "captivating", "disappointing"]
+    vocabulary_stretch: 
+      - exhilarating
+      - left a lasting impression
+      - "didn't quite live up to expectations"
+    sentence_length_target: "long and complex"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Describe an arts or entertainment event that you have attended."
+    user_model_answer: "I’d like to talk about a contemporary art exhibition I attended last summer in London. It was held at the Tate Modern. What really impressed me was the sheer scale of the installations; they were incredibly immersive. While I thoroughly enjoyed the main gallery, one thing I didn't particularly like was the crowd; it was so packed that it was quite difficult to focus on the artwork properly."

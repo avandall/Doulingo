@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Vocabulary and Strategy for Tourism Topics"
+  topic_tags: [Tourism, Vocabulary, IELTS Speaking Part 2]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking.md, Vocabulary"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can use basic vocabulary related to tourism but often repeats simple words; may lack structural variety in discussing positive and negative effects."
+    grammar_required: [Past simple for narrative, Present simple for descriptions]
+    vocabulary_core: [tourists, pollution, environment, visit, beautiful, bad]
+    vocabulary_stretch: [economic benefits, natural habitat, endangered species]
+    sentence_length_target: "Short, simple sentences with occasional coordination."
+    common_errors_to_simulate: "Over-reliance on 'good/bad'; difficulty expanding on topics to reach the 2-minute time limit; lack of discourse markers."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of specific vocabulary (e.g., 'sustainable', 'detrimental', 'heritage'); expands answers fluently using complex sentence structures."
+    grammar_required: [Past perfect for background actions, Modal verbs for speculation]
+    vocabulary_core: [sustainable, detrimental, heritage, infrastructure, conservation]
+    vocabulary_stretch: [devastating impact, archaeological landmarks, preservation of culture]
+    sentence_length_target: "Varied sentence length including subordinate clauses and linking phrases."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a place you have visited for a holiday. Where was it and why did you choose it?"
+    user_model_answer: "I went to a beach in my country last year. It was a very good place. I chose it because my friends said the water was clean and it had many tourists attractions. We went by car and it took five hours."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a place you have visited for a holiday. Where was it and why did you choose it?"
+    user_model_answer: "Last summer, I visited an unspoilt coastal town which is famous for its cultural heritage. I decided to go there primarily because I wanted to escape the overcrowding of the city, and it offered a more sustainable form of tourism compared to popular resorts."

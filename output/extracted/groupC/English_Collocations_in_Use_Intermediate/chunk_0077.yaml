@@ -1,0 +1,149 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - general_vocabulary
+  - academic_and_daily_life
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: flick through a newspaper
+    meaning: to look quickly through a newspaper
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: deafening noise
+    meaning: extremely loud noise
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: ear-splitting noise
+    meaning: noise that is so loud or unpleasant it hurts your ears
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: obey the law
+    meaning: to act according to the law
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: commit an offence
+    meaning: to do something illegal
+    example: ''
+    band_suitability: 6.0+
+    register: formal
+  - term: organic food
+    meaning: food produced without using artificial chemicals
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: outgoing personality
+    meaning: friendly, socially confident, and outgoing character
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: outspoken critic
+    meaning: someone who expresses strong opinions publicly without fear
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: outstanding performance
+    meaning: exceptionally good performance
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: receive a standing ovation
+    meaning: when an audience stands up and claps to show great appreciation
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: brisk pace
+    meaning: a fast, energetic, and walking or moving speed
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: alleviate pain
+    meaning: to make pain less severe
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: excruciating pain
+    meaning: extremely painful or severe pain
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: aches and pains
+    meaning: minor pains that continue for a long time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: single parent
+    meaning: a parent who raises a child alone without a partner
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: panoramic view
+    meaning: an unbroken view of a wide area
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: pass an exam
+    meaning: to succeed in a test or examination
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: passionate love
+    meaning: strong, intense romantic feelings
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: pay attention
+    meaning: to watch, listen to, or think about someone or something carefully
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: pay a fine
+    meaning: to pay a sum of money as a punishment for breaking a rule or law
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: peaceful countryside
+    meaning: quiet and calm rural areas
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: pick up speed
+    meaning: to start moving faster
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: play a central role
+    meaning: to have the most important part in something
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

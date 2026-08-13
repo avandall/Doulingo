@@ -1,0 +1,25 @@
+content_unit:
+  template_type: band_ladder
+  title: "Opinion Question — Small local shops vs. Big supermarkets"
+  topic_tags: ["Shopping", "Daily life", "Opinion"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: neutral
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Opinion Questions"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 9.0
+    can_do_description: "Able to provide a balanced argument by considering multiple perspectives (pros/cons) before reaching a clear, well-supported conclusion."
+    grammar_required: 
+      - "Complex sentence structures (concessive clauses: 'For example, if...', 'On the other hand, though...')"
+    vocabulary_core: ["convenient", "personal service", "range of products", "cheaper"]
+    vocabulary_stretch: ["depends on your needs", "offering a much bigger range"]
+    sentence_length_target: "Compound-complex sentences"
+    common_errors_to_simulate: "Avoiding one-sided answers; failing to qualify statements"
+
+sample_dialogues:
+  - band_level: 8.0
+    turn_type: standalone
+    ai_line: "Which are better, small local shops or big supermarkets?"
+    user_model_answer: "I think it depends on your needs. For example, for elderly people, or if someone doesn't have a car, local shops are probably more convenient, and the personal service might also be better. On the other hand, though, large supermarkets are cheaper and offer a much bigger range of products to choose from. Overall, I think that for most people the supermarkets are probably the best option."

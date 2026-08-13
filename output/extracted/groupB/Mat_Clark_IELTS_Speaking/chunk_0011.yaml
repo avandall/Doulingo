@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "Mastering Second Conditional and Topic Vocabulary for IELTS Speaking"
+  topic_tags: [Grammar, Second Conditional, Vocabulary, Job, Studies, Hometown, Hobbies]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: formal
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Chapter 1.9"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses basic grammar structures but lacks depth. Frequently relies on simple sentences or filler phrases like 'I never thought about it'."
+    grammar_required: 
+      - Second conditional (basic)
+    vocabulary_core: [General, everyday words]
+    vocabulary_stretch: []
+    sentence_length_target: "Short"
+    common_errors_to_simulate: "Starting answers with 'I never thought about it'; repeating the examiner's verb without variation; failing to provide reasons/details."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Demonstrates complex sentence structures and varied vocabulary. Effectively uses 'might', 'could', and 'verb+ing' structures to provide detailed, natural-sounding responses."
+    grammar_required: 
+      - Second conditional (complex)
+      - might
+      - could
+      - "verb+ing' gerund phrases"
+    vocabulary_core: [Topic-specific nouns/verbs]
+    vocabulary_stretch: 
+      - "Idiomatic expressions (e.g., 'pull out all the stops', 'sail through')"
+    sentence_length_target: "Longer, linked, detailed"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Would you like to move to another city in the future?"
+    user_model_answer: "I would like to change cities if I had the chance, because it would be exciting."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Would you like to move to another city in the future?"
+    user_model_answer: "Actually, this isn't something that I've ever considered, but in short I suppose I would possibly consider moving cities, especially if I had the chance to move to a coastal city. If I lived in a seaside city I would be able to hang out on the beach every day and I would also have the opportunity to get into water sports."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Would you like to learn another foreign language?"
+    user_model_answer: "Well, quite honestly I don’t think I’ve ever thought about that. But I guess I would maybe contemplate taking up a new language."

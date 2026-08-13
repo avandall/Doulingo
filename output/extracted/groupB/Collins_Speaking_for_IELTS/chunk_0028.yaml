@@ -1,0 +1,59 @@
+content_unit:
+  template_type: band_ladder
+  title: Education, Motivation, and Weather — Band 7.5+ Sample Responses
+  topic_tags:
+  - Education
+  - Work & Motivation
+  - Weather & Climate
+  target_band_min: 7.0
+  target_band_max: 8.5
+  register: formal
+  source_citation: Collins_Speaking_for_IELTS.md, Track 18 & 23
+band_tiers:
+- band_min: 7.0
+  band_max: 8.5
+  can_do_description: Candidate demonstrates fluency with complex arguments, uses
+    precise vocabulary (e.g., 'primarily concerned', 'profound', 'notoriously changeable'),
+    and employs cohesive devices effectively.
+  grammar_required:
+  - Conditional sentences
+  - Complex sentence structures (e.g., 'Although...', 'While...')
+  vocabulary_core:
+  - Motivation
+  - Career
+  - University education
+  - Climate
+  - Precipitation
+  vocabulary_stretch:
+  - Arid
+  - Dismal
+  - Overcast
+  - Profound
+  - Hazard a guess
+  - Cooped up
+  sentence_length_target: Longer, multi-clause responses with clear logical progression.
+sample_dialogues:
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Do you think science subjects are more useful than arts subjects?
+  user_model_answer: I think they are more useful because they are primarily concerned
+    with practical matters. If you study science, you might, for example, go on to
+    have some kind of technical role in the production of a device. However, all great
+    leaders have studied more arty subjects, such as philosophy, history and economics.
+    This makes them better leaders because they have an understanding of human nature.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Are people more motivated if their job involves helping others?
+  user_model_answer: Although my job doesn't really involve helping people, I'd hazard
+    a guess that youth workers, for example, find it very rewarding helping a young
+    person to achieve their personal goals. I can imagine that it gives a counsellor
+    tremendous job satisfaction to know that if they weren't there, things would not
+    turn out as well for their patients. They are motivated by something more profound
+    than just money.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: Does the weather influence your mood?
+  user_model_answer: Yes, it certainly does. It's the rain that influences my mood
+    the most. I hate it when it's raining - it makes me feel so down. It's hard to
+    go out without getting soaked to the skin. And the sky is so dismal and overcast.
+    It's miserable!

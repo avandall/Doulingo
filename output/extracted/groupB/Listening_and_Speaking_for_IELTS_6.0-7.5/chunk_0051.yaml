@@ -1,0 +1,37 @@
+content_unit:
+  template_type: scenario
+  title: "Pronunciation: Countries and Nationalities"
+  topic_tags: ["Countries", "Nationalities", "Pronunciation", "Word Stress"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Pronunciation: Countries and nationalities"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Phát âm tên các quốc gia và quốc tịch với trọng âm cơ bản, nhưng có thể gặp khó khăn với các từ có cấu trúc đa âm tiết."
+    grammar_required: 
+      - Subject-verb agreement (e.g., People in X speak Y)
+    vocabulary_core: ["Countries", "Nationalities", "Languages"]
+    vocabulary_stretch: 
+      - Suffixes (-ese, -ian, -ish)
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Sai trọng âm từ (word stress) khi phát âm quốc tịch dài (ví dụ: nhấn sai âm tiết trong Brazilian, Chinese)"
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Phát âm chính xác trọng âm của hầu hết các quốc gia và quốc tịch, nắm vững quy luật trọng âm theo đuôi hậu tố."
+    grammar_required: ["Complex sentence structures for identifying origins and languages"]
+    vocabulary_core: ["Specific terminology for nationalities and linguistic origins"]
+    vocabulary_stretch: ["Accurate intonation in answering factual questions"]
+    sentence_length_target: "medium to long"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "What nationality was the artist Pablo Picasso?"
+    user_model_answer: "He was Spanish. Many people think he is French, but he was born in Spain."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What language do people in Rio de Janeiro speak?"
+    user_model_answer: "People in Rio de Janeiro speak Portuguese. It is the official language of Brazil, unlike most other South American countries which speak Spanish."

@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar - Second Conditional for IELTS Speaking Part 3"
+  topic_tags: ["Grammar", "Hypothetical Situations", "Part 3 Strategy"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Lessons_for_IELTS_Speaking, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to use basic structures but may struggle with conditional consistency or limited variety in vocabulary."
+    grammar_required: ["Second conditional: If + past simple + would/could"]
+    vocabulary_core: ["access", "internet", "helpful"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Mixing up tenses (e.g., using 'If they have, they would'), forgetting the base form verb."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses hypothetical structures flexibly to explore abstract consequences in Part 3."
+    grammar_required: 
+      - Second conditional
+      - Modal verbs for possibility (might, could, would)
+    vocabulary_core: ["agricultural prices", "forecasts", "medical advice"]
+    vocabulary_stretch: ["socio-economic impact", "accessibility", "infrastructure"]
+    sentence_length_target: "Complex, compound sentences with clear reasoning"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "If poor people in developing countries had access to the Internet, what kinds of information would be most helpful or of most interest to them?"
+    user_model_answer: "If they checked weather forecasts, they would know when to plant their crops."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "If poor people in developing countries had access to the Internet, what kinds of information would be most helpful or of most interest to them?"
+    user_model_answer: "If they had access to education information, their lives would likely improve significantly because they could learn new skills without needing formal schooling."

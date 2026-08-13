@@ -1,0 +1,108 @@
+vocabulary_entry:
+  topic_tags:
+  - success
+  - failure
+  - achievements
+  - goals
+  category: idiom
+  source_citation: 'English Idioms in Use Intermediate, Unit 7: Success and failure'
+  entries:
+  - term: make all the difference
+    meaning: have a very good effect on a situation or a thing
+    example: Your offer to drive us to the airport makes all the difference to our
+      travel plans.
+    band_suitability: 6.0+
+    register: neutral
+  - term: work/go/run like a dream
+    meaning: work, go, or run very well indeed
+    example: My new motorbike runs like a dream; it's fast, but so smooth and quiet.
+    band_suitability: 7.0+
+    register: neutral
+  - term: work like magic
+    meaning: work immediately and very well indeed
+    example: Your plan to persuade Lela to join the committee worked like magic.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go from strength to strength
+    meaning: get better and better
+    example: His company has gone from strength to strength in the last six months.
+    band_suitability: 6.0+
+    register: neutral
+  - term: do the trick
+    meaning: solve a problem very well
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: the be-all-and-end-all
+    meaning: the most important thing (often used in the negative)
+    example: Work isn't the be-all-and-end-all in my life.
+    band_suitability: 8.0+
+    register: neutral
+  - term: a blessing in disguise
+    meaning: something that has a good effect even though at first it seemed it would
+      be bad
+    example: The flood ruined our old kitchen, but it was a blessing in disguise.
+    band_suitability: 6.0+
+    register: neutral
+  - term: a victim of one's own success
+    meaning: success that has negative effects as well as or instead of positive ones
+    example: I'm a victim of my own success.
+    band_suitability: 8.0+
+    register: neutral
+  - term: not have the ghost of a chance
+    meaning: to have no chance at all
+    example: I didn't think I had the ghost of a chance of passing the exam.
+    band_suitability: 8.0+
+    register: neutral
+  - term: give up the ghost
+    meaning: to stop working or stop trying to succeed
+    example: The photocopier has completely given up the ghost.
+    band_suitability: 8.0+
+    register: informal
+  - term: leave one's mark
+    meaning: to have an effect (usually negative) that changes someone or something
+      forever
+    example: It left its mark on me.
+    band_suitability: 7.0+
+    register: neutral
+  - term: go places
+    meaning: to be successful (not used in simple tense forms)
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: hit the big time
+    meaning: to be successful nationally or internationally and make lots of money
+    example: I don't think I'll ever hit the big time.
+    band_suitability: 7.0+
+    register: informal
+  - term: make a go of
+    meaning: to be very successful with something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

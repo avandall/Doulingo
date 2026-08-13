@@ -1,0 +1,33 @@
+content_unit:
+  template_type: band_ladder
+  title: "Showing off knowledge — Performance vs. Content Focus"
+  topic_tags: ["Government", "Pollution", "Environment", "Strategy"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, ⑧ Showing off knowledge"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidates often focus on listing facts or trying to sound overly academic, which interrupts the natural flow of conversation."
+    grammar_required: 
+      - Simple sentences
+      - Basic connectors (First, Next)
+    vocabulary_core: ["pollution", "law", "waste"]
+    vocabulary_stretch: []
+    sentence_length_target: "short, fragmented sentences"
+    common_errors_to_simulate: "Listing ideas robotically rather than engaging in a natural conversation; prioritizing content accuracy over communication fluency."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidates balance answering the question with natural conversation management and initiative."
+    grammar_required: ["Complex structures", "Cohesive devices", "Modal verbs for suggestion"]
+    vocabulary_core: ["environmentally friendly", "stipulated", "purified"]
+    vocabulary_stretch: ["take the initiative", "communicate effectively"]
+    sentence_length_target: "varied, complex, and fluent"
+
+sample_dialogues:
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What can the government do to solve the problem of pollution?"
+    user_model_answer: "First of all, I think that the law and regulations should be clearly stipulated and followed strictly. Next, it is better to demolish small factories along the rivers unless they guarantee that no waste will be dumped into the water without first being purified. Then, more environmentally friendly products should be encouraged. For example, the government should find a way to encourage people to use fewer disposable plastic bags. People can be educated to be fully aware of the importance of protecting the environment. On the whole, I think that there is a lot the government can do. This is what I can think of right now."

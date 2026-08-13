@@ -1,0 +1,27 @@
+content_unit:
+  template_type: band_ladder
+  title: "Practising the Part 1 Speaking — Strategies and Band 9 Examples"
+  topic_tags: ["hometown", "future plans", "family", "food", "leisure"]
+  target_band_min: 7.0
+  target_band_max: 9.0
+  register: formal
+  source_citation: "Get_IELTS_Band_9_Speaking.md, Practising the Part 1 Speaking"
+
+band_tiers:
+  - band_min: 9.0
+    band_max: 9.0
+    can_do_description: "Provides full, natural, and complex answers using a two-step process: direct answer followed by elaboration or contextual understanding."
+    grammar_required: ["Complex sentence structures", "A range of future and present tenses", "Conditional sentences"]
+    vocabulary_core: ["Collocations related to daily life", "Topic-specific terminology"]
+    vocabulary_stretch: ["Idiomatic expressions", "Precise academic or professional terminology"]
+    sentence_length_target: "Longer, multi-clause responses with logical connectors"
+
+sample_dialogues:
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Please tell me about your home town. What do people do in the evenings?"
+    user_model_answer: "I come from a coastal city where the pace of life is quite laid-back. In the evenings, locals typically gravitate toward the night market, which is the heart of our social life, as it offers a chance to catch up with neighbors over traditional snacks while enjoying the cool sea breeze."
+  - band_level: 9.0
+    turn_type: standalone
+    ai_line: "Let's talk about your plans for the future. What kind of career do you want to follow?"
+    user_model_answer: "I've set my sights on becoming a data analyst. I'm drawn to this field because it allows me to extract meaningful insights from complex information, and with the current digital transformation, I believe it's a career path that offers both stability and intellectual growth."

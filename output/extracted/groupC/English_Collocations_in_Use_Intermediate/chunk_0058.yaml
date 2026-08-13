@@ -1,0 +1,173 @@
+vocabulary_entry:
+  topic_tags:
+  - relationships
+  - family
+  - housing
+  - homes
+  - food
+  - cooking
+  - books
+  - films
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: fall madly in love
+    meaning: to fall deeply in love with someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: close friends
+    meaning: friends that you know very well and like a lot
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: keep in touch with
+    meaning: to continue to communicate with someone
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: lasting friendship
+    meaning: a friendship that continues for a long time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: value someone's friendship
+    meaning: to think that someone's friendship is very important
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: end a relationship
+    meaning: to finish a romantic or social relationship
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fully-furnished accommodation
+    meaning: housing that comes with all furniture included
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: residential area
+    meaning: an area where people live rather than do business
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: off-road parking
+    meaning: space to park a vehicle away from the public road
+    example: We live on a busy road, but we’re lucky because we have off-road parking.
+    band_suitability: 7.0+
+    register: neutral
+  - term: move out
+    meaning: to leave your home to live somewhere else
+    example: Next week I have to move out of my flat.
+    band_suitability: 6.0+
+    register: neutral
+  - term: house-warming party
+    meaning: a party that you give when you move into a new house
+    example: Harper has invited me to her house-warming party.
+    band_suitability: 6.0+
+    register: informal
+  - term: take out a mortgage
+    meaning: to borrow money from a bank to buy a house
+    example: She had to take out a big mortgage as the house was very expensive.
+    band_suitability: 7.0+
+    register: neutral
+  - term: affordable housing
+    meaning: housing that is reasonably priced for people with lower incomes
+    example: There is no affordable housing for young people in this area; prices
+      are ridiculously high.
+    band_suitability: 7.0+
+    register: neutral
+  - term: feel homesick
+    meaning: to feel unhappy because you are away from home
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make yourself at home
+    meaning: to make yourself comfortable in someone else's home
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: food additives
+    meaning: substances added to food to improve its flavor or appearance or to preserve
+      it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: junk food
+    meaning: food that is unhealthy but quick and easy to eat
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: ready meals
+    meaning: meals that are already prepared and only need to be heated
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fresh produce
+    meaning: fresh food such as fruit and vegetables
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: hearty breakfast
+    meaning: a large, satisfying, and nourishing breakfast
+    example: I prefer a hearty breakfast and then a light meal around midday.
+    band_suitability: 7.0+
+    register: neutral
+  - term: slap-up meal
+    meaning: a large and very good meal
+    example: On my birthday my parents took me out for a slap-up meal.
+    band_suitability: 8.0+
+    register: informal
+  - term: home-cooked meal
+    meaning: food cooked at home, usually from fresh ingredients
+    example: Or would you prefer a home-cooked meal? I could make dinner for you at
+      my place.
+    band_suitability: 6.0+
+    register: neutral
+  - term: capture the atmosphere
+    meaning: to successfully represent the mood or feeling of a place or time
+    example: It's very authentic and it manages to capture the atmosphere of Ireland
+      at the beginning of the 20th century.
+    band_suitability: 8.0+
+    register: formal
+  - term: happy ending
+    meaning: a conclusion to a story where the characters are happy
+    example: Well, it certainly doesn't have a happy ending, but I liked it...
+    band_suitability: 6.0+
+    register: neutral
+  - term: box-office hit
+    meaning: a film that is very successful and makes a lot of money
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bedtime reading
+    meaning: books or material read just before going to sleep
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

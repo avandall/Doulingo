@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 2: Describing something to help the environment"
+  topic_tags: ["environment", "lifestyle", "habits"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Part 2: Describing something to help the environment"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Can answer all parts of the prompt but may rely on simpler vocabulary or repetitive sentence structures. Might struggle to connect environmental actions to broader global impacts."
+    grammar_required: 
+      - Present simple for habits
+      - Conditional structures (If... might...)
+      - Basic collocations
+    vocabulary_core: ["recycle", "reduce", "save", "waste"]
+    vocabulary_stretch: ["fuel consumption", "carbon emissions", "landfill"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Struggling to find the right nouns to collocate with environmental verbs (e.g., 'stop the pollution' instead of 'reduce carbon emissions')."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Can use a wide range of topic-specific vocabulary accurately and explain complex cause-effect relationships regarding environmental impact."
+    grammar_required: ["Complex sentences with conjunctions", "Third conditional for hypothetical scenarios", "Subject-verb agreement in complex clauses"]
+    vocabulary_core: ["conserve", "contribute to", "carbon footprint"]
+    vocabulary_stretch: ["air miles", "water consumption", "sustainable practices"]
+    sentence_length_target: "long/complex"
+
+sample_dialogues:
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Describe something you do to help the environment."
+    user_model_answer: "I always walk to my workplace instead of taking a car. It is good because it saves fuel and reduces the bad gases that cars make. I do this every day. It helps the environment by not using much energy."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe something you do to help the environment."
+    user_model_answer: "To minimize my carbon footprint, I make a conscious effort to purchase locally grown produce. By doing this, I significantly cut down on air miles associated with food transportation. Furthermore, it helps conserve energy because less fuel is required for long-distance shipping compared to imported goods."

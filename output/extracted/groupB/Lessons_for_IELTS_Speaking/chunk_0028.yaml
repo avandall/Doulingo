@@ -1,0 +1,41 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Contractions and Adverb Placement"
+  topic_tags: ["Family", "Best Friend", "Grammar", "Describing People"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Grammar"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Uses basic grammar structures and simple sentences. May avoid contractions, making speech sound unnatural or overly formal."
+    grammar_required: 
+      - Present simple
+      - Basic conjunctions (and, but)
+    vocabulary_core: 
+      - Family members
+      - Basic personality adjectives (cheerful, helpful)
+    vocabulary_stretch: ["None"]
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Avoiding contractions; unnatural, robotic rhythm; placing 'also' incorrectly in a sentence."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses natural, native-like connected speech with consistent use of contractions. Demonstrates flexibility in adverb placement ('also', 'both')."
+    grammar_required: ["Present perfect", "Comparative structures", "Complex adverb positioning"]
+    vocabulary_core: 
+      - Adjectives for personality (thoughtful, reliable, outgoing)
+    vocabulary_stretch: 
+      - Idiomatic expressions/collocations (have a lot in common, get on well with)
+    sentence_length_target: "Varied sentence lengths with natural pauses"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Tell me about your family."
+    user_model_answer: "I would like to tell you about my family. I have two brothers. They are both at university. My parents are divorced. My father has remarried."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Tell me about your family."
+    user_model_answer: "I'd like to tell you about my family. I've got two brothers; they're both at uni. My parents are divorced, and my father's remarried—he lives with my stepmother and her three children. We've got a lot in common, so we get on quite well."

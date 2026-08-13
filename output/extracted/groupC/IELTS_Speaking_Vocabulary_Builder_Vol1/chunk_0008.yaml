@@ -1,0 +1,117 @@
+vocabulary_entry:
+  topic_tags:
+  - money
+  - shopping
+  - budget
+  - family
+  - relationships
+  category: collocation
+  source_citation: IELTS_Speaking_Vocabulary_Builder_Vol1
+  entries:
+  - term: more bang for your buck(s)
+    meaning: you get a better result for the amount of effort or money that you have
+      put into something
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: budget
+    meaning: the money that is available to a person or an organization and a plan
+      of how it will be spent over a period of time
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: track
+    meaning: to follow the progress or development of somebody/something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: in advance
+    meaning: before a particular time, or before doing a particular thing
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: balloon
+    meaning: to increase rapidly
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: expenditure
+    meaning: an amount of money spent
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: impulse purchase
+    meaning: the act of buying something that you had not planned to buy, because
+      you suddenly want it when you see it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: sleep deprivation
+    meaning: the state of not having enough sleep
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: stick to
+    meaning: to continue doing or using something and not want to change it
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: bargain bin
+    meaning: a container in a shop, with things in it that you can buy at a reduced
+      price
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: bond
+    meaning: something that forms a connection between people or groups, such as a
+      feeling of friendship or shared ideas and experiences
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: set aside time for
+    meaning: to save or reserve time for a particular purpose
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: designate
+    meaning: to say officially that somebody/something has a particular character
+      or name
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+  - term: electronics
+    meaning: devices that operate using electricity, especially electronic equipment
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: chore
+    meaning: a task that you do regularly
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

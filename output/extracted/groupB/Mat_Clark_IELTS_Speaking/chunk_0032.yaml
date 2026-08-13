@@ -1,0 +1,45 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 3 — Comparative and Prediction Structures"
+  topic_tags: [Hobbies, Future Predictions, Comparative Structures]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Part 3 Question Types"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 5.5
+    can_do_description: "Tập trung vào nội dung (liệt kê thông tin) nhưng thiếu các cấu trúc ngôn ngữ chức năng phức tạp."
+    grammar_required: [Simple Present, Basic modals]
+    vocabulary_core: [hobbies, sports, daily activities]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Chỉ liệt kê ý (list of hobbies); thiếu từ nối so sánh (comparative linkers); lặp lại cấu trúc câu đơn."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Sử dụng thành thạo các cấu trúc so sánh (contrast) và dự đoán (prediction) để phát triển ý kiến."
+    grammar_required: 
+      - Comparative structures (Whereas, In contrast)
+      - Future modals (would be, might, could, it is probable that)
+    vocabulary_core: [significant, distinction, fundamental, underlying]
+    vocabulary_stretch: [on the other hand, conversely, in opposition]
+    sentence_length_target: "Complex, compound-complex sentences with logical connectors"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do men and women like the same hobbies?"
+    user_model_answer: "I think men and women like different hobbies, for example men are fond of sporting activities such as football and basketball. They prefer watching action movies and going to bars, but women like hobbies such as shopping and chatting online."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do men and women like the same hobbies?"
+    user_model_answer: "Well obviously there are a number of clear differences. I guess the most significant would be that men tend to prefer sporting activities such as football. Whereas in contrast, women prefer things like shopping for clothes. In addition, another distinction might be that men usually watch films, while on the other hand, women are more likely to prefer watching soap operas."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What will houses be like in the future?"
+    user_model_answer: "I think that in the future, houses will be much bigger, and maybe they will be in some strange places such as on the moon or under the sea."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What will houses be like in the future?"
+    user_model_answer: "Certainly, I’m sure that most people would agree there will be a number of changes. Initially, I guess that we might begin to see houses that are much bigger. At the same time, I suppose it’s quite probable that we may have houses under the sea. And who knows, it could even be possible that we’ll see the arrival of houses on the moon."

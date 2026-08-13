@@ -1,0 +1,46 @@
+content_unit:
+  template_type: band_ladder
+  title: "Useful Sentence Structures — Work and Career"
+  topic_tags: ["Work", "Daily Routine", "Career Goals"]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Useful Sentence Structures"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can provide basic information about employment and daily duties using clear sentence structures."
+    grammar_required: ["Simple present tense", "Subject-verb agreement"]
+    vocabulary_core: ["work", "responsible for", "job", "tired"]
+    vocabulary_stretch: ["prospective", "administrative", "satisfied"]
+    sentence_length_target: "Short to medium, simple compound sentences."
+    common_errors_to_simulate: "Limited range of vocabulary, repetitive sentence starters, lack of complex conjunctions."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can articulate career motivations and workplace dynamics with a wider range of lexical items."
+    grammar_required: 
+      - Complex clauses (if-clauses)
+      - Relative clauses
+      - Modal verbs
+    vocabulary_core: ["challenging", "cooperative", "reliable", "responsible"]
+    vocabulary_stretch: ["admissions", "prospective", "administrative"]
+    sentence_length_target: "Complex sentences with cohesive devices."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What is your typical day at work like?"
+    user_model_answer: "A typical day for me includes meetings, interviews with prospective students, and administrative work."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you enjoy your job?"
+    user_model_answer: "I really enjoy my job. I plan to work there for at least five more years."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What makes you good at your job?"
+    user_model_answer: "I think that I can make a very good doctor because I am highly reliable and responsible."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "Under what circumstances do you feel satisfied at work?"
+    user_model_answer: "I feel most satisfied in my job if I am well paid, and my colleagues are cooperative."

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Topic talk: Money and Expenditure"
+  topic_tags: ["Money", "Finance", "Consumerism"]
+  target_band_min: 6.0
+  target_band_max: 7.5
+  register: formal
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5.md, Topic talk"
+
+band_tiers:
+  - band_min: 6.0
+    band_max: 6.5
+    can_do_description: "Candidate can discuss personal finance using basic vocabulary and fixed phrases, but may struggle with nuances of financial collocations."
+    grammar_required: ["Present simple for habits", "Comparatives for preferences"]
+    vocabulary_core: ["expense", "pocket money", "pay for", "save money"]
+    vocabulary_stretch: ["mortgage", "get by", "non-essential items"]
+    sentence_length_target: "medium"
+    common_errors_to_simulate: "Confusing collocations (e.g., 'paying money' vs 'spending money'), misuse of 'debt' vs 'debit'."
+  - band_min: 7.0
+    band_max: 7.5
+    can_do_description: "Candidate uses sophisticated financial vocabulary and precise collocations to express complex opinions about government spending and consumer habits."
+    grammar_required: ["Complex sentences with subordinating conjunctions", "Modal verbs for hypothetical situations"]
+    vocabulary_core: ["expenditure", "outgoings", "well-off", "economical"]
+    vocabulary_stretch: ["overreliance", "bankruptcy", "non-perishable", "hard up"]
+    sentence_length_target: "long and varied"
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Do you think children should have to earn their pocket money?"
+    user_model_answer: "Yes, I think so. Doing small jobs around the house helps them understand that money doesn't grow on trees and teaches them the value of money."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is it important to have a large income?"
+    user_model_answer: "Actually, I'm quite content as long as my earnings comfortably exceed my outgoings. I don't necessarily feel the need to be particularly well-off, provided I can maintain a reasonable standard of living."

@@ -1,0 +1,164 @@
+vocabulary_entry:
+  topic_tags:
+  - register
+  - communication
+  - business
+  - news
+  - emotions
+  - describing
+  category: collocation
+  source_citation: English Collocations in Use Intermediate, Units 5 & 6
+  entries:
+  - term: bored stiff
+    meaning: extremely bored
+    example: I’m bored stiff in this lesson!
+    band_suitability: 6.0+
+    register: informal
+  - term: badly need
+    meaning: require something very much
+    example: You badly need a haircut!
+    band_suitability: 6.0+
+    register: informal
+  - term: have a think
+    meaning: think about something before making a decision
+    example: I’ll have a think about it and let you know.
+    band_suitability: 6.0+
+    register: informal
+  - term: give someone a ring
+    meaning: call someone on the phone
+    example: Give me a ring when you get home.
+    band_suitability: 6.0+
+    register: informal
+  - term: alight from
+    meaning: get off a bus, train, etc.
+    example: Passengers must alight from the bus whilst it is in motion.
+    band_suitability: 8.0+
+    register: formal
+  - term: cyclists must dismount
+    meaning: cyclists must get off their bicycles
+    example: Cyclists must dismount here.
+    band_suitability: 7.0+
+    register: formal
+  - term: trespassers will be prosecuted
+    meaning: people who enter land or buildings without permission will be taken to
+      court
+    example: Trespassers will be prosecuted.
+    band_suitability: 8.0+
+    register: formal
+  - term: dispose of
+    meaning: throw away or get rid of unwanted items
+    example: Please dispose of unwanted items in the receptacle provided.
+    band_suitability: 7.0+
+    register: formal
+  - term: axe jobs
+    meaning: make staff redundant or cut jobs
+    example: Computer factory to axe jobs.
+    band_suitability: 7.0+
+    register: formal
+  - term: slash prices
+    meaning: cut prices drastically
+    example: Airline slashes prices.
+    band_suitability: 7.0+
+    register: neutral
+  - term: government spending rockets
+    meaning: government spending increases rapidly and dramatically
+    example: Government spending will rocket this year.
+    band_suitability: 7.0+
+    register: neutral
+  - term: crack down on
+    meaning: start dealing with a problem or crime in a more severe way
+    example: Police crack down on speeding.
+    band_suitability: 7.0+
+    register: neutral
+  - term: police quiz
+    meaning: police ask someone questions in an investigation
+    example: Police quiz 16-year-old in murder enquiry.
+    band_suitability: 7.0+
+    register: neutral
+  - term: flu outbreak hits
+    meaning: an epidemic of influenza affects an area suddenly
+    example: Flu outbreak hits southern Europe.
+    band_suitability: 7.0+
+    register: neutral
+  - term: submit a tender
+    meaning: present a document offering to do a job and stating the price
+    example: To submit a tender.
+    band_suitability: 8.0+
+    register: formal
+  - term: raise capital
+    meaning: get money to put into a business
+    example: To raise capital.
+    band_suitability: 7.0+
+    register: formal
+  - term: go into partnership
+    meaning: agree to start or run a business with someone
+    example: To go into partnership with someone.
+    band_suitability: 7.0+
+    register: neutral
+  - term: start up a business
+    meaning: begin a new commercial enterprise
+    example: To start up a business.
+    band_suitability: 6.0+
+    register: neutral
+  - term: highly unlikely
+    meaning: very improbable
+    example: It is highly unlikely that I’ll finish my work on time.
+    band_suitability: 7.0+
+    register: neutral
+  - term: highly unusual
+    meaning: very uncommon or strange
+    example: Julia’s highly unusual behaviour began to worry her parents.
+    band_suitability: 7.0+
+    register: neutral
+  - term: absolutely devastated
+    meaning: extremely upset or ruined
+    example: The whole area was utterly devastated after the earthquake.
+    band_suitability: 7.0+
+    register: neutral
+  - term: bitterly disappointed
+    meaning: extremely disappointed with a strong feeling of sadness
+    example: I was bitterly disappointed when I failed the exam.
+    band_suitability: 7.0+
+    register: neutral
+  - term: deeply committed
+    meaning: very dedicated to a cause or person
+    example: Professor McDellvit was always deeply committed to her students.
+    band_suitability: 7.0+
+    register: neutral
+  - term: ridiculously expensive
+    meaning: unreasonably high in price
+    example: The restaurant was ridiculously expensive. I don’t think we’ll go there
+      again.
+    band_suitability: 6.0+
+    register: neutral
+  - term: strongly recommend
+    meaning: advise someone very firmly to do something
+    example: I would strongly recommend that you learn a foreign language.
+    band_suitability: 6.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

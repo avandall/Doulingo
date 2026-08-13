@@ -1,0 +1,34 @@
+content_unit:
+  template_type: band_ladder
+  title: "Technology and Science — Advanced Sample Responses"
+  topic_tags: ["Technology", "Science", "Society", "Hobbies"]
+  target_band_min: 7.0
+  target_band_max: 8.5
+  register: formal
+  source_citation: "Collins_Speaking_for_IELTS.md, Audio Scripts Tracks 44-51"
+
+band_tiers:
+  - band_min: 7.0
+    band_max: 8.5
+    can_do_description: "Uses complex, nuanced structures to discuss abstract topics. Employs a wide range of topic-specific vocabulary and idiomatic expressions naturally."
+    grammar_required: 
+      - Conditional sentences (If I had to...)
+      - Passive voice for scientific context
+      - Complex conjunctions (not just... but also)
+    vocabulary_core: ["technological developments", "global village", "manipulating genetic codes", "all-powerful"]
+    vocabulary_stretch: ["the like of which", "delve into", "free rein", "thought-provoking", "fanatical about"]
+    sentence_length_target: "Varied; includes extended complex sentences and concise, impactful statements."
+
+sample_dialogues:
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "What have been the most significant technological developments of recent years?"
+    user_model_answer: "Undoubtedly, ones connected with the Internet. The Internet has created a global village where everyone can easily and cheaply contact almost anyone in the world, just to chat or to do business or to find love. It's a revolution, the like of which I don't think has been seen before."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "In what ways have these developments changed society for the better and for the worse?"
+    user_model_answer: "They have brought people closer together in many ways. However, there are disadvantages. Some people believe everything they read online, which is dangerous. Then, many people spend too much time sitting in front of their computers rather than going out and socialising. Last but not least, it can cut dead debate."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Is scientific progress always for the greater good?"
+    user_model_answer: "Not necessarily. After all, scientists developed the atom bomb and all the efficient new ways we have of killing each other. What matters is that we keep on questioning scientists, letting them know that we are grateful for their discoveries but will not give them free rein."

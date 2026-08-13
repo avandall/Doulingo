@@ -1,0 +1,40 @@
+content_unit:
+  template_type: band_ladder
+  title: "Future Forms & Speaking Strategy: Predictions and Holidays"
+  topic_tags: ["Future tense", "Predictions", "Travel & Holidays", "Exam Technique"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Collins_Speaking_for_IELTS, Unit 10 & 11"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Focuses on simple future forms ('going to'). Often struggles with the nuance between 'going to' (evidence-based) and 'will' (opinion-based)."
+    grammar_required: 
+      - be going to
+      - "will/won't for basic predictions"
+    vocabulary_core: ["holiday", "plans", "weather", "future"]
+    vocabulary_stretch: ["last-minute deal", "rough it", "self-catering"]
+    sentence_length_target: "Short, simple sentences with occasional coordination."
+    common_errors_to_simulate: "Overusing 'will' for every future situation; confusion with pronunciation of 'going to' (/gəˈnə/ vs full form); sitting in silence when unsure of an answer."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a variety of future forms appropriately, including the future perfect for predictions. Demonstrates flexibility and sophisticated exam strategies."
+    grammar_required: 
+      - Future perfect (will have + past participle)
+      - modal verbs for speculation
+      - complex sentence structures
+    vocabulary_core: ["speculate", "analyze", "anticipate", "social trends"]
+    vocabulary_stretch: ["awe-inspiring", "grand scale", "take ages", "spontaneous decisions"]
+    sentence_length_target: "Complex sentences using discourse markers and embedded speculation."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think people's travel habits will change in the future?"
+    user_model_answer: "Yes, I think people will travel more to space. Maybe it will be cheap and everyone will go to the moon."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think people's travel habits will change in the future?"
+    user_model_answer: "It’s difficult to say for sure, but I suspect that by 2050, space tourism will have become more accessible. However, considering current environmental concerns, people might actually opt for more sustainable travel, so the industry will have to adapt significantly."

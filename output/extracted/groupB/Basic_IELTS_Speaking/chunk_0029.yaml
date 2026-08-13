@@ -1,0 +1,43 @@
+content_unit:
+  template_type: scenario
+  title: "Basic IELTS Speaking — Job Description and Interview Practice"
+  topic_tags: [Work, Job, Interview]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Oral Exercises"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể mô tả công việc bằng các câu đơn giản, sử dụng các cụm từ chỉ trách nhiệm (responsible for) và thời gian biểu (typical day)."
+    grammar_required: 
+      - Present simple for routines
+      - Present perfect for duration (have worked/been working)
+    vocabulary_core: ["responsibilities", "multinational", "demanding", "rewarding"]
+    vocabulary_stretch: ["efficient", "formal contract", "nationally-recognised"]
+    sentence_length_target: "Ngắn, cấu trúc S+V+O cơ bản"
+    common_errors_to_simulate: "Quên chia động từ ngôi thứ 3 (He work instead of He works), dùng sai giới từ sau 'responsible' (responsible of instead of responsible for)."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Thí sinh có thể mở rộng câu trả lời bằng cách giải thích lý do, đưa ra ví dụ thực tế và sử dụng từ nối linh hoạt."
+    grammar_required: 
+      - Complex sentences with conjunctions
+      - Subjunctive mood/conditionals for hypothetical questions (If I could change... I would)
+    vocabulary_core: ["primarily responsible", "demanding", "rewarding", "background work"]
+    vocabulary_stretch: ["in the background", "formal contract", "efficient"]
+    sentence_length_target: "Trung bình tới dài, có sử dụng mệnh đề quan hệ và cấu trúc so sánh."
+
+sample_dialogues:
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "Could you tell me what your main responsibilities are?"
+    user_model_answer: "I am responsible for meeting with customers and designing software that they can use in their companies."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "If you could change one thing about your job, what would it be?"
+    user_model_answer: "That's a tough question. I suppose I would change my work hours. I hate having to get up so early in the morning, so I'd rather start work at about 10 a.m. and stay until dinner time."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "How did you find your job?"
+    user_model_answer: "I was pretty lucky. My father's friend was starting a company and let me work for him. He liked my work, so we signed a contract, and I've been there for 2 years."

@@ -1,0 +1,35 @@
+content_unit:
+  template_type: band_ladder
+  title: "Describing Possessions — Vocabulary and Grammar Framework"
+  topic_tags: [Possessions, Describing objects, IELTS Speaking Part 1]
+  target_band_min: 5.0
+  target_band_max: 7.0
+  register: neutral
+  source_citation: "Get_Ready_for_IELTS_Speaking_Pre_Intermediate.md, Unit 12: Possessions"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Able to provide simple descriptions of objects using basic adjectives (size, age, color, material) and present perfect with for/since."
+    grammar_required: [Present Perfect, Past Simple]
+    vocabulary_core: [size, age, colour, material]
+    vocabulary_stretch: [leather, metal, glass, modern, old-fashioned]
+    sentence_length_target: "Simple and compound sentences"
+    common_errors_to_simulate: "Incorrect adjective order (e.g., 'leather brown bag' instead of 'brown leather bag'), confusion between for/since, overusing simple vocabulary."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Able to use a range of descriptive vocabulary, correct adjective order, and cohesive devices to explain personal significance."
+    grammar_required: [Present Perfect with for/since, Past Simple for events]
+    vocabulary_core: [favourite, important, reminds me of]
+    vocabulary_stretch: [special occasions, graduation, significant, overseas]
+    sentence_length_target: "Complex sentences using connectors (because, so, which)"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What is your favourite possession?"
+    user_model_answer: "My favourite object is my laptop. It is a new black plastic laptop. I have it for two years. I use it for watching films and chatting with friends."
+  - band_level: 7.0
+    turn_type: standalone
+    ai_line: "What is your favourite possession?"
+    user_model_answer: "One of my most cherished possessions is the leather coat my parents gave me for my graduation. I've had it for two years now, and I only wear it on special occasions. It's particularly important to me because it reminds me of all the hard work I put into my degree."

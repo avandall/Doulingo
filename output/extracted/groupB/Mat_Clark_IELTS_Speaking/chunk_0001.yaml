@@ -1,0 +1,56 @@
+content_unit:
+  template_type: band_ladder
+  title: IELTS Speaking Assessment Criteria & Language Comparison (Chinese vs English)
+  topic_tags:
+  - Test Strategy
+  - Fluency
+  - Cross-cultural communication
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: Mat_Clark_IELTS_Speaking.md, The Real Reason & Two Different Speaking
+    Systems
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Focuses on providing direct, accurate answers but fails to demonstrate
+    sufficient 'language content'. Tends to be overly concise, mimicking the 'economical'
+    style of first language (L1) rather than expanding on ideas.
+  grammar_required:
+  - Simple sentences
+  - Basic conjunctions
+  vocabulary_core:
+  - Common nouns
+  - Verbs for daily routines
+  vocabulary_stretch:
+  - None (too focused on informational accuracy)
+  sentence_length_target: Very short (3-5 words)
+  common_errors_to_simulate: Giving one-word or overly short answers; treating the
+    exam as a test of 'truth/facts' rather than language ability; lacking elaboration
+    or 'filler' language.
+- band_min: 7.0
+  band_max: 8.0
+  can_do_description: Understands that the test evaluates language ability rather
+    than facts. Uses 'uneconomical' language, expanding on ideas to showcase lexical
+    range and grammatical variety, effectively balancing detail and filler.
+  grammar_required:
+  - Complex structures (conditionals, modals)
+  - Subordinating conjunctions
+  vocabulary_core:
+  - Descriptive adjectives
+  - Adverbs of attitude
+  vocabulary_stretch:
+  - Idiomatic expressions
+  - Hedging language (e.g., 'to be quite honest', 'I guess that...')
+  sentence_length_target: Extended (Multiple clauses with supporting details)
+sample_dialogues:
+- band_level: 5.0
+  turn_type: standalone
+  ai_line: How often do you go to the cinema?
+  user_model_answer: Once a month. It was very enjoyable and informative.
+- band_level: 7.5
+  turn_type: standalone
+  ai_line: What's your favorite color?
+  user_model_answer: Well, to be quite honest, I don't really have an actual favorite
+    color but I guess that if I were buying clothes, then I'd usually go for something
+    like blue or gray – you know, kind of dull colors, nothing too bright.

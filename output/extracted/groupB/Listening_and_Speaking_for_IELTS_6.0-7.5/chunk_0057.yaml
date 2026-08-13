@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "Part 3: Avoiding Repetition using Substitution and Ellipsis"
+  topic_tags: ["Relationships", "Parenting", "Social Issues"]
+  target_band_min: 5.0
+  target_band_max: 7.5
+  register: neutral
+  source_citation: "Listening_and_Speaking_for_IELTS_6.0-7.5, Part 3: Avoiding repetition using substitution and ellipsis"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Candidate repeats keywords (e.g., 'similar personalities') throughout the answer, leading to unnatural, clunky speech flow. The candidate struggles to connect ideas efficiently."
+    grammar_required: ["Simple sentences", "Basic pronouns"]
+    vocabulary_core: ["Personalities", "Friends", "Important"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short and repetitive"
+    common_errors_to_simulate: "Repeating the same nouns (e.g., 'similar personalities') instead of using pronouns or ellipsis."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Candidate uses lexical cohesion, substitution, and ellipsis to avoid repetition, resulting in a fluent and sophisticated response."
+    grammar_required: 
+      - Complex referencing (this, that, these)
+      - Ellipsis
+      - Substitution (ones, so, neither)
+    vocabulary_core: ["Character", "Individuals", "Relationship"]
+    vocabulary_stretch: ["Lexical cohesion", "Cohesive devices"]
+    sentence_length_target: "Varied, with smooth transitions"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you think it's important for friends to have similar personalities?"
+    user_model_answer: "No I don't think it's important for friends to have similar personalities. It would be very boring if friends all had the same personality. I think the most interesting relationships are the relationships between very different personalities."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Do you think it's important for friends to have similar personalities?"
+    user_model_answer: "No I don't think so. It would be very boring if friends all had the same character. I think sometimes the most interesting relationships are the ones between very different individuals."

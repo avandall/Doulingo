@@ -1,0 +1,37 @@
+content_unit:
+  template_type: band_ladder
+  title: "Frequently-Asked Questions - Festivals"
+  topic_tags: ["Festivals", "Celebrations", "Culture"]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking.md, Frequently-Asked Questions"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can answer basic questions about cultural events with simple descriptions but may lack depth or varied vocabulary."
+    grammar_required: 
+      - Present simple
+      - Past simple (for past events)
+    vocabulary_core: ["festival", "celebrate", "food", "family", "friends"]
+    vocabulary_stretch: ["occasion", "tradition", "anniversary"]
+    sentence_length_target: "short-to-medium"
+    common_errors_to_simulate: "Overusing simple sentence structures, repetitive use of 'like' or 'because', hesitation when talking about past habits."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Can discuss festivals with detailed reasoning, comparing past and present practices and expressing personal opinions fluently."
+    grammar_required: ["Used to / Would for past habits", "Passive voice for general descriptions", "Complex sentences"]
+    vocabulary_core: ["cultural heritage", "commemorate", "festivities", "gatherings"]
+    vocabulary_stretch: ["ingrained in society", "to hold significance", "an integral part of"]
+    sentence_length_target: "complex/compound"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What are the special days celebrated in your country?"
+    user_model_answer: "In my country, we have many special days. My favourite is Tet holiday because I can see my family and eat delicious food. It is very happy time."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "How has the way of celebrating festivals changed in your country?"
+    user_model_answer: "I’d say the way we celebrate has shifted quite a bit. In the past, it was strictly about family reunions and traditional rituals, but nowadays, people often prefer to travel or dine out, which I think is a reflection of our more fast-paced modern lifestyle."

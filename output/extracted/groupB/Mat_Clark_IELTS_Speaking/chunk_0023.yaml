@@ -1,0 +1,38 @@
+content_unit:
+  template_type: band_ladder
+  title: "IELTS Speaking Part 2 — Describing Places (Strategy & Vocabulary)"
+  topic_tags: [Places, Strategy, Vocabulary, Grammar]
+  target_band_min: 5.0
+  target_band_max: 8.0
+  register: neutral
+  source_citation: "Mat_Clark_IELTS_Speaking.md, Place 4-17"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Can describe simple locations using basic past/present tenses but often misses opportunities to use conditional structures or specific descriptive vocabulary."
+    grammar_required: [Past Simple, Present Simple]
+    vocabulary_core: [peaceful, quiet, park, building, house]
+    vocabulary_stretch: []
+    sentence_length_target: "Short, simple sentences"
+    common_errors_to_simulate: "Overuse of simple adjectives (good, beautiful); inconsistent use of past tenses when narrating past experiences."
+  - band_min: 7.0
+    band_max: 8.0
+    can_do_description: "Uses a wide range of topic-specific vocabulary (idiomatic/descriptive) and accurately employs complex structures like conditional sentences and mixed tenses."
+    grammar_required: 
+      - Present Perfect
+      - Past Continuous
+      - Conditionals (if+would/could/might)
+    vocabulary_core: [lush shrub, tranquil, well-equipped, landmark]
+    vocabulary_stretch: [get away from the hustle and bustle, yearn, unspoiled, close-knit]
+    sentence_length_target: "Complex, varied sentence structures using linking phrases"
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Describe a peaceful place that you have visited."
+    user_model_answer: "I visited a park near my house last month. It was very quiet and there were many trees and flowers. I went there to walk and take some photos. I liked it because it was peaceful and I felt relaxed."
+  - band_level: 7.5
+    turn_type: standalone
+    ai_line: "Describe a peaceful place that you have visited."
+    user_model_answer: "I often retreat to a newly-developed riverside park which is quite far from the hustle and bustle of the city. The first time I visited, I was walking around the bamboo wooded area and taking photos of the stunning plant life. It’s an unspoiled area where I can really get closer to nature. If I could recommend a spot for relaxation, I would definitely suggest this place because it’s incredibly tranquil."

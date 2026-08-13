@@ -1,0 +1,132 @@
+vocabulary_entry:
+  topic_tags:
+  - general_vocabulary
+  - idioms
+  - advanced_english
+  category: idiom
+  source_citation: English Idioms in Use Advanced, pp. 175-176
+  entries:
+  - term: put your shoulder to the wheel
+    meaning: to start working very hard
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: be head and shoulders above sb
+    meaning: to be much better than other people
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: rub shoulders with sb
+    meaning: to spend time with famous or important people
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: show your hand
+    meaning: to reveal your hidden plans or intentions
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: steal the show
+    meaning: to receive the most attention and praise; to be the best performer
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: shrouded in mystery
+    meaning: not known or understood; mysterious
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: shut up shop
+    meaning: to close a business or stop operating for the day or permanently
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: sick and tired
+    meaning: annoyed or bored with something that you have experienced too much
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: can't see the wood for the trees
+    meaning: to be unable to understand a situation clearly because you are too involved
+      in small details
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: set your sights on
+    meaning: to decide to achieve something; to have as a goal
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: sit on the fence
+    meaning: to delay making a decision or choosing a side in an argument
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: leave no stone unturned
+    meaning: to try every possible course of action in order to find something or
+      achieve a goal
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: a storm in a teacup
+    meaning: a lot of unnecessary anger and worry about a matter that is not important
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: weather the storm
+    meaning: to survive a difficult situation or period of time
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: spick and span
+    meaning: neat and clean; spotless
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: throw a spanner in the works
+    meaning: to do something that prevents a plan from succeeding
+    example: ''
+    band_suitability: 8.0+
+    register: informal
+  - term: sweep sth under the carpet
+    meaning: to hide a problem or try to keep it secret instead of dealing with it
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: take each day as it comes
+    meaning: to deal with things as they happen without planning too far ahead
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: take matters into your own hands
+    meaning: to deal with a problem yourself because other people have failed to do
+      so
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

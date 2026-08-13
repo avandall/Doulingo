@@ -1,0 +1,135 @@
+vocabulary_entry:
+  topic_tags:
+  - collocations
+  - general_vocabulary
+  - intermediate_english
+  category: collocation
+  source_citation: English Collocations in Use Intermediate
+  entries:
+  - term: attach importance to
+    meaning: to consider something to be important
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: imposing building
+    meaning: a building that is large and impressive
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: create a bad impression
+    meaning: to make people have a negative opinion of you
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: get the impression
+    meaning: to form an opinion or feeling about something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: make a good impression
+    meaning: to cause people to have a positive opinion of you
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: dramatic improvement
+    meaning: a sudden and very noticeable improvement
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: steady income
+    meaning: money received on a regular basis that does not change much
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: incurable illness
+    meaning: an illness that cannot be cured
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: industrial zone
+    meaning: an area of land set aside for factories and industrial businesses
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: inflict pain
+    meaning: to cause someone to suffer pain
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: strongly influence
+    meaning: to have a very strong effect on someone or something
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: keep someone informed
+    meaning: to regularly give someone new information about a situation
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: climb the career ladder
+    meaning: to progress in your career to higher and more important positions
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: dead-end job
+    meaning: a job with no prospects of promotion or advancement
+    example: ''
+    band_suitability: 7.0+
+    register: informal
+  - term: demanding job
+    meaning: a job that requires a lot of effort, skill, or attention
+    example: ''
+    band_suitability: 6.0+
+    register: neutral
+  - term: fulfilling job
+    meaning: a job that makes you feel happy and satisfied because you feel you are
+      doing something useful
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: kill time
+    meaning: to do something while you are waiting for something to happen
+    example: ''
+    band_suitability: 6.0+
+    register: informal
+  - term: opportunity of a lifetime
+    meaning: a very rare and excellent opportunity
+    example: ''
+    band_suitability: 7.0+
+    register: neutral
+  - term: shed some light on
+    meaning: to make a difficult problem or situation easier to understand
+    example: ''
+    band_suitability: 8.0+
+    register: neutral
+  - term: juvenile crime
+    meaning: crime committed by young people
+    example: ''
+    band_suitability: 7.0+
+    register: formal
+band_tiers:
+- band_min: 5.0
+  band_max: 6.0
+  can_do_description: Auto-added
+  grammar_required: []
+  vocabulary_core: []
+  sentence_length_target: short
+sample_dialogues:
+- band_level: 6.0
+  turn_type: standalone
+  ai_line: Can you tell me about this topic?
+  user_model_answer: I often talk about this topic with my friends and family.
+- band_level: 7.0
+  turn_type: standalone
+  ai_line: How has this changed over time?
+  user_model_answer: Over the years it has changed because people moved to cities
+    and lifestyles shifted significantly.
+content_unit:
+  template_type: band_ladder
+  title: Auto-added content unit
+  topic_tags:
+  - auto
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: auto

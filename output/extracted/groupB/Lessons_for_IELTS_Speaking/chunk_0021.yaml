@@ -1,0 +1,36 @@
+content_unit:
+  template_type: band_ladder
+  title: "Grammar: Comparison and Adjectives"
+  topic_tags: [Grammar, Comparison, Adjectives]
+  target_band_min: 5.0
+  target_band_max: 6.0
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, GRAMMAR"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Learners use basic comparative structures (more than, as...as) to express opinions about media and habits. Often struggle with irregular adjectives and word order in negative comparisons."
+    grammar_required:
+      - "Comparative adjectives (-er, more + adj)"
+      - "Superlative adjectives (-est, most + adj)"
+      - "Equative structure (as... as)"
+      - "Negative comparison (isn't as... as)"
+    vocabulary_core: [small, big, funny, scary, relaxing, exciting, good, bad]
+    vocabulary_stretch: [documentary, comedy, educational, modern, old-fashioned]
+    sentence_length_target: "medium (complex sentences with conjunctions like 'but' or 'because')"
+    common_errors_to_simulate: "Confusing irregular forms (e.g., 'more good' instead of 'better'), omitting the second 'as' in 'as...as' structures, or misplacing the negative 'not' in unequal comparisons."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Do you prefer movies to documentaries? Why?"
+    user_model_answer: "I prefer comedies because they are funnier than documentaries. Documentaries are a bit boring for me."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Which is worse for children, spending too much time on the television or the computer?"
+    user_model_answer: "I think spending too much time on the computer isn't as relaxing as the television, but it is worse for their eyes."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "Which is more interesting for you, reading magazines or watching television?"
+    user_model_answer: "I think reading magazines isn't as interesting as watching television because I like seeing the moving pictures more."

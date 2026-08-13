@@ -1,0 +1,49 @@
+content_unit:
+  template_type: band_ladder
+  title: "Useful Sentence Structures for Hobbies"
+  topic_tags: ["Hobbies", "Sentence Structures"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Basic_IELTS_Speaking, Useful Sentence Structures"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh ở band này có khả năng trả lời các câu hỏi về sở thích bằng các cấu trúc câu đơn giản, sử dụng liên từ chỉ lý do cơ bản như 'because'."
+    grammar_required: 
+      - Present simple
+      - Gerunds (enjoy + V-ing)
+      - Clause of reason (because)
+    vocabulary_core: ["enjoy", "hobby", "favourite", "relaxed", "peaceful"]
+    vocabulary_stretch: []
+    sentence_length_target: "Short to medium (8-12 words)"
+    common_errors_to_simulate: "Lặp từ 'because', cấu trúc câu bị động từ (ví dụ: 'I enjoy read'), quên chia động từ sau 'I'd rather'."
+  - band_min: 6.5
+    band_max: 7.5
+    can_do_description: "Thí sinh có thể mở rộng câu trả lời bằng cách dùng mệnh đề chỉ thời gian (Whenever...) và cấu trúc so sánh (rather... than)."
+    grammar_required: 
+      - Whenever (adverbial clause of time)
+      - Gerund phrases
+      - Bare infinitive after would rather
+    vocabulary_core: ["collecting", "active", "passive"]
+    vocabulary_stretch: ["collecting stamps", "active hobby vs passive hobby"]
+    sentence_length_target: "Medium to long (15-20 words)"
+
+sample_dialogues:
+  - band_level: 5.0
+    turn_type: standalone
+    ai_line: "What is your hobby?"
+    user_model_answer: "I enjoy reading because it makes me relaxed."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How did you start your hobby?"
+    user_model_answer: "I started collecting stamps at the age of seven when I was with my grandma."
+  - band_level: 6.0
+    turn_type: standalone
+    ai_line: "What do you feel when you dance?"
+    user_model_answer: "Whenever I am dancing, I feel so happy."
+  - band_level: 6.5
+    turn_type: standalone
+    ai_line: "Do you prefer active or passive hobbies?"
+    user_model_answer: "I think I'd rather have a hobby that is active rather than passive."

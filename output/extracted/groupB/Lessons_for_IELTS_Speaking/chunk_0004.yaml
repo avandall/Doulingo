@@ -1,0 +1,34 @@
+content_unit:
+  template_type: scenario
+  title: "Put it all together — School Subjects and Environment"
+  topic_tags: ["Education", "School Life", "Subjects"]
+  target_band_min: 5.0
+  target_band_max: 6.5
+  register: neutral
+  source_citation: "Lessons_for_IELTS_Speaking.md, Put it all together"
+
+band_tiers:
+  - band_min: 5.0
+    band_max: 6.0
+    can_do_description: "Thí sinh có thể trả lời các câu hỏi về trường học một cách trực tiếp nhưng câu trả lời còn ngắn và phụ thuộc nhiều vào các cấu trúc mẫu đơn giản."
+    grammar_required: 
+      - Present Simple
+      - Modals of obligation (have to)
+    vocabulary_core: ["subjects", "compulsory", "homework", "discipline", "exams"]
+    vocabulary_stretch: ["optionally", "rigorous"]
+    sentence_length_target: "short-medium (8-12 words)"
+    common_errors_to_simulate: "Lặp lại từ vựng trong câu hỏi (ví dụ: I dislike because it is...), thiếu phát triển ý (từ nối hạn chế)."
+
+sample_dialogues:
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What subjects are compulsory in your school?"
+    user_model_answer: "In my school, we have to study Maths and Literature, but we can choose art subjects like music or painting."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "What are your favourite subjects?"
+    user_model_answer: "I really like English because it is very useful for my future career and it's quite interesting."
+  - band_level: 5.5
+    turn_type: standalone
+    ai_line: "How much homework do you have?"
+    user_model_answer: "Lots! I have to do homework for every subject every single day, so I stay up late."
