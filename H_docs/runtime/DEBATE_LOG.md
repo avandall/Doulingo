@@ -733,6 +733,25 @@ Review Result: APPROVED
 - Non-blocking (MEDIUM/LOW): 1
 
 Review Result: APPROVED
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 07:44
+### Iteration: 34
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-006 Prompt Constructor Engine v1 (`app/prompt_constructor.py`) and test suite (`tests/test_prompt_constructor.py`) implemented with context assembly, RAG dialogue injection, anti-verbatim rules, follow-up constraints, JSON schema instructions, and sub-millisecond execution.
+- [LOW] Default prompt template hardcodes character name 'Lily' when `character_name` is empty string or None — Evidence: `app/prompt_constructor.py:48`
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi RAG Retrieval Layer (TASK-005) trả về danh sách rỗng (dữ liệu rỗng)?] → [Prompt constructor tự động fallback chèn phần hướng dẫn mặc định `No specific sample dialogues retrieved...`, đảm bảo prompt không bị crash hay rỗng.]
+2. [Làm thế nào để đảm bảo tốc độ tạo prompt đạt tiêu chuẩn < 5ms?] → [Toàn bộ logic là chuỗi ghép chuỗi thuần túy (string interpolation & array join), test benchmark cho thấy thời gian trung bình < 0.1ms cho 1000 lượt.]
+3. [Điều gì ngăn cản AI lặp lại nguyên văn mẫu câu từ reference dialogues?] → [Cài đặt quy tắc bắt buộc ANTI-VERBATIM REPETITION ngay trong section 4 của System Prompt và yêu cầu tuân thủ JSON Schema `ai_utterance`.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
 
