@@ -39,6 +39,7 @@ class PromptContext:
     character_name: str = "Lily"
     difficulty_adjustment: str = "hold"
     entity_memory: dict[str, Any] | list[Any] | None = field(default_factory=dict)
+    simulation_directives: str | None = None
 
 
 def construct_system_prompt(context: PromptContext) -> str:
@@ -76,6 +77,10 @@ def construct_system_prompt(context: PromptContext) -> str:
     memory_formatted = format_entity_memory_for_prompt(context.entity_memory)
     if memory_formatted:
         sections.append(memory_formatted)
+
+    # 2.6 Simulation Engine Directives (TASK-019)
+    if context.simulation_directives:
+        sections.append(f"### ROLEPLAY SIMULATION DIRECTIVES\n{context.simulation_directives}")
 
     # 3. Retrieved Reference Dialogues (RAG Context)
     if context.retrieved_dialogues:

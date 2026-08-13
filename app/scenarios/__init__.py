@@ -361,3 +361,23 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
         print(f"[scenarios.py] Error looking up MaterialBank topic: {e}")
 
     return None
+
+
+from app.scenarios.simulation_engine import (
+    RealWorldSimulationEngine,
+    build_simulation_directives,
+    evaluate_hooks,
+    get_active_scenario,
+    select_branch,
+)
+
+__all__ = [
+    "DEFAULT_SCENARIOS",
+    "RealWorldSimulationEngine",
+    "build_simulation_directives",
+    "evaluate_hooks",
+    "get_active_scenario",
+    "get_scenario",
+    "list_scenarios",
+    "select_branch",
+]
