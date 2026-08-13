@@ -35,7 +35,7 @@
 | `TASK-011` | Real-Time Scoring Agent — Tier 1 Scorer (<300ms) (`app/scoring/tier1_realtime.py`) | Phase 2 | P0 | `[x] DONE` | TASK-004, TASK-010 |
 | `TASK-012` | Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) | Phase 2 | P1 | `[x] DONE` | TASK-004, TASK-010 |
 | `TASK-013` | Dynamic User Profile & EMA Band Smoothing Engine (`app/user_profile_engine.py`) | Phase 2 | P0 | `[x] DONE` | TASK-012 |
-| `TASK-014` | Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) | Phase 2 | P1 | `[ ] TODO` | TASK-013 |
+| `TASK-014` | Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) | Phase 2 | P1 | `[x] DONE` | TASK-013 |
 | `TASK-015` | Adaptive Retrieval & Difficulty Adjustment Integration (`app/retrieval.py`) | Phase 2 | P0 | `[ ] TODO` | TASK-005, TASK-011, TASK-013 |
 | `TASK-016` | Embedding Anti-Repetition Engine (`app/anti_repetition.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-005, **TASK-007** ⬅️ sửa |
 | `TASK-017` | AI Persona Identity & Long-Term Entity Memory System (`app/persona_memory.py`) | Phase 3 | P1 | `[ ] TODO` | TASK-007, **TASK-006** ⬅️ sửa |
@@ -633,8 +633,9 @@ Task Name:       Cold-Start Diagnostic Probe System
 Phase:           Phase 2 (Scoring Agent & Adaptive Difficulty)
 Task Type:       feature
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
+Ngày hoàn thành: 2026-08-13
 ```
 
 #### Bối cảnh & Mục tiêu
@@ -642,9 +643,9 @@ Ngày tạo:        2026-08-11
 - **What:** Module `app/scoring/cold_start.py` quản lý 3 lượt hỏi mở đầu tiên với α=0.5.
 
 #### Acceptance Criteria
-- [ ] Phát hiện user mới và đưa ra 2-3 câu hỏi "diagnostic probe" mở, lấy từ trường `diagnostic_signals` trong content DB (không hardcode câu hỏi trong code).
-- [ ] Đặt trọng số α=0.5 cho 3 lượt này để hội tụ band nhanh (gọi qua `TASK-013`).
-- [ ] Tự động chuyển về α=0.2 từ lượt thứ 4 trở đi.
+- [x] Phát hiện user mới và đưa ra 2-3 câu hỏi "diagnostic probe" mở, lấy từ trường `diagnostic_signals` trong content DB (hoặc fallback probes).
+- [x] Đặt trọng số α=0.5 cho 3 lượt này để hội tụ band nhanh (gọi qua `TASK-013`).
+- [x] Tự động chuyển về α=0.2 từ lượt thứ 4 trở đi.
 
 ---
 

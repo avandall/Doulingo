@@ -836,6 +836,50 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 13:40
+### Iteration: 40
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-012 Deep Scoring Agent — Tier 2 Scorer & Grammar Check (`app/scoring/tier2_deep.py`) and test suite (`tests/test_tier2_deep.py`) implemented cleanly with spaCy parser, fallback grammar rules, ASR confidence pronunciation scoring, dynamic anchor integration, and 4-axis weighted raw score calculation.
+- [LOW] Grammar error detection uses regex overlay combined with spaCy dependency parsing for robust fallback behavior when spaCy model is unavailable.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra khi spaCy model `en_core_web_sm` chưa được cài đặt hoặc import thất bại?] → [Module tự động fallback sang phân tích cú pháp dạng regex/rule-based, tính `clause_ratio` qua subordinate conjunctions và vẫn trả về kết quả `Tier2ScoreResult` an toàn mà không làm crash ứng dụng.]
+2. [Làm thế nào để đảm bảo điểm 4 trục (Fluency, Lexical, Grammar, Pronunciation) không vượt ngoài thang điểm IELTS 4.0 - 9.0?] → [Tất cả các sub-scores và `raw_score` cuối cùng đều được clamp bằng `max(4.0, min(9.0, score))` trước khi trả về.]
+3. [Điều gì xảy ra nếu `words` rỗng hoặc không có timestamp confidence?] → [Hàm `compute_pronunciation_score` linh hoạt sử dụng `fallback_confidence` và quy đổi sang thang điểm 4.0 - 9.0 an toàn.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-13 14:07
+### Iteration: 42
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-014 Cold-Start Diagnostic Probe System (`app/scoring/cold_start.py`) and test suite (`tests/test_cold_start.py`) implemented cleanly with cold-start detection (`turn_count < 3`), accelerated EMA alpha switching ($\alpha = 0.5 \to 0.2$), DB probe retrieval from `sample_dialogues`, fallback probe questions, and `ColdStartManager`.
+- [LOW] Default fallback probes rely on curated static open-ended questions when database query returns fewer than requested probes.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra nếu `sample_dialogues` chưa có dữ liệu hoặc truy vấn DB gặp lỗi?] → [Hàm `get_diagnostic_probes` tự động nảy sang `FALLBACK_PROBES` có sẵn 3 câu hỏi mở (hometown, hobbies, experience) đảm bảo không bao giờ bị rỗng hay ném ngoại lệ.]
+2. [Làm thế nào để đảm bảo lượt thứ 4 (turn_count = 3) chuyển chính xác về $\alpha = 0.2$?] → [Hàm `get_alpha(turn_count)` sử dụng `is_cold_start(turn_count)` check `turn_count < 3`. Turn 0, 1, 2 trả về 0.5, turn 3 trở đi trả về 0.2.]
+3. [Điều gì xảy ra khi `process_cold_start_turn` được gọi?] → [Hàm ủy quyền gọi `update_band` ở `app.user_profile_engine` với `base_alpha` tương ứng và trả về dict kết quả chứa `is_cold_start` và `applied_base_alpha` minh bạch.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
+
 
 
 
