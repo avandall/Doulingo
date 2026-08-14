@@ -29,7 +29,12 @@ def _get_sentence_transformer():
     try:
         from sentence_transformers import SentenceTransformer  # type: ignore
 
-        _MODEL = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+        try:
+            _MODEL = SentenceTransformer("all-MiniLM-L6-v2", device="cpu", local_files_only=True)
+        except Exception:
+            # If local files only fails, fall back to fallback embedding to prevent test hang
+            _MODEL = False
+            return None
         return _MODEL
     except Exception:
         _MODEL = False

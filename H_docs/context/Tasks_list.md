@@ -45,7 +45,7 @@
 | `TASK-021` | Multi-Armed Bandit / Adaptive Spaced Repetition Engine (`app/adaptive_engine.py`) | Phase 4 | P2 | `[x] DONE` | TASK-015, **TASK-001** ⬅️ sửa |
 | `TASK-022` | 🆕 **PII Scrubbing Module** (`app/data_quality/pii_scrubber.py`) | Phase 5 | P0 | `[x] DONE` | None |
 | `TASK-023` | High-Band User Answer Harvest Pipeline (`app/data_flywheel.py`) | Phase 5 | P2 | `[x] DONE` | TASK-013, TASK-012, **TASK-022** ⬅️ sửa |
-| `TASK-024` | Scoring Model Drift Benchmark (định kỳ, không phải bootstrap ban đầu) (`scripts/benchmark_calibration.py`) | Phase 5 | P2 | `[ ] TODO` | TASK-012, TASK-010 |
+| `TASK-024` | Scoring Model Drift Benchmark (định kỳ, không phải bootstrap ban đầu) (`scripts/benchmark_calibration.py`) | Phase 5 | P2 | `[/] IN_PROGRESS` | TASK-012, TASK-010 |
 
 ---
 
@@ -888,7 +888,7 @@ Task Name:       Scoring Model Drift Benchmark (định kỳ — KHÔNG phải b
 Phase:           Phase 5 (Data Flywheel & Quality Control)
 Task Type:       script
 Priority:        P2-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11 (thu hẹp phạm vi so với v1 — phần bootstrap ban đầu đã tách sang TASK-010)
 Phụ thuộc:       TASK-012, TASK-010
 ```
@@ -898,9 +898,9 @@ Phụ thuộc:       TASK-012, TASK-010
 - **What:** Viết script `scripts/benchmark_calibration.py` chạy benchmark định kỳ, so sánh điểm hệ thống chấm với điểm người review chấm tay trên mẫu ngẫu nhiên từ `harvest_review_queue` (`TASK-023`).
 
 #### Acceptance Criteria
-- [ ] Lấy mẫu ngẫu nhiên các turn đã có `reviewed_by='human:*'` để làm ground truth so sánh.
-- [ ] Tính chỉ số sai số (MAE / RMSE) giữa điểm model chấm (Tier 2) và điểm human rater.
-- [ ] Cảnh báo nếu MAE vượt ngưỡng đã đặt ở `TASK-010` (`holdout_mae` ban đầu) — đề xuất chạy lại `calibrate_thresholds.py` để sinh phiên bản config mới (`v2`, `v3`...).
+- [x] Lấy mẫu ngẫu nhiên các turn đã có `reviewed_by='human:*'` để làm ground truth so sánh.
+- [x] Tính chỉ số sai số (MAE / RMSE) giữa điểm model chấm (Tier 2) và điểm human rater.
+- [x] Cảnh báo nếu MAE vượt ngưỡng đã đặt ở `TASK-010` (`holdout_mae` ban đầu) — đề xuất chạy lại `calibrate_thresholds.py` để sinh phiên bản config mới (`v2`, `v3`...).
 
 ---
 
