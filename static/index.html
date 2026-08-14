@@ -64,6 +64,12 @@
       </div>
 
       <div class="stats-bar">
+        <button class="btn-duo btn-green" id="btn-open-weekly-report" style="padding: 6px 10px; font-size: 12px;" title="Xem báo cáo hiệu suất 4 trục tuần">
+          📊 BÁO CÁO TUẦN
+        </button>
+        <button class="btn-duo btn-purple" id="btn-open-error-journal" style="padding: 6px 10px; font-size: 12px;" title="Xem sổ lỗi cá nhân & dệt lỗi">
+          📕 SỔ LỖI
+        </button>
         <button class="btn-duo btn-orange" id="btn-open-vocab-modal" style="padding: 6px 10px; font-size: 12px;">
           📖 SỔ TỪ (<span id="vocab-count-badge">0</span>)
         </button>
@@ -328,6 +334,101 @@
           <button class="btn-duo btn-red" id="btn-fc-hard" style="flex: 1;">❌ Needs Practice</button>
           <button class="btn-duo btn-green" id="btn-fc-easy" style="flex: 1;">✅ Got It</button>
         </div>
+    <!-- MODAL 6: WEEKLY PERFORMANCE REPORT (TASK-018) -->
+    <div class="modal-overlay" id="modal-weekly-report">
+      <div class="modal-box" style="max-width: 720px; width: 95%; max-height: 90vh; overflow-y: auto;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 12px; margin-bottom: 14px;">
+          <div>
+            <span class="level-badge" style="background: rgba(28,176,246,0.15); color: var(--duo-blue);">📊 WEEKLY PERFORMANCE REPORT</span>
+            <h2 style="font-weight: 900; font-size: 22px; margin-top: 4px;">Báo Cáo Hiệu Suất Học Tập Tuần</h2>
+          </div>
+          <button class="btn-close" id="btn-close-weekly-report">✕</button>
+        </div>
+
+        <!-- Overview Band Card -->
+        <div class="weekly-band-overview" style="display: flex; gap: 16px; align-items: center; background: linear-gradient(135deg, rgba(88,204,2,0.1), rgba(28,176,246,0.1)); border: 2px solid var(--duo-green); border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+          <div style="text-align: center; background: #fff; padding: 12px 20px; border-radius: 14px; border: 2px solid var(--duo-green); box-shadow: 0 4px 0 var(--duo-green-dark);">
+            <div style="font-size: 11px; font-weight: 800; color: var(--text-muted);">OVERALL BAND</div>
+            <div id="weekly-overall-band" style="font-size: 36px; font-weight: 900; color: var(--duo-green); line-height: 1;">6.0</div>
+            <span id="weekly-cefr-badge" class="det-cefr-badge" style="margin-top: 4px; font-size: 11px;">B2 Independent</span>
+          </div>
+          <div style="flex: 1;">
+            <div id="weekly-summary-text" style="font-size: 14px; font-weight: 700; color: var(--text-color); line-height: 1.5;">
+              Đang tải dữ liệu tổng hợp từ hệ thống Dual-Agent Scoring...
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+              <span class="pill-badge" style="background: rgba(88,204,2,0.2); color: #00843D;" id="weekly-strongest-badge">💪 Điểm mạnh: Fluency</span>
+              <span class="pill-badge" style="background: rgba(255,150,0,0.2); color: #D97700;" id="weekly-weakest-badge">🎯 Cần cải thiện: Grammar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Axis Skills Breakdown -->
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 15px; font-weight: 900; margin-bottom: 10px; color: var(--text-dark);">📈 Đánh Giá 4 Tiêu Chí IELTS (4-Axis Skills)</h3>
+          <div class="det-subscores-grid">
+            <div class="det-subscore-item">
+              <span>🗣️ Fluency & Coherence</span>
+              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-fluency" style="width: 60%; background: var(--duo-blue);"></div></div>
+              <span class="val" id="weekly-val-fluency">Band 6.0</span>
+            </div>
+            <div class="det-subscore-item">
+              <span>📚 Lexical Resource</span>
+              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-lexical" style="width: 60%; background: var(--duo-purple);"></div></div>
+              <span class="val" id="weekly-val-lexical">Band 6.0</span>
+            </div>
+            <div class="det-subscore-item">
+              <span>📐 Grammatical Range & Accuracy</span>
+              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-grammar" style="width: 60%; background: var(--duo-orange);"></div></div>
+              <span class="val" id="weekly-val-grammar">Band 6.0</span>
+            </div>
+            <div class="det-subscore-item">
+              <span>🎙️ Pronunciation & Intonation</span>
+              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-pronunciation" style="width: 60%; background: var(--duo-green);"></div></div>
+              <span class="val" id="weekly-val-pronunciation">Band 6.0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actionable AI Recommendations -->
+        <div style="margin-bottom: 20px; background: rgba(28,176,246,0.06); border-left: 4px solid var(--duo-blue); padding: 14px; border-radius: 12px;">
+          <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 900; color: var(--duo-blue);">💡 Khuyến Nghị Hành Động Từ AI</h4>
+          <ul id="weekly-recommendations-list" style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.6; color: var(--text-color);">
+            <li>Đang phân tích khuyến nghị...</li>
+          </ul>
+        </div>
+
+        <!-- Recurring Error Journal Section -->
+        <div style="margin-bottom: 16px; background: rgba(255,75,75,0.06); border-left: 4px solid #FF4B4B; padding: 14px; border-radius: 12px;">
+          <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 900; color: #FF4B4B;">📕 Lỗi Lặp Lại Đã Ghi Vào Sổ (Recurring Error Journal)</h4>
+          <div id="weekly-recurring-errors-list" style="display: flex; flex-direction: column; gap: 6px; font-size: 13px;">
+            <span style="color: var(--text-muted); font-style: italic;">Chưa ghi nhận lỗi lặp lại nghiêm trọng nào.</span>
+          </div>
+        </div>
+
+        <button class="btn-duo" id="btn-close-weekly-report-bottom" style="width: 100%;">ĐÓNG BÁO CÁO TUẦN</button>
+      </div>
+    </div>
+
+    <!-- MODAL 7: PERSONAL ERROR JOURNAL (TASK-020) -->
+    <div class="modal-overlay" id="modal-error-journal">
+      <div class="modal-box" style="max-width: 620px; width: 95%;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 10px; margin-bottom: 12px;">
+          <div>
+            <span class="level-badge" style="background: rgba(156,39,176,0.15); color: var(--duo-purple);">📕 ERROR JOURNAL & INTERLEAVED PRACTICE</span>
+            <h2 style="font-weight: 900; font-size: 20px; margin-top: 4px; color: var(--duo-purple);">Sổ Lỗi Cá Nhân & Dệt Lỗi Tự Động</h2>
+          </div>
+          <button class="btn-close" id="btn-close-error-journal">✕</button>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
+          Hệ thống AI tự động ghi nhận các lỗi lặp lại trong quá trình giao tiếp và <b>dệt (Interleaved Practice)</b> ngữ cảnh sửa lỗi vào các tình huống hội thoại tương lai!
+        </p>
+
+        <div id="error-journal-list" style="max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <button class="btn-duo btn-secondary" id="btn-close-error-journal-bottom" style="width: 100%; margin-top: 14px;">ĐÓNG SỔ LỖI</button>
       </div>
     </div>
 
@@ -527,6 +628,16 @@
             <div class="lesson-progress-fill" id="lesson-progress-fill" style="width: 0%;"></div>
           </div>
           <span class="lesson-progress-text" id="lesson-progress-text">0%</span>
+        </div>
+
+        <!-- AI Persona Memory & Adaptive Level Badges (TASK-015, TASK-017) -->
+        <div style="display: flex; gap: 6px; align-items: center; margin: 0 4px;">
+          <span class="pill-badge" id="persona-memory-badge" style="background: rgba(156,39,176,0.12); color: var(--duo-purple); font-size: 11px; font-weight: 800; border: 1px solid rgba(156,39,176,0.3);" title="AI Entity & Long-Term Memory Active">
+            🧠 Memory Active
+          </span>
+          <span class="pill-badge" id="adaptive-level-badge" style="background: rgba(28,176,246,0.12); color: var(--duo-blue); font-size: 11px; font-weight: 800; border: 1px solid rgba(28,176,246,0.3);" title="Dual-Agent Scorer Tier 1 Ephemeral Signal">
+            ⚡ Adaptive Band 6.0
+          </span>
         </div>
 
         <button class="btn-history-open" id="btn-open-history" title="Conversation History">

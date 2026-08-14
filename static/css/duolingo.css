@@ -708,3 +708,52 @@ html {
   font-size: 12.5px;
   color: var(--text-muted);
 }
+
+/* Pill Badges & UI Indicators */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Error Journal List Items */
+.error-journal-card {
+  background: #ffffff;
+  border: 2px solid var(--border-light);
+  border-left: 5px solid var(--duo-purple);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.error-journal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.error-journal-detail {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.error-journal-category {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--duo-purple);
+}
+.error-journal-suggestion {
+  font-size: 13px;
+  color: #00843D;
+  background: rgba(88,204,2,0.08);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+

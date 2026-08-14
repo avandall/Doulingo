@@ -116,7 +116,139 @@ class DuolingoSpeakApp {
     this.renderFlashcard();
   }
 
+  // =============================================
+  // WEEKLY PERFORMANCE REPORT & ERROR JOURNAL (TASK-018 & TASK-020)
+  // =============================================
+  async openWeeklyReport() {
+    if (window.duoAudio) window.duoAudio.playClick();
+    document.getElementById('modal-weekly-report').classList.add('active');
+
+    try {
+      const res = await fetch('/api/reports/weekly?user_id=user_demo&days=7');
+      if (!res.ok) throw new Error('Failed to load weekly report');
+      const data = await res.json();
+
+      const overallBand = parseFloat(data.overall_band || 6.0).toFixed(1);
+      document.getElementById('weekly-overall-band').textContent = overallBand;
+
+      let cefr = 'B2 Independent';
+      const b = parseFloat(overallBand);
+      if (b >= 8.5) cefr = 'C2 Expert';
+      else if (b >= 7.5) cefr = 'C1 Advanced';
+      else if (b >= 6.0) cefr = 'B2 Upper-Intermediate';
+      else if (b >= 5.0) cefr = 'B1 Intermediate';
+      else cefr = 'A2 Elementary';
+      document.getElementById('weekly-cefr-badge').textContent = cefr;
+
+      document.getElementById('weekly-summary-text').textContent = data.summary || `Weekly summary for user_demo: ${data.evaluations_count || 0} evaluations completed over last 7 days. Overall estimated band: ${overallBand}.`;
+      document.getElementById('weekly-strongest-badge').textContent = `💪 Strongest: ${(data.strongest_axis || 'fluency').toUpperCase()}`;
+      document.getElementById('weekly-weakest-badge').textContent = `🎯 Target Area: ${(data.weakest_axis || 'grammar').toUpperCase()}`;
+
+      const axes = data.axes_scores || {};
+      const setBar = (barId, valId, val) => {
+        const score = parseFloat(val || 6.0);
+        const pct = Math.min(100, Math.max(10, (score / 9.0) * 100));
+        const barEl = document.getElementById(barId);
+        const valEl = document.getElementById(valId);
+        if (barEl) barEl.style.width = `${pct}%`;
+        if (valEl) valEl.textContent = `Band ${score.toFixed(1)}`;
+      };
+
+      setBar('weekly-bar-fluency', 'weekly-val-fluency', axes.fluency);
+      setBar('weekly-bar-lexical', 'weekly-val-lexical', axes.lexical);
+      setBar('weekly-bar-grammar', 'weekly-val-grammar', axes.grammar);
+      setBar('weekly-bar-pronunciation', 'weekly-val-pronunciation', axes.pronunciation);
+
+      const recList = document.getElementById('weekly-recommendations-list');
+      if (recList) {
+        recList.innerHTML = '';
+        const recs = data.recommendations || ['Focus on varied sentence structures and continuous speech flow.'];
+        recs.forEach(r => {
+          const li = document.createElement('li');
+          li.textContent = r;
+          recList.appendChild(li);
+        });
+      }
+
+      const errList = document.getElementById('weekly-recurring-errors-list');
+      if (errList) {
+        errList.innerHTML = '';
+        const errs = data.recurring_errors || [];
+        if (errs.length === 0) {
+          errList.innerHTML = '<span style="color: var(--text-muted); font-style: italic;">No recurring errors recorded in the last 7 days. Great job!</span>';
+        } else {
+          errs.forEach(e => {
+            const detail = typeof e === 'object' ? (e.error_detail || JSON.stringify(e)) : String(e);
+            const div = document.createElement('div');
+            div.className = 'error-journal-card';
+            div.innerHTML = `<div class="error-journal-detail">⚠️ ${detail}</div>`;
+            errList.appendChild(div);
+          });
+        }
+      }
+    } catch (e) {
+      console.error('Error fetching weekly report:', e);
+    }
+  }
+
+  async openErrorJournal() {
+    if (window.duoAudio) window.duoAudio.playClick();
+    document.getElementById('modal-error-journal').classList.add('active');
+
+    const container = document.getElementById('error-journal-list');
+    if (!container) return;
+
+    container.innerHTML = '<div style="text-align:center; color: var(--text-muted); font-weight:700; padding:20px;">Loading Error Journal...</div>';
+
+    try {
+      const res = await fetch('/api/reports/weekly?user_id=user_demo&days=30');
+      if (!res.ok) throw new Error('Failed to load error journal');
+      const data = await res.json();
+
+      const errs = data.recurring_errors || [];
+      container.innerHTML = '';
+      if (errs.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding: 30px; background: rgba(88,204,2,0.06); border-radius: 14px; border: 2px dashed var(--duo-green);">
+            <div style="font-size: 32px; margin-bottom: 8px;">🎉</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--duo-green-dark);">No Critical Errors Logged!</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Keep practicing to expand your vocabulary & complex grammar structures!</div>
+          </div>
+        `;
+      } else {
+        errs.forEach(item => {
+          const detail = typeof item === 'object' ? (item.error_detail || JSON.stringify(item)) : String(item);
+          const cat = typeof item === 'object' ? (item.category || 'Grammar / Vocabulary') : 'Error Detail';
+          const card = document.createElement('div');
+          card.className = 'error-journal-card';
+          card.innerHTML = `
+            <div class="error-journal-category">📌 ${cat}</div>
+            <div class="error-journal-detail">${detail}</div>
+            <div class="error-journal-suggestion">💡 AI Weaver: Re-weaving target phrasing into next scenario.</div>
+          `;
+          container.appendChild(card);
+        });
+      }
+    } catch (e) {
+      container.innerHTML = '<div style="text-align:center; color: var(--duo-red); font-weight:700; padding:20px;">Failed to load Error Journal.</div>';
+    }
+  }
+
   bindEvents() {
+    // Weekly Report & Error Journal Modals
+    const btnWeekly = document.getElementById('btn-open-weekly-report');
+    if (btnWeekly) btnWeekly.addEventListener('click', () => this.openWeeklyReport());
+    const btnCloseWeekly = document.getElementById('btn-close-weekly-report');
+    if (btnCloseWeekly) btnCloseWeekly.addEventListener('click', () => document.getElementById('modal-weekly-report').classList.remove('active'));
+    const btnCloseWeeklyBtm = document.getElementById('btn-close-weekly-report-bottom');
+    if (btnCloseWeeklyBtm) btnCloseWeeklyBtm.addEventListener('click', () => document.getElementById('modal-weekly-report').classList.remove('active'));
+
+    const btnErr = document.getElementById('btn-open-error-journal');
+    if (btnErr) btnErr.addEventListener('click', () => this.openErrorJournal());
+    const btnCloseErr = document.getElementById('btn-close-error-journal');
+    if (btnCloseErr) btnCloseErr.addEventListener('click', () => document.getElementById('modal-error-journal').classList.remove('active'));
+    const btnCloseErrBtm = document.getElementById('btn-close-error-journal-bottom');
+    if (btnCloseErrBtm) btnCloseErrBtm.addEventListener('click', () => document.getElementById('modal-error-journal').classList.remove('active'));
     // Level Slider
     const levelSlider = document.getElementById('level-slider-input');
     if (levelSlider) {
@@ -1478,6 +1610,15 @@ class DuolingoSpeakApp {
       const labelEl = document.getElementById('btn-lazy-translate-label');
       if (labelEl) labelEl.textContent = 'Gợi ý / Dịch';
 
+      const memBadge = document.getElementById('persona-memory-badge');
+      if (memBadge) {
+        memBadge.textContent = `🧠 ${this.selectedCharacter ? this.selectedCharacter.name : 'AI'} Memory Active`;
+      }
+      const adaptBadge = document.getElementById('adaptive-level-badge');
+      if (adaptBadge) {
+        adaptBadge.textContent = `⚡ Adaptive Level ${this.currentLevel}`;
+      }
+
       this.conversationHistory.push({ role: 'assistant', content: this.currentAIText });
       this.historyLog.push({
         turnNum: 1,
@@ -1719,6 +1860,12 @@ class DuolingoSpeakApp {
 
       const data = await res.json();
       document.getElementById('btn-mic-toggle').disabled = false;
+
+      const adaptBadge = document.getElementById('adaptive-level-badge');
+      if (adaptBadge) {
+        const diffSignal = data.difficulty_adjustment || (data.user_feedback ? data.user_feedback.difficulty_adjustment : null) || 'hold';
+        adaptBadge.textContent = `⚡ Adaptive Band: ${diffSignal.toUpperCase()}`;
+      }
 
       this.conversationHistory.push({ role: 'user', content: userText });
       this.conversationHistory.push({ role: 'assistant', content: data.ai_response });
