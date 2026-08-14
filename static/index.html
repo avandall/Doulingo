@@ -6,845 +6,796 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="DuoSpeak">
-  <meta name="theme-color" content="#58CC02">
+  <meta name="theme-color" content="#7C3AED">
+  <meta name="description" content="Premium AI English speaking practice app with IELTS/CEFR exam scoring, roleplay scenarios, and expressive AI voice partners.">
 
-  <title>Duolingo Speak - Everyday Life Roleplays & Expressive AI Voices</title>
-  
+  <title>DuoSpeak — AI English Speaking Practice</title>
+
   <link rel="manifest" href="/static/manifest.json">
-  <link rel="stylesheet" href="/static/css/duolingo.css">
+  <link rel="stylesheet" href="/static/css/duolingo.css?v=3.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
-
-  <style>
-    /* Ensure transcript text is 100% selectable & copyable */
-    .scores-list, .score-turn-item, .score-turn-item * {
-      user-select: text !important;
-      -webkit-user-select: text !important;
-    }
-
-    /* 5x5 Emoji Grid Picker */
-    .emoji-grid-5x5 {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .emoji-grid-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      height: 44px;
-      background: rgba(0, 0, 0, 0.04);
-      border: 2px solid transparent;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .emoji-grid-item:hover {
-      background: rgba(28, 176, 246, 0.12);
-      transform: scale(1.08);
-    }
-    .emoji-grid-item.active {
-      background: rgba(28, 176, 246, 0.2);
-      border-color: var(--duo-blue);
-      box-shadow: 0 4px 0 var(--duo-blue-dark);
-    }
-  </style>
 </head>
 <body>
 
-  <div class="app-container">
-    
-    <!-- Top Navigation Bar -->
-    <header class="navbar">
-      <div class="brand">
-        <div class="brand-icon" id="brand-mascot"></div>
-        <span>duolingo <span style="color: var(--duo-blue);">speak</span></span>
+<div class="app-shell">
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">
+      <div class="brand-logo">🦉</div>
+      <span class="brand-name">DuoSpeak</span>
+    </a>
+
+    <div class="navbar-actions">
+      <button class="icon-btn" id="btn-open-weekly-report" title="Weekly Performance Report">
+        <span class="icon-btn-icon">📊</span>
+        <span>Report</span>
+      </button>
+      <button class="icon-btn" id="btn-open-error-journal" title="Personal Error Journal">
+        <span class="icon-btn-icon">📕</span>
+        <span>Errors</span>
+      </button>
+      <button class="icon-btn" id="btn-open-vocab-modal" title="Vocabulary Book">
+        <span class="icon-btn-icon">📖</span>
+        <span>Vocab (<span id="vocab-count-badge">0</span>)</span>
+      </button>
+      <button class="icon-btn" id="btn-open-lang-modal" title="Translation Language Setting">
+        <span class="icon-btn-icon">🌐</span>
+        <span id="lang-display">🇻🇳</span>
+      </button>
+      <div class="stat-pill streak" title="Day Streak">🔥 <span id="stat-streak-count">5</span></div>
+      <div class="stat-pill xp" title="Total XP">⚡ <span id="stat-xp-count">150</span></div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SCREEN 1: HOME (Scenario Selection)
+  ============================================================ -->
+  <main id="home-screen" class="screen active">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">✨ AI-Powered English Speaking Practice</div>
+      <h1 class="hero-title">Speak English<br>Like a Native</h1>
+      <p class="hero-sub">
+        Practice real conversations with expressive AI voice partners. Get IELTS/CEFR exam scoring.
+      </p>
+    </div>
+
+    <!-- Difficulty Slider -->
+    <div class="difficulty-box">
+      <div class="difficulty-header">
+        <span class="difficulty-label">🎚️ Difficulty Level</span>
+        <span class="level-badge" id="level-badge-display">Level 1 · Elementary</span>
+      </div>
+      <input type="range" id="level-slider-input" class="difficulty-slider" min="1" max="20" value="1" step="1">
+      <div class="difficulty-ticks">
+        <span>1: Elementary</span>
+        <span>10: Intermediate</span>
+        <span>20: Native Expert</span>
+      </div>
+    </div>
+
+    <!-- Character Selector -->
+    <div class="section-header">
+      <h2 class="section-title">🎭 Choose Your AI Partner</h2>
+    </div>
+    <div class="characters-row" id="characters-scroll-row">
+      <!-- Rendered dynamically -->
+    </div>
+
+    <!-- SECTION 1: IELTS & CEFR EXAM -->
+    <div class="scenario-section" id="ielts-section" style="margin-top: 28px;">
+      <div class="scenario-section-banner ielts">
+        <div class="banner-icon">🎓</div>
+        <div>
+          <div class="banner-title ielts">IELTS &amp; CEFR Speaking Exam</div>
+          <div class="banner-sub">Official scoring across 4 criteria · A1–C2 band assessment</div>
+        </div>
       </div>
 
-      <div class="stats-bar">
-        <button class="btn-duo btn-green" id="btn-open-weekly-report" style="padding: 6px 10px; font-size: 12px;" title="Xem báo cáo hiệu suất 4 trục tuần">
-          📊 BÁO CÁO TUẦN
-        </button>
-        <button class="btn-duo btn-purple" id="btn-open-error-journal" style="padding: 6px 10px; font-size: 12px;" title="Xem sổ lỗi cá nhân & dệt lỗi">
-          📕 SỔ LỖI
-        </button>
-        <button class="btn-duo btn-orange" id="btn-open-vocab-modal" style="padding: 6px 10px; font-size: 12px;">
-          📖 SỔ TỪ (<span id="vocab-count-badge">0</span>)
-        </button>
-        <button class="btn-duo btn-secondary" id="btn-open-lang-modal" style="padding: 6px 10px; font-size: 12px;">
-          🌐 🇻🇳
-        </button>
-        <div class="stat-item streak" title="Day Streak">
-          🔥 <span id="stat-streak-count">5</span>
-        </div>
-        <div class="stat-item xp" title="Total XP">
-          ⚡ <span id="stat-xp-count">150</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- SCREEN 1: Scenario & Character Selection Grid -->
-    <main id="scenario-screen" class="screen active">
-      <div class="hero-banner">
-        <h1 class="hero-title">Continuous Everyday Life Practice 🦉</h1>
-        <p style="color: var(--text-muted); font-size: 14px; font-weight: 700;">
-          Practice real-life English conversation with 8 expressive Neural Voice AI partners!
-        </p>
-
-        <div class="hero-actions">
-          <button class="btn-duo btn-orange" id="btn-open-custom-modal">
-            ➕ CREATE CUSTOM TOPIC
-          </button>
-        </div>
+      <!-- IELTS Category Filter -->
+      <div class="category-filter" id="ielts-category-filter">
+        <button class="cat-pill active" data-ielts-cat="all">🌟 All Topics</button>
+        <button class="cat-pill" data-ielts-cat="Personal &amp; Family">👤 Personal</button>
+        <button class="cat-pill" data-ielts-cat="Studies &amp; Career">🎓 Studies</button>
+        <button class="cat-pill" data-ielts-cat="Hobbies &amp; Lifestyle">🎨 Hobbies</button>
+        <button class="cat-pill" data-ielts-cat="Travel &amp; Places">✈️ Travel</button>
+        <button class="cat-pill" data-ielts-cat="Tech &amp; Society">💻 Tech</button>
       </div>
 
-      <!-- LEVEL SLIDER (RANGE 1 - 20) -->
-      <div class="level-slider-box">
-        <div class="level-slider-header">
-          <span>🎚️ Difficulty Level</span>
-          <span class="level-badge" id="level-badge-display">Level 1: Elementary</span>
-        </div>
-        <input type="range" id="level-slider-input" class="level-slider-input" min="1" max="20" value="1" step="1" />
-        <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: var(--text-muted);">
-          <span>1: Elementary</span>
-          <span>10: Intermediate</span>
-          <span>20: Native Expert</span>
-        </div>
-      </div>
-
-      <!-- Character Selector Row -->
-      <div class="section-title">
-        <span>🎭 Choose Your AI Partner</span>
-      </div>
-      <div class="characters-scroll-row" id="characters-scroll-row">
+      <div class="scenarios-grid" id="ielts-scenarios-grid">
         <!-- Rendered dynamically -->
       </div>
+    </div>
 
-      <!-- SECTION 1: IELTS & CEFR SPEAKING EXAM -->
-      <div class="section-header-box" style="margin-top: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; background: rgba(255,75,75,0.06); border-left: 5px solid #FF4B4B; padding: 12px 16px; border-radius: 12px;">
-        <div style="font-size: 26px; display: flex; align-items: center; justify-content: center;">
-          🎓
-        </div>
-        <div>
-          <h2 style="margin: 0; font-size: 17px; font-weight: 900; color: #FF4B4B; text-transform: uppercase;">
-            IELTS & CEFR SPEAKING EXAM (BÀI THI NÓI CHUẨN QUỐC TẾ)
-          </h2>
-          <p style="margin: 2px 0 0; font-size: 13px; color: var(--text-color); opacity: 0.85; font-weight: 600;">
-            Bài thi chuẩn quốc tế có chấm điểm tự động 4 tiêu chí, phân band A1-C2 & đề xuất nâng cấp C1/C2
-          </p>
-        </div>
-      </div>
-
-      <div class="category-filter-bar" id="ielts-category-filter-bar" style="margin-bottom: 14px;">
-        <button class="cat-pill active" data-ielts-cat="all">🌟 Tất cả IELTS</button>
-        <button class="cat-pill" data-ielts-cat="Personal & Family">👤 Cá nhân & Gia đình</button>
-        <button class="cat-pill" data-ielts-cat="Studies & Career">🎓 Học tập & Nghề nghiệp</button>
-        <button class="cat-pill" data-ielts-cat="Hobbies & Lifestyle">🎨 Sở thích & Lối sống</button>
-        <button class="cat-pill" data-ielts-cat="Travel & Places">✈️ Du lịch & Địa điểm</button>
-        <button class="cat-pill" data-ielts-cat="Tech & Society">💻 Công nghệ & Xã hội</button>
-      </div>
-
-      <div class="scenarios-grid" id="ielts-scenarios-grid" style="margin-bottom: 40px;">
-        <!-- IELTS Exam cards + Add Custom IELTS Topic card rendered dynamically -->
-      </div>
-
-      <!-- SECTION 2: EVERYDAY & CREATIVE ROLEPLAY -->
-      <div class="section-header-box" style="margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; background: rgba(28,176,246,0.06); border-left: 5px solid #1CB0F6; padding: 14px 18px; border-radius: 14px; border-top: 2px dashed rgba(0,0,0,0.06);">
-        <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 260px;">
-          <div style="font-size: 28px; display: flex; align-items: center; justify-content: center;">
-            💬
-          </div>
+    <!-- SECTION 2: EVERYDAY & CREATIVE ROLEPLAY -->
+    <div class="scenario-section" id="roleplay-section">
+      <div class="scenario-section-banner roleplay" style="justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="banner-icon">💬</div>
           <div>
-            <h2 style="margin: 0; font-size: 17px; font-weight: 900; color: #1CB0F6; text-transform: uppercase;">
-              EVERYDAY & CREATIVE ROLEPLAY (HỘI THOẠI GIAO TIẾP HÀNG NGÀY)
-            </h2>
-            <p style="margin: 2px 0 0; font-size: 13px; color: var(--text-color); opacity: 0.85; font-weight: 600;">
-              Luyện tập tự do cùng các nhân vật AI với tình huống ngẫu nhiên
-            </p>
+            <div class="banner-title roleplay">Everyday &amp; Creative Roleplay</div>
+            <div class="banner-sub">Free practice with real-life scenarios</div>
           </div>
         </div>
-        <button class="btn-duo btn-purple" id="btn-random-roleplay" style="padding: 10px 18px; font-size: 14px; white-space: nowrap;">
-          🎲 RANDOM ROLEPLAY
-        </button>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="btn btn-sm btn-primary" id="btn-random-roleplay">🎲 Random</button>
+          <button class="btn btn-sm btn-secondary" id="btn-open-custom-modal">➕ Custom</button>
+        </div>
       </div>
 
-      <div class="scenarios-grid" id="roleplay-scenarios-grid" style="margin-bottom: 48px;">
-        <!-- Roleplay cards + Add Custom Roleplay Topic card rendered dynamically -->
-      </div>
-    </main>
-
-    <!-- MODAL 1: TARGET LANGUAGE SETTING -->
-    <div class="modal-overlay" id="modal-lang-setting">
-      <div class="modal-box">
-        <h2 style="font-weight: 900; font-size: 20px;">🌐 Select Target Translation Language</h2>
-        <p style="color: var(--text-muted); font-size: 14px; font-weight: 600;">
-          Choose your language for word lookup definition clicks!
-        </p>
-
-        <div class="form-group">
-          <label>Translation Language</label>
-          <select id="select-target-lang" class="form-input">
-            <option value="vi">English ➔ Vietnamese (Tiếng Việt 🇻🇳)</option>
-            <option value="en-def">English ➔ English Definition (🇬🇧)</option>
-            <option value="es">English ➔ Spanish (Español 🇪🇸)</option>
-            <option value="fr">English ➔ French (Français 🇫🇷)</option>
-          </select>
-        </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <button class="btn-duo" id="btn-save-lang-setting" style="flex:1;">SAVE SETTING</button>
-          <button class="btn-duo btn-secondary" id="btn-close-lang-modal">CANCEL</button>
-        </div>
+      <div class="scenarios-grid" id="roleplay-scenarios-grid">
+        <!-- Rendered dynamically -->
       </div>
     </div>
 
-    <!-- MODAL 2: INTERACTIVE WORD LOOKUP -->
-    <div class="modal-overlay" id="modal-word-lookup">
-      <div class="modal-box" style="max-width: 400px; text-align: center;">
-        <h2 style="font-weight: 900; font-size: 26px; color: var(--duo-blue);" id="word-title">Bargain</h2>
-        <div style="font-size: 16px; font-weight: 800; color: var(--text-muted);" id="word-phonetic">/ˈbɑː.ɡɪn/</div>
+  </main>
 
-        <div style="background: rgba(0,0,0,0.03); border-radius: 14px; padding: 14px; margin: 10px 0;">
-          <div style="font-size: 12px; font-weight: 800; color: var(--duo-blue); text-transform: uppercase;" id="word-translation-label">Tiếng Việt</div>
-          <div style="font-size: 18px; font-weight: 800; margin-top: 4px;" id="word-translation-text">Mặc cả, trả giá</div>
-        </div>
+  <!-- ============================================================
+       SCREEN 2: PRACTICE STAGE
+  ============================================================ -->
+  <main id="practice-screen" class="screen">
 
-        <button class="btn-duo" id="btn-close-word-modal" style="width: 100%;">CLOSE</button>
+    <!-- Top Bar -->
+    <div class="practice-topbar">
+      <button class="btn-close" id="btn-close-practice" title="Exit Practice">✕</button>
+      <span class="practice-scenario-title" id="scenario-stage-title">Roleplay Stage</span>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="lesson-progress-fill"></div>
       </div>
+      <div class="practice-badges">
+        <span class="badge-pill memory" id="persona-memory-badge" title="AI Long-Term Memory Active">🧠 Memory</span>
+        <span class="badge-pill adaptive" id="adaptive-level-badge" title="Adaptive Band Score">⚡ Band 6.0</span>
+      </div>
+      <button class="icon-btn" id="btn-open-history" title="Conversation History">📜</button>
+      <span id="current-turns-count" style="font-size:11px;font-weight:700;color:var(--text-muted);">0 Turns</span>
+      <button class="btn btn-sm btn-danger" id="btn-finish-roleplay">🏁 Finish</button>
     </div>
 
-    <!-- MODAL 3: CREATE CUSTOM TOPIC -->
-    <div class="modal-overlay" id="modal-custom-topic">
-      <div class="modal-box">
-        <h2 style="font-weight: 900; font-size: 22px;">➕ Create Your Custom Topic</h2>
-        <p style="color: var(--text-muted); font-size: 14px; font-weight: 600;">
-          Add an everyday topic you'd like to practice speaking!
-        </p>
+    <!-- Main Practice Area -->
+    <div class="practice-main">
 
-        <div class="form-group">
-          <label>Topic Title</label>
-          <input type="text" id="custom-topic-title" class="form-input" placeholder="e.g. Cooking Dinner with Friends..." />
-        </div>
+      <!-- Dialogue Area (scrollable) -->
+      <div class="dialogue-area" id="dialogue-area">
 
-        <div class="form-group">
-          <label>Description / Scenario context</label>
-          <input type="text" id="custom-topic-desc" class="form-input" placeholder="e.g. Chatting about recipes & kitchen chaos..." />
-        </div>
-
-        <div class="form-group">
-          <label>Choose Icon (5x5 Emoji Grid)</label>
-          <input type="hidden" id="custom-topic-icon" value="💬" />
-          <div class="emoji-grid-5x5" id="emoji-picker-grid">
-            <!-- Row 1 -->
-            <div class="emoji-grid-item active" data-emoji="💬">💬</div>
-            <div class="emoji-grid-item" data-emoji="☕">☕</div>
-            <div class="emoji-grid-item" data-emoji="🍕">🍕</div>
-            <div class="emoji-grid-item" data-emoji="🛒">🛒</div>
-            <div class="emoji-grid-item" data-emoji="✈️">✈️</div>
-            <!-- Row 2 -->
-            <div class="emoji-grid-item" data-emoji="🚕">🚕</div>
-            <div class="emoji-grid-item" data-emoji="🎬">🎬</div>
-            <div class="emoji-grid-item" data-emoji="🏖️">🏖️</div>
-            <div class="emoji-grid-item" data-emoji="🐶">🐶</div>
-            <div class="emoji-grid-item" data-emoji="💻">💻</div>
-            <!-- Row 3 -->
-            <div class="emoji-grid-item" data-emoji="🏠">🏠</div>
-            <div class="emoji-grid-item" data-emoji="🏥">🏥</div>
-            <div class="emoji-grid-item" data-emoji="💼">💼</div>
-            <div class="emoji-grid-item" data-emoji="🎓">🎓</div>
-            <div class="emoji-grid-item" data-emoji="⚽">⚽</div>
-            <!-- Row 4 -->
-            <div class="emoji-grid-item" data-emoji="🎵">🎵</div>
-            <div class="emoji-grid-item" data-emoji="🎮">🎮</div>
-            <div class="emoji-grid-item" data-emoji="🕶️">🕶️</div>
-            <div class="emoji-grid-item" data-emoji="🏴‍☠️">🏴‍☠️</div>
-            <div class="emoji-grid-item" data-emoji="🔮">🔮</div>
-            <!-- Row 5 -->
-            <div class="emoji-grid-item" data-emoji="🎨">🎨</div>
-            <div class="emoji-grid-item" data-emoji="🚴">🚴</div>
-            <div class="emoji-grid-item" data-emoji="🚀">🚀</div>
-            <div class="emoji-grid-item" data-emoji="🍔">🍔</div>
-            <div class="emoji-grid-item" data-emoji="🔑">🔑</div>
+        <!-- AI Character + Bubble -->
+        <div class="ai-character-row">
+          <div class="ai-avatar-wrap">
+            <div class="ai-avatar" id="ai-avatar-icon">🤖</div>
           </div>
-        </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <button class="btn-duo" id="btn-save-custom-topic" style="flex:1;">SAVE TOPIC</button>
-          <button class="btn-duo btn-secondary" id="btn-close-modal">CANCEL</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL 4: SAVED VOCABULARY BOOK (SỔ TỪ VỰNG) -->
-    <div class="modal-overlay" id="modal-vocab-book">
-      <div class="modal-box" style="max-width: 550px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 10px;">
-          <h2 style="font-weight: 900; font-size: 20px; color: var(--duo-orange);">📖 Sổ Từ Vựng Đã Học (SQLite DB)</h2>
-          <button class="btn-close" id="btn-close-vocab-modal">✕</button>
-        </div>
-
-        <div style="margin: 10px 0;">
-          <input type="text" id="input-search-vocab" class="form-input" placeholder="🔍 Search saved words..." style="padding: 8px 12px; font-size: 13px;" />
-        </div>
-
-        <div id="vocab-words-list" style="max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
-          <!-- Rendered dynamically -->
-        </div>
-
-        <button class="btn-duo btn-purple" id="btn-open-flashcards" style="width:100%; margin-top: 14px; margin-bottom: 4px;">
-          🗂️ LUYỆN TẬP FLASHCARD
-        </button>
-
-        <button class="btn-duo btn-secondary" id="btn-close-vocab-bottom" style="width:100%; margin-top: 8px;">
-          CLOSE VOCABULARY BOOK
-        </button>
-      </div>
-    </div>
-
-    <!-- MODAL 5: VOCABULARY FLASHCARD PRACTICE -->
-    <div class="modal-overlay" id="modal-flashcard-practice">
-      <div class="modal-box" style="max-width: 500px; text-align: center;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 10px;">
-          <h2 style="font-weight: 900; font-size: 20px; color: var(--duo-purple);">🗂️ Flashcard Practice</h2>
-          <button class="btn-close" id="btn-close-flashcard-modal">✕</button>
-        </div>
-
-        <div id="flashcard-container" style="margin: 20px 0; perspective: 1000px; height: 220px; cursor: pointer;">
-          <div id="flashcard-inner" style="width: 100%; height: 100%; position: relative; transition: transform 0.6s; transform-style: preserve-3d;">
-            <!-- Front -->
-            <div id="flashcard-front" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: #fff; border: 2px solid var(--border-light); border-bottom: 6px solid var(--border-light); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-              <div id="fc-word" style="font-size: 32px; font-weight: 900; color: var(--duo-blue);">Word</div>
-              <div id="fc-phonetic" style="font-size: 16px; font-weight: 800; color: var(--text-muted); margin-top: 8px;">/wɜːd/</div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-top: 15px;">Tap to flip</div>
+          <div class="ai-bubble-container">
+            <div class="ai-persona-name" id="ai-persona-name">
+              <span id="ai-persona-name-text">AI Partner</span>
             </div>
-            <!-- Back -->
-            <div id="flashcard-back" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: rgba(28,176,246,0.1); border: 2px solid var(--duo-blue); border-bottom: 6px solid var(--duo-blue-dark); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; transform: rotateY(180deg);">
-              <div id="fc-translation" style="font-size: 24px; font-weight: 900; color: var(--duo-blue-dark);">Bản dịch</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 15px;">
-          Card <span id="fc-current">1</span> of <span id="fc-total">10</span>
-        </div>
-
-        <div style="display: flex; gap: 10px; justify-content: center;">
-          <button class="btn-duo btn-red" id="btn-fc-hard" style="flex: 1;">❌ Needs Practice</button>
-          <button class="btn-duo btn-green" id="btn-fc-easy" style="flex: 1;">✅ Got It</button>
-        </div>
-    <!-- MODAL 6: WEEKLY PERFORMANCE REPORT (TASK-018) -->
-    <div class="modal-overlay" id="modal-weekly-report">
-      <div class="modal-box" style="max-width: 720px; width: 95%; max-height: 90vh; overflow-y: auto;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 12px; margin-bottom: 14px;">
-          <div>
-            <span class="level-badge" style="background: rgba(28,176,246,0.15); color: var(--duo-blue);">📊 WEEKLY PERFORMANCE REPORT</span>
-            <h2 style="font-weight: 900; font-size: 22px; margin-top: 4px;">Báo Cáo Hiệu Suất Học Tập Tuần</h2>
-          </div>
-          <button class="btn-close" id="btn-close-weekly-report">✕</button>
-        </div>
-
-        <!-- Overview Band Card -->
-        <div class="weekly-band-overview" style="display: flex; gap: 16px; align-items: center; background: linear-gradient(135deg, rgba(88,204,2,0.1), rgba(28,176,246,0.1)); border: 2px solid var(--duo-green); border-radius: 16px; padding: 16px; margin-bottom: 16px;">
-          <div style="text-align: center; background: #fff; padding: 12px 20px; border-radius: 14px; border: 2px solid var(--duo-green); box-shadow: 0 4px 0 var(--duo-green-dark);">
-            <div style="font-size: 11px; font-weight: 800; color: var(--text-muted);">OVERALL BAND</div>
-            <div id="weekly-overall-band" style="font-size: 36px; font-weight: 900; color: var(--duo-green); line-height: 1;">6.0</div>
-            <span id="weekly-cefr-badge" class="det-cefr-badge" style="margin-top: 4px; font-size: 11px;">B2 Independent</span>
-          </div>
-          <div style="flex: 1;">
-            <div id="weekly-summary-text" style="font-size: 14px; font-weight: 700; color: var(--text-color); line-height: 1.5;">
-              Đang tải dữ liệu tổng hợp từ hệ thống Dual-Agent Scoring...
-            </div>
-            <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
-              <span class="pill-badge" style="background: rgba(88,204,2,0.2); color: #00843D;" id="weekly-strongest-badge">💪 Điểm mạnh: Fluency</span>
-              <span class="pill-badge" style="background: rgba(255,150,0,0.2); color: #D97700;" id="weekly-weakest-badge">🎯 Cần cải thiện: Grammar</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4-Axis Skills Breakdown -->
-        <div style="margin-bottom: 20px;">
-          <h3 style="font-size: 15px; font-weight: 900; margin-bottom: 10px; color: var(--text-dark);">📈 Đánh Giá 4 Tiêu Chí IELTS (4-Axis Skills)</h3>
-          <div class="det-subscores-grid">
-            <div class="det-subscore-item">
-              <span>🗣️ Fluency & Coherence</span>
-              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-fluency" style="width: 60%; background: var(--duo-blue);"></div></div>
-              <span class="val" id="weekly-val-fluency">Band 6.0</span>
-            </div>
-            <div class="det-subscore-item">
-              <span>📚 Lexical Resource</span>
-              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-lexical" style="width: 60%; background: var(--duo-purple);"></div></div>
-              <span class="val" id="weekly-val-lexical">Band 6.0</span>
-            </div>
-            <div class="det-subscore-item">
-              <span>📐 Grammatical Range & Accuracy</span>
-              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-grammar" style="width: 60%; background: var(--duo-orange);"></div></div>
-              <span class="val" id="weekly-val-grammar">Band 6.0</span>
-            </div>
-            <div class="det-subscore-item">
-              <span>🎙️ Pronunciation & Intonation</span>
-              <div class="det-subscore-bar"><div class="bar-fill" id="weekly-bar-pronunciation" style="width: 60%; background: var(--duo-green);"></div></div>
-              <span class="val" id="weekly-val-pronunciation">Band 6.0</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Actionable AI Recommendations -->
-        <div style="margin-bottom: 20px; background: rgba(28,176,246,0.06); border-left: 4px solid var(--duo-blue); padding: 14px; border-radius: 12px;">
-          <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 900; color: var(--duo-blue);">💡 Khuyến Nghị Hành Động Từ AI</h4>
-          <ul id="weekly-recommendations-list" style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.6; color: var(--text-color);">
-            <li>Đang phân tích khuyến nghị...</li>
-          </ul>
-        </div>
-
-        <!-- Recurring Error Journal Section -->
-        <div style="margin-bottom: 16px; background: rgba(255,75,75,0.06); border-left: 4px solid #FF4B4B; padding: 14px; border-radius: 12px;">
-          <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 900; color: #FF4B4B;">📕 Lỗi Lặp Lại Đã Ghi Vào Sổ (Recurring Error Journal)</h4>
-          <div id="weekly-recurring-errors-list" style="display: flex; flex-direction: column; gap: 6px; font-size: 13px;">
-            <span style="color: var(--text-muted); font-style: italic;">Chưa ghi nhận lỗi lặp lại nghiêm trọng nào.</span>
-          </div>
-        </div>
-
-        <button class="btn-duo" id="btn-close-weekly-report-bottom" style="width: 100%;">ĐÓNG BÁO CÁO TUẦN</button>
-      </div>
-    </div>
-
-    <!-- MODAL 7: PERSONAL ERROR JOURNAL (TASK-020) -->
-    <div class="modal-overlay" id="modal-error-journal">
-      <div class="modal-box" style="max-width: 620px; width: 95%;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid rgba(0,0,0,0.06); padding-bottom: 10px; margin-bottom: 12px;">
-          <div>
-            <span class="level-badge" style="background: rgba(156,39,176,0.15); color: var(--duo-purple);">📕 ERROR JOURNAL & INTERLEAVED PRACTICE</span>
-            <h2 style="font-weight: 900; font-size: 20px; margin-top: 4px; color: var(--duo-purple);">Sổ Lỗi Cá Nhân & Dệt Lỗi Tự Động</h2>
-          </div>
-          <button class="btn-close" id="btn-close-error-journal">✕</button>
-        </div>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
-          Hệ thống AI tự động ghi nhận các lỗi lặp lại trong quá trình giao tiếp và <b>dệt (Interleaved Practice)</b> ngữ cảnh sửa lỗi vào các tình huống hội thoại tương lai!
-        </p>
-
-        <div id="error-journal-list" style="max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
-          <!-- Rendered dynamically -->
-        </div>
-
-        <button class="btn-duo btn-secondary" id="btn-close-error-journal-bottom" style="width: 100%; margin-top: 14px;">ĐÓNG SỔ LỖI</button>
-      </div>
-    </div>
-
-    <!-- MODAL: IELTS / CEFR SPEAKING EXAM (Read Then Speak / Interactive Speaking) -->
-    <div class="modal-overlay" id="modal-det-exam">
-      <div class="modal-box" style="max-width: 720px; width: 95%;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-light); padding-bottom: 12px; margin-bottom: 14px;">
-          <div>
-            <span class="level-badge" id="det-exam-category-badge" style="background: rgba(255,75,75,0.15); color: #FF4B4B;">🎓 IELTS / CEFR SPEAKING</span>
-            <h2 style="font-weight: 900; font-size: 22px; margin-top: 4px;" id="det-exam-title">Childhood Memories</h2>
-          </div>
-          <button class="btn-close" id="btn-close-det-exam" title="Thoát bài thi">✕</button>
-        </div>
-
-        <!-- Mode Switcher Tabs -->
-        <div class="det-mode-tabs" id="det-mode-tabs">
-          <button class="det-tab-btn active" data-mode="read_then_speak" id="btn-tab-read-speak">
-            📖 Read, Then Speak (Độc thoại 1-3 phút)
-          </button>
-          <button class="det-tab-btn" data-mode="interactive_speaking" id="btn-tab-interactive">
-            🗣️ Interactive Speaking (Hội thoại Giám khảo 1-3 phút)
-          </button>
-        </div>
-
-        <!-- TAB 1: READ, THEN SPEAK (QUESTION CARD + RECORDING MONOLOGUE) -->
-        <div id="det-view-read-speak" style="display: block; margin-top: 14px;">
-          <div class="det-question-card">
-            <div class="det-card-tag">IELTS & CEFR SPEAKING • QUESTION CARD</div>
-            <div class="det-card-prompt" id="det-card-prompt-text">Describe a memorable event from your childhood that taught you an important lesson.</div>
-            <div style="font-weight: 800; font-size: 13px; color: var(--text-muted); margin: 12px 0 6px 0;">You should say:</div>
-            <ul class="det-bullet-points" id="det-card-bullet-points">
-              <li>What the event was and when it happened</li>
-              <li>Who was with you during the event</li>
-              <li>Why this memory stands out to you</li>
-              <li>What life lesson you learned from the experience</li>
-            </ul>
-          </div>
-
-          <!-- DET Live Timer Box -->
-          <div class="det-timer-box">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="font-size: 20px;">⏱️</span>
-              <div>
-                <div style="font-size: 11px; font-weight: 800; color: var(--text-muted);">MONOLOGUE TIMER (MIN 1:00 / MAX 3:00)</div>
-                <div class="det-timer-display" id="det-monologue-timer">00:00 / 03:00</div>
+            <div class="speech-bubble">
+              <!-- Interactive word token container -->
+              <div class="ai-text word-token-container" id="ai-speech-text">
+                Generating opening question...
               </div>
-            </div>
-            <span class="det-timer-status" id="det-timer-status-badge">⏳ Speak at least 1 minute</span>
-          </div>
 
-          <!-- Transcript & Input Area -->
-          <div class="form-group" style="margin-top: 14px;">
-            <label style="display: flex; justify-content: space-between; align-items: center;">
-              <span>🎙️ Trạng thái ghi âm (No text input)</span>
-              <span id="det-speech-word-count" style="font-size: 12px; color: var(--duo-blue);">0 words</span>
-            </label>
-            <textarea id="det-speech-textarea" class="form-input" rows="4" style="display: none;"></textarea>
-            <div id="det-recording-ui" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.02); border-radius: 12px; padding: 30px; border: 2px dashed rgba(0,0,0,0.1);">
-              <div class="waveform-container" id="det-waveform-anim" style="display: none; margin-bottom: 20px;">
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
+              <!-- Lazy translation -->
+              <div class="ai-translation" id="ai-translation-text"></div>
+
+              <!-- Bubble action buttons -->
+              <div class="bubble-actions">
+                <button class="bubble-action-btn" id="btn-lazy-translate" title="Translate to Vietnamese">
+                  💡 Translate
+                </button>
+                <button class="bubble-action-btn" id="btn-copy-ai-speech" title="Copy to clipboard">
+                  📋 Copy
+                </button>
+                <button class="bubble-action-btn" id="btn-toggle-translate" title="Toggle full translation">
+                  🌐 Full
+                </button>
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);margin-left:auto;">
+                  💡 Tap word to translate
+                </span>
               </div>
-              <div id="det-mic-status" style="font-size: 15px; font-weight: 700; color: var(--text-muted); text-align: center;">
-                Bấm nút 'START RECORDING (GHI ÂM)' bên dưới để bắt đầu nói...
-              </div>
-            </div>
-          </div>
 
-          <div style="display: flex; gap: 10px; margin-top: 14px;">
-            <button class="btn-duo btn-red" id="btn-det-start-record" style="flex: 1; padding: 12px;">
-              🎙️ START RECORDING (GHI ÂM)
-            </button>
-            <button class="btn-duo btn-blue" id="btn-det-submit-speech" style="flex: 1; padding: 12px;">
-              📤 SUBMIT SPEAKING TEST
-            </button>
-          </div>
-        </div>
-
-        <!-- TAB 2: INTERACTIVE SPEAKING DESCRIPTION INFO -->
-        <div id="det-view-interactive" style="display: none; margin-top: 14px;">
-          <div class="det-question-card" style="background: rgba(28,176,246,0.06); border-color: var(--duo-blue);">
-            <div class="det-card-tag" style="color: var(--duo-blue);">IELTS & CEFR SPEAKING • INTERACTIVE MODE (1 - 3 MINS)</div>
-            <div style="font-weight: 800; font-size: 16px; margin: 8px 0;">🗣️ Hội thoại Trực tiếp với Giám Khảo AI (IELTS & CEFR Examiner)</div>
-            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-              Khác với Roleplay thông thường (đóng vai vui vẻ đời sống), trong chế độ này AI sẽ đóng vai <b>Giám Khảo Thi Nói Chuẩn Quốc Tế (IELTS & CEFR Examiner)</b>:
-            </p>
-            <ul style="padding-left: 20px; font-size: 13.5px; color: var(--text-color); line-height: 1.6;">
-              <li>Giám khảo đưa ra đề bài học thuật và đặt các câu hỏi phản biện, đào sâu (follow-up questions).</li>
-              <li>Bạn có thời gian chuẩn <b>1 đến 3 phút</b> để tương tác và trả lời liên tục.</li>
-              <li>Khi kết thúc phần thi, hệ thống sẽ xuất <b>Bảng điểm thi chuẩn Quốc Tế IELTS / CEFR</b> đánh giá toàn diện năng lực nói của bạn!</li>
-            </ul>
-          </div>
-
-          <button class="btn-duo btn-red" id="btn-start-det-interactive-room" style="width: 100%; margin-top: 16px; padding: 14px; font-size: 16px;">
-            🚀 BẮT ĐẦU PHẦN THI INTERACTIVE SPEAKING
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL: IELTS / CEFR SCORE REPORT CARD -->
-    <div class="modal-overlay" id="modal-det-score-report">
-      <div class="modal-box" style="max-width: 750px; width: 95%; max-height: 90vh; overflow-y: auto;">
-        <div style="text-align: center; border-bottom: 2px solid var(--border-light); padding-bottom: 16px; margin-bottom: 16px;">
-          <div style="font-size: 11px; font-weight: 900; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;">OFFICIAL IELTS / CEFR SPEAKING TEST REPORT</div>
-          <h2 style="font-weight: 900; font-size: 24px; margin: 4px 0 8px 0;">🏆 IELTS & CEFR SPEAKING EVALUATION</h2>
-          
-          <div style="display: flex; justify-content: center; gap: 16px; align-items: center; margin-top: 10px;">
-            <div class="det-score-big-badge">
-              <span style="font-size: 12px; font-weight: 800; color: #666;">DET SCORE</span>
-              <div style="font-size: 34px; font-weight: 900; color: #FF4B4B; line-height: 1;" id="det-report-score">135</div>
-              <span style="font-size: 11px; font-weight: 800; color: #999;">/ 160</span>
-            </div>
-            <div class="det-cefr-badge" id="det-report-cefr">C1 Advanced</div>
-          </div>
-        </div>
-
-        <!-- 4 Component Scores Grid -->
-        <div class="det-subscores-grid">
-          <div class="det-subscore-item">
-            <span>Fluency & Pronunciation</span>
-            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-fluency" style="width: 85%;"></div></div>
-            <span class="val" id="det-val-fluency">85/100</span>
-          </div>
-          <div class="det-subscore-item">
-            <span>Grammar & Accuracy</span>
-            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-grammar" style="width: 80%;"></div></div>
-            <span class="val" id="det-val-grammar">80/100</span>
-          </div>
-          <div class="det-subscore-item">
-            <span>Lexical Resource (Vocab Tier)</span>
-            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-vocab" style="width: 88%;"></div></div>
-            <span class="val" id="det-val-vocab">88/100</span>
-          </div>
-          <div class="det-subscore-item">
-            <span>Coherence & Relevance</span>
-            <div class="det-subscore-bar"><div class="bar-fill" id="det-bar-coherence" style="width: 90%;"></div></div>
-            <span class="val" id="det-val-coherence">90/100</span>
-          </div>
-        </div>
-
-        <!-- Hybrid Acoustic Metrics Box -->
-        <div id="det-report-acoustic-box" style="margin-top: 14px; background: rgba(156,39,176,0.06); border: 1.5px solid rgba(156,39,176,0.3); border-radius: 10px; padding: 12px 14px;">
-          <div style="font-weight: 800; font-size: 13px; color: #9C27B0; margin-bottom: 8px;">📊 HYBRID ACOUSTIC & RHYTHM METRICS (CHỈ SỐ NGỮ ÂM THỰC TẾ)</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 13px;">
-            <div>⏱️ <b>Tốc độ nói:</b> <span id="det-ac-wpm" style="color: var(--duo-blue); font-weight: 800;">0 WPM</span></div>
-            <div>⏸️ <b>Khoảng ngập ngừng:</b> <span id="det-ac-pauses" style="color: #E91E63; font-weight: 800;">0 lần</span></div>
-            <div>💬 <b>Từ đệm (Fillers):</b> <span id="det-ac-fillers" style="color: #FF9600; font-weight: 800;">0 từ</span></div>
-          </div>
-          <div style="margin-top: 8px; font-size: 13px; color: var(--text-color);">
-            🎯 <b>Chẩn đoán nhịp điệu:</b> <span id="det-ac-diagnosis" style="font-style: italic;">Đang tải...</span>
-          </div>
-        </div>
-
-        <!-- Examiner Critique -->
-        <div style="margin-top: 16px; background: rgba(0,132,61,0.06); border-left: 4px solid #00843D; padding: 14px; border-radius: 8px;">
-          <div style="font-weight: 800; font-size: 14px; color: #00843D; margin-bottom: 6px;">👨‍🏫 EXAMINER CRITIQUE (NHẬN XÉT CỦA GIÁM KHẢO)</div>
-          <p id="det-report-critique" style="font-size: 14px; line-height: 1.5; color: var(--text-color); margin: 0;"></p>
-        </div>
-
-        <!-- Sentence Upgrades (C1/C2) -->
-        <div style="margin-top: 16px;">
-          <div style="font-weight: 800; font-size: 15px; margin-bottom: 10px;">✨ Nâng Cấp Câu Trả Lời (C1 / C2 Sentence Upgrades)</div>
-          <div id="det-report-upgrades" style="display: flex; flex-direction: column; gap: 10px;">
-            <!-- Rendered dynamically -->
-          </div>
-        </div>
-
-        <!-- Band-160 Sample Native Answer -->
-        <div style="margin-top: 16px; background: rgba(28,176,246,0.08); padding: 14px; border-radius: 12px;">
-          <div style="font-weight: 800; font-size: 14px; color: var(--duo-blue); margin-bottom: 6px;">👑 BÀI NÓI MẪU BAND 160/160 (SAMPLE NATIVE RESPONSE)</div>
-          <p id="det-report-sample" style="font-size: 14px; line-height: 1.5; color: var(--text-color); margin: 0; font-style: italic;"></p>
-        </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-          <button class="btn-duo btn-blue" id="btn-det-try-again" style="flex: 1;">🔄 THỬ LẠI CHỦ ĐỀ NÀY</button>
-          <button class="btn-duo" id="btn-det-close-report" style="flex: 1; background: var(--border-light); color: var(--text-color);">🏠 QUAY VỀ TRANG CHỦ</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- SCREEN 2: Practice Stage Room -->
-    <main id="practice-screen" class="screen">
-      <div class="practice-header">
-        <button class="btn-close" id="btn-close-practice" title="Quit Scenario">✕</button>
-        
-        <span id="scenario-stage-title" style="font-weight: 800; font-size: 14px;">
-          Roleplay Stage
-        </span>
-
-        <!-- Lesson Progress Bar -->
-        <div class="lesson-progress-container" title="Lesson Progress">
-          <div class="lesson-progress-bar">
-            <div class="lesson-progress-fill" id="lesson-progress-fill" style="width: 0%;"></div>
-          </div>
-          <span class="lesson-progress-text" id="lesson-progress-text">0%</span>
-        </div>
-
-        <!-- AI Persona Memory & Adaptive Level Badges (TASK-015, TASK-017) -->
-        <div style="display: flex; gap: 6px; align-items: center; margin: 0 4px;">
-          <span class="pill-badge" id="persona-memory-badge" style="background: rgba(156,39,176,0.12); color: var(--duo-purple); font-size: 11px; font-weight: 800; border: 1px solid rgba(156,39,176,0.3);" title="AI Entity & Long-Term Memory Active">
-            🧠 Memory Active
-          </span>
-          <span class="pill-badge" id="adaptive-level-badge" style="background: rgba(28,176,246,0.12); color: var(--duo-blue); font-size: 11px; font-weight: 800; border: 1px solid rgba(28,176,246,0.3);" title="Dual-Agent Scorer Tier 1 Ephemeral Signal">
-            ⚡ Adaptive Band 6.0
-          </span>
-        </div>
-
-        <button class="btn-history-open" id="btn-open-history" title="Conversation History">
-          📜 History
-        </button>
-
-        <span id="current-turns-count" style="font-weight: 800; font-size: 12px; color: var(--duo-blue-accent); margin-right: 6px;">
-          Turns: 0 (Unlimited)
-        </span>
-
-        <button class="btn-duo btn-red" id="btn-finish-roleplay" style="padding: 6px 12px; font-size: 12px;">
-          🏁 FINISH
-        </button>
-      </div>
-
-      <div class="stage-area">
-        <!-- AI Dialogue Bubble & Mascot -->
-        <div class="dialogue-section">
-          <div class="duo-mascot-box" id="practice-mascot"></div>
-
-          <div class="speech-bubble">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <div class="ai-character-name" id="ai-persona-name" style="margin-bottom: 0;">Rajesh Kumar (Indian English)</div>
-              <button class="btn-copy-mini" id="btn-copy-ai-speech" title="Copy AI Speech to Clipboard">📋 Copy</button>
-            </div>
-            
-            <!-- Interactive Word Token Container -->
-            <div class="ai-text word-token-container" id="ai-speech-text">
-              Generating AI opening question...
-            </div>
-            
-            <!-- Lazy Translate Button (Duolingo style) -->
-            <div style="margin-top: 10px; display: flex; align-items: center; gap: 8px;">
-              <button class="btn-lazy-translate" id="btn-lazy-translate" title="Dịch câu thoại của AI sang tiếng Việt">
-                💡 <span id="btn-lazy-translate-label">Gợi ý / Dịch</span>
-              </button>
-            </div>
-
-            <!-- AI Sentence Vietnamese Translation -->
-            <div class="ai-translation" id="ai-translation-text" style="display: none; background: rgba(28,176,246,0.08); padding: 10px 14px; border-radius: 12px; margin-top: 10px; font-weight: 700; color: #00843D;">
-            </div>
-
-            <!-- Custom Audio Player with Seekbar -->
-            <div class="audio-player" id="audio-player-widget">
-              <!-- Loading state -->
-              <div class="audio-player-loading" id="audio-player-loading">
-                <div class="audio-loading-dot"></div>
-                <div class="audio-loading-dot"></div>
-                <div class="audio-loading-dot"></div>
-                <span>Loading voice...</span>
-              </div>
-              <!-- Controls (hidden until audio ready) -->
-              <div class="audio-player-controls" id="audio-player-controls" style="display:none;">
-                <button class="audio-btn rewind" id="audio-btn-rewind" title="Quay lại lượt trước (Prev Turn)">⏮️</button>
-                <button class="audio-btn play-pause" id="audio-btn-playpause" title="Play / Pause">▶️</button>
-                <button class="audio-btn next" id="audio-btn-next" title="Tiến tới lượt sau (Next Turn)">⏭️</button>
-                <div class="audio-seekbar-wrapper">
-                  <input type="range" class="audio-seekbar" id="audio-seekbar" min="0" max="100" value="0" step="0.1" />
+              <!-- Audio Player -->
+              <div class="audio-player" id="audio-player-widget">
+                <div class="audio-loading" id="audio-player-loading">
+                  <div class="audio-loading-dots">
+                    <div class="audio-dot"></div>
+                    <div class="audio-dot"></div>
+                    <div class="audio-dot"></div>
+                  </div>
+                  <span>Loading voice...</span>
                 </div>
-                <span class="audio-time" id="audio-time-display">0:00 / 0:00</span>
+                <div class="audio-controls" id="audio-player-controls">
+                  <button class="audio-ctrl-btn" id="audio-btn-rewind" title="Previous turn">⏮️</button>
+                  <button class="audio-ctrl-btn" id="audio-btn-playpause" title="Play/Pause">▶️</button>
+                  <button class="audio-ctrl-btn" id="audio-btn-next" title="Next turn">⏭️</button>
+                  <div class="audio-seekbar-wrap">
+                    <input type="range" class="audio-seekbar" id="audio-seekbar" min="0" max="100" value="0" step="0.1">
+                  </div>
+                  <span class="audio-time" id="audio-time-display">0:00 / 0:00</span>
+                </div>
               </div>
             </div>
-
-            <div class="bubble-actions" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
-              <button class="btn-icon-sm" id="btn-toggle-translate" title="Show/Hide Full Translation">
-                🌐 Translate
-              </button>
-              <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); align-self: center; margin-left: auto;">
-                💡 Tap word to translate!
-              </span>
-            </div>
           </div>
         </div>
 
-        <!-- User Speaking Input Area -->
-        <div class="user-speaking-section">
-          <div class="waveform-container" id="waveform-anim">
-            <div class="wave-bar"></div>
-            <div class="wave-bar"></div>
-            <div class="wave-bar"></div>
-            <div class="wave-bar"></div>
-            <div class="wave-bar"></div>
+      </div><!-- /dialogue-area -->
+
+      <!-- User Input Area -->
+      <div class="user-input-area">
+        <!-- Waveform visualizer -->
+        <div class="waveform" id="waveform-anim">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+
+        <!-- Mic + Cancel row -->
+        <div class="mic-row">
+          <button class="btn-mic" id="btn-mic-toggle" title="Press to speak, press again to stop &amp; send">🎙️</button>
+          <button class="btn btn-sm btn-danger" id="btn-cancel-mic" style="display:none;">❌ Cancel</button>
+        </div>
+
+        <!-- Live transcript preview -->
+        <div class="transcript-preview" id="transcript-display">
+          Tap the mic to start speaking...
+        </div>
+
+        <!-- Transcript review/edit box -->
+        <div class="transcript-review" id="transcript-review-box">
+          <label>✏️ Review &amp; Edit Before Sending:</label>
+          <input type="text" class="form-input" id="review-speech-input" placeholder="Edit your spoken text...">
+          <div class="transcript-review-actions">
+            <button class="btn btn-cyan" id="btn-review-send" style="flex:2;">📤 Send</button>
+            <button class="btn btn-secondary" id="btn-review-retry" style="flex:1;">🔄 Retry</button>
           </div>
-
-          <!-- Mic Button & Cancel Button Pair -->
-          <div class="mic-button-wrapper" style="display: flex; gap: 12px; align-items: center; justify-content: center;">
-            <button class="btn-mic" id="btn-mic-toggle" title="Press to speak, press again to stop & send">
-              🎙️
-            </button>
-            <button class="btn-duo btn-red" id="btn-cancel-mic" style="display: none; padding: 10px 16px; font-size: 13px; height: 48px;" title="Cancel recording without sending">
-              ❌ HỦY NÓI
-            </button>
-          </div>
-
-          <!-- Live Transcript Preview -->
-          <div class="transcript-preview" id="transcript-display">
-            Tap mic to start speaking (Press again when done)...
-          </div>
         </div>
       </div>
-    </main>
+    </div><!-- /practice-main -->
 
-    <!-- SCREEN 3: Victory & Full Conversation History Review -->
-    <main id="victory-screen" class="screen victory-screen" style="text-align: center; align-items: center;">
-      <div class="victory-mascot" id="victory-mascot" style="width: 110px; height: 110px;"></div>
-      <h1 style="font-size: 24px; font-weight: 900; color: var(--duo-green);">ROLEPLAY SUMMARY 🏆</h1>
+  </main>
 
-      <div style="display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap; justify-content: center;">
-        <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-green);" id="victory-overall-score">94/100</div>
-          <div class="stat-label">OVERALL</div>
-        </div>
-        <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-blue);" id="victory-fluency-score">95/100</div>
-          <div class="stat-label">FLUENCY</div>
-        </div>
-        <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-purple);" id="victory-grammar-score">93/100</div>
-          <div class="stat-label">GRAMMAR</div>
-        </div>
-        <div class="victory-stat-card">
-          <div class="stat-value" style="color: var(--duo-yellow);" id="victory-turns-completed">5 Turns</div>
-          <div class="stat-label">TURNS</div>
-        </div>
+  <!-- ============================================================
+       SCREEN 3: VICTORY & REVIEW
+  ============================================================ -->
+  <main id="victory-screen" class="screen" style="align-items:center;text-align:center;">
+    <div class="victory-mascot-wrap" id="victory-mascot">🦉</div>
+    <h1 class="victory-title">Roleplay Complete! 🏆</h1>
+
+    <div class="victory-stats-row">
+      <div class="victory-stat">
+        <div class="victory-stat-val" style="color:var(--emerald);" id="victory-overall-score">—</div>
+        <div class="victory-stat-label">Overall</div>
       </div>
-
-      <!-- FULL CONVERSATION TRANSCRIPT REVIEW LIST (SELECTABLE & COPYABLE) -->
-      <div style="width: 100%; max-width: 860px; text-align: left; margin: 10px 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <h3 style="font-size: 15px; font-weight: 900; color: var(--text-dark);">
-            📜 Conversation Review
-          </h3>
-          <button class="btn-duo btn-secondary" id="btn-copy-transcript" style="padding: 6px 10px; font-size: 12px;">
-            📋 COPY TRANSCRIPT
-          </button>
-        </div>
-        
-        <div class="scores-list" id="victory-scores-breakdown" style="max-height: 560px; overflow-y: auto; user-select: text; -webkit-user-select: text;">
-          <!-- Rendered dynamically -->
-        </div>
+      <div class="victory-stat">
+        <div class="victory-stat-val" style="color:var(--cyan);" id="victory-fluency-score">—</div>
+        <div class="victory-stat-label">Fluency</div>
       </div>
-
-      <button class="btn-duo" id="btn-victory-continue" style="min-width: 240px; margin-top: 10px;">
-        CONTINUE TO HOME
-      </button>
-    </main>
-
-    <!-- DUOLINGO INSTANT FEEDBACK BOTTOM SHEET -->
-    <div class="feedback-sheet" id="feedback-sheet">
-      <div class="feedback-header">
-        <div class="feedback-title">
-          <span>🎉</span>
-          <span id="feedback-title-text">GREAT CONTINUOUS SPEAKING!</span>
-        </div>
-        <div class="score-badge" id="feedback-score-badge">Turn Score: 95/100 🔥</div>
+      <div class="victory-stat">
+        <div class="victory-stat-val" style="color:var(--violet-light);" id="victory-grammar-score">—</div>
+        <div class="victory-stat-label">Grammar</div>
       </div>
-
-      <div class="native-phrasing-box">
-        <div class="native-phrasing-label">💡 Native Speaker Rewrite</div>
-        <div id="native-phrasing-text">
-          "I'd like an iced oat latte with half sugar, please."
-        </div>
-      </div>
-
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="font-weight: 900; color: var(--duo-yellow); font-size: 18px;" id="feedback-xp-earned">
-          +10 XP
-        </div>
-        <button class="btn-duo" id="btn-continue-feedback">CONTINUE</button>
+      <div class="victory-stat">
+        <div class="victory-stat-val" style="color:var(--amber);" id="victory-turns-completed">0</div>
+        <div class="victory-stat-label">Turns</div>
       </div>
     </div>
 
+    <!-- Conversation Transcript Review -->
+    <div class="transcript-review-container">
+      <div class="transcript-review-header">
+        <h3 class="transcript-title">📜 Conversation Review</h3>
+        <button class="btn btn-sm btn-secondary" id="btn-copy-transcript">📋 Copy</button>
+      </div>
+      <div class="transcript-list scores-list" id="victory-scores-breakdown">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg" id="btn-victory-continue">Continue to Home</button>
+  </main>
+
+  <!-- ============================================================
+       FEEDBACK BOTTOM SHEET
+  ============================================================ -->
+  <div class="feedback-sheet" id="feedback-sheet">
+    <div class="feedback-header">
+      <div class="feedback-title-row">
+        <span class="feedback-emoji" id="feedback-emoji">🎉</span>
+        <span class="feedback-title" id="feedback-title-text">Great Speaking!</span>
+      </div>
+      <span class="feedback-score-badge" id="feedback-score-badge">+10 XP</span>
+    </div>
+
+    <div class="native-rewrite-box">
+      <div class="native-rewrite-label">💡 Native Speaker Rewrite</div>
+      <div class="native-rewrite-text" id="native-phrasing-text">"Let's start speaking!"</div>
+    </div>
+
+    <div class="feedback-footer">
+      <div class="xp-earned" id="feedback-xp-earned">⚡ +10 XP</div>
+      <button class="btn btn-primary" id="btn-continue-feedback">Continue</button>
+    </div>
   </div>
 
-  <!-- HISTORY DRAWER -->
-  <div class="history-drawer-overlay" id="history-drawer-overlay">
-    <div class="history-drawer" id="history-drawer">
-      <div class="history-drawer-header">
-        <span class="history-drawer-title">📜 Conversation History</span>
+  <!-- ============================================================
+       HISTORY DRAWER
+  ============================================================ -->
+  <div class="drawer-overlay" id="history-drawer-overlay">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <span class="drawer-title">📜 Conversation History</span>
         <button class="btn-close" id="btn-close-history">✕</button>
       </div>
-      <div class="history-drawer-body" id="history-drawer-body">
-        <div style="text-align:center; color: var(--text-muted); font-weight: 700; padding: 30px 0; font-size: 14px;">
+      <div class="drawer-body" id="history-drawer-body">
+        <div style="text-align:center;color:var(--text-muted);font-weight:700;padding:30px 0;font-size:14px;">
           No conversation yet. Start speaking!
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Fork confirmation toast -->
-  <div class="fork-toast" id="fork-toast"></div>
+  <!-- ============================================================
+       TOAST
+  ============================================================ -->
+  <div class="toast" id="fork-toast"></div>
 
-  <!-- Scripts -->
-  <script src="/static/js/audio_fx.js"></script>
-  <script src="/static/js/duo_mascot.js"></script>
-  <script src="/static/js/speech.js"></script>
-  <script src="/static/js/app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    // Register PWA Service Worker for Mobile App Installability
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/static/sw.js').catch(err => {
-          console.log('ServiceWorker registration skipped:', err);
-        });
-      });
-    }
-  </script>
+  <!-- ============================================================
+       MODALS
+  ============================================================ -->
+
+  <!-- MODAL: Language Setting -->
+  <div class="modal-overlay" id="modal-lang-setting">
+    <div class="modal-box" style="max-width:440px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">🌐 Translation Language</h2>
+          <p class="modal-subtitle">Choose your native language for word lookups.</p>
+        </div>
+        <button class="btn-close" id="btn-close-lang-modal">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Target Language</label>
+        <select id="select-target-lang" class="form-select">
+          <option value="vi">English → Vietnamese 🇻🇳</option>
+          <option value="en-def">English → English Definition 🇬🇧</option>
+          <option value="es">English → Spanish 🇪🇸</option>
+          <option value="fr">English → French 🇫🇷</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <button class="btn btn-primary" id="btn-save-lang-setting" style="flex:1;">Save</button>
+        <button class="btn btn-secondary" id="btn-close-lang-modal-2">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Word Lookup -->
+  <div class="modal-overlay" id="modal-word-lookup">
+    <div class="modal-box" style="max-width:380px;text-align:center;">
+      <div class="modal-header" style="justify-content:flex-end;margin-bottom:12px;">
+        <button class="btn-close" id="btn-close-word-modal">✕</button>
+      </div>
+      <div class="word-lookup-word" id="word-title">Word</div>
+      <div class="word-lookup-phonetic" id="word-phonetic">/wɜːd/</div>
+      <div class="word-lookup-translation-box">
+        <div class="word-lookup-lang-label" id="word-translation-label">Vietnamese</div>
+        <div class="word-lookup-translation" id="word-translation-text">Loading...</div>
+      </div>
+      <button class="btn btn-primary btn-full" id="btn-close-word-modal-2">Close</button>
+    </div>
+  </div>
+
+  <!-- MODAL: Create Custom Topic -->
+  <div class="modal-overlay" id="modal-custom-topic">
+    <div class="modal-box" style="max-width:500px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">➕ Create Custom Topic</h2>
+          <p class="modal-subtitle">Add a topic you'd like to practice speaking about.</p>
+        </div>
+        <button class="btn-close" id="btn-close-custom-modal">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Topic Title</label>
+        <input type="text" id="custom-topic-title" class="form-input" placeholder="e.g. Cooking Dinner with Friends...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <input type="text" id="custom-topic-desc" class="form-input" placeholder="e.g. Chatting about recipes & kitchen chaos...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Choose Icon</label>
+        <input type="hidden" id="custom-topic-icon" value="💬">
+        <div class="emoji-grid" id="emoji-picker-grid">
+          <div class="emoji-item active" data-emoji="💬">💬</div>
+          <div class="emoji-item" data-emoji="☕">☕</div>
+          <div class="emoji-item" data-emoji="🍕">🍕</div>
+          <div class="emoji-item" data-emoji="🛒">🛒</div>
+          <div class="emoji-item" data-emoji="✈️">✈️</div>
+          <div class="emoji-item" data-emoji="🚕">🚕</div>
+          <div class="emoji-item" data-emoji="🎬">🎬</div>
+          <div class="emoji-item" data-emoji="🏖️">🏖️</div>
+          <div class="emoji-item" data-emoji="🐶">🐶</div>
+          <div class="emoji-item" data-emoji="💻">💻</div>
+          <div class="emoji-item" data-emoji="🏠">🏠</div>
+          <div class="emoji-item" data-emoji="🏥">🏥</div>
+          <div class="emoji-item" data-emoji="💼">💼</div>
+          <div class="emoji-item" data-emoji="🎓">🎓</div>
+          <div class="emoji-item" data-emoji="⚽">⚽</div>
+          <div class="emoji-item" data-emoji="🎵">🎵</div>
+          <div class="emoji-item" data-emoji="🎮">🎮</div>
+          <div class="emoji-item" data-emoji="🔮">🔮</div>
+          <div class="emoji-item" data-emoji="🎨">🎨</div>
+          <div class="emoji-item" data-emoji="🚀">🚀</div>
+          <div class="emoji-item" data-emoji="🍔">🍔</div>
+          <div class="emoji-item" data-emoji="🏴‍☠️">🏴‍☠️</div>
+          <div class="emoji-item" data-emoji="🚴">🚴</div>
+          <div class="emoji-item" data-emoji="🕶️">🕶️</div>
+          <div class="emoji-item" data-emoji="🔑">🔑</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <button class="btn btn-primary" id="btn-save-custom-topic" style="flex:1;">Save Topic</button>
+        <button class="btn btn-secondary" id="btn-cancel-custom-modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Vocabulary Book -->
+  <div class="modal-overlay" id="modal-vocab-book">
+    <div class="modal-box" style="max-width:560px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">📖 Vocabulary Book</h2>
+          <p class="modal-subtitle">Words you've looked up during practice sessions.</p>
+        </div>
+        <button class="btn-close" id="btn-close-vocab-modal">✕</button>
+      </div>
+      <div class="form-group">
+        <input type="text" id="input-search-vocab" class="form-input" placeholder="🔍 Search saved words...">
+      </div>
+      <div id="vocab-words-list" style="max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+        <!-- Rendered dynamically -->
+      </div>
+      <button class="btn btn-primary btn-full" id="btn-open-flashcards" style="margin-bottom:8px;">🗂️ Flashcard Practice</button>
+      <button class="btn btn-secondary btn-full" id="btn-close-vocab-bottom">Close</button>
+    </div>
+  </div>
+
+  <!-- MODAL: Flashcard Practice -->
+  <div class="modal-overlay" id="modal-flashcard-practice">
+    <div class="modal-box" style="max-width:480px;text-align:center;">
+      <div class="modal-header">
+        <h2 class="modal-title">🗂️ Flashcard Practice</h2>
+        <button class="btn-close" id="btn-close-flashcard-modal">✕</button>
+      </div>
+
+      <div class="flashcard-wrap" id="flashcard-container">
+        <div class="flashcard-inner" id="flashcard-inner">
+          <div class="flashcard-face flashcard-front">
+            <div class="flashcard-word" id="fc-word">Word</div>
+            <div class="flashcard-phonetic" id="fc-phonetic">/wɜːd/</div>
+            <div class="flashcard-hint">Tap to flip</div>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <div class="flashcard-translation" id="fc-translation">Translation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-progress">Card <span id="fc-current">1</span> of <span id="fc-total">10</span></div>
+
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-danger" id="btn-fc-hard" style="flex:1;">❌ Needs Practice</button>
+        <button class="btn btn-success" id="btn-fc-easy" style="flex:1;">✅ Got It!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Weekly Performance Report -->
+  <div class="modal-overlay" id="modal-weekly-report">
+    <div class="modal-box" style="max-width:700px;">
+      <div class="modal-header">
+        <div>
+          <span class="badge-pill adaptive" style="margin-bottom:6px;display:inline-flex;">📊 Weekly Report</span>
+          <h2 class="modal-title">Performance Summary</h2>
+        </div>
+        <button class="btn-close" id="btn-close-weekly-report">✕</button>
+      </div>
+
+      <!-- Band Overview -->
+      <div class="weekly-band-overview">
+        <div class="weekly-band-card">
+          <div class="weekly-band-label">Overall Band</div>
+          <div class="weekly-band-value" id="weekly-overall-band">6.0</div>
+          <span class="badge-pill adaptive" id="weekly-cefr-badge" style="margin-top:4px;font-size:10px;">B2</span>
+        </div>
+        <div class="weekly-info">
+          <div class="weekly-summary" id="weekly-summary-text">Analyzing performance data...</div>
+          <div class="weekly-tags">
+            <span class="weekly-tag strong" id="weekly-strongest-badge">💪 Fluency</span>
+            <span class="weekly-tag improve" id="weekly-weakest-badge">🎯 Grammar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-Axis Breakdown -->
+      <h3 class="modal-section-title">📈 4-Axis Skills (IELTS Criteria)</h3>
+      <div class="subscores-grid">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">🗣️ Fluency &amp; Coherence</span>
+            <span class="subscore-val" id="weekly-val-fluency">Band 6.0</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="weekly-bar-fluency" style="width:60%;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">📚 Lexical Resource</span>
+            <span class="subscore-val" id="weekly-val-lexical">Band 6.0</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="weekly-bar-lexical" style="width:60%;background:linear-gradient(to right, var(--violet), var(--cyan));"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">📐 Grammar &amp; Accuracy</span>
+            <span class="subscore-val" id="weekly-val-grammar">Band 6.0</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="weekly-bar-grammar" style="width:60%;background:linear-gradient(to right, var(--amber), var(--orange));"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">🎙️ Pronunciation</span>
+            <span class="subscore-val" id="weekly-val-pronunciation">Band 6.0</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="weekly-bar-pronunciation" style="width:60%;background:linear-gradient(to right, var(--emerald), var(--cyan));"></div></div>
+        </div>
+      </div>
+
+      <!-- AI Recommendations -->
+      <div style="padding:14px;background:rgba(6,182,212,0.06);border-left:3px solid var(--cyan);border-radius:0 var(--r-md) var(--r-md) 0;margin-bottom:16px;">
+        <div style="font-size:12px;font-weight:800;color:var(--cyan);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">💡 AI Recommendations</div>
+        <ul id="weekly-recommendations-list" style="padding-left:18px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+          <li>Analyzing recommendations...</li>
+        </ul>
+      </div>
+
+      <!-- Recurring Errors -->
+      <div style="padding:14px;background:rgba(244,63,94,0.06);border-left:3px solid var(--rose);border-radius:0 var(--r-md) var(--r-md) 0;margin-bottom:16px;">
+        <div style="font-size:12px;font-weight:800;color:var(--rose);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">📕 Recurring Errors</div>
+        <div id="weekly-recurring-errors-list">
+          <span style="color:var(--text-muted);font-style:italic;font-size:13px;">No recurring errors found. Keep it up!</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-full" id="btn-close-weekly-report-bottom">Close Report</button>
+    </div>
+  </div>
+
+  <!-- MODAL: Personal Error Journal -->
+  <div class="modal-overlay" id="modal-error-journal">
+    <div class="modal-box" style="max-width:600px;">
+      <div class="modal-header">
+        <div>
+          <span class="badge-pill memory" style="margin-bottom:6px;display:inline-flex;">📕 Error Journal</span>
+          <h2 class="modal-title">Personal Error Journal</h2>
+        </div>
+        <button class="btn-close" id="btn-close-error-journal">✕</button>
+      </div>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;line-height:1.5;">
+        AI automatically tracks recurring errors and <strong>weaves correction contexts</strong> into future conversations (Interleaved Practice).
+      </p>
+      <div id="error-journal-list" style="max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+        <!-- Rendered dynamically -->
+      </div>
+      <button class="btn btn-secondary btn-full" id="btn-close-error-journal-bottom">Close</button>
+    </div>
+  </div>
+
+  <!-- MODAL: IELTS / CEFR Speaking Exam -->
+  <div class="modal-overlay" id="modal-det-exam">
+    <div class="modal-box" style="max-width:700px;">
+      <div class="modal-header">
+        <div>
+          <span class="badge-pill" id="det-exam-category-badge" style="background:rgba(244,63,94,0.12);border-color:rgba(244,63,94,0.3);color:var(--rose);margin-bottom:6px;display:inline-flex;">🎓 IELTS/CEFR</span>
+          <h2 class="modal-title" id="det-exam-title">Speaking Topic</h2>
+        </div>
+        <button class="btn-close" id="btn-close-det-exam">✕</button>
+      </div>
+
+      <!-- Mode Tabs -->
+      <div class="det-mode-tabs" id="det-mode-tabs">
+        <button class="det-tab-btn active" data-mode="read_then_speak" id="btn-tab-read-speak">
+          📖 Read, Then Speak (Monologue 1–3 min)
+        </button>
+        <button class="det-tab-btn" data-mode="interactive_speaking" id="btn-tab-interactive">
+          🗣️ Interactive Speaking (With AI Examiner)
+        </button>
+      </div>
+
+      <!-- TAB 1: Read & Speak -->
+      <div id="det-view-read-speak">
+        <!-- Question Card -->
+        <div class="question-card">
+          <div class="question-card-tag">IELTS &amp; CEFR SPEAKING • QUESTION CARD</div>
+          <div class="question-card-prompt" id="det-card-prompt-text">
+            Describe a memorable event from your childhood that taught you an important lesson.
+          </div>
+          <div class="question-card-bullet-label">You should say:</div>
+          <ul class="question-card-bullets" id="det-card-bullet-points">
+            <li>What the event was and when it happened</li>
+            <li>Who was with you during the event</li>
+            <li>Why this memory stands out to you</li>
+            <li>What life lesson you learned</li>
+          </ul>
+        </div>
+
+        <!-- Timer -->
+        <div class="det-timer-box">
+          <div class="det-timer-inner">
+            <span style="font-size:20px;">⏱️</span>
+            <div>
+              <div class="det-timer-label">Monologue Timer (min 1:00 / max 3:00)</div>
+              <div class="det-timer-display" id="det-monologue-timer">00:00 / 03:00</div>
+            </div>
+          </div>
+          <span class="det-timer-status" id="det-timer-status-badge">⏳ Speak at least 1 minute</span>
+        </div>
+
+        <!-- Recording UI -->
+        <div class="recording-ui" id="det-recording-ui">
+          <div class="waveform" id="det-waveform-anim">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+          <div class="recording-status-text" id="det-mic-status">
+            Press "Start Recording" below to begin speaking...
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:4px;">
+          <button class="btn btn-danger" id="btn-det-start-record" style="flex:1;padding:12px;">
+            🎙️ Start Recording
+          </button>
+          <button class="btn btn-primary" id="btn-det-submit-speech" style="flex:1;padding:12px;">
+            📤 Submit Speaking Test
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 2: Interactive Speaking -->
+      <div id="det-view-interactive" style="display:none;">
+        <div class="question-card" style="background:rgba(6,182,212,0.06);border-color:rgba(6,182,212,0.3);">
+          <div class="question-card-tag" style="color:var(--cyan);">IELTS &amp; CEFR • INTERACTIVE MODE (1–3 MINS)</div>
+          <div style="font-size:16px;font-weight:800;color:var(--text-primary);margin:8px 0;">
+            🗣️ Live Conversation with AI Examiner
+          </div>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.5;margin-bottom:8px;">
+            Unlike regular roleplay, the AI will act as an official <strong>IELTS/CEFR Examiner</strong>:
+          </p>
+          <ul style="padding-left:20px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+            <li>The examiner poses academic questions and follow-ups.</li>
+            <li>You have <strong>1 to 3 minutes</strong> of live interaction.</li>
+            <li>A full <strong>IELTS/CEFR Score Report</strong> is generated at the end.</li>
+          </ul>
+        </div>
+        <button class="btn btn-danger btn-full btn-lg" id="btn-start-det-interactive-room" style="margin-top:16px;">
+          🚀 Start Interactive Speaking Exam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: IELTS Score Report -->
+  <div class="modal-overlay" id="modal-det-score-report">
+    <div class="modal-box" style="max-width:740px;">
+      <div style="text-align:center;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px;">
+          Official IELTS / CEFR Speaking Test Report
+        </div>
+        <h2 style="font-size:22px;font-weight:900;margin-bottom:12px;">🏆 IELTS &amp; CEFR Speaking Evaluation</h2>
+        <div class="det-score-big">
+          <div class="det-score-badge">
+            <div class="det-score-label">IELTS Band / DET Score</div>
+            <div class="det-score-value" id="det-report-score">120</div>
+          </div>
+          <div class="det-cefr-badge" id="det-report-cefr">B2 Upper-Intermediate</div>
+        </div>
+      </div>
+
+      <!-- 4 Subscores -->
+      <h3 class="modal-section-title">Component Scores</h3>
+      <div class="subscores-grid" style="margin-bottom:20px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">Fluency &amp; Pronunciation</span>
+            <span class="subscore-val" id="det-val-fluency">85/100</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="det-bar-fluency" style="width:85%;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">Grammar &amp; Accuracy</span>
+            <span class="subscore-val" id="det-val-grammar">80/100</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="det-bar-grammar" style="width:80%;background:linear-gradient(to right,var(--amber),var(--orange));"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">Lexical Resource (Vocabulary)</span>
+            <span class="subscore-val" id="det-val-vocab">88/100</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="det-bar-vocab" style="width:88%;background:linear-gradient(to right,var(--violet),var(--cyan));"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="subscore-label">Coherence &amp; Relevance</span>
+            <span class="subscore-val" id="det-val-coherence">90/100</span>
+          </div>
+          <div class="subscore-bar-wrap"><div class="subscore-bar-fill" id="det-bar-coherence" style="width:90%;background:linear-gradient(to right,var(--emerald),var(--cyan));"></div></div>
+        </div>
+      </div>
+
+      <!-- Acoustic Metrics -->
+      <div class="acoustic-box">
+        <div class="acoustic-title">📊 Acoustic &amp; Rhythm Metrics</div>
+        <div class="acoustic-metrics">
+          <div class="acoustic-metric">⏱️ <strong>Speed:</strong> <span class="acoustic-metric-val" id="det-ac-wpm">0 WPM</span></div>
+          <div class="acoustic-metric">⏸️ <strong>Pauses:</strong> <span class="acoustic-metric-val" id="det-ac-pauses">0</span></div>
+          <div class="acoustic-metric">💬 <strong>Fillers:</strong> <span class="acoustic-metric-val" id="det-ac-fillers">0</span></div>
+        </div>
+        <div style="margin-top:8px;font-size:13px;color:var(--text-secondary);">
+          🎯 Rhythm Diagnosis: <span id="det-ac-diagnosis" style="font-style:italic;">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Examiner Critique -->
+      <div class="examiner-critique" style="margin-bottom:16px;">
+        <div class="critique-title">👨‍🏫 Examiner Critique</div>
+        <p class="critique-text" id="det-report-critique"></p>
+      </div>
+
+      <!-- Sentence Upgrades -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:800;margin-bottom:10px;">✨ C1/C2 Sentence Upgrades</div>
+        <div class="upgrades-container" id="det-report-upgrades"></div>
+      </div>
+
+      <!-- Band-160 Sample -->
+      <div class="sample-response" style="margin-bottom:20px;">
+        <div class="sample-response-title">👑 Band 160/160 Sample Native Response</div>
+        <p class="sample-response-text" id="det-report-sample"></p>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-cyan" id="btn-det-try-again" style="flex:1;">🔄 Try Again</button>
+        <button class="btn btn-secondary" id="btn-det-close-report" style="flex:1;">🏠 Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /app-shell -->
+
+<!-- Scripts -->
+<script src="/static/js/audio_fx.js?v=3.0"></script>
+<script src="/static/js/duo_mascot.js?v=3.0"></script>
+<script src="/static/js/speech.js?v=3.0"></script>
+<script src="/static/js/app.js?v=3.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  // PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/static/sw.js').catch(() => {});
+    });
+  }
+</script>
+
 </body>
 </html>
