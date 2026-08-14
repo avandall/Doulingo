@@ -860,3 +860,38 @@
 - **Action:** Bắt đầu `TASK-018` (Weekly Performance Reporting Engine & Hidden Scoring UI — `app/reporting.py`).
 - **State:** IN_PROGRESS
 
+---
+
+### [ITER-057] 2026-08-14 16:42 — FRONTEND-REBUILD-v3 Complete Rebuild of Frontend (Dark UI & Fixes)
+
+**Phase:** ALL_DONE
+**Step:** Frontend Rebuild Implementation, Fixes & Verification
+**Duration:** ~15 phút
+
+#### Actions Taken
+1. Phân tích nguyên nhân lỗi UI:
+   - Thẻ modal 5 (flashcard) thiếu `</div>` gây vỡ DOM structure.
+   - Start Roleplay cards dùng `innerHTML` với broken inline `onclick` reference.
+   - IELTS exam modal click handler không active đúng cách.
+   - TTS chỉ phát tiếng nhưng UI flow không cập nhật đúng.
+2. Xây dựng lại hoàn toàn 3 file frontend core:
+   - `static/css/duolingo.css`: Rebuild 100% design system với Dark Glassmorphism, Google Font Outfit, Violet `#7C3AED` & Cyan `#06B6D4` palette, micro-animations.
+   - `static/index.html`: Rebuild HTML semantic, cấu trúc 3 screens (Home, Practice, Victory), 9 modals độc lập không bị DOM nesting lỗi.
+   - `static/js/app.js`: Rebuild `DuoSpeakApp` class-based controller với event delegation đúng chuẩn, hỗ trợ đầy đủ practice mode, IELTS monologue/interactive, word lookup, lazy translation, history drawer, weekly report, error journal, flashcards.
+3. Khởi động lại server trên port 8005 và test thành công (322 scenarios & 4 characters loaded, API endpoints trả về HTTP 200 OK).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** HTTP 200 OK on `http://localhost:8005/`, 322 scenarios & 4 characters loaded properly, UI screens & modals properly rendering.
+
+#### Decisions Made
+- Chuyển toàn bộ inline `onclick` handler sang event delegation trong JS để đảm bảo scoping và không bị lỗi CSP.
+- Tách tất cả modals thành các container riêng biệt cấp cao nhất dưới `.app-shell` để triệt tiêu vĩnh viễn lỗi DOM nesting.
+
+#### Git
+- **Commit:** `[TASK-UI-REBUILD] feat(frontend): complete rebuild of frontend dark glassmorphism UI`
+
+#### Next
+- **Action:** Continuous testing and deployment.
+- **State:** COMPLETE
+

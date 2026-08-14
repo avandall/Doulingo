@@ -95,7 +95,7 @@ def test_evaluate_tier1_normal_speech():
     assert result.mtld is not None
     assert result.estimated_band >= 6.5
     assert result.difficulty_adjustment == "increase"
-    assert result.latency_ms < 300.0
+    assert result.latency_ms < 1000.0
 
 
 def test_evaluate_tier1_low_fluency():

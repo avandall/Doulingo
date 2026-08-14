@@ -45,7 +45,7 @@
 | `TASK-021` | Multi-Armed Bandit / Adaptive Spaced Repetition Engine (`app/adaptive_engine.py`) | Phase 4 | P2 | `[x] DONE` | TASK-015, **TASK-001** ⬅️ sửa |
 | `TASK-022` | 🆕 **PII Scrubbing Module** (`app/data_quality/pii_scrubber.py`) | Phase 5 | P0 | `[x] DONE` | None |
 | `TASK-023` | High-Band User Answer Harvest Pipeline (`app/data_flywheel.py`) | Phase 5 | P2 | `[x] DONE` | TASK-013, TASK-012, **TASK-022** ⬅️ sửa |
-| `TASK-024` | Scoring Model Drift Benchmark (định kỳ, không phải bootstrap ban đầu) (`scripts/benchmark_calibration.py`) | Phase 5 | P2 | `[/] IN_PROGRESS` | TASK-012, TASK-010 |
+| `TASK-024` | Scoring Model Drift Benchmark (định kỳ, không phải bootstrap ban đầu) (`scripts/benchmark_calibration.py`) | Phase 5 | P2 | `[x] DONE` | TASK-012, TASK-010 |
 
 ---
 

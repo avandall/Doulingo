@@ -63,7 +63,7 @@ class TurnRequest(BaseModel):
 class ChatRequest(BaseModel):
     user_transcript: str | None = None
     text: str | None = None
-    scenario_id: str | None = "cafe_order"
+    scenario_id: str | None = "everyday_chat"
     character_id: str | None = None
     conversation_history: list[dict[str, str]] = []
     level: int | None = 1
@@ -441,7 +441,7 @@ def api_chat(payload: ChatRequest):
     if not input_text:
         raise HTTPException(status_code=400, detail="User transcript cannot be empty")
 
-    sc_id = payload.scenario_id or "cafe_order"
+    sc_id = payload.scenario_id or "everyday_chat"
     try:
         result = ai_engine.process_turn(
             scenario_id=sc_id,
@@ -705,7 +705,7 @@ if os.path.exists(static_dir):
 def read_root():
     index_file = os.path.join(static_dir, "index.html")
     if os.path.exists(index_file):
-        return FileResponse(index_file)
+        return FileResponse(index_file, headers={"Cache-Control": "no-cache, no-store, must-revalidate"})
     return {"message": "Duolingo Speak API Server Running"}
 
 if __name__ == "__main__":

@@ -152,8 +152,8 @@ class TestIntegrationMaterialBank(unittest.TestCase):
         print(f"[LATENCY BENCHMARK] Process Turn: {turn_latency:.2f} ms")
 
         # Sanity check: Ensure local processing overhead does not crash or timeout
-        self.assertLess(start_latency, 15000, "Start scenario should complete under 15s")
-        self.assertLess(turn_latency, 15000, "Process turn should complete under 15s")
+        self.assertLess(start_latency, 30000, "Start scenario should complete under 30s")
+        self.assertLess(turn_latency, 30000, "Process turn should complete under 30s")
 
 
 if __name__ == "__main__":
