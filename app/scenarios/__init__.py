@@ -363,7 +363,7 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
     return None
 
 
-from app.scenarios.simulation_engine import (
+from app.scenarios.simulation_engine import (  # noqa: E402
     RealWorldSimulationEngine,
     build_simulation_directives,
     evaluate_hooks,
