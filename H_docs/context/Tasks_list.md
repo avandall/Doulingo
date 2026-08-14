@@ -42,9 +42,9 @@
 | `TASK-018` | Weekly Performance Reporting Engine & Hidden Scoring UI (`app/reporting.py`) | Phase 3 | P2 | `[x] DONE` | TASK-013, **TASK-012** ⬅️ sửa |
 | `TASK-019` | Real-World Roleplay Simulation Engine (`app/scenarios/simulation_engine.py`) | Phase 4 | P1 | `[x] DONE` | TASK-017, **TASK-001, TASK-015** ⬅️ sửa |
 | `TASK-020` | Personal Error Journal & Interleaved Practice Weaver (`app/error_journal.py`) | Phase 4 | P1 | `[x] DONE` | TASK-012, **TASK-006** ⬅️ sửa |
-| `TASK-021` | Multi-Armed Bandit / Adaptive Spaced Repetition Engine (`app/adaptive_engine.py`) | Phase 4 | P2 | `[ ] TODO` | TASK-015, **TASK-001** ⬅️ sửa |
-| `TASK-022` | 🆕 **PII Scrubbing Module** (`app/data_quality/pii_scrubber.py`) | Phase 5 | P0 | `[ ] TODO` | None |
-| `TASK-023` | High-Band User Answer Harvest Pipeline (`app/data_flywheel.py`) | Phase 5 | P2 | `[ ] TODO` | TASK-013, TASK-012, **TASK-022** ⬅️ sửa |
+| `TASK-021` | Multi-Armed Bandit / Adaptive Spaced Repetition Engine (`app/adaptive_engine.py`) | Phase 4 | P2 | `[x] DONE` | TASK-015, **TASK-001** ⬅️ sửa |
+| `TASK-022` | 🆕 **PII Scrubbing Module** (`app/data_quality/pii_scrubber.py`) | Phase 5 | P0 | `[x] DONE` | None |
+| `TASK-023` | High-Band User Answer Harvest Pipeline (`app/data_flywheel.py`) | Phase 5 | P2 | `[x] DONE` | TASK-013, TASK-012, **TASK-022** ⬅️ sửa |
 | `TASK-024` | Scoring Model Drift Benchmark (định kỳ, không phải bootstrap ban đầu) (`scripts/benchmark_calibration.py`) | Phase 5 | P2 | `[ ] TODO` | TASK-012, TASK-010 |
 
 ---
@@ -810,7 +810,7 @@ Task Name:       Multi-Armed Bandit / Adaptive Spaced Repetition Engine
 Phase:           Phase 4 (Real-World Simulations & Interleaved Practice)
 Task Type:       feature
 Priority:        P2-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 Phụ thuộc:       TASK-015, TASK-001 ⬅️ bổ sung TASK-001 (item pool lấy từ content_units đã ingest)
 ```
@@ -834,7 +834,7 @@ Task Name:       PII Scrubbing Module
 Phase:           Phase 5 (Data Flywheel & Quality Control)
 Task Type:       feature (standalone utility)
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11 (mới thêm ở v2)
 ```
 
@@ -844,10 +844,10 @@ Ngày tạo:        2026-08-11 (mới thêm ở v2)
 - **Spec chi tiết:** xem `spec-5-task-rui-ro-cao.md`, SPEC 5 mục 5.2.
 
 #### Acceptance Criteria
-- [ ] Hàm `check_pii(text) -> (passed: bool, entities_found: list[str])` hoạt động độc lập, không phụ thuộc pipeline Data Flywheel.
-- [ ] Phát hiện đủ 4 loại PII: PERSON, GPE/địa danh, ORG, và pattern số điện thoại/email qua regex.
-- [ ] Chính sách reject-first: bất kỳ entity nào thuộc `PII_ENTITY_TYPES` bị phát hiện → `passed=False`, không cố redact rồi giữ lại câu.
-- [ ] Có unit test xác nhận false positive (tên hư cấu trong câu chuyện kể) vẫn bị reject đúng theo chính sách — đây là hành vi ĐÚNG, không phải bug.
+- [x] Hàm `check_pii(text) -> (passed: bool, entities_found: list[str])` hoạt động độc lập, không phụ thuộc pipeline Data Flywheel.
+- [x] Phát hiện đủ 4 loại PII: PERSON, GPE/địa danh, ORG, và pattern số điện thoại/email qua regex.
+- [x] Chính sách reject-first: bất kỳ entity nào thuộc `PII_ENTITY_TYPES` bị phát hiện → `passed=False`, không cố redact rồi giữ lại câu.
+- [x] Có unit test xác nhận false positive (tên hư cấu trong câu chuyện kể) vẫn bị reject đúng theo chính sách — đây là hành vi ĐÚNG, không phải bug.
 
 ---
 
@@ -860,7 +860,7 @@ Task Name:       High-Band User Answer Harvest Pipeline
 Phase:           Phase 5 (Data Flywheel & Quality Control)
 Task Type:       feature
 Priority:        P2-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-11
 Phụ thuộc:       TASK-013, TASK-012, TASK-022 ⬅️ bổ sung TASK-022 (dùng module PII riêng, không viết lại)
 ```
@@ -871,11 +871,11 @@ Phụ thuộc:       TASK-013, TASK-012, TASK-022 ⬅️ bổ sung TASK-022 (dù
 - **Spec chi tiết:** xem `spec-5-task-rui-ro-cao.md`, SPEC 5.
 
 #### Acceptance Criteria
-- [ ] Tự động phát hiện các lượt nói xuất sắc của user (Band 7.5+, đạt ngưỡng min-axis).
-- [ ] Gọi `check_pii()` từ `TASK-022` làm bước đầu tiên trong pipeline (trước cả bước check chất lượng/dedup).
-- [ ] Vector dedup so với TOÀN BỘ `sample_dialogues` hiện có (cả từ sách gốc lẫn đã harvest trước đó), threshold 0.92 = loại.
-- [ ] Có rate cap (tối đa N mẫu/topic/tuần) để tránh feedback loop thiên lệch nội dung.
-- [ ] Mọi candidate hợp lệ đều dừng ở `harvest_review_queue` với `review_status='pending'`, TUYỆT ĐỐI không có đường insert thẳng vào `sample_dialogues`.
+- [x] Tự động phát hiện các lượt nói xuất sắc của user (Band 7.5+, đạt ngưỡng min-axis).
+- [x] Gọi `check_pii()` từ `TASK-022` làm bước đầu tiên trong pipeline (trước cả bước check chất lượng/dedup).
+- [x] Vector dedup so với TOÀN BỘ `sample_dialogues` hiện có (cả từ sách gốc lẫn đã harvest trước đó), threshold 0.92 = loại.
+- [x] Có rate cap (tối đa N mẫu/topic/tuần) để tránh feedback loop thiên lệch nội dung.
+- [x] Mọi candidate hợp lệ đều dừng ở `harvest_review_queue` với `review_status='pending'`, TUYỆT ĐỐI không có đường insert thẳng vào `sample_dialogues`.
 
 ---
 

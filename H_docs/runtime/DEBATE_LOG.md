@@ -1004,6 +1004,28 @@ Review Result: APPROVED
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-14 09:15
+### Iteration: 51
+### Type: dual-model-review
+
+#### Issues Found
+- [INFO] TASK-023 High-Band User Answer Harvest Pipeline (`app/data_flywheel.py`), DB table `harvest_review_queue` (`app/db.py`), and test suite (`tests/test_data_flywheel.py`) implemented cleanly with strict layer order (PII -> Rate Cap -> Quality -> Vector Dedup -> Staging).
+- [LOW] Rate cap query handles empty topic_tag gracefully by skipping database lookup.
+
+#### Adversarial Questions
+1. [Điều gì xảy ra nếu candidate answer chứa PII cá nhân?] → [Cơ chế PII scrubber (`check_pii`) được gọi ở Layer 1 ngay đầu pipeline. Nếu trả về `passed=False`, candidate bị reject lập tức (`rejected_pii`) mà không lọt xuống các bước tiếp theo.]
+2. [Tại sao candidate hợp lệ chỉ được insert vào `harvest_review_queue` với status `pending` mà không insert trực tiếp vào `sample_dialogues`?] → [Đảm bảo an toàn tuyệt đối cho dữ liệu huấn luyện/retrieval, bắt buộc qua khâu human review trước khi được promote sang database chính thức.]
+3. [Điều gì xảy ra khi candidate có độ tương đồng vector >= 0.92 với mẫu thoại hiện có?] → [Candidate bị từ chối do trùng lặp (`rejected_duplicate`), ngăn ngừa lặp nội dung rác trong DB.]
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
+
 
 
 

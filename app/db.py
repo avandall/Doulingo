@@ -341,8 +341,31 @@ def init_db():
     """)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_sr_user_due ON user_spaced_repetition (user_id, next_review_at)")
 
+    # 16. harvest_review_queue (TASK-023: Data Flywheel Staging)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS harvest_review_queue (
+            id                      TEXT PRIMARY KEY,
+            candidate_ai_line       TEXT NOT NULL,
+            candidate_user_answer   TEXT NOT NULL,
+            source_user_id          TEXT NOT NULL,
+            source_turn_id          TEXT NOT NULL,
+            topic_tag               TEXT DEFAULT '',
+            tier2_scores            TEXT NOT NULL,
+            pii_check_passed        INTEGER NOT NULL,
+            pii_entities_found      TEXT DEFAULT '[]',
+            dedup_max_similarity    REAL DEFAULT 0.0,
+            dedup_status            TEXT CHECK (dedup_status IN ('unique','similar_variant','duplicate_rejected')),
+            review_status           TEXT DEFAULT 'pending' CHECK (review_status IN ('pending','approved','rejected')),
+            reviewed_by             TEXT DEFAULT NULL,
+            created_at              TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_hrq_topic_created ON harvest_review_queue (topic_tag, created_at)")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_hrq_status ON harvest_review_queue (review_status)")
+
     conn.commit()
     conn.close()
+
 
 
 
