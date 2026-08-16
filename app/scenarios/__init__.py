@@ -21,6 +21,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Share a memorable childhood story, family tradition, or talk about someone close to you.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about personal memories. Ask open-ended questions about their childhood, family traditions, lessons learned growing up, and cherished memories.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Describe a memorable event from your childhood that taught you an important lesson.",
             "bullet_points": [
@@ -42,6 +43,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Discuss what makes a true friend, personality traits, and unforgettable moments.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about friendship and character. Ask about their closest friends, ideal personality traits, shared experiences, and what friendship means to them.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Describe your best friend and explain what makes your friendship special.",
             "bullet_points": [
@@ -67,6 +69,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Talk about your current job, dream profession, workplace skills, and future career goals.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about professional life. Explore their career ambitions, work ethic, dream job challenges, and future plans.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Talk about a profession or career goal that you aspire to achieve in the future.",
             "bullet_points": [
@@ -88,6 +91,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Describe your favorite school subject, memorable teachers, or university experience.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about education. Ask about their favorite subjects, study methods, impactful teachers, and educational experiences.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Describe a school subject or educational experience that had a significant impact on you.",
             "bullet_points": [
@@ -113,6 +117,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Describe a book, movie, or story that inspired you or changed your perspective.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about literature and film. Ask them to describe an inspiring story, key characters, plot twists, and why it resonated with them.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Describe a book, film, or story that strongly inspired you or changed your perspective.",
             "bullet_points": [
@@ -134,6 +139,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Discuss weekend hobbies, favorite sports, physical fitness, and healthy daily routines.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about wellness and lifestyle. Ask about their exercise habits, favorite recreational activities, stress relief, and healthy diet choices.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Discuss the importance of maintaining a healthy lifestyle and regular physical activity.",
             "bullet_points": [
@@ -159,6 +165,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Describe your hometown, local culture, and living in a metropolis vs. the countryside.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about places and culture. Ask them to describe their hometown, local architecture, community vibes, and preferred living environment.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Describe your hometown or the city where you currently live.",
             "bullet_points": [
@@ -180,6 +187,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Share stories about a place you visited or describe your dream vacation destination.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about travel experiences. Ask about memorable trips, cultural differences, dream destinations, and travel lessons.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Describe a place you have visited or a dream travel destination you wish to explore.",
             "bullet_points": [
@@ -205,6 +213,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Debate the role of internet, social networks, and smartphones in modern human life.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about digital life. Discuss the pros and cons of social media, digital communication, privacy, and changing social habits.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Discuss the influence of social media and smartphone communication on modern relationships.",
             "bullet_points": [
@@ -226,6 +235,7 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "description": "Discuss how artificial intelligence, automation, and innovation are shaping the future.",
         "open_story_guide": "An interactive IELTS / CEFR Speaking dialogue about AI and the future. Ask their thoughts on artificial intelligence, future workplaces, ethical challenges, and human creativity.",
         "det_mode": "exam",
+        "mode": "ielts_exam",
         "question_card": {
             "prompt": "Discuss how artificial intelligence and automation will affect the future workforce and society.",
             "bullet_points": [
@@ -249,7 +259,8 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "icon": "☕",
         "color": "#1CB0F6",
         "description": "Chat casually with your AI partner about daily routines, coffee spots, and weekend plans.",
-        "open_story_guide": "A relaxed, friendly social conversation about daily habits, hobbies, and life updates."
+        "open_story_guide": "A relaxed, friendly social conversation about daily habits, hobbies, and life updates.",
+        "mode": "roleplay"
     },
     "cafe_dining": {
         "id": "cafe_dining",
@@ -258,7 +269,8 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "icon": "🍕",
         "color": "#FF9600",
         "description": "Order food, discuss favorite cuisines, recipes, and dining out with friends.",
-        "open_story_guide": "An engaging dining and cooking conversation covering recipes, food preferences, and restaurant ordering."
+        "open_story_guide": "An engaging dining and cooking conversation covering recipes, food preferences, and restaurant ordering.",
+        "mode": "roleplay"
     },
     "travel_culture": {
         "id": "travel_culture",
@@ -267,7 +279,8 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "icon": "✈️",
         "color": "#00843D",
         "description": "Share travel stories, cultural experiences, hotel check-ins, and vacation planning.",
-        "open_story_guide": "An adventurous travel dialogue about exploring new destinations, local customs, and travel tips."
+        "open_story_guide": "An adventurous travel dialogue about exploring new destinations, local customs, and travel tips.",
+        "mode": "roleplay"
     },
     "work_study_space": {
         "id": "work_study_space",
@@ -276,7 +289,8 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "icon": "💼",
         "color": "#673AB7",
         "description": "Discuss career goals, university projects, study tips, and team collaboration.",
-        "open_story_guide": "A collaborative career and academic chat focusing on professional skills, study habits, and workplace teamwork."
+        "open_story_guide": "A collaborative career and academic chat focusing on professional skills, study habits, and workplace teamwork.",
+        "mode": "roleplay"
     },
     "digital_lifestyle": {
         "id": "digital_lifestyle",
@@ -285,7 +299,38 @@ DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
         "icon": "📱",
         "color": "#E91E63",
         "description": "Talk about favorite mobile apps, books, movies, fitness routines, and tech in daily life.",
-        "open_story_guide": "A modern lifestyle discussion on technology, entertainment recommendations, and health."
+        "open_story_guide": "A modern lifestyle discussion on technology, entertainment recommendations, and health.",
+        "mode": "roleplay"
+    },
+    "job_interview": {
+        "id": "job_interview",
+        "title": "Job Interview Practice",
+        "category": "Everyday Roleplay",
+        "icon": "🤵",
+        "color": "#00BCD4",
+        "description": "Practice answering common job interview questions with an AI interviewer.",
+        "open_story_guide": "A professional job interview simulation covering career goals, strengths, weaknesses, and work experience.",
+        "mode": "roleplay"
+    },
+    "debate_club": {
+        "id": "debate_club",
+        "title": "Debate & Opinion Exchange",
+        "category": "Everyday Roleplay",
+        "icon": "🗣️",
+        "color": "#FF5722",
+        "description": "Practice expressing and defending your opinions on current events and social issues.",
+        "open_story_guide": "A stimulating debate conversation where you exchange and defend opposing viewpoints on social, environmental, or technology topics.",
+        "mode": "roleplay"
+    },
+    "shopping_negotiation": {
+        "id": "shopping_negotiation",
+        "title": "Shopping & Negotiation",
+        "category": "Everyday Roleplay",
+        "icon": "🛒",
+        "color": "#4CAF50",
+        "description": "Practice shopping conversations, bargaining, and customer service interactions.",
+        "open_story_guide": "A fun retail and shopping scenario covering product inquiries, price negotiations, and customer interactions.",
+        "mode": "roleplay"
     }
 }
 
@@ -296,28 +341,14 @@ def list_scenarios() -> list[dict[str, Any]]:
         sc_copy["is_custom"] = False
         scenarios_list.append(sc_copy)
 
-    # 2. Material Bank Topics (parsed from 5 DB markdown files)
-    try:
-        from app.material_bank import get_material_bank
-        mb = get_material_bank()
-        for topic_id, topic in mb.topics.items():
-            if topic_id not in DEFAULT_SCENARIOS:
-                vocab_preview = [v.phrase for v in topic.vocabulary[:5]]
-                scenarios_list.append({
-                    "id": topic.topic_id,
-                    "title": topic.topic_name,
-                    "category": "Academic IELTS Bank",
-                    "icon": "📖",
-                    "color": "#1CB0F6",
-                    "description": f"IELTS Topic with {len(topic.personas)} personas, {len(topic.questions)} questions, and {len(topic.vocabulary)} vocabulary items.",
-                    "open_story_guide": f"Interactive IELTS Speaking discussion on {topic.topic_name}.",
-                    "is_custom": False,
-                    "source": "material_bank",
-                    "target_levels": topic.target_levels,
-                    "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
-                })
-    except Exception as e:
-        print(f"[scenarios.py] Error loading MaterialBank topics: {e}")
+    # 2. Material Bank Topics — disabled from main list to avoid UI clutter.
+    # These topics are accessible via the AI engine internally but not shown
+    # as selectable scenario cards in the frontend (they lack IELTS exam question_cards).
+    # try:
+    #     from app.material_bank import get_material_bank
+    #     mb = get_material_bank()
+    #     for topic_id, topic in mb.topics.items(): ...
+    # except Exception as e: pass
 
     # 3. Custom Scenarios from Turso DB
     custom_scenarios = get_custom_scenarios()
