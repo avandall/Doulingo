@@ -596,7 +596,11 @@ class DuoSpeakApp {
         micBtn.title = 'Press to speak';
       }
       if (cancelBtn) cancelBtn.style.display = 'none';
-      if (waveform) waveform.classList.remove('active');
+      if (waveform) {
+        waveform.classList.remove('active');
+        // Reset inline heights so CSS idle animation resumes
+        waveform.querySelectorAll('.wave-bar').forEach(bar => { bar.style.height = ''; });
+      }
       if (state === 'cancelled') {
         if (transcriptEl) transcriptEl.textContent = 'Recording cancelled.';
         const reviewBox = document.getElementById('transcript-review-box');
@@ -608,19 +612,43 @@ class DuoSpeakApp {
   }
 
   handleVolumeChange(volume) {
-    const scale = volume / 128;
-    const animateWave = (id) => {
+    const animateWaveform = (id) => {
       const el = document.getElementById(id);
-      if (el && el.classList.contains('active')) {
-        el.querySelectorAll('.wave-bar').forEach(bar => {
-          const h = 8 + Math.min(scale, 1.0) * 24 * (Math.random() * 0.5 + 0.5);
-          bar.style.height = `${h}px`;
+      if (!el || !el.classList.contains('active')) return;
+
+      const bars = el.querySelectorAll('.wave-bar');
+      const numBars = bars.length;
+      if (numBars === 0) return;
+
+      // Use frequency data if available for realistic bars
+      if (this.speechHandler && this.speechHandler.analyser && this.speechHandler.dataArray) {
+        const data = this.speechHandler.dataArray;
+        const bucketSize = Math.floor(data.length / numBars);
+        bars.forEach((bar, i) => {
+          const start = i * bucketSize;
+          let sum = 0;
+          for (let j = start; j < start + bucketSize && j < data.length; j++) {
+            sum += data[j];
+          }
+          const avg = sum / bucketSize;
+          // Map 0-255 to 4-36px height with slight spatial randomness
+          const h = 4 + (avg / 255) * 32 + (Math.random() * 2 - 1);
+          bar.style.height = `${Math.max(4, Math.min(36, h))}px`;
+        });
+      } else {
+        // Fallback: use average volume with random spatial variation
+        const scale = Math.min(volume / 128, 1.0);
+        bars.forEach(bar => {
+          const h = 4 + scale * 32 * (Math.random() * 0.6 + 0.4);
+          bar.style.height = `${Math.max(4, Math.min(36, h))}px`;
         });
       }
     };
-    animateWave('waveform-anim');
-    animateWave('det-waveform-anim');
+
+    animateWaveform('waveform-anim');
+    animateWaveform('det-waveform-anim');
   }
+
 
   // ============================================================
   // TTS
