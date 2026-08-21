@@ -1,122 +1,71 @@
 # PROJECT BRIEF
-# Tóm tắt dự án — [Tên Dự Án]
+# Tóm tắt dự án — Duolingo Speak: Fix RAG Pipeline, Context Continuity & Fallback Overhaul
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** [YYYY-MM-DD]
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-21
 >
-> ✏️ **HUMAN FILLS THIS FILE.** File này định nghĩa bức tranh tổng thể, mục tiêu và phạm vi dự án.
+> ✏️ **HUMAN FILLS THIS FILE.** File này định nghĩa mục tiêu sửa lỗi RAG, Context và Fallback cho Duolingo Speak.
 
 ---
 
 ## 1. Tên & Mô tả Dự án
 
 ```
-Tên dự án:          [Tên dự án]
-Mô tả ngắn:        [Mô tả ngắn gọn mục tiêu chính của dự án]
-Repo Name:         [Tên repository]
-Track / Domain:    [Ví dụ: Backend API / Frontend Web / Fullstack / AI Agent / CLI Tool...]
-Độ khó:             [Easy / Medium / Hard]
-Thời gian ước tính: [Số giờ ước tính]
-Tech Stack:        [Ví dụ: Python / FastAPI, PostgreSQL, Docker, React, TypeScript...]
+Tên dự án:          Duolingo Speak - RAG & Context Pipeline Overhaul
+Mô tả ngắn:        Khắc phục 5 root causes khiến AI bị mất ngữ cảnh hội thoại, câu trả lời vô cảm ("That sounds wonderful!"), không nạp được sách trong /output vào Database, rớt thiết lập độ khó Level 9/20 và bị phân mảnh 2 pipeline API.
+Repo Name:         Doulingo
+Track / Domain:    Backend AI Agent / RAG Pipeline / FastAPI / SQLite
+Độ khó:             Medium-Hard
+Thời gian ước tính: 4-6 hours
+Tech Stack:        Python 3.10+, FastAPI, SQLite (libsql), Pytest, Groq / Gemini / OpenAI APIs
 ```
 
 ---
 
-## 2. Mục tiêu Kinh doanh (Business Goals) & Vấn đề Cốt lõi
+## 2. Mục tiêu Kinh doanh & Vấn đề Cốt lõi
 
-### Vấn đề cần giải quyết
-- [Mô tả vấn đề 1]
-- [Mô tả vấn đề 2]
+### Vấn đề cần giải quyết (Root Causes từ analysis.md)
+1. **Dữ liệu sách chưa nạp vào DB (R4):** Hàng chục file YAML từ sách trong `output/extracted/` chưa được ingest vào SQLite `data/custom_topics.db`, khiến DB chỉ có 67 câu thoại mẫu legacy.
+2. **Endpoint chính đứt kết nối RAG (R4):** Endpoint `/api/process_turn` (Web UI chính) hoàn toàn không gọi RAG `retrieve_dialogues()`, bỏ qua dữ liệu sách.
+3. **Mock Fallback tĩnh & Vô cảm (R1, R2):** Khi API Key bị hết quota (HTTP 429), hệ thống tụt về `_get_mock_fallback_response()` tĩnh, bốc ngẫu nhiên câu *"That sounds wonderful! Could you tell me more about..."* và hoàn toàn bỏ qua câu nói của user ("I lost my memory").
+4. **Bỏ qua độ khó Level 9/20 (R3):** Khi ở chế độ Fallback, các quy tắc độ khó trong `LEVEL_CONFIGS` (45-85 từ, CEFR B1) bị loại bỏ hoàn toàn.
+5. **Phân mảnh 2 Pipeline (R2):** `/api/process_turn` và `/api/voice/process_turn` sử dụng 2 cách dựng prompt và RAG hoàn toàn độc lập.
 
 ### Giải pháp & Mục tiêu
-- [Mô tả giải pháp 1]
-- [Mô tả giải pháp 2]
+- **Nạp toàn bộ sách vào DB:** Ingest dữ liệu từ `output/extracted/` vào SQLite `custom_topics.db` qua `scripts/insert_turso.py`.
+- **Tích hợp RAG Layer vào `/api/process_turn`:** Gọi `retrieve_dialogues()` để đưa các câu mẫu từ sách vào System Prompt dưới dạng Reference Dialogues.
+- **Xây dựng Context-Aware Fallback Engine:** Thay thế mock fallback tĩnh bằng engine fallback thông minh, nhận biết được `user_transcript` và duy trì ràng buộc `LEVEL_CONFIGS`.
+- **Thống nhất 2 Pipeline:** Hợp nhất luồng dựng Prompt và RAG giữa Web UI và Voice Pipeline.
 
 ---
 
-## 3. Ground Rules & Constraints (Quy tắc & Giới hạn nền tảng)
+## 3. Ground Rules & Constraints
 
 | Quy tắc | Chi tiết bắt buộc |
 |---------|-------------------|
-| **1. Dedicated Repo** | [Ví dụ: Repository công khai / nội bộ từ ngày đầu] |
-| **2. Stack & Environment** | [Ví dụ: Yêu cầu môi trường, OS, containerization] |
-| **3. Secrets & Security** | [Mọi secrets nằm trong `.env`, không bao giờ commit credentials] |
-| **4. Data Integrity** | [Quy tắc xử lý dữ liệu, kiểu dữ liệu, tính chính xác] |
-| **5. AI-Assisted Guidelines** | [Quy định về việc dùng AI, log bằng chứng, khả năng giải thích code] |
+| **1. Dedicated Repo** | Làm việc trực tiếp trong repository workspace `/home/avandall/project/Doulingo` |
+| **2. Stack & Environment** | Python 3.10+, FastAPI, SQLite local (`data/custom_topics.db`) |
+| **3. Secrets & Security** | Mọi secrets/keys nằm trong `.env`, không bao giờ hardcode credentials |
+| **4. Data Integrity** | Bảo toàn schema `content_units` & `sample_dialogues` trong SQLite |
+| **5. Harness Protocol** | Tuân thủ 10 điều luật `AGENT_CONSTITUTION.md` và quy trình 7 phase |
 
 ---
 
-## 4. Phạm vi Dự án (Project Scope) & Key Concerns
+## 4. Phạm vi Dự án (Project Scope)
 
 ### Core Features / Modules
-- **[Module 1]**: [Mô tả chức năng module 1]
-- **[Module 2]**: [Mô tả chức năng module 2]
-
-### Key Concerns của Hệ thống
-1. **[Concern 1]**: [Chi tiết concern 1]
-2. **[Concern 2]**: [Chi tiết concern 2]
+- **`scripts/insert_turso.py` & Ingestion**: Script nạp dữ liệu YAML từ `output/extracted` vào SQLite DB.
+- **`app/ai_engine.py`**: Tích hợp RAG retrieval vào `_build_token_efficient_prompt()` và xây dựng `_get_context_aware_fallback()`.
+- **`app/prompt_constructor.py` & `app/conversational_agent.py`**: Thống nhất quy chuẩn Prompt và Level constraints.
+- **`tests/`**: Bộ unit test & integration test cho RAG retrieval, context fallback và Level 9 constraints.
 
 ---
 
-## 5. Kiến trúc Hệ thống (Architecture Overview)
+## 5. Các Giai đoạn Phát triển (Roadmap / Tasks)
 
 ```
-[ Client / External Request ]
-               │
-               ▼
-┌──────────────────────────────┐
-│     API / Entry Point        │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     Business Logic Layer     │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│    Data Layer / Database     │
-└──────────────────────────────┘
+TASK-001: Ingest dữ liệu sách từ output/extracted/ vào SQLite DB
+TASK-002: Tích hợp RAG Layer (retrieve_dialogues) vào ai_engine.process_turn (/api/process_turn)
+TASK-003: Nâng cấp Context-Aware Fallback Engine thay cho Mock Fallback tĩnh
+TASK-004: Thống nhất 2 Pipeline (Pipeline A & Pipeline B)
+TASK-005: Kiểm thử E2E & Verify toàn bộ luồng hội thoại
 ```
-
----
-
-## 6. Definition of Done Checklist (Tiêu chí Hoàn thành)
-
-- [ ] [Tiêu chí hoàn thành 1]
-- [ ] [Tiêu chí hoàn thành 2]
-- [ ] [Tiêu chí hoàn thành 3]
-- [ ] Automated unit & integration tests pass 100%.
-- [ ] Code tuân thủ tiêu chuẩn trong pipeline/docs/core/CODE_STANDARDS.md.
-
----
-
-## 7. Các Giai đoạn Phát triển (Roadmap / Phases)
-
-```
-Phase 1: Design & Architecture Setup
- Gate: Schema & API Contracts signed off.
-
-Phase 2: Core Business Logic
- Gate: Core functionality implemented & tested.
-
-Phase 3: Integration & External Services
- Gate: External services / APIs integrated & verified.
-
-Phase 4: Hardening, Optimization & Docs
- Gate: All tests green, documentation updated.
-```
-
----
-
-## 8. External Dependencies & Services
-
-| Service / System | Vai trò | Contact / Link Docs |
-|------------------|---------|---------------------|
-| [Tên Service 1] | [Vai trò trong hệ thống] | [Link docs / API reference] |
-| [Tên Service 2] | [Vai trò trong hệ thống] | [Link docs / API reference] |
-
----
-
-## 9. Ghi chú thêm
-
-- [Ghi chú thêm nếu có]
