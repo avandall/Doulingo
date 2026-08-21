@@ -74,3 +74,20 @@ def test_ai_engine_prompt_factory_integration():
     assert "CONVERSATION TOPIC" in prompt
     assert "Lily" in prompt
 
+
+def test_ai_engine_rag_integration():
+    """Verify _build_token_efficient_prompt includes REFERENCE DIALOGUES FROM BOOKS."""
+    scenario = {"id": "det_childhood_memory", "title": "Childhood Memories"}
+    character = {"id": "lily", "name": "Lily", "trait": "Helpful", "speech_style": "Polite", "role": "Friend"}
+
+    prompt = ai_engine._build_token_efficient_prompt(
+        scenario=scenario,
+        character=character,
+        user_transcript="I remember playing in the park.",
+        history=[],
+        turn_count=1,
+        level=9
+    )
+    assert "REFERENCE DIALOGUES FROM BOOKS" in prompt
+
+

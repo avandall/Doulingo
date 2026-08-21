@@ -23,6 +23,7 @@ from dotenv import load_dotenv
 
 from app.characters import get_character
 from app.prompt_factory import get_prompt_factory
+from app.retrieval import retrieve_dialogues
 from app.scenarios import get_scenario
 
 load_dotenv()
@@ -370,6 +371,14 @@ class AIEngine:
         """Return the precise level configuration for levels 1-20."""
         lvl = max(1, min(20, level))
         return LEVEL_CONFIGS[lvl]
+
+    def _level_to_band_window(self, level: int) -> tuple[float, float]:
+        """Map numeric level (1-20) to IELTS band_min and band_max window (4.0 - 9.0)."""
+        lvl = max(1, min(20, level))
+        base_band = round(4.0 + (lvl - 1) * (5.0 / 19.0), 1)
+        band_min = max(4.0, round(base_band - 0.5, 1))
+        band_max = min(9.0, round(base_band + 1.0, 1))
+        return band_min, band_max
 
     def _build_smart_fallback_opener(self, scenario_id: str, scenario_title: str, level: int) -> str:
         """
@@ -803,9 +812,38 @@ Output JSON ONLY:
 
         story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
 
+        # RAG Layer Integration (retrieve_dialogues from custom_topics.db)
+        rag_section = ""
+        try:
+            raw_tags = [scenario.get("id"), scenario.get("title")]
+            title = scenario.get("title", "")
+            if title:
+                raw_tags.extend(re.findall(r"\b[A-Za-z]{3,}\b", title))
+            topic_tags = list(dict.fromkeys([t for t in raw_tags if t]))
+            band_min, band_max = self._level_to_band_window(level)
+            dialogues = retrieve_dialogues(
+                user_id="default_user",
+                topic_tags=topic_tags,
+                band_min=band_min,
+                band_max=band_max,
+                limit=3
+            )
+            if dialogues:
+                rag_lines = [
+                    f'- [Band {d.band_level}] AI: "{d.ai_line}" | User Model Answer: "{d.user_model_answer}"'
+                    for d in dialogues
+                ]
+                rag_section = (
+                    "=== REFERENCE DIALOGUES FROM BOOKS (Use for vocabulary & topic inspiration) ===\n"
+                    + "\n".join(rag_lines)
+                    + "\n=== END REFERENCE DIALOGUES ===\n\n"
+                )
+        except Exception:
+            rag_section = ""
+
         return f"""{mb_system_prompt}
 
-CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
+{rag_section}CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
 DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF IN CONVERSATION.
 
