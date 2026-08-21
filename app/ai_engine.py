@@ -618,7 +618,7 @@ Output JSON ONLY:
                 pass
 
         if not raw_res:
-            raw_res = self._get_mock_fallback_response(scenario, character, user_transcript)
+            raw_res = self._get_context_aware_fallback(scenario, character, user_transcript, level)
 
         fb = raw_res.get("user_feedback", {})
         corrected = fb.get("corrected_text", user_transcript)
@@ -630,40 +630,152 @@ Output JSON ONLY:
         raw_res["user_feedback"] = fb
         return raw_res
 
-    def _get_mock_fallback_response(
+    def _get_context_aware_fallback(
         self,
         scenario: dict[str, Any],
         character: dict[str, Any],
-        user_transcript: str
+        user_transcript: str,
+        level: int = 1
     ) -> dict[str, Any]:
-        """Generate a realistic mock fallback response when LLM APIs are unavailable/rate-limited."""
+        """
+        Generate a context-aware, sentiment-sensitive, level-constrained fallback response
+        when LLM APIs are unavailable or rate-limited (HTTP 429).
+        """
         title = scenario.get("title", "Everyday Practice")
         char_name = character.get("name", "AI Partner")
+        cfg = self._get_level_config(level)
+        min_words = cfg.get("min_words", 35)
+        max_words = cfg.get("max_words", 70)
+
+        # 1. Classify sentiment / intent from user_transcript
+        transcript_lower = user_transcript.lower() if user_transcript else ""
+
+        negative_keywords = {
+            "lost", "sad", "bad", "terrible", "hard", "fail", "failed", "pain", "broke", "broken",
+            "worry", "worried", "sick", "missed", "stress", "stressed", "hurt", "memory", "problem",
+            "died", "death", "crying", "cry", "upset", "angry", "hate", "lonely", "fear", "afraid",
+            "difficult", "struggle", "struggling", "scared", "awful", "horrible", "anxious", "sorry"
+        }
+        positive_keywords = {
+            "happy", "great", "good", "love", "loved", "enjoy", "enjoyed", "awesome", "amazing",
+            "excited", "fun", "wonderful", "nice", "glad", "best", "fantastic", "perfect", "beautiful",
+            "delighted", "cheerful", "like", "liked"
+        }
+        confused_keywords = {
+            "confused", "don't know", "dont know", "not sure", "unclear", "puzzled", "what do you mean",
+            "how to", "why is", "can't understand", "cannot understand"
+        }
+
+        has_neg = any(re.search(r'\b' + re.escape(kw) + r'\b', transcript_lower) for kw in negative_keywords)
+        has_pos = any(re.search(r'\b' + re.escape(kw) + r'\b', transcript_lower) for kw in positive_keywords)
+        has_conf = any(re.search(r'\b' + re.escape(kw) + r'\b', transcript_lower) for kw in confused_keywords)
+
+        if has_neg and not has_pos:
+            sentiment = "negative"
+        elif has_conf:
+            sentiment = "confused"
+        elif has_pos and not has_neg:
+            sentiment = "positive"
+        else:
+            sentiment = "neutral"
+
+        # 2. Select empathetic / appropriate opener based on sentiment (NEVER "wonderful" for negative)
+        if sentiment == "negative":
+            openers = [
+                "I am so sorry to hear that. That sounds really challenging to deal with.",
+                "I appreciate you sharing that with me. That must be quite difficult to navigate.",
+                "I hear you, and I understand how tough that situation can feel."
+            ]
+        elif sentiment == "confused":
+            openers = [
+                "I completely understand why that might feel confusing or complicated.",
+                "That is a very fair point to wonder about.",
+                "I see why you might feel uncertain about this situation."
+            ]
+        elif sentiment == "positive":
+            openers = [
+                f"That sounds really wonderful and exciting when talking about {title}!",
+                f"I am so glad to hear that! It is great when things go well with {title}.",
+                f"That is a fantastic point! I really enjoy hearing positive thoughts on {title}."
+            ]
+        else:
+            openers = [
+                f"Thank you for sharing your thoughts on {title}.",
+                f"That is an interesting perspective regarding {title}.",
+                f"I appreciate your insight on {title}."
+            ]
+
+        chosen_opener = random.choice(openers)
+
+        # 3. Build topic connection body & open question
+        if sentiment == "negative":
+            body = f" When dealing with {title}, difficult moments remind us how important it is to take things step by step and seek support."
+            question = f" What is one small step or feeling that helps you move forward when thinking about {title}?"
+        elif sentiment == "confused":
+            body = f" Exploring {title} often takes time, and asking questions is the best way to gain clarity."
+            question = f" What specific aspect of {title} would you like to understand better?"
+        elif sentiment == "positive":
+            body = f" Sharing good experiences with {title} helps us appreciate the moments that bring joy and growth."
+            question = f" What else about {title} has brought you satisfaction recently?"
+        else:
+            body = f" Everyone approaches {title} differently based on their unique personal experiences."
+            question = f" What do you think is the most important lesson to keep in mind regarding {title}?"
+
+        full_text = chosen_opener + body + question
+
+        # 4. Enforce level word count range (min_words to max_words)
+        words = full_text.split()
         
-        fallback_responses = [
-            f"That sounds wonderful! Could you tell me more about your thoughts on {title}?",
-            f"I completely agree with you! How do you usually handle this when dealing with {title}?",
-            f"That's a great point. What is the most important thing to remember about {title}?",
-            "Interesting perspective! Have you ever experienced anything similar before?"
+        # Filler sentences to expand word count if below min_words
+        expansions = [
+            " Taking time to process your thoughts and share them openly can make a big difference in how we understand our experiences.",
+            " Everyone goes through different phases, and discussing them thoughtfully helps build deeper connections.",
+            " Sharing these reflections allows us to gain new perspectives and learn from one another.",
+            " It is always valuable to explore different angles and express what matters most to you."
         ]
-        chosen = random.choice(fallback_responses)
-        vi_trans = self._professional_vietnamese_localization(chosen, char_name, title)
-        
+
+        exp_idx = 0
+        while len(words) < min_words and exp_idx < len(expansions):
+            full_text += expansions[exp_idx]
+            words = full_text.split()
+            exp_idx += 1
+
+        # If over max_words, truncate cleanly at word boundary ending with a question mark or period
+        if len(words) > max_words:
+            words = words[:max_words]
+            full_text = " ".join(words)
+            if not full_text.endswith("?") and not full_text.endswith("."):
+                full_text += "?"
+
+        vi_trans = self._professional_vietnamese_localization(full_text, char_name, title)
         det_scores = self._compute_deterministic_score(user_transcript, user_transcript)
-        
+
         return {
-            "ai_response": chosen,
+            "ai_response": full_text,
             "ai_response_vi": vi_trans,
             "user_feedback": {
                 "fluency_score": max(det_scores["fluency"], 85),
                 "grammar_score": max(det_scores["grammar"], 88),
                 "overall_score": max(det_scores["overall"], 86),
+                "grammar_status": "Clean & Clear",
                 "corrected_text": user_transcript,
-                "native_phrasing": "Great expression! Try adding conversational connectors like 'In my opinion' or 'To be honest' when speaking."
+                "native_phrasing": f"Native speakers might say: {user_transcript}" if user_transcript else "Clear sentence.",
+                "duo_reaction": "encouraging" if sentiment == "negative" else "happy",
+                "xp_earned": 10
             },
             "is_completed": False,
             "xp_gained": 10
         }
+
+    def _get_mock_fallback_response(
+        self,
+        scenario: dict[str, Any],
+        character: dict[str, Any],
+        user_transcript: str,
+        level: int = 1
+    ) -> dict[str, Any]:
+        """Generate a realistic mock fallback response when LLM APIs are unavailable/rate-limited."""
+        return self._get_context_aware_fallback(scenario, character, user_transcript, level)
 
     def _professional_vietnamese_localization(self, english_text: str, character_name: str = "", scenario_title: str = "", context_history: list[str] | None = None) -> str:
         """
