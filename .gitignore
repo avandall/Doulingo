@@ -22,3 +22,6 @@ data/
 *:Zone.Identifier
 *.log
 
+
+# Agent Pipeline Logs
+pipeline/docs/runtime/session_*.jsonl
