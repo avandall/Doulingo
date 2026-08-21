@@ -110,6 +110,7 @@ class VoiceTurnRequest(BaseModel):
     user_id: str = "user_demo"
     topic: str = "general_conversation"
     band_level: float = 5.5
+    level: int | None = None
     conversation_history: list[dict[str, str]] = []
     character_id: str | None = "lily"
     text_only_mode: bool = False
@@ -126,6 +127,7 @@ async def _execute_voice_turn_pipeline(
     text_only_mode: bool,
     user_transcript: str | None,
     audio_bytes: bytes | None,
+    level: int | None = None,
 ) -> dict[str, Any]:
     # 1. ASR Ingestion & Chunk Processor
     final_transcript = (user_transcript or "").strip()
@@ -142,8 +144,15 @@ async def _execute_voice_turn_pipeline(
     if not final_transcript:
         final_transcript = "Hello! Let's practice English."
 
+    if level is not None:
+        effective_level = max(1, min(20, int(level)))
+        effective_band = round(4.0 + (effective_level - 1) * (5.0 / 19.0), 1)
+    else:
+        effective_band = float(band_level)
+        effective_level = max(1, min(20, round(1.0 + (effective_band - 4.0) * (19.0 / 5.0))))
+
     # 2. RAG Retrieval Layer
-    band_min, band_max = compute_band_window(band_level, "hold")
+    band_min, band_max = compute_band_window(effective_band, "hold")
     retrieved = retrieve_dialogues(
         user_id=user_id,
         topic_tags=topic,
@@ -156,7 +165,8 @@ async def _execute_voice_turn_pipeline(
     # 3. Prompt Construction
     context = PromptContext(
         user_id=user_id,
-        band_estimate=band_level,
+        band_estimate=effective_band,
+        level=effective_level,
         topic_tag=topic,
         retrieved_dialogues=retrieved,
         character_name=character_id or "Lily",
@@ -257,6 +267,7 @@ async def api_voice_process_turn(payload: VoiceTurnRequest):
         user_id=payload.user_id,
         topic=payload.topic,
         band_level=payload.band_level,
+        level=payload.level,
         conversation_history=payload.conversation_history,
         character_id=payload.character_id or "lily",
         text_only_mode=payload.text_only_mode,
@@ -272,6 +283,7 @@ async def api_voice_process_turn_multipart(
     user_id: str = Form("user_demo"),
     topic: str = Form("general_conversation"),
     band_level: float = Form(5.5),
+    level: int | None = Form(None),
     conversation_history: str = Form("[]"),
     character_id: str = Form("lily"),
     text_only_mode: bool = Form(False),
@@ -297,6 +309,7 @@ async def api_voice_process_turn_multipart(
         user_id=user_id,
         topic=topic,
         band_level=band_level,
+        level=level,
         conversation_history=history_list,
         character_id=character_id,
         text_only_mode=text_only_mode,

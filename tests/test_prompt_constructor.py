@@ -133,3 +133,20 @@ def test_prompt_construction_performance() -> None:
     avg_ms = elapsed_total_ms / 1000.0
     # Average construction time must be well under 5ms
     assert avg_ms < 1.0, f"Average assembly time too slow: {avg_ms:.4f} ms"
+
+
+def test_construct_system_prompt_with_level_constraints() -> None:
+    ctx = PromptContext(
+        user_id="level_user",
+        band_estimate=6.0,
+        level=9,
+        topic_tag="memories",
+    )
+
+    prompt = construct_system_prompt(ctx)
+
+    assert "Target Level: Level 9/20" in prompt
+    assert "STRICT DIFFICULTY ENFORCEMENT: LEVEL 9/20" in prompt
+    assert "LENGTH: Between 45 and 85 words" in prompt
+    assert "RULES" in prompt
+

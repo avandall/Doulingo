@@ -99,3 +99,25 @@ def test_voice_process_turn_multipart_endpoint():
     assert data["user_transcript"] == "I enjoy solving technical challenges."
     assert "ai_utterance" in data
     assert data["text_only_mode"] is True
+
+
+def test_voice_process_turn_endpoint_with_level():
+    """Verify POST /api/voice/process_turn handles explicit level parameter."""
+    payload = {
+        "user_id": "test_mvp_user_004",
+        "topic": "childhood_memory",
+        "level": 9,
+        "conversation_history": [],
+        "character_id": "lily",
+        "text_only_mode": True,
+        "user_transcript": "I remember playing near the lake when I was young.",
+    }
+    response = client.post("/api/voice/process_turn", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+
+    assert data["user_transcript"] == "I remember playing near the lake when I was young."
+    assert "ai_utterance" in data and len(data["ai_utterance"]) > 0
+    assert "internal_band_signal" in data
+    assert "retrieved_dialogues_count" in data
+

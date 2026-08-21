@@ -30,17 +30,33 @@ You MUST output ONLY a valid, raw JSON object matching the following structure e
 """
 
 
+from app.ai_engine import LEVEL_CONFIGS
+
+
 @dataclass
 class PromptContext:
     user_id: str
-    band_estimate: float
-    topic_tag: str
+    band_estimate: float = 6.0
+    topic_tag: str = "general_conversation"
     retrieved_dialogues: list[RetrievedDialogue] = field(default_factory=list)
     character_name: str = "Lily"
     difficulty_adjustment: str = "hold"
     entity_memory: dict[str, Any] | list[Any] | None = field(default_factory=dict)
     simulation_directives: str | None = None
     interleaved_directives: str | None = None
+    level: int | None = None
+
+
+def band_to_level(band: float) -> int:
+    """Map IELTS band (4.0 - 9.0) to numeric difficulty level (1 - 20)."""
+    b = max(4.0, min(9.0, float(band)))
+    return max(1, min(20, round(1.0 + (b - 4.0) * (19.0 / 5.0))))
+
+
+def level_to_band(level: int) -> float:
+    """Map numeric level (1 - 20) to base IELTS band (4.0 - 9.0)."""
+    lvl = max(1, min(20, int(level)))
+    return round(4.0 + (lvl - 1) * (5.0 / 19.0), 1)
 
 
 def construct_system_prompt(context: PromptContext) -> str:
@@ -52,7 +68,15 @@ def construct_system_prompt(context: PromptContext) -> str:
 
     persona = get_persona_identity(context.character_name or "Lily")
     char_name = persona["name"]
-    band = round(context.band_estimate, 1)
+
+    if context.level is not None:
+        lvl = max(1, min(20, int(context.level)))
+        band = round(context.band_estimate, 1) if context.band_estimate != 6.0 else level_to_band(lvl)
+    else:
+        band = round(context.band_estimate, 1)
+        lvl = band_to_level(band)
+
+    cfg = LEVEL_CONFIGS.get(lvl, LEVEL_CONFIGS[1])
     topic = context.topic_tag or "general_conversation"
 
     sections: list[str] = []
@@ -69,10 +93,26 @@ def construct_system_prompt(context: PromptContext) -> str:
     # 2. Target Profile & Context
     sections.append(
         f"### CONVERSATION CONTEXT\n"
+        f"- Target Level: Level {lvl}/20 (CEFR {cfg['cefr']})\n"
         f"- Target IELTS Band Level: {band}\n"
         f"- Topic: {topic}\n"
         f"- Current Difficulty Signal: {context.difficulty_adjustment}"
     )
+
+    # 2.1 Granular 20-Level Difficulty System Enforcement
+    level_block = (
+        f"=== STRICT DIFFICULTY ENFORCEMENT: LEVEL {lvl}/20 ({cfg['cefr']}) ===\n"
+        f"YOU MUST WRITE EXACTLY LIKE THE EXAMPLE BELOW. DO NOT DEVIATE.\n\n"
+        f"EXAMPLE OF A PERFECT LEVEL {lvl} RESPONSE:\n"
+        f"\"{cfg['example_response']}\"\n\n"
+        f"RULES (same style as the example above):\n"
+        f"- LENGTH: Between {cfg['min_words']} and {cfg['max_words']} words. COUNT YOUR WORDS.\n"
+        f"- VOCABULARY: {cfg['vocab_tier']}\n"
+        f"- GRAMMAR: {cfg['grammar_allowed']}\n"
+        f"- RESPONSE STYLE: {cfg['response_style']}\n"
+        f"=== END LEVEL RULES ==="
+    )
+    sections.append(level_block)
 
     # 2.5 Long-Term User Entity Memory (TASK-017)
     memory_formatted = format_entity_memory_for_prompt(context.entity_memory)
@@ -110,8 +150,8 @@ def construct_system_prompt(context: PromptContext) -> str:
     directives = [
         "### BEHAVIORAL DIRECTIVES & CONSTRAINTS",
         "1. ANTI-VERBATIM REPETITION: DO NOT copy sentences or phrases verbatim from the reference dialogues. Use them as inspiration for vocabulary level and discourse depth.",
-        f"2. FOLLOW-UP QUESTION REQUIREMENT: You MUST end your response (`ai_utterance`) with exactly 1 natural follow-up question appropriate for Band {band}.",
-        f"3. BAND APPROPRIATENESS: Adjust your vocabulary complexity and sentence structures to match or slightly stretch Band {band}.",
+        f"2. FOLLOW-UP QUESTION REQUIREMENT: You MUST end your response (`ai_utterance`) with exactly 1 natural follow-up question appropriate for Band {band} / Level {lvl}.",
+        f"3. BAND & LEVEL APPROPRIATENESS: Adjust your vocabulary complexity and sentence length (between {cfg['min_words']} and {cfg['max_words']} words) to match Level {lvl} ({cfg['cefr']}).",
         "4. NATURALITY: Speak in conversational, spoken English. Avoid robotic or textbook-sounding phrases."
     ]
     if memory_formatted:
