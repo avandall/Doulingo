@@ -1,6 +1,6 @@
 """Durable append-only JSONL Event Log store (Layer 3 - Session)."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
 from pathlib import Path
 from typing import Any
@@ -19,7 +19,7 @@ class EventType(str, Enum):
 
 class Event(BaseModel):
     timestamp: str = Field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+        default_factory=lambda: datetime.now(UTC).isoformat()
     )
     event_type: EventType
     step: int

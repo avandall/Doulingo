@@ -4,16 +4,17 @@ tests/test_data_flywheel.py — Unit tests for High-Band User Answer Harvest Pip
 
 import json
 import sqlite3
+
 import pytest
 
 from app.data_flywheel import (
     TurnData,
+    blob_to_floats,
+    check_dedup,
     check_quality,
     check_rate_cap,
-    check_dedup,
-    harvest_candidate,
-    blob_to_floats,
     cosine_similarity,
+    harvest_candidate,
 )
 
 

@@ -4,11 +4,11 @@
 # Chạy AI agent trong một vòng lặp tự trị với đầy đủ guardrails
 #
 # Cách dùng:
-#   ./pipeline/docs/harness.sh                               # Chạy với defaults (single-model)
-#   ./pipeline/docs/harness.sh --max-iter 20                 # Giới hạn 20 iterations
-#   ./pipeline/docs/harness.sh --task "TASK-001"             # Chỉ định task ID
-#   ./pipeline/docs/harness.sh --dry-run                     # Simulate, không thực thi thực sự
-#   ./pipeline/docs/harness.sh --review-model gemini-3.6-flash-low  # Bật Dual-Model mode
+#   ./pipeline/scripts/harness.sh                               # Chạy với defaults (single-model)
+#   ./pipeline/scripts/harness.sh --max-iter 20                 # Giới hạn 20 iterations
+#   ./pipeline/scripts/harness.sh --task "TASK-001"             # Chỉ định task ID
+#   ./pipeline/scripts/harness.sh --dry-run                     # Simulate, không thực thi thực sự
+#   ./pipeline/scripts/harness.sh --review-model gemini-3.6-flash-low  # Bật Dual-Model mode
 # =============================================================================
 
 set -euo pipefail

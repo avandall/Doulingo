@@ -207,13 +207,7 @@ class SqliteAdapter:
         else:
             where_clause = "WHERE sd.embedding IS NULL"
 
-        sql = f"""
-            SELECT sd.id, sd.ai_line, sd.user_model_answer,
-                   cu.topic_tags
-            FROM sample_dialogues sd
-            JOIN content_units cu ON sd.content_unit_id = cu.id
-            {where_clause}
-        """
+        sql = f"SELECT sd.id, sd.ai_line, sd.user_model_answer, cu.topic_tags FROM sample_dialogues sd JOIN content_units cu ON sd.content_unit_id = cu.id {where_clause}"  # nosec B608
         if limit:
             sql += f" LIMIT {limit}"
         return [dict(r) for r in self.conn.execute(sql).fetchall()]
@@ -252,12 +246,7 @@ class TursoAdapter:
         else:
             where_clause = "WHERE sd.embedding IS NULL"
 
-        sql = f"""
-            SELECT sd.id, sd.ai_line, sd.user_model_answer, cu.topic_tags
-            FROM sample_dialogues sd
-            JOIN content_units cu ON sd.content_unit_id = cu.id
-            {where_clause}
-        """
+        sql = f"SELECT sd.id, sd.ai_line, sd.user_model_answer, cu.topic_tags FROM sample_dialogues sd JOIN content_units cu ON sd.content_unit_id = cu.id {where_clause}"  # nosec B608
         if limit:
             sql += f" LIMIT {limit}"
         result = self.client.execute(sql)

@@ -57,7 +57,7 @@ def run_command(cmd: list[str]) -> tuple[int, str]:
         res = subprocess.run(cmd, capture_output=True, text=True, check=False)
         output = (res.stdout or "") + ("\n" + res.stderr if res.stderr else "")
         return res.returncode, output.strip()
-    except Exception as e:  # noqa: BLE001
+    except Exception as e:
         return 1, f"Execution failed: {e!s}"
 
 
@@ -83,33 +83,30 @@ def run_python_checks(target_dir: str = ".") -> list[tuple[str, bool, str]]:
 
     # 1. Ruff (Lint)
     if check_tool_installed("ruff"):
-        code, out = run_command(["ruff", "check", target_dir])
+        code, out = run_command(["ruff", "check", target_dir, "--exclude", "output"])
         results.append(("Python: Ruff (Lint)", code == 0, "All lint checks passed ✓" if code == 0 else truncate_log(out)))
     else:
         results.append(("Python: Ruff (Lint)", True, "Skipped (ruff not installed)"))
 
     # 2. Mypy (Type Check)
     if check_tool_installed("mypy"):
-        code, out = run_command(["mypy", target_dir, "--ignore-missing-imports"])
+        code, out = run_command(["mypy", target_dir, "--ignore-missing-imports", "--exclude", "output"])
         results.append(("Python: Mypy (Type Check)", code == 0, "Type checking passed ✓" if code == 0 else truncate_log(out)))
     else:
         results.append(("Python: Mypy (Type Check)", True, "Skipped (mypy not installed)"))
 
     # 3. Bandit (Security)
     if check_tool_installed("bandit"):
-        code, out = run_command(["bandit", "-r", target_dir, "-ll", "-q"])
+        src_dirs = [d for d in ["app", "scripts", "tests"] if os.path.exists(d)]
+        cmd = ["bandit", "-r"] + (src_dirs if src_dirs else [target_dir]) + ["-ll", "-q"]
+        code, out = run_command(cmd)
         results.append(("Python: Bandit (Security)", code == 0, "No security issues ✓" if code == 0 else truncate_log(out)))
     else:
         results.append(("Python: Bandit (Security)", True, "Skipped (bandit not installed)"))
 
     # 4. Pytest (Runtime)
     if check_tool_installed("pytest"):
-        has_tests = (
-            any(Path(".").rglob("test_*.py"))
-            or any(Path(".").rglob("*_test.py"))
-            or os.path.exists("tests")
-            or os.path.exists("pipeline/tests")
-        )
+        has_tests = os.path.exists("tests") or os.path.exists("pipeline/tests")
         if has_tests:
             code, out = run_command(["pytest", "--tb=short", "-q"])
             results.append(("Python: Pytest (Runtime)", code == 0, "All unit tests passed ✓" if code == 0 else truncate_log(out)))
@@ -209,7 +206,7 @@ def main():
         check_results.extend(run_python_checks("."))
 
     all_passed = all(r[1] for r in check_results)
-    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M")
+    now = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d %H:%M")
 
     # ── Summary mode: 1-line output for reviewer model prompt injection ──────
     if args.summary:

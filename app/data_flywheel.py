@@ -187,8 +187,7 @@ def check_dedup(
                 emb_floats = blob_to_floats(emb_blob)
                 if emb_floats and len(emb_floats) == len(candidate_embedding):
                     sim = cosine_similarity(candidate_embedding, emb_floats)
-                    if sim > max_sim:
-                        max_sim = sim
+                    max_sim = max(max_sim, sim)
     except Exception as e:
         log.warning("Deduplication vector search warning: %s", e)
     finally:
