@@ -1,21 +1,18 @@
 # CURRENT TASK
 # Task hiện tại đang thực thi — Context cho AI agent
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** Mỗi khi chuyển sang task mới
->
-> ✏️ **HUMAN FILLS THIS FILE.** Ghi chi tiết task đang được giao cho AI.
-> Dùng file này để cung cấp context cụ thể cho task hiện tại mà không cần sửa `Tasks_list.md`.
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-21
 
 ---
 
 ## Task đang thực hiện
 
 ```
-Task ID:      [TASK-001]
-Task Name:    [Tên task ngắn gọn]
-Phase:        [Phase 1 / Phase 2 / ...]
-Priority:     [P0-Critical / P1-High / P2-Medium]
-Started:      [YYYY-MM-DD]
+Task ID:      TASK-005
+Task Name:    Kiểm thử E2E & Verification toàn bộ luồng hội thoại
+Phase:        Phase 5 (Verification & Hardening)
+Priority:     P0-Critical
+Started:      2026-08-21
 ```
 
 ---
@@ -23,55 +20,24 @@ Started:      [YYYY-MM-DD]
 ## Mục tiêu (Why & What)
 
 **Tại sao cần làm task này?**
-- [Lý do 1]
-- [Lý do 2]
+- Đảm bảo toàn bộ hệ thống sau khi refactor (từ TASK-001 đến TASK-004) pass 100% kiểm thử (Unit, Integration, E2E) và không bị lỗi hay đứt gãy.
 
 **Cụ thể cần làm gì?**
-- [Công việc 1]
-- [Công việc 2]
+- Chạy test suite tổng hợp (`pytest tests/`), chạy `python3 pipeline/scripts/verify.py` kiểm tra zero lints/type errors/security issues/runtime failures, và đảm bảo mọi API endpoint hoạt động ổn định.
 
 ---
 
 ## Acceptance Criteria (Tiêu chí hoàn thành)
 
 Task được coi là DONE khi:
-- [ ] [Tiêu chí 1 — đo lường được, verify được]
-- [ ] [Tiêu chí 2]
-- [ ] Tất cả verification commands chạy PASS 100%
-
----
-
-## Context bổ sung
-
-### Input / Dependencies
-- [Dữ liệu đầu vào, files cần đọc, services cần kết nối]
-
-### Known Constraints
-- [Giới hạn kỹ thuật hoặc nghiệp vụ đặc thù của task này]
-
-### References
-- [Links, docs, examples liên quan]
+- [x] Toàn bộ unit tests & integration tests pass 100%.
+- [x] `python3 pipeline/scripts/verify.py` pass Tier 1 checks (Ruff, Mypy, Bandit, Pytest).
+- [x] Không có console error hay unhandled exception nào khi gọi API.
 
 ---
 
 ## Verification Commands
 
 ```bash
-# Lệnh để verify task hoàn thành
-[ví dụ: pytest tests/test_feature.py -v]
-[ví dụ: python3 pipeline/scripts/verify.py]
+python3 pipeline/scripts/verify.py
 ```
-
----
-
-## Notes từ Human
-
-> [Ghi chú bổ sung, warnings, hoặc context đặc biệt mà AI cần biết khi làm task này]
-
----
-
-## Lịch sử (History)
-
-| Ngày | Task ID | Trạng thái | Ghi chú |
-|------|---------|------------|---------|
-| [YYYY-MM-DD] | [TASK-001] | [ ] TODO | Khởi tạo |
