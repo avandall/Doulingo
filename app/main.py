@@ -42,7 +42,7 @@ from app.prompt_constructor import PromptContext
 from app.reporting import generate_weekly_report
 from app.retrieval import compute_band_window, retrieve_dialogues
 from app.scenarios import get_scenario, list_scenarios
-from app.tts_service import generate_tts_mp3
+from app.tts_service import generate_tts_mp3, get_character_filler_path
 from app.tts_streamer import TTSStreamer
 
 logger = logging.getLogger("duolingo_speak.api")
@@ -708,6 +708,21 @@ async def api_tts(
     except Exception as e:
         logger.error(f"TTS Generation failed for char_id='{char_id}': {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"TTS Generation failed: {e}")
+
+@app.get("/api/fillers/{character_id}")
+@app.get("/api/fillers")
+async def api_filler(character_id: str = "lily"):
+    try:
+        rel_path = get_character_filler_path(character_id)
+        abs_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), rel_path)
+        if os.path.exists(abs_path):
+            return FileResponse(abs_path, media_type="audio/mpeg")
+        # If file not found, generate on the fly
+        mp3_stream = generate_tts_mp3("Hmm...", char_id=character_id)
+        return StreamingResponse(mp3_stream, media_type="audio/mpeg")
+    except Exception as e:
+        logger.error(f"Filler retrieval failed for char_id='{character_id}': {e}")
+        raise HTTPException(status_code=500, detail=f"Filler retrieval failed: {e}")
 
 # Static files
 static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")

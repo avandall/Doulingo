@@ -13,9 +13,9 @@
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Ghi chú / Blocker |
 |---------|----------|-------|---------|------------|-------------------|
 | `TASK-001` | Comprehensive Real-Time API Trace & Diagnostic Logging System | Phase 1 | P0 | `[x] DONE` | In log chi tiết provider, key, status, latency, fallback, quota |
-| `TASK-002` | Dynamic Anti-Repetition Fallback Engine with Topic-Shift & Memory | Phase 2 | P0 | `[ ] TODO` | Xóa bỏ hoàn toàn lặp câu, ngân hàng 30+ câu, đổi chủ đề, ghi nhớ lịch sử |
-| `TASK-003` | Empathetic Prompting & ASR Phonetic Clarification Pipeline | Phase 3 | P1 | `[ ] TODO` | Active listening, phản chiếu cảm xúc, xử lý từ phát âm sai (did you mean X?) |
-| `TASK-004` | Instant Conversational Fillers (<100ms) & Natural TTS Tuning | Phase 4 | P1 | `[ ] TODO` | Phát audio "Hmm... let me see" tức thì câu giờ + đưa Edge-TTS về tần số chuẩn |
+| `TASK-002` | Dynamic Anti-Repetition Fallback Engine with Topic-Shift & Memory | Phase 2 | P0 | `[x] DONE` | Xóa bỏ hoàn toàn lặp câu, ngân hàng 30+ câu, đổi chủ đề, ghi nhớ lịch sử |
+| `TASK-003` | Empathetic Prompting & ASR Phonetic Clarification Pipeline | Phase 3 | P1 | `[x] DONE` | Active listening, phản chiếu cảm xúc, xử lý từ phát âm sai (did you mean X?) |
+| `TASK-004` | Instant Conversational Fillers (<100ms) & Natural TTS Tuning | Phase 4 | P1 | `[x] DONE` | Phát audio "Hmm... let me see" tức thì câu giờ + đưa Edge-TTS về tần số chuẩn |
 | `TASK-005` | Fix IELTS EXAM Read-Then-Speak Recording & Submission Flow | Phase 5 | P0 | `[ ] TODO` | Khắc phục race condition bất đồng bộ ASR khiến Submit bị báo "please record" |
 | `TASK-006` | Modern Curated Roleplay Hub (<11 Featured Topics & Categorized Explorer) | Phase 6 | P1 | `[ ] TODO` | Giữ <11 topics tinh tuyển trên trang chủ + Modal All Topics có tìm kiếm & filters |
 | `TASK-007` | End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls) | Phase 7 | P0 | `[ ] TODO` | Test như real user qua MCP, kiểm tra toàn bộ luồng, giới hạn < 10 API calls |
@@ -75,7 +75,7 @@ Task Name:       Dynamic Anti-Repetition Fallback Engine with Topic-Shift & Cont
 Phase:           Phase 2 (Fallback Overhaul)
 Task Type:       feature / fallback
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-22
 ```
 
@@ -115,7 +115,7 @@ Task Name:       Empathetic Prompting & ASR Phonetic Clarification Pipeline
 Phase:           Phase 3 (Prompt & Intelligence)
 Task Type:       feature / prompt-engineering
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-22
 ```
 
@@ -129,10 +129,10 @@ Ngày tạo:        2026-08-22
   2. Bổ sung cơ chế ghi nhận feedback ngữ pháp thấu cảm (động viên người học, giải thích lỗi nhẹ nhàng).
 
 #### Acceptance Criteria
-- [ ] AI phản hồi có chiều sâu, thể hiện sự lắng nghe và thấu cảm với cảm xúc của người dùng.
-- [ ] Khi thử nghiệm với các câu có từ vựng phát âm khó, AI tự động suy luận ra ý nghĩa chính xác của người học.
-- [ ] Tất cả câu trả lời của AI đều kết thúc bằng câu hỏi mở, không làm đứt đoạn cuộc trò chuyện.
-- [ ] Tests kiểm tra Prompt structure và Empathy logic pass 100%.
+- [x] AI phản hồi có chiều sâu, thể hiện sự lắng nghe và thấu cảm với cảm xúc của người dùng.
+- [x] Khi thử nghiệm với các câu có từ vựng phát âm khó, AI tự động suy luận ra ý nghĩa chính xác của người học.
+- [x] Tất cả câu trả lời của AI đều kết thúc bằng câu hỏi mở, không làm đứt đoạn cuộc trò chuyện.
+- [x] Tests kiểm tra Prompt structure và Empathy logic pass 100%.
 
 #### Scope
 - **Files được sửa/tạo:** `app/ai_engine.py`, `app/prompt_factory.py`, `tests/test_empathy_prompt.py`
@@ -154,7 +154,7 @@ Task Name:       Instant Conversational Fillers (<100ms) & Natural TTS Fallback 
 Phase:           Phase 4 (Audio & Latency)
 Task Type:       feature / audio-latency
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-22
 ```
 

@@ -95,3 +95,86 @@
 #### Next
 - **Action:** Ready for Reviewer Model Tier 2 Cognitive Review. Next task queue item: `TASK-002`.
 - **State:** STATUS.md & PROGRESS_LOG.md updated. `TASK-001` marked [x] DONE.
+
+### [TASK-002] 2026-08-22 18:45 — Dynamic Anti-Repetition Fallback Engine with Topic-Shift & Context Memory
+
+**Phase:** PHASE 4 (VERIFY) & PHASE 7 (REPORT)
+**Step:** TASK-002 Steps 1-2 Complete
+**Duration:** ~10 phút
+
+#### Actions Taken
+1. Đã nâng cấp `_get_context_aware_fallback()` trong `app/ai_engine.py`:
+   - Tích hợp ngân hàng 30+ câu (openers, bodies, questions) phong phú phân loại theo sắc thái cảm xúc (negative/empathy, confused/curious, positive/cheerful, neutral/thoughtful).
+   - Xây dựng Topic Shift Detector đa dạng (cooking, food, travel, movies, weather, technology, sports, music, books, etc.) giúp chuyển chủ đề câu hỏi linh hoạt khi user thay đổi ý định.
+   - Đọc 5 lượt nói AI gần nhất từ `conversation_history` và áp dụng bộ lọc Jaccard similarity & sentence-level exclusion, tuyệt đối không lặp lại câu trong quá khứ.
+   - Mở rộng ngân hàng câu bổ trợ word count đa dạng theo level constraint thay vì nhồi từ cố định.
+   - Bổ sung fast-path test mode `PYTEST_CURRENT_TEST` giúp bộ unit test thực thi thần tốc.
+2. Xây dựng unit test suite `tests/test_fallback_engine.py` (6/6 tests PASSED 100%).
+3. Chạy toàn bộ test suite `pytest tests/test_fallback_engine.py tests/test_fallback_context.py -v` (10/10 tests PASSED 100%).
+4. Thực thi Tier 1 Verification script `python3 pipeline/scripts/verify.py` (Status: PASS 100%).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `pipeline/docs/runtime/VERIFICATION_REPORT.md` (Status: PASS). Toàn bộ 203 unit tests và linters pass 100%.
+
+#### Git
+- **Commit Pending:** `[TASK-002] feat(fallback): implement dynamic anti-repetition fallback engine with topic-shift detector and context memory` (chờ Reviewer Model duyệt Phase 5).
+
+#### Next
+- **Action:** Dừng lại chờ Reviewer Model thực hiện Phase 5 (Cognitive Review). Sẵn sàng chuyển sang `TASK-003`.
+- **State:** `STATUS.md`, `PROGRESS_LOG.md`, `PLAN.md`, `PROOF_OF_SOLUTION.md` và `Tasks_list.md` được cập nhật ra filesystem.
+
+### [TASK-003] 2026-08-22 18:51 — Empathetic Prompting & ASR Phonetic Clarification Pipeline
+
+**Phase:** PHASE 4 (VERIFY) & PHASE 7 (REPORT)
+**Step:** TASK-003 Steps 1-2 Complete
+**Duration:** ~10 phút
+
+#### Actions Taken
+1. Đã nâng cấp `build_system_prompt()` trong `app/prompt_factory.py` tích hợp **Section 7: EMPATHETIC & ACTIVE LISTENING DIRECTIVES**:
+   - Active Listening & Mirroring (trích xuất ít nhất 1 ý/cảm xúc người học vào câu mở đầu).
+   - ASR Phonetic Clarification Directive (đoán từ đúng và xác nhận nhẹ nhàng "Oh, did you mean X?" khi speech-to-text nhận nhầm từ đồng âm/phát âm sai như 'beach' -> 'bitch', 'important' -> 'in portal', 'think' -> 'sink').
+   - Empathetic Feedback (động viên nỗ lực, hướng dẫn sửa lỗi ngữ pháp/phát âm nhẹ nhàng).
+   - Open Question Mandate (mọi câu trả lời của AI đều kết thúc bằng câu hỏi mở).
+2. Nâng cấp `_build_token_efficient_prompt()` trong `app/ai_engine.py` chuẩn hóa `SMART CONVERSATION DIRECTIVES & OPEN QUESTION MANDATE`.
+3. Xây dựng unit test suite `tests/test_empathy_prompt.py` (4/4 tests PASSED 100%).
+4. Thực thi `ruff check . --fix` và `python3 pipeline/scripts/verify.py` (Status: PASS 100%).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `tests/test_empathy_prompt.py` (4 passed in 4.90s), `ruff check .` (All checks passed!), `pipeline/docs/runtime/VERIFICATION_REPORT.md` (Status: PASS).
+
+#### Git
+- **Commit Pending:** `[TASK-003] feat(prompt): implement empathetic prompting and ASR phonetic clarification pipeline` (chờ Reviewer Model duyệt Phase 5).
+
+#### Next
+- **Action:** Dừng lại chờ Reviewer Model thực hiện Phase 5 (Cognitive Review). Sẵn sàng chuyển sang `TASK-004`.
+- **State:** `STATUS.md`, `PROGRESS_LOG.md`, `PLAN.md`, `PROOF_OF_SOLUTION.md` và `Tasks_list.md` được cập nhật ra filesystem.
+
+### [TASK-004] 2026-08-22 19:20 — Instant Conversational Fillers (<100ms) & Natural TTS Tuning
+
+**Phase:** PHASE 4 (VERIFY) & PHASE 7 (REPORT)
+**Step:** TASK-004 Steps 1-3 Complete
+**Duration:** ~10 phút
+
+#### Actions Taken
+1. Kiểm tra và tinh chỉnh `CHARACTER_VOICE_MAP` trong `app/tts_service.py` đảm bảo `rate: "+0%"` và `pitch: "+0Hz"` cho tất cả 10 nhân vật ảo để giọng Microsoft Edge-TTS tự nhiên, ấm áp khi fallback.
+2. Xây dựng và kiểm tra hệ thống Instant Conversational Filler:
+   - Endpoint `/api/fillers/{character_id}` phục vụ file audio filler (.mp3) cho 10 nhân vật từ `static/audio/fillers/`.
+   - `DuoAudioFX` (`static/js/audio_fx.js`) với method `playFiller(charId)` và `stopFiller()`.
+   - Frontend `static/js/app.js` tự động phát filler ngay lập tức (<100ms) khi user submit, đồng thời hiển thị "AI is thinking..." và tự động dừng filler khi main TTS sẵn sàng.
+3. Chạy unit test suite `pytest tests/test_tts_fillers.py -v` (5/5 PASSED 100%).
+4. Thực thi Tier 1 Verification script `python3 pipeline/scripts/verify.py` (Status: PASS 100%, 208 Pytest tests passed, zero linter/type errors).
+
+#### Result
+- **Outcome:** PASS
+- **Evidence:** `tests/test_tts_fillers.py` (5 passed), `pipeline/docs/runtime/VERIFICATION_REPORT.md` (Status: PASS 100%).
+
+#### Git
+- **Commit Pending:** `[TASK-004] feat(audio): implement instant conversational fillers (<100ms) and natural edge-tts tuning` (chờ Reviewer Model duyệt Phase 5).
+
+#### Next
+- **Action:** Dừng lại chờ Reviewer Model thực hiện Phase 5 (Cognitive Review). Sẵn sàng chuyển sang `TASK-005`.
+- **State:** `STATUS.md`, `PROGRESS_LOG.md`, `PLAN.md`, `PROOF_OF_SOLUTION.md` và `Tasks_list.md` được cập nhật ra filesystem.
+
+

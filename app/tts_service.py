@@ -32,8 +32,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         "eleven_voice_id": "cgSgspJ2msm6clMCkdW9",
         "eleven_settings": {"stability": 0.5, "similarity_boost": 0.85, "style": 0.5, "use_speaker_boost": True},
         "azure_voice": "en-US-AnaNeural",
-        "rate": "+5%",
-        "pitch": "+10Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "com"
     },
     "lily": {
@@ -42,8 +42,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # DEADPAN: Max stability, zero style = total monotone flatness.
         "eleven_settings": {"stability": 0.95, "similarity_boost": 0.92, "style": 0.0, "use_speaker_boost": True},
         "azure_voice": "en-GB-SoniaNeural",
-        "rate": "-10%",
-        "pitch": "-10Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "co.uk"
     },
     "oscar": {
@@ -52,8 +52,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # GYM BRO: Min stability = explosive unpredictable peaks. Max style = full warrior.
         "eleven_settings": {"stability": 0.12, "similarity_boost": 0.72, "style": 0.95, "use_speaker_boost": True},
         "azure_voice": "en-US-GuyNeural",
-        "rate": "+20%",
-        "pitch": "+5Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "com"
     },
     "viktor": {
@@ -62,8 +62,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # COLD SPY: Max stability = dead flat emotionless delivery. Barely any style = robot agent.
         "eleven_settings": {"stability": 0.90, "similarity_boost": 0.96, "style": 0.08, "use_speaker_boost": True},
         "azure_voice": "en-GB-ThomasNeural",
-        "rate": "-12%",
-        "pitch": "-10Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "de"
     },
     "chanel": {
@@ -72,8 +72,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # DRAMA QUEEN: Low stability = chaotic gasping/squealing. Max style = full theatrical acting.
         "eleven_settings": {"stability": 0.15, "similarity_boost": 0.70, "style": 0.92, "use_speaker_boost": True},
         "azure_voice": "en-US-JennyNeural",
-        "rate": "+8%",
-        "pitch": "+2Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "com"
     },
     "kaelen": {
@@ -83,8 +83,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # DARK NIGHTMARE: High stability = slow calculated darkness. High style = sinister acting.
         "eleven_settings": {"stability": 0.85, "similarity_boost": 0.95, "style": 0.88, "use_speaker_boost": True},
         "azure_voice": "en-GB-ThomasNeural",
-        "rate": "-18%",
-        "pitch": "-12Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "com"
     },
     "colt": {
@@ -94,8 +94,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # COWBOY DRAWL: Mid stability = relaxed natural pace. Mid style = Western character acting.
         "eleven_settings": {"stability": 0.50, "similarity_boost": 0.80, "style": 0.68, "use_speaker_boost": True},
         "azure_voice": "en-US-GuyNeural",
-        "rate": "-8%",
-        "pitch": "-6Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "com"
     },
     "zarina": {
@@ -104,8 +104,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # GHOSTLY SPIRIT: Very high stability = eerily deliberate, ghost-like delivery.
         "eleven_settings": {"stability": 0.91, "similarity_boost": 0.92, "style": 0.62, "use_speaker_boost": True},
         "azure_voice": "en-CA-ClaraNeural",
-        "rate": "-18%",
-        "pitch": "-12Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "ca"
     },
     "scarlet": {
@@ -115,8 +115,8 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # PIRATE CAPTAIN: Low stability = bold, unpredictable pirate energy. High style = swashbuckling acting.
         "eleven_settings": {"stability": 0.22, "similarity_boost": 0.75, "style": 0.88, "use_speaker_boost": True},
         "azure_voice": "en-AU-NatashaNeural",
-        "rate": "+5%",
-        "pitch": "+3Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "com"
     },
     "luigi": {
@@ -125,11 +125,32 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
         # MAFIA DON: stability=0.78 = cold, CALCULATED, slow delivery. style=0.95 = full menacing acting.
         "eleven_settings": {"stability": 0.78, "similarity_boost": 0.95, "style": 0.95, "use_speaker_boost": True},
         "azure_voice": "en-US-BrianNeural",
-        "rate": "-8%",
-        "pitch": "-8Hz",
+        "rate": "+0%",
+        "pitch": "+0Hz",
         "fallback_tld": "it"
     }
 }
+
+CHARACTER_FILLER_MAP: dict[str, str] = {
+    "duo": "Hmm, let me see...",
+    "lily": "Well...",
+    "oscar": "Right...",
+    "viktor": "Hmm...",
+    "chanel": "Oh, let me think...",
+    "kaelen": "Mmm...",
+    "colt": "Well now...",
+    "zarina": "Ah...",
+    "scarlet": "Aha...",
+    "luigi": "Hmm..."
+}
+
+def get_character_filler_path(char_id: str) -> str:
+    """Return relative file path for character filler audio."""
+    clean_char = char_id.lower().strip() if char_id else "lily"
+    if clean_char not in CHARACTER_FILLER_MAP:
+        clean_char = "lily"
+    return f"static/audio/fillers/{clean_char}.mp3"
+
 
 def sanitize_text_for_tts(text: str) -> str:
     """Remove triple dots and ellipses that cause TTS stuttering."""

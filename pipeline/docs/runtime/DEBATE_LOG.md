@@ -163,5 +163,24 @@ Review Result: APPROVED
 - Non-blocking (MEDIUM/LOW): 0
 
 Review Result: APPROVED
+
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-22 19:25
+### Iteration: 1
+### Type: dual-model-review
+
+#### Issues Found
+[SEVERITY: INFO] Dynamic fallback responses with topic-shift detection and anti-repetition memory — Evidence: app/ai_engine.py:640-870
+
+#### Adversarial Questions
+1. Điều gì xảy ra nếu user transcript không chứa bất kỳ topic keyword nào? → Mặc định fallback về scenario title ban đầu an toàn.
+2. Vòng lặp 30 lần tính Jaccard similarity có gây chậm CPU không? → String bank ngắn (<50 từ), 30 lần tính set intersection mất <1ms.
+3. Có nguy cơ cạn kiệt candidates nếu past_sentences chứa toàn bộ bank không? → Fallback list ban đầu `or openers` đảm bảo luôn có output.
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 0
+- Non-blocking (MEDIUM/LOW): 0
+
+Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
 

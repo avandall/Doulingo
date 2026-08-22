@@ -219,6 +219,16 @@ class PromptFactory:
                 prompt_lines.append(f"  \u25b8 {g.pattern}")
             prompt_lines.append("")
 
+        # ── Section 7: Empathetic & Active Listening Directives ─────────────
+        prompt_lines += [
+            "### EMPATHETIC & ACTIVE LISTENING DIRECTIVES",
+            "1. ACTIVE LISTENING & MIRRORING: Explicitly reflect at least 1 key idea or emotion from the user's speech in your opening sentence before sharing your perspective.",
+            "2. ASR PHONETIC CLARIFICATION: Learner speech is captured via Speech-to-Text (ASR) which may introduce phonetic substitutions or homophones (e.g. 'important' -> 'in portal', 'beach' -> 'bitch', 'think' -> 'sink'). NEVER complain or claim you do not understand. Gently guess the intended word in character (e.g. 'Oh, did you mean important?') and continue smoothly.",
+            "3. EMPATHETIC FEEDBACK: Provide warm, encouraging feedback that praises user effort and explains grammar/pronunciation points gently without pedantry.",
+            "4. OPEN QUESTION MANDATE: Always conclude your spoken response with a fresh, open-ended question to drive the conversation forward.",
+            "",
+        ]
+
         return "\n".join(prompt_lines)
 
 

@@ -390,6 +390,11 @@ class DuoSpeakApp {
     if (aiTextEl) aiTextEl.innerHTML = '<div class="loading-spinner"><div class="spinner-ring"></div> AI is thinking...</div>';
     this._setPlayerLoading();
 
+    // Trigger instant audio filler (<100ms response time)
+    if (window.duoAudio && typeof window.duoAudio.playFiller === 'function') {
+      window.duoAudio.playFiller(charId);
+    }
+
     // Hide translation
     const transEl = document.getElementById('ai-translation-text');
     if (transEl) { transEl.style.display = 'none'; transEl.textContent = ''; }
@@ -709,6 +714,9 @@ class DuoSpeakApp {
   }
 
   stopTTS() {
+    if (window.duoAudio && typeof window.duoAudio.stopFiller === 'function') {
+      window.duoAudio.stopFiller();
+    }
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio.currentTime = 0;

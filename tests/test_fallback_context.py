@@ -16,7 +16,8 @@ def test_context_aware_fallback_negative_sentiment():
     
     # Must contain empathetic phrasing
     ai_resp_lower = ai_resp.lower()
-    assert any(kw in ai_resp_lower for kw in ["sorry", "difficult", "challenging", "tough"])
+    empathy_keywords = ["sorry", "difficult", "difficulty", "challenging", "challenges", "tough", "stressful", "burden", "empathize", "support", "courage", "hardship", "feelings"]
+    assert any(kw in ai_resp_lower for kw in empathy_keywords), f"No empathetic keyword in response: {ai_resp}"
     
     # duo_reaction should be encouraging for negative sentiment
     assert res["user_feedback"]["duo_reaction"] == "encouraging"

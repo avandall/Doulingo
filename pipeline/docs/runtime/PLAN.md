@@ -1,17 +1,17 @@
 # PLAN
-# Kế hoạch thực thi — TASK-001: Comprehensive Real-Time API Trace & Diagnostic Logging System
+# Kế hoạch thực thi — TASK-004: Instant Conversational Fillers (<100ms) & Natural TTS Fallback Tuning
 
-> **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Cập nhật:** 2026-08-22
+> **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Cập nhật:** 2026-08-22 19:20
 
 ---
 
 ## Task Reference
 
 ```
-Task ID:    TASK-001
-Task Name:  Comprehensive Real-Time API Trace & Diagnostic Logging System
-Phase:      Phase 1 (Observability & Logging)
-Spec:       Nâng cấp và đồng bộ hệ thống trace logging cho STT, LLM, TTS ra console và file logs/api_trace.log. Cập nhật endpoint /api/trace & /api/health/quota.
+Task ID:    TASK-004
+Task Name:  Instant Conversational Fillers (<100ms) & Natural TTS Fallback Tuning
+Phase:      Phase 4 (Audio & Latency)
+Spec:       Tạo bộ filler audio cho các nhân vật trong static/audio/fillers/, tích hợp vào frontend app.js phát tức thì <100ms khi user submit, và điều chỉnh rate (+0%) / pitch (+0Hz) cho Microsoft Edge-TTS trong app/tts_service.py.
 ```
 
 ---
@@ -19,15 +19,14 @@ Spec:       Nâng cấp và đồng bộ hệ thống trace logging cho STT, LLM
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [x] Console in ra rõ ràng mỗi khi có request: `[TRACE] Step=... | Provider=... | Key=... | Status=... | Latency=...ms`.
-- [x] Khi ElevenLabs hết quota hoặc lỗi, có log ghi rõ nguyên nhân và provider fallback tiếp theo (Edge-TTS).
-- [x] File `logs/api_trace.log` được cập nhật liên tục với đầy đủ timestamp và masked keys (`gsk_...`, `xi_...`, `AIza...`).
-- [x] Endpoint `/api/trace` và `/api/health/quota` phản ánh đúng trạng thái real-time.
-- [x] Unit test `pytest tests/test_logging_trace.py -v` chạy PASS 100%.
+- [x] Tinh chỉnh parameter `rate` (+0%) và `pitch` (+0Hz) của `CHARACTER_VOICE_MAP` trong `app/tts_service.py` cho Microsoft Edge-TTS giọng tự nhiên.
+- [x] Bổ sung/xây dựng bộ âm thanh fillers trong `static/audio/fillers/` cho tất cả các nhân vật ảo (`duo`, `lily`, `oscar`, `viktor`, `chanel`, `kaelen`, `colt`, `zarina`, `scarlet`, `luigi`).
+- [x] Cập nhật frontend (`static/js/audio_fx.js` và `static/js/app.js`) để kích hoạt phát audio filler ngay lập tức (<100ms latency) khi dứt lời/submit, hiển thị hiệu ứng AI is thinking... và chuyển đổi mượt sang TTS response chính khi ready.
+- [x] Viết bộ test `tests/test_tts_fillers.py` và chạy `python3 pipeline/scripts/verify.py` pass 100%.
 
 ### Verification Commands
 ```bash
-pytest tests/test_logging_trace.py -v
+pytest tests/test_tts_fillers.py -v
 python3 pipeline/scripts/verify.py
 ```
 
@@ -35,25 +34,24 @@ python3 pipeline/scripts/verify.py
 
 ## Execution Steps
 
-### [x] Step 1: Nâng cấp `log_api_trace()` và bổ sung logging cho STT/LLM trong `app/ai_engine.py`
-- **Mục tiêu:** Thêm tham số `step` vào `log_api_trace()`, định dạng log console chuẩn `[TRACE] Step=... | Provider=... | Key=... | Status=... | Latency=...ms`, và tích hợp log_api_trace vào `transcribe_audio()` (Groq Whisper & Gemini Audio & Browser Fallback).
-- **Files tạo/sửa:** `app/ai_engine.py`
-- **Exit condition:** `log_api_trace()` ghi log đầy đủ thông tin step, provider, masked key, status, latency và error ra console & file `logs/api_trace.log`.
+### [x] Step 1: Natural Voice Fallback Tuning & Filler Subsystem trong `app/tts_service.py` & `app/main.py`
+- **Mục tiêu:**
+  - Chỉnh lại `rate` thành `"+0%"` và `pitch` thành `"+0Hz"` trong `CHARACTER_VOICE_MAP` cho tất cả các nhân vật trong `app/tts_service.py`.
+  - Tạo helper `get_character_filler_path(char_id: str)` hoặc `/api/fillers/{char_id}` endpoint để serve audio fillers từ `static/audio/fillers/`.
+- **Files tạo/sửa:** `app/tts_service.py`, `app/main.py`
+- **Exit condition:** `CHARACTER_VOICE_MAP` có rate/pitch chuẩn `"+0%"`, `"+0Hz"`, filler audio route `/api/fillers/{char_id}` hoặc static resource truy cập thành công.
 
-### [x] Step 2: Tích hợp Real-Time Logging & Auto-Rotation trong `app/tts_service.py`
-- **Mục tiêu:** Gọi `log_api_trace()` trong `generate_elevenlabs_tts_single()`, `generate_elevenlabs_tts_multi_key()`, `generate_tts_mp3()`, và `stream_tts_mp3_chunks()` khi xử lý TTS ElevenLabs, Edge-TTS fallback, và gTTS.
-- **Files tạo/sửa:** `app/tts_service.py`
-- **Exit condition:** ElevenLabs 429/402 quota error và Edge-TTS fallback được ghi nhận minh bạch vào log trace.
+### [x] Step 2: Integrated Instant Filler Playback in Frontend (`static/js/audio_fx.js` & `static/js/app.js`)
+- **Mục tiêu:**
+  - Nâng cấp `DuoAudioFX` trong `static/js/audio_fx.js` hỗ trợ method `playFiller(charId)` kích hoạt phát filler tức thì <100ms (qua Web Audio synth hoặc preloaded HTML5 Audio).
+  - Cập nhật `static/js/app.js` tại điểm user gửi tin nhắn/process turn để lập tức gọi `playFiller(charId)` và hiển thị "AI is thinking...". Khi TTS chính ready (`playTTS`), tự động stop filler và phát audio chính mượt mà.
+- **Files tạo/sửa:** `static/js/audio_fx.js`, `static/js/app.js`
+- **Exit condition:** User gửi message -> filler phát ngay lập tức (<100ms) -> AI response xong -> phát TTS mượt mà.
 
-### [x] Step 3: Đảm bảo Endpoints `/api/trace` và `/api/health/quota` trong `app/main.py`
-- **Mục tiêu:** Kiểm tra endpoints trả về `key_statuses`, `recent_trace_logs` và active key counts chính xác.
-- **Files tạo/sửa:** `app/main.py`
-- **Exit condition:** GET `/api/trace` và GET `/api/health/quota` trả dữ liệu JSON hợp lệ chứa trạng thái key và log trace mới nhất.
-
-### [x] Step 4: Tạo Unit Test Suite `tests/test_logging_trace.py` & Verification
-- **Mục tiêu:** Xây dựng unit test suite kiểm tra toàn bộ tiêu chí của TASK-001 và chạy `python3 pipeline/scripts/verify.py`.
-- **Files tạo/sửa:** `tests/test_logging_trace.py`
-- **Exit condition:** `pytest tests/test_logging_trace.py -v` và `verify.py` pass 100%.
+### [x] Step 3: Test Suite `tests/test_tts_fillers.py` & Verification
+- **Mục tiêu:** Viết unit test suite cho natural voice params, filler file existence/route, tts fallback capabilities, và thực thi `python3 pipeline/scripts/verify.py`.
+- **Files tạo/sửa:** `tests/test_tts_fillers.py`
+- **Exit condition:** `pytest tests/test_tts_fillers.py -v` và `verify.py` pass 100%.
 
 ---
 
@@ -71,4 +69,5 @@ Context refresh at:   Iteration 3
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-22 | Khởi tạo plan cho TASK-001 |
+| v1 | 2026-08-22 | Khởi tạo plan cho TASK-004 |
+| v2 | 2026-08-22 | Hoàn thành tất cả các bước Step 1-3 của TASK-004 |
