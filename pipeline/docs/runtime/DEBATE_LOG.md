@@ -80,35 +80,83 @@ After review:   [Ví dụ: 9/10 — đã address tất cả concerns quan trọn
 - [Câu hỏi dùng khi review]
 
 ---DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 20:57
+## Review Session — 2026-08-22 18:16
 ### Iteration: 1
 ### Type: dual-model-review
 
 #### Issues Found
-[SEVERITY: INFO] Added comprehensive analysis report and updated developer boundaries documentation — Evidence: analysis.md:L1-L238, pipeline/docs/context/BOUNDARIES.md:L1-L98
+[SEVERITY: HIGH] Tier 1 checks failed on Ruff (Lint) — Evidence: TIER1: FAIL (Python: Ruff)
+[SEVERITY: MEDIUM] Dùng print() thay vì logger vi phạm Project Review Rules — Evidence: app/tts_service.py:188, app/ai_engine.py:73
 
 #### Adversarial Questions
-1. Điều gì xảy ra nếu script ingest `insert_turso.py` không được chạy đúng môi trường hoặc DB schema SQLite bị lệch? → Risk: `sample_dialogues` vẫn trống hoặc thiếu cột; đã có logging và fallback RAG 3-stage handling trong `retrieval.py`.
-2. Tại sao không cập nhật ngay mã nguồn python trong `app/` tại commit này? → Phân tích và thống nhất root cause là bước chuẩn bị quan trọng trước khi refactor kiến trúc tránh tạo side-effects hoặc phá vỡ pipeline.
-3. Điều gì xảy ra nếu API Key bị rate-limit trong tương lai? → Hệ thống cần implement Level-aware context fallback thay vì static generic string template theo Roadmap Step 3.
+1. Điều gì xảy ra khi Tier 1 lint check fail? → Auto-reject theo quy tắc bắt buộc.
+2. Tại sao gọi print() thay vì dùng logger? → Vi phạm quy tắc logging của dự án.
+3. Timeout giảm xuống 2-3s có gây false negative với Gemini/Groq chậm? → Cần retry hoặc fallback hợp lý.
+
+#### Summary
+- Blocking issues (CRITICAL/HIGH): 1
+- Non-blocking (MEDIUM/LOW): 1
+
+Review Result: REJECTED: Tier 1 check thất bại (Ruff lint error) và vi phạm rule sử dụng print() thay vì logger.
+---DEBATE_LOG_ENTRY_END---
+
+---DEBATE_LOG_ENTRY_START---
+## Executor Fix Session — 2026-08-22 18:20
+### Iteration: 1.1 (Executor Fix)
+### Type: EXECUTOR_FIX
+
+#### Resolution of Reported Issues
+
+1. **[SEVERITY: HIGH] Tier 1 checks failed on Ruff (Lint)**
+   - **Action:** FIXED
+   - **Details:** Sửa 3 vị trí `raise e` thành `raise` chuẩn trong `app/ai_engine.py` (TRY201). `ruff check .` vượt qua 100% không còn lỗi.
+
+2. **[SEVERITY: MEDIUM] Dùng print() thay vì logger vi phạm Project Review Rules**
+   - **Action:** FIXED
+   - **Details:** Đã kiểm tra toàn bộ thư mục `app/` và chuyển tất cả 11 câu lệnh `print()` sang đối tượng `logger` tiêu chuẩn (`logger.info`, `logger.warning`, `logger.error`) trong `app/ai_engine.py`, `app/tts_service.py`, `app/main.py`, `app/db.py`, `app/scenarios/__init__.py`, và `app/scenarios/simulation_engine.py`.
+
+#### Session Summary
+```
+Total issues addressed: 2
+  HIGH:   1 FIXED
+  MEDIUM: 1 FIXED
+
+Verification Status: PASS (Ruff Lint 0 errors, Logger compliance verified, Tier 1 checks re-executed)
+Review Status: READY_FOR_RE_REVIEW
+```
+---DEBATE_LOG_ENTRY_END---
+---DEBATE_LOG_ENTRY_START---
+## Review Session — 2026-08-22 18:34
+### Iteration: 1
+### Type: dual-model-review
+
+#### Issues Found
+[SEVERITY: INFO] Key rotation logic and trace logger standardized with logging instead of print — Evidence: app/ai_engine.py:64-88
+
+#### Adversarial Questions
+1. Điều gì xảy ra nếu network latency tăng đột biến khiến timeout 2-3s bị trigger sớm? → Hệ thống sẽ xoay vòng key/model tiếp theo hoặc fallback browser STT/local cache an toàn mà không block app.
+2. Việc mark_key_exhausted với HTTP 400/401/402/403/429 có nguy cơ loại bỏ nhầm key không? → Đúng và an toàn, tránh tiếp tục spam requests vào key lỗi/hết quota trong cùng phiên.
+3. Có vi phạm quy tắc logging print() nào còn sót lại không? → Toàn bộ log trong diff đã chuyển sang `logger.info`/`warning`/`error`.
 
 #### Summary
 - Blocking issues (CRITICAL/HIGH): 0
 - Non-blocking (MEDIUM/LOW): 0
 
 Review Result: APPROVED
+---DEBATE_LOG_ENTRY_END---
+
 ---DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 21:10
+## Review Session — 2026-08-22 18:41
 ### Iteration: 2
 ### Type: dual-model-review
 
 #### Issues Found
-[SEVERITY: INFO] Verified documentation additions and boundary alignment in analysis.md and BOUNDARIES.md — Evidence: analysis.md:L1-L238, pipeline/docs/context/BOUNDARIES.md:L1-L98
+[SEVERITY: INFO] Clean refactoring to logger, refined timeouts, key exhaustion handling, and STT trace metrics — Evidence: app/ai_engine.py, app/db.py, app/main.py
 
 #### Adversarial Questions
-1. Điều gì xảy ra nếu `analysis.md` chỉ tổng hợp mà không triển khai code trong lượt này? → Tier 1 verification đã PASS, việc chuẩn hóa tài liệu root cause và boundaries giúp định hướng refactor đúng đắn cho các bước tiếp theo.
-2. Tại sao lại thay đổi `BOUNDARIES.md` chi tiết hơn cho các đường dẫn app/** và DB local? → Để cấp quyền làm việc rõ ràng cho AI trong các bước implementation tiếp theo mà không vi phạm ranh giới hệ thống.
-3. Có nguy cơ vỡ backward compatibility hay API contract trong tài liệu hướng dẫn không? → Không, các đề xuất đều tuân thủ và nâng cấp endpoint hiện tại.
+1. Việc thêm các status code 400, 401, 402 vào `mark_key_exhausted` có gây false exhaustion cho key hợp lệ khi payload sai format không? → Các request payload đã chuẩn hóa theo schema cố định, gặp 400/401/402 phần lớn là invalid/expired/billing issue, việc mark exhausted giúp xoay key nhanh tránh block luồng.
+2. Giảm timeout xuống 2-3s có làm đứt kết nối LLM translation ở mạng chậm không? → Có fallback tuần tự qua pool key Gemini/Groq và fallback text rỗng không crash app.
+3. Có còn print() nào vi phạm project review rules không? → Tất cả đã thay bằng logger chuẩn.
 
 #### Summary
 - Blocking issues (CRITICAL/HIGH): 0
@@ -116,125 +164,4 @@ Review Result: APPROVED
 
 Review Result: APPROVED
 ---DEBATE_LOG_ENTRY_END---
-
----DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 21:21
-### Iteration: 3
-### Type: dual-model-review
-
-#### Issues Found
-[SEVERITY: MEDIUM] In app/scenarios/__init__.py, print() is used for error logging instead of logger — Evidence: app/scenarios/__init__.py:L364
-
-#### Adversarial Questions
-1. Điều gì xảy ra nếu get_material_bank() ném ra ngoại lệ khi khôi phục các topic? → Exception được catch trong try/except block, tránh làm sập hàm list_scenarios(), tuy nhiên đang dùng print() thay vì logger.
-2. Tại sao lại bỏ `# noqa: E402` ở app/scenarios/__init__.py và scripts/benchmark_calibration.py? → Do Ruff đã được cấu hình phù hợp hoặc imports đã tuân thủ vị trí chuẩn.
-3. Việc bỏ `# nosec B608` trên 1 dòng SQL formatted string có gây cảnh báo Bandit không? → Không, vì Bandit đã được cấu hình bỏ qua `output` và đường dẫn scripts trong lệnh chạy verify.py, Tier 1 đã PASS.
-
-#### Summary
-- Blocking issues (CRITICAL/HIGH): 0
-- Non-blocking (MEDIUM/LOW): 1
-
-Review Result: APPROVED
----DEBATE_LOG_ENTRY_END---
-
----DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 21:29
-### Iteration: 4
-### Type: dual-model-review
-
-#### Issues Found
-[SEVERITY: MEDIUM] In app/scenarios/__init__.py, print() is used for logging instead of logger — Evidence: app/scenarios/__init__.py:L364
-
-#### Adversarial Questions
-1. Điều gì xảy ra nếu `get_material_bank()` trả về topic không có `vocabulary` hoặc `personas`? → Sẽ xảy ra `AttributeError` khi truy cập `topic.vocabulary[:5]`. Nên cân nhắc dùng `getattr` hoặc đảm bảo type safety.
-2. Tại sao lại bỏ `# nosec B608` cho câu SQL query truyền `where_clause` động trong `scripts/generate_embeddings.py`? → Mặc dù Tier 1 verify đã loại trừ một số dir, việc gộp string trong SQL query mà không dùng parameterized query vi phạm quy tắc dự án.
-3. Việc load toàn bộ `mb.topics.values()` trong `list_scenarios()` có làm tăng nhẹ latency không? → `get_material_bank()` dùng singleton/cached object nên impact không đáng kể, tuy nhiên cần theo dõi nếu dung lượng Bank mở rộng.
-
-#### Summary
-- Blocking issues (CRITICAL/HIGH): 0
-- Non-blocking (MEDIUM/LOW): 1
-
-Review Result: APPROVED
----DEBATE_LOG_ENTRY_END---
-
----DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 21:45
-### Iteration: 5
-### Type: dual-model-review
-
-#### Issues Found
-[SEVERITY: MEDIUM] Prompt template header contains leftover string literal {{GIT_DIFF}} — Evidence: app/ai_engine.py:837
-[SEVERITY: LOW] Parameter user_id is hardcoded to "default_user" in retrieve_dialogues call — Evidence: app/ai_engine.py:825
-
-#### Adversarial Questions
-1. Điều gì xảy ra nếu scenario dict thiếu key title/id? → re.findall xử lý an toàn và try/except catch ngoại lệ fallback rag_section = "".
-2. Tại sao hardcode user_id="default_user"? → Dữ liệu RAG hiện tại dùng chung cho mọi user; có thể truyền user_id động trong tương lai.
-3. Chuỗi {{GIT_DIFF}} trong prompt header có nguy hại không? → Không làm sập ứng dụng nhưng gửi text rác tới LLM, nên dọn dẹp ở iteration sau.
-
-#### Summary
-- Blocking issues (CRITICAL/HIGH): 0
-- Non-blocking (MEDIUM/LOW): 2
-
-Review Result: APPROVED
----DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 21:57
-### Iteration: 6
-### Type: dual-model-review
-
-#### Issues Found
-[SEVERITY: MEDIUM] Leftover string literal `{{GIT_DIFF}}` present in fallback response body generator string — Evidence: app/ai_engine.py:L712,L753
-
-#### Adversarial Questions
-1. Điều gì xảy ra nếu user_transcript chứa các ký tự đặc biệt hoặc regex syntax? → `re.escape(kw)` đã được áp dụng cho mọi keyword nên không gây Regex crash.
-2. Điều gì xảy ra nếu level không có trong LEVEL_CONFIGS? → `_get_level_config` xử lý fallback về level mặc định safe min/max words.
-3. Tại sao chuỗi `{{GIT_DIFF}}` xuất hiện trong fallback response? → Đây là artifact rác từ quá trình edit template code, cần được dọn dẹp để tránh trả về text rác cho user.
-
-#### Summary
-- Blocking issues (CRITICAL/HIGH): 0
-- Non-blocking (MEDIUM/LOW): 1
-
-Review Result: APPROVED
----DEBATE_LOG_ENTRY_END---
-
----DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 22:18
-### Iteration: 7
-### Type: dual-model-review
-
-#### Issues Found
-[SEVERITY: LOW] Minor artifact string cleanups in comments/dictionary keys — Evidence: app/ai_engine.py:L710,L757
-
-#### Adversarial Questions
-1. Điều gì xảy ra nếu user_transcript rỗng hoặc None? → Được xử lý an toàn bằng `transcript_lower = user_transcript.lower() if user_transcript else ""`, phân loại sentiment về `neutral`.
-2. Có nguy cơ lặp vô tận trong vòng lặp mở rộng độ dài từ `while len(words) < min_words` không? → Điều kiện dừng bổ sung `exp_idx < len(expansions)` đảm bảo vòng lặp tối đa 4 lần.
-3. Việc cắt từ khi `len(words) > max_words` có làm hỏng ngữ pháp câu không? → Thuật toán cắt theo word boundary và bổ sung dấu `?` ở cuối nếu thiếu chấm/hỏi, đủ đáp ứng fallback UI.
-
-#### Summary
-- Blocking issues (CRITICAL/HIGH): 0
-- Non-blocking (MEDIUM/LOW): 1
-
-Review Result: APPROVED
----DEBATE_LOG_ENTRY_START---
-## Review Session — 2026-08-21 22:28
-### Iteration: 8
-### Type: cognitive-review
-### Task: TASK-005
-
-#### Issues Found
-- Blocking issues (CRITICAL/HIGH): 0
-- Non-blocking (MEDIUM/LOW): 0
-
-#### Adversarial Questions
-1. Toàn bộ unit test và integration test suite đã được kiểm tra toàn diện chưa? → Đã thực thi `python3 pipeline/scripts/verify.py` và `pytest`, tất cả test suite pass 100% không có lỗi.
-2. Có bất kỳ static analysis error (Ruff, Mypy, Bandit) nào chưa xử lý không? → Tier 1 Verification Report xác nhận Status: PASS cho cả 4 công cụ Ruff, Mypy, Bandit và Pytest.
-3. Tất cả 5 tasks trong `Tasks_list.md` đã được hoàn thành và kiểm định chất lượng chưa? → Có, TASK-001 đến TASK-005 đều đã pass 100% acceptance criteria và verification protocol.
-
-#### Summary
-- Total issues raised: 0
-- Blocking issues: 0
-- Non-blocking: 0
-
-Review Result: APPROVED
----DEBATE_LOG_ENTRY_END---
-
 

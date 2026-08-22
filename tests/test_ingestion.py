@@ -99,7 +99,7 @@ def test_yaml_ingestion_records(temp_db_path, sample_yaml_file):
     conn.close()
 
 
-def test_embeddings_generation(temp_db_path, sample_yaml_file):
+def test_embeddings_generation(temp_db_path, sample_yaml_file, monkeypatch):
     """Test generating embeddings for sample dialogues in SQLite database."""
     conn = insert_turso.get_conn_sqlite(temp_db_path)
     insert_turso.process_file(Path(sample_yaml_file), conn, dry_run=False, is_turso=False)
@@ -109,7 +109,9 @@ def test_embeddings_generation(temp_db_path, sample_yaml_file):
     rows = db_adapter.fetch_null_embeddings(limit=None)
     assert len(rows) == 2
 
-    # Generate embeddings using local sentence-transformers model
+    # Mock embed_local to return dummy 384-float vectors instantly
+    monkeypatch.setattr(generate_embeddings, "embed_local", lambda texts: [[0.1] * 384 for _ in texts])
+
     texts = [generate_embeddings.build_embed_text(r) for r in rows]
     vecs = generate_embeddings.embed_local(texts)
     assert len(vecs) == 2

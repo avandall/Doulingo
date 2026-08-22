@@ -12,6 +12,7 @@ Features:
 import datetime
 import difflib
 import json
+import logging
 import os
 import random
 import re
@@ -27,6 +28,8 @@ from app.retrieval import retrieve_dialogues
 from app.scenarios import get_scenario
 
 load_dotenv()
+
+logger = logging.getLogger("duolingo_speak.ai_engine")
 
 # Trace Logging & Masked Key Helpers
 KEY_STATUS_CACHE: dict[str, dict[str, Any]] = {}
@@ -52,8 +55,8 @@ def mark_key_exhausted(api_key: str):
     """Mark this key as rate-limited."""
     KEY_EXHAUSTED_CACHE[api_key] = time.time()
 
-def log_api_trace(provider: str, model: str, api_key: str, status_code: int, latency_ms: float, error_msg: str = ""):
-    """Log LLM API invocation trace to logs/api_trace.log and console."""
+def log_api_trace(provider: str, model: str, api_key: str, status_code: int, latency_ms: float, error_msg: str = "", step: str = "LLM"):
+    """Log LLM/STT/TTS API invocation trace to logs/api_trace.log and console."""
     logs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
     os.makedirs(logs_dir, exist_ok=True)
     log_file = os.path.join(logs_dir, "api_trace.log")
@@ -61,27 +64,29 @@ def log_api_trace(provider: str, model: str, api_key: str, status_code: int, lat
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     masked = mask_api_key(api_key)
     
-    if status_code in [429, 403]:
+    if status_code in [429, 403, 402, 401, 400]:
         mark_key_exhausted(api_key)
 
     KEY_STATUS_CACHE[masked] = {
         "provider": provider,
         "model": model,
-        "status": "EXHAUSTED" if status_code in [429, 403] or error_msg else "ACTIVE",
+        "step": step,
+        "status": "EXHAUSTED" if status_code in [429, 403, 402, 401, 400] or error_msg else "ACTIVE",
         "status_code": status_code,
         "last_used": timestamp,
         "error": error_msg
     }
 
     err_suffix = f" | Error={error_msg}" if error_msg else ""
-    log_line = f"[{timestamp}] [TRACE] Provider={provider} | Model={model} | Key={masked} | Status={status_code} | Latency={latency_ms:.1f}ms{err_suffix}\n"
+    log_line = f"[{timestamp}] [TRACE] Step={step} | Provider={provider} | Model={model} | Key={masked} | Status={status_code} | Latency={latency_ms:.1f}ms{err_suffix}\n"
     
-    print(log_line.strip())
+    logger.info(log_line.strip())
     try:
         with open(log_file, "a", encoding="utf-8") as f:
             f.write(log_line)
     except Exception as e:
-        print(f"[TraceLogger] Failed to write to log file: {e}")
+        logger.error(f"[TraceLogger] Failed to write to log file: {e}")
+
 
 # Dynamic Scenario Angle Presets for Endless Variety
 SCENARIO_ANGLES = [
@@ -807,6 +812,8 @@ Output JSON ONLY:
         )
 
         for key in self.groq_keys:
+            if is_key_exhausted(key):
+                continue
             for model in self.groq_models:
                 try:
                     url = "https://api.groq.com/openai/v1/chat/completions"
@@ -817,17 +824,21 @@ Output JSON ONLY:
                         "max_tokens": 200,
                         "temperature": 0.35,
                     }
-                    res = requests.post(url, headers=headers, json=payload, timeout=6)
+                    res = requests.post(url, headers=headers, json=payload, timeout=2)
                     if res.status_code == 200:
                         text = res.json()["choices"][0]["message"]["content"].strip()
                         if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
                             text = text[1:-1].strip()
                         if text:
                             return text
+                    elif res.status_code in [401, 403, 429, 400]:
+                        mark_key_exhausted(key)
                 except Exception:
-                    pass
+                    mark_key_exhausted(key)
 
         for key in self.gemini_keys:
+            if is_key_exhausted(key):
+                continue
             for model in self.gemini_models:
                 try:
                     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
@@ -835,15 +846,17 @@ Output JSON ONLY:
                         "contents": [{"parts": [{"text": translate_prompt}]}],
                         "generationConfig": {"maxOutputTokens": 200, "temperature": 0.35}
                     }
-                    res = requests.post(url, json=payload, timeout=6)
+                    res = requests.post(url, json=payload, timeout=2)
                     if res.status_code == 200:
                         text = res.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
                         if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
                             text = text[1:-1].strip()
                         if text:
                             return text
+                    elif res.status_code in [401, 403, 429, 400]:
+                        mark_key_exhausted(key)
                 except Exception:
-                    pass
+                    mark_key_exhausted(key)
 
         return ""
 
@@ -1015,14 +1028,19 @@ Output JSON ONLY:
             }
         }
         t0 = time.time()
-        res = requests.post(url, json=payload, timeout=8)
-        latency_ms = (time.time() - t0) * 1000
-        log_api_trace("Gemini", model_name, api_key, res.status_code, latency_ms)
-        if res.status_code == 200:
-            text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
-            return self._parse_json_response(text)
-        elif res.status_code in [429, 403, 400]:
-            raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+        try:
+            res = requests.post(url, json=payload, timeout=3)
+            latency_ms = (time.time() - t0) * 1000
+            log_api_trace("Gemini", model_name, api_key, res.status_code, latency_ms)
+            if res.status_code == 200:
+                text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
+                return self._parse_json_response(text)
+            elif res.status_code in [429, 403, 401, 400]:
+                raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+        except Exception as e:
+            latency_ms = (time.time() - t0) * 1000
+            log_api_trace("Gemini", model_name, api_key, 500, latency_ms, error_msg=str(e))
+            raise
         return None
 
     def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> dict[str, Any] | None:
@@ -1037,14 +1055,19 @@ Output JSON ONLY:
             "response_format": {"type": "json_object"}
         }
         t0 = time.time()
-        res = requests.post(url, headers=headers, json=payload, timeout=8)
-        latency_ms = (time.time() - t0) * 1000
-        log_api_trace("Groq", model_name, api_key, res.status_code, latency_ms)
-        if res.status_code == 200:
-            text = res.json()["choices"][0]["message"]["content"]
-            return self._parse_json_response(text)
-        elif res.status_code in [429, 403, 400]:
-            raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+        try:
+            res = requests.post(url, headers=headers, json=payload, timeout=3)
+            latency_ms = (time.time() - t0) * 1000
+            log_api_trace("Groq", model_name, api_key, res.status_code, latency_ms)
+            if res.status_code == 200:
+                text = res.json()["choices"][0]["message"]["content"]
+                return self._parse_json_response(text)
+            elif res.status_code in [429, 403, 401, 400]:
+                raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+        except Exception as e:
+            latency_ms = (time.time() - t0) * 1000
+            log_api_trace("Groq", model_name, api_key, 500, latency_ms, error_msg=str(e))
+            raise
         return None
 
     def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8) -> dict[str, Any] | None:
@@ -1059,14 +1082,19 @@ Output JSON ONLY:
             "response_format": {"type": "json_object"}
         }
         t0 = time.time()
-        res = requests.post(url, headers=headers, json=payload, timeout=8)
-        latency_ms = (time.time() - t0) * 1000
-        log_api_trace("OpenAI", "gpt-4o-mini", api_key, res.status_code, latency_ms)
-        if res.status_code == 200:
-            text = res.json()["choices"][0]["message"]["content"]
-            return self._parse_json_response(text)
-        elif res.status_code in [429, 403, 400]:
-            raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+        try:
+            res = requests.post(url, headers=headers, json=payload, timeout=3)
+            latency_ms = (time.time() - t0) * 1000
+            log_api_trace("OpenAI", "gpt-4o-mini", api_key, res.status_code, latency_ms)
+            if res.status_code == 200:
+                text = res.json()["choices"][0]["message"]["content"]
+                return self._parse_json_response(text)
+            elif res.status_code in [429, 403, 401, 400]:
+                raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+        except Exception as e:
+            latency_ms = (time.time() - t0) * 1000
+            log_api_trace("OpenAI", "gpt-4o-mini", api_key, 500, latency_ms, error_msg=str(e))
+            raise
         return None
 
     def _call_ollama(self, prompt: str, temp: float = 0.8) -> dict[str, Any] | None:
@@ -1276,7 +1304,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                 data["acoustic_metrics"] = acoustic_metrics
                 return data
             except Exception as e:
-                print(f"DET json parse fallback: {e}")
+                logger.warning(f"DET json parse fallback: {e}")
 
         # Smart fallback if API unconfigured or JSON failed
         return {
@@ -1306,18 +1334,25 @@ Return ONLY a valid JSON object with EXACTLY this schema:
         if self.groq_keys:
             url = "https://api.groq.com/openai/v1/audio/transcriptions"
             for key in self.groq_keys:
+                if is_key_exhausted(key):
+                    continue
+                t0 = time.time()
                 try:
                     headers = {"Authorization": f"Bearer {key}"}
                     files = {"file": (filename, audio_bytes, "audio/webm")}
                     data = {"model": "whisper-large-v3", "language": "en", "response_format": "json"}
                     response = requests.post(url, headers=headers, files=files, data=data, timeout=10)
+                    latency_ms = (time.time() - t0) * 1000
+                    log_api_trace("Groq", "whisper-large-v3", key, response.status_code, latency_ms, step="STT")
                     if response.status_code == 200:
                         result = response.json()
                         text = result.get("text", "").strip()
                         if text:
                             return {"transcript": text, "source": "groq-whisper-large-v3"}
                 except Exception as e:
-                    print(f"[AIEngine] Groq Whisper error: {e}")
+                    latency_ms = (time.time() - t0) * 1000
+                    log_api_trace("Groq", "whisper-large-v3", key, 500, latency_ms, error_msg=str(e), step="STT")
+                    logger.warning(f"[AIEngine] Groq Whisper error: {e}")
                     if "429" in str(e) or "403" in str(e):
                         pass # No inner loop here, continue outer loop
                     continue
@@ -1326,7 +1361,10 @@ Return ONLY a valid JSON object with EXACTLY this schema:
             import base64
             b64_audio = base64.b64encode(audio_bytes).decode("utf-8")
             for key in self.gemini_keys:
+                if is_key_exhausted(key):
+                    continue
                 for model in self.gemini_models:
+                    t0 = time.time()
                     try:
                         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
                         payload = {
@@ -1339,6 +1377,8 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                             "generationConfig": {"temperature": 0.1, "maxOutputTokens": 200}
                         }
                         response = requests.post(url, json=payload, timeout=10)
+                        latency_ms = (time.time() - t0) * 1000
+                        log_api_trace("Gemini", model, key, response.status_code, latency_ms, step="STT")
                         if response.status_code == 200:
                             res_json = response.json()
                             candidates = res_json.get("candidates", [])
@@ -1347,10 +1387,13 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                                 if text:
                                     return {"transcript": text, "source": f"gemini-audio-{model}"}
                     except Exception as e:
+                        latency_ms = (time.time() - t0) * 1000
+                        log_api_trace("Gemini", model, key, 500, latency_ms, error_msg=str(e), step="STT")
                         if "429" in str(e) or "403" in str(e):
                             break
                         continue
 
+        log_api_trace("Browser-STT", "browser-speech-api", "none", 200, 0.0, step="STT_Fallback")
         return {"transcript": fallback_text.strip(), "source": "browser-stt"}
 
     def get_trace_quota_health(self) -> dict[str, Any]:
@@ -1366,10 +1409,12 @@ Return ONLY a valid JSON object with EXACTLY this schema:
             except Exception:
                 pass
 
+        eleven_keys = [k.strip() for k in os.getenv("ELEVENLABS_API_KEY", "").split(",") if k.strip()]
         return {
             "active_groq_keys_count": len(self.groq_keys),
             "active_gemini_keys_count": len(self.gemini_keys),
             "active_openai_keys_count": len(self.openai_keys),
+            "active_elevenlabs_keys_count": len(eleven_keys),
             "key_statuses": KEY_STATUS_CACHE,
             "recent_trace_logs": recent_logs
         }

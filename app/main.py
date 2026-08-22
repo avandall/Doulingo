@@ -653,7 +653,7 @@ def api_translate_word(
                 raw_str = ", ".join(unique_terms)
                 real_translation = unicodedata.normalize('NFC', raw_str).capitalize()
     except Exception as e:
-        print(f"[Translate Word] Google Translate error: {e}")
+        logger.warning(f"[Translate Word] Google Translate error: {e}")
 
     # Fetch Real IPA Phonetics
     real_ipa = f"/{clean_word.lower()}/"
@@ -668,7 +668,7 @@ def api_translate_word(
                         real_ipa = p["text"]
                         break
     except Exception as e:
-        print(f"[Translate Word] Dictionary API error: {e}")
+        logger.warning(f"[Translate Word] Dictionary API error: {e}")
 
     # Save permanently into SQLite DB & RAM Cache
     save_translated_word(

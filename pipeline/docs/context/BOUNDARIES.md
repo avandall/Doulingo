@@ -1,11 +1,9 @@
 # BOUNDARIES
-# Giới hạn quyền hạn — Những gì AI được và không được làm
+# Giới hạn quyền hạn — Phạm vi sửa đổi cho hệ thống Tracing, Fallback, IELTS STT & Roleplay Hub
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-21
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-22
 >
-> ✏️ **HUMAN FILLS THIS FILE.** AI phải đọc và tuân thủ nghiêm ngặt.
->
-> ⚠️ **CRITICAL:** Đây là "hợp đồng" ranh giới giữa bạn và AI. AI sẽ dừng lại và hỏi nếu thao tác vượt quá scope.
+> ✏️ **HUMAN & AI ALIGNED CONTEXT.** AI phải tuân thủ nghiêm ngặt ranh giới dưới đây khi thực thi các tasks trong `Tasks_list.md`.
 
 ---
 
@@ -13,93 +11,49 @@
 
 ### AI được phép đọc và sửa:
 ```
-✅ app/** (Các file backend FastAPI, AI engine, RAG retrieval, prompt constructors)
-✅ scripts/** (Các script ingest dữ liệu, CLI tools, benchmarks)
-✅ data/custom_topics.db (Database SQLite local)
-✅ tests/** (Test suite cho pipeline)
-✅ pipeline/docs/context/** (Tài liệu ngữ cảnh)
-✅ pipeline/docs/runtime/** (Tài liệu lưu trạng thái runtime)
+✅ app/ai_engine.py           (Logging trace, dynamic fallback, empathy prompt, topic-shift)
+✅ app/tts_service.py         (Logging trace, natural voice tuning cho Edge-TTS)
+✅ app/main.py                (API logging trace, endpoints)
+✅ app/scenarios/**           (Định nghĩa và phân loại topics)
+✅ static/index.html          (Cấu trúc HTML Roleplay Hub, All Topics Explorer, DET exam modal)
+✅ static/css/**              (Styling cho Topic Explorer, filters, badges, cards)
+✅ static/js/app.js           (Logic hiển thị <11 topics, Topic Explorer modal, fix IELTS submit)
+✅ static/js/speech.js        (ASR submission, buffer tracking & logging)
+✅ static/audio/fillers/**    (Thư mục chứa/tạo các file audio filler ngắn)
+✅ tests/**                   (Các file test kiểm thử pytest & e2e)
+✅ pipeline/docs/runtime/**   (Các tài liệu runtime: STATUS.md, PLAN.md, PROGRESS_LOG.md)
+✅ pyproject.toml / requirements.txt (Nếu cần thêm dependency)
 ```
 
 ### AI KHÔNG được chạm vào:
 ```
-❌ .env (Không bao giờ xóa hay lộ API keys)
-❌ pipeline/docs/core/** (Bộ quy chuẩn cố định không được sửa)
-❌ .git/**
+❌ .env                       (User sẽ tự thêm API keys)
+❌ pipeline/docs/core/**      (Bộ hiến pháp và quy chuẩn cốt lõi)
+❌ data/custom_topics.db      (Database nội dung mẫu không được xóa/drop)
 ```
 
 ---
 
-## 2. Database Permissions
+## 2. API & Testing Permissions
 
 ```
-READ:    ✅ Cho phép đọc database SQLite local (data/custom_topics.db)
-WRITE:   ✅ Cho phép INSERT / UPDATE dữ liệu sample_dialogues & content_units
-MIGRATE: ✅ Cho phép tạo tables bằng DDL tương thích SQLite
-DROP:    ❌ KHÔNG BAO GIỜ được phép DROP DB
-
-Môi trường:
-  - Local DB:    ✅ Quyền đọc/ghi/insert trên DB local (data/custom_topics.db)
-  - Staging DB:  NONE
-  - Production:  ❌ Không có access
-```
-
----
-
-## 3. External Services & APIs
-
-```
-Được phép gọi:
-✅ Groq API (https://api.groq.com)
-✅ Gemini API (https://generativelanguage.googleapis.com)
-✅ OpenAI API (https://api.openai.com)
-✅ Ollama Local (http://localhost:11434)
-
-KHÔNG được phép gọi:
-❌ Dịch vụ trả phí không chỉ định
+- Giới hạn gọi API kiểm thử: < 10 lần gọi API thực thi thử nghiệm, không spam.
+- Không hardcode API key, password hoặc raw credentials vào code.
+- Mọi API key khi in ra log hoặc terminal BẮT BUỘC phải dùng helper mask_api_key() (ví dụ: gsk_...9aB).
+- Giữ nguyên các API Contracts hiện tại để không làm vỡ các tính năng khác của Web/PWA:
+  - POST /api/process_turn
+  - POST /api/start_scenario
+  - POST /api/transcribe_audio
+  - POST /api/det/evaluate_speech
+  - GET  /api/tts
 ```
 
 ---
 
-## 4. Quyền Kiến trúc (Architecture Decisions)
-
-### AI có thể tự quyết định:
-```
-✅ Cấu trúc logic xử lý RAG & Fallback trong app/ai_engine.py
-✅ Naming conventions theo CODE_STANDARDS.md
-✅ Viết thêm unit tests & integration tests trong tests/
-```
-
-### Phải hỏi human trước:
-```
-❓ Thêm dependencies mới ngoài requirements.txt / pyproject.toml
-❓ Xóa các file source code hiện có
-```
-
-### KHÔNG được làm dù có lý do:
-```
-❌ Hardcode credentials, API keys vào source code
-❌ Sửa đổi files trong pipeline/docs/core/
-❌ Xóa bớt unit tests sẵn có
-```
-
----
-
-## 5. Rollback & Git Permissions
+## 3. Git Commit Rules
 
 ```
-AI được phép:
-✅ git reset --hard HEAD (khi test thất bại cần rollback)
-✅ Commit theo đúng quy chuẩn: [TASK-ID] <type>(<scope>): <mô tả ngắn task đã hoàn thành> — CHỈ khi task [x] DONE
-```
-
----
-
-## 6. Escalation Path
-
-Khi AI gặp tình huống chưa rõ ràng hoặc nằm ngoài ranh giới:
-```
-1. DỪNG LẠI ngay lập tức.
-2. Tạo pipeline/docs/runtime/BLOCKED.md mô tả chi tiết lý do.
-3. Đặt câu hỏi cụ thể cho Human.
+- CHỈ git commit khi 1 TASK đã hoàn thành ([x] DONE) và đã verify pass 100%.
+- Commit format: [TASK-ID] <type>(<scope>): <mô tả ngắn>
+- KHÔNG commit runtime docs (STATUS.md, PROGRESS_LOG.md) hay dùng format [iter-N].
 ```

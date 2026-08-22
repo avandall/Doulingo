@@ -3,7 +3,7 @@ Unit tests for TTS Audio Output Streamer in app/tts_streamer.py.
 """
 
 import asyncio
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from app.tts_streamer import (
     TTSStreamer,
@@ -16,14 +16,15 @@ from app.tts_streamer import (
 def test_generate_audio_success():
     """Verify batch audio generation returns valid TTSStreamResult."""
     streamer = TTSStreamer()
-    result = streamer.generate_audio("Hello, welcome to Duolingo Speak!", char_id="lily")
+    with patch("app.tts_streamer.generate_tts_mp3", return_value=MagicMock(getvalue=lambda: b"fake_mp3_bytes_stream")):
+        result = streamer.generate_audio("Hello, welcome to Duolingo Speak!", char_id="lily")
 
-    assert isinstance(result, TTSStreamResult)
-    assert result.text_only_mode is False
-    assert result.content_type == "audio/mpeg"
-    assert result.audio_bytes is not None
-    assert len(result.audio_bytes) > 0
-    assert result.error_message is None
+        assert isinstance(result, TTSStreamResult)
+        assert result.text_only_mode is False
+        assert result.content_type == "audio/mpeg"
+        assert result.audio_bytes is not None
+        assert len(result.audio_bytes) > 0
+        assert result.error_message is None
 
 
 def test_generate_audio_text_only_mode():
@@ -63,13 +64,18 @@ def test_generate_audio_exception_fallback():
 
 def test_stream_audio_chunks_success():
     """Verify async chunk streaming yields audio bytes."""
+    async def mock_async_stream(*args, **kwargs):
+        yield b"chunk1"
+        yield b"chunk2"
+
     async def _run():
         streamer = TTSStreamer()
         chunks = []
-        async for chunk in streamer.stream_audio_chunks("Short phrase for streaming test"):
-            chunks.append(chunk)
-            if len(chunks) >= 2:
-                break
+        with patch("app.tts_streamer.stream_tts_mp3_chunks", side_effect=mock_async_stream):
+            async for chunk in streamer.stream_audio_chunks("Short phrase for streaming test"):
+                chunks.append(chunk)
+                if len(chunks) >= 2:
+                    break
         return chunks
 
     chunks = asyncio.run(_run())

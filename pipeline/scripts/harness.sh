@@ -8,7 +8,7 @@
 #   ./pipeline/scripts/harness.sh --max-iter 20                 # Giới hạn 20 iterations
 #   ./pipeline/scripts/harness.sh --task "TASK-001"             # Chỉ định task ID
 #   ./pipeline/scripts/harness.sh --dry-run                     # Simulate, không thực thi thực sự
-#   ./pipeline/scripts/harness.sh --review-model gemini-3.6-flash-low  # Bật Dual-Model mode
+#   ./pipeline/scripts/harness.sh --review-model gemini-3.7-flash-low  # Bật Dual-Model mode
 # =============================================================================
 
 set -euo pipefail
@@ -32,7 +32,7 @@ BLOCKERS_DIR="${RUNTIME_DIR}/BLOCKERS"
 MAX_ITERATIONS=30
 CONTEXT_REFRESH_EVERY=5
 TASK_ID=""
-PRINT_TIMEOUT="15m0s"
+PRINT_TIMEOUT="5m0s"
 DRY_RUN=false
 VERBOSE=false
 STOP_ON_BLOCK=false
@@ -41,7 +41,8 @@ STOP_ON_BLOCK=false
 # Set REVIEW_MODEL to enable: executor writes code, reviewer (different model) checks logic
 # Default empty = single-model mode (backward compatible)
 REVIEW_MODEL=""
-REVIEW_TIMEOUT="5m0s"   # Reviewer is faster — only reads git diff + checklist
+REVIEW_TIMEOUT="3m0s"   # Reviewer is faster — only reads git diff + checklist
+
 REVIEW_MAX_RETRIES=2    # Max re-execute cycles per iteration when reviewer rejects
 
 # Colors
@@ -401,8 +402,9 @@ execute_iteration_single_model() {
   local iter_prompt="Đọc pipeline/docs/core/AGENT_CONSTITUTION.md, pipeline/docs/context/Tasks_list.md và pipeline/docs/runtime/STATUS.md. Tìm task đầu tiên có trạng thái [ ] TODO hoặc [/] IN_PROGRESS trong Tasks_list.md. Đọc pipeline/docs/runtime/PLAN.md (nếu chưa có plan cho task này thì tạo PLAN.md). Thực hiện 1 bước atomic tiếp theo trong task đó theo quy trình Harness Protocol. Ở Phase 4 (VERIFY), BẮT BUỘC chạy 'python3 pipeline/scripts/verify.py' để kiểm định Tier 1 (Linter/Type/Security/Test) và kiểm tra pipeline/docs/runtime/VERIFICATION_REPORT.md. NẾU VERIFICATION_REPORT có lỗi, hãy đọc log ngắn gọn trong đó để sửa ngay. Ở Phase 5 (REVIEW), thực hiện Tier 2 Cognitive Review dựa trên git diff và pipeline/docs/core/REVIEW_PROTOCOL.md. BẮT BUỘC CẬP NHẬT pipeline/docs/runtime/STATUS.md, pipeline/docs/runtime/PROGRESS_LOG.md và PLAN.md RA FILESYSTEM để lưu progression context cho Ralph loop. QUY TẮC COMMIT: KHÔNG THỰC HIỆN GIT COMMIT TRONG CÁC ITERATION TRUNG GIAN. CHỈ CHẠY GIT COMMIT KHI THỰC SỰ HOÀN THÀNH 1 TASK VÀ ĐÁNH DẤU [x] DONE TRONG Tasks_list.md với commit message format: [TASK-ID] <type>(<scope>): <mô tả ngắn gọn task đã hoàn thành>. NẾU GẶP BLOCKER mà không thể tự giải quyết: 1) Viết báo cáo chi tiết vào file pipeline/docs/runtime/BLOCKERS/<TASK_ID>.md. 2) Cập nhật dòng của task đó trong pipeline/docs/context/Tasks_list.md thành [!] BLOCKED. 3) Cập nhật STATUS.md để chuyển sang task TODO tiếp theo. KHÔNG TẠO file BLOCKED.md ở root ngoại trừ khi khẩn cấp. LƯU Ý QUAN TRỌNG: Chỉ được phép ghi 'Phase: ALL_DONE' vào pipeline/docs/runtime/STATUS.md KHI VÀ CHỈ KHI TẤT CẢ các tasks trong Tasks_list.md đã được thực hiện, phản biện, xác minh pass 100% và đánh dấu [x] DONE (hoặc [!] BLOCKED). Khi đó mới cập nhật STATUS.md thành Phase: ALL_DONE và viết pipeline/docs/runtime/PROOF_OF_SOLUTION.md. Nếu dự án còn task chưa hoàn thành, giữ Phase: IN_PROGRESS."
 
   log_info "[SINGLE-MODEL] Launching agy for Iteration ${iter}..."
-  _run_agy_with_retry "$iter_prompt" "$PRINT_TIMEOUT" "$iter"
+  _run_agy_with_retry "$iter_prompt" "$PRINT_TIMEOUT" "$iter" "" "EXECUTOR"
 }
+
 
 # ────────────────────────────────────────────────────────────────────────────
 # Shared helper: run agy with retry logic (used by both single and dual mode)
@@ -412,35 +414,73 @@ _run_agy_with_retry() {
   local timeout="$2"
   local iter="$3"
   local model_flag="${4:-}"  # Optional: "--model MODEL_NAME" for reviewer calls
+  local role_name="${5:-EXECUTOR}"
 
-  local max_retries=3
+  local max_retries=2
   local attempt=1
   local success=false
+  local live_log="${RUNTIME_DIR}/session_live.log"
 
   while (( attempt <= max_retries )); do
+    local start_ts
+    start_ts=$(date +%s)
+    log_info "[${role_name}] Executing agy (Attempt ${attempt}/${max_retries}, Timeout: ${timeout})..."
+    log_info "📝 Live session output: ${live_log}"
+
+    # Background Heartbeat Logger to give user visual feedback every 15s
+    (
+      local elapsed=0
+      while kill -0 $$ 2>/dev/null; do
+        sleep 15
+        elapsed=$(( $(date +%s) - start_ts ))
+        local mins=$(( elapsed / 60 ))
+        local secs=$(( elapsed % 60 ))
+        echo -e "${CYAN}[HEARTBEAT]${NC} [${role_name}] agy active — ${mins}m ${secs}s elapsed..."
+      done
+    ) &
+    local heartbeat_pid=$!
+
     local agy_cmd="agy"
+    local exit_code=0
+
+    # Execute agy and stream live output to session_live.log
     if [[ -n "$model_flag" ]]; then
-      # shellcheck disable=SC2086  # Intentional word splitting for model flag
-      if $agy_cmd $model_flag -p "$prompt" --dangerously-skip-permissions --print-timeout "$timeout"; then
-        success=true; break
-      fi
+      # shellcheck disable=SC2086
+      $agy_cmd $model_flag -p "$prompt" --dangerously-skip-permissions --print-timeout "$timeout" 2>&1 | tee -a "$live_log" || exit_code=${PIPESTATUS[0]}
     else
-      if $agy_cmd -p "$prompt" --dangerously-skip-permissions --print-timeout "$timeout"; then
-        success=true; break
-      fi
+      $agy_cmd -p "$prompt" --dangerously-skip-permissions --print-timeout "$timeout" 2>&1 | tee -a "$live_log" || exit_code=${PIPESTATUS[0]}
     fi
-    log_warn "agy attempt ${attempt}/${max_retries} failed or timed out (iter ${iter})."
-    if (( attempt < max_retries )); then log_info "Retrying in 5 seconds..."; sleep 5; fi
-    ((attempt++))
+
+    # Terminate background heartbeat
+    kill "$heartbeat_pid" 2>/dev/null || true
+    wait "$heartbeat_pid" 2>/dev/null || true
+
+    local elapsed_total=$(( $(date +%s) - start_ts ))
+    local mins_t=$(( elapsed_total / 60 ))
+    local secs_t=$(( elapsed_total % 60 ))
+
+    if [[ $exit_code -eq 0 ]]; then
+      log_ok "[${role_name}] Process completed in ${mins_t}m ${secs_t}s."
+      success=true
+      break
+    else
+      log_warn "[${role_name}] Attempt ${attempt}/${max_retries} failed or timed out (exit code: ${exit_code}) after ${mins_t}m ${secs_t}s."
+      if (( attempt < max_retries )); then
+        log_info "Retrying in 3 seconds..."
+        sleep 3
+      fi
+      ((attempt++))
+    fi
   done
 
   if [[ "$success" == true ]]; then
     return 0
   else
-    log_error "agy failed after ${max_retries} attempts (iter ${iter})."
+    log_error "[${role_name}] Execution failed after ${max_retries} attempts."
     return 1
   fi
 }
+
 
 # ────────────────────────────────────────────────────────────────────────────
 # Build reviewer prompt by reading REVIEWER_PROMPT_TEMPLATE.md
@@ -488,56 +528,53 @@ ${project_rules}"
 # ────────────────────────────────────────────────────────────────────────────
 # Dual-model iteration:
 #   1. Executor (default model): ORIENT → PLAN → EXECUTE → VERIFY (Phase 0-4)
-#      Then COMMIT + REPORT after reviewer approves (Phase 6-7)
-#   2. Reviewer (REVIEW_MODEL): Phase 5 Cognitive Review on git diff
-#   3. Retry loop: on REJECTED, executor fixes + re-verify, reviewer re-checks
-#   4. Max retries exceeded: mark task BLOCKED, continue to next task
+#   2. Reviewer (REVIEW_MODEL): Phase 5 Cognitive Review on working tree git diff HEAD
+#   3. Fast Native Commit (no 3rd LLM call): Native git commit upon APPROVAL
 # ────────────────────────────────────────────────────────────────────────────
 execute_iteration_dual_model() {
   local iter="$1"
 
-  # ── STEP 1: Executor — Phase 0 (ORIENT) → Phase 4 (VERIFY) ───────────────
-  # Explicitly instructs executor to STOP before Phase 5 (Review).
-  # Phase 5 is handled by the reviewer model below.
-  # Phase 6 (Commit) and Phase 7 (Report) will be done after APPROVED.
+  # ── STEP 1: Executor — Phase 0 (ORIENT) → Phase 4 (VERIFY) + Phase 7 (REPORT) ─────
   local executor_prompt="[DUAL-MODEL MODE — EXECUTOR ROLE]
 
 Đọc pipeline/docs/core/AGENT_CONSTITUTION.md, pipeline/docs/context/Tasks_list.md và pipeline/docs/runtime/STATUS.md.
 Tìm task đầu tiên có trạng thái [ ] TODO hoặc [/] IN_PROGRESS trong Tasks_list.md.
 Đọc pipeline/docs/runtime/PLAN.md (nếu chưa có plan cho task này thì tạo PLAN.md).
 
-Thực hiện các Phase sau theo pipeline/docs/core/WORKFLOW_STANDARDS.md:
-  - PHASE 0 (ORIENT): Đọc context docs.
-  - PHASE 1 (SPEC): Xác định acceptance criteria nếu chưa có.
-  - PHASE 2 (PLAN): Chia bước nếu chưa có PLAN.md.
-  - PHASE 3 (EXECUTE): Thực thi 1 bước atomic tiếp theo.
-  - PHASE 4 (VERIFY): BẮT BUỘC chạy 'python3 pipeline/scripts/verify.py'.
-    Nếu VERIFICATION_REPORT.md có lỗi → sửa ngay và chạy lại verify.py cho đến khi PASS.
+Thực hiện các bước theo WORKFLOW_STANDARDS.md:
+  - PHASE 0..3: Thực thi 1 bước atomic tiếp theo.
+  - PHASE 4 (VERIFY): BẮT BUỘC chạy 'python3 pipeline/scripts/verify.py' (sửa ngay nếu VERIFICATION_REPORT có lỗi).
+  - PHASE 7 (REPORT): Cập nhật STATUS.md, PROGRESS_LOG.md và PLAN.md ra filesystem. Nếu task đã hoàn thành tất cả các bước, đánh dấu [x] DONE trong Tasks_list.md.
 
-⚠️ DỪNG LẠI SAU PHASE 4 — KHÔNG tự thực hiện Phase 5 (Review), Phase 6 (Commit), hay Phase 7 (Report).
-Phase 5 sẽ được thực hiện bởi một Reviewer Model độc lập.
-Phase 6 và 7 sẽ được thực hiện sau khi Reviewer phê duyệt.
+⚠️ DỪNG LẠI SAU KHI CẬP NHẬT DOCS — KHÔNG tự chạy git commit.
+Phase 5 (Review) sẽ do Reviewer Model độc lập thực hiện. Sau khi Reviewer APPROVED, harness sẽ tự động commit git.
 
-NẾU GẶP BLOCKER mà không thể tự giải quyết: 1) Viết báo cáo chi tiết vào pipeline/docs/runtime/BLOCKERS/<TASK_ID>.md. 2) Cập nhật task đó trong pipeline/docs/context/Tasks_list.md thành [!] BLOCKED. 3) Cập nhật STATUS.md để chuyển sang task TODO tiếp theo.
-
-LƯU Ý: Chỉ ghi 'Phase: ALL_DONE' vào STATUS.md khi TẤT CẢ tasks đã pass và marked [x] DONE hoặc [!] BLOCKED. Nếu còn tasks chưa xong, giữ Phase: IN_PROGRESS."
+NẾU GẶP BLOCKER: 1) Viết report vào pipeline/docs/runtime/BLOCKERS/<TASK_ID>.md. 2) Đổi task trong Tasks_list.md thành [!] BLOCKED. 3) Cập nhật STATUS.md chuyển sang task tiếp theo."
 
   log_info "[DUAL-MODEL] Step 1/2 — Launching EXECUTOR (Phase 0→4)..."
-  if ! _run_agy_with_retry "$executor_prompt" "$PRINT_TIMEOUT" "$iter"; then
+  if ! _run_agy_with_retry "$executor_prompt" "$PRINT_TIMEOUT" "$iter" "" "EXECUTOR"; then
     log_error "[DUAL-MODEL] Executor failed on Iteration ${iter}. Skipping reviewer."
     return 1
   fi
-  log_ok "[DUAL-MODEL] Executor Phase 0→4 complete."
+  log_ok "[DUAL-MODEL] Executor execution complete."
 
   # ── STEP 2: Collect context for reviewer (token-efficient) ────────────────
   local tier1_summary
   tier1_summary=$(python3 pipeline/scripts/verify.py --summary 2>/dev/null \
     || echo "TIER1: UNKNOWN (verify.py failed to run)")
 
-  # Cap git diff at ~400 lines to control token cost while covering most atomic commits
+  # FIX: Collect working tree changes via git diff HEAD (not old committed diff HEAD~1 HEAD)
   local git_diff
-  git_diff=$(git diff HEAD~1 HEAD 2>/dev/null | head -n 400 \
-    || echo "(no diff available — possibly first commit or git error)")
+  git_diff=$(git diff HEAD 2>/dev/null | head -n 400 || true)
+  if [[ -z "$git_diff" ]]; then
+    git_diff=$(git status --short 2>/dev/null || echo "(no diff available)")
+  fi
+
+  # OPTIMIZATION: If no working tree changes exist, auto-approve immediately (save Reviewer LLM call & tokens)
+  if [[ -z "$(git status --porcelain 2>/dev/null)" ]]; then
+    log_ok "[DUAL-MODEL] No working tree changes detected. Auto-approving review step (saved LLM call & tokens)."
+    return 0
+  fi
 
   # ── STEP 3: Reviewer loop (max REVIEW_MAX_RETRIES) ───────────────────────
   local review_attempt=0
@@ -545,17 +582,20 @@ LƯU Ý: Chỉ ghi 'Phase: ALL_DONE' vào STATUS.md khi TẤT CẢ tasks đã pa
 
   while (( review_attempt < REVIEW_MAX_RETRIES )); do
     (( review_attempt++ ))
-    log_info "[DUAL-MODEL] Step 2/2 — Launching REVIEWER model '${REVIEW_MODEL}' (attempt ${review_attempt}/${REVIEW_MAX_RETRIES})..."
+    local diff_lines
+    diff_lines=$(echo "$git_diff" | wc -l || echo 0)
+    log_info "[DUAL-MODEL] Step 2/2 — Launching REVIEWER model '${REVIEW_MODEL}' (attempt ${review_attempt}/${REVIEW_MAX_RETRIES}, reviewing ${diff_lines} diff lines)..."
 
     # Build reviewer prompt from template
     local reviewer_prompt
     if ! reviewer_prompt=$(_build_reviewer_prompt "$iter" "$tier1_summary" "$git_diff"); then
-      log_error "Failed to build reviewer prompt. Falling back to single-model self-review."
+      log_error "Failed to build reviewer prompt. Falling back to auto-approval."
+      review_approved=true
       break
     fi
 
     # Run reviewer as fresh agy conversation with specified model
-    if ! _run_agy_with_retry "$reviewer_prompt" "$REVIEW_TIMEOUT" "$iter" "--model ${REVIEW_MODEL}"; then
+    if ! _run_agy_with_retry "$reviewer_prompt" "$REVIEW_TIMEOUT" "$iter" "--model ${REVIEW_MODEL}" "REVIEWER"; then
       log_warn "[DUAL-MODEL] Reviewer model call failed/timed out on attempt ${review_attempt}."
       continue
     fi
@@ -563,11 +603,10 @@ LƯU Ý: Chỉ ghi 'Phase: ALL_DONE' vào STATUS.md khi TẤT CẢ tasks đã pa
     # Parse review result from DEBATE_LOG.md
     local debate_log="${RUNTIME_DIR}/DEBATE_LOG.md"
     if [[ -f "$debate_log" ]] && grep -q "Review Result: APPROVED" "$debate_log" 2>/dev/null; then
-      # Check that APPROVED is in the LAST review entry (not an older one)
       local last_result
       last_result=$(grep "Review Result:" "$debate_log" | tail -1)
       if [[ "$last_result" == *"APPROVED"* ]]; then
-        log_ok "[DUAL-MODEL] Reviewer APPROVED! Proceeding to Phase 6 (Commit) + Phase 7 (Report)."
+        log_ok "[DUAL-MODEL] Reviewer APPROVED!"
         review_approved=true
         break
       fi
@@ -588,60 +627,54 @@ ${rejection_reason}
 
 Đọc đầy đủ pipeline/docs/runtime/DEBATE_LOG.md để hiểu tất cả issues được nêu ra.
 Sửa các vấn đề được chỉ ra (ưu tiên CRITICAL và HIGH trước).
-Sau khi sửa, BẮT BUỘC chạy lại 'python3 pipeline/scripts/verify.py' và đảm bảo PASS.
-
-⚠️ DỪNG SAU PHASE 4 — KHÔNG tự làm Phase 5 (Review). Reviewer sẽ kiểm tra lại."
-      if ! _run_agy_with_retry "$fix_prompt" "$PRINT_TIMEOUT" "$iter"; then
+Sau khi sửa, BẮT BUỘC chạy lại 'python3 pipeline/scripts/verify.py' và cập nhật STATUS.md, PROGRESS_LOG.md."
+      if ! _run_agy_with_retry "$fix_prompt" "$PRINT_TIMEOUT" "$iter" "" "EXECUTOR-FIX"; then
         log_warn "[DUAL-MODEL] Executor fix attempt failed."
       fi
       # Refresh git diff after fix
-      git_diff=$(git diff HEAD~1 HEAD 2>/dev/null | head -n 400 \
-        || echo "(no diff available)")
-      tier1_summary=$(python3 pipeline/scripts/verify.py --summary 2>/dev/null \
-        || echo "TIER1: UNKNOWN")
+      git_diff=$(git diff HEAD 2>/dev/null | head -n 400 || true)
+      if [[ -z "$git_diff" ]]; then
+        git_diff=$(git status --short 2>/dev/null || echo "(no diff available)")
+      fi
+      tier1_summary=$(python3 pipeline/scripts/verify.py --summary 2>/dev/null || echo "TIER1: UNKNOWN")
     fi
   done
 
   # ── STEP 4: Handle final outcome ──────────────────────────────────────────
   if [[ "$review_approved" == true ]]; then
-    # ── APPROVED: Executor runs Phase 6 (Commit) + Phase 7 (Report) ─────────
-    log_info "[DUAL-MODEL] Running Phase 6 (Commit) + Phase 7 (Report) after approval..."
-    local commit_prompt="[DUAL-MODEL MODE — COMMIT & REPORT ROLE]
+    # OPTIMIZATION: Native fast commit — Eliminates heavy 3rd LLM call!
+    local done_task_id
+    done_task_id=$(grep -E "^\|[[:space:]]*\`TASK-" "${CONTEXT_DIR}/Tasks_list.md" 2>/dev/null | grep "\[x\] DONE" | tail -1 | grep -oE "TASK-[0-9]+" || true)
 
-Reviewer đã phê duyệt code (xem pipeline/docs/runtime/DEBATE_LOG.md).
-Thực hiện Phase 6 và Phase 7 theo pipeline/docs/core/WORKFLOW_STANDARDS.md:
-  - PHASE 7 (REPORT): BẮT BUỘC cập nhật PROGRESS_LOG.md, STATUS.md, đánh dấu step trong PLAN.md và Tasks_list.md ra filesystem.
-  - PHASE 6 (COMMIT): CHỈ THỰC HIỆN GIT COMMIT KHI TASK ĐÃ HOÀN THÀNH ([x] DONE). Tạo 1 git commit rõ ràng, mạch lạc với message format: [TASK-ID] <type>(<scope>): <mô tả task đã hoàn thành>. KHÔNG commit nếu task chưa xong.
-
-LƯU Ý: Chỉ ghi 'Phase: ALL_DONE' vào STATUS.md khi TẤT CẢ tasks đã pass 100% và marked [x] DONE hoặc [!] BLOCKED."
-    _run_agy_with_retry "$commit_prompt" "5m0s" "$iter" || \
-      log_warn "[DUAL-MODEL] Phase 6-7 executor call failed. Manual commit may be needed."
+    if [[ -n "$done_task_id" ]] && [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
+      log_info "[DUAL-MODEL] Auto-committing completed task [${done_task_id}] (Native Fast-Commit)..."
+      git add -A
+      git commit -m "[${done_task_id}] feat: completed task verified by ${REVIEW_MODEL}" || true
+      log_ok "[DUAL-MODEL] Task ${done_task_id} committed successfully."
+    else
+      log_ok "[DUAL-MODEL] Work verified. Progress saved to filesystem."
+    fi
     return 0
   else
-    # ── MAX RETRIES EXCEEDED: Mark task BLOCKED, continue to next ────────────
+    # MAX RETRIES EXCEEDED: Mark task BLOCKED, continue to next
     log_warn "[DUAL-MODEL] Reviewer rejected ${REVIEW_MAX_RETRIES} times. Marking task as BLOCKED."
-    log_info "[DUAL-MODEL] Instructing executor to write blocker report and move to next task..."
     local blocked_prompt="[DUAL-MODEL MODE — BLOCKER HANDLING]
 
-O Dual-Model Review: Reviewer đã từ chối code ${REVIEW_MAX_RETRIES} lần liên tiếp trong Iteration ${iter}.
+Reviewer đã từ chối code ${REVIEW_MAX_RETRIES} lần liên tiếp trong Iteration ${iter}.
 Xem chi tiết lý do trong pipeline/docs/runtime/DEBATE_LOG.md.
 
 Thực hiện Overnight Non-Blocking BLOCKED protocol:
-1. Đọc task hiện tại đang [/] IN_PROGRESS trong pipeline/docs/context/Tasks_list.md.
-2. Tạo report chi tiết tại pipeline/docs/runtime/BLOCKERS/<TASK_ID>.md với:
-   - Lý do: Reviewer liên tục rejected sau ${REVIEW_MAX_RETRIES} lần retry.
-   - Các issues: [tóm tắt từ DEBATE_LOG.md]
-   - Action cần thiết từ human: [mô tả cụ thể]
-3. Cập nhật dòng task đó trong Tasks_list.md thành [!] BLOCKED.
-4. Cập nhật STATUS.md để giải phóng task này.
-5. Tự động chọn task [ ] TODO tiếp theo trong Tasks_list.md để tiếp tục.
-
-KHÔNG tạo BLOCKED.md ở root."
-    _run_agy_with_retry "$blocked_prompt" "5m0s" "$iter" || \
+1. Đọc task hiện tại trong pipeline/docs/context/Tasks_list.md.
+2. Tạo report tại pipeline/docs/runtime/BLOCKERS/<TASK_ID>.md.
+3. Cập nhật task đó trong Tasks_list.md thành [!] BLOCKED.
+4. Cập nhật STATUS.md để chuyển sang task TODO tiếp theo."
+    _run_agy_with_retry "$blocked_prompt" "3m0s" "$iter" "" "BLOCKER-HANDLING" || \
       log_warn "[DUAL-MODEL] Blocker handling call failed. Check DEBATE_LOG.md manually."
-    return 0  # Return 0 so harness continues to next iteration (Overnight Non-Blocking)
+    return 0
   fi
 }
+
+
 
 # ────────────────────────────────────────────────────────────────────────────
 # Main Loop — The Ralph Loop

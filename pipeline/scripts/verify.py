@@ -83,30 +83,33 @@ def run_python_checks(target_dir: str = ".") -> list[tuple[str, bool, str]]:
 
     # 1. Ruff (Lint)
     if check_tool_installed("ruff"):
-        code, out = run_command(["ruff", "check", target_dir, "--exclude", "output"])
+        code, out = run_command(["ruff", "check", target_dir])
         results.append(("Python: Ruff (Lint)", code == 0, "All lint checks passed ✓" if code == 0 else truncate_log(out)))
     else:
         results.append(("Python: Ruff (Lint)", True, "Skipped (ruff not installed)"))
 
     # 2. Mypy (Type Check)
     if check_tool_installed("mypy"):
-        code, out = run_command(["mypy", target_dir, "--ignore-missing-imports", "--exclude", "output"])
+        code, out = run_command(["mypy", target_dir, "--ignore-missing-imports"])
         results.append(("Python: Mypy (Type Check)", code == 0, "Type checking passed ✓" if code == 0 else truncate_log(out)))
     else:
         results.append(("Python: Mypy (Type Check)", True, "Skipped (mypy not installed)"))
 
     # 3. Bandit (Security)
     if check_tool_installed("bandit"):
-        src_dirs = [d for d in ["app", "scripts", "tests"] if os.path.exists(d)]
-        cmd = ["bandit", "-r"] + (src_dirs if src_dirs else [target_dir]) + ["-ll", "-q"]
-        code, out = run_command(cmd)
+        code, out = run_command(["bandit", "-r", target_dir, "-ll", "-q", "-x", "./.venv,./.pytest_cache,./.mypy_cache"])
         results.append(("Python: Bandit (Security)", code == 0, "No security issues ✓" if code == 0 else truncate_log(out)))
     else:
         results.append(("Python: Bandit (Security)", True, "Skipped (bandit not installed)"))
 
     # 4. Pytest (Runtime)
     if check_tool_installed("pytest"):
-        has_tests = os.path.exists("tests") or os.path.exists("pipeline/tests")
+        has_tests = (
+            any(Path(".").rglob("test_*.py"))
+            or any(Path(".").rglob("*_test.py"))
+            or os.path.exists("tests")
+            or os.path.exists("pipeline/tests")
+        )
         if has_tests:
             code, out = run_command(["pytest", "--tb=short", "-q"])
             results.append(("Python: Pytest (Runtime)", code == 0, "All unit tests passed ✓" if code == 0 else truncate_log(out)))

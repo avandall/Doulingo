@@ -4,9 +4,12 @@ Includes International English (IELTS / CEFR) Speaking topics and everyday rolep
 Clean, simple UI titles with open-ended creative story seeds for AI improvisation.
 """
 
+import logging
 from typing import Any
 
 from app.db import get_custom_scenarios
+
+logger = logging.getLogger(__name__)
 
 DEFAULT_SCENARIOS: dict[str, dict[str, Any]] = {
     # ============================================================
@@ -361,7 +364,7 @@ def list_scenarios() -> list[dict[str, Any]]:
                 "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
             })
     except Exception as e:
-        print(f"[scenarios.py] Error listing MaterialBank topics: {e}")
+        logger.warning(f"[scenarios.py] Error listing MaterialBank topics: {e}")
 
     # 3. Custom Scenarios from Turso DB
     custom_scenarios = get_custom_scenarios()
@@ -402,7 +405,7 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
                 "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
             }
     except Exception as e:
-        print(f"[scenarios.py] Error looking up MaterialBank topic: {e}")
+        logger.warning(f"[scenarios.py] Error looking up MaterialBank topic: {e}")
 
     return None
 

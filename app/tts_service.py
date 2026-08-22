@@ -12,12 +12,15 @@ import io
 import logging
 import os
 import re
+import time
 from typing import Any
 
 import edge_tts
 import requests
 from dotenv import load_dotenv
 from gtts import gTTS
+
+from app.ai_engine import log_api_trace, mask_api_key
 
 load_dotenv()
 logger = logging.getLogger("duolingo_speak.tts")
@@ -159,12 +162,16 @@ def generate_elevenlabs_tts_single(text: str, char_id: str, api_key: str) -> io.
         }
     }
     
+    t0 = time.time()
     res = requests.post(url, headers=headers, json=payload, timeout=8)
+    latency_ms = (time.time() - t0) * 1000
     if res.status_code == 200 and len(res.content) > 500:
+        log_api_trace("ElevenLabs", "eleven_multilingual_v2", api_key, res.status_code, latency_ms, step="TTS")
         mp3_fp = io.BytesIO(res.content)
         mp3_fp.seek(0)
         return mp3_fp
         
+    log_api_trace("ElevenLabs", "eleven_multilingual_v2", api_key, res.status_code, latency_ms, error_msg=res.text[:100], step="TTS")
     raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
 
 def generate_elevenlabs_tts_multi_key(text: str, char_id: str, keys: list) -> io.BytesIO:
@@ -176,7 +183,10 @@ def generate_elevenlabs_tts_multi_key(text: str, char_id: str, keys: list) -> io
         try:
             return generate_elevenlabs_tts_single(text, char_id, key)
         except Exception as e:
-            print(f"[ElevenLabs Pool] Key #{idx+1} warning ({e}). Auto-rotating to next key in pool...")
+            masked = mask_api_key(key)
+            next_hint = f"Auto-rotating to Key #{idx+2}" if idx + 1 < len(keys) else "Key pool exhausted -> Fallback to Edge-TTS"
+            msg = f"[ElevenLabs] Key #{idx+1} ({masked}) hit quota/error ({e}) -> {next_hint}"
+            logger.warning(msg)
 
     raise Exception("All ElevenLabs API keys in pool have exhausted their quota or failed.")
 
@@ -314,26 +324,33 @@ def generate_tts_mp3(text: str, char_id: str = "lily", tld: str = "com") -> io.B
         try:
             return generate_elevenlabs_tts_multi_key(text, char_id, keys)
         except Exception as e:
-            print(f"[TTS Service] ElevenLabs pool exhausted ({e}), falling back to Edge-TTS...")
+            logger.warning(f"[TTS Service] ElevenLabs pool exhausted ({e}), falling back to Edge-TTS...")
 
     # 2. Free Edge-TTS Azure Neural Voice
     try:
+        profile = CHARACTER_VOICE_MAP.get(char_id, CHARACTER_VOICE_MAP["lily"])
+        t0 = time.time()
         with concurrent.futures.ThreadPoolExecutor() as executor:
             mp3_bytes = executor.submit(lambda: asyncio.run(_generate_edge_tts_async(text, char_id))).result(timeout=7)
+            latency_ms = (time.time() - t0) * 1000
             if mp3_bytes and len(mp3_bytes) > 500:
+                log_api_trace("Edge-TTS", profile["azure_voice"], "free", 200, latency_ms, step="TTS_Fallback")
                 mp3_fp = io.BytesIO(mp3_bytes)
                 mp3_fp.seek(0)
                 return mp3_fp
     except Exception as e:
-        print(f"[TTS Service] Edge-TTS warning ({e}), using gTTS fallback...")
+        logger.warning(f"[TTS Service] Edge-TTS warning ({e}), using gTTS fallback...")
 
     # 3. Safety Fallback to gTTS
     profile = CHARACTER_VOICE_MAP.get(char_id, {})
     fallback_tld = profile.get("fallback_tld", tld)
     clean_text = sanitize_text_for_tts(text)
+    t0 = time.time()
     mp3_fp = io.BytesIO()
     tts = gTTS(text=clean_text, lang="en", tld=fallback_tld, slow=False)
     tts.write_to_fp(mp3_fp)
+    latency_ms = (time.time() - t0) * 1000
+    log_api_trace("gTTS", "gtts-standard", "free", 200, latency_ms, step="TTS_Fallback")
     mp3_fp.seek(0)
     return mp3_fp
 

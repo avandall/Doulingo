@@ -5,9 +5,12 @@ Supports Turso Cloud SQLite (libsql) via TURSO_DATABASE_URL & TURSO_AUTH_TOKEN w
 """
 
 import json
+import logging
 import os
 import sqlite3
 from typing import Any
+
+logger = logging.getLogger("duolingo_speak.db")
 
 try:
     import libsql_experimental as libsql  # type: ignore
@@ -33,7 +36,7 @@ def get_db_connection():
             cursor.execute("PRAGMA foreign_keys = ON;")
             return conn
         except Exception as e:
-            print(f"[DB Warning] Turso Cloud connection failed: {e}. Falling back to local SQLite.")
+            logger.warning(f"[DB Warning] Turso Cloud connection failed: {e}. Falling back to local SQLite.")
 
     os.makedirs(DB_DIR, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)

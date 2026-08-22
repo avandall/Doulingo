@@ -5,6 +5,7 @@ and system prompt directives for real-world roleplay scenarios (Template C).
 """
 
 import json
+import logging
 import re
 from dataclasses import asdict
 from typing import Any
@@ -12,6 +13,8 @@ from typing import Any
 from app.db import _fetch_all_dicts, _fetch_one_dict, get_db_connection
 from app.retrieval import compute_band_window, retrieve_dialogues
 from app.scenarios import get_scenario
+
+logger = logging.getLogger(__name__)
 
 
 class RealWorldSimulationEngine:
@@ -107,7 +110,7 @@ class RealWorldSimulationEngine:
                         "is_db": True,
                     }
             except Exception as e:
-                print(f"[simulation_engine] DB fetch warning for '{scenario_id}': {e}")
+                logger.warning(f"[simulation_engine] DB fetch warning for '{scenario_id}': {e}")
 
         # Fallback to static scenario if not found in DB
         if not scenario_data:
@@ -281,7 +284,7 @@ class RealWorldSimulationEngine:
             ]
             return {"scenario_id": scenario_id, "dialogues": dialogues_dict}
         except Exception as e:
-            print(f"[simulation_engine] Retrieval error for '{scenario_id}': {e}")
+            logger.warning(f"[simulation_engine] Retrieval error for '{scenario_id}': {e}")
             return {"scenario_id": scenario_id, "dialogues": []}
 
     def build_simulation_directives(

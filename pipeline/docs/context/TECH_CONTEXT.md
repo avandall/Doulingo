@@ -1,145 +1,84 @@
 # TECH CONTEXT
-# Bối cảnh kỹ thuật — Stack, Môi trường và Kiến trúc Kỹ thuật
+# Bối cảnh kỹ thuật — Stack, Logging, Fallback, IELTS STT & Roleplay Hub UI
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-21
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-22
 >
-> ✏️ **HUMAN FILLS THIS FILE.** File này quy định chi tiết kỹ thuật, công nghệ, cấu trúc code và API contracts.
+> ✏️ **HUMAN & AI ALIGNED CONTEXT.** File này quy định chi tiết kỹ thuật cho hệ thống Tracing Logs, Dynamic Fallback, Empathetic Prompting, IELTS Exam STT Submission Fix và Curated Roleplay Hub.
 
 ---
 
-## 1. Tech Stack & Environment
+## 1. Tech Stack & Key Components
 
-### Language & Framework
 ```
-Runtime:          Python 3.10+
-Framework:        FastAPI 0.100+
-Web Server:       Uvicorn
-Validation:       Pydantic v2
-API Protocol:     REST API (JSON) & Multipart Form Upload
-LLM Providers:    Groq (llama-3.3-70b-versatile, mixtral-8x7b-32768), Gemini (gemini-2.5-flash, gemini-3.6-flash), OpenAI (gpt-4o-mini), Ollama (llama3)
-```
-
-### Database & Storage
-```
-Primary DB:       SQLite 3 (Local data/custom_topics.db) & Turso Cloud (libsql)
-ORM / Query:      Raw SQL / sqlite3 / libsql_experimental
-Tables Core:      content_units, band_tiers, sample_dialogues, hook_bank, vocabulary_lookup
-```
-
-### Testing Framework
-```
-Test Runner:      Pytest
-Types of Tests:   Unit Tests, Integration Tests, End-to-End API Tests
-Verification:     pipeline/scripts/verify.py
+Runtime:          Python 3.11+ (.venv managed with uv / pip)
+Web Framework:    FastAPI / Uvicorn (ASGI)
+ASR Services:     1. Groq Whisper Large V3 (OpenAI client / requests)
+                  2. Gemini Audio Inline ASR
+                  3. Browser Web Speech API fallback
+LLM Providers:    1. Groq API (llama-3.3-70b-versatile, llama-3.1-8b-instant)
+                  2. Google Gemini API (gemini-2.5-flash, gemini-3.0-flash)
+                  3. OpenAI API (gpt-4o-mini)
+                  4. Ollama (local llama3, if available)
+TTS Services:     1. ElevenLabs API (Multi-Key Auto-Rotation Pool)
+                  2. Microsoft Edge-TTS (Free Azure Neural Voices)
+                  3. gTTS (Google Translate TTS safety fallback)
+Local Cache & DB: SQLite (custom_topics.db, saved_words, translation_cache) + In-memory RAM caches
+Frontend:         Vanilla JavaScript (ES6+), HTML5 Web Audio API, PWA Service Worker, Responsive CSS Grid/Flexbox
+Testing Tools:    pytest, Chrome DevTools MCP (navigate, click, type, screenshot)
 ```
 
 ---
 
-## 2. Cấu trúc Thư mục Dự án (Directory Structure)
+## 2. Tracing & Logging Specification
 
+### Log Output Format:
+Console output và file `logs/api_trace.log` ghi theo định dạng chuẩn:
+```text
+[YYYY-MM-DD HH:MM:SS] [TRACE] Step=<STT|LLM|FALLBACK|TTS|EVAL> | Provider=<Groq|Gemini|ElevenLabs|EdgeTTS> | Model=<model_name> | Key=<masked_key> | Status=<200|429|500> | Latency=<ms> | Details=<Message>
 ```
-Doulingo/
-├── app/
-│   ├── main.py                       # FastAPI application entry point & endpoints
-│   ├── ai_engine.py                  # Core AI Engine (process_turn, start_roleplay_greeting, LEVEL_CONFIGS)
-│   ├── retrieval.py                  # RAG Retrieval Layer (retrieve_dialogues, compute_band_window)
-│   ├── prompt_constructor.py         # Prompt Construction Engine & System Prompt builder
-│   ├── conversational_agent.py       # Structured JSON LLM response parser
-│   ├── db.py                         # SQLite / Turso database connection & helpers
-│   ├── material_bank.py              # In-memory material bank loader
-│   └── characters.py / scenarios/    # Persona identities & scenario definitions
-├── books/                            # Raw markdown books (Kiran Makkar, Simon, Fighter...)
-├── output/
-│   ├── extracted/                    # Extracted YAML chunks (Group B & Group C books)
-│   └── chunks/                       # JSON chunk files
-├── scripts/
-│   ├── insert_turso.py               # YAML chunk ingestion script into SQLite/Turso DB
-│   ├── generate_embeddings.py        # Vector embeddings generator script
-│   └── admin_content_cli.py          # Admin CLI tool
-├── data/
-│   └── custom_topics.db              # Active SQLite database file
-├── pipeline/                         # Ralph Loop Harness Pipeline Engine & Docs
-│   ├── docs/                         # core/, context/, runtime/ docs
-│   └── scripts/                      # verify.py & harness.sh
-├── tests/                            # Pytest test suite
-├── pyproject.toml / requirements.txt # Dependency manifest
-└── main.py                           # Root entry point
-```
+
+### Log Scenarios:
+- **LLM Success:** `[TRACE] Step=LLM | Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...7x9A | Status=200 | Latency=412.3ms | Details=Success`
+- **LLM 429 Quota Exceeded (Auto-rotate):** `[TRACE] Step=LLM | Provider=Groq | Model=llama-3.3-70b-versatile | Key=gsk_...1a2B | Status=429 | Latency=120.0ms | Details=Quota limit hit, auto-rotating to Key #2`
+- **All LLMs Down $\rightarrow$ Fallback:** `[TRACE] Step=FALLBACK | Provider=LocalEngine | Model=DynamicContextFallback | Status=200 | Latency=2.1ms | Details=All LLMs unavailable. Generated dynamic anti-repetition turn.`
+- **ElevenLabs 429 $\rightarrow$ Edge-TTS Fallback:** `[TRACE] Step=TTS | Provider=ElevenLabs | Key=xi_...99F | Status=429 | Latency=85.0ms | Details=ElevenLabs pool exhausted, falling back to Microsoft Edge-TTS (en-GB-SoniaNeural)`
 
 ---
 
-## 3. Database Schema & Data Models
+## 3. IELTS Exam Read-Then-Speak Fix Specification
 
-```sql
-CREATE TABLE IF NOT EXISTS content_units (
-    id              TEXT PRIMARY KEY,
-    template_type   TEXT NOT NULL CHECK(template_type IN ('band_ladder','functional_bank','scenario')),
-    title           TEXT NOT NULL,
-    topic_tags      TEXT NOT NULL DEFAULT '[]',
-    target_band_min REAL,
-    target_band_max REAL,
-    register        TEXT,
-    source_citation TEXT,
-    created_at      TEXT DEFAULT (datetime('now'))
-);
+### Root Cause Analysis:
+1. `this.detSpeechAccumulated` bị reset hoặc không được cập nhật do `this.isDetRecording` bị đặt về `false` trong `stopDetMonologueTimer()` trước khi callback bất đồng bộ `onResult` từ `/api/transcribe_audio` hoàn tất.
+2. Khi bấm Submit, hàm `submitDetSpeech()` đọc chuỗi rỗng và hiện toast lỗi ngay lập tức mà không đợi pipeline ASR hoàn thành.
 
-CREATE TABLE IF NOT EXISTS sample_dialogues (
-    id              TEXT PRIMARY KEY,
-    content_unit_id TEXT NOT NULL REFERENCES content_units(id) ON DELETE CASCADE,
-    band_level      REAL NOT NULL,
-    turn_type       TEXT,
-    function_tag    TEXT,
-    ai_line         TEXT NOT NULL,
-    user_model_answer TEXT NOT NULL,
-    embedding       BLOB,
-    created_at      TEXT DEFAULT (datetime('now'))
-);
+### Technical Fix:
+1. **Async-Aware Submission:** Trong `submitDetSpeech()`, nếu `detSpeechAccumulated` rỗng nhưng đang có audio ghi âm hoặc pending ASR, hàm sẽ chuyển sang trạng thái chờ `⏳ Transcribing & Evaluating...` và đợi tối đa 2s để nhận transcript.
+2. **Immediate Local Text Buffer:** Lưu tạm transcript interim từ Web Speech API vào buffer `detInterimTranscript`. Khi Submit, tự động gộp cả interim text và final text.
+3. **Graceful Fallback Evaluation:** Nếu ASR trả về text ngắn hoặc mạng rớt, cho phép user gõ/xem review hoặc tự động tạo đánh giá dựa trên thời lượng nói và các chỉ số âm thanh thực tế.
+
+---
+
+## 4. Curated Roleplay Hub & Topic Explorer Specification
+
+### Giao diện Trang chủ:
+1. **Featured Curated Grid (< 11 topics):**
+   - Chỉ hiển thị 8-10 topics thịnh hành, hấp dẫn và phổ biến nhất (Coffee Chat, Job Interview, Travel Airport, Restaurant, Casual Hangout, Weekend Plans, Tech Talk, Doctor Visit).
+   - Card thiết kế sang trọng, tối giản, có icon 3D/emoji bắt mắt, badge cấp độ (A1-C2) và màu sắc hài hòa.
+2. **"Explore All Topics" Action Button & Explorer Drawer/Modal:**
+   - Nút nổi bật: `📚 Explore All 30+ Topics` đặt ở cuối section hoặc header.
+   - Khi bấm, mở một Topic Explorer Drawer/Modal toàn màn hình hoặc popup chuyên nghiệp:
+     - **Thanh tìm kiếm (Live Search Bar):** Tìm kiếm tức thì theo tên topic hoặc từ khóa.
+     - **Segmented Filter Tabs:** `All`, `Everyday Life ☕`, `Work & Career 💼`, `Travel & Adventure ✈️`, `Social & Culture 🎭`, `IELTS Prep 🎓`.
+     - **Phân vùng gọn gàng (Categorized Sections):** Nhóm các topics theo danh mục rõ ràng, có bộ đếm số lượng topic trong từng mục.
+
+---
+
+## 5. Frontend MCP Real-User Testing Guidelines
+
 ```
-
----
-
-## 4. API Contracts & Specifications
-
-### Endpoint Overview
-- **`POST /api/process_turn`**: Lượt hội thoại chính trên Web UI
-  - **Request Body**:
-    ```json
-    {
-      "scenario_id": "det_childhood_memory",
-      "character_id": "lily",
-      "user_transcript": "I lost my memory",
-      "conversation_history": [{"role": "assistant", "content": "..."}],
-      "level": 9
-    }
-    ```
-  - **Response 200 OK**:
-    ```json
-    {
-      "ai_response": "To be honest, memory loss can be really challenging...",
-      "ai_response_vi": "Thành thật mà nói...",
-      "user_feedback": {
-        "fluency_score": 90,
-        "grammar_score": 92,
-        "corrected_text": "I lost my memory.",
-        "native_phrasing": "I've lost my memory."
-      }
-    }
-    ```
-
----
-
-## 5. Build, Run & Verification Commands
-
-```bash
-# Ingest dữ liệu sách từ output/extracted/ vào SQLite DB
-python3 scripts/insert_turso.py output/extracted/ --sqlite data/custom_topics.db
-
-# Khởi chạy FastAPI dev server
-uvicorn app.main:app --reload --port 8000
-
-# Chạy test suite
-pytest tests/
-
-# Chạy Harness Verification Script
-python3 pipeline/scripts/verify.py
+1. Mở trang web ứng dụng qua MCP Browser (http://localhost:8000).
+2. Test kịch bản 1: Màn hình chính -> Kiểm tra số lượng Roleplay topics (<11 thẻ) -> Mở All Topics Explorer -> Test Search & Filter Tabs -> Chọn 1 topic và vào Roleplay.
+3. Test kịch bản 2: Vào IELTS Exam -> Chọn Read-Then-Speak -> Bấm Start Record -> Nói/Giả lập âm thanh -> Bấm Submit -> Xác nhận nộp bài thành công và hiển thị bảng điểm DET Report.
+4. Test kịch bản 3: Kiểm tra Instant Filler âm thanh -> Kiểm tra log trace trong console và logs/api_trace.log.
+5. Giới hạn số lần gọi API kiểm thử < 10 lần.
 ```
