@@ -21,6 +21,7 @@ data/
 *Zone.Identifier*
 *:Zone.Identifier
 *.log
+logs/
 
 
 # Agent Pipeline Transient Runtime Artifacts
