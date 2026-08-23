@@ -16,9 +16,9 @@
 | `TASK-002` | Dynamic Anti-Repetition Fallback Engine with Topic-Shift & Memory | Phase 2 | P0 | `[x] DONE` | Xóa bỏ hoàn toàn lặp câu, ngân hàng 30+ câu, đổi chủ đề, ghi nhớ lịch sử |
 | `TASK-003` | Empathetic Prompting & ASR Phonetic Clarification Pipeline | Phase 3 | P1 | `[x] DONE` | Active listening, phản chiếu cảm xúc, xử lý từ phát âm sai (did you mean X?) |
 | `TASK-004` | Instant Conversational Fillers (<100ms) & Natural TTS Tuning | Phase 4 | P1 | `[x] DONE` | Phát audio "Hmm... let me see" tức thì câu giờ + đưa Edge-TTS về tần số chuẩn |
-| `TASK-005` | Fix IELTS EXAM Read-Then-Speak Recording & Submission Flow | Phase 5 | P0 | `[ ] TODO` | Khắc phục race condition bất đồng bộ ASR khiến Submit bị báo "please record" |
-| `TASK-006` | Modern Curated Roleplay Hub (<11 Featured Topics & Categorized Explorer) | Phase 6 | P1 | `[ ] TODO` | Giữ <11 topics tinh tuyển trên trang chủ + Modal All Topics có tìm kiếm & filters |
-| `TASK-007` | End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls) | Phase 7 | P0 | `[ ] TODO` | Test như real user qua MCP, kiểm tra toàn bộ luồng, giới hạn < 10 API calls |
+| `TASK-005` | Fix IELTS EXAM Read-Then-Speak Recording & Submission Flow | Phase 5 | P0 | `[x] DONE` | Khắc phục race condition bất đồng bộ ASR khiến Submit bị báo "please record" |
+| `TASK-006` | Modern Curated Roleplay Hub (<11 Featured Topics & Categorized Explorer) | Phase 6 | P1 | `[x] DONE` | Giữ <11 topics tinh tuyển trên trang chủ + Modal All Topics có tìm kiếm & filters |
+| `TASK-007` | End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls) | Phase 7 | P0 | `[x] DONE` | Test như real user qua MCP, kiểm tra toàn bộ luồng, giới hạn < 10 API calls |
 
 ---
 
@@ -195,7 +195,7 @@ Task Name:       Fix IELTS EXAM Read-Then-Speak Recording & Submission Flow
 Phase:           Phase 5 (Frontend Bugfix - IELTS Exam)
 Task Type:       fix / frontend
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-22
 ```
 
@@ -233,7 +233,7 @@ Task Name:       Modern Curated Roleplay Hub (<11 Featured Topics & Categorized 
 Phase:           Phase 6 (Frontend UX Refactor)
 Task Type:       feature / frontend-ui
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-22
 ```
 
@@ -276,7 +276,7 @@ Task Name:       End-to-End Test Suite & MCP Browser Interactive Testing (<10 Ca
 Phase:           Phase 7 (E2E Verification & Browser QA)
 Task Type:       test / verification
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-22
 ```
 
@@ -293,9 +293,9 @@ Ngày tạo:        2026-08-22
   3. Giới hạn nghiêm ngặt: Tổng số lần gọi API thử nghiệm thực tế < 10 lần.
 
 #### Acceptance Criteria
-- [ ] Tất cả 7 phases hoàn thành và verified pass 100%.
-- [ ] Trải nghiệm UI/UX mượt mà, chuyên nghiệp như một sản phẩm Production sẵn sàng ra mắt.
-- [ ] Tổng số API calls test được kiểm soát < 10 lần.
+- [x] Tất cả 7 phases hoàn thành và verified pass 100%.
+- [x] Trải nghiệm UI/UX mượt mà, chuyên nghiệp như một sản phẩm Production sẵn sàng ra mắt.
+- [x] Tổng số API calls test được kiểm soát < 10 lần.
 
 #### Scope
 - **Files được sửa/tạo:** `tests/**`

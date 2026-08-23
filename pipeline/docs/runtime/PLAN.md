@@ -1,17 +1,17 @@
 # PLAN
-# Kế hoạch thực thi — TASK-004: Instant Conversational Fillers (<100ms) & Natural TTS Fallback Tuning
+# Kế hoạch thực thi — TASK-007: End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls)
 
-> **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Cập nhật:** 2026-08-22 19:20
+> **Trạng thái:** RUNTIME (Auto-generated) | **Tạo bởi:** AI | **Cập nhật:** 2026-08-22 20:02
 
 ---
 
 ## Task Reference
 
 ```
-Task ID:    TASK-004
-Task Name:  Instant Conversational Fillers (<100ms) & Natural TTS Fallback Tuning
-Phase:      Phase 4 (Audio & Latency)
-Spec:       Tạo bộ filler audio cho các nhân vật trong static/audio/fillers/, tích hợp vào frontend app.js phát tức thì <100ms khi user submit, và điều chỉnh rate (+0%) / pitch (+0Hz) cho Microsoft Edge-TTS trong app/tts_service.py.
+Task ID:    TASK-007
+Task Name:  End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls)
+Phase:      Phase 7 (E2E Verification & Browser QA)
+Spec:       Viết E2E test suite kiểm thử toàn bộ 5 kịch bản tích hợp của ứng dụng Duolingo Speak AI (Roleplay Empathy, IELTS Exam Flow, Topic Explorer, API Trace Logging, TTS & Audio Fillers). Giới hạn gọi API <10 calls. Pass 100% verify.py.
 ```
 
 ---
@@ -19,14 +19,14 @@ Spec:       Tạo bộ filler audio cho các nhân vật trong static/audio/fill
 ## Spec (Đặc tả)
 
 ### Acceptance Criteria
-- [x] Tinh chỉnh parameter `rate` (+0%) và `pitch` (+0Hz) của `CHARACTER_VOICE_MAP` trong `app/tts_service.py` cho Microsoft Edge-TTS giọng tự nhiên.
-- [x] Bổ sung/xây dựng bộ âm thanh fillers trong `static/audio/fillers/` cho tất cả các nhân vật ảo (`duo`, `lily`, `oscar`, `viktor`, `chanel`, `kaelen`, `colt`, `zarina`, `scarlet`, `luigi`).
-- [x] Cập nhật frontend (`static/js/audio_fx.js` và `static/js/app.js`) để kích hoạt phát audio filler ngay lập tức (<100ms latency) khi dứt lời/submit, hiển thị hiệu ứng AI is thinking... và chuyển đổi mượt sang TTS response chính khi ready.
-- [x] Viết bộ test `tests/test_tts_fillers.py` và chạy `python3 pipeline/scripts/verify.py` pass 100%.
+- [x] Xây dựng test file E2E `tests/test_e2e_conversational_system.py` bao phủ 5 use cases chính.
+- [x] Chạy `pytest tests/test_e2e_conversational_system.py -v` thành công 100%.
+- [x] Chạy `python3 pipeline/scripts/verify.py` pass 100% (Ruff, Mypy, Bandit, Pytest).
+- [x] Giới hạn tổng API calls thực nghiệm < 10 calls.
 
 ### Verification Commands
 ```bash
-pytest tests/test_tts_fillers.py -v
+pytest tests/test_e2e_conversational_system.py -v
 python3 pipeline/scripts/verify.py
 ```
 
@@ -34,24 +34,30 @@ python3 pipeline/scripts/verify.py
 
 ## Execution Steps
 
-### [x] Step 1: Natural Voice Fallback Tuning & Filler Subsystem trong `app/tts_service.py` & `app/main.py`
+### [x] Step 1: Create Comprehensive E2E Test Suite (`tests/test_e2e_conversational_system.py`)
 - **Mục tiêu:**
-  - Chỉnh lại `rate` thành `"+0%"` và `pitch` thành `"+0Hz"` trong `CHARACTER_VOICE_MAP` cho tất cả các nhân vật trong `app/tts_service.py`.
-  - Tạo helper `get_character_filler_path(char_id: str)` hoặc `/api/fillers/{char_id}` endpoint để serve audio fillers từ `static/audio/fillers/`.
-- **Files tạo/sửa:** `app/tts_service.py`, `app/main.py`
-- **Exit condition:** `CHARACTER_VOICE_MAP` có rate/pitch chuẩn `"+0%"`, `"+0Hz"`, filler audio route `/api/fillers/{char_id}` hoặc static resource truy cập thành công.
+  - Viết `tests/test_e2e_conversational_system.py` sử dụng Starlette TestClient / pytest fixture để test toàn bộ ứng dụng FastApi + AI Engine.
+  - Test 1: Full conversation turn với AI Engine (Roleplay, Topic shift detection, Empathy response, Anti-repetition context memory).
+  - Test 2: IELTS Read-Then-Speak exam submission & DET scoring report API endpoints.
+  - Test 3: Topic explorer scenario provider bridge, categories, and keyword searching.
+  - Test 4: Real-time API trace log file update (`logs/api_trace.log`), quota endpoint `/api/health/quota`, trace endpoint `/api/trace`.
+  - Test 5: TTS service voice mapping, rate/pitch natural tuning, instant filler sound endpoint & character mapping.
+- **Files tạo/sửa:** `tests/test_e2e_conversational_system.py`
+- **Exit condition:** `pytest tests/test_e2e_conversational_system.py -v` pass 100%.
 
-### [x] Step 2: Integrated Instant Filler Playback in Frontend (`static/js/audio_fx.js` & `static/js/app.js`)
+### [x] Step 2: Run Tier 1 Verification (`python3 pipeline/scripts/verify.py`) & Fix any issues
+- **Mục tiêu:** Run full deterministic quality checks (`verify.py`), ensuring Ruff lint, Mypy type-checking, Bandit security, and all Pytest test suites pass cleanly.
+- **Files tạo/sửa:** `tests/test_e2e_conversational_system.py` (if any linting/typing tweaks needed)
+- **Exit condition:** `python3 pipeline/scripts/verify.py` status is PASS.
+
+### [x] Step 3: Update System Runtime Docs & Mark Task DONE (`Phase 7 REPORT`)
 - **Mục tiêu:**
-  - Nâng cấp `DuoAudioFX` trong `static/js/audio_fx.js` hỗ trợ method `playFiller(charId)` kích hoạt phát filler tức thì <100ms (qua Web Audio synth hoặc preloaded HTML5 Audio).
-  - Cập nhật `static/js/app.js` tại điểm user gửi tin nhắn/process turn để lập tức gọi `playFiller(charId)` và hiển thị "AI is thinking...". Khi TTS chính ready (`playTTS`), tự động stop filler và phát audio chính mượt mà.
-- **Files tạo/sửa:** `static/js/audio_fx.js`, `static/js/app.js`
-- **Exit condition:** User gửi message -> filler phát ngay lập tức (<100ms) -> AI response xong -> phát TTS mượt mà.
-
-### [x] Step 3: Test Suite `tests/test_tts_fillers.py` & Verification
-- **Mục tiêu:** Viết unit test suite cho natural voice params, filler file existence/route, tts fallback capabilities, và thực thi `python3 pipeline/scripts/verify.py`.
-- **Files tạo/sửa:** `tests/test_tts_fillers.py`
-- **Exit condition:** `pytest tests/test_tts_fillers.py -v` và `verify.py` pass 100%.
+  - Update `pipeline/docs/runtime/STATUS.md` with TASK-007 completion details and system status.
+  - Update `pipeline/docs/runtime/PROGRESS_LOG.md` appending iteration log.
+  - Update `pipeline/docs/runtime/PROOF_OF_SOLUTION.md` with test evidence.
+  - Update `pipeline/docs/context/Tasks_list.md` marking `TASK-007` as `[x] DONE`.
+- **Files tạo/sửa:** `pipeline/docs/runtime/STATUS.md`, `pipeline/docs/runtime/PROGRESS_LOG.md`, `pipeline/docs/runtime/PROOF_OF_SOLUTION.md`, `pipeline/docs/context/Tasks_list.md`, `pipeline/docs/runtime/PLAN.md`
+- **Exit condition:** Runtime docs updated on filesystem, task marked `[x] DONE` in `Tasks_list.md`. Stop execution without committing git (Reviewer will handle Tier 2 cognitive review & git commit).
 
 ---
 
@@ -69,5 +75,4 @@ Context refresh at:   Iteration 3
 
 | Revision | Ngày | Lý do thay đổi |
 |----------|------|----------------|
-| v1 | 2026-08-22 | Khởi tạo plan cho TASK-004 |
-| v2 | 2026-08-22 | Hoàn thành tất cả các bước Step 1-3 của TASK-004 |
+| v1 | 2026-08-22 | Khởi tạo plan cho TASK-007 |

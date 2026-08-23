@@ -51,6 +51,10 @@ class DuoSpeakApp {
     // IELTS category filter
     this.activeIeltsCategory = 'all';
 
+    // Topic Explorer filter state
+    this.activeExplorerCategory = 'all';
+    this.explorerSearchQuery = '';
+
     this.init();
   }
 
@@ -227,11 +231,38 @@ class DuoSpeakApp {
     if (!grid) return;
     grid.innerHTML = '';
 
-    scenarios.forEach(sc => {
+    // Curated featured topics list for main page (limit to max 8-10 topics for clean UI)
+    const featuredIds = [
+      'everyday_chat', 'cafe_dining', 'job_interview', 'travel_culture',
+      'work_study_space', 'digital_lifestyle', 'debate_club', 'shopping_negotiation'
+    ];
+
+    // Priority: custom topics + default curated featured roleplays
+    const customTopics = scenarios.filter(s => s.is_custom);
+    const featuredRoleplays = scenarios.filter(s => featuredIds.includes(s.id));
+    const combinedFeatured = [...customTopics, ...featuredRoleplays];
+
+    // Fallback if none matched
+    const mainList = (combinedFeatured.length > 0 ? combinedFeatured : scenarios).slice(0, 10);
+
+    mainList.forEach(sc => {
       grid.appendChild(this.createScenarioCard(sc, 'roleplay'));
     });
 
-    // Add custom roleplay card
+    // 1. Explore All 30+ Topics Card
+    const exploreCard = document.createElement('div');
+    exploreCard.className = 'scenario-card explore-all-card';
+    exploreCard.innerHTML = `
+      <div class="explore-all-icon">📚</div>
+      <div class="explore-all-label">Explore All Topics</div>
+    `;
+    exploreCard.addEventListener('click', () => {
+      if (window.duoAudio) window.duoAudio.playClick();
+      this.openTopicExplorerModal();
+    });
+    grid.appendChild(exploreCard);
+
+    // 2. Add Custom Topic Card
     const addCard = document.createElement('div');
     addCard.className = 'scenario-card add-custom-card';
     addCard.innerHTML = `
@@ -251,12 +282,15 @@ class DuoSpeakApp {
     card.dataset.scenarioId = sc.id;
     card.dataset.scenarioMode = sc.mode || 'roleplay';
 
+    const categoryBadge = sc.category ? `<span class="scenario-cat-tag">${sc.category}</span>` : '';
+
     card.innerHTML = `
       <div class="scenario-card-icon">${sc.icon || '💬'}</div>
       <div class="scenario-card-title">${sc.title || 'Untitled'}</div>
       <div class="scenario-card-desc">${sc.description || ''}</div>
       <div class="scenario-card-footer">
         <span class="scenario-level-badge">${sc.level_code || sc.level || 'B1'}</span>
+        ${categoryBadge}
         <span class="scenario-start-arrow">→</span>
       </div>
     `;
@@ -271,6 +305,104 @@ class DuoSpeakApp {
     });
 
     return card;
+  }
+
+  // ============================================================
+  // TOPIC EXPLORER MODAL & SEARCH FILTER
+  // ============================================================
+  openTopicExplorerModal() {
+    const modal = document.getElementById('modal-topic-explorer');
+    if (!modal) return;
+    modal.classList.add('active');
+
+    // Reset filters
+    this.activeExplorerCategory = 'all';
+    this.explorerSearchQuery = '';
+    const searchInput = document.getElementById('input-search-explorer');
+    if (searchInput) searchInput.value = '';
+
+    const filterBtns = document.querySelectorAll('#explorer-category-filter .cat-pill');
+    filterBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.explorerCat === 'all');
+    });
+
+    this.filterExplorerTopics();
+  }
+
+  closeTopicExplorerModal() {
+    const modal = document.getElementById('modal-topic-explorer');
+    if (modal) modal.classList.remove('active');
+  }
+
+  filterExplorerTopics() {
+    const cat = this.activeExplorerCategory || 'all';
+    const query = (this.explorerSearchQuery || '').toLowerCase().trim();
+
+    let filtered = this.scenarios || [];
+
+    // Category filter
+    if (cat !== 'all') {
+      filtered = filtered.filter(sc => {
+        const scCat = (sc.category || '').toLowerCase();
+        const scTitle = (sc.title || '').toLowerCase();
+        const scMode = (sc.mode || '').toLowerCase();
+
+        if (cat === 'everyday') {
+          return scCat.includes('everyday') || scCat.includes('personal') || scTitle.includes('chat') || scTitle.includes('café') || scTitle.includes('coffee');
+        } else if (cat === 'career') {
+          return scCat.includes('career') || scCat.includes('work') || scCat.includes('study') || scCat.includes('academic') || scTitle.includes('interview') || scTitle.includes('job');
+        } else if (cat === 'travel') {
+          return scCat.includes('travel') || scCat.includes('places') || scCat.includes('culture') || scTitle.includes('travel') || scTitle.includes('hometown');
+        } else if (cat === 'social') {
+          return scCat.includes('social') || scCat.includes('hobbies') || scCat.includes('digital') || scCat.includes('society') || scTitle.includes('debate') || scTitle.includes('media');
+        } else if (cat === 'ielts') {
+          return scMode === 'ielts_exam' || sc.source === 'material_bank' || scCat.includes('ielts');
+        }
+        return true;
+      });
+    }
+
+    // Search query filter
+    if (query) {
+      filtered = filtered.filter(sc => {
+        const title = (sc.title || '').toLowerCase();
+        const desc = (sc.description || '').toLowerCase();
+        const category = (sc.category || '').toLowerCase();
+        const guide = (sc.open_story_guide || '').toLowerCase();
+        return title.includes(query) || desc.includes(query) || category.includes(query) || guide.includes(query);
+      });
+    }
+
+    this.renderExplorerGrid(filtered);
+  }
+
+  renderExplorerGrid(scenarios) {
+    const grid = document.getElementById('explorer-scenarios-grid');
+    const noResults = document.getElementById('explorer-no-results');
+    const countBadge = document.getElementById('explorer-count-badge');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    if (countBadge) {
+      countBadge.textContent = `Showing ${scenarios.length} topic${scenarios.length !== 1 ? 's' : ''}`;
+    }
+
+    if (scenarios.length === 0) {
+      if (noResults) noResults.style.display = 'block';
+      return;
+    }
+
+    if (noResults) noResults.style.display = 'none';
+
+    scenarios.forEach(sc => {
+      const card = this.createScenarioCard(sc, sc.mode === 'ielts_exam' ? 'ielts' : 'roleplay');
+      // Clicking any card in explorer auto closes explorer modal
+      card.addEventListener('click', () => {
+        this.closeTopicExplorerModal();
+      });
+      grid.appendChild(card);
+    });
   }
 
   // ============================================================
@@ -557,24 +689,36 @@ class DuoSpeakApp {
       transcriptEl.classList.toggle('active', !!transcript);
     }
 
-    if (isFinal && transcript.trim()) {
+    const cleanText = (transcript || '').trim();
+
+    if (isFinal && cleanText) {
       // Show review box for editing before sending
       const reviewBox = document.getElementById('transcript-review-box');
       const reviewInput = document.getElementById('review-speech-input');
       if (reviewBox && reviewInput) {
-        reviewInput.value = transcript.trim();
+        reviewInput.value = cleanText;
         reviewBox.style.display = 'block';
       }
+    }
 
-      // DET mode: accumulate speech instead of submitting
-      if (this.isDetRecording && document.getElementById('modal-det-exam')?.classList.contains('active')) {
-        this.detSpeechAccumulated += ' ' + transcript.trim();
-        // Update word count display if element exists
-        const wcEl = document.getElementById('det-speech-word-count');
-        if (wcEl) {
-          const words = this.detSpeechAccumulated.trim().split(/\s+/).filter(Boolean).length;
-          wcEl.textContent = `${words} words`;
+    // DET mode: accumulate speech from interim & final results
+    if (document.getElementById('modal-det-exam')?.classList.contains('active')) {
+      if (cleanText) {
+        if (isFinal) {
+          if (!this.detSpeechAccumulated.includes(cleanText)) {
+            this.detSpeechAccumulated = (this.detSpeechAccumulated + ' ' + cleanText).trim();
+          }
+          this.detInterimTranscript = '';
+        } else {
+          this.detInterimTranscript = cleanText;
         }
+      }
+
+      const totalSpeech = (this.detSpeechAccumulated + ' ' + (this.detInterimTranscript || '')).trim();
+      const wcEl = document.getElementById('det-speech-word-count');
+      if (wcEl && totalSpeech) {
+        const words = totalSpeech.split(/\s+/).filter(Boolean).length;
+        wcEl.textContent = `${words} words`;
       }
     }
   }
@@ -1274,16 +1418,34 @@ class DuoSpeakApp {
   async submitDetSpeech(mode, overrideText) {
     this.stopDetMonologueTimer();
 
-    // Gather speech text: from speech recognition accumulation or override
-    const speechText = (overrideText || this.detSpeechAccumulated || '').trim();
+    const btnSubmit = document.getElementById('btn-det-submit-speech');
+    if (btnSubmit) { btnSubmit.disabled = true; btnSubmit.innerHTML = '⏳ Transcribing & Evaluating...'; }
+
+    // Async-Aware Gather speech text: wait up to 2.5s for pending ASR transcription if initially empty
+    let speechText = (overrideText || this.detSpeechAccumulated || this.detInterimTranscript || (this.speechHandler ? this.speechHandler.lastRecognizedText : '') || '').trim();
+
+    if (!speechText && (this.speechHandler?.isTranscribing || this.speechHandler?.isListening)) {
+      const startTime = Date.now();
+      while (Date.now() - startTime < 2500) {
+        await new Promise(r => setTimeout(r, 150));
+        speechText = (overrideText || this.detSpeechAccumulated || this.detInterimTranscript || (this.speechHandler ? this.speechHandler.lastRecognizedText : '') || '').trim();
+        if (speechText) break;
+      }
+    }
+
+    // Fallback check review input if speechText is still empty
+    if (!speechText) {
+      const reviewInput = document.getElementById('review-speech-input');
+      if (reviewInput && reviewInput.value.trim()) {
+        speechText = reviewInput.value.trim();
+      }
+    }
 
     if (!speechText) {
       this.showToast('⚠️ Please record your speech before submitting!');
+      if (btnSubmit) { btnSubmit.disabled = false; btnSubmit.innerHTML = '📤 Submit Speaking Test'; }
       return;
     }
-
-    const btnSubmit = document.getElementById('btn-det-submit-speech');
-    if (btnSubmit) { btnSubmit.disabled = true; btnSubmit.innerHTML = '⏳ AI Examiner Evaluating...'; }
 
     try {
       const wordCount = speechText.split(/\s+/).filter(Boolean).length;
@@ -1616,6 +1778,36 @@ class DuoSpeakApp {
     if (btnRandom) btnRandom.addEventListener('click', () => { if (window.duoAudio) window.duoAudio.playClick(); this.startRandomRoleplay(); });
     const btnOpenCust = document.getElementById('btn-open-custom-modal');
     if (btnOpenCust) btnOpenCust.addEventListener('click', () => { if (window.duoAudio) window.duoAudio.playClick(); this.openCustomTopicModal('roleplay'); });
+
+    // === TOPIC EXPLORER ===
+    const btnOpenExplorer = document.getElementById('btn-open-explorer-modal');
+    if (btnOpenExplorer) btnOpenExplorer.addEventListener('click', () => { if (window.duoAudio) window.duoAudio.playClick(); this.openTopicExplorerModal(); });
+    const btnCloseExplorer = document.getElementById('btn-close-explorer-modal');
+    if (btnCloseExplorer) btnCloseExplorer.addEventListener('click', () => this.closeTopicExplorerModal());
+    const btnCloseExplorer2 = document.getElementById('btn-close-explorer-modal-2');
+    if (btnCloseExplorer2) btnCloseExplorer2.addEventListener('click', () => this.closeTopicExplorerModal());
+    const modalExplorer = document.getElementById('modal-topic-explorer');
+    if (modalExplorer) modalExplorer.addEventListener('click', e => { if (e.target === modalExplorer) this.closeTopicExplorerModal(); });
+
+    const searchExplorer = document.getElementById('input-search-explorer');
+    if (searchExplorer) {
+      searchExplorer.addEventListener('input', e => {
+        this.explorerSearchQuery = e.target.value;
+        this.filterExplorerTopics();
+      });
+    }
+
+    const categoryFilterContainer = document.getElementById('explorer-category-filter');
+    if (categoryFilterContainer) {
+      categoryFilterContainer.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryFilterContainer.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.activeExplorerCategory = btn.dataset.explorerCat || 'all';
+          this.filterExplorerTopics();
+        });
+      });
+    }
 
     // Emoji grid
     const emojiGrid = document.getElementById('emoji-picker-grid');

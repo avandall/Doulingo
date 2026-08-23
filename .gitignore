@@ -23,5 +23,9 @@ data/
 *.log
 
 
-# Agent Pipeline Logs
+# Agent Pipeline Transient Runtime Artifacts
 pipeline/docs/runtime/session_*.jsonl
+pipeline/docs/runtime/session_*.log
+pipeline/docs/runtime/ITERATIONS/
+pipeline/docs/runtime/VERIFICATION_REPORT.md
+pipeline/docs/runtime/DEBATE_LOG.md

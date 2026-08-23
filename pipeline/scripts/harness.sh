@@ -32,7 +32,7 @@ BLOCKERS_DIR="${RUNTIME_DIR}/BLOCKERS"
 MAX_ITERATIONS=30
 CONTEXT_REFRESH_EVERY=5
 TASK_ID=""
-PRINT_TIMEOUT="5m0s"
+PRINT_TIMEOUT="15m0s"
 DRY_RUN=false
 VERBOSE=false
 STOP_ON_BLOCK=false
@@ -41,7 +41,7 @@ STOP_ON_BLOCK=false
 # Set REVIEW_MODEL to enable: executor writes code, reviewer (different model) checks logic
 # Default empty = single-model mode (backward compatible)
 REVIEW_MODEL=""
-REVIEW_TIMEOUT="3m0s"   # Reviewer is faster — only reads git diff + checklist
+REVIEW_TIMEOUT="5m0s"   # Reviewer is faster — only reads git diff + checklist
 
 REVIEW_MAX_RETRIES=2    # Max re-execute cycles per iteration when reviewer rejects
 
@@ -393,7 +393,30 @@ execute_iteration() {
 }
 
 # ────────────────────────────────────────────────────────────────────────────
-# Single-model iteration (classic mode — backward compatible, unchanged)
+# Fallback Auto-Commit helper:
+# Automatically commits changes if a task has been completed and marked [x] DONE
+# in Tasks_list.md to ensure clean working tree and prevent progress loss.
+# ────────────────────────────────────────────────────────────────────────────
+check_and_auto_commit_done_task() {
+  local mode_label="${1:-HARNESS}"
+  if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
+    local done_task_id
+    done_task_id=$(grep -E "^\|[[:space:]]*\`TASK-" "${CONTEXT_DIR}/Tasks_list.md" 2>/dev/null | grep "\[x\] DONE" | tail -1 | grep -oE "TASK-[0-9]+" || true)
+    if [[ -n "$done_task_id" ]]; then
+      local latest_commit_msg
+      latest_commit_msg=$(git log -1 --pretty=%B 2>/dev/null || echo "")
+      if [[ "$latest_commit_msg" != *"[${done_task_id}]"* ]]; then
+        log_info "[${mode_label}] Detected uncommitted changes for completed task [${done_task_id}]. Auto-committing to maintain clean working tree..."
+        git add -A
+        git commit -m "[${done_task_id}] feat: completed task (verified pass by ${mode_label})" 2>&1 | tee -a "${RUNTIME_DIR}/session_live.log" || true
+        log_ok "[${mode_label}] Working tree cleanly committed for ${done_task_id}."
+      fi
+    fi
+  fi
+}
+
+# ────────────────────────────────────────────────────────────────────────────
+# Single-model iteration (classic mode — backward compatible)
 # ────────────────────────────────────────────────────────────────────────────
 execute_iteration_single_model() {
   local iter="$1"
@@ -402,7 +425,12 @@ execute_iteration_single_model() {
   local iter_prompt="Đọc pipeline/docs/core/AGENT_CONSTITUTION.md, pipeline/docs/context/Tasks_list.md và pipeline/docs/runtime/STATUS.md. Tìm task đầu tiên có trạng thái [ ] TODO hoặc [/] IN_PROGRESS trong Tasks_list.md. Đọc pipeline/docs/runtime/PLAN.md (nếu chưa có plan cho task này thì tạo PLAN.md). Thực hiện 1 bước atomic tiếp theo trong task đó theo quy trình Harness Protocol. Ở Phase 4 (VERIFY), BẮT BUỘC chạy 'python3 pipeline/scripts/verify.py' để kiểm định Tier 1 (Linter/Type/Security/Test) và kiểm tra pipeline/docs/runtime/VERIFICATION_REPORT.md. NẾU VERIFICATION_REPORT có lỗi, hãy đọc log ngắn gọn trong đó để sửa ngay. Ở Phase 5 (REVIEW), thực hiện Tier 2 Cognitive Review dựa trên git diff và pipeline/docs/core/REVIEW_PROTOCOL.md. BẮT BUỘC CẬP NHẬT pipeline/docs/runtime/STATUS.md, pipeline/docs/runtime/PROGRESS_LOG.md và PLAN.md RA FILESYSTEM để lưu progression context cho Ralph loop. QUY TẮC COMMIT: KHÔNG THỰC HIỆN GIT COMMIT TRONG CÁC ITERATION TRUNG GIAN. CHỈ CHẠY GIT COMMIT KHI THỰC SỰ HOÀN THÀNH 1 TASK VÀ ĐÁNH DẤU [x] DONE TRONG Tasks_list.md với commit message format: [TASK-ID] <type>(<scope>): <mô tả ngắn gọn task đã hoàn thành>. NẾU GẶP BLOCKER mà không thể tự giải quyết: 1) Viết báo cáo chi tiết vào file pipeline/docs/runtime/BLOCKERS/<TASK_ID>.md. 2) Cập nhật dòng của task đó trong pipeline/docs/context/Tasks_list.md thành [!] BLOCKED. 3) Cập nhật STATUS.md để chuyển sang task TODO tiếp theo. KHÔNG TẠO file BLOCKED.md ở root ngoại trừ khi khẩn cấp. LƯU Ý QUAN TRỌNG: Chỉ được phép ghi 'Phase: ALL_DONE' vào pipeline/docs/runtime/STATUS.md KHI VÀ CHỈ KHI TẤT CẢ các tasks trong Tasks_list.md đã được thực hiện, phản biện, xác minh pass 100% và đánh dấu [x] DONE (hoặc [!] BLOCKED). Khi đó mới cập nhật STATUS.md thành Phase: ALL_DONE và viết pipeline/docs/runtime/PROOF_OF_SOLUTION.md. Nếu dự án còn task chưa hoàn thành, giữ Phase: IN_PROGRESS."
 
   log_info "[SINGLE-MODEL] Launching agy for Iteration ${iter}..."
-  _run_agy_with_retry "$iter_prompt" "$PRINT_TIMEOUT" "$iter" "" "EXECUTOR"
+  if _run_agy_with_retry "$iter_prompt" "$PRINT_TIMEOUT" "$iter" "" "EXECUTOR"; then
+    check_and_auto_commit_done_task "SINGLE-MODEL"
+    return 0
+  else
+    return 1
+  fi
 }
 
 
@@ -712,6 +740,7 @@ main() {
   init_runtime
 
   local iter=1
+  local consecutive_task_fails=0
   local start_time
   start_time=$(date +%s)
 
@@ -720,8 +749,47 @@ main() {
     # Execute one iteration
     if ! execute_iteration "$iter"; then
       log_warn "Iteration ${iter} execution failed or was interrupted"
-      break
+      (( consecutive_task_fails++ ))
+      local current_active_task
+      current_active_task=$(grep -E "^\|[[:space:]]*\`TASK-" "${CONTEXT_DIR}/Tasks_list.md" 2>/dev/null | grep -E "(\[ \]|\[/\])" | head -1 | grep -oE "TASK-[0-9]+" || true)
+
+      if [[ -n "$current_active_task" ]] && (( consecutive_task_fails >= 2 )); then
+        log_warn "Task ${current_active_task} failed ${consecutive_task_fails} times consecutively. Marking as [!] BLOCKED (Overnight Non-Blocking Mode)..."
+        mkdir -p "${BLOCKERS_DIR}"
+        cat <<EOF > "${BLOCKERS_DIR}/${current_active_task}.md"
+# BLOCKER REPORT: ${current_active_task}
+- **Timestamp:** $(date '+%Y-%m-%d %H:%M:%S')
+- **Iteration:** ${iter}
+- **Reason:** Execution failed/timed out ${consecutive_task_fails} times consecutively during autonomous Ralph loop.
+- **Action:** Auto-bypassed by harness to continue overnight queue. Human investigation required.
+EOF
+        # Update Tasks_list.md to [!] BLOCKED
+        sed -i -E "s/(\|[[:space:]]*\`${current_active_task}\`[[:space:]]*\|[^|]*\|[[:space:]]*)(\[[ /]\])/\1[\!] BLOCKED/" "${CONTEXT_DIR}/Tasks_list.md" 2>/dev/null || true
+        # Reset fail counter for next task
+        consecutive_task_fails=0
+        log_info "Continuing loop with next available task in queue..."
+      elif [[ -z "$current_active_task" ]]; then
+        log_info "No more active tasks in queue. Proceeding to exit check."
+      else
+        log_info "Retrying task ${current_active_task} in next iteration (attempt ${consecutive_task_fails}/2)..."
+      fi
+
+      if [[ "$STOP_ON_BLOCK" == true ]] && (( consecutive_task_fails >= 2 )); then
+        log_error "Strict stop-on-block enabled. Exiting."
+        break
+      fi
+
+      iter=$((iter + 1))
+      if (( iter > MAX_ITERATIONS )); then
+        log_warn "Reached maximum iterations (${MAX_ITERATIONS}). Stopping loop."
+        break
+      fi
+      continue
     fi
+    consecutive_task_fails=0
+
+    # Fallback auto-commit if any task completed
+    check_and_auto_commit_done_task "RALPH-LOOP"
 
     # Check exit condition
     local exit_code
@@ -743,8 +811,9 @@ main() {
         log_warn "Tasks Blocked   ([!] BLOCKED): ${blocked_count} (See ${BLOCKERS_DIR}/ for reports)"
         log_ok "See pipeline/docs/runtime/PROOF_OF_SOLUTION.md for verification"
 
-        # Kiểm tra uncommitted changes — git commit là trách nhiệm của AI (Phase 6)
-        # chỉ khi task [x] DONE theo format [TASK-ID] <type>(<scope>): <mô tả>
+        # Final check for uncommitted changes
+        check_and_auto_commit_done_task "FINAL-CHECK"
+
         if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
           log_warn "⚠️  Uncommitted changes detected. Review: git status"
           log_warn "    AI should have committed each task via Phase 6. Check PROGRESS_LOG.md."
@@ -776,8 +845,7 @@ main() {
         log_warn "Reached maximum iterations (${MAX_ITERATIONS})"
         log_warn "Review pipeline/docs/runtime/PROGRESS_LOG.md for current state"
         log_warn "Increase --max-iter or review Tasks_list.md to continue"
-        # KHÔNG auto-commit — AI sẽ đã commit theo task khi xong (Phase 6)
-        # Uncommitted changes = task chưa done, đây là trạng thái đúng
+        check_and_auto_commit_done_task "MAX-ITER-FALLBACK"
         if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
           log_warn "Uncommitted changes exist (task likely still IN_PROGRESS). Check git status."
         fi

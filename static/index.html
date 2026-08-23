@@ -122,6 +122,7 @@
           </div>
         </div>
         <div style="display:flex;gap:8px;align-items:center;">
+          <button class="btn btn-sm btn-outline" id="btn-open-explorer-modal">📚 Explore All Topics</button>
           <button class="btn btn-sm btn-primary" id="btn-random-roleplay">🎲 Random</button>
           <button class="btn btn-sm btn-secondary" id="btn-open-custom-modal">➕ Custom</button>
         </div>
@@ -459,6 +460,51 @@
       <div style="display:flex;gap:10px;margin-top:8px;">
         <button class="btn btn-primary" id="btn-save-custom-topic" style="flex:1;">Save Topic</button>
         <button class="btn btn-secondary" id="btn-cancel-custom-modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Topic Explorer -->
+  <div class="modal-overlay" id="modal-topic-explorer">
+    <div class="modal-box topic-explorer-modal-box" style="max-width:850px; width:92%; max-height:85vh; display:flex; flex-direction:column;">
+      <div class="modal-header" style="flex-shrink:0;">
+        <div>
+          <h2 class="modal-title">📚 Roleplay &amp; Speaking Topic Explorer</h2>
+          <p class="modal-subtitle">Explore 30+ curated topics, filter by interest, or search real-time.</p>
+        </div>
+        <button class="btn-close" id="btn-close-explorer-modal">✕</button>
+      </div>
+
+      <!-- Search & Filters Toolbar -->
+      <div class="explorer-toolbar" style="flex-shrink:0; margin-bottom:14px;">
+        <div class="form-group" style="margin-bottom:10px;">
+          <input type="text" id="input-search-explorer" class="form-input" placeholder="🔍 Search by topic title, keywords, or description..." style="font-size:15px; padding:10px 14px;">
+        </div>
+        <div class="category-filter" id="explorer-category-filter">
+          <button class="cat-pill active" data-explorer-cat="all">🌟 All Topics</button>
+          <button class="cat-pill" data-explorer-cat="everyday">☕ Everyday Life</button>
+          <button class="cat-pill" data-explorer-cat="career">💼 Work &amp; Career</button>
+          <button class="cat-pill" data-explorer-cat="travel">✈️ Travel &amp; Culture</button>
+          <button class="cat-pill" data-explorer-cat="social">🎭 Social &amp; Lifestyle</button>
+          <button class="cat-pill" data-explorer-cat="ielts">🎓 IELTS Exam Bank</button>
+        </div>
+      </div>
+
+      <!-- Scrollable Explorer Grid -->
+      <div class="explorer-grid-container" style="flex:1; overflow-y:auto; padding-right:4px;">
+        <div class="scenarios-grid" id="explorer-scenarios-grid">
+          <!-- Rendered dynamically -->
+        </div>
+        <div id="explorer-no-results" style="display:none; text-align:center; padding:32px 16px; color:var(--text-sub);">
+          <div style="font-size:36px; margin-bottom:8px;">🔍</div>
+          <div style="font-weight:600; font-size:16px;">No topics found</div>
+          <div style="font-size:13px; margin-top:4px;">Try searching for different keywords or select 'All Topics'.</div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="flex-shrink:0; margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+        <span id="explorer-count-badge" style="font-size:13px; color:var(--text-sub); font-weight:600;">Showing 0 topics</span>
+        <button class="btn btn-secondary" id="btn-close-explorer-modal-2">Close</button>
       </div>
     </div>
   </div>

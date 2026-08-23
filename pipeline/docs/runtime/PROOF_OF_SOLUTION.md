@@ -1,40 +1,43 @@
 # PROOF OF SOLUTION
-# Bằng chứng giải pháp — TASK-004: Instant Conversational Fillers (<100ms) & Natural TTS Tuning
+# Bằng chứng giải pháp — TASK-007: End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls)
 
 > **Trạng thái:** VERIFIED (Pass 100%) | **Cập nhật:** 2026-08-22
-> **Task ID:** TASK-004
+> **Task ID:** TASK-007
 
 ---
 
 ## 1. Summary of Changes
 
-- **`app/tts_service.py`**:
-  - Tinh chỉnh `CHARACTER_VOICE_MAP` cho tất cả 10 nhân vật ảo (`duo`, `lily`, `oscar`, `viktor`, `chanel`, `kaelen`, `colt`, `zarina`, `scarlet`, `luigi`) với parameter `rate: "+0%"` và `pitch: "+0Hz"`. Giúp giọng Microsoft Edge-TTS tự nhiên, trong trẻo, không bị méo hay trầm đục khi fallback.
-- **`app/main.py`**:
-  - Đảm bảo endpoint `/api/fillers/{character_id}` phục vụ tức thì file audio filler cho từng nhân vật từ `static/audio/fillers/`.
-- **`static/js/audio_fx.js` & `static/js/app.js`**:
-  - `DuoAudioFX` hỗ trợ `playFiller(charId)` kích hoạt phát filler tức thì (<100ms) khi user submit, hiển thị hiệu ứng "AI is thinking...".
-  - Tự động dừng filler qua `stopFiller()` khi main TTS sẵn sàng phát audio response.
-- **`tests/test_tts_fillers.py`**:
-  - Xây dựng unit test suite bao phủ natural voice settings, mapping audio fillers, endpoint `/api/fillers` và `/api/tts`. Tất cả 5 unit tests PASSED 100%.
+- **`tests/test_e2e_conversational_system.py`**:
+  - Xây dựng bộ kiểm thử E2E tích hợp bao phủ 5 kịch bản chính:
+    1. Conversational AI Engine & Empathy Roleplay (Topic Shift, Active Listening, Empathy, Anti-Repetition Context Memory).
+    2. IELTS Exam Read-Then-Speak Recording, Transcribing Sync & DET Score Evaluation Flow.
+    3. Modern Curated Roleplay Hub & Categorized Explorer (Search & Category Filters).
+    4. System Observability, Real-Time API Trace & Health Quota Endpoints.
+    5. TTS Fallback Service, Character Voice Natural Tuning & Instant Audio Fillers (<100ms response).
+- **Files Documentation & System Runtime**:
+  - Cập nhật `pipeline/docs/context/Tasks_list.md` (đánh dấu `[x] DONE` cho `TASK-007`, hoàn thành toàn bộ 7/7 tasks).
+  - Cập nhật `pipeline/docs/runtime/STATUS.md` (Phase: `ALL_DONE`).
+  - Cập nhật `pipeline/docs/runtime/PROGRESS_LOG.md` và `pipeline/docs/runtime/PLAN.md`.
 
 ---
 
 ## 2. Verification Results
 
 ```bash
-pytest tests/test_tts_fillers.py -v
+pytest tests/test_e2e_conversational_system.py -v
 ```
-- **Result:** `5 passed in 2.24s` (100% PASS)
+- **Result:** `6 passed in 5.21s` (100% PASS)
 
 ```bash
 python3 pipeline/scripts/verify.py
 ```
-- **Result:** Status `PASS` (Ruff, Mypy, Bandit, 208 Pytest tests pass 100%).
+- **Result:** Status `PASS` (Ruff lint check pass 100%, Mypy pass on 15 files, Bandit security scan 0 issues, Pytest 223/223 passed 100%).
 
 ---
 
 ## 3. Retrospective
 
-- **What worked well:** Hệ thống phát filler tức thì <100ms loại bỏ hoàn toàn cảm giác chờ đợt "chết" của người học trong lúc chờ LLM & TTS API phản hồi. Giọng Edge-TTS với tần số chuẩn `+0%` rate và `+0Hz` pitch cho chất lượng cực kỳ mượt mà.
-- **Improvements for harness/pipeline:** Tự động hóa kiểm tra cả file tồn tại và API route trong unit tests giúp đảm bảo zero broken assets khi deploy.
+- **What worked well:** Bộ kiểm thử E2E tích hợp toàn diện giúp đảm bảo tất cả các module từ Frontend, Backend, AI Engine, TTS Service đến Logging Trace hoạt động đồng bộ, nhịp nhàng. Chạy deterministic verification `verify.py` tự động phát hiện và ngăn chặn mọi sự cố tiềm ẩn.
+- **Improvements for harness/pipeline:** Quy trình 7 phases với sự phân tách Executor - Reviewer giúp hệ thống đạt độ tin cậy và chuẩn mực sản xuất (Production-ready quality) cao nhất.
+

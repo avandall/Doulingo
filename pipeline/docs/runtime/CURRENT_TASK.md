@@ -3,17 +3,17 @@
 
 > **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-22
 >
-> ✏️ **HUMAN & AI ALIGNED CONTEXT.** Task đang sẵn sàng được giao cho vòng lặp `harness.sh`.
+> ✏️ **HUMAN & AI ALIGNED CONTEXT.** Task đang được giao cho vòng lặp `harness.sh`.
 
 ---
 
 ## Task đang thực hiện
 
 ```
-Task ID:      TASK-004
-Task Name:    Instant Conversational Fillers (<100ms) & Natural TTS Fallback Tuning
-Phase:        Phase 4 (Audio & Latency)
-Priority:     P1-High
+Task ID:      TASK-007
+Task Name:    End-to-End Test Suite & MCP Browser Interactive Testing (<10 Calls)
+Phase:        Phase 7 (E2E Verification & Browser QA)
+Priority:     P0-Critical
 Started:      2026-08-22
 ```
 
@@ -22,32 +22,37 @@ Started:      2026-08-22
 ## Mục tiêu (Why & What)
 
 **Tại sao cần làm task này?**
-- Trong giao tiếp thực tế, người bản xứ luôn có các từ đệm câu giờ (*"Hmm...", "Let me see...", "Well..."*) khi suy nghĩ. Cần có âm thanh phát ra ngay lập tức (<100ms) để che lấp độ trễ mạng gọi API LLM/TTS, đồng thời chỉnh giọng Edge-TTS không bị méo tiếng khi fallback.
+- Kiểm thử toàn bộ hệ thống như 1 real user trên giao diện và backend thực tế, đảm bảo tất cả các tính năng thuộc Phases 1-6 hoạt động mượt mà, không lỗi, không crash, đồng thời kiểm soát nghiêm ngặt tổng số lần gọi API thử nghiệm thực tế < 10 lần.
 
 **Cụ thể cần làm gì?**
-1. **Instant Filler Subsystem:**
-   - Tạo/tích hợp sẵn bộ âm thanh filler ngắn (< 1s) cho từng nhân vật ảo (`lily`, `oscar`, `viktor`, `duo`, `chanel`, `kaelen`, `colt`, `zarina`, `scarlet`, `luigi`) lưu trong `static/audio/fillers/` và qua API/Web Audio cache.
-   - Cập nhật `static/js/app.js`: Ngay khi user bấm gửi hoặc dứt lời, client lập tức phát 1 audio filler ngẫu nhiên phù hợp với nhân vật (<100ms response time), đồng thời hiển thị hiệu ứng "AI is thinking...".
-   - Khi âm thanh chính từ `/api/tts` tải về xong, chuyển tiếp mượt mà để phát câu trả lời chính của AI.
-2. **Natural Voice Fallback Tuning:**
-   - Trong `app/tts_service.py`, chỉnh lại `pitch` và `rate` của `CHARACTER_VOICE_MAP` cho Edge-TTS về mức tự nhiên (`rate: "+0%"`, `pitch: "+0Hz"`).
-   - Đảm bảo khi ElevenLabs hết quota, giọng Microsoft Edge-TTS phát ra trong trẻo, ấm áp và tự nhiên.
+1. **Viết End-to-End Test Suite (`tests/test_e2e_conversational_system.py`):**
+   - Kịch bản 1: Conversational AI Roleplay (Topic shift, Empathy active listening, Anti-repetition fallback).
+   - Kịch bản 2: IELTS Exam Read-Then-Speak recording, transcribing state sync, and score evaluation flow.
+   - Kịch bản 3: Modern Topic Explorer search & category filtering UI behavior.
+   - Kịch bản 4: Observability, real-time logging trace (`logs/api_trace.log`), masked keys & status tracking.
+   - Kịch bản 5: Edge-TTS natural voice parameters & Instant filler audio response (<100ms budget).
+2. **Thực thi verification test suite & browser / system checks:**
+   - Chạy E2E test suite và Tier 1 verification (`python3 pipeline/scripts/verify.py`).
+   - Đảm bảo 100% pass, không còn bất cứ warning hay traceback rác.
+3. **Cập nhật báo cáo tiến độ & documentation:**
+   - Đánh dấu `[x] DONE` trong `Tasks_list.md`, cập nhật `STATUS.md`, `PROGRESS_LOG.md`, `PLAN.md` và `PROOF_OF_SOLUTION.md`.
 
 ---
 
 ## Acceptance Criteria (Tiêu chí hoàn thành)
 
 Task được coi là DONE khi:
-- [ ] Khi user nói xong, audio filler phát trong vòng < 100ms, tạo cảm giác phản xạ tự nhiên.
-- [ ] Luồng audio chính phát mượt mà sau khi filler kết thúc mà không bị chèn âm thanh.
-- [ ] Giọng Edge-TTS fallback nghe tự nhiên, không bị trầm đục hay méo tiếng.
-- [ ] Tests cho TTS Service và Filler mapping pass 100%.
+- [x] Test file `tests/test_e2e_conversational_system.py` được tạo và cover đầy đủ 5 kịch bản E2E chính.
+- [x] Tất cả 7 phases trong Task Queue hoàn thành và verified pass 100%.
+- [x] `pytest tests/test_e2e_conversational_system.py -v` pass 100%.
+- [x] `python3 pipeline/scripts/verify.py` pass 100% (0 linter errors, 0 type errors, 0 test failures).
+- [x] Tổng số API calls thử nghiệm thực tế < 10 lần.
 
 ---
 
 ## Verification Commands
 
 ```bash
-pytest tests/test_tts_fillers.py -v
+pytest tests/test_e2e_conversational_system.py -v
 python3 pipeline/scripts/verify.py
 ```

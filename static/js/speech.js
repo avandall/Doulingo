@@ -14,6 +14,7 @@ class SpeechHandler {
     this.onStateChange = onStateChangeCallback;
     this.finalTranscript = '';
     this.lastRecognizedText = '';
+    this.isTranscribing = false;
     this.isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
     this._initSpeech();
@@ -253,6 +254,7 @@ class SpeechHandler {
   }
 
   async _submitTranscribeAudio(audioBlob, fallbackText) {
+    this.isTranscribing = true;
     try {
       const formData = new FormData();
       formData.append('file', audioBlob, 'user_speech.webm');
@@ -271,6 +273,8 @@ class SpeechHandler {
       }
     } catch (e) {
       console.warn('[SpeechHandler] Audio transcribe API fallback to local STT:', e);
+    } finally {
+      this.isTranscribing = false;
     }
     if (fallbackText && this.onResult) {
       this.onResult(fallbackText, true);
