@@ -6,12 +6,12 @@ Unit tests for app.prompt_constructor (TASK-006).
 
 import time
 
-from app.prompt_constructor import (
+from app.rag.prompt_constructor import (
     PromptContext,
     construct_messages,
     construct_system_prompt,
 )
-from app.retrieval import RetrievedDialogue
+from app.rag.retrieval import RetrievedDialogue
 
 
 def test_construct_system_prompt_with_retrieved_dialogues() -> None:

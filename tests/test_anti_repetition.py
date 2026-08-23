@@ -8,7 +8,7 @@ import time
 
 import pytest
 
-from app.anti_repetition import (
+from app.core.anti_repetition import (
     check_repetition,
     check_user_repetition,
     cosine_similarity,
@@ -16,7 +16,7 @@ from app.anti_repetition import (
     fetch_user_history_utterances,
     get_embedding,
 )
-from app.db import get_db_connection, init_db
+from app.storage.db import get_db_connection, init_db
 
 
 def test_cosine_similarity_edge_cases():

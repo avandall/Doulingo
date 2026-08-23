@@ -8,7 +8,7 @@ from typing import Any
 import pytest
 from fastapi.testclient import TestClient
 
-from app.ai_engine import ai_engine
+from app.core.ai_engine import ai_engine
 from app.main import app
 
 client = TestClient(app)

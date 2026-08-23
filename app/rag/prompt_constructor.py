@@ -4,7 +4,7 @@ app/prompt_constructor.py
 Prompt Constructor Engine v1 (TASK-006).
 
 Assembles User Profile context, target IELTS band level, retrieved RAG reference dialogues
-(from app.retrieval), anti-verbatim repetition rules, follow-up question constraints,
+(from app.rag.retrieval), anti-verbatim repetition rules, follow-up question constraints,
 and structured JSON output schema into an optimal System Prompt for the Conversational Agent (TASK-007).
 """
 
@@ -13,7 +13,6 @@ import time
 from dataclasses import dataclass, field
 from typing import Any
 
-from app.core.persona_memory import format_entity_memory_for_prompt, get_persona_identity
 from app.rag.retrieval import RetrievedDialogue
 
 log = logging.getLogger(__name__)
@@ -28,9 +27,6 @@ You MUST output ONLY a valid, raw JSON object matching the following structure e
   "difficulty_adjustment": "<'increase' | 'hold' | 'decrease'>"
 }
 """
-
-
-from app.core.level_config import LEVEL_CONFIGS
 
 
 @dataclass
@@ -64,6 +60,9 @@ def construct_system_prompt(context: PromptContext) -> str:
     Constructs the complete System Prompt for the Conversational Agent.
     Assembly execution time target: < 5ms.
     """
+    from app.core.level_config import LEVEL_CONFIGS
+    from app.core.persona_memory import format_entity_memory_for_prompt, get_persona_identity
+
     start_time = time.perf_counter()
 
     persona = get_persona_identity(context.character_name or "Lily")

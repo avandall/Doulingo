@@ -8,7 +8,7 @@ import sqlite3
 
 import pytest
 
-from app.prompt_constructor import PromptContext, construct_system_prompt
+from app.rag.prompt_constructor import PromptContext, construct_system_prompt
 from app.scenarios import (
     DEFAULT_SCENARIOS,
     RealWorldSimulationEngine,

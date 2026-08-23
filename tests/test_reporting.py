@@ -7,9 +7,9 @@ import uuid
 import pytest
 from fastapi.testclient import TestClient
 
-from app.db import init_db, save_user_profile
+from app.storage.db import init_db, save_user_profile
 from app.main import app
-from app.reporting import generate_weekly_report, save_tier2_evaluation
+from app.analytics.reporting import generate_weekly_report, save_tier2_evaluation
 from app.scoring.tier2_deep import Tier2ScoreResult
 
 

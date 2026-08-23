@@ -4,8 +4,8 @@ Unit tests for Cold-Start Diagnostic Probe System (TASK-014)
 
 import pytest
 
-import app.db as db_module
-from app.db import get_user_profile
+import app.storage.db as db_module
+from app.storage.db import get_user_profile
 from app.scoring.cold_start import (
     COLD_START_ALPHA,
     COLD_START_TURNS,

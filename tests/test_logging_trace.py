@@ -11,8 +11,8 @@ import os
 import unittest
 from unittest.mock import MagicMock, patch
 
-from app.ai_engine import KEY_STATUS_CACHE, ai_engine, log_api_trace, mask_api_key
-from app.tts_service import (
+from app.core.ai_engine import KEY_STATUS_CACHE, ai_engine, log_api_trace, mask_api_key
+from app.audio.tts_service import (
     generate_elevenlabs_tts_multi_key,
 )
 
@@ -57,7 +57,7 @@ class TestLoggingTraceSystem(unittest.TestCase):
         self.assertEqual(health["key_statuses"][masked_key]["status"], "EXHAUSTED")
         self.assertEqual(health["key_statuses"][masked_key]["step"], "TTS")
 
-    @patch("app.tts_service.requests.post")
+    @patch("app.audio.tts_service.requests.post")
     def test_elevenlabs_multi_key_rotation(self, mock_post):
         mock_response_429 = MagicMock()
         mock_response_429.status_code = 429

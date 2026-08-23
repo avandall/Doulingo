@@ -1,4 +1,4 @@
-from app.ai_engine import ai_engine
+from app.core.ai_engine import ai_engine
 from app.scenarios import list_scenarios
 
 

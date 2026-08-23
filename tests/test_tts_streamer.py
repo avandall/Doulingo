@@ -5,7 +5,7 @@ Unit tests for TTS Audio Output Streamer in app/tts_streamer.py.
 import asyncio
 from unittest.mock import MagicMock, patch
 
-from app.tts_streamer import (
+from app.audio.tts_streamer import (
     TTSStreamer,
     TTSStreamResult,
     generate_audio_response,
@@ -16,7 +16,7 @@ from app.tts_streamer import (
 def test_generate_audio_success():
     """Verify batch audio generation returns valid TTSStreamResult."""
     streamer = TTSStreamer()
-    with patch("app.tts_streamer.generate_tts_mp3", return_value=MagicMock(getvalue=lambda: b"fake_mp3_bytes_stream")):
+    with patch("app.audio.tts_streamer.generate_tts_mp3", return_value=MagicMock(getvalue=lambda: b"fake_mp3_bytes_stream")):
         result = streamer.generate_audio("Hello, welcome to Duolingo Speak!", char_id="lily")
 
         assert isinstance(result, TTSStreamResult)
@@ -53,7 +53,7 @@ def test_generate_audio_empty_text():
 def test_generate_audio_exception_fallback():
     """Verify exceptions during TTS synthesis log error and fallback to text_only_mode."""
     streamer = TTSStreamer()
-    with patch("app.tts_streamer.generate_tts_mp3", side_effect=RuntimeError("TTS Provider Error")):
+    with patch("app.audio.tts_streamer.generate_tts_mp3", side_effect=RuntimeError("TTS Provider Error")):
         result = streamer.generate_audio("Test audio failure", char_id="lily")
 
         assert isinstance(result, TTSStreamResult)
@@ -71,7 +71,7 @@ def test_stream_audio_chunks_success():
     async def _run():
         streamer = TTSStreamer()
         chunks = []
-        with patch("app.tts_streamer.stream_tts_mp3_chunks", side_effect=mock_async_stream):
+        with patch("app.audio.tts_streamer.stream_tts_mp3_chunks", side_effect=mock_async_stream):
             async for chunk in streamer.stream_audio_chunks("Short phrase for streaming test"):
                 chunks.append(chunk)
                 if len(chunks) >= 2:
@@ -106,7 +106,7 @@ def test_stream_audio_chunks_exception_fallback():
     async def _run():
         streamer = TTSStreamer()
         chunks = []
-        with patch("app.tts_streamer.stream_tts_mp3_chunks", side_effect=mock_failed_stream):
+        with patch("app.audio.tts_streamer.stream_tts_mp3_chunks", side_effect=mock_failed_stream):
             async for chunk in streamer.stream_audio_chunks("Testing stream error"):
                 chunks.append(chunk)
         return chunks

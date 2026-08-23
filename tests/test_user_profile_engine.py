@@ -4,9 +4,9 @@ Unit tests for app/user_profile_engine.py (TASK-013)
 
 import pytest
 
-import app.db as db_module
-from app.db import get_user_profile
-from app.user_profile_engine import (
+import app.storage.db as db_module
+from app.storage.db import get_user_profile
+from app.analytics.user_profile_engine import (
     BAND_MAX,
     BAND_MIN,
     FLOOR_ALPHA,

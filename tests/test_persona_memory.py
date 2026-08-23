@@ -8,8 +8,8 @@ import time
 
 import pytest
 
-from app.db import init_db
-from app.persona_memory import (
+from app.storage.db import init_db
+from app.core.persona_memory import (
     extract_entities_from_turn,
     format_entity_memory_for_prompt,
     get_persona_identity,
@@ -17,7 +17,7 @@ from app.persona_memory import (
     save_user_entity_memory,
     update_user_memory_from_turn,
 )
-from app.prompt_constructor import PromptContext, construct_system_prompt
+from app.rag.prompt_constructor import PromptContext, construct_system_prompt
 
 
 @pytest.fixture(autouse=True)
@@ -26,7 +26,7 @@ def setup_test_db(tmp_path, monkeypatch):
     Sets up a clean temporary SQLite database for testing.
     """
     db_file = tmp_path / "test_duolingo.db"
-    monkeypatch.setattr("app.db.DB_PATH", db_file)
+    monkeypatch.setattr("app.storage.db.DB_PATH", db_file)
     init_db()
     yield db_file
 

@@ -65,7 +65,7 @@ def test_import_custom_scenarios():
     assert exported_data["scenario"]["title"] == "Shared Coffee Chat"
 
     # Clean up test scenario from DB
-    from app.db import delete_custom_scenario
+    from app.storage.db import delete_custom_scenario
     delete_custom_scenario(imported_sc["id"])
 
 

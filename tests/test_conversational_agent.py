@@ -7,12 +7,12 @@ Unit tests for app/conversational_agent.py (TASK-007).
 import json
 from unittest.mock import MagicMock
 
-from app.conversational_agent import (
+from app.core.conversational_agent import (
     ConversationalAgent,
     ConversationalResponse,
     parse_conversational_response,
 )
-from app.prompt_constructor import PromptContext
+from app.rag.prompt_constructor import PromptContext
 
 
 def test_parse_valid_json_response():

@@ -7,7 +7,7 @@ import asyncio
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.tts_service import stream_tts_mp3_chunks
+from app.audio.tts_service import stream_tts_mp3_chunks
 
 client = TestClient(app)
 

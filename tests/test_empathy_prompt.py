@@ -6,8 +6,8 @@ open question mandates, and empathetic feedback structure across PromptFactory a
 
 import unittest
 
-from app.ai_engine import AIEngine
-from app.prompt_factory import get_prompt_factory
+from app.core.ai_engine import AIEngine
+from app.rag.prompt_factory import get_prompt_factory
 
 
 class TestEmpathyPrompt(unittest.TestCase):

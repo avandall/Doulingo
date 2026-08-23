@@ -7,8 +7,8 @@ diversity of sampled outputs, and safety fallback behavior for non-existent topi
 import time
 import unittest
 
-from app.material_bank import MaterialBank, get_material_bank
-from app.prompt_factory import PromptFactory, get_prompt_factory
+from app.rag.material_bank import MaterialBank, get_material_bank
+from app.rag.prompt_factory import PromptFactory, get_prompt_factory
 
 
 class TestPromptFactory(unittest.TestCase):

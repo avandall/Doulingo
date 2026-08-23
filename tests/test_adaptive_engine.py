@@ -8,7 +8,7 @@ import sqlite3
 
 import pytest
 
-from app.adaptive_engine import (
+from app.core.adaptive_engine import (
     BanditDifficultyEngine,
     SpacedRepetitionEngine,
     recommend_adaptive_pool,

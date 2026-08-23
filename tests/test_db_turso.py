@@ -2,7 +2,7 @@
 Unit tests for app/db.py — Turso Cloud SQLite integration & local fallback
 """
 
-from app.db import (
+from app.storage.db import (
     add_custom_scenario,
     add_user_xp,
     get_all_saved_words,

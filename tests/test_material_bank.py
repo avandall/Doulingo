@@ -8,7 +8,7 @@ import os
 import tempfile
 import unittest
 
-from app.material_bank import (
+from app.rag.material_bank import (
     GrammarPattern,
     MaterialBank,
     Persona,

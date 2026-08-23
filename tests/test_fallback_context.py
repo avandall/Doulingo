@@ -1,4 +1,4 @@
-from app.ai_engine import LEVEL_CONFIGS, ai_engine
+from app.core.ai_engine import LEVEL_CONFIGS, ai_engine
 
 
 def test_context_aware_fallback_negative_sentiment():

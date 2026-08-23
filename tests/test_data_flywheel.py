@@ -7,7 +7,7 @@ import sqlite3
 
 import pytest
 
-from app.data_flywheel import (
+from app.analytics.data_flywheel import (
     TurnData,
     blob_to_floats,
     check_dedup,

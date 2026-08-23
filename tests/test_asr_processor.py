@@ -7,7 +7,7 @@ import time
 
 import pytest
 
-from app.asr_processor import ASRChunkResult, StreamingSessionState, WordTimestamp
+from app.audio.asr_processor import ASRChunkResult, StreamingSessionState, WordTimestamp
 
 
 def generate_dummy_pcm(duration_sec: float, sample_rate: int = 16000, sample_width: int = 2) -> bytes:

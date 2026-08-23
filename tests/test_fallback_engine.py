@@ -6,7 +6,7 @@ Unit and Integration Tests for Dynamic Anti-Repetition Fallback Engine with Topi
 
 import re
 
-from app.ai_engine import LEVEL_CONFIGS, ai_engine
+from app.core.ai_engine import LEVEL_CONFIGS, ai_engine
 
 
 def _compute_jaccard_similarity(s1: str, s2: str) -> float:

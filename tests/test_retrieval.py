@@ -8,7 +8,7 @@ import sqlite3
 
 import pytest
 
-from app.retrieval import (
+from app.rag.retrieval import (
     blob_to_floats,
     compute_band_window,
     cosine_similarity,
