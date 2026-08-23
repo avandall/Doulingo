@@ -7,7 +7,7 @@ Clean, simple UI titles with open-ended creative story seeds for AI improvisatio
 import logging
 from typing import Any
 
-from app.db import get_custom_scenarios
+from app.storage.db import get_custom_scenarios
 
 logger = logging.getLogger(__name__)
 
@@ -346,7 +346,7 @@ def list_scenarios() -> list[dict[str, Any]]:
 
     # 2. Material Bank Topics
     try:
-        from app.material_bank import get_material_bank
+        from app.rag.material_bank import get_material_bank
         mb = get_material_bank()
         for topic in mb.topics.values():
             vocab_preview = [v.phrase for v in topic.vocabulary[:5]]
@@ -387,7 +387,7 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
 
     # 3. Check Material Bank topics
     try:
-        from app.material_bank import get_material_bank
+        from app.rag.material_bank import get_material_bank
         mb_topic = get_material_bank().get_topic(scenario_id)
         if mb_topic:
             vocab_preview = [v.phrase for v in mb_topic.vocabulary[:5]]

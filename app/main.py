@@ -24,11 +24,10 @@ from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from app.ai_engine import ai_engine
-from app.asr_processor import ASRChunkResult, StreamingSessionState
+from app.core import ConversationalAgent, ai_engine
+from app.audio import ASRChunkResult, StreamingSessionState, TTSStreamer, generate_tts_mp3, get_character_filler_path
 from app.characters import get_character, list_characters
-from app.conversational_agent import ConversationalAgent
-from app.db import (
+from app.storage import (
     add_custom_scenario,
     add_user_xp,
     get_all_saved_words,
@@ -38,12 +37,10 @@ from app.db import (
     get_user_stats,
     save_translated_word,
 )
-from app.prompt_constructor import PromptContext
-from app.reporting import generate_weekly_report
-from app.retrieval import compute_band_window, retrieve_dialogues
+from app.dictionary import DictionaryService
+from app.rag import PromptContext, compute_band_window, retrieve_dialogues
+from app.analytics import generate_weekly_report
 from app.scenarios import get_scenario, list_scenarios
-from app.tts_service import generate_tts_mp3, get_character_filler_path
-from app.tts_streamer import TTSStreamer
 
 logger = logging.getLogger("duolingo_speak.api")
 
@@ -532,11 +529,12 @@ def api_translate_sentence(payload: SentenceTranslateRequest):
     )
     if not translation:
         translation = ai_engine._fallback_llm_translate(text)
-    if not translation:
-        translation = text  # Show original if all LLMs fail
 
-    SENTENCE_TRANSLATION_CACHE[cache_key] = translation
-    return {"translation": translation, "cached": False}
+    if translation and translation.strip() != text.strip():
+        SENTENCE_TRANSLATION_CACHE[cache_key] = translation
+        return {"translation": translation, "cached": False}
+
+    return {"translation": text, "cached": False}
 
 @app.post("/api/det/evaluate_speech")
 async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
@@ -597,7 +595,7 @@ def api_translate_word(
 ):
     """
     High-Quality Natural Dictionary Lookup Endpoint.
-    Uses dt=bd parameter to fetch natural, accurate dictionary meanings.
+    Prioritizes Offline Local Dictionary (0ms), then DB Cache, then Online API.
     """
     clean_word = word.strip().strip(".,!?;:\"'()[]{}")
     if not clean_word:
@@ -612,7 +610,7 @@ def api_translate_word(
     }
 
     # 1. Check RAM Cache (0ms response)
-    if cache_key in TRANSLATION_CACHE:
+    if cache_key in TRANSLATION_CACHE and not TRANSLATION_CACHE[cache_key].lower().startswith("definition of"):
         return {
             "word": clean_word,
             "target_lang": target_lang,
@@ -621,16 +619,33 @@ def api_translate_word(
             "phonetic": IPA_CACHE.get(clean_word.lower(), f"/{clean_word.lower()}/")
         }
 
-    # 2. Check Permanent SQLite Database
+    # 2. Check Offline Local Dictionary (data/dictionary.db, data/dictionary.json, or core_dictionary table)
+    if target_lang == "vi":
+        offline_match = DictionaryService.lookup(clean_word)
+        if offline_match and offline_match.get("translation"):
+            trans = offline_match["translation"]
+            ipa = offline_match.get("phonetic") or f"/{clean_word.lower()}/"
+            TRANSLATION_CACHE[cache_key] = trans
+            IPA_CACHE[clean_word.lower()] = ipa
+            return {
+                "word": clean_word,
+                "target_lang": target_lang,
+                "target_label": lang_labels.get(target_lang, "Translation"),
+                "translation": trans,
+                "phonetic": ipa,
+                "pos": offline_match.get("pos", "")
+            }
+
+    # 3. Check Permanent SQLite Database
     db_word = get_translated_word(clean_word, target_lang)
-    if db_word:
+    if db_word and db_word.get("translation") and not db_word["translation"].lower().startswith("definition of"):
         TRANSLATION_CACHE[cache_key] = db_word["translation"]
         IPA_CACHE[clean_word.lower()] = db_word["phonetic"]
         return db_word
 
-    # 3. High-Quality Dictionary API Lookup (dt=t & dt=bd for natural everyday terms)
+    # 4. Fallback: High-Quality Dictionary API Lookup (dt=t & dt=bd for natural everyday terms)
     tl_code = target_lang if target_lang != "en-def" else "en"
-    real_translation = f"Definition of '{clean_word}'"
+    real_translation = ""
     try:
         gt_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={tl_code}&dt=t&dt=bd&q={quote(clean_word)}"
         gt_res = requests.get(gt_url, timeout=4)
@@ -670,16 +685,20 @@ def api_translate_word(
     except Exception as e:
         logger.warning(f"[Translate Word] Dictionary API error: {e}")
 
-    # Save permanently into SQLite DB & RAM Cache
-    save_translated_word(
-        word=clean_word,
-        target_lang=target_lang,
-        target_label=lang_labels.get(target_lang, "Translation"),
-        translation=real_translation,
-        phonetic=real_ipa
-    )
-    TRANSLATION_CACHE[cache_key] = real_translation
-    IPA_CACHE[clean_word.lower()] = real_ipa
+    if not real_translation:
+        real_translation = clean_word.capitalize()
+
+    # Save permanently into SQLite DB & RAM Cache ONLY if valid
+    if real_translation and not real_translation.lower().startswith("definition of"):
+        save_translated_word(
+            word=clean_word,
+            target_lang=target_lang,
+            target_label=lang_labels.get(target_lang, "Translation"),
+            translation=real_translation,
+            phonetic=real_ipa
+        )
+        TRANSLATION_CACHE[cache_key] = real_translation
+        IPA_CACHE[clean_word.lower()] = real_ipa
 
     return {
         "word": clean_word,
