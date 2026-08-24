@@ -266,8 +266,9 @@ class SpeechHandler {
       if (res.ok) {
         const data = await res.json();
         const finalTx = (data.transcript || fallbackText).trim();
+        const speechMetrics = data.speech_metrics || null;
         if (finalTx && this.onResult) {
-          this.onResult(finalTx, true);
+          this.onResult(finalTx, true, speechMetrics);
           return;
         }
       }
@@ -277,7 +278,7 @@ class SpeechHandler {
       this.isTranscribing = false;
     }
     if (fallbackText && this.onResult) {
-      this.onResult(fallbackText, true);
+      this.onResult(fallbackText, true, null);
     }
   }
 

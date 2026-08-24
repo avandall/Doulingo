@@ -1,5 +1,5 @@
 """Chat & Turn Pydantic Models."""
-from pydantic import BaseModel
+from typing import Any
 
 
 class TurnRequest(BaseModel):
@@ -8,6 +8,7 @@ class TurnRequest(BaseModel):
     user_transcript: str
     conversation_history: list[dict[str, str]] = []
     level: int | None = 1
+    speech_metrics: dict[str, Any] | None = None
 
 
 class ChatRequest(BaseModel):
@@ -17,6 +18,7 @@ class ChatRequest(BaseModel):
     character_id: str | None = None
     conversation_history: list[dict[str, str]] = []
     level: int | None = 1
+    speech_metrics: dict[str, Any] | None = None
 
 
 class StartScenarioRequest(BaseModel):

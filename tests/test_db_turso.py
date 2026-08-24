@@ -75,6 +75,20 @@ def test_word_dictionary_crud():
     assert any(w["word"] == "eloquent" for w in all_words)
 
 
+def test_untranslated_word_prevention():
+    """Verify that saving raw untranslated word is rejected and filtered."""
+    test_w = "untranslateddummyword"
+    save_translated_word(test_w, "vi", "Tiếng Việt", test_w, "/test/")
+    assert get_translated_word(test_w, "vi") is None
+
+    save_translated_word(test_w, "vi", "Tiếng Việt", "Từ giả lập", "/test/")
+    res = get_translated_word(test_w, "vi")
+    assert res is not None
+    assert res["translation"] == "Từ giả lập"
+
+
+
+
 def test_user_stats_and_xp():
     """Test retrieving user stats and adding XP."""
     stats = get_user_stats()

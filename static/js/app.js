@@ -80,7 +80,7 @@ class DuoSpeakApp {
 
     // Setup speech handler
     this.speechHandler = new SpeechHandler(
-      (transcript, isFinal) => this.handleSpeechResult(transcript, isFinal),
+      (transcript, isFinal, speechMetrics) => this.handleSpeechResult(transcript, isFinal, speechMetrics),
       (state, detail) => this.handleSpeechStateChange(state, detail)
     );
     this.speechHandler.onVolumeChange = (vol) => this.handleVolumeChange(vol);
@@ -503,7 +503,7 @@ class DuoSpeakApp {
   // ============================================================
   // PROCESS TURN (USER SPEAKS → AI REPLIES)
   // ============================================================
-  async submitSpokenTurn(userTranscript) {
+  async submitSpokenTurn(userTranscript, speechMetrics = null) {
     if (!userTranscript.trim()) return;
     if (!this.currentScenario) return;
 
@@ -545,7 +545,8 @@ class DuoSpeakApp {
           character_id: charId,
           user_transcript: userTranscript,
           conversation_history: this.conversationHistory.slice(-10), // last 10 msgs
-          level: this.currentLevel
+          level: this.currentLevel,
+          speech_metrics: speechMetrics
         })
       });
 
@@ -585,7 +586,7 @@ class DuoSpeakApp {
       await this.playTTS(aiResponse, charId);
 
       // Show feedback sheet
-      this.showFeedbackSheet(fluencyScore, nativeSuggestion, xpGained);
+      this.showFeedbackSheet(fluencyScore, nativeSuggestion, xpGained, feedback);
 
       // Update XP display
       const xpEl = document.getElementById('stat-xp-count');
@@ -682,7 +683,7 @@ class DuoSpeakApp {
   // ============================================================
   // SPEECH HANDLERS
   // ============================================================
-  handleSpeechResult(transcript, isFinal) {
+  handleSpeechResult(transcript, isFinal, speechMetrics = null) {
     const transcriptEl = document.getElementById('transcript-display');
     if (transcriptEl) {
       transcriptEl.textContent = transcript || 'Listening...';
@@ -691,14 +692,12 @@ class DuoSpeakApp {
 
     const cleanText = (transcript || '').trim();
 
+    // Auto-submit immediately when mic finishes recording (no manual review click needed)
     if (isFinal && cleanText) {
-      // Show review box for editing before sending
       const reviewBox = document.getElementById('transcript-review-box');
-      const reviewInput = document.getElementById('review-speech-input');
-      if (reviewBox && reviewInput) {
-        reviewInput.value = cleanText;
-        reviewBox.style.display = 'block';
-      }
+      if (reviewBox) reviewBox.style.display = 'none';
+
+      this.submitSpokenTurn(cleanText, speechMetrics);
     }
 
     // DET mode: accumulate speech from interim & final results
@@ -909,7 +908,7 @@ class DuoSpeakApp {
   // ============================================================
   // FEEDBACK SHEET
   // ============================================================
-  showFeedbackSheet(score, nativeSuggestion, xp) {
+  showFeedbackSheet(score, nativeSuggestion, xp, feedbackObj = null) {
     const sheet = document.getElementById('feedback-sheet');
     const emojiEl = document.getElementById('feedback-emoji');
     const titleEl = document.getElementById('feedback-title-text');
@@ -928,14 +927,24 @@ class DuoSpeakApp {
       if (titleEl) titleEl.textContent = 'Keep Practicing!';
     }
 
-    if (scoreBadge) scoreBadge.textContent = `Score: ${score}/100`;
-    if (nativeEl) nativeEl.textContent = `"${nativeSuggestion}"`;
+    let badgeText = `Score: ${score}/100`;
+    if (feedbackObj && feedbackObj.wpm) {
+      badgeText += ` | ${feedbackObj.wpm} WPM`;
+    }
+    if (scoreBadge) scoreBadge.textContent = badgeText;
+    if (nativeEl) {
+      let sugText = `"${nativeSuggestion}"`;
+      if (feedbackObj && feedbackObj.acoustic_feedback) {
+        sugText += ` (${feedbackObj.acoustic_feedback})`;
+      }
+      nativeEl.textContent = sugText;
+    }
     if (xpEl) xpEl.textContent = `⚡ +${xp} XP`;
 
     if (sheet) {
       sheet.classList.add('active');
-      // Auto-close after 4 seconds
-      setTimeout(() => sheet.classList.remove('active'), 4000);
+      // Auto-close after 5 seconds
+      setTimeout(() => sheet.classList.remove('active'), 5000);
     }
   }
 

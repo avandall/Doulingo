@@ -12,14 +12,14 @@
 ## Part 1: What is the problem you are solving?
 
 ### 1. Problem Statement (3 Sentences)
-My girlfrieng want to practice speaking, but apps like Duolingo do not provide enough practice for speaking and not customizable. So I do one. Not my first project, but the first I published and deployed on Render.
+My girlfriend want to practice speaking, but apps like Duolingo do not provide enough practice for speaking and not customizable. So I do one. Not my first project, but the first I published and deployed on Render.
 
 ### 2. Target Audience
 * **IELTS Candidates:** Students aiming for Band 6.0–8.5 needing daily realistic mock test practice across Part 1, Part 2, and Part 3 topics.
 * **Working Professionals:** Non-native English speakers wanting to improve spontaneous workplace fluency without fear of judgment.
 
 ### 3. The 10x Claim
-**Quantifiable Metric:** Reduces IELTS Speaking practice cost by **100%** ($0 vs $20/hr tutoring) while eliminating wait time (0s on-demand access 24/7), providing instant 0ms dictionary lookup and real-time pronunciation scoring per turn.
+**To do:** Authentication (OAuth), PDF reporting and more scenarios data from real books. Now Only from 25 books into DB for RAG.
 
 ### 4. Explicit Non-Goal (Scope Boundary)
 **Non-Goal:** This system focuses **exclusively on Speaking Practice, IELTS Exam Simulation, and Real-Time Audio-driven AI Roleplay**. It explicitly does **NOT** build a multi-skill English course platform (no reading comprehension drills, no written essay grading, no flashcard mini-games).

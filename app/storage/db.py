@@ -110,8 +110,13 @@ def init_db():
         )
     """)
 
-    # Cleanup any corrupt placeholder translations from past failed requests
-    cursor.execute("DELETE FROM word_dictionary WHERE translation LIKE 'Definition of %' OR translation LIKE 'definition of %'")
+    # Cleanup any corrupt placeholder translations from past failed requests or untranslated original words
+    cursor.execute("""
+        DELETE FROM word_dictionary 
+        WHERE translation LIKE 'Definition of %' 
+           OR translation LIKE 'definition of %'
+           OR LOWER(TRIM(translation)) = LOWER(TRIM(word))
+    """)
     cursor.execute("DROP TABLE IF EXISTS core_dictionary")
 
     # Table 3: Saved Vocabulary List
@@ -447,17 +452,19 @@ def get_custom_scenarios() -> list[dict[str, Any]]:
 
 
 def save_translated_word(word: str, target_lang: str, target_label: str, translation: str, phonetic: str):
-    """Save word translation permanently into DB (skips corrupt placeholders)."""
-    if not translation or translation.lower().startswith("definition of"):
+    """Save word translation permanently into DB (skips corrupt placeholders or untranslated words)."""
+    clean_w = word.strip()
+    clean_trans = translation.strip()
+    if not clean_trans or clean_trans.lower().startswith("definition of") or clean_trans.lower() == clean_w.lower():
         return
     init_db()
     conn = get_db_connection()
     cursor = conn.cursor()
-    word_key = f"{word.strip().lower()}_{target_lang}"
+    word_key = f"{clean_w.lower()}_{target_lang}"
     cursor.execute("""
         INSERT OR REPLACE INTO word_dictionary (word_key, word, target_lang, target_label, translation, phonetic)
         VALUES (?, ?, ?, ?, ?, ?)
-    """, (word_key, word.strip(), target_lang, target_label, translation, phonetic))
+    """, (word_key, clean_w, target_lang, target_label, clean_trans, phonetic))
     conn.commit()
     conn.close()
 
@@ -467,18 +474,21 @@ def get_translated_word(word: str, target_lang: str) -> dict[str, str] | None:
     init_db()
     conn = get_db_connection()
     cursor = conn.cursor()
-    word_key = f"{word.strip().lower()}_{target_lang}"
+    clean_w = word.strip()
+    word_key = f"{clean_w.lower()}_{target_lang}"
     cursor.execute("SELECT * FROM word_dictionary WHERE word_key = ?", (word_key,))
     row = _fetch_one_dict(cursor)
     conn.close()
     if row:
-        return {
-            "word": row["word"],
-            "target_lang": row["target_lang"],
-            "target_label": row["target_label"],
-            "translation": row["translation"],
-            "phonetic": row["phonetic"]
-        }
+        trans = str(row.get("translation", "")).strip()
+        if trans and not trans.lower().startswith("definition of") and trans.lower() != clean_w.lower():
+            return {
+                "word": row["word"],
+                "target_lang": row["target_lang"],
+                "target_label": row["target_label"],
+                "translation": trans,
+                "phonetic": row["phonetic"]
+            }
     return None
 
 

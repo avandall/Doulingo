@@ -240,6 +240,7 @@ def api_process_turn(payload: TurnRequest):
             user_transcript=payload.user_transcript,
             conversation_history=payload.conversation_history,
             level=payload.level or 1,
+            speech_metrics=payload.speech_metrics,
         )
         return result
     except Exception as e:
@@ -260,6 +261,7 @@ def api_chat(payload: ChatRequest):
             user_transcript=input_text,
             conversation_history=payload.conversation_history,
             level=payload.level or 1,
+            speech_metrics=payload.speech_metrics,
         )
         ai_resp = result.get("ai_response", "")
         audio_url = f"/api/tts?text={quote(ai_resp[:200])}&character_id={payload.character_id or 'lily'}"

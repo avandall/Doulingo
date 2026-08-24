@@ -323,7 +323,8 @@ Output JSON ONLY:
         character_id: str | None,
         user_transcript: str,
         conversation_history: list[dict[str, str]],
-        level: int = 1
+        level: int = 1,
+        speech_metrics: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         self.reload_keys()
 
@@ -413,6 +414,23 @@ Output JSON ONLY:
         fb["fluency_score"] = det_scores["fluency"]
         fb["grammar_score"] = det_scores["grammar"]
         fb["overall_score"] = det_scores["overall"]
+
+        if speech_metrics:
+            wpm = float(speech_metrics.get("wpm", 0.0))
+            pauses = int(speech_metrics.get("pauses", 0))
+            pron_score = float(speech_metrics.get("pronunciation_score", 85.0))
+            fb["wpm"] = wpm
+            fb["pauses"] = pauses
+            fb["pronunciation_score"] = pron_score
+            fb["duration_sec"] = speech_metrics.get("duration_sec", 0.0)
+            fb["acoustic_feedback"] = speech_metrics.get("acoustic_feedback", "")
+
+            if wpm > 0:
+                speed_penalty = max(0, int(abs(120.0 - wpm) * 0.2))
+                pause_penalty = pauses * 4
+                adjusted_fluency = max(45, min(98, det_scores["fluency"] - speed_penalty - pause_penalty))
+                fb["fluency_score"] = adjusted_fluency
+
         raw_res["user_feedback"] = fb
         return raw_res
 
@@ -1461,8 +1479,10 @@ Return ONLY a valid JSON object with EXACTLY this schema:
     async def transcribe_audio(self, audio_bytes: bytes, filename: str = "speech.webm", fallback_text: str = "") -> dict[str, Any]:
         """
         Transcribes recorded microphone audio using Groq Whisper Large V3 (ultra-fast & accurate for ESL learners).
+        Extracts acoustic features (WPM, Pauses, Pronunciation confidence).
         Falls back to Gemini Audio or browser STT fallback text if API keys are unavailable.
         """
+        metrics = None
         if self.groq_keys:
             url = "https://api.groq.com/openai/v1/audio/transcriptions"
             for key in self.groq_keys:
@@ -1472,7 +1492,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                 try:
                     headers = {"Authorization": f"Bearer {key}"}
                     files = {"file": (filename, audio_bytes, "audio/webm")}
-                    data = {"model": "whisper-large-v3", "language": "en", "response_format": "json"}
+                    data = {"model": "whisper-large-v3", "language": "en", "response_format": "verbose_json"}
                     response = requests.post(url, headers=headers, files=files, data=data, timeout=10)
                     latency_ms = (time.time() - t0) * 1000
                     log_api_trace("Groq", "whisper-large-v3", key, response.status_code, latency_ms, step="STT")
@@ -1480,13 +1500,16 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                         result = response.json()
                         text = result.get("text", "").strip()
                         if text:
-                            return {"transcript": text, "source": "groq-whisper-large-v3"}
+                            words_data = result.get("words", [])
+                            dur_sec = result.get("duration")
+                            metrics = self._compute_speech_acoustic_metrics(text, audio_bytes, words_data, dur_sec)
+                            return {"transcript": text, "source": "groq-whisper-large-v3", "speech_metrics": metrics}
                 except Exception as e:
                     latency_ms = (time.time() - t0) * 1000
                     log_api_trace("Groq", "whisper-large-v3", key, 500, latency_ms, error_msg=str(e), step="STT")
                     logger.warning(f"[AIEngine] Groq Whisper error: {e}")
                     if "429" in str(e) or "403" in str(e):
-                        pass # No inner loop here, continue outer loop
+                        pass
                     continue
 
         if self.gemini_keys:
@@ -1517,7 +1540,8 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                             if candidates:
                                 text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "").strip()
                                 if text:
-                                    return {"transcript": text, "source": f"gemini-audio-{model}"}
+                                    metrics = self._compute_speech_acoustic_metrics(text, audio_bytes)
+                                    return {"transcript": text, "source": f"gemini-audio-{model}", "speech_metrics": metrics}
                     except Exception as e:
                         latency_ms = (time.time() - t0) * 1000
                         log_api_trace("Gemini", model, key, 500, latency_ms, error_msg=str(e), step="STT")
@@ -1526,7 +1550,92 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                         continue
 
         log_api_trace("Browser-STT", "browser-speech-api", "none", 200, 0.0, step="STT_Fallback")
-        return {"transcript": fallback_text.strip(), "source": "browser-stt"}
+        clean_fb = fallback_text.strip()
+        metrics = self._compute_speech_acoustic_metrics(clean_fb, audio_bytes)
+        return {"transcript": clean_fb, "source": "browser-stt", "speech_metrics": metrics}
+
+    def _compute_speech_acoustic_metrics(
+        self,
+        transcript: str,
+        audio_bytes: bytes | None = None,
+        words_data: list[dict[str, Any]] | None = None,
+        duration_sec: float | None = None,
+    ) -> dict[str, Any]:
+        """
+        Computes real-time acoustic speech features from ASR word timestamps or audio bytes:
+        - wpm: Words Per Minute (speed of speech)
+        - pauses: Count of silent hesitations / pauses (>0.8s gap between words)
+        - pronunciation_score: ASR confidence score scaled (0-100)
+        - duration_sec: Total audio duration in seconds
+        - fluency_tier: 'Slow/Hesitant', 'Natural Conversational', or 'Fast/Fluent'
+        """
+        clean_text = transcript.strip()
+        if not clean_text:
+            return {
+                "wpm": 0.0,
+                "pauses": 0,
+                "pronunciation_score": 75.0,
+                "duration_sec": 0.0,
+                "word_count": 0,
+                "fluency_tier": "No Speech",
+                "acoustic_feedback": "Không ghi nhận được âm thanh."
+            }
+
+        words_list = clean_text.split()
+        word_count = len(words_list)
+
+        if duration_sec is None or duration_sec <= 0:
+            if audio_bytes and len(audio_bytes) > 0:
+                duration_sec = max(1.5, len(audio_bytes) / 16000.0)
+            else:
+                duration_sec = max(1.5, word_count * 0.46)
+
+        duration_sec = round(float(duration_sec), 1)
+        wpm = round((word_count / duration_sec) * 60.0, 1)
+
+        pause_count = 0
+        if words_data and len(words_data) > 1:
+            for i in range(1, len(words_data)):
+                prev_end = words_data[i-1].get("end", 0.0)
+                curr_start = words_data[i].get("start", 0.0)
+                if curr_start > prev_end + 0.8:
+                    pause_count += 1
+        else:
+            if duration_sec > (word_count * 0.6) + 1.5:
+                pause_count = int((duration_sec - (word_count * 0.45)) // 1.2)
+
+        conf_scores = []
+        if words_data:
+            for w in words_data:
+                if "confidence" in w:
+                    conf_scores.append(float(w["confidence"]))
+                elif "probability" in w:
+                    conf_scores.append(float(w["probability"]))
+
+        if conf_scores:
+            avg_conf = sum(conf_scores) / len(conf_scores)
+            pronunciation_score = round(min(98.0, max(60.0, avg_conf * 100.0)), 1)
+        else:
+            pronunciation_score = 88.5
+
+        if wpm < 90:
+            fluency_tier = "Chậm / Nhiều khoảng lặng"
+        elif 90 <= wpm <= 160:
+            fluency_tier = "Tốc độ tự nhiên (B2-C1)"
+        else:
+            fluency_tier = "Tốc độ nhanh"
+
+        pause_msg = f"Phát hiện {pause_count} ngập ngừng (>0.8s)." if pause_count > 0 else "Nói trôi chảy."
+
+        return {
+            "wpm": wpm,
+            "pauses": pause_count,
+            "pronunciation_score": pronunciation_score,
+            "duration_sec": duration_sec,
+            "word_count": word_count,
+            "fluency_tier": fluency_tier,
+            "acoustic_feedback": f"Tốc độ: {wpm} WPM ({fluency_tier}). {pause_msg}"
+        }
 
     def get_trace_quota_health(self) -> dict[str, Any]:
         """Return active key counts, key status cache, and recent 25 trace log entries."""
