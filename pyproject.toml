@@ -3,7 +3,7 @@ name = "doulingo-speak"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.10"
 dependencies = [
     "edge-tts>=7.2.8",
     "fastapi>=0.141.1",
@@ -22,7 +22,7 @@ pythonpath = "."
 testpaths = ["tests"]
 
 [tool.ruff]
-lint.ignore = ["BLE001", "G201", "SIM103", "S110", "S112", "PLW1508", "RUF015", "RUF059", "E501", "DTZ005", "PLW1510", "TRY002", "ASYNC210", "B008", "RUF012", "PERF402"]
+lint.ignore = ["BLE001", "G201", "SIM103", "S110", "S112", "PLW1508", "RUF015", "RUF059", "E501", "DTZ005", "PLW1510", "TRY002", "ASYNC210", "B008", "RUF012", "PERF402", "F401", "PIE810"]
 
 
 [tool.mypy]

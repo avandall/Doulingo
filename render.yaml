@@ -2,7 +2,7 @@ services:
   - type: web
     name: duolingo-speak
     env: python
-    buildCommand: "pip install -r requirements.txt || pip install fastapi uvicorn pydantic gtts requests python-dotenv"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: GEMINI_API_KEY
