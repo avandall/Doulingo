@@ -4,18 +4,19 @@ import json
 import logging
 from typing import Any
 from urllib.parse import quote
+
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
-from app.core import ConversationalAgent, ai_engine
-from app.audio import ASRChunkResult, StreamingSessionState, TTSStreamer
-from app.rag import PromptContext, compute_band_window, retrieve_dialogues
-from app.storage import get_db_connection
 from app.api.schemas.chat import (
     ChatRequest,
     StartScenarioRequest,
     TurnRequest,
     VoiceTurnRequest,
 )
+from app.audio import ASRChunkResult, StreamingSessionState, TTSStreamer
+from app.core import ConversationalAgent, ai_engine
+from app.rag import PromptContext, compute_band_window, retrieve_dialogues
+from app.storage import get_db_connection
 
 logger = logging.getLogger("duolingo_speak.api.chat")
 router = APIRouter(tags=["Chat & Dialogue Engine"])

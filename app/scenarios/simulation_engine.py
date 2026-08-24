@@ -10,9 +10,9 @@ import re
 from dataclasses import asdict
 from typing import Any
 
-from app.storage.db import _fetch_all_dicts, _fetch_one_dict, get_db_connection
 from app.rag.retrieval import compute_band_window, retrieve_dialogues
 from app.scenarios import get_scenario
+from app.storage.db import _fetch_all_dicts, _fetch_one_dict, get_db_connection
 
 logger = logging.getLogger(__name__)
 

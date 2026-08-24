@@ -5,7 +5,6 @@ Unit tests for Cold-Start Diagnostic Probe System (TASK-014)
 import pytest
 
 import app.storage.db as db_module
-from app.storage.db import get_user_profile
 from app.scoring.cold_start import (
     COLD_START_ALPHA,
     COLD_START_TURNS,
@@ -16,6 +15,7 @@ from app.scoring.cold_start import (
     is_cold_start,
     process_cold_start_turn,
 )
+from app.storage.db import get_user_profile
 
 
 @pytest.fixture(autouse=True)

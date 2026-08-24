@@ -428,7 +428,7 @@ Output JSON ONLY:
         Generate a dynamic, anti-repetitive, sentiment-sensitive, level-constrained fallback response
         with topic-shift detection and context memory checks against past turns.
         """
-        char_name = character.get("name", "AI Partner")
+        character.get("name", "AI Partner")
         cfg = self._get_level_config(level)
         min_words = cfg.get("min_words", 35)
         max_words = cfg.get("max_words", 70)

@@ -6,12 +6,12 @@ import os
 
 from fastapi.testclient import TestClient
 
-from app.main import app
 from app.audio.tts_service import (
     CHARACTER_FILLER_MAP,
     CHARACTER_VOICE_MAP,
     get_character_filler_path,
 )
+from app.main import app
 
 client = TestClient(app)
 

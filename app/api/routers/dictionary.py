@@ -2,9 +2,16 @@
 import logging
 import unicodedata
 from urllib.parse import quote
+
 import requests
 from fastapi import APIRouter, HTTPException, Query
 
+from app.api.dependencies import (
+    IPA_CACHE,
+    SENTENCE_TRANSLATION_CACHE,
+    TRANSLATION_CACHE,
+)
+from app.api.schemas.chat import SentenceTranslateRequest
 from app.core import ai_engine
 from app.dictionary import DictionaryService
 from app.storage import (
@@ -12,12 +19,6 @@ from app.storage import (
     get_translated_word,
     save_translated_word,
 )
-from app.api.dependencies import (
-    IPA_CACHE,
-    SENTENCE_TRANSLATION_CACHE,
-    TRANSLATION_CACHE,
-)
-from app.api.schemas.chat import SentenceTranslateRequest
 
 logger = logging.getLogger("duolingo_speak.api.dictionary")
 router = APIRouter(tags=["Dictionary & Localization"])

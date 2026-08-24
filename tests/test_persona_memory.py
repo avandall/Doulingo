@@ -8,7 +8,6 @@ import time
 
 import pytest
 
-from app.storage.db import init_db
 from app.core.persona_memory import (
     extract_entities_from_turn,
     format_entity_memory_for_prompt,
@@ -18,6 +17,7 @@ from app.core.persona_memory import (
     update_user_memory_from_turn,
 )
 from app.rag.prompt_constructor import PromptContext, construct_system_prompt
+from app.storage.db import init_db
 
 
 @pytest.fixture(autouse=True)

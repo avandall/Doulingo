@@ -5,7 +5,6 @@ Unit tests for app/user_profile_engine.py (TASK-013)
 import pytest
 
 import app.storage.db as db_module
-from app.storage.db import get_user_profile
 from app.analytics.user_profile_engine import (
     BAND_MAX,
     BAND_MIN,
@@ -13,6 +12,7 @@ from app.analytics.user_profile_engine import (
     compute_effective_alpha,
     update_band,
 )
+from app.storage.db import get_user_profile
 
 
 @pytest.fixture(autouse=True)

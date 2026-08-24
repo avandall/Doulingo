@@ -25,8 +25,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from app.storage.db import get_db_connection
 from app.scoring.config_loader import load_active_anchors
+from app.storage.db import get_db_connection
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"

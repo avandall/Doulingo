@@ -13,13 +13,13 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from app.core.ai_engine import KEY_STATUS_CACHE, ai_engine, log_api_trace, mask_api_key
-from app.main import app
 from app.audio.tts_service import (
     CHARACTER_FILLER_MAP,
     CHARACTER_VOICE_MAP,
     get_character_filler_path,
 )
+from app.core.ai_engine import KEY_STATUS_CACHE, ai_engine, log_api_trace, mask_api_key
+from app.main import app
 
 client = TestClient(app)
 

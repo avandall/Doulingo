@@ -9,8 +9,8 @@ from turn 3 (4th turn) onwards.
 import logging
 from typing import Any
 
-from app.storage.db import get_db_connection
 from app.analytics.user_profile_engine import update_band
+from app.storage.db import get_db_connection
 
 logger = logging.getLogger(__name__)
 

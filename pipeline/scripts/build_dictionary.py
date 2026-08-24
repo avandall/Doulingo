@@ -8,7 +8,6 @@ import os
 import re
 import sqlite3
 import time
-import json
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
@@ -47,7 +46,7 @@ def load_word_list(filepath):
     with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
         for line in f:
             line = line.strip()
-            if line.startswith('Title:') or line.startswith('Description:') or line.startswith('Source:') or line == '---' or not line:
+            if line.startswith(('Title:', 'Description:', 'Source:')) or line == '---' or not line:
                 continue
             w = line.strip().lower()
             w = re.sub(r'[^a-zA-Z0-9\-\s\']', '', w).strip()
@@ -146,7 +145,7 @@ def parse_full_anhviet_dictionary(filepath):
             line = line.rstrip('\r\n')
             if not line:
                 continue
-            if line.startswith('Title:') or line.startswith('Description:') or line.startswith('Source:') or line == '---':
+            if line.startswith(('Title:', 'Description:', 'Source:')) or line == '---':
                 continue
                 
             if line.startswith('@'):

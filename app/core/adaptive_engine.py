@@ -12,8 +12,8 @@ import math
 import uuid
 from typing import Any
 
-from app.storage.db import get_db_connection, init_db
 from app.rag.retrieval import RetrievedDialogue, retrieve_dialogues
+from app.storage.db import get_db_connection, init_db
 
 log = logging.getLogger(__name__)
 

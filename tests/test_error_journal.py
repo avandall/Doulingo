@@ -8,15 +8,15 @@ import uuid
 
 import pytest
 
-from app.storage.db import get_user_profile, init_db
 from app.analytics.error_journal import (
     ErrorJournalManager,
     get_recurring_errors,
     record_error,
     weave_interleaved_practice_directives,
 )
-from app.rag.prompt_constructor import PromptContext, construct_system_prompt
 from app.analytics.reporting import generate_weekly_report
+from app.rag.prompt_constructor import PromptContext, construct_system_prompt
+from app.storage.db import get_user_profile, init_db
 
 
 @pytest.fixture(autouse=True)

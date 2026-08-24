@@ -61,7 +61,10 @@ def construct_system_prompt(context: PromptContext) -> str:
     Assembly execution time target: < 5ms.
     """
     from app.core.level_config import LEVEL_CONFIGS
-    from app.core.persona_memory import format_entity_memory_for_prompt, get_persona_identity
+    from app.core.persona_memory import (
+        format_entity_memory_for_prompt,
+        get_persona_identity,
+    )
 
     start_time = time.perf_counter()
 

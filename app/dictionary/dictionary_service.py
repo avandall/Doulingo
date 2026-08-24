@@ -14,6 +14,8 @@ import os
 import sqlite3
 from typing import Any
 
+logger = logging.getLogger("duolingo_speak.dictionary")
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DB_DIR = os.path.join(PROJECT_ROOT, "data")
 DICTIONARY_DB_PATH = os.path.join(DB_DIR, "dictionary.db")
@@ -122,9 +124,9 @@ class DictionaryService:
                                 "definition": val.get("definition", "")
                             }
                         else:
-                            res = None
+                            res = {}
 
-                        if res and res["translation"]:
+                        if res and res.get("translation"):
                             RAM_DICT_CACHE[clean_word] = res
                             return res
             except Exception as e:

@@ -1,12 +1,13 @@
 """Scenarios & Characters API Router."""
-import uuid
 import logging
+import uuid
+
 from fastapi import APIRouter, HTTPException
 
-from app.scenarios import get_scenario, list_scenarios
-from app.characters import get_character, list_characters
-from app.storage import add_custom_scenario, get_custom_scenarios
 from app.api.schemas.scenarios import CustomScenarioRequest, ScenarioImportRequest
+from app.characters import get_character, list_characters
+from app.scenarios import get_scenario, list_scenarios
+from app.storage import add_custom_scenario, get_custom_scenarios
 
 logger = logging.getLogger("duolingo_speak.api.scenarios")
 router = APIRouter(tags=["Scenarios & Characters"])

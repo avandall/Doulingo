@@ -1,12 +1,13 @@
 """Analytics, Weekly Reports & User Stats API Router."""
 import logging
+
 from fastapi import APIRouter, HTTPException, Query
 
 from app.analytics import generate_weekly_report
+from app.api.schemas.chat import DetSpeechEvalRequest
 from app.core import ai_engine
 from app.scenarios import get_scenario
 from app.storage import add_user_xp, get_user_stats
-from app.api.schemas.chat import DetSpeechEvalRequest
 
 logger = logging.getLogger("duolingo_speak.api.analytics")
 router = APIRouter(tags=["Analytics & User Stats"])
