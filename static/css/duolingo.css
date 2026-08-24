@@ -434,18 +434,14 @@ body {
 }
 
 .characters-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
   gap: 12px;
-  overflow-x: auto;
+  width: 100%;
   padding-bottom: 8px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.characters-row::-webkit-scrollbar { display: none; }
-
 .character-card {
-  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -456,7 +452,6 @@ body {
   background: var(--glass);
   cursor: pointer;
   transition: all var(--t-fast);
-  min-width: 80px;
   text-align: center;
   position: relative;
 }

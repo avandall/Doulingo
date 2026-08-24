@@ -432,6 +432,24 @@ Output JSON ONLY:
                 fb["fluency_score"] = adjusted_fluency
 
         raw_res["user_feedback"] = fb
+
+        # Automatically record grammar/vocabulary speaking errors into Error Journal
+        if user_transcript.strip() and corrected.strip() and user_transcript.strip().lower() != corrected.strip().lower():
+            err_detail = f"Original: \"{user_transcript.strip()}\" → Corrected: \"{corrected.strip()}\""
+            explanation = fb.get("grammar_explanation", "") or fb.get("native_phrasing", "")
+            if explanation and explanation != corrected.strip():
+                err_detail += f" ({explanation})"
+            try:
+                from app.analytics.error_journal import record_error
+                record_error(
+                    user_id="user_demo",
+                    error_type="grammar",
+                    error_detail=err_detail,
+                    context=scenario.get("title", "Conversation Practice")
+                )
+            except Exception as e:
+                logger.warning(f"[AIEngine] Error recording into ErrorJournal: {e}")
+
         return raw_res
 
     def _get_context_aware_fallback(
