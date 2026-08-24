@@ -12,7 +12,7 @@
 ## Part 1: What is the problem you are solving?
 
 ### 1. Problem Statement (3 Sentences)
-English learners preparing for IELTS Speaking face immense barriers due to high 1-on-1 tutoring costs ($15-$30/hour), scheduling friction, and anxiety when speaking to human examiners. Traditional language learning platforms only offer static grammar drills or flashcards without realistic, adaptive conversational turn-taking or real-time pronunciation feedback. As a result, learners struggle to build genuine speaking confidence, natural intonation, and spontaneous responses under pressure.
+My girlfrieng want to practice speaking, but apps like Duolingo do not provide enough practice for speaking and not customizable. So I do one. Not my first project, but the first I published and deployed on Render.
 
 ### 2. Target Audience
 * **IELTS Candidates:** Students aiming for Band 6.0–8.5 needing daily realistic mock test practice across Part 1, Part 2, and Part 3 topics.
@@ -64,3 +64,5 @@ python3 scripts/seed_demo_data.py
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 Open your browser at `http://localhost:8000` to start practicing immediately!
+
+Note: My main.py runs on port 8005 not 8000.
