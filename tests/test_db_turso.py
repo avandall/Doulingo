@@ -77,7 +77,8 @@ def test_word_dictionary_crud():
 
 def test_untranslated_word_prevention():
     """Verify that saving raw untranslated word is rejected and filtered."""
-    test_w = "untranslateddummyword"
+    import uuid
+    test_w = f"testword_{uuid.uuid4().hex[:8]}"
     save_translated_word(test_w, "vi", "Tiếng Việt", test_w, "/test/")
     assert get_translated_word(test_w, "vi") is None
 
