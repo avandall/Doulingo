@@ -892,6 +892,9 @@ body {
    ============================================================ */
 #practice-screen {
   padding: 0;
+}
+
+#practice-screen.active {
   display: flex;
   flex-direction: column;
 }
