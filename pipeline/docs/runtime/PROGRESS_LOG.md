@@ -1,46 +1,22 @@
 # PROGRESS LOG
-# Nhật ký tiến độ — Lịch sử từng iteration
+# Nhật ký tiến độ chi tiết — Ghi lại toàn bộ lịch sử thao tác & phát sinh
 
-> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** Append sau mỗi iteration
->
-> 🤖 AI APPEND entry mới vào cuối file này sau mỗi iteration. KHÔNG xóa entries cũ.
-> Entries cũ nhất ở trên, mới nhất ở dưới.
+> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-26 21:22
 
 ---
 
-## Format mỗi entry
+## 📅 Lịch sử thực thi
 
-```markdown
-### [ITER-NNN] YYYY-MM-DD HH:MM — <Tên ngắn của iteration>
+### [2026-08-26 21:21] — Khởi tạo TASK-001
+- **Task ID:** TASK-001 (Crawl & Seed Initial Datasets)
+- **Hành động:** 
+  - Khởi tạo PLAN.md và STATUS.md cho TASK-001.
+  - Phân tích bối cảnh và yêu cầu cho `scripts/seed_data.py`, `app/data/vocab_bank.json` (>1000 từ vựng A1-B1) và `app/data/sample_dialogue_bank.json` (>100 câu thoại mẫu).
 
-**Phase:** EXECUTING | REVIEWING | COMMITTING
-**Step:** Step N từ PLAN.md
-**Duration:** ~X phút
-
-#### Actions Taken
-1. [Hành động 1]
-2. [Hành động 2]
-
-#### Result
-- **Outcome:** PASS | FAIL | PARTIAL | BLOCKED
-- **Evidence:** [Link/snippet bằng chứng, output của command]
-
-#### Issues Found
-- [Vấn đề gặp phải (nếu có)]
-
-#### Decisions Made
-- [Quyết định quan trọng trong iteration này]
-
-#### Git
-- **Commit:** `[TASK-ID] type(scope): description`
-
-#### Next
-- **Action:** [Bước tiếp theo]
-- **State:** [Trạng thái STATUS.md sau entry này]
-```
-
----
-
-## Log Entries
-
-<!-- AI bắt đầu thêm entries từ đây -->
+### [2026-08-26 21:22] — hoàn thành TASK-001
+- **Hành động:**
+  - Viết `scripts/seed_data.py` tự động tích hợp nguồn từ vựng Oxford/Cambridge CEFR A1-B1 kết hợp dữ liệu từ `data/dictionary.db`.
+  - Sinh thành công `app/data/vocab_bank.json` với **2,445 từ vựng** (yêu cầu > 1000).
+  - Sinh thành công `app/data/sample_dialogue_bank.json` với **150 câu thoại mẫu** phân loại theo level, persona, topic, dialogue_act (yêu cầu > 100).
+  - Kiểm định static analysis (Ruff & Mypy) pass 100%.
+  - Cập nhật trạng thái `TASK-001` thành `[x] DONE` trong `pipeline/docs/context/Tasks_list.md`.

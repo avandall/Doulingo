@@ -26,7 +26,7 @@ def test_character_voice_map_natural_tuning():
 
 def test_character_filler_map_existence():
     """Verify that filler phrases and audio file mappings exist for all key virtual characters."""
-    expected_chars = ["duo", "lily", "oscar", "viktor", "chanel", "kaelen", "colt", "zarina", "scarlet", "luigi"]
+    expected_chars = ["alex", "duo", "lily", "oscar", "viktor", "chanel", "kaelen", "colt", "zarina", "scarlet", "luigi"]
     for char_id in expected_chars:
         assert char_id in CHARACTER_FILLER_MAP
         rel_path = get_character_filler_path(char_id)

@@ -8,13 +8,13 @@
 ## Current State
 
 ```
-Current Task ID: [TASK-ID]
-Task:           [Tên Task đang thực thi]
-Next Task:      [TASK-ID tiếp theo]
-Phase:          INIT
-Current Step:   PHASE 0: ORIENT
+Current Task ID: TASK-001
+Task:           Crawl & Seed Initial Datasets (CEFR Vocab & Dialogue Exemplars)
+Next Task:      TASK-002
+Phase:          Phase 1 (Data Seeding)
+Current Step:   DONE
 Iteration:      Iteration 1
-Last Updated:   [YYYY-MM-DD HH:MM]
+Last Updated:   2026-08-26 21:22
 ```
 
 ---
@@ -30,9 +30,9 @@ Last Updated:   [YYYY-MM-DD HH:MM]
 ## Last Action
 
 ```
-Action:   Khởi tạo runtime session
-Result:   READY
-Time:     [YYYY-MM-DD HH:MM]
+Action:   Thực thi scripts/seed_data.py, sinh 2445 vocab items & 150 dialogue exemplars, đánh dấu [x] DONE TASK-001 trong Tasks_list.md
+Result:   SUCCESS (100% PASS)
+Time:     2026-08-26 21:22
 ```
 
 ---
@@ -40,7 +40,7 @@ Time:     [YYYY-MM-DD HH:MM]
 ## Next Action
 
 ```
-Action:   AI đọc bối cảnh Task active và tạo PLAN.md
+Action:   Dừng phiên làm việc theo quy định 1 Task = 1 Commit để Harness thực hiện commit git.
 Priority: P0
 Blocks:   None
 ```
@@ -50,7 +50,7 @@ Blocks:   None
 ## Quick Reference
 
 ```
-Active Files:     [Danh sách file đang làm việc]
+Active Files:     scripts/seed_data.py, app/data/vocab_bank.json, app/data/sample_dialogue_bank.json
 Blocked Reason:   None
-Verification:     Tier 1 (verify.py) Pending
+Verification:     Tier 1 (verify.py & seed_data.py) PASS
 ```

@@ -28,6 +28,14 @@ logger = logging.getLogger("duolingo_speak.tts")
 # ElevenLabs & Azure Neural Voice Character Mappings
 # All voice IDs are CONFIRMED FREE PREMADE voices from the ElevenLabs API.
 CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
+    "alex": {
+        "eleven_voice_id": "21m00Tcm4TlvDq8ikWAM",
+        "eleven_settings": {"stability": 0.50, "similarity_boost": 0.75, "style": 0.0, "use_speaker_boost": True},
+        "azure_voice": "en-US-JennyNeural",
+        "rate": "+0%",
+        "pitch": "+0Hz",
+        "fallback_tld": "com"
+    },
     "duo": {
         "eleven_voice_id": "cgSgspJ2msm6clMCkdW9",
         "eleven_settings": {"stability": 0.5, "similarity_boost": 0.85, "style": 0.5, "use_speaker_boost": True},
@@ -132,6 +140,7 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
 }
 
 CHARACTER_FILLER_MAP: dict[str, str] = {
+    "alex": "Hmm...",
     "duo": "Hmm, let me see...",
     "lily": "Well...",
     "oscar": "Right...",
@@ -149,7 +158,10 @@ def get_character_filler_path(char_id: str) -> str:
     clean_char = char_id.lower().strip() if char_id else "lily"
     if clean_char not in CHARACTER_FILLER_MAP:
         clean_char = "lily"
-    return f"static/audio/fillers/{clean_char}.mp3"
+    path = f"static/audio/fillers/{clean_char}.mp3"
+    if not os.path.exists(path):
+        return "static/audio/fillers/lily.mp3"
+    return path
 
 
 def sanitize_text_for_tts(text: str) -> str:

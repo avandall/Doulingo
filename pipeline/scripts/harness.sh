@@ -3,12 +3,30 @@
 # harness.sh — Ralph Loop Execution Script
 # Chạy AI agent trong một vòng lặp tự trị với đầy đủ guardrails
 #
-# Cách dùng:
-#   ./pipeline/scripts/harness.sh                               # Chạy với defaults (single-model)
+# CÁCH CHỌN TASKS THỰC HIỆN (--task, --tasks, -t):
+#   1. Mặc định (Không truyền cờ):
+#      Tự động quét Tasks_list.md và thực thi các task [ ] TODO / [/] IN_PROGRESS lần lượt.
+#      ./pipeline/scripts/harness.sh
+#
+#   2. Chạy 1 task cụ thể:
+#      ./pipeline/scripts/harness.sh --task TASK-001
+#      ./pipeline/scripts/harness.sh -t 1
+#
+#   3. Chạy danh sách nhiều task cụ thể (phân cách bằng dấu phẩy):
+#      ./pipeline/scripts/harness.sh --tasks TASK-001,TASK-003,TASK-005
+#      ./pipeline/scripts/harness.sh -t 1,3,5
+#
+#   4. Chạy dải (range) task từ N đến M:
+#      ./pipeline/scripts/harness.sh --tasks TASK-001..TASK-005
+#      ./pipeline/scripts/harness.sh -t 1..5
+#
+#   5. Kết hợp dải task và các task lẻ:
+#      ./pipeline/scripts/harness.sh --tasks 1..3,5,8..10
+#
+# CÁCH DÙNG CÁC CỜ KHÁC:
 #   ./pipeline/scripts/harness.sh --max-iter 20                 # Giới hạn 20 iterations
-#   ./pipeline/scripts/harness.sh --task "TASK-001"             # Chỉ định task ID
 #   ./pipeline/scripts/harness.sh --dry-run                     # Simulate, không thực thi thực sự
-#   ./pipeline/scripts/harness.sh --review-model gemini-3.7-flash-low  # Bật Dual-Model mode
+#   ./pipeline/scripts/harness.sh --review-model gemini-3.6-flash-low  # Bật Dual-Model mode
 # =============================================================================
 
 set -euo pipefail
@@ -281,11 +299,11 @@ show_help() {
 ${BOLD}harness.sh${NC} — Ralph Loop Execution Script (Overnight Non-Blocking Mode)
 
 ${BOLD}USAGE:${NC}
-  ./pipeline/docs/harness.sh [OPTIONS]
+  ./pipeline/scripts/harness.sh [OPTIONS]
 
 ${BOLD}OPTIONS:${NC}
   --max-iter, -n N        Maximum number of iterations (default: 30)
-  --task, -t ID           Task ID to run (default: reads from Tasks_list.md)
+  --tasks, --task, -t ID  Task filter / ID(s) to run e.g. TASK-001, 1..5, 1,3,5 (default: reads all TODO tasks from Tasks_list.md)
   --timeout TIME          Timeout for AI executor process e.g. 10m0s, 15m0s (default: 15m0s)
   --review-model, -r M    Enable Dual-Model mode: use model M for Tier 2 Cognitive Review.
                           M must be a valid agy model name (run: agy models).
@@ -315,12 +333,15 @@ ${BOLD}DUAL-MODEL MODE:${NC}
   The reviewer call is a FRESH agy conversation (separate context, same CLI quota).
 
 ${BOLD}EXAMPLES:${NC}
-  ./pipeline/docs/harness.sh                                  # Single-model mode (classic)
-  ./pipeline/docs/harness.sh --review-model gemini-3.6-flash-low  # Dual-model: cheap flash reviewer
-  ./pipeline/docs/harness.sh --review-model claude-sonnet-4-6 --review-timeout 8m0s  # Premium reviewer
-  ./pipeline/docs/harness.sh --timeout 20m0s                  # Increase executor timeout
-  ./pipeline/docs/harness.sh --max-iter 50                    # Limit to 50 iterations
-  ./pipeline/docs/harness.sh --stop-on-block                  # Strict mode: stop on first blocker
+  ./pipeline/scripts/harness.sh                                  # Single-model mode (runs all TODO tasks)
+  ./pipeline/scripts/harness.sh --task TASK-001                  # Run single task
+  ./pipeline/scripts/harness.sh --tasks 1,3,5                   # Run specific list of tasks
+  ./pipeline/scripts/harness.sh --tasks 1..5                    # Run range of tasks from 1 to 5
+  ./pipeline/scripts/harness.sh --review-model gemini-3.6-flash-low  # Dual-model: cheap flash reviewer
+  ./pipeline/scripts/harness.sh --review-model claude-sonnet-4-6 --review-timeout 8m0s  # Premium reviewer
+  ./pipeline/scripts/harness.sh --timeout 20m0s                  # Increase executor timeout
+  ./pipeline/scripts/harness.sh --max-iter 50                    # Limit to 50 iterations
+  ./pipeline/scripts/harness.sh --stop-on-block                  # Strict mode: stop on first blocker
 
 ${BOLD}REVIEWER PROMPT CUSTOMIZATION:${NC}
   Edit pipeline/docs/core/REVIEWER_PROMPT_TEMPLATE.md to customize:

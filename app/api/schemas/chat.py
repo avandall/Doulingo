@@ -1,5 +1,6 @@
 """Chat & Turn Pydantic Models."""
 from typing import Any
+
 from pydantic import BaseModel
 
 
