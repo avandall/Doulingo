@@ -1,52 +1,39 @@
-# PLAN
-# Kế hoạch thực thi — TASK-003: Build Dialogue Exemplar Bank & Hybrid RAG Engine
+# PLAN: TASK-004 — Implement Structured Output CoT & Heuristic Validation Loop Engine
 
-> **Trạng thái:** COMPLETED | **Tạo bởi:** AI | **Cập nhật:** 2026-08-26 21:31
-
----
-
-## Task Reference
-
-```
-Task ID:    TASK-003
-Task Name:  Build Dialogue Exemplar Bank & Hybrid RAG Engine
-Spec:       Chuẩn hóa app/data/sample_dialogue_bank.json và module app/core/exemplar_rag.py thực hiện Metadata filter (level + persona + topic + dialogue_act) kết hợp Semantic search / MMR diversity.
-```
+> **Task ID:** TASK-004  
+> **Phase:** Phase 1 (Core Execution)  
+> **Priority:** P0-Critical  
+> **Target Files:** `app/core/ai_engine.py`, `app/core/prompt_factory.py`, `tests/test_ai_engine.py`
 
 ---
 
-## Spec (Đặc tả)
-
-### Acceptance Criteria
-- [x] Module `ExemplarRAG.retrieve(level, persona, topic, dialogue_act, state_summary)` trả về 2-3 câu mẫu chuẩn nhất.
-- [x] Pytest cho RAG retrieval pass 100% (`tests/test_exemplar_rag.py`).
-
-### Scope
-- **Files được sửa/tạo:** `app/core/exemplar_rag.py`, `tests/test_exemplar_rag.py`
-- **Files cấm đụng:** `.env`, `pipeline/docs/core/**`
-
-### Verification Commands
-```bash
-pytest tests/test_exemplar_rag.py
-python3 pipeline/scripts/verify.py --test-target tests/test_exemplar_rag.py
-```
+## 🎯 Goal & Acceptance Criteria
+- [ ] Call 1 requests LLM to generate Structured Output JSON CoT (`natural_draft`, `vocab_check`, `final_response`).
+- [ ] Heuristic Check validates `final_response`: if PASS, returns result immediately (1 API call).
+- [ ] If Heuristic Check FAILS, system automatically feeds back specific violating words to LLM in a retry loop until PASS.
+- [ ] Pytest suite for `tests/test_ai_engine.py` passes 100% and Tier 1 verification (`python3 pipeline/scripts/verify.py`) passes 100%.
 
 ---
 
-## Execution Steps
+## 📍 Execution Plan (Atomic Steps)
 
-### Step 1: Implement `app/core/exemplar_rag.py` [DONE]
-- **Mục tiêu:** Xây dựng class `ExemplarRAG` hỗ trợ Metadata Filtering (level, persona, topic, dialogue_act), Cosine Similarity Semantic Search (với `state_summary`), và MMR (Maximal Marginal Relevance) Diversity Ranking.
-- **Result:** Module hoàn thành, đạt độ trễ < 1ms.
+### Step 1: Update Prompt Factory & Structured Output CoT Schema
+- Create `app/core/prompt_factory.py` re-exporting `PromptFactory` & `get_prompt_factory` from `app.rag.prompt_factory` while adding CoT prompt helpers.
+- Update `_build_token_efficient_prompt` and prompt templates in `app/core/ai_engine.py` to request Call 1 JSON CoT output containing `natural_draft`, `vocab_check`, `final_response`, and `user_feedback`.
+- Update `_parse_json_response` to extract `natural_draft`, `vocab_check`, and `final_response`.
 
-### Step 2: Implement Unit Tests in `tests/test_exemplar_rag.py` [DONE]
-- **Mục tiêu:** Xây dựng bộ test suite kiểm tra metadata filtering, relaxation fallback, semantic search, MMR ranking, prompt formatting, và performance benchmark.
-- **Result:** Test suite 11/11 tests pass 100%.
+### Step 2: Implement Heuristic Validation & Feedback Retry Loop in AI Engine
+- Integrate `HeuristicChecker` from `app.core.heuristic_checker` into `AIEngine`.
+- In `process_turn`:
+  1. Call 1 LLM request with CoT prompt.
+  2. Parse output to extract `final_response`.
+  3. Run `heuristic_checker.check_level_ceiling(final_response, target_level)`.
+  4. If PASS -> Return result immediately.
+  5. If FAIL -> Extract `violating_words`, enter retry loop (up to 2 retries) with targeted feedback instructing LLM to downgrade vocabulary to level ceiling.
 
-### Step 3: Run Verification (`pytest tests/test_exemplar_rag.py` & `python3 pipeline/scripts/verify.py`) [DONE]
-- **Mục tiêu:** Đảm bảo tất cả ruff, mypy, pytest pass 100%.
-- **Result:** Tier 1 Verification Report PASS 100%.
-
-### Step 4: Update Progress & Complete Task [DONE]
-- **Mục tiêu:** Đánh dấu [x] DONE TASK-003 trong `Tasks_list.md` và dừng phiên để harness commit git.
-- **Result:** Cập nhật `Tasks_list.md`, `STATUS.md`, `PROGRESS_LOG.md` và `PLAN.md`.
+### Step 3: Add Pytest Suite & Run Verification
+- Write tests in `tests/test_ai_engine.py` testing:
+  - CoT fields (`natural_draft`, `vocab_check`, `final_response`) parsing.
+  - Single-call PASS path.
+  - Heuristic check failure & retry feedback loop execution.
+- Run `pytest tests/test_ai_engine.py` and `python3 pipeline/scripts/verify.py` until 100% PASS.

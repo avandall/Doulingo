@@ -91,3 +91,107 @@ def test_ai_engine_rag_integration():
     assert "REFERENCE DIALOGUES FROM BOOKS" in prompt
 
 
+def test_parse_json_response_structured_cot():
+    """Verify _parse_json_response extracts Structured CoT fields (natural_draft, vocab_check, final_response)."""
+    json_text = """
+    {
+      "natural_draft": "I am thinking about asking about coffee preferences.",
+      "vocab_check": "All words are basic A1 level suitable for beginner.",
+      "final_response": "I like hot coffee in the morning. Do you like coffee?",
+      "user_feedback": {
+        "grammar_status": "Clean & Clear",
+        "corrected_text": "I like coffee too.",
+        "native_phrasing": "I like coffee as well.",
+        "duo_reaction": "happy"
+      }
+    }
+    """
+    res = ai_engine._parse_json_response(json_text)
+    assert res["natural_draft"] == "I am thinking about asking about coffee preferences."
+    assert res["vocab_check"] == "All words are basic A1 level suitable for beginner."
+    assert res["final_response"] == "I like hot coffee in the morning. Do you like coffee?"
+    assert res["ai_response"] == "I like hot coffee in the morning. Do you like coffee?"
+    assert res["user_feedback"]["grammar_status"] == "Clean & Clear"
+
+
+def test_heuristic_validation_loop_pass(monkeypatch):
+    """Verify Heuristic Validation Loop returns immediately in 1 call when vocabulary ceiling check passes."""
+    mock_res = {
+        "natural_draft": "Drafting simple response about pets",
+        "vocab_check": "Checked level ceiling A1",
+        "final_response": "I have a cat. Do you like cat?",
+        "ai_response": "I have a cat. Do you like cat?",
+        "user_feedback": {"grammar_status": "Clean & Clear"}
+    }
+    monkeypatch.setattr(ai_engine, "_call_llm_providers", lambda prompt, temp=0.8: mock_res)
+
+    res = ai_engine._call_llm_with_heuristic_loop("Test prompt", level=2)
+    assert res is not None
+    assert res["final_response"] == "I have a cat. Do you like cat?"
+    assert res["heuristic_check"]["passed"] is True
+    assert res["heuristic_check"]["retries"] == 0
+
+
+def test_heuristic_validation_loop_retry_on_violation(monkeypatch):
+    """Verify Heuristic Validation Loop triggers retry feedback when initial response contains high-level vocabulary."""
+    calls = []
+    
+    # First call returns violating words for Level 2 / A1 (e.g. "complex", "deeply")
+    violating_res = {
+        "natural_draft": "High level draft",
+        "vocab_check": "Not checked properly",
+        "final_response": "I contemplate complex philosophical topics deeply every single day.",
+        "ai_response": "I contemplate complex philosophical topics deeply every single day.",
+        "user_feedback": {"grammar_status": "Clean & Clear"}
+    }
+    # Second call (retry) returns downgraded A1 words
+    downgraded_res = {
+        "natural_draft": "Downgraded draft with simple words",
+        "vocab_check": "Verified basic A1 words used",
+        "final_response": "I think about big ideas. What do you think?",
+        "ai_response": "I think about big ideas. What do you think?",
+        "user_feedback": {"grammar_status": "Clean & Clear"}
+    }
+
+    def mock_providers(prompt, temp=0.8):
+        calls.append(prompt)
+        if len(calls) == 1:
+            return violating_res
+        return downgraded_res
+
+    monkeypatch.setattr(ai_engine, "_call_llm_providers", mock_providers)
+
+    res = ai_engine._call_llm_with_heuristic_loop("Test prompt", level=2, max_retries=2)
+    assert res is not None
+    assert len(calls) == 2
+    assert res["heuristic_check"]["retries"] == 1
+    assert "CRITICAL HEURISTIC VALIDATION FAILURE" in calls[1]
+    assert "complex" in calls[1] or "deeply" in calls[1]
+    assert res["final_response"] == "I think about big ideas. What do you think?"
+
+
+def test_process_turn_structured_cot(monkeypatch):
+    """Verify process_turn returns Structured Output CoT fields."""
+    mock_res = {
+        "natural_draft": "Draft about tea",
+        "vocab_check": "Verified basic words",
+        "final_response": "I like green tea. Do you like tea?",
+        "ai_response": "I like green tea. Do you like tea?",
+        "user_feedback": {"grammar_status": "Clean & Clear"}
+    }
+    monkeypatch.setattr(ai_engine, "_call_llm_providers", lambda prompt, temp=0.8: mock_res)
+
+    res = ai_engine.process_turn(
+        scenario_id="coffee_shop",
+        character_id="lily",
+        user_transcript="I want tea.",
+        conversation_history=[],
+        level=2
+    )
+    assert "natural_draft" in res
+    assert "vocab_check" in res
+    assert "final_response" in res
+    assert "ai_response" in res
+
+
+

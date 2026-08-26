@@ -23,7 +23,8 @@ import requests
 from dotenv import load_dotenv
 
 from app.characters import get_character
-from app.rag.prompt_factory import get_prompt_factory
+from app.core.heuristic_checker import HeuristicChecker
+from app.core.prompt_factory import get_prompt_factory
 from app.rag.retrieval import retrieve_dialogues
 from app.scenarios import get_scenario
 
@@ -94,6 +95,7 @@ from app.core.level_config import LEVEL_CONFIGS, SCENARIO_ANGLES
 class AIEngine:
     def __init__(self):
         self.reload_keys()
+        self.heuristic_checker = HeuristicChecker()
 
     def reload_keys(self):
         load_dotenv(override=True)
@@ -284,38 +286,27 @@ Task: Proactively START the roleplay conversation as {character['name']}.
 2. End your turn with ONE engaging, OPEN-ENDED question that invites the user to elaborate.
 3. CRITICAL LENGTH & LEVEL MANDATE: Your ENTIRE response MUST be between {cfg['min_words']} and {cfg['max_words']} words. Match the exact vocabulary complexity, sentence length, and structure of the Level {level} ({cfg['cefr']}) example provided above!
 
-Output JSON ONLY:
+Output JSON ONLY with Structured CoT fields:
 {{
-  "ai_response": "Opening in 100% STANDARD ENGLISH strictly obeying all level rules"
+  "natural_draft": "Raw opening draft thought for starting conversation",
+  "vocab_check": "Self-audit verifying Level {level} vocabulary ceiling and length constraints",
+  "final_response": "Opening in 100% STANDARD ENGLISH strictly obeying all level rules"
 }}"""
 
-        for key in self.groq_keys:
-            if is_key_exhausted(key):
-                continue  # Skip rate-limited keys, use next available
-            for model in self.groq_models:
-                try:
-                    res = self._call_groq(prompt, key, model, temp=0.8)
-                    if res and "ai_response" in res:
-                        res["ai_response_vi"] = ""
-                        return res
-                except Exception:
-                    continue
-
-        for key in self.gemini_keys:
-            if is_key_exhausted(key):
-                continue  # Skip rate-limited keys, use next available
-            for model in self.gemini_models:
-                try:
-                    res = self._call_gemini(prompt, key, model, temp=0.8)
-                    if res and "ai_response" in res:
-                        res["ai_response_vi"] = ""
-                        return res
-                except Exception:
-                    continue
+        res = self._call_llm_with_heuristic_loop(prompt, level=level, temp=0.8)
+        if res and ("final_response" in res or "ai_response" in res):
+            res["ai_response_vi"] = ""
+            return res
 
         # All providers exhausted - use smart level-aware fallback
         fallback_q = self._build_smart_fallback_opener(scenario_id, scenario['title'], level)
-        return {"ai_response": fallback_q, "ai_response_vi": ""}
+        return {
+            "natural_draft": f"Fallback draft for opening scenario {scenario['title']}",
+            "vocab_check": f"Fallback verified for Level {level}",
+            "final_response": fallback_q,
+            "ai_response": fallback_q,
+            "ai_response_vi": ""
+        }
 
     def process_turn(
         self,
@@ -357,50 +348,7 @@ Output JSON ONLY:
             level=level
         )
 
-        raw_res = None
-        for key in self.groq_keys:
-            if is_key_exhausted(key):
-                continue
-            for model in self.groq_models:
-                try:
-                    raw_res = self._call_groq(prompt, key, model, temp=0.8)
-                    if raw_res:
-                        break
-                except Exception:
-                    continue
-            if raw_res:
-                break
-
-        if not raw_res:
-            for key in self.gemini_keys:
-                if is_key_exhausted(key):
-                    continue
-                for model in self.gemini_models:
-                    try:
-                        raw_res = self._call_gemini(prompt, key, model, temp=0.8)
-                        if raw_res:
-                            break
-                    except Exception:
-                        continue
-                if raw_res:
-                    break
-
-        if not raw_res:
-            for key in self.openai_keys:
-                if is_key_exhausted(key):
-                    continue
-                try:
-                    raw_res = self._call_openai(prompt, key, temp=0.8)
-                    if raw_res:
-                        break
-                except Exception:
-                    continue
-
-        if not raw_res and self.ollama_base_url:
-            try:
-                raw_res = self._call_ollama(prompt, temp=0.8)
-            except Exception:
-                pass
+        raw_res = self._call_llm_with_heuristic_loop(prompt, level=level, temp=0.8)
 
         if not raw_res:
             raw_res = self._get_context_aware_fallback(
@@ -620,28 +568,28 @@ Output JSON ONLY:
             # Pre-A1 / A1: Short, everyday 100-200 most common words
             openers_bank = {
                 "negative": [
-                    "I am sorry to hear that.",
-                    "That sounds difficult.",
-                    "I understand your feelings.",
-                    "Thank you for telling me."
+                    f"I am sorry to hear that regarding {title}.",
+                    f"Talking about {title} can be hard sometimes.",
+                    f"I understand your feelings about {title}.",
+                    f"Thank you for telling me about {title}."
                 ],
                 "confused": [
-                    "Good question! Let us talk about it.",
-                    "I can help explain this clearly.",
-                    "That is okay, we can learn step by step.",
-                    "Let us practice this together."
+                    f"Good question about {title}! Let us talk about it.",
+                    f"I can help explain {title} clearly.",
+                    f"That is okay, we can learn about {title} step by step.",
+                    f"Let us practice talking about {title} together."
                 ],
                 "positive": [
-                    "That sounds very nice and fun!",
-                    "I am happy to hear that!",
-                    "That is great news!",
-                    "I like your idea very much!"
+                    f"Talking about {title} sounds very nice and fun!",
+                    f"I am happy to hear your thoughts on {title}!",
+                    f"That is great news about {title}!",
+                    f"I like your idea about {title} very much!"
                 ],
                 "neutral": [
-                    "Thank you for sharing your thoughts.",
-                    "That is an interesting thought.",
-                    "I see what you mean.",
-                    "That is very nice to talk about."
+                    f"Thank you for sharing your thoughts on {title}.",
+                    f"That is an interesting thought about {title}.",
+                    f"I see what you mean about {title}.",
+                    f"It is very nice to talk about {title}."
                 ]
             }
             bodies_bank = {
@@ -705,130 +653,167 @@ Output JSON ONLY:
             # A2: Everyday conversational phrases with moderate variety
             openers_bank = {
                 "negative": [
-                    "I'm sorry you had to deal with that. It sounds quite challenging.",
-                    "That must be a tough situation, but I appreciate you sharing it with me.",
-                    "I hear you, and it is completely normal to feel that way."
+                    f"I'm sorry you had to deal with that regarding {title}. It sounds quite challenging.",
+                    f"That must be a tough situation with {title}, but I appreciate you sharing it with me.",
+                    f"I hear you about {title}, and it is completely normal to feel that way."
                 ],
                 "confused": [
-                    "That is a very reasonable question to wonder about.",
-                    "I see why that might feel a bit confusing at first.",
-                    "Let's break this down into simpler ideas together."
+                    f"That is a very reasonable question to wonder about regarding {title}.",
+                    f"I see why {title} might feel a bit confusing at first.",
+                    f"Let's break down {title} into simpler ideas together."
                 ],
                 "positive": [
                     f"That sounds like a wonderful experience with {title}!",
-                    "It is great to hear such a positive and inspiring perspective.",
-                    "I really enjoy your upbeat energy when discussing this."
+                    f"It is great to hear such a positive and inspiring perspective on {title}.",
+                    f"I really enjoy your upbeat energy when discussing {title}."
                 ],
                 "neutral": [
                     f"That's a thoughtful point about {title}.",
-                    "Thank you for sharing your perspective on this.",
-                    "I see where you're coming from, and it makes good sense."
+                    f"Thank you for sharing your perspective on {title}.",
+                    f"Regarding {title}, I see where you're coming from and it makes good sense."
                 ]
             }
             bodies_bank = {
                 "negative": [
                     " Taking things one step at a time helps ease the pressure.",
-                    " Remembering that difficult moments pass can help you stay hopeful."
+                    " Remembering that difficult moments pass can help you stay hopeful.",
+                    " Small supportive habits often give us the strength to move forward.",
+                    " Finding time for rest and self-care is very important.",
+                    " Opening up about challenges allows us to find gentle solutions together."
                 ],
                 "confused": [
                     " Exploring new ideas takes patience, and asking questions is the best way forward.",
-                    " Looking at practical examples makes everything much clearer."
+                    " Looking at practical examples makes everything much clearer.",
+                    " Breaking a big topic into small steps helps build solid understanding.",
+                    " Reviewing key details step by step makes practice stress-free.",
+                    " Asking for clarification is a natural and effective part of learning."
                 ],
                 "positive": [
                     " Focusing on the bright side keeps our motivation strong and steady.",
-                    " Sharing good moments makes our daily practice enjoyable and rewarding."
+                    " Sharing good moments makes our daily practice enjoyable and rewarding.",
+                    " Celebrating small victories encourages us to keep exploring new topics.",
+                    " Positive energy makes learning English feel effortless and inspiring.",
+                    " Enjoying the process brings continuous growth in our conversations."
                 ],
                 "neutral": [
                     " Everyone has different experiences, which makes our conversation lively.",
-                    " Exchanging ideas helps both of us learn new ways of expressing ourselves."
+                    " Exchanging ideas helps both of us learn new ways of expressing ourselves.",
+                    " Daily conversation gives us a chance to explore fresh viewpoints.",
+                    " Listening to different perspectives expands our vocabulary and understanding.",
+                    " Sharing simple details about daily life keeps practice natural and fun."
                 ]
             }
             questions_bank = {
                 "negative": [
                     " What is one small habit that helps you recharge when you feel stressed?",
-                    " How do you usually find comfort when dealing with difficult moments?"
+                    " How do you usually find comfort when dealing with difficult moments?",
+                    " What kind of supportive activity makes you feel better?",
+                    " Who do you feel most comfortable talking to when things get tough?"
                 ],
                 "confused": [
                     " What specific detail would you like to explore next?",
-                    " Would you prefer to focus on a practical example or a daily situation?"
+                    " Would you prefer to focus on a practical example or a daily situation?",
+                    " Is there a particular part of this topic you find most interesting?",
+                    " How can we make this concept simpler and easier to practice?"
                 ],
                 "positive": [
                     " What else about this brings you satisfaction or excitement?",
-                    " How do you plan to build on this positive momentum in the coming week?"
+                    " How do you plan to build on this positive momentum in the coming week?",
+                    " What is your favorite highlight from this recent experience?",
+                    " What next milestone are you looking forward to achieving?"
                 ],
                 "neutral": [
                     " How has your personal experience with this changed over time?",
-                    " What advice would you give someone who is starting out with this?"
+                    " What advice would you give someone who is starting out with this?",
+                    " What is the most important lesson you have learned about this so far?",
+                    " How do you usually approach this in your daily routine?",
+                    " What is your take on how people usually handle this?"
                 ]
             }
             expansions_pool = [
                 " Regular practice helps us build confidence and natural fluency.",
-                " Taking time to express your thoughts clearly makes a big difference."
+                " Taking time to express your thoughts clearly makes a big difference.",
+                " Every conversation brings a new opportunity to express yourself smoothly.",
+                " Consistently sharing your ideas sharpens your spoken communication.",
+                " Keeping an open mind allows us to enjoy meaningful discussions."
             ]
         else:
             # B1-C2: Rich, natural discourse without awkward 3x title duplication
             openers_bank = {
                 "negative": [
-                    "I am truly sorry to hear that. That sounds like a heavy burden to navigate.",
-                    "Thank you for being open about this difficulty; it takes real courage to express those feelings.",
-                    "I hear you, and I completely empathize with how overwhelming that situation can feel."
+                    f"I am truly sorry to hear about that situation with {title}. That sounds like a heavy burden to navigate.",
+                    f"Thank you for being open about this difficulty regarding {title}; it takes real courage to express those feelings.",
+                    f"I hear you, and I completely empathize with how overwhelming {title} can feel."
                 ],
                 "confused": [
-                    "That is a thought-provoking doubt that is well worth exploring in detail.",
-                    "Uncertainty is often the first necessary step toward gaining deeper clarity on complex subjects.",
-                    "I appreciate you bringing up that question; analyzing it from multiple angles will help."
+                    f"That is a thought-provoking doubt about {title} that is well worth exploring in detail.",
+                    f"Uncertainty regarding {title} is often the first necessary step toward gaining deeper clarity.",
+                    f"I appreciate you bringing up that question about {title}; analyzing it from multiple angles will help."
                 ],
                 "positive": [
                     f"Hearing your bright perspective regarding {title} brings great energy to our dialogue!",
-                    "That is a compelling insight, and your enthusiasm is truly inspiring.",
-                    "Celebrating those positive breakthroughs makes continuous practice deeply rewarding."
+                    f"That is a compelling insight about {title}, and your enthusiasm is truly inspiring.",
+                    f"Celebrating those positive breakthroughs in {title} makes continuous practice deeply rewarding."
                 ],
                 "neutral": [
                     f"That is an insightful perspective regarding {title}.",
-                    "I appreciate your thoughtful reflection; it adds valuable depth to our discussion.",
-                    "Reflecting on different viewpoints allows us to connect ideas in meaningful ways."
+                    f"I appreciate your thoughtful reflection on {title}; it adds valuable depth to our discussion.",
+                    f"Reflecting on different viewpoints regarding {title} allows us to connect ideas in meaningful ways."
                 ]
             }
             bodies_bank = {
                 "negative": [
                     " Facing obstacles often reminds us of the importance of self-compassion and seeking supportive connections.",
-                    " Overcoming hardships, while tiring, gradually strengthens our resilience and self-awareness."
+                    " Overcoming hardships, while tiring, gradually strengthens our resilience and self-awareness.",
+                    " Seeking meaningful support system networks fosters psychological strength during complex trials.",
+                    " Navigating difficult times enables us to reflect on core values and personal priorities."
                 ],
                 "confused": [
                     " Untangling intricate ideas requires patience and looking at both theoretical setups and real-life outcomes.",
-                    " Discussing our doubts openly paves the way for fresh, transformative viewpoints."
+                    " Discussing our doubts openly paves the way for fresh, transformative viewpoints.",
+                    " Methodically evaluating competing hypotheses provides structural clarity on complex topics.",
+                    " Intellectual curiosity thrives when we challenge unexamined assumptions with fresh inquiry."
                 ],
                 "positive": [
                     " Embracing positive milestones reinforces constructive habits and expands our horizons.",
-                    " Sharing these uplifting experiences inspires both of us to keep pursuing ambitious goals."
+                    " Sharing these uplifting experiences inspires both of us to keep pursuing ambitious goals.",
+                    " Harnessing momentum from recent accomplishments cultivates long-term creative drive.",
+                    " Optimistic engagement naturally elevates collaborative problem-solving and discourse."
                 ],
                 "neutral": [
                     " Diverse personal backgrounds naturally shape how each of us interprets key life themes.",
-                    " Engaging in nuanced dialogue enriches critical thinking and sharpens fluent communication."
+                    " Engaging in nuanced dialogue enriches critical thinking and sharpens fluent communication.",
+                    " Synthesizing contrasting perspectives allows us to cultivate a well-rounded analytical outlook.",
+                    " Examining fundamental principles behind daily phenomena deepens our understanding."
                 ]
             }
             questions_bank = {
                 "negative": [
                     " What personal routine or mindset helps protect your peace of mind during demanding times?",
-                    " What would you say to a close friend who might be facing a similar challenge?"
+                    " What would you say to a close friend who might be facing a similar challenge?",
+                    " How do you maintain focus and clarity when navigating unforeseen obstacles?"
                 ],
                 "confused": [
                     " Which specific dimension of this concept feels most intriguing or puzzling to you?",
-                    " How might we reframe this idea to uncover its most practical, actionable value?"
+                    " How might we reframe this idea to uncover its most practical, actionable value?",
+                    " What fundamental assumption should we question first to gain clearer perspective?"
                 ],
                 "positive": [
                     " What valuable lesson from this experience will you carry forward into future projects?",
-                    " How do you plan to leverage this success to tackle upcoming challenges?"
+                    " How do you plan to leverage this success to tackle upcoming challenges?",
+                    " What strategic steps will you take to sustain this momentum going forward?"
                 ],
                 "neutral": [
                     " How has your personal perspective on this evolved as you gained more experience?",
-                    " What do you consider the most crucial factor when making decisions in this area?"
+                    " What do you consider the most crucial factor when making decisions in this area?",
+                    " How do you balance practical considerations with long-term goals in this context?"
                 ]
             }
             expansions_pool = [
                 " Developing strong communicative depth starts with authentic dialogue and active listening.",
                 " Meaningful conversation opens up fresh insights that guide our ongoing practice.",
-                " Reflecting on these nuances helps bridge language mastery with real-world understanding."
+                " Reflecting on these nuances helps bridge language mastery with real-world understanding.",
+                " Nuanced articulation empowers us to convey complex ideas with precision and confidence."
             ]
 
         # 4. Context Memory & Sentence-Level Anti-Repetition Exclusion
@@ -840,8 +825,6 @@ Output JSON ONLY:
                     content = turn.get("content", turn.get("text", ""))
                     if content:
                         recent_ai_texts.append(content)
-                    if len(recent_ai_texts) >= 5:
-                        break
 
         past_sentences = set()
         for text in recent_ai_texts:
@@ -869,7 +852,7 @@ Output JSON ONLY:
         best_combination = None
         min_sim = 1.0
 
-        for _ in range(30):
+        for _ in range(50):
             cand_opener = random.choice(cand_openers)
             cand_body = random.choice(cand_bodies)
             cand_question = random.choice(cand_questions)
@@ -883,7 +866,7 @@ Output JSON ONLY:
                 min_sim = max_sim_cand
                 best_combination = cand_text
 
-        full_text = best_combination if best_combination else (cand_openers[0] + cand_bodies[0] + cand_questions[0])
+        full_text = best_combination if best_combination else (random.choice(cand_openers) + random.choice(cand_bodies) + random.choice(cand_questions))
 
         # 5. Enforce Level Word Count Constraints with non-repeated expansion sentences
         words = full_text.split()
@@ -1174,9 +1157,11 @@ TASK:
 1. Reply in 100% STANDARD NATURAL ENGLISH as {character['name']}. Your response MUST be between {cfg['min_words']} and {cfg['max_words']} words total (strictly obeying Level {level} - {cfg['cefr']} length and vocabulary rules). Express a rich 2-3 sentence thought/reaction matching the Level {level} example above, and end with ONE FRESH OPEN-ENDED QUESTION.
 2. REWRITE USER SENTENCE ACCURATELY: In "corrected_text", fix ONLY grammar/spelling of "{user_transcript}" while preserving their exact meaning 100%. In "native_phrasing", show how a native speaker would say that exact thought.
 
-Output JSON ONLY:
+Output JSON ONLY with Structured CoT fields:
 {{
-  "ai_response": "Response in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules",
+  "natural_draft": "Your raw initial draft of response thoughts",
+  "vocab_check": "Self-audit verifying vocabulary against Level {level} ceiling and word count constraints",
+  "final_response": "Polished response in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules",
   "user_feedback": {{
     "grammar_status": "Clean & Clear" or brief fix note,
     "corrected_text": "Grammatically corrected version of user's sentence preserving exact meaning",
@@ -1296,12 +1281,28 @@ Output JSON ONLY:
             text = text[start:end+1]
 
         data = json.loads(text)
-        ai_res = data.get("ai_response", "That's a very interesting point! Tell me more.")
+        natural_draft = data.get("natural_draft", "")
+        vocab_check = data.get("vocab_check", "")
+
+        raw_final = data.get("final_response")
+        ai_res = ""
+        if isinstance(raw_final, str) and raw_final.strip():
+            ai_res = raw_final.strip()
+        elif isinstance(raw_final, dict):
+            sub_val = raw_final.get("ai_response") or raw_final.get("text") or ""
+            ai_res = str(sub_val).strip()
+
+        if not ai_res:
+            raw_ai = data.get("ai_response") or "That's a very interesting point! Tell me more."
+            ai_res = str(raw_ai).strip()
+
         ai_res_vi = data.get("ai_response_vi", "")
-        
         fb = data.get("user_feedback", {})
 
         return {
+            "natural_draft": natural_draft,
+            "vocab_check": vocab_check,
+            "final_response": ai_res,
             "ai_response": ai_res,
             "ai_response_vi": ai_res_vi,
             "user_feedback": {
@@ -1315,6 +1316,120 @@ Output JSON ONLY:
                 "xp_earned": 10
             }
         }
+
+    def _call_llm_providers(self, prompt: str, temp: float = 0.8) -> dict[str, Any] | None:
+        for key in self.groq_keys:
+            if is_key_exhausted(key):
+                continue
+            for model in self.groq_models:
+                try:
+                    res = self._call_groq(prompt, key, model, temp=temp)
+                    if res:
+                        return res
+                except Exception:
+                    continue
+
+        for key in self.gemini_keys:
+            if is_key_exhausted(key):
+                continue
+            for model in self.gemini_models:
+                try:
+                    res = self._call_gemini(prompt, key, model, temp=temp)
+                    if res:
+                        return res
+                except Exception:
+                    continue
+
+        for key in self.openai_keys:
+            if is_key_exhausted(key):
+                continue
+            try:
+                res = self._call_openai(prompt, key, temp=temp)
+                if res:
+                    return res
+            except Exception:
+                continue
+
+        if self.ollama_base_url:
+            try:
+                res = self._call_ollama(prompt, temp=temp)
+                if res:
+                    return res
+            except Exception:
+                pass
+
+        return None
+
+    def _call_llm_with_heuristic_loop(
+        self,
+        prompt: str,
+        level: int = 1,
+        temp: float = 0.8,
+        max_retries: int = 2
+    ) -> dict[str, Any] | None:
+        """
+        Call 1 (Structured Output CoT) -> Heuristic Level Ceiling Check -> Pass? Return : Retry Loop with feedback.
+        """
+        raw_res = self._call_llm_providers(prompt, temp=temp)
+        if not raw_res:
+            return None
+
+        target_text = raw_res.get("final_response") or raw_res.get("ai_response", "")
+        if not target_text:
+            return raw_res
+
+        check_res = self.heuristic_checker.check_level_ceiling(target_text, level)
+
+        if not check_res.is_violated:
+            raw_res["heuristic_check"] = {
+                "passed": True,
+                "retries": 0,
+                "violating_words": [],
+                "execution_time_ms": check_res.execution_time_ms
+            }
+            return raw_res
+
+        current_res = raw_res
+        retry_count = 0
+
+        while check_res.is_violated and retry_count < max_retries:
+            retry_count += 1
+            violating_str = ", ".join(check_res.violating_words)
+            logger.info(
+                f"[HeuristicValidationLoop] Level {level} violation: [{violating_str}]. Retry {retry_count}/{max_retries}."
+            )
+
+            feedback_instruction = (
+                f"\n\nCRITICAL HEURISTIC VALIDATION FAILURE (RETRY {retry_count}/{max_retries}):\n"
+                f"Your previous response contained words exceeding Level {level} ceiling: [{violating_str}].\n"
+                f"YOU MUST DOWNGRADE THESE WORDS IMMEDIATELY!\n"
+                f"Replace [{violating_str}] with simpler vocabulary suitable for Level {level}.\n\n"
+                f"Output JSON ONLY with Structured CoT fields:\n"
+                f"{{\n"
+                f'  "natural_draft": "Draft replacing high-level words: {violating_str}",\n'
+                f'  "vocab_check": "Verified that {violating_str} have been downgraded for Level {level}",\n'
+                f'  "final_response": "Downgraded response line in simpler English suitable for Level {level}",\n'
+                f'  "user_feedback": {{ ... }}\n'
+                f"}}"
+            )
+
+            retry_prompt = prompt + feedback_instruction
+            retry_res = self._call_llm_providers(retry_prompt, temp=0.5)
+
+            if retry_res and (retry_res.get("final_response") or retry_res.get("ai_response")):
+                current_res = retry_res
+                target_text = current_res.get("final_response") or current_res.get("ai_response", "")
+                check_res = self.heuristic_checker.check_level_ceiling(target_text, level)
+            else:
+                break
+
+        current_res["heuristic_check"] = {
+            "passed": not check_res.is_violated,
+            "retries": retry_count,
+            "violating_words": check_res.violating_words,
+            "execution_time_ms": check_res.execution_time_ms
+        }
+        return current_res
 
     def _compute_hybrid_acoustic_metrics(
         self,
@@ -1450,29 +1565,28 @@ Return ONLY a valid JSON object with EXACTLY this schema:
 }}
 """
         raw_res = None
-        if self.gemini_keys:
-            raw_res = self._call_gemini(eval_prompt, self.gemini_keys[0], self.gemini_models[0], temp=0.2)
-        elif self.groq_keys:
-            raw_res = self._call_groq(eval_prompt, self.groq_keys[0], self.groq_models[0], temp=0.2)
-        elif self.openai_keys:
-            raw_res = self._call_openai(eval_prompt, self.openai_keys[0], temp=0.2)
-
-        if raw_res:
+        if self.gemini_keys and not is_key_exhausted(self.gemini_keys[0]):
             try:
-                text = raw_res.get("response", "").strip()
-                if "```json" in text:
-                    text = text.split("```json")[1].split("```")[0].strip()
-                elif "```" in text:
-                    text = text.split("```")[1].split("```")[0].strip()
-                start = text.find('{')
-                end = text.rfind('}')
-                if start != -1 and end != -1:
-                    text = text[start:end+1]
-                data = json.loads(text)
-                data["acoustic_metrics"] = acoustic_metrics
-                return data
+                raw_res = self._call_gemini(eval_prompt, self.gemini_keys[0], self.gemini_models[0], temp=0.2)
             except Exception as e:
-                logger.warning(f"DET json parse fallback: {e}")
+                logger.warning(f"[AIEngine] Gemini DET call failed: {e}")
+                raw_res = None
+        if not raw_res and self.groq_keys and not is_key_exhausted(self.groq_keys[0]):
+            try:
+                raw_res = self._call_groq(eval_prompt, self.groq_keys[0], self.groq_models[0], temp=0.2)
+            except Exception as e:
+                logger.warning(f"[AIEngine] Groq DET call failed: {e}")
+                raw_res = None
+        if not raw_res and self.openai_keys and not is_key_exhausted(self.openai_keys[0]):
+            try:
+                raw_res = self._call_openai(eval_prompt, self.openai_keys[0], temp=0.2)
+            except Exception as e:
+                logger.warning(f"[AIEngine] OpenAI DET call failed: {e}")
+                raw_res = None
+
+        if isinstance(raw_res, dict) and "det_score" in raw_res:
+            raw_res["acoustic_metrics"] = acoustic_metrics
+            return raw_res
 
         # Smart fallback if API unconfigured or JSON failed
         return {

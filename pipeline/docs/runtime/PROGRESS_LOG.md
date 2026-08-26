@@ -1,7 +1,7 @@
 # PROGRESS LOG
 # Nhật ký tiến độ chi tiết — Ghi lại toàn bộ lịch sử thao tác & phát sinh
 
-> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-26 21:31
+> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-26 21:44
 
 ---
 
@@ -49,3 +49,38 @@
   - Kiểm tra static analysis (Ruff & Mypy) pass 100% không cảnh báo.
   - Chạy `python3 pipeline/scripts/verify.py --test-target tests/test_exemplar_rag.py` đạt **PASS 100%**.
   - Cập nhật `pipeline/docs/context/Tasks_list.md` đánh dấu `[x] DONE` cho TASK-003.
+
+### [2026-08-26 21:44] — Hoàn thành TASK-004
+- **Task ID:** TASK-004 (Implement Structured Output CoT & Heuristic Validation Loop Engine)
+- **Hành động:**
+  - Tạo `app/core/prompt_factory.py` hỗ trợ re-export `PromptFactory`, `get_prompt_factory` và cung cấp hướng dẫn `COT_SCHEMA_INSTRUCTIONS`.
+  - Cập nhật `app/core/ai_engine.py`:
+    1. Ngay Call 1 yêu cầu LLM sinh JSON Structured Output CoT (`natural_draft`, `vocab_check`, `final_response`).
+    2. Tích hợp `HeuristicChecker.check_level_ceiling`: nếu PASS thì xuất kết quả ngay trong 1 API call.
+    3. Nếu Heuristic Check FAIL, hệ thống tự động feed back lỗi từ các từ vi phạm ceiling cho LLM hạ cấp trong retry loop đến khi PASS (hoặc tối đa `max_retries`).
+    4. Hàm `_parse_json_response` trích xuất `natural_draft`, `vocab_check`, và `final_response` / `ai_response` đồng thời.
+  - Mở rộng `tests/test_ai_engine.py` thêm 4 unit tests mới kiểm định Structured CoT parsing, single-call PASS path, retry feedback loop trên vi phạm từ vựng, và `process_turn` CoT integration (100% pass 10/10 tests).
+  - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) thông qua `uv run python3 pipeline/scripts/verify.py --test-target tests/test_ai_engine.py` đạt **PASS 100%**.
+  - Cập nhật `pipeline/docs/context/Tasks_list.md` đánh dấu `[x] DONE` cho `TASK-004`.
+
+### [2026-08-26 21:57] — Fix Iteration 2 (Executor Fix Role)
+- **Task ID:** TASK-004
+- **Hành động:**
+  - Tiếp nhận kết quả từ chối review 1/2 do Tier 1 Pytest verification check thất bại.
+  - Đọc `pipeline/docs/runtime/DEBATE_LOG.md` và xác định 4 nguyên nhân gốc rễ trong `app/core/ai_engine.py`:
+    1. Network timeout (`ReadTimeout`) trong `evaluate_det_speech` khi gọi Gemini/Groq/OpenAI mà không có khối `try...except` bọc ngoài.
+    2. Thiếu `{title}` trong các mẫu câu opener thuộc sentiment `confused`, `negative`, `neutral` dẫn đến trượt test `test_context_aware_fallback_topic_continuity` và topic-shift tests.
+    3. Trùng lặp chuỗi trong vòng lặp 10 lượt `test_10_turns_consecutive_anti_repetition` do giới hạn cửa sổ lịch sử và chọn fallback cố định.
+    4. Nhân đôi chuỗi `feedback_instruction` liên tục trong `_call_llm_with_heuristic_loop` khi retry.
+  - Sửa triệt để các vấn đề trên trong `app/core/ai_engine.py`.
+  - Chạy lại `python3 pipeline/scripts/verify.py` đạt **PASS 100%** (Ruff, Mypy, Bandit, và toàn bộ 257/257 Pytest tests đều GREEN ✅).
+  - Cập nhật `pipeline/docs/runtime/DEBATE_LOG.md`, `STATUS.md`, và `PROGRESS_LOG.md`.
+
+### [2026-08-26 22:09] — Re-Verification Pass & Status Synchronization
+- **Task ID:** TASK-004
+- **Hành động:**
+  - Đã đọc kỹ lại `pipeline/docs/runtime/DEBATE_LOG.md` và xác nhận tất cả các vấn đề CRITICAL & HIGH đã được giải quyết triệt để.
+  - Thực thi lại lệnh `python3 pipeline/scripts/verify.py` kiểm định Tier 1 (Ruff, Mypy, Bandit, Pytest): **PASS 100%**.
+  - Đồng bộ và cập nhật các file trạng thái hệ thống: `STATUS.md`, `PROGRESS_LOG.md`, `DEBATE_LOG.md`.
+  - Sẵn sàng gửi lại yêu cầu review cho Reviewer Model.
+
