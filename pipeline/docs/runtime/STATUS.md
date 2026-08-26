@@ -8,13 +8,13 @@
 ## Current State
 
 ```
-Current Task ID: TASK-001
-Task:           Crawl & Seed Initial Datasets (CEFR Vocab & Dialogue Exemplars)
-Next Task:      TASK-002
-Phase:          Phase 1 (Data Seeding)
+Current Task ID: TASK-002
+Task:           Build Vocabulary Bank & Heuristic Level Checker
+Next Task:      TASK-003
+Phase:          Phase 1 (Core Infrastructure)
 Current Step:   DONE
 Iteration:      Iteration 1
-Last Updated:   2026-08-26 21:22
+Last Updated:   2026-08-26 21:27
 ```
 
 ---
@@ -30,9 +30,9 @@ Last Updated:   2026-08-26 21:22
 ## Last Action
 
 ```
-Action:   Thực thi scripts/seed_data.py, sinh 2445 vocab items & 150 dialogue exemplars, đánh dấu [x] DONE TASK-001 trong Tasks_list.md
+Action:   Hoàn thành TASK-002, pass 100% pytest (8/8) & Tier 1 verify.py check, đánh dấu [x] DONE TASK-002 trong Tasks_list.md
 Result:   SUCCESS (100% PASS)
-Time:     2026-08-26 21:22
+Time:     2026-08-26 21:27
 ```
 
 ---
@@ -50,7 +50,7 @@ Blocks:   None
 ## Quick Reference
 
 ```
-Active Files:     scripts/seed_data.py, app/data/vocab_bank.json, app/data/sample_dialogue_bank.json
+Active Files:     app/core/heuristic_checker.py, tests/test_heuristic_checker.py
 Blocked Reason:   None
-Verification:     Tier 1 (verify.py & seed_data.py) PASS
+Verification:     pytest tests/test_heuristic_checker.py & python3 pipeline/scripts/verify.py PASS
 ```
