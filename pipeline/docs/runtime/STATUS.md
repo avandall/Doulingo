@@ -8,13 +8,13 @@
 ## Current State
 
 ```
-Current Task ID: TASK-002
-Task:           Build Vocabulary Bank & Heuristic Level Checker
-Next Task:      TASK-003
+Current Task ID: TASK-003
+Task:           Build Dialogue Exemplar Bank & Hybrid RAG Engine
+Next Task:      TASK-004
 Phase:          Phase 1 (Core Infrastructure)
 Current Step:   DONE
 Iteration:      Iteration 1
-Last Updated:   2026-08-26 21:27
+Last Updated:   2026-08-26 21:31
 ```
 
 ---
@@ -30,9 +30,9 @@ Last Updated:   2026-08-26 21:27
 ## Last Action
 
 ```
-Action:   Hoàn thành TASK-002, pass 100% pytest (8/8) & Tier 1 verify.py check, đánh dấu [x] DONE TASK-002 trong Tasks_list.md
+Action:   Hoàn thành TASK-003, pass 100% pytest (11/11) & Tier 1 verify.py check, đánh dấu [x] DONE TASK-003 trong Tasks_list.md
 Result:   SUCCESS (100% PASS)
-Time:     2026-08-26 21:27
+Time:     2026-08-26 21:31
 ```
 
 ---
@@ -50,7 +50,7 @@ Blocks:   None
 ## Quick Reference
 
 ```
-Active Files:     app/core/heuristic_checker.py, tests/test_heuristic_checker.py
+Active Files:     app/core/exemplar_rag.py, tests/test_exemplar_rag.py
 Blocked Reason:   None
-Verification:     pytest tests/test_heuristic_checker.py & python3 pipeline/scripts/verify.py PASS
+Verification:     pytest tests/test_exemplar_rag.py & python3 pipeline/scripts/verify.py PASS
 ```

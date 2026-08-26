@@ -13,7 +13,7 @@
 |---------|----------|-------|---------|------------|-------------------|
 | `TASK-001` | Crawl & Seed Initial Datasets (CEFR Vocab & Dialogue Exemplars) | Phase 1 | P0 | `[x] DONE` | Cào/Seed từ vựng CEFR + Câu thoại mẫu |
 | `TASK-002` | Build Vocabulary Bank & Heuristic Level Checker | Phase 1 | P0 | `[x] DONE` | Dữ liệu từ vựng A1-B1 & Heuristic Checker |
-| `TASK-003` | Build Dialogue Exemplar Bank & Hybrid RAG Engine | Phase 1 | P0 | `[ ] TODO` | Ngân hàng câu mẫu + Hybrid Retrieval |
+| `TASK-003` | Build Dialogue Exemplar Bank & Hybrid RAG Engine | Phase 1 | P0 | `[x] DONE` | Ngân hàng câu mẫu + Hybrid Retrieval |
 | `TASK-004` | Implement Structured Output CoT & Heuristic Validation Loop Engine | Phase 1 | P0 | `[ ] TODO` | Prompt JSON CoT ngay call 1 + Heuristic verification loop |
 | `TASK-005` | Refactor Decoupled 3-Tier Prompt System for All 9 Personas | Phase 2 | P1 | `[ ] TODO` | Tách 3 tầng Pedagogy -> Persona -> CEFR Horizon |
 | `TASK-006` | Build Structured Topic Bank & Soften Scenario Angles | Phase 2 | P1 | `[ ] TODO` | Phân loại topic tự do vs nhập vai |
@@ -101,7 +101,7 @@ Task Name:       Build Dialogue Exemplar Bank & Hybrid RAG Engine
 Phase:           Phase 1 (Core Infrastructure)
 Task Type:       feat
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-26
 ```
 
@@ -110,8 +110,8 @@ Ngày tạo:        2026-08-26
 - **What:** Chuẩn hóa `app/data/sample_dialogue_bank.json` và module `app/core/exemplar_rag.py` thực hiện Metadata filter (level + persona + topic + dialogue_act) kết hợp Semantic search / MMR diversity.
 
 #### Acceptance Criteria (Tiêu chí hoàn thành)
-- [ ] `ExemplarRAG.retrieve(level, persona, topic, dialogue_act, state_summary)` trả về 2-3 câu mẫu chuẩn nhất.
-- [ ] Pytest cho RAG retrieval pass 100%.
+- [x] `ExemplarRAG.retrieve(level, persona, topic, dialogue_act, state_summary)` trả về 2-3 câu mẫu chuẩn nhất.
+- [x] Pytest cho RAG retrieval pass 100%.
 
 #### Scope (Phạm vi)
 - **Files được sửa/tạo:** `app/core/exemplar_rag.py`, `tests/test_exemplar_rag.py`

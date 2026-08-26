@@ -1,7 +1,7 @@
 # PROGRESS LOG
 # Nhật ký tiến độ chi tiết — Ghi lại toàn bộ lịch sử thao tác & phát sinh
 
-> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-26 21:27
+> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-26 21:31
 
 ---
 
@@ -35,3 +35,17 @@
   - Viết bộ test `tests/test_heuristic_checker.py` gồm 8 test cases kiểm tra initialization, sentence analysis, level ceiling pass/violate, integer level mapping, benchmarking, tuple unpacking & dict indexing.
   - Sửa lỗi linting import/SIM102 và chạy `python3 pipeline/scripts/verify.py --test-target tests/test_heuristic_checker.py` đạt **PASS 100%** (Ruff, Mypy, Bandit, Pytest đều PASS).
   - Đánh dấu `[x] DONE` cho `TASK-002` trong `pipeline/docs/context/Tasks_list.md`.
+
+### [2026-08-26 21:31] — Hoàn thành TASK-003
+- **Task ID:** TASK-003 (Build Dialogue Exemplar Bank & Hybrid RAG Engine)
+- **Hành động:**
+  - Viết module `app/core/exemplar_rag.py` thực hiện:
+    1. Metadata Filtering (level, persona, topic, dialogue_act) với cơ chế progressive relaxation fallback 8 tầng đảm bảo luôn trả về 2-3 câu mẫu chuẩn.
+    2. TF-IDF + Cosine Distance Semantic Search đối soát câu mẫu với `state_summary`.
+    3. Maximal Marginal Relevance (MMR) ranking để đảm bảo tính đa dạng của các câu thoại trả về.
+    4. Subclass `DialogueExemplar(dict)` hỗ trợ song song truy cập dict `ex['text']` và property `ex.text`.
+    5. Helper `format_exemplars_for_prompt(exemplars)` định dạng câu thoại cho Gemini prompt injection.
+  - Viết bộ test suite `tests/test_exemplar_rag.py` (11 test cases) đạt 100% pass với độ trễ retrieval < 1ms (< 15ms benchmark).
+  - Kiểm tra static analysis (Ruff & Mypy) pass 100% không cảnh báo.
+  - Chạy `python3 pipeline/scripts/verify.py --test-target tests/test_exemplar_rag.py` đạt **PASS 100%**.
+  - Cập nhật `pipeline/docs/context/Tasks_list.md` đánh dấu `[x] DONE` cho TASK-003.
