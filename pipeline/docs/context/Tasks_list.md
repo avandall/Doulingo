@@ -19,7 +19,7 @@
 | `TASK-006` | Build Structured Topic Bank & Soften Scenario Angles | Phase 2 | P1 | `[x] DONE` | Phân loại topic tự do vs nhập vai |
 | `TASK-007` | Implement Response Rating API & Continuous Feedback Logger | Phase 2 | P1 | `[x] DONE` | Đánh giá câu (hollow, out_of_context, good) & Update DB |
 | `TASK-008` | Build Grammar Structure Bank & CEFR Constraint Validator | Phase 3 | P2 | `[x] DONE` | Ngữ pháp theo CEFR level |
-| `TASK-009` | Implement ASR Adaptive Level Detector (IRT Model) | Phase 3 | P2 | `[ ] TODO` | Đo trình độ động từ transcript user |
+| `TASK-009` | Implement ASR Adaptive Level Detector (IRT Model) | Phase 3 | P2 | `[x] DONE` | Đo trình độ động từ transcript user |
 
 ---
 
@@ -300,7 +300,7 @@ Task Name:       Implement ASR Adaptive Level Detector (IRT Model)
 Phase:           Phase 3 (Advanced Adaptive Engine)
 Task Type:       feat
 Priority:        P2-Medium
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-26
 ```
 
@@ -309,8 +309,8 @@ Ngày tạo:        2026-08-26
 - **What:** Viết module `app/core/adaptive_level_detector.py` phân tích transcript lời nói của user (tốc độ, độ dài câu, từ vựng) để cập nhật động level CEFR thực tế sau mỗi vài turn.
 
 #### Acceptance Criteria (Tiêu chí hoàn thành)
-- [ ] Detector tính toán được level thực tế của user dựa trên transcript ASR.
-- [ ] AI Engine tự động điều chỉnh độ khó theo level đo được thay vì level tĩnh.
+- [x] Detector tính toán được level thực tế của user dựa trên transcript ASR.
+- [x] AI Engine tự động điều chỉnh độ khó theo level đo được thay vì level tĩnh.
 
 #### Scope (Phạm vi)
 - **Files được sửa/tạo:** `app/core/adaptive_level_detector.py`, `tests/test_adaptive_level.py`

@@ -126,3 +126,16 @@
   - Viết bộ unit test suite `tests/test_grammar_validator.py` (7 test cases) kiểm tra level rank mapping, clause count algorithm, pattern detection, pass/violate paths, và clause limits. Pass 100% (7/7).
   - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) thông qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
   - Đánh dấu `[x] DONE` cho `TASK-008` trong `pipeline/docs/context/Tasks_list.md`.
+
+### [2026-08-27 15:02] — Hoàn thành TASK-009
+- **Task ID:** TASK-009 (Implement ASR Adaptive Level Detector (IRT Model))
+- **Hành động:**
+  - Viết module `app/core/adaptive_level_detector.py` phân tích transcript lời nói từ ASR (tốc độ nói WPM, độ dài câu MLU, độ đa dạng từ vựng TTR, mật độ từ đệm filler density, từ vựng nâng cao) để ước lượng năng lực người dùng theo mô hình Item Response Theory (IRT Rasch 1PL/2PL model).
+  - Triển khai `ASRFeatureExtractor` để trích xuất các chỉ số ngôn ngữ và tính toán độ khó item ($\beta$).
+  - Triển khai `IRTLevelModel` thực hiện chuyển đổi toán học giữa theta $\theta \in [-3.0, +3.0]$, CEFR Level (1-20), mã CEFR ("Pre-A1" đến "C2+"), và IELTS Band (4.0 - 9.0).
+  - Triển khai `AdaptiveLevelDetector` quản lý lịch sử rolling turns, cập nhật theta $\theta_{new} = \theta_{old} + \eta(S - P)$, lưu trữ SQLite table `user_adaptive_level`, và phát tín hiệu điều chỉnh độ khó (`increase`, `hold`, `decrease`).
+  - Cung cấp hàm tích hợp `get_effective_level` để AI Engine tự động truy vấn level thực tế đo được thay vì dùng level tĩnh.
+  - Viết bộ unit test suite `tests/test_adaptive_level.py` (13 test cases) kiểm tra toàn bộ IRT math, feature extraction, level updates, promotion/demotion, và DB persistence. Pass 100% (13/13).
+  - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) thông qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+  - Đánh dấu `[x] DONE` cho `TASK-009` trong `pipeline/docs/context/Tasks_list.md`.
+
