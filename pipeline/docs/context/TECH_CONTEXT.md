@@ -82,3 +82,27 @@ pytest
 # Verification script chính của Pipeline
 python3 pipeline/scripts/verify.py
 ```
+
+
+---
+
+## 5. Ultra-Low-Latency & Voice Streaming Architecture (Phase 4)
+
+### Latency Budget Target
+```
+End-to-End Latency Target:   < 1.0s (Time-To-First-Audio / TTFA)
+Client-Side Optimistic STT:  ~0ms - 50ms (Web Speech API)
+Fast Voice LLM Inference:    100ms - 250ms (Llama-3.1-8B-Instant / Gemini-2.5-Flash)
+Micro-LLM Rewrite (if needed): 100ms - 150ms (Targeted sentence simplification)
+Chunked Edge-TTS Stream:     150ms - 250ms (Direct MP3 chunk streaming)
+Async Background Evaluation: Offloaded to FastAPI BackgroundTasks (Non-blocking)
+```
+
+### Decoupled Voice vs Evaluation Flow
+```
+User Speech Ends
+      │
+      ├─► [Fast Voice Track]: LLM (35 tokens) ──► Sentence-Level Chunked TTS ──► Audio Plays (<1.0s)
+      │
+      └─► [Async Background Track]: Acoustic Extraction + Grammar Analysis + Scoring + VI Trans (Non-blocking)
+```

@@ -38,3 +38,21 @@
 ❓ Thay đổi lớn đến API Endpoints hiện tại của FastAPI
 ❓ Thêm thư viện nặng ngoài chuẩn Python/FastAPI
 ```
+
+
+---
+
+## 3. Real-Time Streaming & Latency Boundaries (Phase 4)
+
+### AI được phép quyết định:
+```
+✅ Chuyển đổi giữa streaming chunk và full buffer trong TTS
+✅ Cấu trúc prompt cho Micro-LLM Rewriter và Fast Voice Track
+✅ Phân luồng giữa Synchronous Response và FastAPI BackgroundTasks
+```
+
+### Quy tắc bất di bất dịch:
+```
+🔒 Phải giữ chất lượng câu văn tự nhiên khi hạ cấp level (dùng Micro-LLM, không thay thế từ đồng nghĩa máy móc).
+🔒 Toàn bộ chỉ số chấm điểm (Fluency, Grammar, Native Phrasing) phải tiếp tục hoạt động đầy đủ qua BackgroundTasks.
+```

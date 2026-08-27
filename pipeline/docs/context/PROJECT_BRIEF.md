@@ -105,6 +105,16 @@ Tech Stack:        Python 3.10+, FastAPI, Pytest, Gemini API, RAG (Vector Embedd
 ┌────────────────────────────────────────────────────────┐
 │ 5. User Feedback Rating ("hollow" / "out_of_context" / "good") │
 │    ──> Cập nhật quality_score & Continuous DB Update   │
+└──────────────────────┬─────────────────────────────────┘
+                       │
+                       ▼
+┌────────────────────────────────────────────────────────┐
+│ 6. Real-Time Streaming & Ultra-Low-Latency Pipeline   │
+│    - Optimistic Client STT (~0ms)                      │
+│    - Fast Voice LLM Utterance (35 tokens, <150ms)      │
+│    - Micro-LLM Heuristic Rewriter (<150ms)             │
+│    - Sentence-Level Chunked Edge-TTS (TTFA < 200ms)    │
+│    - Background Evaluation Task (Grammar/Score/VI)     │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -131,4 +141,7 @@ Phase 2: Architecture Harmonization, Topic Softening & User Feedback (TASK-005 -
 
 Phase 3: Advanced Validation & Adaptive Level Detection (TASK-008 -> TASK-009)
  Phase Gate: Grammar Bank & ASR Adaptive Level Detector hoàn tất.
+
+Phase 4: Ultra-Low-Latency & Real-Time Voice Streaming Optimization (TASK-010 -> TASK-013)
+ Phase Gate: Optimistic STT, Decoupled Fast Voice LLM, Micro-LLM Rewriter & Sentence-Level Chunked TTS hoàn tất (TTFA < 1.0s).
 ```
