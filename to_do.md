@@ -30,15 +30,15 @@
 
 ## 🏛️ GIAI ĐOẠN 2: Định nghĩa Tính cách Nhân vật, Topic & Phản hồi User (Thực hiện SAU TASK-007)
 
-- [ ] **2.1. Phê duyệt Bảng tính cách 9 Nhân vật (Persona Data)**
+- [x] **2.1. Phê duyệt Bảng tính cách 9 Nhân vật (Persona Data)**
   - **Mô tả:** Đọc và tinh chỉnh file định nghĩa tính cách của 9 nhân vật (`Alex`, `Lily`, `Oscar`, `Viktor`...). Đảm bảo mô tả giọng văn (`speech_style_notes`) và câu mẫu đặc trưng (`sample_phrases`) thể hiện đúng phong cách nhân vật mà không bị ràng buộc bởi level.
   - **File:** `app/data/persona_definitions.json`.
 
-- [ ] **2.2. Gắn nhãn phân loại Scenario / Topic Bank**
+- [x] **2.2. Gắn nhãn phân loại Scenario / Topic Bank**
   - **Mô tả:** Kiểm tra file danh sách topic/chủ đề (`topic_bank.json`). Xác định topic nào là `free_conversation` (tự do), topic nào là `structured_scenario` (nhập vai order đồ ăn, phỏng vấn...).
   - **File:** `app/data/topic_bank.json`.
 
-- [ ] **2.3. Quy định nhãn Đánh giá Phản hồi Người dùng (Rating Categories)**
+- [x] **2.3. Quy định nhãn Đánh giá Phản hồi Người dùng (Rating Categories)**
   - **Mô tả:** Xử lý danh sách các lý do đánh giá câu AI sinh ra: `hollow` ("Sáo rỗng"), `out_of_context` ("Sai ngữ cảnh"), `good` ("Tốt").
   - **File:** `app/data/feedback_log.json`.
 
