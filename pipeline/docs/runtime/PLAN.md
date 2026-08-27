@@ -1,38 +1,34 @@
-# PLAN: TASK-011 — Decoupled Fast Voice LLM & Background Evaluation Pipeline
+# PLAN
+# Kế hoạch thực thi — TASK-012
 
-> **Task ID:** TASK-011  
-> **Phase:** Phase 4 (Ultra-Low-Latency & Real-Time Voice Streaming Optimization)  
-> **Priority:** P0-Critical  
-> **Target Files:** `app/core/ai_engine.py`, `app/api/routers/chat.py`, `tests/test_decoupled_voice_llm.py`
-
----
-
-## 🎯 Goal & Acceptance Criteria
-- [x] Implement `process_turn_fast()` in `app/core/ai_engine.py` generating fast plain text AI responses (~30-40 tokens) with latency < 400ms.
-- [x] Implement `evaluate_turn_background()` in `app/core/ai_engine.py` and `BACKGROUND_EVAL_STORE` for async evaluation (grammar analysis, scores, error journal, native phrasing, translation).
-- [x] Add `POST /api/process_turn_fast` and `GET /api/turn_evaluation/{turn_id}` in `app/api/routers/chat.py` leveraging FastAPI `BackgroundTasks`.
-- [x] Write unit & integration tests in `tests/test_decoupled_voice_llm.py` verifying fast voice generation & background evaluation polling.
-- [x] Pass `pytest tests/test_decoupled_voice_llm.py` and `python3 pipeline/scripts/verify.py` 100%.
+> **Task:** `TASK-012` Micro-LLM Heuristic Retry Rewriter (Natural Contextual Downgrade)
+> **Trạng thái:** COMPLETED | **Cập nhật:** 2026-08-27
 
 ---
 
-## 📍 Execution Plan (Atomic Steps)
+## 🎯 Task Spec Overview
+Xây dựng engine Micro-LLM Heuristic Retry Rewriter để tự động hạ cấp từ vựng/cấu trúc (Contextual Downgrade) khi kết quả kiểm tra `HeuristicChecker.check_level_ceiling` báo lỗi vi phạm trần CEFR level. Thay vì thay từ cứng nhắc hoặc regenerate lại toàn bộ prompt nặng, Micro-LLM Rewriter sẽ rewrite tự nhiên trong <150ms, đảm bảo phong cách hội thoại, ngữ cảnh và câu hỏi mở ở cuối.
 
-### Step 1: Implement Fast Voice Generation & Background Evaluation in `app/core/ai_engine.py` [x]
-- Add `process_turn_fast()` method to `AIEngine` for lightweight utterance generation without heavy JSON CoT/feedback overhead.
-- Add `evaluate_turn_background()` method and `BACKGROUND_EVAL_STORE` dictionary to compute detailed feedback, scores, Error Journal recording, and Vietnamese translation in background.
+---
 
-### Step 2: Implement Decoupled Router Endpoints in `app/api/routers/chat.py` [x]
-- Add `FastTurnRequest` schema.
-- Add `POST /api/process_turn_fast` endpoint to immediately return `ai_response` and schedule `evaluate_turn_background` via `BackgroundTasks`.
-- Add `GET /api/turn_evaluation/{turn_id}` endpoint to retrieve background evaluation results.
+## 📌 Implementation Steps (Atomic Steps)
 
-### Step 3: Create Tests `tests/test_decoupled_voice_llm.py` [x]
-- Test fast voice generation method.
-- Test background evaluation worker & storage.
-- Test `POST /api/process_turn_fast` and `GET /api/turn_evaluation/{turn_id}` API flow.
+- [x] **Step 1: Build Micro-LLM Retry Rewriter Module (`app/core/micro_llm_rewriter.py`)**
+  - Implement `MicroLLMRewriter` class with `rewrite_naturally(original_text, violating_words, target_level, ...)` method.
+  - Create concise, low-latency prompt asking LLM to downgrade violating words naturally for the target CEFR level while preserving conversational tone and open-ended question ending.
+  - Add fast fallback rewriting (heuristic synonym/phrase downgrade) if LLM call is unavailable/rate-limited.
 
-### Step 4: Run Verification & Update Documentation [x]
-- Execute `pytest tests/test_decoupled_voice_llm.py`.
-- Execute `python3 pipeline/scripts/verify.py`.
-- Update `STATUS.md`, `PROGRESS_LOG.md`, `PLAN.md`, and mark `[x] DONE` in `Tasks_list.md`.
+- [x] **Step 2: Integrate Micro-LLM Rewriter into `AIEngine._call_llm_with_heuristic_loop` (`app/core/ai_engine.py`)**
+  - Connect `MicroLLMRewriter` inside the retry loop when `check_res.is_violated` is detected.
+  - Track `rewritten_by_micro_llm`, `retry_count`, and `violating_words` in the returned `heuristic_check` metadata.
+
+- [x] **Step 3: Write Comprehensive Unit Tests (`tests/test_micro_llm_rewriter.py`)**
+  - Test natural contextual downgrade with violating words.
+  - Test preservation of open-ended questions and sentence structure.
+  - Test fallback mode when LLM is unconfigured/rate-limited.
+  - Test integration with `AIEngine._call_llm_with_heuristic_loop`.
+
+- [x] **Step 4: Execute Verification & Mark TASK-012 DONE**
+  - Run `python3 pipeline/scripts/verify.py` until PASS 100%.
+  - Update `STATUS.md` and `PROGRESS_LOG.md`.
+  - Mark `[x] DONE` line TASK-012 in `pipeline/docs/context/Tasks_list.md`.

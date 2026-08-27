@@ -22,7 +22,7 @@
 | `TASK-009` | Implement ASR Adaptive Level Detector (IRT Model) | Phase 3 | P2 | `[x] DONE` | Đo trình độ động từ transcript user |
 | `TASK-010` | Optimistic Client-Side STT & Asynchronous Acoustic Extraction | Phase 4 | P0 | `[x] DONE` | Triệt tiêu 2s chờ ASR lặp, gửi transcript ngay |
 | `TASK-011` | Decoupled Fast Voice LLM & Background Evaluation Pipeline | Phase 4 | P0 | `[x] DONE` | Tách luồng thoại siêu tốc (<40 tokens) vs chấm điểm ngầm |
-| `TASK-012` | Micro-LLM Heuristic Retry Rewriter (Natural Contextual Downgrade) | Phase 4 | P1 | `[ ] TODO` | Retry tự nhiên bằng Micro-LLM thay vì thay từ cứng |
+| `TASK-012` | Micro-LLM Heuristic Retry Rewriter (Natural Contextual Downgrade) | Phase 4 | P1 | `[x] DONE` | Retry tự nhiên bằng Micro-LLM thay vì thay từ cứng |
 | `TASK-013` | Sentence-Level Streaming & Direct Chunked Audio Synthesis | Phase 4 | P0 | `[ ] TODO` | Stream audio câu đầu ngay lập tức (<1.0s TTFA) |
 
 ---

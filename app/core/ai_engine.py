@@ -24,6 +24,7 @@ from dotenv import load_dotenv
 
 from app.characters import get_character
 from app.core.heuristic_checker import HeuristicChecker
+from app.core.micro_llm_rewriter import MicroLLMRewriter
 from app.core.prompt_factory import get_prompt_factory
 from app.rag.retrieval import retrieve_dialogues
 from app.scenarios import get_scenario
@@ -102,6 +103,7 @@ class AIEngine:
     def __init__(self):
         self.reload_keys()
         self.heuristic_checker = HeuristicChecker()
+        self.micro_llm_rewriter = MicroLLMRewriter(self.heuristic_checker)
         self._load_topic_bank()
 
     def _load_topic_bank(self):
@@ -1552,38 +1554,56 @@ Output JSON ONLY with Structured CoT fields:
             retry_count += 1
             violating_str = ", ".join(check_res.violating_words)
             logger.info(
-                f"[HeuristicValidationLoop] Level {level} violation: [{violating_str}]. Retry {retry_count}/{max_retries}."
+                f"[HeuristicValidationLoop] Level {level} violation: [{violating_str}]. Micro-LLM Retry {retry_count}/{max_retries}."
             )
 
-            feedback_instruction = (
-                f"\n\nCRITICAL HEURISTIC VALIDATION FAILURE (RETRY {retry_count}/{max_retries}):\n"
-                f"Your previous response contained words exceeding Level {level} ceiling: [{violating_str}].\n"
-                f"YOU MUST DOWNGRADE THESE WORDS IMMEDIATELY!\n"
-                f"Replace [{violating_str}] with simpler vocabulary suitable for Level {level}.\n\n"
-                f"Output JSON ONLY with Structured CoT fields:\n"
-                f"{{\n"
-                f'  "natural_draft": "Draft replacing high-level words: {violating_str}",\n'
-                f'  "vocab_check": "Verified that {violating_str} have been downgraded for Level {level}",\n'
-                f'  "final_response": "Downgraded response line in simpler English suitable for Level {level}",\n'
-                f'  "user_feedback": {{ ... }}\n'
-                f"}}"
+            # Micro-LLM Retry Rewriter execution for fast natural contextual downgrade
+            rewrite_res = self.micro_llm_rewriter.rewrite_naturally(
+                original_text=target_text,
+                violating_words=check_res.violating_words,
+                target_level=level,
+                ai_engine_ref=self
             )
 
-            retry_prompt = prompt + feedback_instruction
-            retry_res = self._call_llm_providers(retry_prompt, temp=0.5)
-
-            if retry_res and (retry_res.get("final_response") or retry_res.get("ai_response")):
-                current_res = retry_res
-                target_text = current_res.get("final_response") or current_res.get("ai_response", "")
+            rewritten_text = rewrite_res.get("rewritten_text") or ""
+            if rewritten_text:
+                current_res["final_response"] = rewritten_text
+                current_res["ai_response"] = rewritten_text
+                current_res["natural_draft"] = rewrite_res.get("natural_draft", current_res.get("natural_draft", ""))
+                current_res["vocab_check"] = rewrite_res.get("vocab_check", current_res.get("vocab_check", ""))
+                target_text = rewritten_text
                 check_res = self.heuristic_checker.check_level_ceiling(target_text, level)
             else:
-                break
+                feedback_instruction = (
+                    f"\n\nCRITICAL HEURISTIC VALIDATION FAILURE (RETRY {retry_count}/{max_retries}):\n"
+                    f"Your previous response contained words exceeding Level {level} ceiling: [{violating_str}].\n"
+                    f"YOU MUST DOWNGRADE THESE WORDS IMMEDIATELY!\n"
+                    f"Replace [{violating_str}] with simpler vocabulary suitable for Level {level}.\n\n"
+                    f"Output JSON ONLY with Structured CoT fields:\n"
+                    f"{{\n"
+                    f'  "natural_draft": "Draft replacing high-level words: {violating_str}",\n'
+                    f'  "vocab_check": "Verified that {violating_str} have been downgraded for Level {level}",\n'
+                    f'  "final_response": "Downgraded response line in simpler English suitable for Level {level}",\n'
+                    f'  "user_feedback": {{ ... }}\n'
+                    f"}}"
+                )
+
+                retry_prompt = prompt + feedback_instruction
+                retry_res = self._call_llm_providers(retry_prompt, temp=0.5)
+
+                if retry_res and (retry_res.get("final_response") or retry_res.get("ai_response")):
+                    current_res = retry_res
+                    target_text = current_res.get("final_response") or current_res.get("ai_response", "")
+                    check_res = self.heuristic_checker.check_level_ceiling(target_text, level)
+                else:
+                    break
 
         current_res["heuristic_check"] = {
             "passed": not check_res.is_violated,
             "retries": retry_count,
             "violating_words": check_res.violating_words,
-            "execution_time_ms": check_res.execution_time_ms
+            "execution_time_ms": check_res.execution_time_ms,
+            "rewritten_by_micro_llm": retry_count > 0,
         }
         return current_res
 

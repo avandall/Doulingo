@@ -159,4 +159,20 @@
   - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
   - Đánh dấu `[x] DONE` cho `TASK-010` trong `pipeline/docs/context/Tasks_list.md`.
 
+### [2026-08-27 23:45] — Hoàn thành TASK-012
+- **Task ID:** TASK-012 (Micro-LLM Heuristic Retry Rewriter (Natural Contextual Downgrade))
+- **Hành động:**
+  - Tạo module `app/core/micro_llm_rewriter.py` triển khai `MicroLLMRewriter` xử lý việc tự động hạ cấp từ vựng/cấu trúc (Contextual Downgrade) một cách tự nhiên trong <150ms khi phát hiện vi phạm trần CEFR level.
+  - Tích hợp từ điển `HEURISTIC_DOWNGRADE_MAP` thực hiện downgrade từ vựng tự nhiên (ví dụ: `contemplate` -> `think about`, `philosophical` -> `big`, `deeply` -> `a lot`) khi LLM APIs không khả dụng/offline, đồng thời đảm bảo bảo toàn cấu trúc câu và luôn kết thúc bằng một câu hỏi mở (`OPEN-ENDED QUESTION`).
+  - Tích hợp `MicroLLMRewriter` vào `AIEngine._call_llm_with_heuristic_loop` trong `app/core/ai_engine.py` để thay thế việc retry lại toàn bộ prompt hệ thống nặng bằng việc rewrite tập trung vào các từ vi phạm.
+  - Cập nhật metadata `heuristic_check` trả về bổ sung `rewritten_by_micro_llm: True`.
+  - Viết bộ unit test suite `tests/test_micro_llm_rewriter.py` (4 test cases) kiểm định:
+    1. Lowering violating words qua heuristic downgrade map.
+    2. Fallback mode khi không có LLM.
+    3. Micro-LLM mode qua fast LLM calls.
+    4. Tích hợp `AIEngine._call_llm_with_heuristic_loop` với `MicroLLMRewriter`. Pass 100% (4/4).
+  - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+  - Đánh dấu `[x] DONE` cho `TASK-012` trong `pipeline/docs/context/Tasks_list.md`.
+
+
 
