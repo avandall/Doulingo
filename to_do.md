@@ -46,9 +46,9 @@
 
 ## 🧪 GIAI ĐOẠN 3: Thu thập Data Nâng cao & Kiểm thử Thực tế (Thực hiện SAU TASK-009)
 
-- [ ] **3.1. Cung cấp / Duyệt Gold-Set cho CEFR Level Classifier**
+- [x] **3.1. Cung cấp / Duyệt Gold-Set cho CEFR Level Classifier**
   - **Mô tả:** Duyệt tập transcript tiếng Anh thật của học viên (`cefr_gold_set.json`) để làm dữ liệu kiểm thử / huấn luyện mô hình đo trình độ tự động.
   - **File:** `app/data/cefr_gold_set.json`.
 
-- [ ] **3.2. Đánh giá Trải nghiệm Người dùng (User Acceptance Test - UAT)**
+- [x] **3.2. Đánh giá Trải nghiệm Người dùng (User Acceptance Test - UAT)**
   - **Mô tả:** Trực tiếp test thử voice conversation trên app web/mobile sau khi AI hoàn thành toàn bộ Tasks. Đánh giá tính năng bấm rate "Sáo rỗng", "Sai ngữ cảnh", "Tốt" trên giao diện UI.
