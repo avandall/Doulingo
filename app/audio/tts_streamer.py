@@ -10,7 +10,11 @@ import logging
 from collections.abc import AsyncGenerator
 from dataclasses import dataclass
 
-from app.audio.tts_service import generate_tts_mp3, stream_tts_mp3_chunks
+from app.audio.tts_service import (
+    generate_tts_mp3,
+    stream_sentence_level_tts,
+    stream_tts_mp3_chunks,
+)
 
 logger = logging.getLogger("duolingo_speak.tts_streamer")
 
@@ -106,6 +110,28 @@ class TTSStreamer:
             logger.error("Error during TTS chunk streaming: %s", err, exc_info=True)
             return
 
+    async def stream_sentence_audio_chunks(
+        self,
+        text: str,
+        char_id: str | None = None,
+        text_only_mode: bool | None = None,
+    ) -> AsyncGenerator[bytes]:
+        """Asynchronously stream MP3 audio chunks sentence-by-sentence for <1.0s TTFA playback."""
+        is_text_only = self.default_text_only if text_only_mode is None else text_only_mode
+        character = char_id or self.default_char_id
+
+        if is_text_only or not text or not text.strip():
+            logger.info("Sentence TTS streaming skipped (text_only_mode=True or empty text)")
+            return
+
+        try:
+            async for chunk in stream_sentence_level_tts(text=text, char_id=character):
+                if chunk:
+                    yield chunk
+        except Exception as err:
+            logger.error("Error during sentence TTS chunk streaming: %s", err, exc_info=True)
+            return
+
 
 # Module-level convenience functions
 def generate_audio_response(
@@ -129,3 +155,17 @@ async def stream_audio_response(
         text=text, char_id=char_id, text_only_mode=text_only_mode
     ):
         yield chunk
+
+
+async def stream_sentence_audio_response(
+    text: str,
+    char_id: str = "lily",
+    text_only_mode: bool = False,
+) -> AsyncGenerator[bytes]:
+    """Convenience async generator to stream sentence-level audio chunks for low latency."""
+    streamer = TTSStreamer()
+    async for chunk in streamer.stream_sentence_audio_chunks(
+        text=text, char_id=char_id, text_only_mode=text_only_mode
+    ):
+        yield chunk
+

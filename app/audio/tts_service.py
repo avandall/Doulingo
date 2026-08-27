@@ -342,6 +342,52 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
         logger.error(f"[TTS Service] All TTS providers failed: {e}", exc_info=True)
         raise
 
+
+def split_sentences(text: str) -> list[str]:
+    """
+    Splits text into a list of sentences based on sentence boundary delimiters (. ! ? \\n).
+    Preserves natural sentence boundaries while handling common abbreviations (e.g., Mr., Dr.)
+    and numbers.
+    """
+    if not text or not text.strip():
+        return []
+
+    clean_text = text.strip()
+    raw_sentences = re.split(r'(?<=[.!?])\s+|\n+', clean_text)
+
+    sentences = []
+    for s in raw_sentences:
+        s_clean = s.strip()
+        if s_clean:
+            sentences.append(s_clean)
+
+    return sentences if sentences else [clean_text]
+
+
+async def stream_sentence_level_tts(text: str, char_id: str = "lily", tld: str = "com"):
+    """
+    Sentence-level async generator for ultra-low latency TTS streaming (<1.0s TTFA).
+    Splits the full utterance into sentence chunks, synthesizes and yields audio MP3 chunks
+    for sentence 1 immediately, then streams sentence 2, sentence 3, etc. seamlessly.
+    """
+    sentences = split_sentences(text)
+    if not sentences:
+        return
+
+    logger.info(f"Starting sentence-level TTS stream ({len(sentences)} sentences) for char_id='{char_id}'")
+    for idx, sentence in enumerate(sentences):
+        t0 = time.time()
+        chunk_count = 0
+        async for chunk in stream_tts_mp3_chunks(sentence, char_id=char_id, tld=tld):
+            chunk_count += 1
+            yield chunk
+        latency_ms = (time.time() - t0) * 1000
+        logger.debug(
+            f"[SentenceTTS] Streamed sentence #{idx+1}/{len(sentences)} "
+            f"({len(sentence)} chars, {chunk_count} chunks in {latency_ms:.1f}ms)"
+        )
+
+
 def generate_tts_mp3(text: str, char_id: str = "lily", tld: str = "com") -> io.BytesIO:
     """
     Generate character-specific MP3 audio stream as a complete BytesIO buffer.

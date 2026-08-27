@@ -5,11 +5,38 @@ import os
 from fastapi import APIRouter, File, Form, HTTPException, Query, UploadFile
 from fastapi.responses import FileResponse, StreamingResponse
 
-from app.audio import generate_tts_mp3, get_character_filler_path
+from app.audio import (
+    generate_tts_mp3,
+    get_character_filler_path,
+    stream_sentence_level_tts,
+)
 from app.core import ai_engine
 
 logger = logging.getLogger("duolingo_speak.api.audio")
 router = APIRouter(tags=["Audio & Voice Synthesis"])
+
+
+@router.get("/api/tts/stream")
+async def api_tts_stream(
+    text: str = Query(..., description="Text to synthesize"),
+    character_id: str | None = Query(None, description="Character ID"),
+    char_id: str | None = Query(None, description="Character ID alias"),
+    tld: str = Query("com", description="Top level domain fallback for accent"),
+):
+    """Sentence-level ultra-low latency audio streaming endpoint (<1.0s TTFA)."""
+    selected_char = character_id or char_id or "lily"
+    try:
+        audio_generator = stream_sentence_level_tts(text=text, char_id=selected_char, tld=tld)
+        headers = {
+            "Content-Disposition": "inline; filename=speech_stream.mp3",
+            "Accept-Ranges": "bytes",
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        }
+        return StreamingResponse(audio_generator, media_type="audio/mpeg", headers=headers)
+    except Exception as e:
+        logger.error(f"TTS Sentence Stream failed for char_id='{selected_char}': {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"TTS Sentence Stream failed: {e}")
 
 
 @router.get("/api/tts")
@@ -18,9 +45,20 @@ async def api_tts(
     character_id: str | None = Query(None, description="Character ID"),
     char_id: str | None = Query(None, description="Character ID alias"),
     tld: str = Query("com", description="Top level domain fallback for accent"),
+    stream: bool = Query(False, description="Enable sentence-level streaming"),
 ):
     selected_char = character_id or char_id or "rajesh"
     try:
+        if stream:
+            audio_generator = stream_sentence_level_tts(text=text, char_id=selected_char, tld=tld)
+            headers = {
+                "Content-Disposition": "inline; filename=speech_stream.mp3",
+                "Accept-Ranges": "bytes",
+                "Cache-Control": "no-cache",
+                "X-Accel-Buffering": "no",
+            }
+            return StreamingResponse(audio_generator, media_type="audio/mpeg", headers=headers)
+
         mp3_stream = generate_tts_mp3(text=text, char_id=selected_char, tld=tld)
         headers = {
             "Content-Disposition": "inline; filename=speech.mp3",

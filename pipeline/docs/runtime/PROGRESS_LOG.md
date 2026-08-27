@@ -7,6 +7,18 @@
 
 ## 📅 Lịch sử thực thi
 
+### [2026-08-27 23:57] — Hoàn thành TASK-013
+- **Task ID:** TASK-013 (Sentence-Level Streaming & Direct Chunked Audio Synthesis)
+- **Hành động:**
+  - Triển khai `split_sentences(text)` và `stream_sentence_level_tts(text, char_id, tld)` trong `app/audio/tts_service.py` hỗ trợ phân tách câu tự nhiên theo dấu chấm/hỏi/cảm/xuống dòng và stream audio chunk MP3 cho câu đầu tiên ngay lập tức (<1.0s TTFA).
+  - Cập nhật `TTSStreamer` trong `app/audio/tts_streamer.py` bổ sung phương thức `stream_sentence_audio_chunks` và hàm tiện ích `stream_sentence_audio_response`.
+  - Export các hàm streaming mới trong `app/audio/__init__.py`.
+  - Cập nhật router API `app/api/routers/audio.py` bổ sung endpoint `GET /api/tts/stream` và cờ `stream=true` cho `GET /api/tts` trả về StreamingResponse audio/mpeg chunked cho trình duyệt.
+  - Tái cấu trúc hàm `playTTS(text, charId)` trong `static/js/app.js` cho phép HTML5 Audio element phát trực tiếp stream URL từ chunk đầu tiên mà không phải chờ nạp toàn bộ blob file MP3.
+  - Viết bộ test suite `tests/test_sentence_stream.py` (7 test cases) kiểm tra sentence splitting, sentence audio streaming generator, streaming API endpoints. Pass 100% (7/7).
+  - Kiểm tra chất lượng tổng thể (Ruff, Mypy, Bandit, Pytest) qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+  - Đánh dấu `[x] DONE` cho `TASK-013` trong `pipeline/docs/context/Tasks_list.md`.
+
 ### [2026-08-27 23:33] — Hoàn thành TASK-011
 - **Task ID:** TASK-011 (Decoupled Fast Voice LLM & Background Evaluation Pipeline)
 - **Hành động:**

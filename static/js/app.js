@@ -796,7 +796,7 @@ class DuoSpeakApp {
   // ============================================================
   // TTS
   // ============================================================
-  async playTTS(text, charId) {
+  async playTTS(text, charId, useStreaming = true) {
     if (!text) return;
     this._setPlayerLoading();
 
@@ -807,24 +807,48 @@ class DuoSpeakApp {
     }
 
     try {
-      const url = this.apiUrl(`/api/tts?text=${encodeURIComponent(text.slice(0, 500))}&character_id=${charId}`);
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('TTS fetch failed');
-      const blob = await res.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      this.ttsCache.set(cacheKey, blobUrl);
+      const streamUrl = this.apiUrl(`/api/tts/stream?text=${encodeURIComponent(text.slice(0, 500))}&character_id=${charId}`);
+      this.ttsCache.set(cacheKey, streamUrl);
 
       // Store in history log
       if (this.historyLog.length > 0) {
         const last = this.historyLog[this.historyLog.length - 1];
-        if (last.role === 'ai') last.blobUrl = blobUrl;
+        if (last.role === 'ai') last.blobUrl = streamUrl;
       }
 
-      this._playAudioBlob(blobUrl, cacheKey);
+      this._playAudioStreamUrl(streamUrl, cacheKey);
     } catch (e) {
-      console.warn('[DuoSpeak] TTS error:', e);
-      this._setPlayerReady(); // Show controls even if TTS failed
+      console.warn('[DuoSpeak] TTS streaming error:', e);
+      this._setPlayerReady();
     }
+  }
+
+  _playAudioStreamUrl(streamUrl, cacheKey) {
+    this.stopTTS();
+    const audio = new Audio(streamUrl);
+    this.currentAudio = audio;
+
+    audio.addEventListener('loadeddata', () => {
+      this._setPlayerReady();
+    });
+
+    audio.addEventListener('canplaythrough', () => {
+      this._setPlayerReady();
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (!this.isSeekDragging) this._updateSeekbar();
+    });
+
+    audio.addEventListener('ended', () => {
+      const btnPlay = document.getElementById('audio-btn-playpause');
+      if (btnPlay) btnPlay.textContent = '▶️';
+    });
+
+    audio.play().catch(e => {
+      console.warn('[DuoSpeak] Audio stream play error:', e);
+      this._setPlayerReady();
+    });
   }
 
   _playAudioBlob(blobUrl, cacheKey) {
