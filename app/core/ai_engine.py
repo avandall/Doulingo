@@ -96,6 +96,48 @@ class AIEngine:
     def __init__(self):
         self.reload_keys()
         self.heuristic_checker = HeuristicChecker()
+        self._load_topic_bank()
+
+    def _load_topic_bank(self):
+        topic_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "topic_bank.json"))
+        self.topic_bank: dict[str, dict[str, Any]] = {}
+        if os.path.exists(topic_file):
+            try:
+                with open(topic_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    for item in data.get("topics", []):
+                        tid = item.get("id", "").lower().strip()
+                        if tid:
+                            self.topic_bank[tid] = item
+            except Exception as e:
+                logger.warning(f"[AIEngine] Failed to load topic_bank.json: {e}")
+
+    def get_topic_info(self, topic_id: str) -> dict[str, Any] | None:
+        """Lookup topic metadata from topic_bank.json."""
+        if not hasattr(self, "topic_bank") or not self.topic_bank:
+            self._load_topic_bank()
+        tid = (topic_id or "").lower().strip()
+        return self.topic_bank.get(tid)
+
+    def should_enable_scenario_angle(self, topic_id: str) -> bool:
+        """
+        Determine if scenario angle should be activated for a given topic.
+        Only structured roleplay scenarios (e.g. restaurant ordering, job interview, hotel checkin) activate angles.
+        Free conversation & greeting topics do NOT force scenario angles.
+        """
+        info = self.get_topic_info(topic_id)
+        if info:
+            if "enable_scenario_angle" in info:
+                return bool(info["enable_scenario_angle"])
+            if info.get("category") == "free_conversation":
+                return False
+            if info.get("category") == "structured_scenario":
+                return True
+
+        # Heuristic fallback for unlisted topics:
+        tid = (topic_id or "").lower().strip()
+        structured_keywords = ["order", "interview", "hotel", "airport", "flight", "shopping", "bargain", "roleplay", "restaurant", "cafe", "booking"]
+        return any(kw in tid for kw in structured_keywords)
 
     def reload_keys(self):
         load_dotenv(override=True)
@@ -245,7 +287,17 @@ RULES (same style as the example above):
                     "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
                 }
             else:
-                raise ValueError(f"Unknown scenario: {scenario_id}")
+                topic_info = self.get_topic_info(scenario_id)
+                if topic_info:
+                    scenario = {
+                        "id": topic_info.get("id", scenario_id),
+                        "title": topic_info.get("title", scenario_id.replace("_", " ").title()),
+                        "description": topic_info.get("description", f"Topic: {scenario_id}"),
+                        "default_character": character_id or "lily",
+                        "open_story_guide": f"Engage in an authentic discussion about {topic_info.get('title', scenario_id)}."
+                    }
+                else:
+                    raise ValueError(f"Unknown scenario: {scenario_id}")
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char
@@ -264,7 +316,16 @@ RULES (same style as the example above):
         style = character.get("speech_style", "Conversational")
         
         story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
-        angle = random.choice(SCENARIO_ANGLES)
+        
+        enable_angle = self.should_enable_scenario_angle(scenario_id)
+        topic_info = self.get_topic_info(scenario_id)
+        if enable_angle:
+            raw_angles = topic_info.get("scenario_angles") if isinstance(topic_info, dict) else None
+            angles_pool: list[str] = list(raw_angles) if isinstance(raw_angles, (list, tuple)) else list(SCENARIO_ANGLES)
+            angle = random.choice(angles_pool)
+            angle_block = f"\nDynamic Session Angle: {angle}\nImprovise an open, creative roleplay! Bring unexpected twists, humorous situations, and vivid character interactions. Never use repetitive templates."
+        else:
+            angle_block = "\nKeep the dialogue open, warm, and natural without forcing an artificial roleplay angle."
 
         prompt = f"""{mb_system_prompt}
 
@@ -273,9 +334,7 @@ DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
 DO NOT INTRODUCE YOURSELF (DO NOT SAY 'Hello I am {character['name']}' OR 'My name is'). JUMP DIRECTLY INTO THE TOPIC!
 
 UNSCRIPTED OPEN CREATIVE STORYTELLING:
-Story Guide: {story_guide}
-Dynamic Session Angle: {angle}
-Improvise an open, creative roleplay! Bring unexpected twists, humorous situations, and vivid character interactions. Never use repetitive templates.
+Story Guide: {story_guide}{angle_block}
 
 You are playing the role of {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
 SCENARIO TOPIC: "{scenario['title']}" - {scenario.get('description', '')}.
@@ -331,7 +390,17 @@ Output JSON ONLY with Structured CoT fields:
                     "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
                 }
             else:
-                raise ValueError(f"Unknown scenario ID: {scenario_id}")
+                topic_info = self.get_topic_info(scenario_id)
+                if topic_info:
+                    scenario = {
+                        "id": topic_info.get("id", scenario_id),
+                        "title": topic_info.get("title", scenario_id.replace("_", " ").title()),
+                        "description": topic_info.get("description", f"Topic: {scenario_id}"),
+                        "default_character": character_id or "lily",
+                        "open_story_guide": f"Engage in an authentic discussion about {topic_info.get('title', scenario_id)}."
+                    }
+                else:
+                    raise ValueError(f"Unknown scenario ID: {scenario_id}")
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char

@@ -15,6 +15,7 @@ from app.api.routers import (
     audio_router,
     chat_router,
     dictionary_router,
+    feedback_router,
     scenarios_router,
 )
 
@@ -32,6 +33,7 @@ app.include_router(chat_router)
 app.include_router(audio_router)
 app.include_router(dictionary_router)
 app.include_router(analytics_router)
+app.include_router(feedback_router)
 
 # Mount Static Files
 static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")

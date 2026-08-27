@@ -1,31 +1,40 @@
-# PLAN: TASK-005 — Refactor Decoupled 3-Tier Prompt System for All 9 Personas
+# PLAN: TASK-007 — Implement Response Rating API & Continuous Feedback Logger
 
-> **Task ID:** TASK-005  
-> **Phase:** Phase 2 (Architecture Harmonization)  
+> **Task ID:** TASK-007  
+> **Phase:** Phase 2 (Continuous Improvement)  
 > **Priority:** P1-High  
-> **Target Files:** `app/characters/__init__.py`, `app/core/prompt_factory.py`, `app/data/persona_definitions.json`, `tests/test_characters.py`
+> **Target Files:** `app/api/feedback_router.py`, `app/services/feedback_service.py`, `app/data/feedback_log.json`, `tests/test_feedback.py`
 
 ---
 
 ## 🎯 Goal & Acceptance Criteria
-- [x] Cấu trúc prompt mới 3 tầng (Tier 1: Core Pedagogy & Warmth, Tier 2: Persona Overlay từ JSON, Tier 3: Adaptive CEFR Horizon) được áp dụng nhất quán cho toàn bộ nhân vật.
-- [x] Loại bỏ hoàn toàn luật ép `min_words` cứng nhắc và các ví dụ mẫu gây lặp câu.
-- [x] Pytest nghiệm thu `tests/test_characters.py` pass 100% cho tất cả nhân vật và Tier 1 verify script (`python3 pipeline/scripts/verify.py`) PASS 100%.
+- [x] Endpoint `POST /api/v1/feedback/rate-response` ghi log thành công vào `app/data/feedback_log.json`.
+- [x] Câu bị đánh giá "Sáo rỗng" (`hollow`) hoặc "Sai ngữ cảnh" (`out_of_context`) sẽ bị hạ điểm `quality_score` hoặc đưa vào blacklist không dùng lại trong Exemplar RAG.
+- [x] Câu được đánh giá "Tốt" (`good`) với điểm cao tự động được cân nhắc đưa vào Dialogue Exemplar Bank.
+- [x] Pytest cho feedback router & service pass 100% (`pytest tests/test_feedback.py`) và `python3 pipeline/scripts/verify.py` PASS 100%.
 
 ---
 
 ## 📍 Execution Plan (Atomic Steps)
 
-### Step 1: Create `app/data/persona_definitions.json` & Refactor `app/characters/__init__.py` [x]
-- Create `app/data/persona_definitions.json` containing standardized persona metadata and overlay instructions for all 9+ personas (Alex, Lily, Oscar, Viktor, Chanel, Kaelen, Colt, Zarina, Scarlet, Luigi).
-- Update `app/characters/__init__.py` to load character definitions dynamically from `app/data/persona_definitions.json` with fallback to default dictionary.
-- Ensure no character prompt contains rigid `min_words` or repetitive sample sentences.
+### Step 1: Implement `app/services/feedback_service.py` & update RAG filter [x]
+- Create `FeedbackService` class managing feedback logging and dialogue bank updates.
+- Save structured feedback rating entries to `app/data/feedback_log.json`.
+- For `hollow` or `out_of_context` ratings: lower `quality_score` in `sample_dialogue_bank.json` and flag `is_blacklisted = True` if score drops below threshold (<= 2.0).
+- For `good` ratings: boost `quality_score` for existing matching exemplars or automatically create and add new high-scoring exemplar entries into `sample_dialogue_bank.json`.
+- Update `app/core/exemplar_rag.py` to exclude blacklisted/low-quality exemplars during retrieval.
 
-### Step 2: Refactor `app/core/prompt_factory.py` to Implement 3-Tier Prompt System [x]
-- Define Tier 1 (Core Pedagogy & Warmth), Tier 2 (Persona Overlay), Tier 3 (Adaptive CEFR Horizon).
-- Implement `build_3tier_prompt()` and enhance `PromptFactory` to construct decoupled 3-tier system prompts.
-- Ensure strict removal of rigid `min_words` constraints and template repetition.
+### Step 2: Implement `app/api/feedback_router.py` & initialize feedback log [x]
+- Define Pydantic request/response models: `RateResponseRequest` (`response_text`, `rating`, `dialogue_id`, `context`, `user_id`, `comments`) and `RateResponseResponse`.
+- Create router endpoint `POST /api/v1/feedback/rate-response` in `app/api/feedback_router.py`.
+- Ensure `app/data/feedback_log.json` exists as `[]` if missing.
+- Register router in `app/api/routers/__init__.py` and include in `app/main.py`.
 
-### Step 3: Implement `tests/test_characters.py` & Verify [x]
-- Create `tests/test_characters.py` testing character loading, 3-tier prompt generation, absence of `min_words`, and persona overlay consistency.
-- Run `pytest tests/test_characters.py` and `python3 pipeline/scripts/verify.py`.
+### Step 3: Write `tests/test_feedback.py` & Verify 100% PASS [x]
+- Write comprehensive unit tests in `tests/test_feedback.py`:
+  1. API endpoint validation (`rating` value validation, empty text handling).
+  2. Logging ratings into `app/data/feedback_log.json`.
+  3. Quality score reduction and blacklisting for `hollow` / `out_of_context`.
+  4. Exemplar auto-addition / score boost for `good` rating.
+  5. Exemplar RAG filtering of blacklisted exemplars.
+- Run `pytest tests/test_feedback.py` and `python3 pipeline/scripts/verify.py`.

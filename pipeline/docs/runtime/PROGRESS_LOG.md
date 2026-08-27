@@ -93,3 +93,23 @@
   - Loại bỏ hoàn toàn quy tắc ép `min_words` cứng nhắc và ví dụ mẫu gây lặp câu.
   - Viết unit test suite `tests/test_characters.py` (25 test cases) kiểm tra việc load persona, 3-tier prompt assembly, no min_words rule, và DecoupledPromptFactory. Pass 100% (25/25).
   - Kiểm tra static analysis (Ruff, Mypy) pass 100% không cảnh báo.
+
+### [2026-08-27 12:43] — Hoàn thành TASK-006
+- **Task ID:** TASK-006 (Build Structured Topic Bank & Soften Scenario Angles)
+- **Hành động:**
+  - Khởi tạo và kiểm tra `app/data/topic_bank.json` phân định rõ `free_conversation` (greeting, small talk, hobbies) vs `structured_scenario` (restaurant ordering, job interview, hotel checkin, airport, bargaining, coffee shop).
+  - Tích hợp `_load_topic_bank`, `get_topic_info(topic_id)`, `should_enable_scenario_angle(topic_id)` trong `app/core/ai_engine.py`.
+  - Cập nhật `start_roleplay_greeting` trong `app/core/ai_engine.py` để chỉ kích hoạt `Dynamic Session Angle` khi `should_enable_scenario_angle` trả về `True` (structured roleplay scenarios). Giữ chủ đề tự do / chào hỏi tự nhiên, không ép kịch bản gượng gạo.
+  - Sửa lỗi type annotation `raw_angles` trong `ai_engine.py` cho Mypy compliance.
+  - Viết bộ unit test `tests/test_topics.py` (6 test cases) verify topic bank structure, topic info lookup, classification rule, và condition check trong prompt generation. Pass 100%.
+  - Chạy static analysis (Ruff, Mypy, Bandit, Pytest) thông qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+
+### [2026-08-27 13:16] — Hoàn thành TASK-007
+- **Task ID:** TASK-007 (Implement Response Rating API & Continuous Feedback Logger)
+- **Hành động:**
+  - Viết `app/services/feedback_service.py` xử lý việc ghi nhật ký đánh giá vào `app/data/feedback_log.json`, hạ điểm `quality_score` và đưa vào blacklist đối với rating `hollow` / `out_of_context`, tăng điểm hoặc tự động thêm câu thoại mẫu mới đối với rating `good`.
+  - Cập nhật `app/core/exemplar_rag.py` để loại bỏ các exemplar bị blacklist hoặc có điểm chất lượng <= 1.0 khỏi kết quả truy xuất RAG.
+  - Viết `app/api/feedback_router.py` cung cấp endpoint REST `POST /api/v1/feedback/rate-response` xử lý rating (`hollow`, `out_of_context`, `good`) với Pydantic validation và error status handling.
+  - Đăng ký `feedback_router` trong `app/api/routers/__init__.py` và tích hợp vào `app/main.py`.
+  - Viết unit test suite `tests/test_feedback.py` (6 test cases) verify API validation, logging, score penalty/blacklist, RAG filtering, boost/auto-addition. Pass 100% (6/6).
+  - Chạy `python3 pipeline/scripts/verify.py` kiểm tra Tier 1 (Ruff, Mypy, Bandit, Pytest) đạt **PASS 100%**.

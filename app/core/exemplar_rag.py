@@ -69,9 +69,10 @@ class ExemplarRAG:
                 "dialogue_act": str(item.get("dialogue_act", "statement")),
                 "text": str(item.get("text", "")).strip(),
                 "quality_score": float(item.get("quality_score", 4.0)),
+                "is_blacklisted": bool(item.get("is_blacklisted", False)),
                 "score": 0.0,
             })
-            if ex["text"]:
+            if ex["text"] and not ex["is_blacklisted"] and ex["quality_score"] > 1.0:
                 self.exemplars.append(ex)
 
         self._build_vector_index()

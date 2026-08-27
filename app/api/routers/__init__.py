@@ -1,4 +1,5 @@
 """FastAPI Modular Routers."""
+from app.api.feedback_router import router as feedback_router
 from app.api.routers.analytics import router as analytics_router
 from app.api.routers.audio import router as audio_router
 from app.api.routers.chat import router as chat_router
@@ -10,5 +11,6 @@ __all__ = [
     "audio_router",
     "chat_router",
     "dictionary_router",
+    "feedback_router",
     "scenarios_router",
 ]
