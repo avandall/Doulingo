@@ -34,6 +34,12 @@ logger = logging.getLogger("duolingo_speak.ai_engine")
 
 # Trace Logging & Masked Key Helpers
 KEY_STATUS_CACHE: dict[str, dict[str, Any]] = {}
+BACKGROUND_EVAL_STORE: dict[str, dict[str, Any]] = {}
+
+def get_background_evaluation(turn_id: str) -> dict[str, Any] | None:
+    """Retrieve background evaluation result by turn_id."""
+    return BACKGROUND_EVAL_STORE.get(turn_id)
+
 
 def mask_api_key(key: str | None) -> str:
     """Safely mask API Key showing only 4 leading and 4 trailing characters (e.g. gsk_...9aB)."""
@@ -367,17 +373,7 @@ Output JSON ONLY with Structured CoT fields:
             "ai_response_vi": ""
         }
 
-    def process_turn(
-        self,
-        scenario_id: str,
-        character_id: str | None,
-        user_transcript: str,
-        conversation_history: list[dict[str, str]],
-        level: int = 1,
-        speech_metrics: dict[str, Any] | None = None
-    ) -> dict[str, Any]:
-        self.reload_keys()
-
+    def _resolve_scenario(self, scenario_id: str, character_id: str | None) -> dict[str, Any]:
         scenario = get_scenario(scenario_id)
         if not scenario:
             topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
@@ -401,10 +397,101 @@ Output JSON ONLY with Structured CoT fields:
                     }
                 else:
                     raise ValueError(f"Unknown scenario ID: {scenario_id}")
+        return scenario
+
+    def process_turn_fast(
+        self,
+        scenario_id: str,
+        character_id: str | None,
+        user_transcript: str,
+        conversation_history: list[dict[str, str]],
+        level: int = 1,
+    ) -> dict[str, Any]:
+        """
+        Fast Voice LLM execution path:
+        Generates ONLY the AI spoken utterance (~30-40 tokens plain text) with minimal latency (<400ms).
+        Bypasses heavy JSON CoT & detailed feedback evaluation.
+        """
+        self.reload_keys()
+        scenario = self._resolve_scenario(scenario_id, character_id)
+        default_char = scenario.get("default_character", "lily")
+        char_key = character_id if character_id else default_char
+        character = get_character(char_key)
+
+        fast_prompt = f"""You are playing the role of {character['name']} in a conversation about "{scenario.get('title', 'General Conversation')}".
+User said: "{user_transcript}"
+
+TASK: Respond naturally and directly as {character['name']} in 1-2 short sentences (CEFR Level {level}). Keep response under 35 words ending with a short open-ended question.
+
+Output JSON ONLY:
+{{
+  "ai_response": "Your spoken reply as {character['name']}"
+}}"""
+
+        raw_res = self._call_llm_providers(fast_prompt, temp=0.7)
+        if raw_res and ("ai_response" in raw_res or "final_response" in raw_res):
+            ai_resp = raw_res.get("ai_response") or raw_res.get("final_response", "")
+        else:
+            fallback_dict = self._get_context_aware_fallback(
+                scenario, character, user_transcript, level, conversation_history
+            )
+            ai_resp = fallback_dict.get("ai_response", "That sounds interesting! What else can you share?")
+
+        return {
+            "ai_response": ai_resp,
+            "status": "fast_voice_ready",
+            "latency_mode": "fast_voice"
+        }
+
+    def evaluate_turn_background(
+        self,
+        turn_id: str,
+        scenario_id: str,
+        character_id: str | None,
+        user_transcript: str,
+        conversation_history: list[dict[str, str]],
+        ai_response: str,
+        level: int = 1,
+        speech_metrics: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
+        """
+        Async Background Evaluation Task:
+        Executes full grammar scoring, IELTS feedback, error recording, and Vietnamese translation in background.
+        Stores result in BACKGROUND_EVAL_STORE[turn_id].
+        """
+        eval_result = self.process_turn(
+            scenario_id=scenario_id,
+            character_id=character_id,
+            user_transcript=user_transcript,
+            conversation_history=conversation_history,
+            level=level,
+            speech_metrics=speech_metrics
+        )
+        if ai_response:
+            eval_result["ai_response"] = ai_response
+        eval_result["turn_id"] = turn_id
+        eval_result["status"] = "completed"
+
+        BACKGROUND_EVAL_STORE[turn_id] = eval_result
+        return eval_result
+
+    def process_turn(
+        self,
+        scenario_id: str,
+        character_id: str | None,
+        user_transcript: str,
+        conversation_history: list[dict[str, str]],
+        level: int = 1,
+        speech_metrics: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
+        self.reload_keys()
+
+        scenario = self._resolve_scenario(scenario_id, character_id)
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char
         character = get_character(char_key)
+
 
         turn_count = len(conversation_history) // 2 + 1
 

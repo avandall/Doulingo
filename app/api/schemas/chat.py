@@ -13,6 +13,17 @@ class TurnRequest(BaseModel):
     speech_metrics: dict[str, Any] | None = None
 
 
+class FastTurnRequest(BaseModel):
+    turn_id: str | None = None
+    scenario_id: str
+    character_id: str | None = None
+    user_transcript: str
+    conversation_history: list[dict[str, str]] = []
+    level: int | None = 1
+    speech_metrics: dict[str, Any] | None = None
+
+
+
 class ChatRequest(BaseModel):
     user_transcript: str | None = None
     text: str | None = None

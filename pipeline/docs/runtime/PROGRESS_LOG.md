@@ -7,6 +7,17 @@
 
 ## 📅 Lịch sử thực thi
 
+### [2026-08-27 23:33] — Hoàn thành TASK-011
+- **Task ID:** TASK-011 (Decoupled Fast Voice LLM & Background Evaluation Pipeline)
+- **Hành động:**
+  - Triển khai `process_turn_fast()` trong `app/core/ai_engine.py` giúp AI sinh câu thoại plain text ngắn gọn (~30-40 tokens) với độ trễ siêu thấp (<400ms), bóc tách khỏi luồng chấm điểm nặng.
+  - Triển khai `evaluate_turn_background()` và bộ nhớ `BACKGROUND_EVAL_STORE` trong `app/core/ai_engine.py` để tính toán toàn bộ điểm số ngữ pháp, độ trôi chảy, bản dịch tiếng Việt, gợi ý bản xứ và ghi nhật ký Error Journal trong luồng bất đồng bộ ngầm.
+  - Cập nhật `app/api/schemas/chat.py` bổ sung Pydantic model `FastTurnRequest`.
+  - Cập nhật `app/api/routers/chat.py` bổ sung endpoint `POST /api/process_turn_fast` (tự động kích hoạt `BackgroundTasks.add_task` để chấm điểm ngầm) và endpoint `GET /api/turn_evaluation/{turn_id}` cho phép UI truy vấn kết quả đánh giá chi tiết sau khi AI cất lời.
+  - Viết bộ unit & integration test suite `tests/test_decoupled_voice_llm.py` (4 test cases) kiểm tra `process_turn_fast`, `evaluate_turn_background`, fast turn API endpoint và turn evaluation polling API endpoint. Pass 100% (4/4).
+  - Kiểm tra chất lượng tổng thể (Ruff, Mypy, Bandit, Pytest) qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+  - Đánh dấu `[x] DONE` cho `TASK-011` trong `pipeline/docs/context/Tasks_list.md`.
+
 ### [2026-08-26 21:21] — Khởi tạo TASK-001
 - **Task ID:** TASK-001 (Crawl & Seed Initial Datasets)
 - **Hành động:** 

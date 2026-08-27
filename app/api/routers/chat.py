@@ -2,19 +2,22 @@
 import base64
 import json
 import logging
+import uuid
 from typing import Any
 from urllib.parse import quote
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, File, Form, HTTPException, UploadFile
 
 from app.api.schemas.chat import (
     ChatRequest,
+    FastTurnRequest,
     StartScenarioRequest,
     TurnRequest,
     VoiceTurnRequest,
 )
 from app.audio import ASRChunkResult, StreamingSessionState, TTSStreamer
 from app.core import ConversationalAgent, ai_engine
+from app.core.ai_engine import get_background_evaluation
 from app.rag import PromptContext, compute_band_window, retrieve_dialogues
 from app.storage import get_db_connection
 
@@ -279,3 +282,47 @@ def api_chat(payload: ChatRequest):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/api/process_turn_fast")
+def api_process_turn_fast(payload: FastTurnRequest, background_tasks: BackgroundTasks):
+    if not payload.user_transcript.strip():
+        raise HTTPException(status_code=400, detail="User transcript cannot be empty")
+    turn_id = payload.turn_id or str(uuid.uuid4())
+    try:
+        fast_result = ai_engine.process_turn_fast(
+            scenario_id=payload.scenario_id,
+            character_id=payload.character_id,
+            user_transcript=payload.user_transcript,
+            conversation_history=payload.conversation_history,
+            level=payload.level or 1,
+        )
+        ai_response = fast_result.get("ai_response", "")
+        background_tasks.add_task(
+            ai_engine.evaluate_turn_background,
+            turn_id=turn_id,
+            scenario_id=payload.scenario_id,
+            character_id=payload.character_id,
+            user_transcript=payload.user_transcript,
+            conversation_history=payload.conversation_history,
+            ai_response=ai_response,
+            level=payload.level or 1,
+            speech_metrics=payload.speech_metrics,
+        )
+        return {
+            "turn_id": turn_id,
+            "ai_response": ai_response,
+            "status": "processing_eval",
+            "latency_mode": "fast_voice",
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/api/turn_evaluation/{turn_id}")
+def api_get_turn_evaluation(turn_id: str):
+    eval_res = get_background_evaluation(turn_id)
+    if not eval_res:
+        return {"turn_id": turn_id, "status": "pending", "user_feedback": None}
+    return eval_res
+

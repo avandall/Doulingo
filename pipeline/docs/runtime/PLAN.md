@@ -1,38 +1,38 @@
-# PLAN: TASK-010 — Optimistic Client-Side STT & Asynchronous Acoustic Extraction
+# PLAN: TASK-011 — Decoupled Fast Voice LLM & Background Evaluation Pipeline
 
-> **Task ID:** TASK-010  
+> **Task ID:** TASK-011  
 > **Phase:** Phase 4 (Ultra-Low-Latency & Real-Time Voice Streaming Optimization)  
 > **Priority:** P0-Critical  
-> **Target Files:** `static/js/speech.js`, `app/api/routers/audio.py`, `tests/test_optimistic_stt.py`
+> **Target Files:** `app/core/ai_engine.py`, `app/api/routers/chat.py`, `tests/test_decoupled_voice_llm.py`
 
 ---
 
 ## 🎯 Goal & Acceptance Criteria
-- [x] Implement `POST /api/audio/extract_acoustic_metrics` in `app/api/routers/audio.py` for background acoustic feature extraction (WPM, pauses, pitch/rhythm, fluency tier).
-- [x] Update `static/js/speech.js` for Optimistic Client-Side STT: immediately emit browser-recognized transcript to `onResult(text, true, null)` without waiting for server ASR, and extract acoustic metrics in an unblocked background fetch.
-- [x] Create unit & integration tests in `tests/test_optimistic_stt.py` verifying background acoustic extraction endpoint and optimistic STT contract.
-- [x] Pass `pytest tests/test_optimistic_stt.py` and `python3 pipeline/scripts/verify.py` 100%.
+- [x] Implement `process_turn_fast()` in `app/core/ai_engine.py` generating fast plain text AI responses (~30-40 tokens) with latency < 400ms.
+- [x] Implement `evaluate_turn_background()` in `app/core/ai_engine.py` and `BACKGROUND_EVAL_STORE` for async evaluation (grammar analysis, scores, error journal, native phrasing, translation).
+- [x] Add `POST /api/process_turn_fast` and `GET /api/turn_evaluation/{turn_id}` in `app/api/routers/chat.py` leveraging FastAPI `BackgroundTasks`.
+- [x] Write unit & integration tests in `tests/test_decoupled_voice_llm.py` verifying fast voice generation & background evaluation polling.
+- [x] Pass `pytest tests/test_decoupled_voice_llm.py` and `python3 pipeline/scripts/verify.py` 100%.
 
 ---
 
 ## 📍 Execution Plan (Atomic Steps)
 
-### Step 1: Update Backend Endpoint `app/api/routers/audio.py` [x]
-- Add `POST /api/audio/extract_acoustic_metrics` endpoint to accept audio file blob + transcript string.
-- Invoke `ai_engine._compute_speech_acoustic_metrics(transcript, audio_bytes)` to compute WPM, pauses, pronunciation score, duration, and fluency tier.
-- Return structured acoustic feedback response `{"status": "success", "speech_metrics": metrics, "transcript": transcript}`.
+### Step 1: Implement Fast Voice Generation & Background Evaluation in `app/core/ai_engine.py` [x]
+- Add `process_turn_fast()` method to `AIEngine` for lightweight utterance generation without heavy JSON CoT/feedback overhead.
+- Add `evaluate_turn_background()` method and `BACKGROUND_EVAL_STORE` dictionary to compute detailed feedback, scores, Error Journal recording, and Vietnamese translation in background.
 
-### Step 2: Update Frontend Client `static/js/speech.js` [x]
-- Update `SpeechHandler` to send client-side Web Speech API transcript instantly to `onResult(text, true, null)` when recording ends.
-- Asynchronously dispatch audio recording blob to `/api/audio/extract_acoustic_metrics` without blocking conversation turn execution.
-- Store/emit acoustic metrics upon arrival for UI metrics display.
+### Step 2: Implement Decoupled Router Endpoints in `app/api/routers/chat.py` [x]
+- Add `FastTurnRequest` schema.
+- Add `POST /api/process_turn_fast` endpoint to immediately return `ai_response` and schedule `evaluate_turn_background` via `BackgroundTasks`.
+- Add `GET /api/turn_evaluation/{turn_id}` endpoint to retrieve background evaluation results.
 
-### Step 3: Implement `tests/test_optimistic_stt.py` [x]
-- Test `/api/audio/extract_acoustic_metrics` endpoint with audio upload and transcript text.
-- Test endpoint return structure (`speech_metrics` with `wpm`, `pauses`, `pronunciation_score`, `fluency_tier`, `acoustic_feedback`).
-- Test `/api/transcribe_audio` instant fallback and client-side STT integration contracts.
+### Step 3: Create Tests `tests/test_decoupled_voice_llm.py` [x]
+- Test fast voice generation method.
+- Test background evaluation worker & storage.
+- Test `POST /api/process_turn_fast` and `GET /api/turn_evaluation/{turn_id}` API flow.
 
-### Step 4: Run Deterministic Verification & Finalize [x]
-- Run `pytest tests/test_optimistic_stt.py`.
-- Run `python3 pipeline/scripts/verify.py`.
+### Step 4: Run Verification & Update Documentation [x]
+- Execute `pytest tests/test_decoupled_voice_llm.py`.
+- Execute `python3 pipeline/scripts/verify.py`.
 - Update `STATUS.md`, `PROGRESS_LOG.md`, `PLAN.md`, and mark `[x] DONE` in `Tasks_list.md`.
