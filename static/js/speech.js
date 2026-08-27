@@ -113,19 +113,22 @@ class SpeechHandler {
           return;
         }
 
-        // Authentic Duolingo: Send recorded audio blob to Backend AI Whisper / Gemini Audio ASR for true studio-grade English recognition
+        // Phase 4 Task-010: Optimistic Client-Side STT & Asynchronous Acoustic Extraction
+        // 1. Immediately emit browser-recognized transcript to AI engine (~0ms delay)
+        if (textToSubmit && this.onResult) {
+          this.onResult(textToSubmit, true, null);
+        }
+
+        // 2. Process audio blob in background asynchronously without blocking dialogue turn
         if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
-          this.mediaRecorder.onstop = async () => {
+          this.mediaRecorder.onstop = () => {
             const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
             this._cleanupStream();
-            await this._submitTranscribeAudio(audioBlob, textToSubmit);
+            this._extractAcousticMetricsAsync(audioBlob, textToSubmit);
           };
           this.mediaRecorder.stop();
         } else {
           this._cleanupStream();
-          if (textToSubmit && this.onResult) {
-            this.onResult(textToSubmit, true);
-          }
         }
       };
     } else {
@@ -251,6 +254,34 @@ class SpeechHandler {
       }
       if (this.onStateChange) this.onStateChange('cancelled');
     }
+  }
+
+  async _extractAcousticMetricsAsync(audioBlob, transcript) {
+    this.isTranscribing = true;
+    try {
+      const formData = new FormData();
+      if (audioBlob) {
+        formData.append('file', audioBlob, 'user_speech.webm');
+      }
+      formData.append('transcript', transcript || '');
+      const res = await fetch('/api/audio/extract_acoustic_metrics', {
+        method: 'POST',
+        body: formData
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const speechMetrics = data.speech_metrics || null;
+        if (speechMetrics && this.onAcousticMetrics) {
+          this.onAcousticMetrics(speechMetrics);
+        }
+        return data;
+      }
+    } catch (e) {
+      console.warn('[SpeechHandler] Async acoustic extraction failed:', e);
+    } finally {
+      this.isTranscribing = false;
+    }
+    return null;
   }
 
   async _submitTranscribeAudio(audioBlob, fallbackText) {

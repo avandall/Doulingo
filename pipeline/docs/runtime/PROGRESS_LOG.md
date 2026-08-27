@@ -139,3 +139,13 @@
   - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) thông qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
   - Đánh dấu `[x] DONE` cho `TASK-009` trong `pipeline/docs/context/Tasks_list.md`.
 
+### [2026-08-27 23:17] — Hoàn thành TASK-010
+- **Task ID:** TASK-010 (Optimistic Client-Side STT & Asynchronous Acoustic Extraction)
+- **Hành động:**
+  - Cập nhật `app/api/routers/audio.py` bổ sung endpoint `POST /api/audio/extract_acoustic_metrics` xử lý trích xuất chỉ số âm học (WPM, ngập ngừng/pauses, pronunciation score, fluency tier) từ audio recorded blob và transcript trong nền.
+  - Cập nhật `static/js/speech.js` hỗ trợ **Optimistic Client-Side STT**: ngay khi người dùng dứt lời, transcript từ Web Speech API được gửi tức thì vào `onResult(textToSubmit, true, null)` (~0ms delay), đồng thời tiến trình upload audio webm được đẩy sang kênh bất đồng bộ `_extractAcousticMetricsAsync` mà không gây nghẽn luồng hội thoại.
+  - Viết bộ unit & integration test suite `tests/test_optimistic_stt.py` (4 test cases) kiểm tra endpoint acoustic extraction có audio và không có audio, fallback transcribe endpoint, và JavaScript contract alignment trong `speech.js`. Pass 100% (4/4).
+  - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+  - Đánh dấu `[x] DONE` cho `TASK-010` trong `pipeline/docs/context/Tasks_list.md`.
+
+

@@ -64,3 +64,26 @@ async def api_transcribe_audio(
 
     result = await ai_engine.transcribe_audio(audio_bytes, filename=filename, fallback_text=fallback_text)
     return result
+
+
+@router.post("/api/audio/extract_acoustic_metrics")
+async def api_extract_acoustic_metrics(
+    file: UploadFile | None = File(None),
+    transcript: str = Form(""),
+):
+    """
+    Asynchronously extracts acoustic metrics (WPM, pauses, fluency tier, pronunciation score)
+    from background recorded audio blob + transcript without blocking optimistic client STT.
+    """
+    audio_bytes = b""
+    if file:
+        audio_bytes = await file.read()
+
+    clean_tx = (transcript or "").strip()
+    metrics = ai_engine._compute_speech_acoustic_metrics(clean_tx, audio_bytes)
+    return {
+        "status": "success",
+        "speech_metrics": metrics,
+        "transcript": clean_tx,
+    }
+
