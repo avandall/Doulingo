@@ -18,7 +18,7 @@
 | `TASK-005` | Refactor Decoupled 3-Tier Prompt System for All 9 Personas | Phase 2 | P1 | `[x] DONE` | Tách 3 tầng Pedagogy -> Persona -> CEFR Horizon |
 | `TASK-006` | Build Structured Topic Bank & Soften Scenario Angles | Phase 2 | P1 | `[x] DONE` | Phân loại topic tự do vs nhập vai |
 | `TASK-007` | Implement Response Rating API & Continuous Feedback Logger | Phase 2 | P1 | `[x] DONE` | Đánh giá câu (hollow, out_of_context, good) & Update DB |
-| `TASK-008` | Build Grammar Structure Bank & CEFR Constraint Validator | Phase 3 | P2 | `[ ] TODO` | Ngữ pháp theo CEFR level |
+| `TASK-008` | Build Grammar Structure Bank & CEFR Constraint Validator | Phase 3 | P2 | `[x] DONE` | Ngữ pháp theo CEFR level |
 | `TASK-009` | Implement ASR Adaptive Level Detector (IRT Model) | Phase 3 | P2 | `[ ] TODO` | Đo trình độ động từ transcript user |
 
 ---
@@ -269,7 +269,7 @@ Task Name:       Build Grammar Structure Bank & CEFR Constraint Validator
 Phase:           Phase 3 (Advanced Validation)
 Task Type:       feat
 Priority:        P2-Medium
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-26
 ```
 
@@ -278,7 +278,7 @@ Ngày tạo:        2026-08-26
 - **What:** Tạo `app/data/grammar_bank.json` và tích hợp kiểm tra ngữ pháp vào Validator.
 
 #### Acceptance Criteria (Tiêu chí hoàn thành)
-- [ ] Validator nhận diện được số mệnh đề (`max_clauses`) và cấu trúc ngữ pháp cho phép theo level.
+- [x] Validator nhận diện được số mệnh đề (`max_clauses`) và cấu trúc ngữ pháp cho phép theo level.
 
 #### Scope (Phạm vi)
 - **Files được sửa/tạo:** `app/data/grammar_bank.json`, `app/core/grammar_validator.py`, `tests/test_grammar_validator.py`

@@ -1,7 +1,7 @@
 # PROGRESS LOG
 # Nhật ký tiến độ chi tiết — Ghi lại toàn bộ lịch sử thao tác & phát sinh
 
-> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-26 21:44
+> **Trạng thái:** RUNTIME (Auto-generated) | **Cập nhật:** 2026-08-27 14:53
 
 ---
 
@@ -113,3 +113,16 @@
   - Đăng ký `feedback_router` trong `app/api/routers/__init__.py` và tích hợp vào `app/main.py`.
   - Viết unit test suite `tests/test_feedback.py` (6 test cases) verify API validation, logging, score penalty/blacklist, RAG filtering, boost/auto-addition. Pass 100% (6/6).
   - Chạy `python3 pipeline/scripts/verify.py` kiểm tra Tier 1 (Ruff, Mypy, Bandit, Pytest) đạt **PASS 100%**.
+
+### [2026-08-27 14:53] — Hoàn thành TASK-008
+- **Task ID:** TASK-008 (Build Grammar Structure Bank & CEFR Constraint Validator)
+- **Hành động:**
+  - Tạo `app/data/grammar_bank.json` định nghĩa danh mục cấu trúc ngữ pháp CEFR linh hoạt (`introduced_at_level` và `mastered_at_level`), quy tắc khớp regex patterns, cùng ràng buộc trần số mệnh đề (`max_clauses`) cho từng cấp độ từ Pre-A1 đến C2+ (1-20).
+  - Viết module `app/core/grammar_validator.py` triển khai `GrammarValidator` thực hiện:
+    1. Ánh xạ CEFR level string/int (1-20) sang rank 0-13 (`get_level_rank`).
+    2. Đếm số lượng mệnh đề trong câu và tính số mệnh đề lớn nhất trong phản hồi (`count_clauses`).
+    3. Nhận diện các cấu trúc ngữ pháp có trong văn bản thông qua regex pattern matching (`detect_structures`).
+    4. Kiểm tra trần cấu trúc ngữ pháp cho phép và trần số mệnh đề theo level target (`validate_grammar`), trả về `GrammarCheckResult`.
+  - Viết bộ unit test suite `tests/test_grammar_validator.py` (7 test cases) kiểm tra level rank mapping, clause count algorithm, pattern detection, pass/violate paths, và clause limits. Pass 100% (7/7).
+  - Kiểm tra static analysis (Ruff, Mypy, Bandit, Pytest) thông qua `python3 pipeline/scripts/verify.py` đạt **PASS 100%**.
+  - Đánh dấu `[x] DONE` cho `TASK-008` trong `pipeline/docs/context/Tasks_list.md`.

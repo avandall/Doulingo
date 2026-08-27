@@ -1,40 +1,41 @@
-# PLAN: TASK-007 — Implement Response Rating API & Continuous Feedback Logger
+# PLAN: TASK-008 — Build Grammar Structure Bank & CEFR Constraint Validator
 
-> **Task ID:** TASK-007  
-> **Phase:** Phase 2 (Continuous Improvement)  
-> **Priority:** P1-High  
-> **Target Files:** `app/api/feedback_router.py`, `app/services/feedback_service.py`, `app/data/feedback_log.json`, `tests/test_feedback.py`
+> **Task ID:** TASK-008  
+> **Phase:** Phase 3 (Advanced Validation)  
+> **Priority:** P2-Medium  
+> **Target Files:** `app/data/grammar_bank.json`, `app/core/grammar_validator.py`, `tests/test_grammar_validator.py`
 
 ---
 
 ## 🎯 Goal & Acceptance Criteria
-- [x] Endpoint `POST /api/v1/feedback/rate-response` ghi log thành công vào `app/data/feedback_log.json`.
-- [x] Câu bị đánh giá "Sáo rỗng" (`hollow`) hoặc "Sai ngữ cảnh" (`out_of_context`) sẽ bị hạ điểm `quality_score` hoặc đưa vào blacklist không dùng lại trong Exemplar RAG.
-- [x] Câu được đánh giá "Tốt" (`good`) với điểm cao tự động được cân nhắc đưa vào Dialogue Exemplar Bank.
-- [x] Pytest cho feedback router & service pass 100% (`pytest tests/test_feedback.py`) và `python3 pipeline/scripts/verify.py` PASS 100%.
+- [x] Create `app/data/grammar_bank.json` containing CEFR grammar structures categorized with `introduced_at_level`, `mastered_at_level`, regex patterns, and level constraints (`max_clauses`).
+- [x] Implement `app/core/grammar_validator.py` with `GrammarValidator` class that:
+  - Detects maximum clause count (`max_clauses`) in sentences.
+  - Identifies grammar structures present in AI responses via regex pattern matching.
+  - Validates detected structures against the allowed CEFR ceiling (`introduced_at_level`) for a target level.
+  - Returns structured `GrammarCheckResult`.
+- [x] Create unit tests in `tests/test_grammar_validator.py` covering clause counting, grammar structure detection, level constraint checks, and edge cases.
+- [x] Pass `pytest tests/test_grammar_validator.py` and `python3 pipeline/scripts/verify.py` 100%.
 
 ---
 
 ## 📍 Execution Plan (Atomic Steps)
 
-### Step 1: Implement `app/services/feedback_service.py` & update RAG filter [x]
-- Create `FeedbackService` class managing feedback logging and dialogue bank updates.
-- Save structured feedback rating entries to `app/data/feedback_log.json`.
-- For `hollow` or `out_of_context` ratings: lower `quality_score` in `sample_dialogue_bank.json` and flag `is_blacklisted = True` if score drops below threshold (<= 2.0).
-- For `good` ratings: boost `quality_score` for existing matching exemplars or automatically create and add new high-scoring exemplar entries into `sample_dialogue_bank.json`.
-- Update `app/core/exemplar_rag.py` to exclude blacklisted/low-quality exemplars during retrieval.
+### Step 1: Create `app/data/grammar_bank.json` [x]
+- Define level constraints (mapping CEFR levels Pre-A1 to C2+ and levels 1-20 to `max_clauses` and rank boundaries).
+- Define CEFR grammar structure catalog (Present Simple, Present Continuous, Past Simple, Future going to, Present Perfect, Modals, Conditionals, Passive Voice, Subjunctive) with `introduced_at_level`, `mastered_at_level`, and regex patterns.
 
-### Step 2: Implement `app/api/feedback_router.py` & initialize feedback log [x]
-- Define Pydantic request/response models: `RateResponseRequest` (`response_text`, `rating`, `dialogue_id`, `context`, `user_id`, `comments`) and `RateResponseResponse`.
-- Create router endpoint `POST /api/v1/feedback/rate-response` in `app/api/feedback_router.py`.
-- Ensure `app/data/feedback_log.json` exists as `[]` if missing.
-- Register router in `app/api/routers/__init__.py` and include in `app/main.py`.
+### Step 2: Implement `app/core/grammar_validator.py` [x]
+- Define dataclass `GrammarCheckResult`.
+- Implement `GrammarValidator` class:
+  - Level rank resolution (converting string level `"A1"` or int level `2` to rank 0..13).
+  - Sentence segmentation and clause counting heuristic algorithm (`count_clauses`).
+  - Grammar structure matching (`detect_structures`).
+  - Constraint validation logic (`validate_grammar(text, target_level)`).
 
-### Step 3: Write `tests/test_feedback.py` & Verify 100% PASS [x]
-- Write comprehensive unit tests in `tests/test_feedback.py`:
-  1. API endpoint validation (`rating` value validation, empty text handling).
-  2. Logging ratings into `app/data/feedback_log.json`.
-  3. Quality score reduction and blacklisting for `hollow` / `out_of_context`.
-  4. Exemplar auto-addition / score boost for `good` rating.
-  5. Exemplar RAG filtering of blacklisted exemplars.
-- Run `pytest tests/test_feedback.py` and `python3 pipeline/scripts/verify.py`.
+### Step 3: Implement `tests/test_grammar_validator.py` & Verification [x]
+- Test level rank mapping and constraint lookup.
+- Test sentence clause counting (single clause, compound sentences, complex sentences).
+- Test detection of allowed vs disallowed grammar structures for target levels (e.g. A1 vs B2 vs C1).
+- Test full validation workflow returning `GrammarCheckResult`.
+- Run `pytest tests/test_grammar_validator.py` and `python3 pipeline/scripts/verify.py`.
