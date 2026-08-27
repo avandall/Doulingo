@@ -8,13 +8,13 @@
 ## Current State
 
 ```
-Current Task ID: TASK-004
-Task:           Implement Structured Output CoT & Heuristic Validation Loop Engine
-Next Task:      TASK-005
-Phase:          Phase 1 (Core Execution)
+Current Task ID: TASK-005
+Task:           Refactor Decoupled 3-Tier Prompt System for All 9 Personas
+Next Task:      TASK-006
+Phase:          Phase 2 (Architecture Harmonization)
 Current Step:   DONE
-Iteration:      Iteration 2 (Fix Role)
-Last Updated:   2026-08-26 22:09
+Iteration:      Iteration 1
+Last Updated:   2026-08-27 12:17
 ```
 
 ---
@@ -30,9 +30,9 @@ Last Updated:   2026-08-26 22:09
 ## Last Action
 
 ```
-Action:   Đã khắc phục 100% tất cả vấn đề chỉ ra trong DEBATE_LOG.md (Pytest ReadTimeout handling, Topic continuity trong openers bank, anti-repetition 10-turn window, retry prompt duplication). Đã chạy thành công 'python3 pipeline/scripts/verify.py' (Tier 1 PASS 100%).
+Action:   Tạo app/data/persona_definitions.json, refactor app/characters/__init__.py, refactor app/core/prompt_factory.py, và thêm tests/test_characters.py (25/25 PASS). Static analysis (Ruff, Mypy) pass 100%.
 Result:   SUCCESS (Tier 1 PASS 100%)
-Time:     2026-08-26 22:09
+Time:     2026-08-27 12:17
 ```
 
 ---
@@ -40,8 +40,8 @@ Time:     2026-08-26 22:09
 ## Next Action
 
 ```
-Action:   Gửi lại kết quả verification và hoàn tất phiên làm việc cho Task-004.
-Priority: P0
+Action:   Đánh dấu [x] DONE cho TASK-005 trong Tasks_list.md và hoàn tất phiên làm việc.
+Priority: P1
 Blocks:   None
 ```
 
@@ -50,7 +50,7 @@ Blocks:   None
 ## Quick Reference
 
 ```
-Active Files:     app/core/ai_engine.py, pipeline/docs/runtime/DEBATE_LOG.md, pipeline/docs/runtime/STATUS.md, pipeline/docs/runtime/PROGRESS_LOG.md
+Active Files:     app/characters/__init__.py, app/core/prompt_factory.py, app/data/persona_definitions.json, tests/test_characters.py
 Blocked Reason:   None
-Verification:     python3 pipeline/scripts/verify.py PASS 100% (Ruff, Mypy, Bandit, Pytest 257/257)
+Verification:     pytest tests/test_characters.py PASS 100% & python3 pipeline/scripts/verify.py PASS 100%
 ```

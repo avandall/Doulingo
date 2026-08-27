@@ -1,39 +1,31 @@
-# PLAN: TASK-004 — Implement Structured Output CoT & Heuristic Validation Loop Engine
+# PLAN: TASK-005 — Refactor Decoupled 3-Tier Prompt System for All 9 Personas
 
-> **Task ID:** TASK-004  
-> **Phase:** Phase 1 (Core Execution)  
-> **Priority:** P0-Critical  
-> **Target Files:** `app/core/ai_engine.py`, `app/core/prompt_factory.py`, `tests/test_ai_engine.py`
+> **Task ID:** TASK-005  
+> **Phase:** Phase 2 (Architecture Harmonization)  
+> **Priority:** P1-High  
+> **Target Files:** `app/characters/__init__.py`, `app/core/prompt_factory.py`, `app/data/persona_definitions.json`, `tests/test_characters.py`
 
 ---
 
 ## 🎯 Goal & Acceptance Criteria
-- [ ] Call 1 requests LLM to generate Structured Output JSON CoT (`natural_draft`, `vocab_check`, `final_response`).
-- [ ] Heuristic Check validates `final_response`: if PASS, returns result immediately (1 API call).
-- [ ] If Heuristic Check FAILS, system automatically feeds back specific violating words to LLM in a retry loop until PASS.
-- [ ] Pytest suite for `tests/test_ai_engine.py` passes 100% and Tier 1 verification (`python3 pipeline/scripts/verify.py`) passes 100%.
+- [x] Cấu trúc prompt mới 3 tầng (Tier 1: Core Pedagogy & Warmth, Tier 2: Persona Overlay từ JSON, Tier 3: Adaptive CEFR Horizon) được áp dụng nhất quán cho toàn bộ nhân vật.
+- [x] Loại bỏ hoàn toàn luật ép `min_words` cứng nhắc và các ví dụ mẫu gây lặp câu.
+- [x] Pytest nghiệm thu `tests/test_characters.py` pass 100% cho tất cả nhân vật và Tier 1 verify script (`python3 pipeline/scripts/verify.py`) PASS 100%.
 
 ---
 
 ## 📍 Execution Plan (Atomic Steps)
 
-### Step 1: Update Prompt Factory & Structured Output CoT Schema
-- Create `app/core/prompt_factory.py` re-exporting `PromptFactory` & `get_prompt_factory` from `app.rag.prompt_factory` while adding CoT prompt helpers.
-- Update `_build_token_efficient_prompt` and prompt templates in `app/core/ai_engine.py` to request Call 1 JSON CoT output containing `natural_draft`, `vocab_check`, `final_response`, and `user_feedback`.
-- Update `_parse_json_response` to extract `natural_draft`, `vocab_check`, and `final_response`.
+### Step 1: Create `app/data/persona_definitions.json` & Refactor `app/characters/__init__.py` [x]
+- Create `app/data/persona_definitions.json` containing standardized persona metadata and overlay instructions for all 9+ personas (Alex, Lily, Oscar, Viktor, Chanel, Kaelen, Colt, Zarina, Scarlet, Luigi).
+- Update `app/characters/__init__.py` to load character definitions dynamically from `app/data/persona_definitions.json` with fallback to default dictionary.
+- Ensure no character prompt contains rigid `min_words` or repetitive sample sentences.
 
-### Step 2: Implement Heuristic Validation & Feedback Retry Loop in AI Engine
-- Integrate `HeuristicChecker` from `app.core.heuristic_checker` into `AIEngine`.
-- In `process_turn`:
-  1. Call 1 LLM request with CoT prompt.
-  2. Parse output to extract `final_response`.
-  3. Run `heuristic_checker.check_level_ceiling(final_response, target_level)`.
-  4. If PASS -> Return result immediately.
-  5. If FAIL -> Extract `violating_words`, enter retry loop (up to 2 retries) with targeted feedback instructing LLM to downgrade vocabulary to level ceiling.
+### Step 2: Refactor `app/core/prompt_factory.py` to Implement 3-Tier Prompt System [x]
+- Define Tier 1 (Core Pedagogy & Warmth), Tier 2 (Persona Overlay), Tier 3 (Adaptive CEFR Horizon).
+- Implement `build_3tier_prompt()` and enhance `PromptFactory` to construct decoupled 3-tier system prompts.
+- Ensure strict removal of rigid `min_words` constraints and template repetition.
 
-### Step 3: Add Pytest Suite & Run Verification
-- Write tests in `tests/test_ai_engine.py` testing:
-  - CoT fields (`natural_draft`, `vocab_check`, `final_response`) parsing.
-  - Single-call PASS path.
-  - Heuristic check failure & retry feedback loop execution.
-- Run `pytest tests/test_ai_engine.py` and `python3 pipeline/scripts/verify.py` until 100% PASS.
+### Step 3: Implement `tests/test_characters.py` & Verify [x]
+- Create `tests/test_characters.py` testing character loading, 3-tier prompt generation, absence of `min_words`, and persona overlay consistency.
+- Run `pytest tests/test_characters.py` and `python3 pipeline/scripts/verify.py`.

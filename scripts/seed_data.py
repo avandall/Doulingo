@@ -1601,7 +1601,7 @@ def build_curated_sample_dialogue_bank() -> list[dict[str, Any]]:
     ]
 
     # Additional systematic high quality exemplars to reach exactly 150 items with 100% matched topics & personas
-    additional_bank = []
+    additional_bank: list[dict[str, Any]] = []
     all_personas = [
         ("Alex", "friendly, warm"),
         ("Lily", "sarcastic, unbothered, deadpan"),
@@ -1679,7 +1679,7 @@ def build_curated_sample_dialogue_bank() -> list[dict[str, Any]]:
     formatted_bank = []
     for i, item in enumerate(all_raw):
         text = item["ai_response"]
-        words = re.findall(r"\b[a-zA-Z']+\b", text)
+        words = re.findall(r"\b[a-zA-Z']+\b", str(text))
         entry = {
             "id": f"ex_{i+1:03d}",
             "level": item["level"],

@@ -15,7 +15,7 @@
 | `TASK-002` | Build Vocabulary Bank & Heuristic Level Checker | Phase 1 | P0 | `[x] DONE` | Dữ liệu từ vựng A1-B1 & Heuristic Checker |
 | `TASK-003` | Build Dialogue Exemplar Bank & Hybrid RAG Engine | Phase 1 | P0 | `[x] DONE` | Ngân hàng câu mẫu + Hybrid Retrieval |
 | `TASK-004` | Implement Structured Output CoT & Heuristic Validation Loop Engine | Phase 1 | P0 | `[x] DONE` | Prompt JSON CoT ngay call 1 + Heuristic verification loop |
-| `TASK-005` | Refactor Decoupled 3-Tier Prompt System for All 9 Personas | Phase 2 | P1 | `[ ] TODO` | Tách 3 tầng Pedagogy -> Persona -> CEFR Horizon |
+| `TASK-005` | Refactor Decoupled 3-Tier Prompt System for All 9 Personas | Phase 2 | P1 | `[x] DONE` | Tách 3 tầng Pedagogy -> Persona -> CEFR Horizon |
 | `TASK-006` | Build Structured Topic Bank & Soften Scenario Angles | Phase 2 | P1 | `[ ] TODO` | Phân loại topic tự do vs nhập vai |
 | `TASK-007` | Implement Response Rating API & Continuous Feedback Logger | Phase 2 | P1 | `[ ] TODO` | Đánh giá câu (hollow, out_of_context, good) & Update DB |
 | `TASK-008` | Build Grammar Structure Bank & CEFR Constraint Validator | Phase 3 | P2 | `[ ] TODO` | Ngữ pháp theo CEFR level |
@@ -167,7 +167,7 @@ Task Name:       Refactor Decoupled 3-Tier Prompt System for All 9 Personas
 Phase:           Phase 2 (Architecture Harmonization)
 Task Type:       refactor
 Priority:        P1-High
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-08-26
 ```
 

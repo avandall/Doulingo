@@ -1,9 +1,15 @@
 """
 Character Persona Definitions for Duolingo Speak
-9 Iconic & High-Contrast AI Characters with clean, concise names and icons.
+Dynamically loaded from app/data/persona_definitions.json with fallback defaults.
+Contains 9 Iconic Personas + Alex Plain AI Assistant.
 """
 
-CHARACTERS = {
+import json
+from pathlib import Path
+from typing import Any
+
+# Default fallback definitions if JSON file cannot be loaded
+DEFAULT_CHARACTERS: dict[str, dict[str, Any]] = {
     "alex": {
         "id": "alex",
         "name": "Alex",
@@ -108,7 +114,7 @@ CHARACTERS = {
         "system_prompt": (
             "You are Kaelen, a dark sinister entity from the eternal nightmare. "
             "Speak in slow, haunting, cryptic whispers. "
-            "Do NOT introduce yourself. Be deeply unsettling and menacing. Do NOT introduce yourself."
+            "Do NOT introduce yourself. Be deeply unsettling and menacing."
         )
     },
     "colt": {
@@ -185,10 +191,32 @@ CHARACTERS = {
     }
 }
 
-def get_character(char_id: str):
-    return CHARACTERS.get(char_id, CHARACTERS["lily"])
 
-def list_characters():
+def load_persona_definitions() -> dict[str, dict[str, Any]]:
+    """Load persona definitions from app/data/persona_definitions.json if present."""
+    data_path = Path(__file__).resolve().parent.parent / "data" / "persona_definitions.json"
+    if data_path.exists():
+        try:
+            with open(data_path, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                if isinstance(loaded, dict) and loaded:
+                    return loaded
+        except Exception:
+            pass
+    return DEFAULT_CHARACTERS
+
+
+CHARACTERS: dict[str, dict[str, Any]] = load_persona_definitions()
+
+
+def get_character(char_id: str) -> dict[str, Any]:
+    """Get character definition by ID with fallback to 'lily'."""
+    normalized_id = char_id.lower().strip() if char_id else "lily"
+    return CHARACTERS.get(normalized_id, CHARACTERS.get("lily", DEFAULT_CHARACTERS["lily"]))
+
+
+def list_characters() -> list[dict[str, Any]]:
+    """List all character definitions formatted for client consumption."""
     return [
         {
             "id": c["id"],
@@ -204,3 +232,12 @@ def list_characters():
         }
         for c in CHARACTERS.values()
     ]
+
+
+__all__ = [
+    "CHARACTERS",
+    "DEFAULT_CHARACTERS",
+    "get_character",
+    "list_characters",
+    "load_persona_definitions",
+]

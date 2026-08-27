@@ -84,3 +84,12 @@
   - Đồng bộ và cập nhật các file trạng thái hệ thống: `STATUS.md`, `PROGRESS_LOG.md`, `DEBATE_LOG.md`.
   - Sẵn sàng gửi lại yêu cầu review cho Reviewer Model.
 
+### [2026-08-27 12:17] — Hoàn thành TASK-005
+- **Task ID:** TASK-005 (Refactor Decoupled 3-Tier Prompt System for All 9 Personas)
+- **Hành động:**
+  - Tạo `app/data/persona_definitions.json` chứa định dạng JSON chuẩn cho cả 10 nhân vật (Alex, Lily, Oscar, Viktor, Chanel, Kaelen, Colt, Zarina, Scarlet, Luigi).
+  - Refactor `app/characters/__init__.py` nạp động persona definitions từ `app/data/persona_definitions.json` với fallback an toàn.
+  - Refactor `app/core/prompt_factory.py` xây dựng hệ thống Decoupled 3-Tier Prompt System (Tier 1: Core Pedagogy & Warmth, Tier 2: Persona Overlay từ JSON, Tier 3: Adaptive CEFR Horizon).
+  - Loại bỏ hoàn toàn quy tắc ép `min_words` cứng nhắc và ví dụ mẫu gây lặp câu.
+  - Viết unit test suite `tests/test_characters.py` (25 test cases) kiểm tra việc load persona, 3-tier prompt assembly, no min_words rule, và DecoupledPromptFactory. Pass 100% (25/25).
+  - Kiểm tra static analysis (Ruff, Mypy) pass 100% không cảnh báo.
