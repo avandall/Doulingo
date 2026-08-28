@@ -462,7 +462,13 @@ class DuoSpeakApp {
 
     // Reset turn counter
     const turnsEl = document.getElementById('current-turns-count');
-    if (turnsEl) turnsEl.textContent = '0 Turns';
+    if (turnsEl) {
+      if (this.isDetInteractiveMode) {
+        turnsEl.textContent = `Question 1 of ${this.maxExamTurns || 4}`;
+      } else {
+        turnsEl.textContent = '0 Turns';
+      }
+    }
 
     this.showScreen('practice-screen');
     this._setPlayerLoading();
@@ -560,13 +566,21 @@ class DuoSpeakApp {
       // Update progress bar
       const progressFill = document.getElementById('lesson-progress-fill');
       if (progressFill) {
-        const progress = Math.min(100, this.turnCount * 10);
+        const maxT = this.isDetInteractiveMode ? (this.maxExamTurns || 4) : 10;
+        const progress = Math.min(100, Math.round((this.turnCount / maxT) * 100));
         progressFill.style.width = `${progress}%`;
       }
 
       // Update turns counter
       const turnsEl = document.getElementById('current-turns-count');
-      if (turnsEl) turnsEl.textContent = `${this.turnCount} Turn${this.turnCount !== 1 ? 's' : ''}`;
+      if (turnsEl) {
+        if (this.isDetInteractiveMode) {
+          const currentQ = Math.min(this.maxExamTurns || 4, this.turnCount + 1);
+          turnsEl.textContent = `Question ${currentQ} of ${this.maxExamTurns || 4}`;
+        } else {
+          turnsEl.textContent = `${this.turnCount} Turn${this.turnCount !== 1 ? 's' : ''}`;
+        }
+      }
 
       // Display AI turn
       this.displayAITurn(aiResponse, '');
@@ -577,6 +591,14 @@ class DuoSpeakApp {
       // 2. Poll Background Evaluation without delaying AI voice
       if (turnId) {
         this._pollTurnEvaluation(turnId, userTranscript, aiResponse);
+      }
+
+      // 3. Auto-Finish for IELTS / DET Interactive Exam when reaching max turns
+      if (this.isDetInteractiveMode && this.turnCount >= (this.maxExamTurns || 4)) {
+        this.showToast('🎓 Exam complete! Evaluating your speaking test...');
+        setTimeout(() => {
+          this.finishAndScoreDetInteractive();
+        }, 2200);
       }
 
     } catch (e) {
@@ -1518,8 +1540,13 @@ class DuoSpeakApp {
 
     try {
       const wordCount = speechText.split(/\s+/).filter(Boolean).length;
-      const durationSecs = this.detElapsedSeconds || Math.max(60, Math.round(wordCount / 2));
-      const wpm = Math.round((wordCount / Math.max(1, durationSecs)) * 60);
+      let durationSecs = 0;
+      if (this.isDetInteractiveMode && this.detExamStartTime) {
+        durationSecs = Math.max(25, Math.round((Date.now() - this.detExamStartTime) / 1000));
+      } else {
+        durationSecs = this.detElapsedSeconds || Math.max(30, Math.round(wordCount / 2.2));
+      }
+      const wpm = Math.max(40, Math.min(220, Math.round((wordCount / (durationSecs / 60)))));
       const fillerMatches = speechText.toLowerCase().match(/\b(uh|um|er|ah|like|you know|actually|basically|literally)\b/g);
       const fillerCount = fillerMatches ? fillerMatches.length : 0;
 
@@ -2058,6 +2085,8 @@ class DuoSpeakApp {
         document.getElementById('modal-det-exam').classList.remove('active');
         if (this.currentDetScenario) {
           this.isDetInteractiveMode = true;
+          this.maxExamTurns = 4;
+          this.detExamStartTime = Date.now();
           this.startScenario(this.currentDetScenario.id);
         }
       });

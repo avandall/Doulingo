@@ -1327,7 +1327,7 @@ Output JSON ONLY with Structured CoT fields:
   }}
 }}"""
 
-    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> dict[str, Any] | None:
+    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
@@ -1344,7 +1344,7 @@ Output JSON ONLY with Structured CoT fields:
             log_api_trace("Gemini", model_name, api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
-                return self._parse_json_response(text)
+                return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
             elif res.status_code in [429, 403, 401, 400]:
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
@@ -1353,7 +1353,7 @@ Output JSON ONLY with Structured CoT fields:
             raise
         return None
 
-    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8) -> dict[str, Any] | None:
+    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
         url = "https://api.groq.com/openai/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {
@@ -1371,7 +1371,7 @@ Output JSON ONLY with Structured CoT fields:
             log_api_trace("Groq", model_name, api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["choices"][0]["message"]["content"]
-                return self._parse_json_response(text)
+                return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
             elif res.status_code in [429, 403, 401, 400]:
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
@@ -1380,7 +1380,7 @@ Output JSON ONLY with Structured CoT fields:
             raise
         return None
 
-    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8) -> dict[str, Any] | None:
+    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
         url = "https://api.openai.com/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {
@@ -1398,7 +1398,7 @@ Output JSON ONLY with Structured CoT fields:
             log_api_trace("OpenAI", "gpt-4o-mini", api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["choices"][0]["message"]["content"]
-                return self._parse_json_response(text)
+                return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
             elif res.status_code in [429, 403, 401, 400]:
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
@@ -1407,7 +1407,7 @@ Output JSON ONLY with Structured CoT fields:
             raise
         return None
 
-    def _call_ollama(self, prompt: str, temp: float = 0.8) -> dict[str, Any] | None:
+    def _call_ollama(self, prompt: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
         url = f"{self.ollama_base_url}/api/generate"
         payload = {
             "model": self.ollama_model,
@@ -1422,10 +1422,10 @@ Output JSON ONLY with Structured CoT fields:
         log_api_trace("Ollama", self.ollama_model, "localhost", res.status_code, latency_ms)
         if res.status_code == 200:
             text = res.json()["response"]
-            return self._parse_json_response(text)
+            return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
         return None
 
-    def _parse_json_response(self, raw_text: str) -> dict[str, Any]:
+    def _parse_raw_json(self, raw_text: str) -> dict[str, Any]:
         text = raw_text.strip()
         if "```json" in text:
             text = text.split("```json")[1].split("```")[0].strip()
@@ -1437,7 +1437,16 @@ Output JSON ONLY with Structured CoT fields:
         if start != -1 and end != -1:
             text = text[start:end+1]
 
-        data = json.loads(text)
+        try:
+            return json.loads(text)
+        except Exception as e:
+            logger.warning(f"[AIEngine] Failed to parse raw json: {e}")
+            return {}
+
+    def _parse_json_response(self, raw_text: str) -> dict[str, Any]:
+        data = self._parse_raw_json(raw_text)
+        if not data:
+            return {}
         natural_draft = data.get("natural_draft", "")
         vocab_check = data.get("vocab_check", "")
 
@@ -1474,13 +1483,13 @@ Output JSON ONLY with Structured CoT fields:
             }
         }
 
-    def _call_llm_providers(self, prompt: str, temp: float = 0.8) -> dict[str, Any] | None:
+    def _call_llm_providers(self, prompt: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
         for key in self.groq_keys:
             if is_key_exhausted(key):
                 continue
             for model in self.groq_models:
                 try:
-                    res = self._call_groq(prompt, key, model, temp=temp)
+                    res = self._call_groq(prompt, key, model, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
                 except Exception:
@@ -1491,7 +1500,7 @@ Output JSON ONLY with Structured CoT fields:
                 continue
             for model in self.gemini_models:
                 try:
-                    res = self._call_gemini(prompt, key, model, temp=temp)
+                    res = self._call_gemini(prompt, key, model, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
                 except Exception:
@@ -1501,7 +1510,7 @@ Output JSON ONLY with Structured CoT fields:
             if is_key_exhausted(key):
                 continue
             try:
-                res = self._call_openai(prompt, key, temp=temp)
+                res = self._call_openai(prompt, key, temp=temp, parse_raw=parse_raw)
                 if res:
                     return res
             except Exception:
@@ -1509,7 +1518,7 @@ Output JSON ONLY with Structured CoT fields:
 
         if self.ollama_base_url:
             try:
-                res = self._call_ollama(prompt, temp=temp)
+                res = self._call_ollama(prompt, temp=temp, parse_raw=parse_raw)
                 if res:
                     return res
             except Exception:
@@ -1739,47 +1748,61 @@ Return ONLY a valid JSON object with EXACTLY this schema:
   "sample_native_response": "(A full 150-200 word Band-160 sample answer to the prompt)"
 }}
 """
-        raw_res = None
-        if self.gemini_keys and not is_key_exhausted(self.gemini_keys[0]):
-            try:
-                raw_res = self._call_gemini(eval_prompt, self.gemini_keys[0], self.gemini_models[0], temp=0.2)
-            except Exception as e:
-                logger.warning(f"[AIEngine] Gemini DET call failed: {e}")
-                raw_res = None
-        if not raw_res and self.groq_keys and not is_key_exhausted(self.groq_keys[0]):
-            try:
-                raw_res = self._call_groq(eval_prompt, self.groq_keys[0], self.groq_models[0], temp=0.2)
-            except Exception as e:
-                logger.warning(f"[AIEngine] Groq DET call failed: {e}")
-                raw_res = None
-        if not raw_res and self.openai_keys and not is_key_exhausted(self.openai_keys[0]):
-            try:
-                raw_res = self._call_openai(eval_prompt, self.openai_keys[0], temp=0.2)
-            except Exception as e:
-                logger.warning(f"[AIEngine] OpenAI DET call failed: {e}")
-                raw_res = None
+        raw_res = self._call_llm_providers(eval_prompt, temp=0.2, parse_raw=True)
 
-        if isinstance(raw_res, dict) and "det_score" in raw_res:
+        if isinstance(raw_res, dict) and ("det_score" in raw_res or "fluency_score" in raw_res):
+            det_score = int(raw_res.get("det_score") or est_score)
+            raw_res["det_score"] = det_score
+            raw_res["cefr_level"] = raw_res.get("cefr_level") or cefr
+            raw_res["fluency_score"] = int(raw_res.get("fluency_score") or min(95, max(15, est_score - 10)))
+            raw_res["grammar_score"] = int(raw_res.get("grammar_score") or min(95, max(15, est_score - 5)))
+            raw_res["vocabulary_score"] = int(raw_res.get("vocabulary_score") or min(95, max(15, est_score)))
+            raw_res["coherence_score"] = int(raw_res.get("coherence_score") or min(95, max(15, est_score - 5)))
             raw_res["acoustic_metrics"] = acoustic_metrics
+
+            # Ensure sentence upgrades is a valid list
+            if "sentence_upgrades" not in raw_res or not isinstance(raw_res["sentence_upgrades"], list) or len(raw_res["sentence_upgrades"]) == 0:
+                sentences = [s.strip() for s in re.split(r'[.!?]', user_speech) if len(s.strip().split()) >= 3]
+                sample_s = sentences[0] if sentences else (user_speech[:80] + "..." if len(user_speech) > 80 else user_speech)
+                raw_res["sentence_upgrades"] = [
+                    {
+                        "original": sample_s,
+                        "upgraded": f"To elaborate further, {sample_s.lower()} illustrates a crucial aspect of this subject.",
+                        "explanation": "Bổ sung trạng từ học thuật 'To elaborate further' và cấu trúc câu phức giúp nâng tầm ý tưởng."
+                    }
+                ]
+
+            if "sample_native_response" not in raw_res or not raw_res["sample_native_response"]:
+                raw_res["sample_native_response"] = f"Regarding {prompt_text}, I believe approaching this topic with clear analytical reasoning and authentic personal examples allows for a comprehensive, well-articulated response."
+
             return raw_res
 
-        # Smart fallback if API unconfigured or JSON failed
+        # Heuristic calculations for fallback based on word count, WPM, and acoustic features
+        wpm_val = acoustic_metrics.get("wpm", 120)
+        fluency_fallback = min(90, max(25, 45 + int((wpm_val - 50) * 0.35) - acoustic_metrics.get("pause_count", 0) * 3))
+        grammar_fallback = min(88, max(30, int(est_score * 0.58)))
+        vocab_fallback = min(90, max(30, int(est_score * 0.60)))
+        coherence_fallback = min(88, max(25, int(est_score * 0.55)))
+
+        sentences = [s.strip() for s in re.split(r'[.!?]', user_speech) if len(s.strip().split()) >= 3]
+        first_sentence = sentences[0] if sentences else (user_speech[:80] + "..." if len(user_speech) > 80 else user_speech)
+
         return {
             "det_score": est_score,
             "cefr_level": cefr,
-            "fluency_score": min(95, max(15, est_score - 10)),
-            "grammar_score": min(95, max(15, est_score - 5)),
-            "vocabulary_score": min(95, max(15, est_score)),
-            "coherence_score": min(95, max(15, est_score - 5)),
+            "fluency_score": fluency_fallback,
+            "grammar_score": grammar_fallback,
+            "vocabulary_score": vocab_fallback,
+            "coherence_score": coherence_fallback,
             "examiner_critique": critique_msg,
             "sentence_upgrades": [
                 {
-                    "original": user_speech[:80] + "..." if len(user_speech) > 80 else user_speech,
-                    "upgraded": "In retrospect, that profound experience significantly shaped my personal philosophy and resilience.",
-                    "explanation": "Sử dụng cụm từ 'In retrospect' và tính từ C1 'profound' để làm câu văn trang trọng và logic hơn."
+                    "original": first_sentence,
+                    "upgraded": f"To elaborate on that point, {first_sentence.lower()} illustrates a crucial dimension of this topic.",
+                    "explanation": "Bổ sung trạng từ nối học thuật 'To elaborate' và động từ 'illustrates' giúp câu văn liên kết tự nhiên hơn."
                 }
             ],
-            "sample_native_response": f"Regarding the topic of {prompt_text}, I would like to highlight a truly defining moment in my life. It occurred several years ago and taught me resilience, adaptability, and the value of clear communication. Not only did it broaden my perspective, but it also reinforced the importance of continuous learning.",
+            "sample_native_response": f"When addressing {prompt_text}, I believe that careful reflection and structured articulation are essential. In my personal experience, approaching such situations with an open mindset and persuasive reasoning enables clear and impactful communication.",
             "acoustic_metrics": acoustic_metrics
         }
 
