@@ -20,7 +20,7 @@ import requests
 from dotenv import load_dotenv
 from gtts import gTTS
 
-from app.core.ai_engine import log_api_trace, mask_api_key
+from app.core.ai_engine import is_key_exhausted, log_api_trace, mark_key_exhausted, mask_api_key
 
 load_dotenv()
 logger = logging.getLogger("duolingo_speak.tts")
@@ -213,9 +213,12 @@ def generate_elevenlabs_tts_multi_key(text: str, char_id: str, keys: list) -> io
     Iterates through key pool. If a key hits quota limit (429/402) or error, automatically tries the next key!
     """
     for idx, key in enumerate(keys):
+        if is_key_exhausted(key):
+            continue
         try:
             return generate_elevenlabs_tts_single(text, char_id, key)
         except Exception as e:
+            mark_key_exhausted(key)
             masked = mask_api_key(key)
             next_hint = f"Auto-rotating to Key #{idx+2}" if idx + 1 < len(keys) else "Key pool exhausted -> Fallback to Edge-TTS"
             msg = f"[ElevenLabs] Key #{idx+1} ({masked}) hit quota/error ({e}) -> {next_hint}"
@@ -260,7 +263,7 @@ def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str):
     voice_id = profile["eleven_voice_id"]
     settings = profile.get("eleven_settings", {"stability": 0.5, "similarity_boost": 0.75, "style": 0.5})
     
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/stream"
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/stream?optimize_streaming_latency=3"
     headers = {
         "xi-api-key": api_key,
         "Content-Type": "application/json",
@@ -268,7 +271,7 @@ def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str):
     }
     payload = {
         "text": sanitize_text_for_tts(text),
-        "model_id": "eleven_multilingual_v2",
+        "model_id": "eleven_turbo_v2_5",
         "voice_settings": {
             "stability": settings["stability"],
             "similarity_boost": settings["similarity_boost"],
@@ -283,6 +286,15 @@ def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str):
             if chunk:
                 yield chunk
         return
+    elif res.status_code in [400, 422]:
+        # Fallback to multilingual v2 if turbo_v2_5 is not supported on a custom voice
+        payload["model_id"] = "eleven_multilingual_v2"
+        res_fb = requests.post(url, headers=headers, json=payload, stream=True, timeout=8)
+        if res_fb.status_code == 200:
+            for chunk in res_fb.iter_content(chunk_size=1024):
+                if chunk:
+                    yield chunk
+            return
         
     raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
 
@@ -311,6 +323,8 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
     # 1. Try ElevenLabs Multi-Key Pool streaming if keys are present
     if keys:
         for idx, key in enumerate(keys):
+            if is_key_exhausted(key):
+                continue
             try:
                 chunk_found = False
                 for chunk in stream_elevenlabs_tts_single(text, char_id, key):
@@ -319,6 +333,7 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
                 if chunk_found:
                     return
             except Exception as e:
+                mark_key_exhausted(key)
                 logger.warning(f"[ElevenLabs Stream Pool] Key #{idx+1} failed ({e}). Auto-rotating...")
 
     # 2. Try Edge-TTS async stream (<300ms initial chunk)

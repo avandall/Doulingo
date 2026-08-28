@@ -532,7 +532,8 @@ class DuoSpeakApp {
     if (micBtn) micBtn.disabled = true;
 
     try {
-      const res = await fetch(this.apiUrl('/api/process_turn'), {
+      // 1. Fast Voice Turn API (< 400ms)
+      const res = await fetch(this.apiUrl('/api/process_turn_fast'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -545,20 +546,13 @@ class DuoSpeakApp {
         })
       });
 
-      if (!res.ok) throw new Error(`Process turn failed: ${res.status}`);
+      if (!res.ok) throw new Error(`Fast process turn failed: ${res.status}`);
       const data = await res.json();
 
-      const aiResponse = data.ai_response || data.response || data.ai_utterance || "Interesting! Please continue.";
-      const aiResponseVi = data.ai_response_vi || '';
-      const feedback = data.user_feedback || {};
-      const fluencyScore = feedback.fluency_score || data.fluency_score || 80;
-      const nativeSuggestion = feedback.native_phrasing || data.native_suggestion || userTranscript;
-      const xpGained = data.xp_gained || 10;
-      const isCompleted = data.is_completed || false;
+      const aiResponse = data.ai_response || "Interesting! Please continue.";
+      const turnId = data.turn_id;
 
       this.turnCount++;
-      this.totalXP += xpGained;
-      this.turnScores.push({ user: userTranscript, ai: aiResponse, score: fluencyScore });
 
       // Update conversation history
       this.conversationHistory.push({ role: 'assistant', content: aiResponse });
@@ -575,23 +569,14 @@ class DuoSpeakApp {
       if (turnsEl) turnsEl.textContent = `${this.turnCount} Turn${this.turnCount !== 1 ? 's' : ''}`;
 
       // Display AI turn
-      this.displayAITurn(aiResponse, aiResponseVi);
+      this.displayAITurn(aiResponse, '');
 
-      // Play TTS
+      // Play TTS (Sentence-Level Streaming via ElevenLabs / Audio Stream)
       await this.playTTS(aiResponse, charId);
 
-      // Show feedback sheet
-      this.showFeedbackSheet(fluencyScore, nativeSuggestion, xpGained, feedback);
-
-      // Update XP display
-      const xpEl = document.getElementById('stat-xp-count');
-      if (xpEl) xpEl.textContent = this.totalXP;
-
-      // Add XP to backend
-      fetch(this.apiUrl(`/api/user_stats/add_xp?xp=${xpGained}`), { method: 'POST' }).catch(() => {});
-
-      if (isCompleted) {
-        setTimeout(() => this.finishAndScoreRoleplay(), 2000);
+      // 2. Poll Background Evaluation without delaying AI voice
+      if (turnId) {
+        this._pollTurnEvaluation(turnId, userTranscript, aiResponse);
       }
 
     } catch (e) {
@@ -602,6 +587,62 @@ class DuoSpeakApp {
     } finally {
       if (micBtn) micBtn.disabled = false;
     }
+  }
+
+  async _pollTurnEvaluation(turnId, userTranscript, aiResponse) {
+    let attempts = 0;
+    const maxAttempts = 12;
+    const pollInterval = 500;
+
+    const checkEval = async () => {
+      attempts++;
+      try {
+        const res = await fetch(this.apiUrl(`/api/turn_evaluation/${turnId}`));
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.status === 'completed') {
+            const feedback = data.user_feedback || {};
+            const fluencyScore = feedback.fluency_score || 85;
+            const nativeSuggestion = feedback.native_phrasing || userTranscript;
+            const xpGained = data.xp_gained || 10;
+            const aiResponseVi = data.ai_response_vi || '';
+
+            this.totalXP += xpGained;
+            this.turnScores.push({ user: userTranscript, ai: aiResponse, score: fluencyScore });
+
+            // Update translation text if current AI turn is still matching
+            if (aiResponseVi && this.currentAIText === aiResponse) {
+              this.currentAITextVi = aiResponseVi;
+              const transEl = document.getElementById('ai-translation-text');
+              if (transEl && transEl.classList.contains('revealed')) {
+                transEl.textContent = aiResponseVi;
+              }
+            }
+
+            // Show feedback sheet
+            this.showFeedbackSheet(fluencyScore, nativeSuggestion, xpGained, feedback);
+
+            // Update XP display
+            const xpEl = document.getElementById('stat-xp-count');
+            if (xpEl) xpEl.textContent = this.totalXP;
+            fetch(this.apiUrl(`/api/user_stats/add_xp?xp=${xpGained}`), { method: 'POST' }).catch(() => {});
+
+            if (data.is_completed) {
+              setTimeout(() => this.finishAndScoreRoleplay(), 2000);
+            }
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('[DuoSpeak] Evaluation poll warning:', err);
+      }
+
+      if (attempts < maxAttempts) {
+        setTimeout(checkEval, pollInterval);
+      }
+    };
+
+    setTimeout(checkEval, pollInterval);
   }
 
   // ============================================================

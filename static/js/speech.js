@@ -113,22 +113,38 @@ class SpeechHandler {
           return;
         }
 
-        // Phase 4 Task-010: Optimistic Client-Side STT & Asynchronous Acoustic Extraction
-        // 1. Immediately emit browser-recognized transcript to AI engine (~0ms delay)
+        // Dual-Track STT (Phase 4 Task-010: Optimistic Client-Side STT & Asynchronous Acoustic Extraction):
+        // Track 1: Optimistic - If browser Web Speech captured text, emit immediately (0ms delay)
         if (textToSubmit && this.onResult) {
           this.onResult(textToSubmit, true, null);
         }
 
-        // 2. Process audio blob in background asynchronously without blocking dialogue turn
+        // Process audio blob from MediaRecorder
         if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
-          this.mediaRecorder.onstop = () => {
+          this.mediaRecorder.onstop = async () => {
             const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
             this._cleanupStream();
-            this._extractAcousticMetricsAsync(audioBlob, textToSubmit);
+
+            if (textToSubmit) {
+              // Extract acoustic metrics in background without blocking conversation
+              this._extractAcousticMetricsAsync(audioBlob, textToSubmit);
+            } else {
+              // Track 2: Robust Fallback - Web Speech API was empty (mobile browser/fast stop)
+              // Transcribe recorded audio blob via server Whisper ASR and trigger turn!
+              if (this.onStateChange) this.onStateChange('transcribing');
+              await this._submitTranscribeAudio(audioBlob, '');
+            }
           };
-          this.mediaRecorder.stop();
+          try {
+            this.mediaRecorder.stop();
+          } catch (e) {
+            console.warn('[SpeechHandler] Stop mediaRecorder error:', e);
+          }
         } else {
           this._cleanupStream();
+          if (!textToSubmit && this.onStateChange) {
+            this.onStateChange('empty');
+          }
         }
       };
     } else {

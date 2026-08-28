@@ -149,27 +149,26 @@ class AIEngine:
 
     def reload_keys(self):
         load_dotenv(override=True)
-        self.gemini_keys = [k.strip() for k in os.getenv("GEMINI_API_KEY", "").split(",") if k.strip()]
-        self.groq_keys = [k.strip() for k in os.getenv("GROQ_API_KEY", "").split(",") if k.strip()]
-        self.openai_keys = [k.strip() for k in os.getenv("OPENAI_API_KEY", "").split(",") if k.strip()]
-        self.anthropic_keys = [k.strip() for k in os.getenv("ANTHROPIC_API_KEY", "").split(",") if k.strip()]
+        self.gemini_keys = [k.strip() for k in os.getenv("GEMINI_API_KEY", "").split(",") if k.strip() and not k.startswith("your_")]
+        self.groq_keys = [k.strip() for k in os.getenv("GROQ_API_KEY", "").split(",") if k.strip() and not k.startswith("your_")]
+        self.openai_keys = [k.strip() for k in os.getenv("OPENAI_API_KEY", "").split(",") if k.strip() and not k.startswith("your_")]
+        self.anthropic_keys = [k.strip() for k in os.getenv("ANTHROPIC_API_KEY", "").split(",") if k.strip() and not k.startswith("your_")]
         self.ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").strip()
         self.ollama_model = os.getenv("OLLAMA_MODEL", "llama3").strip()
 
         self.gemini_models = [
             "gemini-3.5-flash-lite",
             "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.6-flash",
             "gemini-2.5-flash",
             "gemini-2.0-flash",
             "gemini-1.5-flash",
-            "gemini-1.5-pro",
-            "gemini-1.5-flash-8b"
+            "gemini-3.5-flash",
+            "gemini-3.6-flash",
+            "gemini-1.5-pro"
         ]
         self.groq_models = [
-            "llama-3.3-70b-versatile",
             "llama-3.1-8b-instant",
+            "llama-3.3-70b-versatile",
             "llama3-70b-8192"
         ]
 
