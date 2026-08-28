@@ -1,19 +1,15 @@
-# 🦜 Duolingo Speak - Unlimited AI Roleplays & IELTS Practice
+# 🦜 Haku Haku's - Unlimited AI Roleplays & IELTS Practice
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Render-brightgreen?style=for-the-badge&logo=render)](https://doulingo.onrender.com)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/avandall/Doulingo)
 [![Python Version](https://img.shields.io/badge/Python-3.11+-blue.svg?style=for-the-badge&logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 
-> **FlyRank Internship Capstone Project — Backend Track**  
-> **Author:** Vu Nguyen (Avandall)  
-> **Submission Overview Document:** [`My 10x Solution - Vu Nguyen.md`](./My%2010x%20Solution%20-%20Vu%20Nguyen.md)
-
 ---
 
-## 🎯 What is Duolingo Speak?
+## 🎯 What is Haku Haku's?
 
-**Duolingo Speak** is an adaptive, AI-powered conversational platform designed specifically for English learners and IELTS candidates. It replaces static grammar exercises with **24/7 unlimited AI voice roleplay**, 9 distinct persona voices, adaptive difficulty scaling (CEFR A1 $\rightarrow$ C2), instant 0ms dictionary translation, and real-time speech evaluation.
+**Haku Haku's** is an adaptive, AI-powered conversational platform designed specifically for English learners and IELTS candidates. It replaces static grammar exercises with **24/7 unlimited AI voice roleplay**, 9 distinct persona voices, adaptive difficulty scaling (CEFR A1 $\rightarrow$ C2), instant 0ms dictionary translation, and real-time speech evaluation.
 
 ### 🚀 The 10x Claim
 * **Cost Reduction:** **100% free** ($0 vs $20–$30/hr for 1-on-1 human tutoring).

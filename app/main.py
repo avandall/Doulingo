@@ -19,10 +19,10 @@ from app.api.routers import (
     scenarios_router,
 )
 
-logger = logging.getLogger("duolingo_speak.api")
+logger = logging.getLogger("haku_hakus.api")
 
 app = FastAPI(
-    title="Duolingo Speak - Unlimited AI Roleplays",
+    title="Haku Haku's - Unlimited AI Roleplays",
     description="Adaptive AI-driven IELTS Speaking and Conversation practice platform.",
     version="1.0.0",
 )
@@ -47,7 +47,7 @@ def read_root():
     index_file = os.path.join(static_dir, "index.html")
     if os.path.exists(index_file):
         return FileResponse(index_file, headers={"Cache-Control": "no-cache, no-store, must-revalidate"})
-    return {"message": "Duolingo Speak API Server Running"}
+    return {"message": "Haku Haku's API Server Running"}
 
 
 if __name__ == "__main__":
