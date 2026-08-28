@@ -23,7 +23,7 @@ pythonpath = "."
 testpaths = ["tests"]
 
 [tool.ruff]
-lint.ignore = ["BLE001", "G201", "SIM103", "S110", "S112", "PLW1508", "RUF015", "RUF059", "E501", "DTZ005", "PLW1510", "TRY002", "ASYNC210", "B008", "RUF012", "PERF402", "F401", "PIE810"]
+lint.ignore = ["BLE001", "G201", "SIM103", "S110", "S112", "PLW1508", "RUF015", "RUF059", "E501", "DTZ005", "PLW1510", "TRY002", "ASYNC210", "ASYNC220", "B008", "RUF012", "PERF402", "F401", "PIE810"]
 
 
 [tool.mypy]

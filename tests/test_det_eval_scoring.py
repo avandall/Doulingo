@@ -1,5 +1,7 @@
 import asyncio
+
 import pytest
+
 from app.core.ai_engine import AIEngine, ai_engine
 from app.scenarios import get_scenario
 

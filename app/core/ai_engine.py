@@ -1116,6 +1116,28 @@ Output JSON ONLY:
             f"5. Output ONLY the translated Vietnamese dialogue line without quotes, markdown, or commentary."
         )
 
+        for key in self.gemini_keys:
+            if is_key_exhausted(key):
+                continue
+            for model in self.gemini_models:
+                try:
+                    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+                    payload = {
+                        "contents": [{"parts": [{"text": translate_prompt}]}],
+                        "generationConfig": {"maxOutputTokens": 200, "temperature": 0.35}
+                    }
+                    res = requests.post(url, json=payload, timeout=2)
+                    if res.status_code == 200:
+                        text = res.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+                        if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
+                            text = text[1:-1].strip()
+                        if text:
+                            return text
+                    elif res.status_code in [401, 403, 429, 400]:
+                        mark_key_exhausted(key)
+                except Exception:
+                    mark_key_exhausted(key)
+
         for key in self.groq_keys:
             if is_key_exhausted(key):
                 continue
@@ -1132,28 +1154,6 @@ Output JSON ONLY:
                     res = requests.post(url, headers=headers, json=payload, timeout=2)
                     if res.status_code == 200:
                         text = res.json()["choices"][0]["message"]["content"].strip()
-                        if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
-                            text = text[1:-1].strip()
-                        if text:
-                            return text
-                    elif res.status_code in [401, 403, 429, 400]:
-                        mark_key_exhausted(key)
-                except Exception:
-                    mark_key_exhausted(key)
-
-        for key in self.gemini_keys:
-            if is_key_exhausted(key):
-                continue
-            for model in self.gemini_models:
-                try:
-                    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
-                    payload = {
-                        "contents": [{"parts": [{"text": translate_prompt}]}],
-                        "generationConfig": {"maxOutputTokens": 200, "temperature": 0.35}
-                    }
-                    res = requests.post(url, json=payload, timeout=2)
-                    if res.status_code == 200:
-                        text = res.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
                         if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
                             text = text[1:-1].strip()
                         if text:
@@ -1484,23 +1484,23 @@ Output JSON ONLY with Structured CoT fields:
         }
 
     def _call_llm_providers(self, prompt: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
-        for key in self.groq_keys:
-            if is_key_exhausted(key):
-                continue
-            for model in self.groq_models:
-                try:
-                    res = self._call_groq(prompt, key, model, temp=temp, parse_raw=parse_raw)
-                    if res:
-                        return res
-                except Exception:
-                    continue
-
         for key in self.gemini_keys:
             if is_key_exhausted(key):
                 continue
             for model in self.gemini_models:
                 try:
                     res = self._call_gemini(prompt, key, model, temp=temp, parse_raw=parse_raw)
+                    if res:
+                        return res
+                except Exception:
+                    continue
+
+        for key in self.groq_keys:
+            if is_key_exhausted(key):
+                continue
+            for model in self.groq_models:
+                try:
+                    res = self._call_groq(prompt, key, model, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
                 except Exception:
@@ -1813,36 +1813,13 @@ Return ONLY a valid JSON object with EXACTLY this schema:
         Falls back to Gemini Audio or browser STT fallback text if API keys are unavailable.
         """
         metrics = None
-        if self.groq_keys:
-            url = "https://api.groq.com/openai/v1/audio/transcriptions"
-            for key in self.groq_keys:
-                if is_key_exhausted(key):
-                    continue
-                t0 = time.time()
-                try:
-                    headers = {"Authorization": f"Bearer {key}"}
-                    files = {"file": (filename, audio_bytes, "audio/webm")}
-                    data = {"model": "whisper-large-v3", "language": "en", "response_format": "verbose_json"}
-                    response = requests.post(url, headers=headers, files=files, data=data, timeout=10)
-                    latency_ms = (time.time() - t0) * 1000
-                    log_api_trace("Groq", "whisper-large-v3", key, response.status_code, latency_ms, step="STT")
-                    if response.status_code == 200:
-                        result = response.json()
-                        text = result.get("text", "").strip()
-                        if text:
-                            words_data = result.get("words", [])
-                            dur_sec = result.get("duration")
-                            metrics = self._compute_speech_acoustic_metrics(text, audio_bytes, words_data, dur_sec)
-                            return {"transcript": text, "source": "groq-whisper-large-v3", "speech_metrics": metrics}
-                except Exception as e:
-                    latency_ms = (time.time() - t0) * 1000
-                    log_api_trace("Groq", "whisper-large-v3", key, 500, latency_ms, error_msg=str(e), step="STT")
-                    logger.warning(f"[AIEngine] Groq Whisper error: {e}")
-                    if "429" in str(e) or "403" in str(e):
-                        pass
-                    continue
+        if not audio_bytes and fallback_text.strip():
+            log_api_trace("Browser-STT", "browser-speech-api", "none", 200, 0.0, step="STT_Fallback")
+            clean_fb = fallback_text.strip()
+            metrics = self._compute_speech_acoustic_metrics(clean_fb, b"")
+            return {"transcript": clean_fb, "source": "browser-stt", "speech_metrics": metrics}
 
-        if self.gemini_keys:
+        if self.gemini_keys and audio_bytes:
             import base64
             b64_audio = base64.b64encode(audio_bytes).decode("utf-8")
             for key in self.gemini_keys:
@@ -1878,6 +1855,35 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                         if "429" in str(e) or "403" in str(e):
                             break
                         continue
+
+        if self.groq_keys and audio_bytes:
+            url = "https://api.groq.com/openai/v1/audio/transcriptions"
+            for key in self.groq_keys:
+                if is_key_exhausted(key):
+                    continue
+                t0 = time.time()
+                try:
+                    headers = {"Authorization": f"Bearer {key}"}
+                    files = {"file": (filename, audio_bytes, "audio/webm")}
+                    data = {"model": "whisper-large-v3", "language": "en", "response_format": "verbose_json"}
+                    response = requests.post(url, headers=headers, files=files, data=data, timeout=10)
+                    latency_ms = (time.time() - t0) * 1000
+                    log_api_trace("Groq", "whisper-large-v3", key, response.status_code, latency_ms, step="STT")
+                    if response.status_code == 200:
+                        result = response.json()
+                        text = result.get("text", "").strip()
+                        if text:
+                            words_data = result.get("words", [])
+                            dur_sec = result.get("duration")
+                            metrics = self._compute_speech_acoustic_metrics(text, audio_bytes, words_data, dur_sec)
+                            return {"transcript": text, "source": "groq-whisper-large-v3", "speech_metrics": metrics}
+                except Exception as e:
+                    latency_ms = (time.time() - t0) * 1000
+                    log_api_trace("Groq", "whisper-large-v3", key, 500, latency_ms, error_msg=str(e), step="STT")
+                    logger.warning(f"[AIEngine] Groq Whisper error: {e}")
+                    if "429" in str(e) or "403" in str(e):
+                        pass
+                    continue
 
         log_api_trace("Browser-STT", "browser-speech-api", "none", 200, 0.0, step="STT_Fallback")
         clean_fb = fallback_text.strip()

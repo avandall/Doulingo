@@ -20,7 +20,12 @@ import requests
 from dotenv import load_dotenv
 from gtts import gTTS
 
-from app.core.ai_engine import is_key_exhausted, log_api_trace, mark_key_exhausted, mask_api_key
+from app.core.ai_engine import (
+    is_key_exhausted,
+    log_api_trace,
+    mark_key_exhausted,
+    mask_api_key,
+)
 
 load_dotenv()
 logger = logging.getLogger("duolingo_speak.tts")

@@ -19,8 +19,8 @@ import os
 import subprocess
 import sys
 import time
-from pathlib import Path
 import urllib.request
+from pathlib import Path
 
 from playwright.async_api import async_playwright
 
