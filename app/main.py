@@ -10,6 +10,9 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
+
 from app.api.routers import (
     analytics_router,
     audio_router,
@@ -27,6 +30,16 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# Enable CORS for universal frontend access (web, mobile PWA, Render)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.add_middleware(GZipMiddleware, minimum_size=1000)
+
 # Include Presentation Layer Routers
 app.include_router(scenarios_router)
 app.include_router(chat_router)
@@ -34,6 +47,13 @@ app.include_router(audio_router)
 app.include_router(dictionary_router)
 app.include_router(analytics_router)
 app.include_router(feedback_router)
+
+
+@app.get("/health")
+@app.get("/api/health")
+def health_check():
+    """Health check endpoint for Render, uptime monitors, and keep-alive pings."""
+    return {"status": "ok", "app": "Haku Haku's", "version": "1.0.0"}
 
 # Mount Static Files
 static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")

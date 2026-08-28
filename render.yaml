@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: duolingo-speak
+    name: haku-hakus
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
@@ -9,7 +9,13 @@ services:
         sync: false
       - key: GROQ_API_KEY
         sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
       - key: OPENAI_API_KEY
         sync: false
       - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
         sync: false

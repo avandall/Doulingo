@@ -120,8 +120,25 @@ class DuoSpeakApp {
       this.scenarios = data.scenarios || [];
       this.renderAllScenarios();
     } catch (e) {
-      console.error('[DuoSpeak] Failed to load scenarios:', e);
+      console.error('[HakuSpeak] Failed to load scenarios, using fallback:', e);
+      this.renderScenariosFallback();
+      // Auto-retry in 3 seconds in case Render is cold-starting
+      setTimeout(() => this.loadScenarios(), 3000);
     }
+  }
+
+  renderScenariosFallback() {
+    if (this.scenarios && this.scenarios.length > 0) return;
+    const fallbackScenarios = [
+      { id: 'det_childhood_memory', title: 'A Memorable Childhood Experience', description: 'Describe a vivid memory from your childhood and explain why it was meaningful.', mode: 'ielts_exam', icon: '👶', level: 'IELTS / DET', level_code: 'B2', default_character: 'lily', suggested_vocabulary: ['nostalgic', 'vivid memory', 'unforgettable', 'formative'] },
+      { id: 'det_ai_future', title: 'Artificial Intelligence & Future of Work', description: 'Discuss how artificial intelligence will transform industries, careers, and daily life.', mode: 'ielts_exam', icon: '🤖', level: 'IELTS / DET', level_code: 'C1', default_character: 'beatrice', suggested_vocabulary: ['automation', 'cognitive skills', 'workforce', 'adaptability'] },
+      { id: 'det_best_friend', title: 'Best Friends & Personality', description: 'Talk about your best friend, their qualities, and why you get along so well.', mode: 'ielts_exam', icon: '👥', level: 'IELTS / DET', level_code: 'B1', default_character: 'alex', suggested_vocabulary: ['reliable', 'sense of humor', 'trustworthy', 'supportive'] },
+      { id: 'coffee_shop', title: 'Ordering at a Specialty Café', description: 'Order artisan coffee, customize your drink, and chat with the friendly barista.', mode: 'roleplay', icon: '☕', level: 'Beginner', level_code: 'A1', default_character: 'oscar', suggested_vocabulary: ['oat milk', 'iced latte', 'pastry', 'espresso'] },
+      { id: 'job_interview', title: 'Tech Job Interview Simulation', description: 'Present your experience, strengths, and answer behavioral interview questions.', mode: 'roleplay', icon: '💼', level: 'Upper-Intermediate', level_code: 'B2', default_character: 'beatrice', suggested_vocabulary: ['leadership', 'problem solving', 'collaborative', 'impact'] },
+      { id: 'travel_adventure', title: 'Planning an Epic Backpacking Trip', description: 'Discuss dream destinations, budget travel tips, and exciting outdoor adventures.', mode: 'roleplay', icon: '✈️', level: 'Intermediate', level_code: 'B1', default_character: 'rajesh', suggested_vocabulary: ['itinerary', 'backpacking', 'scenic views', 'hidden gems'] }
+    ];
+    this.scenarios = fallbackScenarios;
+    this.renderAllScenarios();
   }
 
   async loadUserStats() {
