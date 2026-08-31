@@ -55,6 +55,10 @@ class DuoSpeakApp {
     this.activeExplorerCategory = 'all';
     this.explorerSearchQuery = '';
 
+    // Roleplay Details View Table filter & pagination state
+    this.roleplayFilters = { icon: '', name: '', desc: '', group: 'all' };
+    this.roleplayShowAll = false;
+
     this.init();
   }
 
@@ -132,7 +136,7 @@ class DuoSpeakApp {
     const fallbackScenarios = [
       { id: 'det_childhood_memory', title: 'A Memorable Childhood Experience', description: 'Describe a vivid memory from your childhood and explain why it was meaningful.', mode: 'ielts_exam', icon: '👶', level: 'IELTS / DET', level_code: 'B2', default_character: 'lily', suggested_vocabulary: ['nostalgic', 'vivid memory', 'unforgettable', 'formative'] },
       { id: 'det_ai_future', title: 'Artificial Intelligence & Future of Work', description: 'Discuss how artificial intelligence will transform industries, careers, and daily life.', mode: 'ielts_exam', icon: '🤖', level: 'IELTS / DET', level_code: 'C1', default_character: 'beatrice', suggested_vocabulary: ['automation', 'cognitive skills', 'workforce', 'adaptability'] },
-      { id: 'det_best_friend', title: 'Best Friends & Personality', description: 'Talk about your best friend, their qualities, and why you get along so well.', mode: 'ielts_exam', icon: '👥', level: 'IELTS / DET', level_code: 'B1', default_character: 'alex', suggested_vocabulary: ['reliable', 'sense of humor', 'trustworthy', 'supportive'] },
+      { id: 'det_best_friend', title: 'Best Friends & Personality', description: 'Talk about your best friend, their qualities, and why you get along so well.', mode: 'ielts_exam', icon: '👥', level: 'IELTS / DET', level_code: 'B1', default_character: 'lily', suggested_vocabulary: ['reliable', 'sense of humor', 'trustworthy', 'supportive'] },
       { id: 'coffee_shop', title: 'Ordering at a Specialty Café', description: 'Order artisan coffee, customize your drink, and chat with the friendly barista.', mode: 'roleplay', icon: '☕', level: 'Beginner', level_code: 'A1', default_character: 'oscar', suggested_vocabulary: ['oat milk', 'iced latte', 'pastry', 'espresso'] },
       { id: 'job_interview', title: 'Tech Job Interview Simulation', description: 'Present your experience, strengths, and answer behavioral interview questions.', mode: 'roleplay', icon: '💼', level: 'Upper-Intermediate', level_code: 'B2', default_character: 'beatrice', suggested_vocabulary: ['leadership', 'problem solving', 'collaborative', 'impact'] },
       { id: 'travel_adventure', title: 'Planning an Epic Backpacking Trip', description: 'Discuss dream destinations, budget travel tips, and exciting outdoor adventures.', mode: 'roleplay', icon: '✈️', level: 'Intermediate', level_code: 'B1', default_character: 'rajesh', suggested_vocabulary: ['itinerary', 'backpacking', 'scenic views', 'hidden gems'] }
@@ -244,53 +248,111 @@ class DuoSpeakApp {
   }
 
   renderRoleplayGrid(scenarios) {
-    const grid = document.getElementById('roleplay-scenarios-grid');
-    if (!grid) return;
-    grid.innerHTML = '';
+    const tbody = document.getElementById('roleplay-table-body');
+    if (!tbody) return;
+    tbody.innerHTML = '';
 
-    // Curated featured topics list for main page (limit to max 8-10 topics for clean UI)
-    const featuredIds = [
-      'everyday_chat', 'cafe_dining', 'job_interview', 'travel_culture',
-      'work_study_space', 'digital_lifestyle', 'debate_club', 'shopping_negotiation'
-    ];
+    // Separate custom topics and built-in roleplay scenarios
+    // Custom topics are placed at the VERY TOP (unshifted)
+    const customTopics = scenarios.filter(s => s.is_custom || s.source === 'custom');
+    const builtinRoleplays = scenarios.filter(s => s.mode !== 'ielts_exam' && !s.is_custom && s.source !== 'custom');
 
-    // Priority: custom topics + default curated featured roleplays
-    const customTopics = scenarios.filter(s => s.is_custom);
-    const featuredRoleplays = scenarios.filter(s => featuredIds.includes(s.id));
-    const combinedFeatured = [...customTopics, ...featuredRoleplays];
+    // Sort custom topics newest first
+    const sortedCustoms = [...customTopics].reverse();
 
-    // Fallback if none matched
-    const mainList = (combinedFeatured.length > 0 ? combinedFeatured : scenarios).slice(0, 10);
+    // Combined list with custom topics at position 0 (the top)
+    const allRoleplayTopics = [...sortedCustoms, ...builtinRoleplays];
 
-    mainList.forEach(sc => {
-      grid.appendChild(this.createScenarioCard(sc, 'roleplay'));
+    // Filter based on column header filter inputs
+    const iconF = (this.roleplayFilters.icon || '').toLowerCase().trim();
+    const nameF = (this.roleplayFilters.name || '').toLowerCase().trim();
+    const descF = (this.roleplayFilters.desc || '').toLowerCase().trim();
+    const groupF = (this.roleplayFilters.group || 'all').toUpperCase().trim();
+
+    const filtered = allRoleplayTopics.filter(sc => {
+      const icon = (sc.icon || '').toLowerCase();
+      const title = (sc.title || '').toLowerCase();
+      const desc = (sc.description || '').toLowerCase();
+      const groupCode = (sc.level_code || sc.level || sc.category || '').toUpperCase();
+      const isCustom = sc.is_custom || sc.source === 'custom';
+
+      if (iconF && !icon.includes(iconF)) return false;
+      if (nameF && !title.includes(nameF)) return false;
+      if (descF && !desc.includes(descF)) return false;
+
+      if (groupF !== 'ALL') {
+        if (groupF === 'CUSTOM') {
+          if (!isCustom) return false;
+        } else if (groupF === 'IELTS') {
+          if (!groupCode.includes('IELTS') && sc.mode !== 'ielts_exam') return false;
+        } else {
+          if (!groupCode.includes(groupF)) return false;
+        }
+      }
+      return true;
     });
 
-    // 1. Explore All 30+ Topics Card
-    const exploreCard = document.createElement('div');
-    exploreCard.className = 'scenario-card explore-all-card';
-    exploreCard.innerHTML = `
-      <div class="explore-all-icon">📚</div>
-      <div class="explore-all-label">Explore All Topics</div>
-    `;
-    exploreCard.addEventListener('click', () => {
-      if (window.duoAudio) window.duoAudio.playClick();
-      this.openTopicExplorerModal();
-    });
-    grid.appendChild(exploreCard);
+    // Limit to 10 rows initially unless roleplayShowAll is true
+    const displayList = this.roleplayShowAll ? filtered : filtered.slice(0, 10);
 
-    // 2. Add Custom Topic Card
-    const addCard = document.createElement('div');
-    addCard.className = 'scenario-card add-custom-card';
-    addCard.innerHTML = `
-      <div class="add-custom-icon">➕</div>
-      <div class="add-custom-label">Add Custom Topic</div>
-    `;
-    addCard.addEventListener('click', () => {
-      if (window.duoAudio) window.duoAudio.playClick();
-      this.openCustomTopicModal('roleplay');
-    });
-    grid.appendChild(addCard);
+    if (displayList.length === 0) {
+      const emptyRow = document.createElement('tr');
+      emptyRow.innerHTML = `
+        <td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);font-style:italic;">
+          No matching roleplay topics found.
+        </td>
+      `;
+      tbody.appendChild(emptyRow);
+    } else {
+      displayList.forEach(sc => {
+        const row = document.createElement('tr');
+        const isCustom = sc.is_custom || sc.source === 'custom';
+        row.className = `roleplay-table-row${isCustom ? ' is-custom-row' : ''}`;
+        row.dataset.scenarioId = sc.id;
+
+        const groupCode = isCustom
+          ? 'CUSTOM'
+          : (sc.level_code || (sc.level ? sc.level.split(' ')[0] : 'B1')).toUpperCase();
+
+        let badgeClass = groupCode.toLowerCase();
+        if (!['a1', 'a2', 'b1', 'b2', 'c1', 'custom', 'ielts'].includes(badgeClass)) {
+          badgeClass = 'b1';
+        }
+
+        row.innerHTML = `
+          <td class="topic-icon-cell">${sc.icon || '💬'}</td>
+          <td class="topic-name-cell">
+            ${sc.title || 'Untitled'}
+            ${isCustom ? '<span style="font-size:10px;color:#ffd700;margin-left:4px;">✨ New</span>' : ''}
+          </td>
+          <td class="topic-desc-cell">${sc.description || ''}</td>
+          <td><span class="group-badge ${badgeClass}">${groupCode}</span></td>
+        `;
+
+        row.addEventListener('click', () => {
+          if (window.duoAudio) window.duoAudio.playClick();
+          this.startScenario(sc.id);
+        });
+
+        tbody.appendChild(row);
+      });
+    }
+
+    // Update "Show more" button in table footer
+    const btnShowMore = document.getElementById('btn-roleplay-show-more');
+    if (btnShowMore) {
+      if (filtered.length <= 10) {
+        btnShowMore.style.display = 'none';
+      } else {
+        btnShowMore.style.display = 'inline-block';
+        if (this.roleplayShowAll) {
+          btnShowMore.innerHTML = '🔼 Show less';
+        } else {
+          const remaining = filtered.length - 10;
+          btnShowMore.innerHTML = `🔽 Show more (${remaining} more topics)...`;
+        }
+      }
+    }
   }
 
   createScenarioCard(sc, type) {
@@ -767,8 +829,11 @@ class DuoSpeakApp {
 
     const cleanText = (transcript || '').trim();
 
-    // Auto-submit immediately when mic finishes recording (no manual review click needed)
-    if (isFinal && cleanText) {
+    const isDetModalActive = document.getElementById('modal-det-exam')?.classList.contains('active');
+    const isReadThenSpeak = isDetModalActive && document.getElementById('det-view-read-speak')?.style.display !== 'none';
+
+    // Auto-submit immediately when mic finishes recording in interactive conversation mode
+    if (isFinal && cleanText && !isReadThenSpeak) {
       const reviewBox = document.getElementById('transcript-review-box');
       if (reviewBox) reviewBox.style.display = 'none';
 
@@ -1405,9 +1470,9 @@ class DuoSpeakApp {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, description: desc || title, icon, mode })
       });
-      if (!res.ok) throw new Error('Save failed');
-      const data = await res.json();
-      this.scenarios.push(data.scenario);
+      const newScenario = data.scenario || {};
+      newScenario.is_custom = true;
+      this.scenarios.unshift(newScenario);
       this.renderAllScenarios();
       modal.classList.remove('active');
       this.showToast('✅ Custom topic saved!');
@@ -1464,7 +1529,7 @@ class DuoSpeakApp {
 
     if (timerEl) timerEl.textContent = '00:00 / 03:00';
     if (statusEl) { statusEl.textContent = '⏳ Speak at least 1 minute'; statusEl.classList.remove('met'); }
-    if (btnRecord) btnRecord.innerHTML = '🎙️ Start Recording';
+    if (btnRecord) { btnRecord.disabled = false; btnRecord.innerHTML = '🎙️ Start Recording'; }
     if (micStatusEl) { micStatusEl.textContent = 'Press "Start Recording" below to begin speaking...'; micStatusEl.classList.remove('active'); }
 
     // Reset tabs
@@ -1485,7 +1550,7 @@ class DuoSpeakApp {
     const micStatusEl = document.getElementById('det-mic-status');
     const waveform = document.getElementById('det-waveform-anim');
 
-    if (btnRecord) { btnRecord.innerHTML = '⏹️ Stop Recording'; }
+    if (btnRecord) { btnRecord.disabled = false; btnRecord.innerHTML = '⏹️ Stop Recording'; }
     if (micStatusEl) { micStatusEl.textContent = '🎙️ Recording... Speak confidently!'; micStatusEl.classList.add('active'); }
     if (waveform) waveform.classList.add('active');
 
@@ -1516,8 +1581,8 @@ class DuoSpeakApp {
     const micStatusEl = document.getElementById('det-mic-status');
     const waveform = document.getElementById('det-waveform-anim');
 
-    if (btnRecord) btnRecord.innerHTML = '🎙️ Start Recording';
-    if (micStatusEl) { micStatusEl.textContent = '✅ Recording stopped. Press Submit to evaluate.'; micStatusEl.classList.remove('active'); }
+    if (btnRecord) { btnRecord.innerHTML = '✅ Recorded (Ready to Submit)'; btnRecord.disabled = true; }
+    if (micStatusEl) { micStatusEl.textContent = '✅ Recording completed. Press "Submit Speaking Test" to evaluate.'; micStatusEl.classList.remove('active'); }
     if (waveform) waveform.classList.remove('active');
 
     if (this.speechHandler) this.speechHandler.stopListening();
@@ -1891,6 +1956,34 @@ class DuoSpeakApp {
     if (btnRandom) btnRandom.addEventListener('click', () => { if (window.duoAudio) window.duoAudio.playClick(); this.startRandomRoleplay(); });
     const btnOpenCust = document.getElementById('btn-open-custom-modal');
     if (btnOpenCust) btnOpenCust.addEventListener('click', () => { if (window.duoAudio) window.duoAudio.playClick(); this.openCustomTopicModal('roleplay'); });
+
+    // === ROLEPLAY DETAILS TABLE FILTERS & SHOW MORE ===
+    const filterIcon = document.getElementById('roleplay-filter-icon');
+    const filterName = document.getElementById('roleplay-filter-name');
+    const filterDesc = document.getElementById('roleplay-filter-desc');
+    const filterGroup = document.getElementById('roleplay-filter-group');
+
+    const updateRoleplayFilters = () => {
+      this.roleplayFilters.icon = filterIcon ? filterIcon.value : '';
+      this.roleplayFilters.name = filterName ? filterName.value : '';
+      this.roleplayFilters.desc = filterDesc ? filterDesc.value : '';
+      this.roleplayFilters.group = filterGroup ? filterGroup.value : 'all';
+      this.renderRoleplayGrid(this.scenarios);
+    };
+
+    if (filterIcon) filterIcon.addEventListener('input', updateRoleplayFilters);
+    if (filterName) filterName.addEventListener('input', updateRoleplayFilters);
+    if (filterDesc) filterDesc.addEventListener('input', updateRoleplayFilters);
+    if (filterGroup) filterGroup.addEventListener('change', updateRoleplayFilters);
+
+    const btnShowMoreRp = document.getElementById('btn-roleplay-show-more');
+    if (btnShowMoreRp) {
+      btnShowMoreRp.addEventListener('click', () => {
+        if (window.duoAudio) window.duoAudio.playClick();
+        this.roleplayShowAll = !this.roleplayShowAll;
+        this.renderRoleplayGrid(this.scenarios);
+      });
+    }
 
     // === TOPIC EXPLORER ===
     const btnOpenExplorer = document.getElementById('btn-open-explorer-modal');

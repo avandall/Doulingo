@@ -27,18 +27,17 @@ def test_load_persona_definitions():
     personas = load_persona_definitions()
     assert isinstance(personas, dict)
     assert len(personas) >= 9
-    assert "alex" in personas
     assert "lily" in personas
     assert "oscar" in personas
     assert "viktor" in personas
 
 
 @pytest.mark.parametrize("char_id", [
-    "alex", "lily", "oscar", "viktor", "chanel",
+    "lily", "oscar", "viktor", "chanel",
     "kaelen", "colt", "zarina", "scarlet", "luigi"
 ])
 def test_get_character_all_personas(char_id: str):
-    """Test retrieving each of the 10 characters returns valid data."""
+    """Test retrieving each of the 9 characters returns valid data."""
     char = get_character(char_id)
     assert char["id"] == char_id
     assert "name" in char and len(char["name"]) > 0
@@ -67,7 +66,7 @@ def test_list_characters():
 
 
 @pytest.mark.parametrize("char_id", [
-    "alex", "lily", "oscar", "viktor", "chanel",
+    "lily", "oscar", "viktor", "chanel",
     "kaelen", "colt", "zarina", "scarlet", "luigi"
 ])
 def test_3tier_prompt_generation_all_personas(char_id: str):

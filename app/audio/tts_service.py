@@ -33,14 +33,6 @@ logger = logging.getLogger("duolingo_speak.tts")
 # ElevenLabs & Azure Neural Voice Character Mappings
 # All voice IDs are CONFIRMED FREE PREMADE voices from the ElevenLabs API.
 CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
-    "alex": {
-        "eleven_voice_id": "21m00Tcm4TlvDq8ikWAM",
-        "eleven_settings": {"stability": 0.50, "similarity_boost": 0.75, "style": 0.0, "use_speaker_boost": True},
-        "azure_voice": "en-US-JennyNeural",
-        "rate": "+0%",
-        "pitch": "+0Hz",
-        "fallback_tld": "com"
-    },
     "duo": {
         "eleven_voice_id": "cgSgspJ2msm6clMCkdW9",
         "eleven_settings": {"stability": 0.5, "similarity_boost": 0.85, "style": 0.5, "use_speaker_boost": True},
@@ -145,7 +137,6 @@ CHARACTER_VOICE_MAP: dict[str, dict[str, Any]] = {
 }
 
 CHARACTER_FILLER_MAP: dict[str, str] = {
-    "alex": "Hmm...",
     "duo": "Hmm, let me see...",
     "lily": "Well...",
     "oscar": "Right...",

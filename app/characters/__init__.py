@@ -1,7 +1,7 @@
 """
 Character Persona Definitions for Duolingo Speak
 Dynamically loaded from app/data/persona_definitions.json with fallback defaults.
-Contains 9 Iconic Personas + Alex Plain AI Assistant.
+Contains 9 Iconic Personas.
 """
 
 import json
@@ -10,25 +10,6 @@ from typing import Any
 
 # Default fallback definitions if JSON file cannot be loaded
 DEFAULT_CHARACTERS: dict[str, dict[str, Any]] = {
-    "alex": {
-        "id": "alex",
-        "name": "Alex",
-        "role": "Plain AI Assistant",
-        "country": "🌐 Global",
-        "accent": "Standard English",
-        "gender": "neutral",
-        "avatar_icon": "🤖",
-        "color": "#607D8B",
-        "trait": "Neutral & Direct",
-        "personality": "A plain, neutral AI assistant with no persona, roleplay, or distinct personality quirks.",
-        "speech_style": "Clear, direct, neutral English tone.",
-        "system_prompt": (
-            "You are Alex, a helpful and neutral AI conversational assistant. "
-            "You have no specific persona, backstory, or roleplay quirks. "
-            "Speak in clear, natural, standard English. "
-            "Assist the user with conversation practice directly and objectively."
-        )
-    },
     "lily": {
         "id": "lily",
         "name": "Lily",

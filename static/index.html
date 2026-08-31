@@ -128,8 +128,51 @@
         </div>
       </div>
 
-      <div class="scenarios-grid" id="roleplay-scenarios-grid">
-        <!-- Rendered dynamically -->
+      <!-- Details View (Microsoft File Explorer Style Table) -->
+      <div class="roleplay-details-container" id="roleplay-scenarios-grid">
+        <div class="table-responsive">
+          <table class="roleplay-details-table">
+            <thead>
+              <tr class="table-header-titles">
+                <th style="width:70px;text-align:center;">Icon</th>
+                <th style="width:240px;">Tên topic</th>
+                <th>Description</th>
+                <th style="width:160px;">Groups</th>
+              </tr>
+              <tr class="table-header-filters">
+                <th style="text-align:center;">
+                  <input type="text" id="roleplay-filter-icon" class="table-filter-input" placeholder="🔍 Icon..." />
+                </th>
+                <th>
+                  <input type="text" id="roleplay-filter-name" class="table-filter-input" placeholder="🔍 Filter topic name..." />
+                </th>
+                <th>
+                  <input type="text" id="roleplay-filter-desc" class="table-filter-input" placeholder="🔍 Filter description..." />
+                </th>
+                <th>
+                  <select id="roleplay-filter-group" class="table-filter-select">
+                    <option value="all">Tất cả Groups</option>
+                    <option value="A1">A1 Beginner</option>
+                    <option value="A2">A2 Elementary</option>
+                    <option value="B1">B1 Intermediate</option>
+                    <option value="B2">B2 Upper-Inter</option>
+                    <option value="C1">C1 Advanced</option>
+                    <option value="IELTS">IELTS / Exam</option>
+                    <option value="Custom">✨ Custom</option>
+                  </select>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="roleplay-table-body">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+        <div class="roleplay-table-footer">
+          <button class="btn btn-outline btn-show-more" id="btn-roleplay-show-more">
+            🔽 Show more topics...
+          </button>
+        </div>
       </div>
     </div>
 
@@ -259,7 +302,7 @@
         </div>
 
         <!-- Live transcript preview -->
-        <div class="transcript-preview" id="transcript-display">
+        <div class="transcript-preview" id="transcript-display" style="display:none;">
           Tap the mic to start speaking...
         </div>
 

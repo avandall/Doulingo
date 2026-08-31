@@ -235,7 +235,7 @@ class FeedbackService:
                 new_exemplar = {
                     "id": new_id,
                     "level": str(ctx.get("level", "A1")).upper(),
-                    "persona": str(ctx.get("persona", "Alex")),
+                    "persona": str(ctx.get("persona", "Lily")),
                     "persona_trait": str(ctx.get("persona_trait", "friendly, warm")),
                     "topic": str(ctx.get("topic", "general")),
                     "dialogue_act": str(ctx.get("dialogue_act", "statement")),
