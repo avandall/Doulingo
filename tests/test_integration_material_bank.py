@@ -18,14 +18,14 @@ class TestIntegrationMaterialBank(unittest.TestCase):
 
     def setUp(self):
         self.client = TestClient(app)
-        self.scenarios = list_scenarios()
-        self.mb_scenarios = [s for s in self.scenarios if s.get("source") == "material_bank"]
-        self.assertTrue(len(self.mb_scenarios) > 0, "Material Bank topics must be populated")
+        from app.rag.material_bank import get_material_bank
+        mb_topics = get_material_bank().topics
+        self.assertTrue(len(mb_topics) > 0, "Material Bank topics must be populated")
+        self.mb_topic_id = list(mb_topics.keys())[0]
 
     def test_full_turn_conversation_flow(self):
         """Simulate a complete 2-turn conversation flow with a MaterialBank topic."""
-        mb_topic = self.mb_scenarios[0]
-        topic_id = mb_topic["id"]
+        topic_id = self.mb_topic_id
 
         # Step 1: Start scenario greeting
         start_payload = {
@@ -77,9 +77,9 @@ class TestIntegrationMaterialBank(unittest.TestCase):
 
     def test_structured_json_response_fields(self):
         """Verify presence and valid typing of all key JSON fields in process_turn response."""
-        mb_topic = self.mb_scenarios[0]
+        topic_id = self.mb_topic_id
         payload = {
-            "scenario_id": mb_topic["id"],
+            "scenario_id": topic_id,
             "character_id": "rajesh",
             "user_transcript": "I prefer hybrid work environments because they offer better work-life balance.",
             "conversation_history": [],
@@ -103,9 +103,9 @@ class TestIntegrationMaterialBank(unittest.TestCase):
 
     def test_api_chat_integration_with_material_bank(self):
         """Verify POST /api/chat works seamlessly with MaterialBank topic_id."""
-        mb_topic = self.mb_scenarios[0]
+        topic_id = self.mb_topic_id
         payload = {
-            "scenario_id": mb_topic["id"],
+            "scenario_id": topic_id,
             "character_id": "victor",
             "user_transcript": "Could you tell me more about effective study techniques?",
             "conversation_history": [],
@@ -122,8 +122,7 @@ class TestIntegrationMaterialBank(unittest.TestCase):
 
     def test_latency_benchmarks(self):
         """Benchmark response times for MaterialBank topic initialization and turn processing."""
-        mb_topic = self.mb_scenarios[0]
-        topic_id = mb_topic["id"]
+        topic_id = self.mb_topic_id
 
         # Measure start_scenario latency
         start_time = time.time()

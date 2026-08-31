@@ -298,7 +298,7 @@ class DuoSpeakApp {
     if (displayList.length === 0) {
       const emptyRow = document.createElement('tr');
       emptyRow.innerHTML = `
-        <td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);font-style:italic;">
+        <td colspan="5" style="text-align:center;padding:24px;color:var(--text-muted);font-style:italic;">
           No matching roleplay topics found.
         </td>
       `;
@@ -327,7 +327,19 @@ class DuoSpeakApp {
           </td>
           <td class="topic-desc-cell">${sc.description || ''}</td>
           <td><span class="group-badge ${badgeClass}">${groupCode}</span></td>
+          <td style="text-align:center;">
+            <button class="btn-delete-row" title="Xoá topic">🗑️</button>
+          </td>
         `;
+
+        const btnDelete = row.querySelector('.btn-delete-row');
+        if (btnDelete) {
+          btnDelete.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (window.duoAudio) window.duoAudio.playClick();
+            this.deleteTopic(sc);
+          });
+        }
 
         row.addEventListener('click', () => {
           if (window.duoAudio) window.duoAudio.playClick();
@@ -1470,6 +1482,8 @@ class DuoSpeakApp {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, description: desc || title, icon, mode })
       });
+      if (!res.ok) throw new Error('Save failed');
+      const data = await res.json();
       const newScenario = data.scenario || {};
       newScenario.is_custom = true;
       this.scenarios.unshift(newScenario);
@@ -1478,6 +1492,24 @@ class DuoSpeakApp {
       this.showToast('✅ Custom topic saved!');
     } catch (e) {
       this.showToast('❌ Failed to save topic.');
+    }
+  }
+
+  async deleteTopic(sc) {
+    if (!sc) return;
+
+    if (confirm(`Bạn có chắc muốn xoá topic "${sc.title}"?`)) {
+      if (sc.is_custom || sc.source === 'custom') {
+        try {
+          await fetch(this.apiUrl(`/api/custom_scenarios/${sc.id}`), { method: 'DELETE' });
+        } catch (e) {
+          console.warn('[DuoSpeak] Error deleting custom scenario from DB:', e);
+        }
+      }
+
+      this.scenarios = this.scenarios.filter(item => item.id !== sc.id);
+      this.renderAllScenarios();
+      this.showToast(`🗑️ Đã xoá topic "${sc.title}"!`);
     }
   }
 

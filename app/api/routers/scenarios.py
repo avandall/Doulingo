@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException
 from app.api.schemas.scenarios import CustomScenarioRequest, ScenarioImportRequest
 from app.characters import get_character, list_characters
 from app.scenarios import get_scenario, list_scenarios
-from app.storage import add_custom_scenario, get_custom_scenarios
+from app.storage import add_custom_scenario, delete_custom_scenario, get_custom_scenarios
 
 logger = logging.getLogger("duolingo_speak.api.scenarios")
 router = APIRouter(tags=["Scenarios & Characters"])
@@ -48,6 +48,12 @@ def api_create_custom_scenario(payload: CustomScenarioRequest):
     }
     saved = add_custom_scenario(sc_data)
     return {"status": "success", "scenario": saved}
+
+
+@router.delete("/api/custom_scenarios/{scenario_id}")
+def api_delete_custom_scenario(scenario_id: str):
+    deleted = delete_custom_scenario(scenario_id)
+    return {"status": "success", "deleted": deleted, "id": scenario_id}
 
 
 @router.get("/api/custom_scenarios/export/{scenario_id}")

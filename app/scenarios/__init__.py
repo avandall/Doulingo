@@ -408,29 +408,7 @@ def list_scenarios() -> list[dict[str, Any]]:
         sc_copy["is_custom"] = False
         scenarios_list.append(sc_copy)
 
-    # 2. Material Bank Topics
-    try:
-        from app.rag.material_bank import get_material_bank
-        mb = get_material_bank()
-        for topic in mb.topics.values():
-            vocab_preview = [v.phrase for v in topic.vocabulary[:5]]
-            scenarios_list.append({
-                "id": topic.topic_id,
-                "title": topic.topic_name,
-                "category": "Academic IELTS Bank",
-                "icon": "📖",
-                "color": "#1CB0F6",
-                "description": f"IELTS Topic with {len(topic.personas)} personas, {len(topic.questions)} questions, and {len(topic.vocabulary)} vocabulary items.",
-                "open_story_guide": f"Interactive IELTS Speaking discussion on {topic.topic_name}.",
-                "is_custom": False,
-                "source": "material_bank",
-                "target_levels": topic.target_levels,
-                "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
-            })
-    except Exception as e:
-        logger.warning(f"[scenarios.py] Error listing MaterialBank topics: {e}")
-
-    # 3. Custom Scenarios from Turso DB
+    # Custom Scenarios from Turso DB
     custom_scenarios = get_custom_scenarios()
     for cs in custom_scenarios:
         scenarios_list.append(cs)
@@ -461,7 +439,7 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
                 "category": "Academic IELTS Bank",
                 "icon": "📖",
                 "color": "#1CB0F6",
-                "description": f"IELTS Topic with {len(mb_topic.personas)} personas, {len(mb_topic.questions)} questions, and {len(mb_topic.vocabulary)} vocabulary items.",
+                "description": f"Academic IELTS Speaking topic covering key vocabulary, discussion questions, and practice prompts.",
                 "open_story_guide": f"Interactive IELTS Speaking discussion on {mb_topic.topic_name}.",
                 "is_custom": False,
                 "source": "material_bank",
