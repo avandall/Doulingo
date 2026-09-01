@@ -1,7 +1,9 @@
 # TECH CONTEXT
 # Bối cảnh kỹ thuật — Stack, Môi trường và Kiến trúc Kỹ thuật
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-08-26
+> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** [YYYY-MM-DD]
+>
+> ✏️ **HUMAN FILLS THIS FILE.** File này quy định chi tiết kỹ thuật, công nghệ, cấu trúc code và API contracts.
 
 ---
 
@@ -9,23 +11,24 @@
 
 ### Language & Framework
 ```
-Runtime:          Python 3.10+
-Framework:        FastAPI / Uvicorn
-Validation:       Pydantic v2
-API Protocol:     REST API (JSON)
-AI Client:        Google GenAI SDK (Gemini API)
+Runtime:          [Ví dụ: Python 3.11+ / Node.js 20+ / Go 1.22+]
+Framework:        [Ví dụ: FastAPI / Next.js / Express / Gin]
+Web Server:       [Ví dụ: Uvicorn / Node runtime / Native]
+Validation:       [Ví dụ: Pydantic v2 / Zod / Type validation]
+API Protocol:     [Ví dụ: REST API (JSON) / GraphQL / gRPC]
 ```
 
 ### Database & Storage
 ```
-Data Storage:     JSON-based Data Banks (`app/data/*.json`)
-Vector Search:    In-memory Vector Similarity / Cosine Distance cho Exemplar RAG
+Primary DB:       [Ví dụ: PostgreSQL 15 / SQLite / MongoDB]
+ORM / Query:      [Ví dụ: SQLAlchemy 2.0 & Alembic / Prisma / Drizzle / Raw SQL]
+Data Isolation:   [Ví dụ: Multi-tenant tenant_id isolation / Single tenant]
 ```
 
 ### Testing Framework
 ```
-Test Runner:      Pytest
-Types of Tests:   Unit Tests, Integration Tests for AI Prompt Pipeline
+Test Runner:      [Ví dụ: Pytest / Vitest / Jest / Go test]
+Types of Tests:   [Unit Tests, Integration Tests, End-to-End Tests]
 ```
 
 ---
@@ -33,76 +36,88 @@ Types of Tests:   Unit Tests, Integration Tests for AI Prompt Pipeline
 ## 2. Cấu trúc Thư mục Dự án (Directory Structure)
 
 ```
-Doulingo/
-├── app/
-│   ├── main.py                       # FastAPI Entry point
-│   ├── core/
-│   │   ├── ai_engine.py              # Single-Call CoT AI Engine
-│   │   ├── prompt_factory.py         # 3-Tier Prompt Builder
-│   │   ├── heuristic_checker.py      # Fast CEFR Level Checker (<5ms)
-│   │   ├── exemplar_rag.py           # Dialogue Exemplar RAG Engine
-│   │   ├── grammar_validator.py      # Grammar Structure Validator
-│   │   └── adaptive_level_detector.py # IRT Adaptive Level Detector
-│   ├── data/                         # Data Banks
-│   │   ├── vocab_bank.json           # Vocabulary by CEFR Level
-│   │   ├── sample_dialogue_bank.json # Dialogue Exemplars
-│   │   ├── persona_definitions.json  # 9 Personas definitions
-│   │   ├── topic_bank.json           # Structured Topics
-│   │   ├── grammar_bank.json         # Grammar structures by level
-│   │   └── cefr_gold_set.json        # Gold-set for level classifier
-│   └── characters/                   # Character definitions & routes
-├── pipeline/
-│   └── docs/                         # Pipeline Harness Docs
+[project-root]/
+├── src/ (hoặc app/)
+│   ├── main.py (hoặc index.ts)       # Application entry point
+│   ├── config/                       # Application configuration
+│   ├── api/                          # Routers / Handlers / Controllers
+│   ├── services/                     # Business Logic Layer
+│   ├── db/                           # Models, Database session & Migrations
+│   ├── middlewares/                  # Application Middlewares
+│   └── schemas/                      # DTOs / Schemas for validation
 ├── tests/                            # Test Suite
-├── to_do.md                          # Task list for Human User
-└── pyproject.toml                    # Dependencies
+├── .env.example                      # Template environment variables
+├── pyproject.toml / package.json     # Dependency manifest
+└── README.md                         # Project documentation
 ```
 
 ---
 
-## 3. Data Models & JSON Schemas
+## 3. Database Schema & Data Models
 
-### Single-Call CoT JSON Response Schema
-```json
-{
-  "natural_draft": "Hi there! It is a beautiful rainy day outside. How are you feeling today?",
-  "vocab_check": [],
-  "final_response": "Hi there! It is a rainy day today. How are you feeling?"
-}
+```
+[Mô tả các data models / entities của hệ thống]
+
+Ví dụ:
+- User (id, email, password_hash, created_at)
+- Post (id, user_id, title, content, created_at)
 ```
 
 ---
 
-## 4. Build, Run & Verification Commands
+## 4. API Contracts & Specifications
+
+### Endpoint Overview
+- **`POST /api/v1/[endpoint]`**: [Mô tả endpoint]
+  - **Headers Required**: `[Header-Name]: [Type]`
+  - **Request Body**:
+    ```json
+    {
+      "[field_name]": "[type]"
+    }
+    ```
+  - **Response 200 OK**:
+    ```json
+    {
+      "status": "success",
+      "data": {}
+    }
+    ```
+  - **Response Error (4xx / 5xx)**:
+    ```json
+    {
+      "error": "[ERROR_CODE]",
+      "message": "[Error description]"
+    }
+    ```
+
+---
+
+## 5. Environment Variables Template (`.env.example`)
 
 ```bash
-# Chạy test suite toàn hệ thống
-pytest
+# Server Configuration
+PORT=3000
+ENVIRONMENT=development
 
-# Verification script chính của Pipeline
-python3 pipeline/scripts/verify.py
+# Database Connection
+DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+
+# External API Keys / Secrets
+API_KEY=your_api_key_here
 ```
-
 
 ---
 
-## 5. Ultra-Low-Latency & Voice Streaming Architecture (Phase 4)
+## 6. Build, Run & Verification Commands
 
-### Latency Budget Target
-```
-End-to-End Latency Target:   < 1.0s (Time-To-First-Audio / TTFA)
-Client-Side Optimistic STT:  ~0ms - 50ms (Web Speech API)
-Fast Voice LLM Inference:    100ms - 250ms (Llama-3.1-8B-Instant / Gemini-2.5-Flash)
-Micro-LLM Rewrite (if needed): 100ms - 150ms (Targeted sentence simplification)
-Chunked Edge-TTS Stream:     150ms - 250ms (Direct MP3 chunk streaming)
-Async Background Evaluation: Offloaded to FastAPI BackgroundTasks (Non-blocking)
-```
+```bash
+# Cài đặt dependencies
+[Command cài đặt, e.g. pip install -r requirements.txt hoac npm install]
 
-### Decoupled Voice vs Evaluation Flow
-```
-User Speech Ends
-      │
-      ├─► [Fast Voice Track]: LLM (35 tokens) ──► Sentence-Level Chunked TTS ──► Audio Plays (<1.0s)
-      │
-      └─► [Async Background Track]: Acoustic Extraction + Grammar Analysis + Scoring + VI Trans (Non-blocking)
+# Khởi chạy development server
+[Command khởi chạy, e.g. uvicorn app.main:app --reload hoac npm run dev]
+
+# Chạy test suite
+[Command chạy tests, e.g. pytest hoac npm test]
 ```
