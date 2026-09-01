@@ -53,6 +53,7 @@ app.include_router(feedback_router)
 @app.get("/api/health")
 def health_check():
     """Health check endpoint for Render, uptime monitors, and keep-alive pings."""
+    print("[Keep-Alive] Periodic ping received from GitHub Actions!", flush=True)
     return {"status": "ok", "app": "Haku Haku's", "version": "1.0.0"}
 
 # Mount Static Files

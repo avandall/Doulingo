@@ -9,6 +9,9 @@ import os
 import sqlite3
 import sys
 
+# Ensure project root is on sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 try:
     import libsql_experimental as libsql
     HAS_LIBSQL = True
@@ -65,7 +68,7 @@ def sync_local_to_turso(turso_url: str, turso_token: str, local_db_path: str = "
 
         count = 0
         for r in rows:
-            values = [r[col] for col in col_names]
+            values = tuple(r[col] for col in col_names)
             remote_cursor.execute(insert_query, values)
             count += 1
 

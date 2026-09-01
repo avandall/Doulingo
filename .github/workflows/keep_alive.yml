@@ -13,7 +13,7 @@ jobs:
       - name: Ping Render Web App
         run: |
           echo "Sending keep-alive ping to Render at $(date)..."
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://haku-hakus.onrender.com/)
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://haku-hakus.onrender.com/api/health)
           echo "Response HTTP Status: $HTTP_STATUS"
           if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 500 ]; then
             echo "Render app is active and responding (Status: $HTTP_STATUS)!"
