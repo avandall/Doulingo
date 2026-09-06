@@ -32,7 +32,8 @@ def wait_for_server(url: str, timeout: float = 10.0) -> bool:
     start = time.time()
     while time.time() - start < timeout:
         try:
-            with urllib.request.urlopen(f"{url}/api/topics", timeout=1.0) as res:
+            with urllib.request.urlopen(f"{url}/api/topics", timeout=1.0) as res:  # nosec B310
+
                 if res.status == 200:
                     return True
         except Exception:

@@ -1122,11 +1122,11 @@ Output JSON ONLY:
             for model in self.gemini_models:
                 try:
                     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
-                    payload = {
+                    gemini_payload = {
                         "contents": [{"parts": [{"text": translate_prompt}]}],
                         "generationConfig": {"maxOutputTokens": 200, "temperature": 0.35}
                     }
-                    res = requests.post(url, json=payload, timeout=2)
+                    res = requests.post(url, json=gemini_payload, timeout=2)
                     if res.status_code == 200:
                         text = res.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
                         if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
@@ -1145,13 +1145,14 @@ Output JSON ONLY:
                 try:
                     url = "https://api.groq.com/openai/v1/chat/completions"
                     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-                    payload = {
+                    groq_payload = {
                         "model": model,
                         "messages": [{"role": "user", "content": translate_prompt}],
                         "max_tokens": 200,
                         "temperature": 0.35,
                     }
-                    res = requests.post(url, headers=headers, json=payload, timeout=2)
+                    res = requests.post(url, headers=headers, json=groq_payload, timeout=2)
+
                     if res.status_code == 200:
                         text = res.json()["choices"][0]["message"]["content"].strip()
                         if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):

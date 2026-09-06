@@ -31,6 +31,11 @@ pipeline/docs/runtime/ITERATIONS/
 pipeline/docs/runtime/VERIFICATION_REPORT.md
 pipeline/docs/runtime/DEBATE_LOG.md
 
+# Generated Output & Reports
+reports/
+output/
+
 # Agent Pipeline Run Logs & State
 pipeline/.ralph/
 pipeline/docs/runtime/session_*.jsonl
+

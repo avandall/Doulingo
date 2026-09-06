@@ -439,7 +439,7 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
                 "category": "Academic IELTS Bank",
                 "icon": "📖",
                 "color": "#1CB0F6",
-                "description": f"Academic IELTS Speaking topic covering key vocabulary, discussion questions, and practice prompts.",
+                "description": "Academic IELTS Speaking topic covering key vocabulary, discussion questions, and practice prompts.",
                 "open_story_guide": f"Interactive IELTS Speaking discussion on {mb_topic.topic_name}.",
                 "is_custom": False,
                 "source": "material_bank",
