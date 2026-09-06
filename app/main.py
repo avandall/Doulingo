@@ -18,6 +18,7 @@ from app.api.routers import (
     chat_router,
     dictionary_router,
     feedback_router,
+    reports_router,
     scenarios_router,
 )
 
@@ -46,6 +47,7 @@ app.include_router(audio_router)
 app.include_router(dictionary_router)
 app.include_router(analytics_router)
 app.include_router(feedback_router)
+app.include_router(reports_router)
 
 
 @app.get("/health")

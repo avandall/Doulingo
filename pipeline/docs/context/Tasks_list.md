@@ -13,7 +13,7 @@
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Ghi chú / Blocker |
 |---|---|---|---|---|---|
 | `TASK-001` | Cài đặt Jinja2 Template & Playwright PDF Reporting Engine | Phase 1 | P0 | `[x] DONE` | HTML/CSS A4 + Page-break defense |
-| `TASK-002` | Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching | Phase 1 | P0 | `[ ] TODO` | Store & Link (`/api/reports/.../file`) |
+| `TASK-002` | Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching | Phase 1 | P0 | `[x] DONE` | Store & Link (`/api/reports/.../file`) |
 | `TASK-003` | Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu | Phase 2 | P0 | `[ ] TODO` | 202 Accepted + Retries + Polling |
 | `TASK-004` | Xây dựng Cron Job Tự động Dọn dẹp Audio Cache | Phase 2 | P1 | `[ ] TODO` | Xóa audio chunks cũ > 24h |
 | `TASK-005` | Test Suite Tích hợp & Deterministic Verification | Phase 3 | P0 | `[ ] TODO` | Pytest + verify.py pass 100% |
@@ -75,7 +75,7 @@ Task Name:       Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching
 Phase:           Phase 1
 Task Type:       feat
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-06
 ```
 
@@ -87,10 +87,10 @@ Ngày tạo:        2026-09-06
   - `GET /api/reports/speaking/{report_id}` (trả về metadata và URL tải)
 
 #### Acceptance Criteria
-- [ ] `POST /api/reports/speaking/{session_id}/generate` lần đầu trả về 201 Created kèm download link.
-- [ ] Gọi lại lần 2 trong cùng ngày với cùng session_id trả về 200 OK với report_id cũ, không sinh thêm file PDF mới.
-- [ ] Gọi kèm `{"force": true}` bỏ qua cache và sinh report mới (201 Created).
-- [ ] `GET /api/reports/speaking/{report_id}/file` tải về đúng file PDF nhị phân. ID lạ trả về 404.
+- [x] `POST /api/reports/speaking/{session_id}/generate` lần đầu trả về 201 Created kèm download link.
+- [x] Gọi lại lần 2 trong cùng ngày với cùng session_id trả về 200 OK với report_id cũ, không sinh thêm file PDF mới.
+- [x] Gọi kèm `{"force": true}` bỏ qua cache và sinh report mới (201 Created).
+- [x] `GET /api/reports/speaking/{report_id}/file` tải về đúng file PDF nhị phân. ID lạ trả về 404.
 
 #### Scope
 - **Files được sửa/tạo:** `app/api/routers/reports_router.py`, `app/main.py`, `app/services/pdf_report_service.py`, `tests/test_pdf_reporting.py`

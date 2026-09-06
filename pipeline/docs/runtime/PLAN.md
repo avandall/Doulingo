@@ -1,37 +1,33 @@
 # TASK EXECUTION PLAN
-# Task TASK-001: Cài đặt Jinja2 Template & Playwright PDF Reporting Engine
+# Task TASK-002: Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching
 
 > **Trạng thái:** COMPLETED | **Ngày:** 2026-09-06
 
 ---
 
 ## 🎯 Task Goal
-Tạo service `app/services/pdf_report_service.py` và template `app/templates/reports/speaking_report.html` sử dụng Jinja2 + Playwright Headless Chromium để render HTML sang PDF chuẩn in ấn A4 (có Print CSS `@page { size: A4; margin: 12mm; }`, `tr { break-inside: avoid; }`, `<thead>` lặp lại tự động, $\ge 2$ trang).
+Cung cấp REST API router `/api/reports/speaking/...` cho phép tạo báo cáo PDF theo `session_id`, lưu vết trong database SQLite (`exam_reports`), hỗ trợ Idempotent caching theo ngày (gọi lại lần 2 trả về HTTP 200 OK với report_id cũ, truyền `{"force": true}` ép sinh lại PDF với HTTP 201 Created), đồng thời hỗ trợ tải file PDF nhị phân và tra cứu metadata báo cáo.
 
 ---
 
 ## 📋 Atomic Steps
 
-### [x] Step 1: Dependencies & Environment Setup
-- Thêm `jinja2>=3.1.0` và `playwright>=1.40.0` vào `requirements.txt`.
-- Cập nhật `.gitignore` cho thư mục `reports/` và `output/`.
-- Kiểm tra import dependencies.
+### [x] Step 1: Database Table & Service Layer Helper
+- Tạo bảng `exam_reports` trong SQLite (`data/custom_topics.db` qua `app/storage/db.py`).
+- Cung cấp các helper functions trong `app/storage/db.py` (`get_cached_exam_report`, `save_exam_report`, `get_exam_report_by_id`) để tìm kiếm cached report theo `session_id` trong cùng ngày, lưu vết report mới, và lấy thông tin report theo `report_id`.
 
-### [x] Step 2: HTML Template & Print CSS (`app/templates/reports/speaking_report.html`)
-- Thiết kế template A4 đáp ứng đầy đủ:
-  - Header bài thi: Thí sinh, Ngày thi, exam_type (IELTS/DET), Candidate ID, Duration.
-  - Overall Band & CEFR Level score card visual banner.
-  - Bảng subscores thành phần: Fluency, Pronunciation, Grammar, Lexical Resource kèm nhận xét chi tiết.
-  - Bảng Turn-by-Turn dialogue transcript (chi tiết từng lượt nói của thí sinh, AI prompt, lỗi sai và gợi ý cải thiện).
-- Print CSS: `@page { size: A4; margin: 12mm; }`, `tr { break-inside: avoid; }`, `thead { display: table-header-group; }`, page breaks clean styling.
+### [x] Step 2: REST API Router & Application Mount (`app/api/routers/reports_router.py`, `app/main.py`)
+- Định nghĩa router FastAPI `app/api/routers/reports_router.py` với các endpoints:
+  - `POST /api/reports/speaking/{session_id}/generate`: Idempotent endpoint, nhận `{"force": false}`, trả 201 Created (lần đầu / force) hoặc 200 OK (cache).
+  - `GET /api/reports/speaking/{report_id}/file`: Trả về `FileResponse` binary PDF (application/pdf) hoặc 404.
+  - `GET /api/reports/speaking/{report_id}`: Trả về metadata chi tiết và `download_url`.
+- Mount `reports_router` vào `app/main.py` và cập nhật `app/api/routers/__init__.py`.
 
-### [x] Step 3: PDF Service Implementation (`app/services/pdf_report_service.py`)
-- Viết hàm `generate_speaking_pdf(report_data: dict, output_path: str) -> str`.
-- Render HTML bằng Jinja2 `FileSystemLoader`.
-- Sử dụng Playwright Chromium headless: `page.goto(content)`, `page.pdf(path=..., format='A4', margin={...}, print_background=True)`.
-- Tạo helper sample report dictionary cho testing và standalone execution.
-
-### [x] Step 4: Unit Test & Verification (`tests/test_pdf_reporting.py`)
-- Viết test suite `test_render_pdf` chạy với pytest.
-- Verify file `reports/sample_report.pdf` được tạo ra, dung lượng > 0 bytes, số trang $\ge 2$.
-- Chạy `python3 pipeline/scripts/verify.py` đạt 100% PASS.
+### [x] Step 3: Unit & Integration Tests & Verification (`tests/test_pdf_reporting.py`)
+- Thêm test suite kiểm định trong `tests/test_pdf_reporting.py`:
+  - Lần đầu generate trả về 201 Created kèm download link.
+  - Gọi lại lần 2 trong ngày trả về 200 OK với report_id cũ.
+  - Gọi kèm `{"force": true}` sinh PDF mới trả về 201 Created.
+  - Tải file nhị phân qua `GET /file` hoạt động chuẩn, ID giả trả về 404.
+  - Tra cứu metadata qua `GET /{report_id}` trả về 200 / 404 đúng chuẩn.
+- Chạy `python3 pipeline/scripts/verify.py` đạt PASS 100%.

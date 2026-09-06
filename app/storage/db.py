@@ -376,8 +376,21 @@ def init_db():
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_hrq_topic_created ON harvest_review_queue (topic_tag, created_at)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_hrq_status ON harvest_review_queue (review_status)")
 
+    # 17. exam_reports (TASK-002: PDF Report Metadata & Idempotent Cache)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS exam_reports (
+            id          TEXT PRIMARY KEY,
+            session_id  TEXT NOT NULL,
+            file_path   TEXT NOT NULL,
+            report_data TEXT,
+            created_at  TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_exam_reports_session_date ON exam_reports (session_id, created_at)")
+
     conn.commit()
     conn.close()
+
 
 
 
@@ -685,5 +698,80 @@ def get_tier2_evaluations_history(
     rows = _fetch_all_dicts(cursor)
     conn.close()
     return rows
+
+
+def get_cached_exam_report(session_id: str) -> dict[str, Any] | None:
+    """Retrieve an existing exam report for session_id generated today if file exists on disk."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    query = """
+        SELECT id, session_id, file_path, report_data, created_at
+        FROM exam_reports
+        WHERE session_id = ? AND date(created_at) = date('now')
+        ORDER BY created_at DESC
+        LIMIT 1
+    """
+    cursor.execute(query, (session_id,))
+    row = _fetch_one_dict(cursor)
+    conn.close()
+
+    if row and os.path.exists(row["file_path"]):
+        return row
+    return None
+
+
+def save_exam_report(
+    report_id: str,
+    session_id: str,
+    file_path: str,
+    report_data: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Persist an exam report record in the database."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    serialized_data = json.dumps(report_data) if report_data else "{}"
+
+    cursor.execute(
+        """
+        INSERT INTO exam_reports (id, session_id, file_path, report_data, created_at)
+        VALUES (?, ?, ?, ?, datetime('now'))
+        """,
+        (report_id, session_id, file_path, serialized_data),
+    )
+    conn.commit()
+
+    cursor.execute(
+        "SELECT id, session_id, file_path, report_data, created_at FROM exam_reports WHERE id = ?",
+        (report_id,),
+    )
+    row = _fetch_one_dict(cursor)
+    conn.close()
+    return row or {
+        "id": report_id,
+        "session_id": session_id,
+        "file_path": file_path,
+        "report_data": serialized_data,
+        "created_at": "",
+    }
+
+
+def get_exam_report_by_id(report_id: str) -> dict[str, Any] | None:
+    """Retrieve an exam report record by report_id."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT id, session_id, file_path, report_data, created_at FROM exam_reports WHERE id = ?",
+        (report_id,),
+    )
+    row = _fetch_one_dict(cursor)
+    conn.close()
+    return row
+
 
 
