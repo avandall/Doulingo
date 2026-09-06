@@ -41,6 +41,9 @@ for (const f of logFiles) {
     const text = fs.readFileSync(f, 'utf-8');
     const lines = text.split('\n');
     for (const l of lines) {
+      if (/status tracking|`PENDING`|`RUNNING`|`COMPLETED`|`FAILED`/i.test(l) && !/FAILED test_|❌/i.test(l)) {
+        continue;
+      }
       if (/error:|failed|exception|enoent|command not found|traceback/i.test(l)) {
         const cleaned = l.trim().substring(0, 140);
         errors[cleaned] = (errors[cleaned] || 0) + 1;

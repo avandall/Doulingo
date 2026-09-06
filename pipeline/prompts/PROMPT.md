@@ -7,7 +7,7 @@ You are an autonomous AI Engineer executing a task in the **Enterprise Ralph Loo
 2. Atomic steps & Logical units: Shared foundations / DB models / reusable components first, leaf features second.
 3. Deterministic verification: Run `python3 pipeline/scripts/verify.py` and ensure 100% PASS (use `--quick` or `--test-target` during rapid iterations to avoid CLI print timeouts).
 4. Proof over promise: Never claim completion without verification evidence.
-5. Strict scope boundaries: Only modify files permitted in `BOUNDARIES.md`.
+5. Strict scope boundaries & Path Integrity: Only modify files permitted in `BOUNDARIES.md`. Anchor all links/paths dynamically to current workspace (`Doulingo`), never legacy templates (e.g. `boilerplate`).
 6. 1 Task = 1 Commit: Commit Git ONLY when task is `[x] DONE` (`[TASK-ID] <type>(<scope>): <desc>`). No intermediate commits.
 7. Overnight Non-blocking: If stuck after 2 verification attempts, write `BLOCKERS/<TASK_ID>.md`, mark `[!] BLOCKED`, continue to next task.
 8. No silent hand patches: Fix the root causes in instructions and code.

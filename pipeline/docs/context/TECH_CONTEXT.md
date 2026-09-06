@@ -160,5 +160,7 @@ python3 pipeline/scripts/verify.py
 - **Playwright Headless Engine:** Playwright Chromium MUST run in headless mode (`headless=True`) with explicit navigation/rendering timeouts (e.g. `timeout=30000` ms) to prevent browser lockups.
 - **Subprocess & Test Timeout Bounds:** All verification commands executed via `verify.py` enforce a default 60-second timeout per tool.
 - **CLI Print Timeout Prevention:** To avoid CLI print timeouts (`Error: timeout waiting for response`), AI agents must avoid running unbounded, blocking tasks without timeouts. For rapid iterative turns, use `python3 pipeline/scripts/verify.py --quick` or `--test-target tests/test_xxx.py`.
+- **Workspace Path Integrity & Dynamic Root Anchoring:** All absolute file URLs and markdown links generated in runtime logs and reports must anchor dynamically to the active workspace project directory (`/home/avandall/project/Doulingo/`), strictly prohibiting hardcoded obsolete template strings (e.g. `boilerplate`).
+- **Log Analysis False-Positive Filtering:** Log analyzers (`ralph-analyze.mjs`) filter out status enum descriptions (`PENDING`, `RUNNING`, `COMPLETED`, `FAILED`) to avoid mistaking status listings for runtime error occurrences.
 
 

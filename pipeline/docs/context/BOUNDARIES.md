@@ -85,6 +85,7 @@ KHÔNG được phép gọi:
 ❌ Trả trực tiếp binary PDF dạng base64 trong JSON response (vi phạm Store & Link)
 ❌ Tắt validation hoặc bỏ qua kiểm tra lỗi
 ❌ Run unbounded blocking subprocesses/browser instances without timeout limits
+❌ Hardcode legacy template project paths (e.g. `boilerplate`) in absolute markdown links instead of referencing active workspace root (`Doulingo`)
 ```
 
 ---

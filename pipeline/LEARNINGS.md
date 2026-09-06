@@ -30,3 +30,12 @@
 - **Root Cause:** Subprocess test runs and Playwright headless engine tasks executed via `verify.py` lacked explicit timeout limits in `run_command()`, causing long-running or hanging subprocesses to block until the parent CLI runner hit print-timeout.
 - **Resolution:** Added 60s timeout limit with `subprocess.TimeoutExpired` handling in `verify.py`, updated `TECH_CONTEXT.md` with Playwright & pytest timeout guidelines, updated `AGENT_GUIDE.md` and `PROMPT.md` with rapid targeted verification rules (`--quick` / `--test-target`), updated `BOUNDARIES.md` to prohibit unbounded blocking subprocess calls, and updated `python_backend/preset.yaml`.
 - **Promoted To:** `pipeline/scripts/verify.py`, `pipeline/docs/context/TECH_CONTEXT.md`, `pipeline/docs/context/BOUNDARIES.md`, `pipeline/AGENT_GUIDE.md`, `pipeline/prompts/PROMPT.md`, `pipeline/presets/python_backend/preset.yaml`.
+
+### [2026-09-07] Log Analysis False Positive Prevention & Dynamic Workspace Path Anchoring
+- **Context / Task:** Ralph Loop execution run (20260907-000404) retro analysis.
+- **Root Cause:**
+  1. `ralph-analyze.mjs` log analyzer matched status enum literals (`FAILED` inside `(`PENDING`, `RUNNING`, `COMPLETED`, `FAILED`)`) in task summaries as tool error occurrences.
+  2. Executing agent outputs hardcoded legacy template paths (`/project/boilerplate/`) in file links instead of dynamically referencing the active project root (`/project/Doulingo/`).
+- **Resolution:** Updated `ralph-analyze.mjs` regex filtering to skip false positive status enum descriptions, updated `TECH_CONTEXT.md`, `BOUNDARIES.md`, `AGENT_GUIDE.md`, and `prompts/PROMPT.md` to enforce dynamic workspace path anchoring and prohibit hardcoded obsolete paths.
+- **Promoted To:** `pipeline/scripts/ralph-analyze.mjs`, `pipeline/docs/context/TECH_CONTEXT.md`, `pipeline/docs/context/BOUNDARIES.md`, `pipeline/AGENT_GUIDE.md`, `pipeline/prompts/PROMPT.md`.
+
