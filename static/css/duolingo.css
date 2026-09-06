@@ -489,6 +489,8 @@ body {
   padding: 4px 2px 10px 2px;
   max-width: 100%;
   box-sizing: border-box;
+  min-height: 116px;
+  contain: layout paint;
   scrollbar-width: thin;
   scrollbar-color: var(--violet) rgba(255, 255, 255, 0.08);
   -webkit-overflow-scrolling: touch;
@@ -684,6 +686,8 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 14px;
+  min-height: 280px;
+  contain: layout paint;
 }
 
 .scenario-card {
@@ -3110,4 +3114,48 @@ body {
   background: #ef4444;
   color: #fff;
   transform: scale(1.1);
+}
+
+/* ============================================================
+   PERFORMANCE & AGENTIC BROWSING LAYOUT STABILITY (CLS = 0.00)
+============================================================ */
+.roleplay-details-container {
+  min-height: 240px;
+  contain: layout paint;
+}
+
+.modal-overlay {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 100vh;
+}
+
+.hero {
+  min-height: 140px;
+}
+
+.difficulty-box {
+  min-height: 80px;
+}
+
+/* Fast skeleton shimmer placeholder for CLS prevention */
+.skeleton-card {
+  min-height: 130px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 25%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.02) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
+
+.skeleton-char {
+  flex: 0 0 105px;
+  height: 105px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }

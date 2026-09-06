@@ -83,6 +83,21 @@ def read_root():
     return {"message": "Haku Haku's API Server Running"}
 
 
+@app.get("/robots.txt", response_class=FileResponse)
+def read_robots_txt():
+    """Serve robots.txt for search engines & AI crawlers."""
+    robots_file = os.path.join(static_dir, "robots.txt")
+    return FileResponse(robots_file, media_type="text/plain")
+
+
+@app.get("/llms.txt", response_class=FileResponse)
+@app.get("/.well-known/llms.txt", response_class=FileResponse)
+def read_llms_txt():
+    """Serve standard llms.txt for AI agents and agentic web browsing."""
+    llms_file = os.path.join(static_dir, "llms.txt")
+    return FileResponse(llms_file, media_type="text/plain; charset=utf-8")
+
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))

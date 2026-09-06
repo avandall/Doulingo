@@ -1,0 +1,15 @@
+# Haku Haku's — AI English Speaking & IELTS Assessment Platform
+
+> Haku Haku's is an interactive English conversational practice platform featuring AI roleplays, real-time voice synthesis, and official IELTS & CEFR speaking test evaluations.
+
+## Core Capabilities
+- **Interactive AI Roleplay**: Practice everyday, academic, and professional conversation topics with expressive AI voice partners.
+- **IELTS & CEFR Exam Simulator**: Full speaking mock exams with turn-by-turn transcription, pronunciation diagnosis, acoustic fluency metrics (WPM, pause count), and CEFR scoring.
+- **Official A4 PDF Reporting**: Instant generation of multi-page printable speaking scorecards with subscores and dialogue logs.
+- **Vocabulary Book & Flashcards**: Contextual word saving, CEFR difficulty levels, and spaced-repetition flashcard practice.
+
+## API & Endpoints
+- [API Documentation](https://haku-hakus.onrender.com/docs): Interactive OpenAPI Swagger documentation.
+- [Speaking Scenarios](https://haku-hakus.onrender.com/api/scenarios): Explore speaking practice topics and IELTS categories.
+- [Speaking Reports](https://haku-hakus.onrender.com/api/reports/speaking): Generate and retrieve printable scorecards.
+- [Health Check](https://haku-hakus.onrender.com/health): Service uptime and health status.

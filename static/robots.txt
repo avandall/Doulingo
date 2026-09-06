@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haku-hakus.onrender.com/
+# LLMs and AI Agents Discovery
+# llms.txt: https://haku-hakus.onrender.com/llms.txt
