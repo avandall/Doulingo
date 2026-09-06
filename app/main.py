@@ -6,6 +6,7 @@ Follows Clean Architecture with decoupled APIRouters, Domain Services, and Persi
 import logging
 import os
 
+import inngest.fast_api
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
@@ -18,8 +19,13 @@ from app.api.routers import (
     chat_router,
     dictionary_router,
     feedback_router,
+    jobs_router,
     reports_router,
     scenarios_router,
+)
+from app.services.background_job_service import (
+    evaluate_speaking_exam,
+    inngest_client,
 )
 
 logger = logging.getLogger("haku_hakus.api")
@@ -48,6 +54,10 @@ app.include_router(dictionary_router)
 app.include_router(analytics_router)
 app.include_router(feedback_router)
 app.include_router(reports_router)
+app.include_router(jobs_router)
+
+# Mount Inngest Background Job Endpoint at /api/inngest
+inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam])
 
 
 @app.get("/health")

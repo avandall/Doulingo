@@ -1,33 +1,37 @@
 # TASK EXECUTION PLAN
-# Task TASK-002: Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching
+# Task TASK-003: Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu
 
 > **Trạng thái:** COMPLETED | **Ngày:** 2026-09-06
 
 ---
 
 ## 🎯 Task Goal
-Cung cấp REST API router `/api/reports/speaking/...` cho phép tạo báo cáo PDF theo `session_id`, lưu vết trong database SQLite (`exam_reports`), hỗ trợ Idempotent caching theo ngày (gọi lại lần 2 trả về HTTP 200 OK với report_id cũ, truyền `{"force": true}` ép sinh lại PDF với HTTP 201 Created), đồng thời hỗ trợ tải file PDF nhị phân và tra cứu metadata báo cáo.
+Tích hợp Inngest Async Background Worker SDK vào ứng dụng FastAPI (`app_id: haku-hakus-api`) để xử lý quá trình đánh giá sâu (AI Deep Scoring, IELTS/DET rubric) dưới dạng background job không gây nghẽn HTTP thread:
+1. Endpoint `POST /api/exams/{session_id}/evaluate-async` phản hồi HTTP 202 Accepted trong `<1s` kèm `job_id` và `status_url`.
+2. Endpoint `GET /api/jobs/{job_id}/status` hỗ trợ status polling trả về `pending`, `processing`, `done` (kèm kết quả) hoặc `failed`.
+3. Inngest function `evaluate-speaking-exam` thực thi từng `step.run` và lưu kết quả vào database/state store với retry backoff (tối đa 2 retries).
+4. Endpoint `/api/inngest` được mount trên FastAPI app.
 
 ---
 
 ## 📋 Atomic Steps
 
-### [x] Step 1: Database Table & Service Layer Helper
-- Tạo bảng `exam_reports` trong SQLite (`data/custom_topics.db` qua `app/storage/db.py`).
-- Cung cấp các helper functions trong `app/storage/db.py` (`get_cached_exam_report`, `save_exam_report`, `get_exam_report_by_id`) để tìm kiếm cached report theo `session_id` trong cùng ngày, lưu vết report mới, và lấy thông tin report theo `report_id`.
+### [x] Step 1: Database Job Storage & Inngest Background Service (`app/storage/db.py`, `app/services/background_job_service.py`)
+- Tạo bảng `evaluation_jobs` trong SQLite DB (`data/custom_topics.db` qua `app/storage/db.py`) và bổ sung helper functions (`create_evaluation_job`, `update_evaluation_job_status`, `get_evaluation_job`).
+- Khởi tạo Inngest client (`id: haku-hakus-api`) trong `app/services/background_job_service.py`.
+- Định nghĩa Inngest function `evaluate-speaking-exam` (trigger `exam/completed`, `retries=2`) thực thi các bước `step.run` (`ai-deep-scoring`, `phonetics-analysis`) và cập nhật tiến trình vào DB.
 
-### [x] Step 2: REST API Router & Application Mount (`app/api/routers/reports_router.py`, `app/main.py`)
-- Định nghĩa router FastAPI `app/api/routers/reports_router.py` với các endpoints:
-  - `POST /api/reports/speaking/{session_id}/generate`: Idempotent endpoint, nhận `{"force": false}`, trả 201 Created (lần đầu / force) hoặc 200 OK (cache).
-  - `GET /api/reports/speaking/{report_id}/file`: Trả về `FileResponse` binary PDF (application/pdf) hoặc 404.
-  - `GET /api/reports/speaking/{report_id}`: Trả về metadata chi tiết và `download_url`.
-- Mount `reports_router` vào `app/main.py` và cập nhật `app/api/routers/__init__.py`.
+### [x] Step 2: REST API Router & Inngest Mount (`app/api/routers/jobs_router.py`, `app/main.py`)
+- Định nghĩa router `jobs_router` với các endpoints:
+  - `POST /api/exams/{session_id}/evaluate-async`: Phản hồi 202 Accepted trong `<1s` kèm `job_id` và `status_url`.
+  - `GET /api/jobs/{job_id}/status`: Trả về trạng thái tiến độ job hoặc 404.
+- Mount endpoint `/api/inngest` thông qua `inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam])` và mount `jobs_router` vào `app/main.py`.
 
-### [x] Step 3: Unit & Integration Tests & Verification (`tests/test_pdf_reporting.py`)
-- Thêm test suite kiểm định trong `tests/test_pdf_reporting.py`:
-  - Lần đầu generate trả về 201 Created kèm download link.
-  - Gọi lại lần 2 trong ngày trả về 200 OK với report_id cũ.
-  - Gọi kèm `{"force": true}` sinh PDF mới trả về 201 Created.
-  - Tải file nhị phân qua `GET /file` hoạt động chuẩn, ID giả trả về 404.
-  - Tra cứu metadata qua `GET /{report_id}` trả về 200 / 404 đúng chuẩn.
-- Chạy `python3 pipeline/scripts/verify.py` đạt PASS 100%.
+### [x] Step 3: Integration Tests (`tests/test_background_jobs.py`)
+- Viết test suite trong `tests/test_background_jobs.py` kiểm định:
+  - `POST /api/exams/{session_id}/evaluate-async` trả về 202 Accepted `<1s`.
+  - `GET /api/jobs/{job_id}/status` phản hồi đúng chuyển trạng thái từ `pending` sang `done` kèm kết quả.
+  - Test helper database & endpoint `/api/inngest`.
+
+### [x] Step 4: Verification (`python3 pipeline/scripts/verify.py`)
+- Chạy `pytest tests/test_background_jobs.py` và `python3 pipeline/scripts/verify.py` kiểm định toàn bộ Ruff, Mypy (trên service/router), Bandit, Pytest đạt PASS 100%.

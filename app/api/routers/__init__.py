@@ -4,6 +4,7 @@ from app.api.routers.analytics import router as analytics_router
 from app.api.routers.audio import router as audio_router
 from app.api.routers.chat import router as chat_router
 from app.api.routers.dictionary import router as dictionary_router
+from app.api.routers.jobs_router import router as jobs_router
 from app.api.routers.reports_router import router as reports_router
 from app.api.routers.scenarios import router as scenarios_router
 
@@ -13,6 +14,7 @@ __all__ = [
     "chat_router",
     "dictionary_router",
     "feedback_router",
+    "jobs_router",
     "reports_router",
     "scenarios_router",
 ]

@@ -388,6 +388,20 @@ def init_db():
     """)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_exam_reports_session_date ON exam_reports (session_id, created_at)")
 
+    # 18. evaluation_jobs (TASK-003: Inngest Async Background Jobs)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS evaluation_jobs (
+            id          TEXT PRIMARY KEY,
+            session_id  TEXT NOT NULL,
+            status      TEXT NOT NULL CHECK(status IN ('pending', 'processing', 'done', 'failed')),
+            result      TEXT,
+            error       TEXT,
+            created_at  TEXT DEFAULT (datetime('now')),
+            updated_at  TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_eval_jobs_session ON evaluation_jobs (session_id)")
+
     conn.commit()
     conn.close()
 
@@ -772,6 +786,118 @@ def get_exam_report_by_id(report_id: str) -> dict[str, Any] | None:
     row = _fetch_one_dict(cursor)
     conn.close()
     return row
+
+
+def create_evaluation_job(
+    job_id: str, session_id: str, status: str = "pending"
+) -> dict[str, Any]:
+    """Persist a new evaluation job in the database."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+        INSERT OR REPLACE INTO evaluation_jobs (id, session_id, status, created_at, updated_at)
+        VALUES (?, ?, ?, datetime('now'), datetime('now'))
+        """,
+        (job_id, session_id, status),
+    )
+    conn.commit()
+
+    cursor.execute(
+        "SELECT id, session_id, status, result, error, created_at, updated_at FROM evaluation_jobs WHERE id = ?",
+        (job_id,),
+    )
+    row = _fetch_one_dict(cursor)
+    conn.close()
+    if row and row.get("result"):
+        try:
+            row["result"] = json.loads(row["result"])
+        except Exception:
+            pass
+    return row or {
+        "id": job_id,
+        "session_id": session_id,
+        "status": status,
+        "result": None,
+        "error": None,
+    }
+
+
+def update_evaluation_job_status(
+    job_id: str,
+    status: str,
+    result: dict[str, Any] | None = None,
+    error: str | None = None,
+) -> dict[str, Any] | None:
+    """Update status, result, or error of an evaluation job."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    res_json = json.dumps(result) if result is not None else None
+
+    if res_json is not None and error is not None:
+        cursor.execute(
+            """
+            UPDATE evaluation_jobs
+            SET status = ?, result = ?, error = ?, updated_at = datetime('now')
+            WHERE id = ?
+            """,
+            (status, res_json, error, job_id),
+        )
+    elif res_json is not None:
+        cursor.execute(
+            """
+            UPDATE evaluation_jobs
+            SET status = ?, result = ?, updated_at = datetime('now')
+            WHERE id = ?
+            """,
+            (status, res_json, job_id),
+        )
+    elif error is not None:
+        cursor.execute(
+            """
+            UPDATE evaluation_jobs
+            SET status = ?, error = ?, updated_at = datetime('now')
+            WHERE id = ?
+            """,
+            (status, error, job_id),
+        )
+    else:
+        cursor.execute(
+            """
+            UPDATE evaluation_jobs
+            SET status = ?, updated_at = datetime('now')
+            WHERE id = ?
+            """,
+            (status, job_id),
+        )
+
+    conn.commit()
+    return get_evaluation_job(job_id)
+
+
+def get_evaluation_job(job_id: str) -> dict[str, Any] | None:
+    """Retrieve an evaluation job record by job_id."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT id, session_id, status, result, error, created_at, updated_at FROM evaluation_jobs WHERE id = ?",
+        (job_id,),
+    )
+    row = _fetch_one_dict(cursor)
+    conn.close()
+    if row and row.get("result"):
+        try:
+            row["result"] = json.loads(row["result"])
+        except Exception:
+            pass
+    return row
+
 
 
 

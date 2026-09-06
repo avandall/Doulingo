@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | `TASK-001` | Cài đặt Jinja2 Template & Playwright PDF Reporting Engine | Phase 1 | P0 | `[x] DONE` | HTML/CSS A4 + Page-break defense |
 | `TASK-002` | Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching | Phase 1 | P0 | `[x] DONE` | Store & Link (`/api/reports/.../file`) |
-| `TASK-003` | Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu | Phase 2 | P0 | `[ ] TODO` | 202 Accepted + Retries + Polling |
+| `TASK-003` | Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu | Phase 2 | P0 | `[x] DONE` | 202 Accepted + Retries + Polling |
 | `TASK-004` | Xây dựng Cron Job Tự động Dọn dẹp Audio Cache | Phase 2 | P1 | `[ ] TODO` | Xóa audio chunks cũ > 24h |
 | `TASK-005` | Test Suite Tích hợp & Deterministic Verification | Phase 3 | P0 | `[ ] TODO` | Pytest + verify.py pass 100% |
 
@@ -111,7 +111,7 @@ Task Name:       Xây dựng Inngest Async Background Job cho Đánh giá Chuyê
 Phase:           Phase 2
 Task Type:       feat
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-06
 ```
 
@@ -124,10 +124,10 @@ Ngày tạo:        2026-09-06
   - Endpoint `GET /api/jobs/{job_id}/status`: trả về `pending`, `processing`, `done` (kèm kết quả) hoặc `failed`.
 
 #### Acceptance Criteria
-- [ ] `POST /api/exams/{session_id}/evaluate-async` trả về 202 Accepted trong $<1\text{s}$.
-- [ ] Inngest function thực thi từng step (step.run) và lưu kết quả vào database/state store.
-- [ ] Status polling endpoint `GET /api/jobs/{job_id}/status` phản hồi đúng tiến độ chuyển trạng thái từ `pending` sang `done`.
-- [ ] Lỗi tạm thời của AI service được tự động retry (tối đa 2 retries với exponential backoff).
+- [x] `POST /api/exams/{session_id}/evaluate-async` trả về 202 Accepted trong $<1\text{s}$.
+- [x] Inngest function thực thi từng step (step.run) và lưu kết quả vào database/state store.
+- [x] Status polling endpoint `GET /api/jobs/{job_id}/status` phản hồi đúng tiến độ chuyển trạng thái từ `pending` sang `done`.
+- [x] Lỗi tạm thời của AI service được tự động retry (tối đa 2 retries với exponential backoff).
 
 #### Scope
 - **Files được sửa/tạo:** `app/services/background_job_service.py`, `app/api/routers/reports_router.py` (hoặc `app/api/routers/jobs_router.py`), `app/main.py`, `requirements.txt`
