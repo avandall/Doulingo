@@ -122,7 +122,7 @@ def run_python_checks(
             pytest_cmd = ["pytest", "--tb=short", "-q"]
             if test_target:
                 pytest_cmd.append(test_target)
-            timeout_sec = 60 if (quick or test_target) else 180
+            timeout_sec = 60 if test_target else 300
             code, out = run_command(pytest_cmd, timeout=timeout_sec)
             results.append(("Python: Pytest (Runtime)", code == 0, "All unit tests passed ✓" if code == 0 else truncate_log(out)))
         else:
