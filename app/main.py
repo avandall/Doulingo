@@ -10,7 +10,7 @@ import inngest.fast_api
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api.routers import (
@@ -83,19 +83,51 @@ def read_root():
     return {"message": "Haku Haku's API Server Running"}
 
 
-@app.get("/robots.txt", response_class=FileResponse)
+LLMS_TXT_CONTENT = """# Haku Haku's — AI English Speaking & IELTS Assessment Platform
+
+> Haku Haku's is an interactive English conversational practice platform featuring AI roleplays, real-time voice synthesis, and official IELTS & CEFR speaking test evaluations.
+
+## Core Capabilities
+- **Interactive AI Roleplay**: Practice everyday, academic, and professional conversation topics with expressive AI voice partners.
+- **IELTS & CEFR Exam Simulator**: Full speaking mock exams with turn-by-turn transcription, pronunciation diagnosis, acoustic fluency metrics (WPM, pause count), and CEFR scoring.
+- **Official A4 PDF Reporting**: Instant generation of multi-page printable speaking scorecards with subscores and dialogue logs.
+- **Vocabulary Book & Flashcards**: Contextual word saving, CEFR difficulty levels, and spaced-repetition flashcard practice.
+
+## API & Endpoints
+- [API Documentation](https://haku-hakus.onrender.com/docs): Interactive OpenAPI Swagger documentation.
+- [Speaking Scenarios](https://haku-hakus.onrender.com/api/scenarios): Explore speaking practice topics and IELTS categories.
+- [Speaking Reports](https://haku-hakus.onrender.com/api/reports/speaking): Generate and retrieve printable scorecards.
+- [Health Check](https://haku-hakus.onrender.com/health): Service uptime and health status.
+"""
+
+ROBOTS_TXT_CONTENT = """User-agent: *
+Allow: /
+
+Sitemap: https://haku-hakus.onrender.com/
+# LLMs and AI Agents Discovery
+# llms.txt: https://haku-hakus.onrender.com/llms.txt
+"""
+
+
+@app.get("/robots.txt", response_class=PlainTextResponse)
 def read_robots_txt():
-    """Serve robots.txt for search engines & AI crawlers."""
-    robots_file = os.path.join(static_dir, "robots.txt")
-    return FileResponse(robots_file, media_type="text/plain")
+    """Serve robots.txt for search engines & AI crawlers with instant in-memory cache."""
+    return PlainTextResponse(
+        content=ROBOTS_TXT_CONTENT,
+        media_type="text/plain; charset=utf-8",
+        headers={"Cache-Control": "public, max-age=86400, s-maxage=86400"},
+    )
 
 
-@app.get("/llms.txt", response_class=FileResponse)
-@app.get("/.well-known/llms.txt", response_class=FileResponse)
+@app.get("/llms.txt", response_class=PlainTextResponse)
+@app.get("/.well-known/llms.txt", response_class=PlainTextResponse)
 def read_llms_txt():
-    """Serve standard llms.txt for AI agents and agentic web browsing."""
-    llms_file = os.path.join(static_dir, "llms.txt")
-    return FileResponse(llms_file, media_type="text/plain; charset=utf-8")
+    """Serve standard llms.txt for AI agents and agentic web browsing with instant in-memory cache."""
+    return PlainTextResponse(
+        content=LLMS_TXT_CONTENT,
+        media_type="text/plain; charset=utf-8",
+        headers={"Cache-Control": "public, max-age=86400, s-maxage=86400"},
+    )
 
 
 if __name__ == "__main__":
