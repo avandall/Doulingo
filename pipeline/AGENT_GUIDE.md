@@ -50,11 +50,11 @@ When documentation or instructions conflict, apply the following strict hierarch
 ## 5. Non-Negotiables (10 Inviolable Rules)
 1. **Memory on Disk:** Keep state in `STATUS.md`, `PLAN.md`, `PROGRESS_LOG.md`. Never rely on chat memory.
 2. **Atomic Steps & Logical Units (Mẹo 14):** Thực thi theo Cụm Logic (Shared foundations, DB models, reusable components trước; ráp API/view sau). Không làm tuần tự theo danh sách ngẫu nhiên.
-3. **Deterministic Verification:** Must pass `verify.py` 100% before marking any task complete.
+3. **Deterministic Verification:** Must pass `verify.py` 100% before marking any task complete. Use `python3 pipeline/scripts/verify.py --quick` or `--test-target tests/test_xxx.py` during rapid iteration to avoid CLI print timeouts.
 4. **Proof Over Promise:** Observable evidence (test output, diff) is required for every claim.
 5. **Strict Scope:** Never touch files outside `BOUNDARIES.md` or modify `.env` without authorization.
 6. **1 Task = 1 Commit:** Git commit ONLY when task is `[x] DONE` (`[TASK-ID] <type>(<scope>): <desc>`). Never commit intermediate iterations or `[iter-N]`.
 7. **Overnight Non-Blocking:** If stuck after 2 attempts, write `BLOCKERS/<TASK_ID>.md`, mark `[!] BLOCKED`, continue to next task.
 8. **No Silent Patches:** Fix the underlying instructions/tests, not just code by hand.
-9. **Never Accept Compaction:** If chat auto-compacts mid-task, stop and re-narrow task scope.
+9. **Never Accept Compaction & Timeouts:** Keep turns focused and bounded with explicit timeouts. If chat auto-compacts or commands time out, stop and re-narrow task scope.
 10. **Clean Working Tree:** Dọn sạch scratch files và để lại working tree sạch sẽ.

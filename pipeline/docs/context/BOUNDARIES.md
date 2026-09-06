@@ -84,6 +84,7 @@ KHÔNG được phép gọi:
 ❌ Hardcode credentials, API keys vào source code
 ❌ Trả trực tiếp binary PDF dạng base64 trong JSON response (vi phạm Store & Link)
 ❌ Tắt validation hoặc bỏ qua kiểm tra lỗi
+❌ Run unbounded blocking subprocesses/browser instances without timeout limits
 ```
 
 ---

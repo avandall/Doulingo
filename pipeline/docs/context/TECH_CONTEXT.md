@@ -153,3 +153,12 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 python3 pipeline/scripts/verify.py
 ```
 
+---
+
+## 6. Execution Timeouts & Subprocess Guidelines
+
+- **Playwright Headless Engine:** Playwright Chromium MUST run in headless mode (`headless=True`) with explicit navigation/rendering timeouts (e.g. `timeout=30000` ms) to prevent browser lockups.
+- **Subprocess & Test Timeout Bounds:** All verification commands executed via `verify.py` enforce a default 60-second timeout per tool.
+- **CLI Print Timeout Prevention:** To avoid CLI print timeouts (`Error: timeout waiting for response`), AI agents must avoid running unbounded, blocking tasks without timeouts. For rapid iterative turns, use `python3 pipeline/scripts/verify.py --quick` or `--test-target tests/test_xxx.py`.
+
+
