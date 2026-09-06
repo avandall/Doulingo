@@ -24,6 +24,7 @@ from app.api.routers import (
     scenarios_router,
 )
 from app.services.background_job_service import (
+    cleanup_audio_cache_job,
     evaluate_speaking_exam,
     inngest_client,
 )
@@ -57,7 +58,7 @@ app.include_router(reports_router)
 app.include_router(jobs_router)
 
 # Mount Inngest Background Job Endpoint at /api/inngest
-inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam])
+inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam, cleanup_audio_cache_job])
 
 
 @app.get("/health")

@@ -2,11 +2,13 @@
 Integration test suite for Inngest Async Background Jobs & Polling API
 """
 
+import os
 import time
 
 from fastapi.testclient import TestClient
 
 from app.main import app
+from app.services.cron_service import cleanup_audio_cache
 from app.storage.db import (
     create_evaluation_job,
     get_evaluation_job,
@@ -94,3 +96,48 @@ def test_inngest_endpoint_mount():
     """Verify /api/inngest endpoint is mounted on FastAPI app."""
     response = client.get("/api/inngest")
     assert response.status_code in [200, 400, 405]
+
+
+def test_cron_cleanup_empty_or_missing_directory(tmp_path):
+    """Verify cron cleanup function does not crash on empty or non-existent directories."""
+    non_existent = tmp_path / "does_not_exist"
+    res1 = cleanup_audio_cache(cache_dir=str(non_existent))
+    assert res1["deleted_count"] == 0
+    assert res1["freed_bytes"] == 0
+
+    empty_dir = tmp_path / "empty_cache"
+    empty_dir.mkdir()
+    res2 = cleanup_audio_cache(cache_dir=str(empty_dir))
+    assert res2["deleted_count"] == 0
+    assert res2["freed_bytes"] == 0
+
+
+def test_cron_cleanup_deletes_old_files_keeps_new(tmp_path):
+    """Verify cron cleanup deletes audio files > 24h old and keeps newer files."""
+    cache_dir = tmp_path / "audio_cache"
+    cache_dir.mkdir()
+
+    old_file1 = cache_dir / "temp_speech_old1.mp3"
+    old_file2 = cache_dir / "temp_speech_old2.mp3"
+    new_file1 = cache_dir / "temp_speech_new1.mp3"
+
+    old_file1.write_bytes(b"OLD AUDIO CACHE CONTENT 1" * 10)
+    old_file2.write_bytes(b"OLD AUDIO CACHE CONTENT 2" * 20)
+    new_file1.write_bytes(b"NEW AUDIO CACHE CONTENT" * 5)
+
+    now = time.time()
+    old_mtime = now - (25 * 3600)  # 25 hours old
+    new_mtime = now - (1 * 3600)   # 1 hour old
+
+    os.utime(old_file1, (old_mtime, old_mtime))
+    os.utime(old_file2, (old_mtime, old_mtime))
+    os.utime(new_file1, (new_mtime, new_mtime))
+
+    res = cleanup_audio_cache(cache_dir=str(cache_dir), max_age_hours=24.0)
+
+    assert res["deleted_count"] == 2
+    assert res["freed_bytes"] > 0
+    assert not old_file1.exists()
+    assert not old_file2.exists()
+    assert new_file1.exists()
+

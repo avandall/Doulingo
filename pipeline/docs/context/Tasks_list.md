@@ -15,7 +15,7 @@
 | `TASK-001` | Cài đặt Jinja2 Template & Playwright PDF Reporting Engine | Phase 1 | P0 | `[x] DONE` | HTML/CSS A4 + Page-break defense |
 | `TASK-002` | Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching | Phase 1 | P0 | `[x] DONE` | Store & Link (`/api/reports/.../file`) |
 | `TASK-003` | Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu | Phase 2 | P0 | `[x] DONE` | 202 Accepted + Retries + Polling |
-| `TASK-004` | Xây dựng Cron Job Tự động Dọn dẹp Audio Cache | Phase 2 | P1 | `[ ] TODO` | Xóa audio chunks cũ > 24h |
+| `TASK-004` | Xây dựng Cron Job Tự động Dọn dẹp Audio Cache | Phase 2 | P1 | `[x] DONE` | Xóa audio chunks cũ > 24h |
 | `TASK-005` | Test Suite Tích hợp & Deterministic Verification | Phase 3 | P0 | `[ ] TODO` | Pytest + verify.py pass 100% |
 
 > **Trạng thái hợp lệ:**
@@ -148,7 +148,7 @@ Task Name:       Xây dựng Cron Job Tự động Dọn dẹp Audio Cache
 Phase:           Phase 2
 Task Type:       feat
 Priority:        P1-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-06
 ```
 
@@ -157,9 +157,9 @@ Ngày tạo:        2026-09-06
 - **What:** Tạo scheduled cron job `cleanup-audio-cache` (chạy hàng ngày hoặc định kỳ qua Inngest `inngest.TriggerCron(cron="0 3 * * *")` hoặc async background scheduler), quét và xóa các file audio tạm thời có thời gian tạo $> 24$ giờ.
 
 #### Acceptance Criteria
-- [ ] Cron function quét thư mục audio cache/temp mà không gây crash server nếu thư mục rỗng.
-- [ ] Chỉ xóa file audio cũ hơn 24 giờ, giữ lại file mới tạo.
-- [ ] Ghi log số lượng file đã xóa và dung lượng đã giải phóng.
+- [x] Cron function quét thư mục audio cache/temp mà không gây crash server nếu thư mục rỗng.
+- [x] Chỉ xóa file audio cũ hơn 24 giờ, giữ lại file mới tạo.
+- [x] Ghi log số lượng file đã xóa và dung lượng đã giải phóng.
 
 #### Scope
 - **Files được sửa/tạo:** `app/services/cron_service.py`, `app/services/background_job_service.py`, `tests/test_background_jobs.py`

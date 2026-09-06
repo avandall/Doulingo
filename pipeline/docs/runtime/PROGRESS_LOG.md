@@ -18,3 +18,10 @@
 - [x] Step 2: Tạo FastAPI APIRouter `app/api/routers/reports_router.py` hỗ trợ Idempotency caching theo ngày, binary PDF stream (`FileResponse`), và report metadata endpoints. Mount router vào `app/main.py`.
 - [x] Step 3: Viết bộ test suite tích hợp endpoint trong `tests/test_pdf_reporting.py` kiểm định full flow (201 Created lần đầu, 200 OK idempotent cache, 201 Created với force=True, 200 OK binary PDF streaming, 404 cho report_id không tồn tại).
 - [x] Verification report: `python3 pipeline/scripts/verify.py` PASSED 100% (Ruff, Mypy, Bandit, Pytest).
+
+## [2026-09-07] TASK-004 Execution
+- [x] Đã khởi tạo PLAN.md cho TASK-004 với 4 atomic steps.
+- [x] Step 1: Định nghĩa service `cleanup_audio_cache` trong `app/services/cron_service.py` xử lý safe check thư mục chưa tồn tại / rỗng, lọc mtime > 24h, xóa file audio cũ và ghi log chi tiết.
+- [x] Step 2: Khởi tạo Inngest scheduled cron function `cleanup-audio-cache` (`cron="0 3 * * *"` daily) trong `app/services/background_job_service.py` và đăng ký vào endpoint `/api/inngest` trong `app/main.py`.
+- [x] Step 3: Thêm bộ test suite `test_cron_cleanup_empty_or_missing_directory` và `test_cron_cleanup_deletes_old_files_keeps_new` trong `tests/test_background_jobs.py`.
+- [x] Step 4: Verification report: `python3 pipeline/scripts/verify.py` PASSED 100% (Ruff, Mypy, Bandit, Pytest).

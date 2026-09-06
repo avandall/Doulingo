@@ -1,37 +1,35 @@
 # TASK EXECUTION PLAN
-# Task TASK-003: Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu
+# Task TASK-004: Xây dựng Cron Job Tự động Dọn dẹp Audio Cache
 
-> **Trạng thái:** COMPLETED | **Ngày:** 2026-09-06
+> **Trạng thái:** COMPLETED | **Ngày:** 2026-09-07
 
 ---
 
 ## 🎯 Task Goal
-Tích hợp Inngest Async Background Worker SDK vào ứng dụng FastAPI (`app_id: haku-hakus-api`) để xử lý quá trình đánh giá sâu (AI Deep Scoring, IELTS/DET rubric) dưới dạng background job không gây nghẽn HTTP thread:
-1. Endpoint `POST /api/exams/{session_id}/evaluate-async` phản hồi HTTP 202 Accepted trong `<1s` kèm `job_id` và `status_url`.
-2. Endpoint `GET /api/jobs/{job_id}/status` hỗ trợ status polling trả về `pending`, `processing`, `done` (kèm kết quả) hoặc `failed`.
-3. Inngest function `evaluate-speaking-exam` thực thi từng `step.run` và lưu kết quả vào database/state store với retry backoff (tối đa 2 retries).
-4. Endpoint `/api/inngest` được mount trên FastAPI app.
+Tạo scheduled cron job `cleanup-audio-cache` (chạy định kỳ qua Inngest `inngest.TriggerCron(cron="0 3 * * *")` hoặc function service) để quét và dọn dẹp các file audio tạm thời trong thư mục cache/temp có thời gian tạo > 24 giờ:
+1. Thư mục audio cache/temp rỗng hoặc chưa tồn tại không làm crash server.
+2. Chỉ xóa các file audio cũ hơn 24 giờ (mtime > 24h), giữ nguyên file mới tạo.
+3. Ghi log số lượng file đã xóa và dung lượng đã giải phóng (bytes / MB).
 
 ---
 
 ## 📋 Atomic Steps
 
-### [x] Step 1: Database Job Storage & Inngest Background Service (`app/storage/db.py`, `app/services/background_job_service.py`)
-- Tạo bảng `evaluation_jobs` trong SQLite DB (`data/custom_topics.db` qua `app/storage/db.py`) và bổ sung helper functions (`create_evaluation_job`, `update_evaluation_job_status`, `get_evaluation_job`).
-- Khởi tạo Inngest client (`id: haku-hakus-api`) trong `app/services/background_job_service.py`.
-- Định nghĩa Inngest function `evaluate-speaking-exam` (trigger `exam/completed`, `retries=2`) thực thi các bước `step.run` (`ai-deep-scoring`, `phonetics-analysis`) và cập nhật tiến trình vào DB.
+### [x] Step 1: Audio Cache Cleanup Service (`app/services/cron_service.py`)
+- Định nghĩa hàm `cleanup_audio_cache(cache_dir: str | None = None, max_age_hours: float = 24.0) -> dict[str, Any]` trong `app/services/cron_service.py`.
+- Xử lý safe check nếu thư mục chưa tồn tại hoặc rỗng.
+- Quét và xóa file có `mtime` > 24h, tính toán số file đã xóa và bytes giải phóng.
+- Ghi log kết quả dọn dẹp audio cache.
 
-### [x] Step 2: REST API Router & Inngest Mount (`app/api/routers/jobs_router.py`, `app/main.py`)
-- Định nghĩa router `jobs_router` với các endpoints:
-  - `POST /api/exams/{session_id}/evaluate-async`: Phản hồi 202 Accepted trong `<1s` kèm `job_id` và `status_url`.
-  - `GET /api/jobs/{job_id}/status`: Trả về trạng thái tiến độ job hoặc 404.
-- Mount endpoint `/api/inngest` thông qua `inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam])` và mount `jobs_router` vào `app/main.py`.
+### [x] Step 2: Inngest Cron Background Job (`app/services/background_job_service.py`, `app/main.py`)
+- Khởi tạo Inngest cron job function `cleanup-audio-cache` (trigger `inngest.TriggerCron(cron="0 3 * * *")`) trong `app/services/background_job_service.py`.
+- Đăng ký `cleanup_audio_cache_job` vào `inngest.fast_api.serve` trong `app/main.py`.
 
-### [x] Step 3: Integration Tests (`tests/test_background_jobs.py`)
-- Viết test suite trong `tests/test_background_jobs.py` kiểm định:
-  - `POST /api/exams/{session_id}/evaluate-async` trả về 202 Accepted `<1s`.
-  - `GET /api/jobs/{job_id}/status` phản hồi đúng chuyển trạng thái từ `pending` sang `done` kèm kết quả.
-  - Test helper database & endpoint `/api/inngest`.
+### [x] Step 3: Integration Test Suite (`tests/test_background_jobs.py`)
+- Viết unit & integration tests `test_cron_cleanup_*` trong `tests/test_background_jobs.py`:
+  - Test quét thư mục rỗng / không tồn tại không crash.
+  - Test chỉ xóa file > 24h và giữ file < 24h.
+  - Test ghi log và trả về số lượng file + bytes giải phóng.
 
 ### [x] Step 4: Verification (`python3 pipeline/scripts/verify.py`)
-- Chạy `pytest tests/test_background_jobs.py` và `python3 pipeline/scripts/verify.py` kiểm định toàn bộ Ruff, Mypy (trên service/router), Bandit, Pytest đạt PASS 100%.
+- Chạy `pytest tests/test_background_jobs.py -k "test_cron_cleanup"` và `python3 pipeline/scripts/verify.py` kiểm định PASS 100%.

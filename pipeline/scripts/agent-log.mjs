@@ -22,8 +22,16 @@ try {
     compacted = true;
   }
 
-  // Check for API / 5xx errors
-  if (content.includes('500 Internal Server Error') || content.includes('503 Service Unavailable') || content.includes('Rate limit exceeded') || content.includes('ECONNRESET')) {
+  // Check for API / 5xx / Timeout errors
+  if (
+    content.includes('500 Internal Server Error') ||
+    content.includes('503 Service Unavailable') ||
+    content.includes('Rate limit exceeded') ||
+    content.includes('ECONNRESET') ||
+    content.includes('timeout waiting for response') ||
+    content.includes('ETIMEDOUT') ||
+    content.includes('fetch failed')
+  ) {
     retryableApiError = true;
   }
 

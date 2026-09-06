@@ -82,6 +82,21 @@ async def evaluate_speaking_exam(
         raise
 
 
+@inngest_client.create_function(
+    fn_id="cleanup-audio-cache",
+    trigger=inngest.TriggerCron(cron="0 3 * * *"),
+)
+async def cleanup_audio_cache_job(
+    ctx: inngest.Context,
+) -> dict[str, Any]:
+    """Inngest background cron job running daily at 03:00 UTC to clean up audio cache > 24h."""
+    from app.services.cron_service import cleanup_audio_cache
+
+    step = ctx.step
+    result: dict[str, Any] = await step.run("cleanup-audio-cache-step", cleanup_audio_cache)
+    return result
+
+
 async def trigger_async_evaluation(
     session_id: str, background_tasks: Any | None = None
 ) -> dict[str, Any]:
