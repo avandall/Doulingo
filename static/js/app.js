@@ -1689,6 +1689,7 @@ class DuoSpeakApp {
   }
 
   renderDetScoreReport(data) {
+    this.lastDetReportData = data;
     const scoreEl = document.getElementById('det-report-score');
     const cefrEl = document.getElementById('det-report-cefr');
     if (scoreEl) scoreEl.textContent = data.det_score || data.ielts_band || 6.0;
@@ -2252,6 +2253,16 @@ class DuoSpeakApp {
       if (this.currentDetScenario) this.openDetExamModal(this.currentDetScenario);
     });
 
+    const btnDetDownloadPdf = document.getElementById('btn-det-download-pdf');
+    if (btnDetDownloadPdf) btnDetDownloadPdf.addEventListener('click', () => {
+      this.downloadSpeakingPdfReport();
+    });
+
+    const btnWeeklyDownloadPdf = document.getElementById('btn-weekly-download-pdf');
+    if (btnWeeklyDownloadPdf) btnWeeklyDownloadPdf.addEventListener('click', () => {
+      this.downloadWeeklyPdfReport();
+    });
+
     // === CLOSE MODALS ON OVERLAY CLICK ===
     ['modal-lang-setting', 'modal-custom-topic', 'modal-vocab-book', 'modal-flashcard-practice',
      'modal-weekly-report', 'modal-error-journal', 'modal-det-exam', 'modal-det-score-report'].forEach(id => {
@@ -2308,6 +2319,160 @@ class DuoSpeakApp {
         }
       });
     }
+  }
+
+  // ============================================================
+  // PDF REPORT GENERATION & DOWNLOAD (Playwright / Jinja2 Engine)
+  // ============================================================
+  async downloadSpeakingPdfReport() {
+    const btn = document.getElementById('btn-det-download-pdf');
+    const origHtml = btn ? btn.innerHTML : '<span>Download Official PDF Report (A4)</span>';
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span aria-hidden="true">⏳</span><span>Generating A4 PDF (Playwright)...</span>';
+    }
+
+    try {
+      const sessionId = this.currentSessionId || ('DET-SPK-' + Date.now().toString().slice(-6));
+      const payload = {
+        force: false,
+        report_data: this._buildPdfReportData(this.lastDetReportData)
+      };
+
+      const res = await fetch(`/api/reports/speaking/${sessionId}/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        throw new Error(`Server returned HTTP ${res.status}`);
+      }
+
+      const resData = await res.json();
+      const downloadUrl = resData.download_url || `/api/reports/speaking/${resData.report_id}/file`;
+
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `Speaking_Scorecard_${sessionId}.pdf`;
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      if (btn) {
+        btn.innerHTML = '<span>✅ PDF Downloaded!</span>';
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.disabled = false;
+        }, 3000);
+      }
+      this.showToast('📄 Official A4 PDF Report generated & downloaded successfully!', 'success');
+    } catch (err) {
+      console.error('[DuoSpeak] PDF generation error:', err);
+      if (btn) {
+        btn.innerHTML = '<span>❌ Export Failed</span>';
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.disabled = false;
+        }, 3000);
+      }
+      this.showToast('⚠️ Could not generate PDF report. Please try again.', 'error');
+    }
+  }
+
+  async downloadWeeklyPdfReport() {
+    const btn = document.getElementById('btn-weekly-download-pdf');
+    const origHtml = btn ? btn.innerHTML : '<span>Download PDF</span>';
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span aria-hidden="true">⏳</span><span>Exporting PDF...</span>';
+    }
+
+    try {
+      const sessionId = 'WEEKLY-' + (new Date().toISOString().split('T')[0]);
+      const res = await fetch(`/api/reports/speaking/${sessionId}/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ force: false })
+      });
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const resData = await res.json();
+      const downloadUrl = resData.download_url || `/api/reports/speaking/${resData.report_id}/file`;
+
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `Weekly_Report_${sessionId}.pdf`;
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      if (btn) {
+        btn.innerHTML = '<span>✅ Downloaded!</span>';
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.disabled = false;
+        }, 2500);
+      }
+      this.showToast('📄 Weekly Summary Report downloaded!', 'success');
+    } catch (err) {
+      console.error('[DuoSpeak] Weekly PDF error:', err);
+      if (btn) {
+        btn.innerHTML = '<span>❌ Failed</span>';
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.disabled = false;
+        }, 2500);
+      }
+      this.showToast('⚠️ Could not export weekly PDF.', 'error');
+    }
+  }
+
+  _buildPdfReportData(data) {
+    if (!data) return null;
+    const today = new Date().toISOString().split('T')[0];
+    const overallScore = data.ielts_band || data.det_score || 7.5;
+    return {
+      exam_type: "IELTS / DET Speaking Test",
+      test_date: today,
+      session_id: this.currentSessionId || `DET-SPK-${Date.now().toString().slice(-6)}`,
+      candidate_name: "Haku Haku Learner",
+      candidate_id: `STU-${Math.floor(Math.random() * 900000 + 100000)}`,
+      duration_minutes: 5,
+      target_score: `${overallScore} Band / ${data.cefr_level || 'C1'}`,
+      overall_score: `${overallScore}`,
+      cefr_level: data.cefr_level || 'B2 Upper-Intermediate',
+      performance_summary: data.examiner_critique || "Demonstrated solid communicative competence, good tempo, and natural phrasing throughout the speaking session.",
+      subscores: {
+        fluency: {
+          score: `${((data.fluency_score || 80) / 10).toFixed(1)}`,
+          feedback: "Mạch lạc tốt, duy trì tốc độ nói tự nhiên, phản xạ linh hoạt."
+        },
+        pronunciation: {
+          score: `${((data.coherence_score || 85) / 10).toFixed(1)}`,
+          feedback: "Phát âm rõ ràng, ngữ điệu tự nhiên, kiểm soát trọng âm tốt."
+        },
+        grammar: {
+          score: `${((data.grammar_score || 78) / 10).toFixed(1)}`,
+          feedback: "Cấu trúc ngữ pháp đa dạng, hòa hợp thì và liên kết câu chuẩn xác."
+        },
+        lexical: {
+          score: `${((data.vocabulary_score || 82) / 10).toFixed(1)}`,
+          feedback: "Vốn từ vựng phong phú, sử dụng từ ngữ chính xác theo ngữ cảnh."
+        }
+      },
+      dialogue_turns: [
+        {
+          turn_number: 1,
+          prompt: "Please describe an experience or topic you practiced during this session.",
+          user_response: data.sample_native_response ? "Candidate practiced responses in interactive speaking mode." : "Candidate completed speaking practice.",
+          score: `${overallScore}`,
+          feedback: data.examiner_critique || "Clear pronunciation and steady rhythm."
+        }
+      ]
+    };
   }
 }
 

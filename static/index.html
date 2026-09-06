@@ -700,7 +700,13 @@
         </div>
       </div>
 
-      <button class="btn btn-primary btn-full" id="btn-close-weekly-report-bottom">Close Report</button>
+      <div style="display:flex;gap:10px;margin-top:12px;">
+        <button class="btn btn-outline" id="btn-weekly-download-pdf" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <span aria-hidden="true">📄</span>
+          <span>Download PDF</span>
+        </button>
+        <button class="btn btn-primary" id="btn-close-weekly-report-bottom" style="flex:1;">Close Report</button>
+      </div>
     </div>
   </div>
 
@@ -902,7 +908,11 @@
         <p class="sample-response-text" id="det-report-sample"></p>
       </div>
 
-      <div style="display:flex;gap:10px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btn-det-download-pdf" style="flex:1 1 100%;margin-bottom:4px;font-size:15px;padding:12px 18px;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <span aria-hidden="true">📄</span>
+          <span>Download Official PDF Report (A4)</span>
+        </button>
         <button class="btn btn-cyan" id="btn-det-try-again" style="flex:1;">🔄 Try Again</button>
         <button class="btn btn-secondary" id="btn-det-close-report" style="flex:1;">🏠 Back to Home</button>
       </div>
