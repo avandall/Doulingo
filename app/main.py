@@ -68,10 +68,18 @@ def health_check():
     print("[Keep-Alive] Periodic ping received from GitHub Actions!", flush=True)
     return {"status": "ok", "app": "Haku Haku's", "version": "1.0.0"}
 
+class CachedStaticFiles(StaticFiles):
+    """StaticFiles with long-lived public immutable caching for maximum PageSpeed score."""
+    async def get_response(self, path: str, scope):
+        response = await super().get_response(path, scope)
+        response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+        return response
+
+
 # Mount Static Files
 static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
 if os.path.exists(static_dir):
-    app.mount("/static", StaticFiles(directory=static_dir), name="static")
+    app.mount("/static", CachedStaticFiles(directory=static_dir), name="static")
 
 
 @app.get("/")
