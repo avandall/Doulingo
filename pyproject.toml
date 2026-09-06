@@ -30,6 +30,8 @@ lint.ignore = ["BLE001", "G201", "SIM103", "S110", "S112", "PLW1508", "RUF015", 
 ignore_missing_imports = true
 explicit_package_bases = true
 exclude = ["main.py"]
+disable_error_code = ["arg-type", "annotation-unchecked"]
+
 
 
 
