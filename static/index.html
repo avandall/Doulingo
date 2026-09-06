@@ -2,17 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Haku Haku's">
   <meta name="theme-color" content="#7C3AED">
-  <meta name="description" content="Premium AI English speaking practice app with IELTS/CEFR exam scoring, roleplay scenarios, and expressive AI voice partners.">
+  <meta name="description" content="Premium AI English speaking practice platform with IELTS and CEFR exam scoring, real-time roleplays, and expressive AI voice partners.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social SEO -->
+  <link rel="canonical" href="https://haku-hakus.onrender.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://haku-hakus.onrender.com/">
+  <meta property="og:title" content="Haku Haku's — AI English Speaking Practice">
+  <meta property="og:description" content="Practice real conversations with expressive AI voice partners. Official IELTS & CEFR speaking test evaluations.">
+  <meta property="og:image" content="https://haku-hakus.onrender.com/static/manifest.json">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Haku Haku's — AI English Speaking Practice">
+  <meta name="twitter:description" content="Practice English conversations with expressive AI voice partners. IELTS & CEFR scoring.">
 
   <title>Haku Haku's — AI English Speaking Practice</title>
 
+  <!-- Preconnect and Async Font Loading (High Performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+
   <link rel="manifest" href="/static/manifest.json">
-  <link rel="stylesheet" href="/static/css/duolingo.css?v=4.0">
+  <link rel="stylesheet" href="/static/css/duolingo.css?v=5.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
 </head>
 <body>
@@ -22,31 +41,31 @@
   <!-- ============================================================
        NAVBAR
   ============================================================ -->
-  <nav class="navbar">
-    <a class="navbar-brand" href="#">
-      <div class="brand-logo">🦉</div>
+  <nav class="navbar" aria-label="Main Navigation">
+    <a class="navbar-brand" href="#" aria-label="Haku Haku's Home">
+      <div class="brand-logo" aria-hidden="true">🦉</div>
       <span class="brand-name">Haku Haku's</span>
     </a>
 
     <div class="navbar-actions">
       <button class="icon-btn" id="btn-open-weekly-report" title="Weekly Performance Report">
-        <span class="icon-btn-icon">📊</span>
+        <span class="icon-btn-icon" aria-hidden="true">📊</span>
         <span>Report</span>
       </button>
       <button class="icon-btn" id="btn-open-error-journal" title="Personal Error Journal">
-        <span class="icon-btn-icon">📕</span>
+        <span class="icon-btn-icon" aria-hidden="true">📕</span>
         <span>Errors</span>
       </button>
       <button class="icon-btn" id="btn-open-vocab-modal" title="Vocabulary Book">
-        <span class="icon-btn-icon">📖</span>
+        <span class="icon-btn-icon" aria-hidden="true">📖</span>
         <span>Vocab (<span id="vocab-count-badge">0</span>)</span>
       </button>
-      <button class="icon-btn" id="btn-open-lang-modal" title="Translation Language Setting">
-        <span class="icon-btn-icon">🌐</span>
+      <button class="icon-btn" id="btn-open-lang-modal" title="Translation Language Setting" aria-label="Change translation language">
+        <span class="icon-btn-icon" aria-hidden="true">🌐</span>
         <span id="lang-display">🇻🇳</span>
       </button>
-      <div class="stat-pill streak" title="Day Streak">🔥 <span id="stat-streak-count">5</span></div>
-      <div class="stat-pill xp" title="Total XP">⚡ <span id="stat-xp-count">150</span></div>
+      <div class="stat-pill streak" title="Day Streak" aria-label="5 day streak">🔥 <span id="stat-streak-count">5</span></div>
+      <div class="stat-pill xp" title="Total XP" aria-label="150 total XP">⚡ <span id="stat-xp-count">150</span></div>
     </div>
   </nav>
 
@@ -67,11 +86,11 @@
     <!-- Difficulty Slider -->
     <div class="difficulty-box">
       <div class="difficulty-header">
-        <span class="difficulty-label">🎚️ Difficulty Level</span>
+        <label for="level-slider-input" class="difficulty-label">🎚️ Difficulty Level</label>
         <span class="level-badge" id="level-badge-display">Level 1 · Elementary</span>
       </div>
-      <input type="range" id="level-slider-input" class="difficulty-slider" min="1" max="20" value="1" step="1">
-      <div class="difficulty-ticks">
+      <input type="range" id="level-slider-input" class="difficulty-slider" min="1" max="20" value="1" step="1" aria-label="Adjust Difficulty Level from 1 to 20">
+      <div class="difficulty-ticks" aria-hidden="true">
         <span>1: Elementary</span>
         <span>10: Intermediate</span>
         <span>20: Native Expert</span>
@@ -87,17 +106,17 @@
     </div>
 
     <!-- SECTION 1: IELTS & CEFR EXAM -->
-    <div class="scenario-section" id="ielts-section" style="margin-top: 28px;">
+    <section class="scenario-section" id="ielts-section" style="margin-top: 28px;" aria-labelledby="ielts-heading">
       <div class="scenario-section-banner ielts">
-        <div class="banner-icon">🎓</div>
+        <div class="banner-icon" aria-hidden="true">🎓</div>
         <div>
-          <div class="banner-title ielts">IELTS &amp; CEFR Speaking Exam</div>
+          <h3 class="banner-title ielts" id="ielts-heading" style="font-size:16px; margin:0;">IELTS &amp; CEFR Speaking Exam</h3>
           <div class="banner-sub">Official scoring across 4 criteria · A1–C2 band assessment</div>
         </div>
       </div>
 
       <!-- IELTS Category Filter -->
-      <div class="category-filter" id="ielts-category-filter">
+      <div class="category-filter" id="ielts-category-filter" role="group" aria-label="IELTS Categories">
         <button class="cat-pill active" data-ielts-cat="all">🌟 All Topics</button>
         <button class="cat-pill" data-ielts-cat="Personal &amp; Family">👤 Personal</button>
         <button class="cat-pill" data-ielts-cat="Studies &amp; Career">🎓 Studies</button>
@@ -109,15 +128,15 @@
       <div class="scenarios-grid" id="ielts-scenarios-grid">
         <!-- Rendered dynamically -->
       </div>
-    </div>
+    </section>
 
     <!-- SECTION 2: EVERYDAY & CREATIVE ROLEPLAY -->
-    <div class="scenario-section" id="roleplay-section">
+    <section class="scenario-section" id="roleplay-section" aria-labelledby="roleplay-heading">
       <div class="scenario-section-banner roleplay" style="justify-content: space-between; flex-wrap: wrap; gap: 10px;">
         <div style="display:flex;align-items:center;gap:14px;">
-          <div class="banner-icon">💬</div>
+          <div class="banner-icon" aria-hidden="true">💬</div>
           <div>
-            <div class="banner-title roleplay">Everyday &amp; Creative Roleplay</div>
+            <h3 class="banner-title roleplay" id="roleplay-heading" style="font-size:16px; margin:0;">Everyday &amp; Creative Roleplay</h3>
             <div class="banner-sub">Free practice with real-life scenarios</div>
           </div>
         </div>
@@ -131,7 +150,7 @@
       <!-- Details View (Microsoft File Explorer Style Table) -->
       <div class="roleplay-details-container" id="roleplay-scenarios-grid">
         <div class="table-responsive">
-          <table class="roleplay-details-table">
+          <table class="roleplay-details-table" aria-label="Roleplay Topics Directory">
             <thead>
               <tr class="table-header-titles">
                 <th style="width:70px;text-align:center;">Icon</th>
@@ -142,16 +161,16 @@
               </tr>
               <tr class="table-header-filters">
                 <th style="text-align:center;">
-                  <input type="text" id="roleplay-filter-icon" class="table-filter-input" placeholder="🔍 Icon..." />
+                  <input type="text" id="roleplay-filter-icon" class="table-filter-input" placeholder="🔍 Icon..." aria-label="Filter topic by icon" />
                 </th>
                 <th>
-                  <input type="text" id="roleplay-filter-name" class="table-filter-input" placeholder="🔍 Filter topic name..." />
+                  <input type="text" id="roleplay-filter-name" class="table-filter-input" placeholder="🔍 Filter topic name..." aria-label="Filter topic by name" />
                 </th>
                 <th>
-                  <input type="text" id="roleplay-filter-desc" class="table-filter-input" placeholder="🔍 Filter description..." />
+                  <input type="text" id="roleplay-filter-desc" class="table-filter-input" placeholder="🔍 Filter description..." aria-label="Filter topic by description" />
                 </th>
                 <th>
-                  <select id="roleplay-filter-group" class="table-filter-select">
+                  <select id="roleplay-filter-group" class="table-filter-select" aria-label="Filter topic by CEFR group">
                     <option value="all">Tất cả Groups</option>
                     <option value="A1">A1 Beginner</option>
                     <option value="A2">A2 Elementary</option>
@@ -176,7 +195,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </section>
 
   </main>
 
@@ -187,30 +206,30 @@
 
     <!-- Top Bar -->
     <div class="practice-topbar">
-      <button class="btn-close" id="btn-close-practice" title="Exit Practice">✕</button>
+      <button class="btn-close" id="btn-close-practice" title="Exit Practice" aria-label="Exit Practice and return to home">✕</button>
       <span class="practice-scenario-title" id="scenario-stage-title">Roleplay Stage</span>
-      <div class="progress-bar-container">
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">
         <div class="progress-bar-fill" id="lesson-progress-fill"></div>
       </div>
       <div class="practice-badges">
-        <span class="badge-pill memory" id="persona-memory-badge" title="AI Long-Term Memory Active">🧠 Memory</span>
-        <span class="badge-pill adaptive" id="adaptive-level-badge" title="Adaptive Band Score">⚡ Band 6.0</span>
+        <span class="badge-pill memory" id="persona-memory-badge" title="AI Long-Term Memory Active" aria-label="AI Long-Term Memory Active">🧠 Memory</span>
+        <span class="badge-pill adaptive" id="adaptive-level-badge" title="Adaptive Band Score" aria-label="Adaptive Band Score">⚡ Band 6.0</span>
       </div>
-      <button class="icon-btn" id="btn-open-history" title="Conversation History">📜</button>
+      <button class="icon-btn" id="btn-open-history" title="Conversation History" aria-label="View Conversation History">📜</button>
       <span id="current-turns-count" style="font-size:11px;font-weight:700;color:var(--text-muted);">0 Turns</span>
-      <button class="btn btn-sm btn-danger" id="btn-finish-roleplay">🏁 Finish</button>
+      <button class="btn btn-sm btn-danger" id="btn-finish-roleplay" aria-label="Finish and Evaluate Session">🏁 Finish</button>
     </div>
 
     <!-- Main Practice Area -->
     <div class="practice-main">
 
       <!-- Dialogue Area (scrollable) -->
-      <div class="dialogue-area" id="dialogue-area">
+      <div class="dialogue-area" id="dialogue-area" role="log" aria-live="polite" aria-label="Conversation dialogue">
 
         <!-- AI Character + Bubble -->
         <div class="ai-character-row">
           <div class="ai-avatar-wrap">
-            <div class="ai-avatar" id="ai-avatar-icon">🤖</div>
+            <div class="ai-avatar" id="ai-avatar-icon" aria-hidden="true">🤖</div>
           </div>
           <div class="ai-bubble-container">
             <div class="ai-persona-name" id="ai-persona-name">
@@ -227,13 +246,13 @@
 
               <!-- Bubble action buttons -->
               <div class="bubble-actions">
-                <button class="bubble-action-btn" id="btn-lazy-translate" title="Translate to Vietnamese">
+                <button class="bubble-action-btn" id="btn-lazy-translate" title="Translate to Vietnamese" aria-label="Translate current phrase to Vietnamese">
                   💡 Translate
                 </button>
-                <button class="bubble-action-btn" id="btn-copy-ai-speech" title="Copy to clipboard">
+                <button class="bubble-action-btn" id="btn-copy-ai-speech" title="Copy to clipboard" aria-label="Copy AI response to clipboard">
                   📋 Copy
                 </button>
-                <button class="bubble-action-btn" id="btn-toggle-translate" title="Toggle full translation">
+                <button class="bubble-action-btn" id="btn-toggle-translate" title="Toggle full translation" aria-label="Toggle full Vietnamese translation">
                   🌐 Full
                 </button>
                 <span style="font-size:11px;font-weight:600;color:var(--text-muted);margin-left:auto;">
@@ -242,7 +261,7 @@
               </div>
 
               <!-- Audio Player -->
-              <div class="audio-player" id="audio-player-widget">
+              <div class="audio-player" id="audio-player-widget" role="region" aria-label="Audio speech playback controls">
                 <div class="audio-loading" id="audio-player-loading">
                   <div class="audio-loading-dots">
                     <div class="audio-dot"></div>
@@ -252,11 +271,11 @@
                   <span>Loading voice...</span>
                 </div>
                 <div class="audio-controls" id="audio-player-controls">
-                  <button class="audio-ctrl-btn" id="audio-btn-rewind" title="Previous turn">⏮️</button>
-                  <button class="audio-ctrl-btn" id="audio-btn-playpause" title="Play/Pause">▶️</button>
-                  <button class="audio-ctrl-btn" id="audio-btn-next" title="Next turn">⏭️</button>
+                  <button class="audio-ctrl-btn" id="audio-btn-rewind" title="Previous turn" aria-label="Play previous audio turn">⏮️</button>
+                  <button class="audio-ctrl-btn" id="audio-btn-playpause" title="Play/Pause" aria-label="Play or pause audio playback">▶️</button>
+                  <button class="audio-ctrl-btn" id="audio-btn-next" title="Next turn" aria-label="Play next audio turn">⏭️</button>
                   <div class="audio-seekbar-wrap">
-                    <input type="range" class="audio-seekbar" id="audio-seekbar" min="0" max="100" value="0" step="0.1">
+                    <input type="range" class="audio-seekbar" id="audio-seekbar" min="0" max="100" value="0" step="0.1" aria-label="Audio playback seek bar">
                   </div>
                   <span class="audio-time" id="audio-time-display">0:00 / 0:00</span>
                 </div>
@@ -270,7 +289,7 @@
       <!-- User Input Area -->
       <div class="user-input-area">
         <!-- Waveform visualizer: 24 bars, always visible -->
-        <div class="waveform" id="waveform-anim">
+        <div class="waveform" id="waveform-anim" aria-hidden="true">
           <div class="wave-bar"></div>
           <div class="wave-bar"></div>
           <div class="wave-bar"></div>
@@ -299,22 +318,22 @@
 
         <!-- Mic + Cancel row -->
         <div class="mic-row">
-          <button class="btn-mic" id="btn-mic-toggle" title="Press to speak, press again to stop &amp; send">🎙️</button>
-          <button class="btn btn-sm btn-danger" id="btn-cancel-mic" style="display:none;">❌ Cancel</button>
+          <button class="btn-mic" id="btn-mic-toggle" title="Press to speak, press again to stop &amp; send" aria-label="Toggle microphone recording">🎙️</button>
+          <button class="btn btn-sm btn-danger" id="btn-cancel-mic" style="display:none;" aria-label="Cancel current speech recording">❌ Cancel</button>
         </div>
 
         <!-- Live transcript preview -->
-        <div class="transcript-preview" id="transcript-display" style="display:none;">
+        <div class="transcript-preview" id="transcript-display" style="display:none;" aria-live="polite">
           Tap the mic to start speaking...
         </div>
 
         <!-- Transcript review/edit box -->
         <div class="transcript-review" id="transcript-review-box">
-          <label>✏️ Review &amp; Edit Before Sending:</label>
-          <input type="text" class="form-input" id="review-speech-input" placeholder="Edit your spoken text...">
+          <label for="review-speech-input">✏️ Review &amp; Edit Before Sending:</label>
+          <input type="text" class="form-input" id="review-speech-input" placeholder="Edit your spoken text..." aria-label="Edit your spoken text before sending">
           <div class="transcript-review-actions">
-            <button class="btn btn-cyan" id="btn-review-send" style="flex:2;">📤 Send</button>
-            <button class="btn btn-secondary" id="btn-review-retry" style="flex:1;">🔄 Retry</button>
+            <button class="btn btn-cyan" id="btn-review-send" style="flex:2;" aria-label="Send edited response">📤 Send</button>
+            <button class="btn btn-secondary" id="btn-review-retry" style="flex:1;" aria-label="Retry speech recording">🔄 Retry</button>
           </div>
         </div>
       </div>
@@ -389,10 +408,10 @@
        HISTORY DRAWER
   ============================================================ -->
   <div class="drawer-overlay" id="history-drawer-overlay">
-    <div class="drawer-panel">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="history-drawer-title">
       <div class="drawer-header">
-        <span class="drawer-title">📜 Conversation History</span>
-        <button class="btn-close" id="btn-close-history">✕</button>
+        <span class="drawer-title" id="history-drawer-title">📜 Conversation History</span>
+        <button class="btn-close" id="btn-close-history" aria-label="Close Conversation History">✕</button>
       </div>
       <div class="drawer-body" id="history-drawer-body">
         <div style="text-align:center;color:var(--text-muted);font-weight:700;padding:30px 0;font-size:14px;">
@@ -405,7 +424,7 @@
   <!-- ============================================================
        TOAST
   ============================================================ -->
-  <div class="toast" id="fork-toast"></div>
+  <div class="toast" id="fork-toast" role="status" aria-live="polite"></div>
 
   <!-- ============================================================
        MODALS
@@ -413,17 +432,17 @@
 
   <!-- MODAL: Language Setting -->
   <div class="modal-overlay" id="modal-lang-setting">
-    <div class="modal-box" style="max-width:440px;">
+    <div class="modal-box" style="max-width:440px;" role="dialog" aria-modal="true" aria-labelledby="lang-modal-title">
       <div class="modal-header">
         <div>
-          <h2 class="modal-title">🌐 Translation Language</h2>
+          <h2 class="modal-title" id="lang-modal-title">🌐 Translation Language</h2>
           <p class="modal-subtitle">Choose your native language for word lookups.</p>
         </div>
-        <button class="btn-close" id="btn-close-lang-modal">✕</button>
+        <button class="btn-close" id="btn-close-lang-modal" aria-label="Close Translation Language Modal">✕</button>
       </div>
       <div class="form-group">
-        <label class="form-label">Target Language</label>
-        <select id="select-target-lang" class="form-select">
+        <label for="select-target-lang" class="form-label">Target Language</label>
+        <select id="select-target-lang" class="form-select" aria-label="Target Translation Language">
           <option value="vi">English → Vietnamese 🇻🇳</option>
           <option value="en-def">English → English Definition 🇬🇧</option>
           <option value="es">English → Spanish 🇪🇸</option>
@@ -439,9 +458,9 @@
 
   <!-- MODAL: Word Lookup -->
   <div class="modal-overlay" id="modal-word-lookup">
-    <div class="modal-box" style="max-width:380px;text-align:center;">
+    <div class="modal-box" style="max-width:380px;text-align:center;" role="dialog" aria-modal="true" aria-labelledby="word-title">
       <div class="modal-header" style="justify-content:flex-end;margin-bottom:12px;">
-        <button class="btn-close" id="btn-close-word-modal">✕</button>
+        <button class="btn-close" id="btn-close-word-modal" aria-label="Close Word Lookup Modal">✕</button>
       </div>
       <div class="word-lookup-word" id="word-title">Word</div>
       <div class="word-lookup-phonetic" id="word-phonetic">/wɜːd/</div>
@@ -455,51 +474,51 @@
 
   <!-- MODAL: Create Custom Topic -->
   <div class="modal-overlay" id="modal-custom-topic">
-    <div class="modal-box" style="max-width:500px;">
+    <div class="modal-box" style="max-width:500px;" role="dialog" aria-modal="true" aria-labelledby="custom-topic-modal-title">
       <div class="modal-header">
         <div>
-          <h2 class="modal-title">➕ Create Custom Topic</h2>
+          <h2 class="modal-title" id="custom-topic-modal-title">➕ Create Custom Topic</h2>
           <p class="modal-subtitle">Add a topic you'd like to practice speaking about.</p>
         </div>
-        <button class="btn-close" id="btn-close-custom-modal">✕</button>
+        <button class="btn-close" id="btn-close-custom-modal" aria-label="Close Custom Topic Modal">✕</button>
       </div>
       <div class="form-group">
-        <label class="form-label">Topic Title</label>
-        <input type="text" id="custom-topic-title" class="form-input" placeholder="e.g. Cooking Dinner with Friends...">
+        <label for="custom-topic-title" class="form-label">Topic Title</label>
+        <input type="text" id="custom-topic-title" class="form-input" placeholder="e.g. Cooking Dinner with Friends..." aria-label="Custom topic title">
       </div>
       <div class="form-group">
-        <label class="form-label">Description</label>
-        <input type="text" id="custom-topic-desc" class="form-input" placeholder="e.g. Chatting about recipes & kitchen chaos...">
+        <label for="custom-topic-desc" class="form-label">Description</label>
+        <input type="text" id="custom-topic-desc" class="form-input" placeholder="e.g. Chatting about recipes & kitchen chaos..." aria-label="Custom topic description">
       </div>
       <div class="form-group">
         <label class="form-label">Choose Icon</label>
         <input type="hidden" id="custom-topic-icon" value="💬">
-        <div class="emoji-grid" id="emoji-picker-grid">
-          <div class="emoji-item active" data-emoji="💬">💬</div>
-          <div class="emoji-item" data-emoji="☕">☕</div>
-          <div class="emoji-item" data-emoji="🍕">🍕</div>
-          <div class="emoji-item" data-emoji="🛒">🛒</div>
-          <div class="emoji-item" data-emoji="✈️">✈️</div>
-          <div class="emoji-item" data-emoji="🚕">🚕</div>
-          <div class="emoji-item" data-emoji="🎬">🎬</div>
-          <div class="emoji-item" data-emoji="🏖️">🏖️</div>
-          <div class="emoji-item" data-emoji="🐶">🐶</div>
-          <div class="emoji-item" data-emoji="💻">💻</div>
-          <div class="emoji-item" data-emoji="🏠">🏠</div>
-          <div class="emoji-item" data-emoji="🏥">🏥</div>
-          <div class="emoji-item" data-emoji="💼">💼</div>
-          <div class="emoji-item" data-emoji="🎓">🎓</div>
-          <div class="emoji-item" data-emoji="⚽">⚽</div>
-          <div class="emoji-item" data-emoji="🎵">🎵</div>
-          <div class="emoji-item" data-emoji="🎮">🎮</div>
-          <div class="emoji-item" data-emoji="🔮">🔮</div>
-          <div class="emoji-item" data-emoji="🎨">🎨</div>
-          <div class="emoji-item" data-emoji="🚀">🚀</div>
-          <div class="emoji-item" data-emoji="🍔">🍔</div>
-          <div class="emoji-item" data-emoji="🏴‍☠️">🏴‍☠️</div>
-          <div class="emoji-item" data-emoji="🚴">🚴</div>
-          <div class="emoji-item" data-emoji="🕶️">🕶️</div>
-          <div class="emoji-item" data-emoji="🔑">🔑</div>
+        <div class="emoji-grid" id="emoji-picker-grid" role="group" aria-label="Choose an emoji icon for the topic">
+          <button type="button" class="emoji-item active" data-emoji="💬" aria-label="Chat Bubble">💬</button>
+          <button type="button" class="emoji-item" data-emoji="☕" aria-label="Coffee">☕</button>
+          <button type="button" class="emoji-item" data-emoji="🍕" aria-label="Pizza">🍕</button>
+          <button type="button" class="emoji-item" data-emoji="🛒" aria-label="Shopping Cart">🛒</button>
+          <button type="button" class="emoji-item" data-emoji="✈️" aria-label="Airplane">✈️</button>
+          <button type="button" class="emoji-item" data-emoji="🚕" aria-label="Taxi">🚕</button>
+          <button type="button" class="emoji-item" data-emoji="🎬" aria-label="Movie">🎬</button>
+          <button type="button" class="emoji-item" data-emoji="🏖️" aria-label="Beach">🏖️</button>
+          <button type="button" class="emoji-item" data-emoji="🐶" aria-label="Dog">🐶</button>
+          <button type="button" class="emoji-item" data-emoji="💻" aria-label="Laptop">💻</button>
+          <button type="button" class="emoji-item" data-emoji="🏠" aria-label="House">🏠</button>
+          <button type="button" class="emoji-item" data-emoji="🏥" aria-label="Hospital">🏥</button>
+          <button type="button" class="emoji-item" data-emoji="💼" aria-label="Briefcase">💼</button>
+          <button type="button" class="emoji-item" data-emoji="🎓" aria-label="Graduation">🎓</button>
+          <button type="button" class="emoji-item" data-emoji="⚽" aria-label="Soccer">⚽</button>
+          <button type="button" class="emoji-item" data-emoji="🎵" aria-label="Music">🎵</button>
+          <button type="button" class="emoji-item" data-emoji="🎮" aria-label="Video Game">🎮</button>
+          <button type="button" class="emoji-item" data-emoji="🔮" aria-label="Crystal Ball">🔮</button>
+          <button type="button" class="emoji-item" data-emoji="🎨" aria-label="Art Palette">🎨</button>
+          <button type="button" class="emoji-item" data-emoji="🚀" aria-label="Rocket">🚀</button>
+          <button type="button" class="emoji-item" data-emoji="🍔" aria-label="Burger">🍔</button>
+          <button type="button" class="emoji-item" data-emoji="🏴‍☠️" aria-label="Pirate Flag">🏴‍☠️</button>
+          <button type="button" class="emoji-item" data-emoji="🚴" aria-label="Bicycle">🚴</button>
+          <button type="button" class="emoji-item" data-emoji="🕶️" aria-label="Sunglasses">🕶️</button>
+          <button type="button" class="emoji-item" data-emoji="🔑" aria-label="Key">🔑</button>
         </div>
       </div>
       <div style="display:flex;gap:10px;margin-top:8px;">
@@ -511,21 +530,21 @@
 
   <!-- MODAL: Topic Explorer -->
   <div class="modal-overlay" id="modal-topic-explorer">
-    <div class="modal-box topic-explorer-modal-box" style="max-width:850px; width:92%; max-height:85vh; display:flex; flex-direction:column;">
+    <div class="modal-box topic-explorer-modal-box" style="max-width:850px; width:92%; max-height:85vh; display:flex; flex-direction:column;" role="dialog" aria-modal="true" aria-labelledby="explorer-modal-title">
       <div class="modal-header" style="flex-shrink:0;">
         <div>
-          <h2 class="modal-title">📚 Roleplay &amp; Speaking Topic Explorer</h2>
+          <h2 class="modal-title" id="explorer-modal-title">📚 Roleplay &amp; Speaking Topic Explorer</h2>
           <p class="modal-subtitle">Explore 30+ curated topics, filter by interest, or search real-time.</p>
         </div>
-        <button class="btn-close" id="btn-close-explorer-modal">✕</button>
+        <button class="btn-close" id="btn-close-explorer-modal" aria-label="Close Topic Explorer Modal">✕</button>
       </div>
 
       <!-- Search & Filters Toolbar -->
       <div class="explorer-toolbar" style="flex-shrink:0; margin-bottom:14px;">
         <div class="form-group" style="margin-bottom:10px;">
-          <input type="text" id="input-search-explorer" class="form-input" placeholder="🔍 Search by topic title, keywords, or description..." style="font-size:15px; padding:10px 14px;">
+          <input type="text" id="input-search-explorer" class="form-input" placeholder="🔍 Search by topic title, keywords, or description..." style="font-size:15px; padding:10px 14px;" aria-label="Search by topic title, keywords, or description">
         </div>
-        <div class="category-filter" id="explorer-category-filter">
+        <div class="category-filter" id="explorer-category-filter" role="group" aria-label="Explorer Categories">
           <button class="cat-pill active" data-explorer-cat="all">🌟 All Topics</button>
           <button class="cat-pill" data-explorer-cat="everyday">☕ Everyday Life</button>
           <button class="cat-pill" data-explorer-cat="career">💼 Work &amp; Career</button>
@@ -556,16 +575,16 @@
 
   <!-- MODAL: Vocabulary Book -->
   <div class="modal-overlay" id="modal-vocab-book">
-    <div class="modal-box" style="max-width:560px;">
+    <div class="modal-box" style="max-width:560px;" role="dialog" aria-modal="true" aria-labelledby="vocab-book-modal-title">
       <div class="modal-header">
         <div>
-          <h2 class="modal-title">📖 Vocabulary Book</h2>
+          <h2 class="modal-title" id="vocab-book-modal-title">📖 Vocabulary Book</h2>
           <p class="modal-subtitle">Words you've looked up during practice sessions.</p>
         </div>
-        <button class="btn-close" id="btn-close-vocab-modal">✕</button>
+        <button class="btn-close" id="btn-close-vocab-modal" aria-label="Close Vocabulary Book Modal">✕</button>
       </div>
       <div class="form-group">
-        <input type="text" id="input-search-vocab" class="form-input" placeholder="🔍 Search saved words...">
+        <input type="text" id="input-search-vocab" class="form-input" placeholder="🔍 Search saved words..." aria-label="Search saved vocabulary words">
       </div>
       <div id="vocab-words-list" style="max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
         <!-- Rendered dynamically -->
@@ -577,10 +596,10 @@
 
   <!-- MODAL: Flashcard Practice -->
   <div class="modal-overlay" id="modal-flashcard-practice">
-    <div class="modal-box" style="max-width:480px;text-align:center;">
+    <div class="modal-box" style="max-width:480px;text-align:center;" role="dialog" aria-modal="true" aria-labelledby="flashcard-modal-title">
       <div class="modal-header">
-        <h2 class="modal-title">🗂️ Flashcard Practice</h2>
-        <button class="btn-close" id="btn-close-flashcard-modal">✕</button>
+        <h2 class="modal-title" id="flashcard-modal-title">🗂️ Flashcard Practice</h2>
+        <button class="btn-close" id="btn-close-flashcard-modal" aria-label="Close Flashcard Practice Modal">✕</button>
       </div>
 
       <div class="flashcard-wrap" id="flashcard-container">
@@ -607,13 +626,13 @@
 
   <!-- MODAL: Weekly Performance Report -->
   <div class="modal-overlay" id="modal-weekly-report">
-    <div class="modal-box" style="max-width:700px;">
+    <div class="modal-box" style="max-width:700px;" role="dialog" aria-modal="true" aria-labelledby="weekly-report-modal-title">
       <div class="modal-header">
         <div>
           <span class="badge-pill adaptive" style="margin-bottom:6px;display:inline-flex;">📊 Weekly Report</span>
-          <h2 class="modal-title">Performance Summary</h2>
+          <h2 class="modal-title" id="weekly-report-modal-title">Performance Summary</h2>
         </div>
-        <button class="btn-close" id="btn-close-weekly-report">✕</button>
+        <button class="btn-close" id="btn-close-weekly-report" aria-label="Close Weekly Performance Report">✕</button>
       </div>
 
       <!-- Band Overview -->
@@ -687,13 +706,13 @@
 
   <!-- MODAL: Personal Error Journal -->
   <div class="modal-overlay" id="modal-error-journal">
-    <div class="modal-box" style="max-width:600px;">
+    <div class="modal-box" style="max-width:600px;" role="dialog" aria-modal="true" aria-labelledby="error-journal-modal-title">
       <div class="modal-header">
         <div>
           <span class="badge-pill memory" style="margin-bottom:6px;display:inline-flex;">📕 Error Journal</span>
-          <h2 class="modal-title">Personal Error Journal</h2>
+          <h2 class="modal-title" id="error-journal-modal-title">Personal Error Journal</h2>
         </div>
-        <button class="btn-close" id="btn-close-error-journal">✕</button>
+        <button class="btn-close" id="btn-close-error-journal" aria-label="Close Error Journal Modal">✕</button>
       </div>
       <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;line-height:1.5;">
         AI automatically tracks recurring errors and <strong>weaves correction contexts</strong> into future conversations (Interleaved Practice).
@@ -707,17 +726,17 @@
 
   <!-- MODAL: IELTS / CEFR Speaking Exam -->
   <div class="modal-overlay" id="modal-det-exam">
-    <div class="modal-box" style="max-width:700px;">
+    <div class="modal-box" style="max-width:700px;" role="dialog" aria-modal="true" aria-labelledby="det-exam-title">
       <div class="modal-header">
         <div>
           <span class="badge-pill" id="det-exam-category-badge" style="background:rgba(244,63,94,0.12);border-color:rgba(244,63,94,0.3);color:var(--rose);margin-bottom:6px;display:inline-flex;">🎓 IELTS/CEFR</span>
           <h2 class="modal-title" id="det-exam-title">Speaking Topic</h2>
         </div>
-        <button class="btn-close" id="btn-close-det-exam">✕</button>
+        <button class="btn-close" id="btn-close-det-exam" aria-label="Close Speaking Exam Modal">✕</button>
       </div>
 
       <!-- Mode Tabs -->
-      <div class="det-mode-tabs" id="det-mode-tabs">
+      <div class="det-mode-tabs" id="det-mode-tabs" role="group" aria-label="Exam Modes">
         <button class="det-tab-btn active" data-mode="read_then_speak" id="btn-tab-read-speak">
           📖 Read, Then Speak (Monologue 1–3 min)
         </button>
@@ -746,7 +765,7 @@
         <!-- Timer -->
         <div class="det-timer-box">
           <div class="det-timer-inner">
-            <span style="font-size:20px;">⏱️</span>
+            <span style="font-size:20px;" aria-hidden="true">⏱️</span>
             <div>
               <div class="det-timer-label">Monologue Timer (min 1:00 / max 3:00)</div>
               <div class="det-timer-display" id="det-monologue-timer">00:00 / 03:00</div>
@@ -757,7 +776,7 @@
 
         <!-- Recording UI -->
         <div class="recording-ui" id="det-recording-ui">
-          <div class="waveform" id="det-waveform-anim">
+          <div class="waveform" id="det-waveform-anim" aria-hidden="true">
             <div class="wave-bar"></div>
             <div class="wave-bar"></div>
             <div class="wave-bar"></div>
@@ -770,10 +789,10 @@
         </div>
 
         <div style="display:flex;gap:10px;margin-top:4px;">
-          <button class="btn btn-danger" id="btn-det-start-record" style="flex:1;padding:12px;">
+          <button class="btn btn-danger" id="btn-det-start-record" style="flex:1;padding:12px;" aria-label="Start Voice Recording">
             🎙️ Start Recording
           </button>
-          <button class="btn btn-primary" id="btn-det-submit-speech" style="flex:1;padding:12px;">
+          <button class="btn btn-primary" id="btn-det-submit-speech" style="flex:1;padding:12px;" aria-label="Submit Speaking Test for AI Evaluation">
             📤 Submit Speaking Test
           </button>
         </div>
@@ -804,12 +823,12 @@
 
   <!-- MODAL: IELTS Score Report -->
   <div class="modal-overlay" id="modal-det-score-report">
-    <div class="modal-box" style="max-width:740px;">
+    <div class="modal-box" style="max-width:740px;" role="dialog" aria-modal="true" aria-labelledby="det-report-title">
       <div style="text-align:center;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;">
         <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px;">
           Official IELTS / CEFR Speaking Test Report
         </div>
-        <h2 style="font-size:22px;font-weight:900;margin-bottom:12px;">🏆 IELTS &amp; CEFR Speaking Evaluation</h2>
+        <h2 style="font-size:22px;font-weight:900;margin-bottom:12px;" id="det-report-title">🏆 IELTS &amp; CEFR Speaking Evaluation</h2>
         <div class="det-score-big">
           <div class="det-score-badge">
             <div class="det-score-label">IELTS Band / DET Score</div>
@@ -892,12 +911,12 @@
 
 </div><!-- /app-shell -->
 
-<!-- Scripts -->
-<script src="/static/js/audio_fx.js?v=3.0"></script>
-<script src="/static/js/duo_mascot.js?v=3.0"></script>
-<script src="/static/js/speech.js?v=3.0"></script>
-<script src="/static/js/app.js?v=3.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Scripts (Deferred for Maximum Performance) -->
+<script defer src="/static/js/audio_fx.js?v=4.0"></script>
+<script defer src="/static/js/duo_mascot.js?v=4.0"></script>
+<script defer src="/static/js/speech.js?v=4.0"></script>
+<script defer src="/static/js/app.js?v=4.0"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   // PWA Service Worker
   if ('serviceWorker' in navigator) {
@@ -909,3 +928,4 @@
 
 </body>
 </html>
+

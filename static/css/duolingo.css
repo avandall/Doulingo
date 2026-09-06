@@ -1,10 +1,8 @@
 /* ============================================================
-   DUOSPEAK — Galaxy Premium Dark UI v4.0
+   DUOSPEAK — Galaxy Premium Dark UI v5.0
    Theme: Deep Space · Nebula · Cosmic Glassmorphism
-   Fonts: Space Grotesk + Inter (Google Fonts)
+   Fonts: Space Grotesk + Inter (Preloaded asynchronously)
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 /* ============================================================
    DESIGN TOKENS
@@ -47,15 +45,16 @@
   --glass-border: rgba(255, 255, 255, 0.09);
   --glass-hover: rgba(255, 255, 255, 0.08);
 
-  /* Text */
-  --text-primary: #F0F4FF;
-  --text-secondary: #94A3C4;
-  --text-muted: #5A6690;
+  /* Text (WCAG 2.1 AA/AAA Compliant High Contrast) */
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-sub: #94A3B8;
   --text-accent: var(--violet-light);
 
   /* Borders */
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.13);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
