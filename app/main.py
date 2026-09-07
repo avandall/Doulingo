@@ -62,7 +62,9 @@ inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam, cleanup_aud
 
 
 @app.get("/health")
+@app.head("/health")
 @app.get("/api/health")
+@app.head("/api/health")
 def health_check():
     """Health check endpoint for Render, uptime monitors, and keep-alive pings."""
     print("[Keep-Alive] Periodic ping received from GitHub Actions!", flush=True)
@@ -83,6 +85,7 @@ if os.path.exists(static_dir):
 
 
 @app.get("/")
+@app.head("/")
 def read_root():
     """Serves the main single-page web app."""
     index_file = os.path.join(static_dir, "index.html")
@@ -118,6 +121,7 @@ Sitemap: https://haku-hakus.onrender.com/
 
 
 @app.get("/robots.txt", response_class=PlainTextResponse)
+@app.head("/robots.txt", response_class=PlainTextResponse)
 def read_robots_txt():
     """Serve robots.txt for search engines & AI crawlers with instant in-memory cache."""
     return PlainTextResponse(
@@ -128,7 +132,9 @@ def read_robots_txt():
 
 
 @app.get("/llms.txt", response_class=PlainTextResponse)
+@app.head("/llms.txt", response_class=PlainTextResponse)
 @app.get("/.well-known/llms.txt", response_class=PlainTextResponse)
+@app.head("/.well-known/llms.txt", response_class=PlainTextResponse)
 def read_llms_txt():
     """Serve standard llms.txt for AI agents and agentic web browsing with instant in-memory cache."""
     return PlainTextResponse(
