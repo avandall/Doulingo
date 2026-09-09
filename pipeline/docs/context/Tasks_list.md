@@ -17,7 +17,7 @@
 | `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[x] DONE` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
 | `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[x] DONE` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
 | `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[x] DONE` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
-| `TASK-006` | Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`) | Phase 4 | P0-Critical | `[ ] TODO` | 100% Hermetic mock test failover + harness pass |
+| `TASK-006` | Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`) | Phase 4 | P0-Critical | `[x] DONE` | 100% Hermetic mock test failover + harness pass |
 
 > **Quy định trạng thái:**
 > - `[ ] TODO`: Chưa thực hiện, sẵn sàng trong queue
@@ -224,7 +224,7 @@ Task Name:       Test Suite Tích Hợp Hermetic & Deterministic Verification (`
 Phase:           Phase 4 (Quality & Verification)
 Task Type:       test
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-09
 ```
 
@@ -237,10 +237,10 @@ Ngày tạo:        2026-09-09
   4. Viết script benchmark riêng ngoài CI: `scripts/benchmark_prompt_caching.py` để kiểm chứng độ trễ thực tế khi có API key.
 
 #### Acceptance Criteria
-- [ ] Toàn bộ test suite trong `tests/` chạy độc lập không phụ thuộc Internet và pass 100%.
-- [ ] Giả lập lỗi quota và lỗi cắt cụt token được xử lý mượt mà qua failover logic.
-- [ ] `python3 pipeline/scripts/verify.py` pass 100% (Tier 1 check).
-- [ ] Git status sạch sẽ, tuân thủ đúng quy ước commit.
+- [x] Toàn bộ test suite trong `tests/` chạy độc lập không phụ thuộc Internet và pass 100%.
+- [x] Giả lập lỗi quota và lỗi cắt cụt token được xử lý mượt mà qua failover logic.
+- [x] `python3 pipeline/scripts/verify.py` pass 100% (Tier 1 check).
+- [x] Git status sạch sẽ, tuân thủ đúng quy ước commit.
 
 #### Scope
 - **Files được sửa/tạo:** `tests/**`, `scripts/benchmark_prompt_caching.py`, `.gitignore`

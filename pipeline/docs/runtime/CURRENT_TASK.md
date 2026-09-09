@@ -1,44 +1,45 @@
 # CURRENT TASK
 # Task hiện tại đang thực thi — Context cho AI agent
 
-> **Trạng thái:** RUNTIME (Auto-Generated / Synced) | **Cập nhật:** 2026-09-09 23:50
+> **Trạng thái:** RUNTIME (Auto-Generated / Synced) | **Cập nhật:** 2026-09-09 23:55
 
 ---
 
-## 🎯 Task Spec: TASK-005
-### 📌 TASK-005: Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms
+## 🎯 Task Spec: TASK-006
+### 📌 TASK-006: Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`)
 
 #### Metadata
 ```
-Task ID:         TASK-005
-Task Name:       Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms
-Phase:           Phase 3 (WebAssembly Client)
-Task Type:       feat
-Priority:        P1-Normal
+Task ID:         TASK-006
+Task Name:       Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`)
+Phase:           Phase 4 (Quality & Verification)
+Task Type:       test
+Priority:        P0-Critical
 Trạng thái:      [/] IN_PROGRESS
 Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Loại bỏ độ trễ mạng 100-300ms khi tra nghĩa từ vựng trên bong bóng chat bằng cơ sở dữ liệu SQLite nhúng trực tiếp trong RAM trình duyệt.
+- **Why:** Đảm bảo toàn bộ hệ thống đạt tiêu chuẩn kỹ thuật Harness Engineering, chạy cô lập không tốn token mạng (Hermetic) và kiểm chứng đầy đủ các kịch bản failover.
 - **What:**
-  1. Tạo offline build script `scripts/build_vocab_wasm_db.py` trích xuất 3,000 từ vựng cốt lõi từ `data/dictionary.db` tạo thành `static/data/vocab_core.sqlite` (~1.1MB, có index `idx_word`).
-  2. Tạo `static/js/dict_wasm.js` nạp `sqlite3.wasm` và mở file DB trong RAM.
-  3. Kết nối sự kiện click từ vựng trên speech bubble với hàm `dict_wasm.lookup(word)`.
-  4. Cơ chế Progressive Enhancement: nếu WASM chưa sẵn sàng hoặc từ không có trong 3,000 từ cốt lõi -> tự động gọi API `/api/dictionary/lookup`.
+  1. Viết bộ unit tests `tests/test_schemas.py` và `tests/test_ai_engine.py` với Mock LLM responses (Gemini, Groq, OpenAI).
+  2. Giả lập kịch bản Gemini trả về lỗi 429 Quota -> kiểm tra hệ thống chuyển sang Groq với cùng schema.
+  3. Giả lập kịch bản model trả về JSON bị cắt cụt (Truncation) -> kiểm tra cơ chế chuyển provider kế tiếp.
+  4. Viết script benchmark riêng ngoài CI: `scripts/benchmark_prompt_caching.py` để kiểm chứng độ trễ thực tế khi có API key.
 
 #### Acceptance Criteria
-- [ ] Script `scripts/build_vocab_wasm_db.py` chạy độc lập và sinh ra file SQLite hợp lệ.
-- [ ] Tra cứu 3,000 từ cốt lõi trên client phản hồi < 1ms (0ms network round-trip).
-- [ ] Tự động fallback về API backend đối với các từ hiếm không nằm trong database RAM.
+- [ ] Toàn bộ test suite trong `tests/` chạy độc lập không phụ thuộc Internet và pass 100%.
+- [ ] Giả lập lỗi quota và lỗi cắt cụt token được xử lý mượt mà qua failover logic.
+- [ ] `python3 pipeline/scripts/verify.py` pass 100% (Tier 1 check).
+- [ ] Git status sạch sẽ, tuân thủ đúng quy ước commit.
 
 #### Scope
-- **Files được sửa/tạo:** `scripts/build_vocab_wasm_db.py`, `static/js/dict_wasm.js`, `static/data/vocab_core.sqlite`, `static/js/app.js`
+- **Files được sửa/tạo:** `tests/**`, `scripts/benchmark_prompt_caching.py`, `pipeline/docs/runtime/**`
 
 #### Verification Commands
 ```bash
-python3 scripts/build_vocab_wasm_db.py
-python3 pipeline/scripts/verify.py --quick
+python3 pipeline/scripts/verify.py
 ```
+
 
 

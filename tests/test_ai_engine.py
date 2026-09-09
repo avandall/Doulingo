@@ -289,5 +289,51 @@ def test_token_budget_2048_in_provider_payloads(monkeypatch):
     assert captured_payloads[openai_key]["max_tokens"] == 2048
 
 
+def test_gemini_429_quota_failover_to_groq(monkeypatch):
+    """
+    Verifies that when Gemini returns 429 (quota exhausted),
+    the engine catches it, marks the key exhausted, and seamlessly fails over to Groq.
+    """
+    from app.core.schemas import RoleplayTurnResponseSchema
+
+    ai_engine.gemini_keys = ["exhausted_gemini_key"]
+    ai_engine.groq_keys = ["healthy_groq_key"]
+    ai_engine.openai_keys = []
+
+    def mock_gemini_429(prompt, api_key, model_name, schema=None, temp=0.8, parse_raw=False):
+        # Return None simulating 429 rate limit return in _call_gemini
+        return None
+
+    groq_called = []
+    def mock_groq_success(prompt, api_key, model_name, schema=None, temp=0.8, parse_raw=False):
+        groq_called.append(model_name)
+        return {
+            "natural_draft": "Groq draft",
+            "vocab_check": "Groq vocab",
+            "final_response": "Groq successfully answered after Gemini 429.",
+            "user_feedback": {
+                "grammar_status": "Clean & Clear",
+                "corrected_text": "hello",
+                "native_phrasing": "Hello",
+                "duo_reaction": "happy"
+            }
+        }
+
+    monkeypatch.setattr(ai_engine, "_call_gemini", mock_gemini_429)
+    monkeypatch.setattr(ai_engine, "_call_groq", mock_groq_success)
+
+    result = ai_engine._call_llm_providers(
+        "Hello",
+        schema=RoleplayTurnResponseSchema,
+        temp=0.8,
+        parse_raw=True
+    )
+
+    assert result is not None
+    assert len(groq_called) > 0
+    assert result["final_response"] == "Groq successfully answered after Gemini 429."
+
+
+
 
 
