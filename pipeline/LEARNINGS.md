@@ -39,3 +39,10 @@
 - **Resolution:** Updated `ralph-analyze.mjs` regex filtering to skip false positive status enum descriptions, updated `TECH_CONTEXT.md`, `BOUNDARIES.md`, `AGENT_GUIDE.md`, and `prompts/PROMPT.md` to enforce dynamic workspace path anchoring and prohibit hardcoded obsolete paths.
 - **Promoted To:** `pipeline/scripts/ralph-analyze.mjs`, `pipeline/docs/context/TECH_CONTEXT.md`, `pipeline/docs/context/BOUNDARIES.md`, `pipeline/AGENT_GUIDE.md`, `pipeline/prompts/PROMPT.md`.
 
+### [2026-09-09] Prevention of Verification Script Background Wrapping & Turn Timeout
+- **Context / Task:** Ralph Loop execution run (20260909-221823) encountering `Error: timeout waiting for response` in iter-1.
+- **Root Cause:** Executor agent launched deterministic quality verification (`python3 pipeline/scripts/verify.py`) as an asynchronous background task (`run_command` async) instead of executing it synchronously in the foreground, causing the turn runner to stall waiting for background task updates.
+- **Resolution:** Updated `TECH_CONTEXT.md`, `BOUNDARIES.md`, `AGENT_GUIDE.md`, and `prompts/PROMPT.md` to mandate synchronous foreground execution for `verify.py` with fast target flags (`--quick` / `--test-target`), and explicitly prohibited wrapping deterministic verification checks in background tasks.
+- **Promoted To:** `pipeline/docs/context/TECH_CONTEXT.md`, `pipeline/docs/context/BOUNDARIES.md`, `pipeline/AGENT_GUIDE.md`, `pipeline/prompts/PROMPT.md`.
+
+

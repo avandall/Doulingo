@@ -1,104 +1,64 @@
 # BOUNDARIES
 # Giới hạn quyền hạn — Những gì AI được và không được làm
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-09-06
+> **Trạng thái:** CONTEXT (Active) | **Cập nhật:** 2026-09-09
 >
-> ✏️ **HUMAN FILLS THIS FILE.** AI phải đọc và tuân thủ nghiêm ngặt.
->
-> ⚠️ **CRITICAL:** Đây là "hợp đồng" ranh giới giữa bạn và AI. AI sẽ dừng lại và hỏi nếu thao tác vượt quá scope.
+> ✏️ **HUMAN & ARCHITECT REWRITE (v2.0 Post-Review).** File này là "hợp đồng" ranh giới kỹ thuật bất biến giữa Human và AI Agent trong sáng kiến nâng cấp Constrained Decoding, Prompt Caching và WebAssembly.
 
 ---
 
-## 1. Phạm vi File (File Scope)
+## 1. Phạm vi Tệp tin (File Scope)
 
-### AI được phép đọc và sửa:
+### ✅ AI được phép tạo mới và chỉnh sửa:
 ```
-✅ app/**                               (Router, Services, Schemas, Templates)
-✅ tests/**                              (Unit & Integration test suites)
-✅ reports/**, output/**                 (Thư mục lưu PDF và output artifacts)
-✅ pipeline/docs/context/Tasks_list.md   (Cập nhật tiến độ task [ ] -> [/] -> [x])
-✅ pipeline/docs/runtime/**              (Logs, status, plans của harness)
-✅ requirements.txt, pyproject.toml      (Thêm packages cần thiết: playwright, inngest, jinja2)
-✅ .gitignore                            (Đảm bảo bỏ qua reports/, *.db, __pycache__)
-```
-
-### AI KHÔNG được chạm vào:
-```
-❌ .env                                  (File chứa secrets / production API keys)
-❌ pipeline/docs/core/**                 (Bộ quy chuẩn cốt lõi cố định của pipeline)
-❌ pipeline/engine/**                    (Core engine của harness)
-❌ static/index.html (ngoại trừ bổ sung nút download PDF / event listener nếu có task yêu cầu)
+app/core/schemas.py                      # [TẠO MỚI] Khai báo các Pydantic Schemas & to_strict_json_schema
+app/core/ai_engine.py                    # [CHỈNH SỬA] Tích hợp responseSchema, strict mode, token budget 2048
+app/rag/prompt_constructor.py            # [CHỈNH SỬA] Tách Static Prefix (~1,200 tokens) và Dynamic Suffix
+app/scoring/tier1_realtime.py            # [CHỈNH SỬA] Tiếp nhận và kẹp ngưỡng acoustic signals từ Client VAD
+app/scoring/tier2_deep.py                # [CHỈNH SỬA] Chuẩn hóa output qua Pydantic schema
+scripts/build_vocab_wasm_db.py           # [TẠO MỚI] Offline script trích xuất SQLite vocab core
+static/js/speech.js                      # [CHỈNH SỬA] Nhúng Audio State Machine & Silero VAD WASM
+static/js/dict_wasm.js                   # [TẠO MỚI] Client-side SQLite WASM dictionary loader & query
+static/data/vocab_core.sqlite            # [TẠO MỚI] File SQLite từ điển nén phục vụ RAM client
+static/wasm/**                           # [TẠO MỚI] Thư mục chứa binaries WASM (silero_vad.wasm, sqlite3.wasm)
+tests/**                                 # [TẠO MỚI/SỬA] Bộ test suite cho Schemas, Caching và VAD logic
+pipeline/docs/context/Tasks_list.md      # [CẬP NHẬT] Trạng thái thực thi các tasks
+pipeline/docs/runtime/**                 # [GHI CHÉP] Logs, plans, debate notes của harness loop
 ```
 
----
-
-## 2. Database Permissions
-
+### ❌ AI TUYỆT ĐỐI KHÔNG được đụng vào:
 ```
-READ:    ✅ Được phép đọc custom_topics.db, dictionary.db, reports.db
-WRITE:   ✅ Được phép ghi test data, records báo cáo exam_reports và background_jobs
-MIGRATE: ✅ Được phép tạo mới bảng trong reports.db hoặc custom_topics.db (CREATE TABLE IF NOT EXISTS)
-DROP:    ❌ KHÔNG BAO GIỜ được phép DROP DB hoặc DROP các bảng từ điển chính
-
-Môi trường:
-  - Local DB:    ✅ Quyền đọc/ghi/tạo bảng trên DB local (data/*.db)
-  - Production:  ❌ Không có access trực tiếp
+.env                                     # API keys và credentials sản xuất
+pipeline/docs/core/**                    # Hiến pháp và giao thức cốt lõi của Harness
+pipeline/engine/**                       # Mã nguồn thực thi Ralph loop
+data/custom_topics.db                    # Không được DROP hay làm hỏng dữ liệu chủ đề hiện có
+app/api/routers/reports_router.py        # Module xuất PDF đã hoàn thiện từ trước
 ```
 
 ---
 
-## 3. External Services & APIs
+## 2. Quy Tắc Kỹ Thuật Bắt Buộc (Inviolable Technical Guardrails)
 
-```
-Được phép gọi:
-✅ Inngest Local Dev Server (http://localhost:8288)
-✅ Playwright Local Headless Browser (Chromium)
-✅ Local FastAPI Endpoints (http://localhost:8000)
+### 2.1. Đối với Constrained Decoding
+- **Single Source of Truth:** 100% schema bắt buộc phải sinh ra từ `pydantic.BaseModel` và đi qua hàm `to_strict_json_schema(model)` trước khi gửi sang OpenAI/Groq (phải bao gồm `$defs` traversal và nullable conversion).
+- **Zero Raw JSON Slicing:** Cấm tái sử dụng logic cắt chuỗi ````json ... ```` hoặc tìm kiếm `{` `}` bằng regex một khi provider đã bật Strict Schema.
+- **Failover on Truncation:** Nếu model bị chạm trần token (`finish_reason == "length"`) hoặc văng `ValidationError`, hệ thống phải xem đó là lỗi provider và tự động chuyển sang provider kế tiếp trong Pool.
 
-KHÔNG được phép gọi:
-❌ Production Inngest Cloud keys
-❌ Bất kỳ dịch vụ nào tốn phí thực tế không có mock/test mode
-```
+### 2.2. Đối với Prompt Caching
+- **Ngưỡng Token Caching:** Static Prefix được giữ ở mức $\approx 1,200$ tokens. Cam kết TTFT $< 400\text{ms}$ chỉ áp dụng trên Groq/OpenAI (hỗ trợ cache từ 1,024 tokens). Không nhồi 32k tokens vào Gemini.
+- **Tính Bất Biến (Immutability):** Góc tiếp cận tình huống (`scenario_angle`) phải được chọn duy nhất 1 lần tại `start_roleplay_greeting` và cố định trong Static Prefix của session đó. Tuyệt đối không sinh góc mới ở giữa các turn.
 
----
-
-## 4. Quyền Kiến trúc (Architecture Decisions)
-
-### AI có thể tự quyết định:
-```
-✅ Cấu trúc file bên trong app/services/ (pdf_report_service.py, background_job_service.py)
-✅ Thiết kế HTML/CSS template cho bản in PDF (đáp ứng đúng chuẩn A4, @page margin, break-inside: avoid)
-✅ Schema Pydantic cho DTOs request/response của report và job status
-✅ Thuật toán kiểm tra Idempotency (theo session_id và ngày hiện tại)
-✅ Cấu hình retry & exponential backoff trong worker functions
-```
-
-### Phải hỏi human trước:
-```
-❓ Thay đổi cấu trúc core audio streaming / STT / TTS đang hoạt động ổn định
-❓ Xóa bỏ các routes hiện có trong app/main.py
-```
-
-### KHÔNG được làm dù có lý do:
-```
-❌ Hardcode credentials, API keys vào source code
-❌ Trả trực tiếp binary PDF dạng base64 trong JSON response (vi phạm Store & Link)
-❌ Tắt validation hoặc bỏ qua kiểm tra lỗi
-❌ Run unbounded blocking subprocesses/browser instances without timeout limits
-❌ Hardcode legacy template project paths (e.g. `boilerplate`) in absolute markdown links instead of referencing active workspace root (`Doulingo`)
-```
+### 2.3. Đối với WebAssembly (WASM) & Audio
+- **Acoustic-Only Decoupling:** VAD client chỉ đo lường thời lượng âm học (`accumulated_voiced_duration_ms >= 1500`), không phụ thuộc vào bộ đếm từ của Web Speech API để quyết định đóng micro.
+- **No Hot-Swapping Audio Stream:** Chuyển đổi engine thu âm sang WASM AudioWorklet **CHỈ ĐƯỢC PHÉP THỰC HIỆN KHI `MIC_STATE == "IDLE"`**. Cấm thay đổi `AudioContext` khi micro đang ghi âm.
+### 2.4. Đối với Execution & Verification Engine (Timeout & Task Isolation Protection)
+- **Foreground Synchronous Execution Only:** Cấm chạy `python3 pipeline/scripts/verify.py` hoặc các công cụ kiểm thử chất lượng dưới dạng task chạy ngầm (`run_command` async background job). Mọi lệnh kiểm thử phải chạy đồng bộ (synchronous foreground) để thu về kết quả tức thì.
+- **Strict Target Scoping:** Trong quá trình coding liên tục (iterative steps), bắt buộc sử dụng `--quick` hoặc `--test-target tests/test_xxx.py` để đảm bảo thời gian thực thi $< 60\text{s}$, tránh làm treo runner hoặc timeout giao tiếp (`Error: timeout waiting for response`).
 
 ---
 
-## 5. Rollback & Git Permissions
+## 3. Quyền Hạn Git & Commit
 
-```
-AI được phép:
-✅ Commit theo đúng quy chuẩn: [TASK-ID] <type>(<scope>): <mô tả ngắn> — CHỈ khi task [x] DONE
-✅ Luôn chạy git thông qua WSL theo quy tắc toàn cục
-
-KHÔNG bao giờ:
-❌ git push --force
-❌ Chạy git.exe của Windows trên ổ Z:\
-```
-
+- **1 Task = 1 Commit:** Chỉ commit khi task đã đạt trạng thái `[x] DONE` và toàn bộ bài test tương ứng pass 100%.
+- **Thực thi trong WSL:** Mọi lệnh Git bắt buộc phải chạy qua WSL theo đúng quy định toàn cục của môi trường (`wsl git -C /home/avandall/project/Doulingo ...`).
+- **Clean Working Tree:** Dọn sạch các file nháp tạm thời trước khi kết thúc task.

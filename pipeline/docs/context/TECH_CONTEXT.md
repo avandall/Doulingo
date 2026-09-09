@@ -1,166 +1,177 @@
 # TECH CONTEXT
 # Bối cảnh kỹ thuật — Stack, Môi trường và Kiến trúc Kỹ thuật
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-09-06
+> **Trạng thái:** CONTEXT (Active) | **Cập nhật:** 2026-09-09
 >
-> ✏️ **HUMAN FILLS THIS FILE.** File này quy định chi tiết kỹ thuật, công nghệ, cấu trúc code và API contracts.
+> ✏️ **HUMAN & ARCHITECT REWRITE (v2.0 Post-Review).** File này quy định chi tiết stack công nghệ, chuẩn Pydantic schema, kiến trúc Prompt Caching (Groq/Gemini), Audio State Machine và WebAssembly (WASM).
 
 ---
 
-## 1. Tech Stack & Environment
+## 1. Tech Stack & Execution Environment
 
-### Language & Framework
 ```
-Runtime:          Python 3.10+ (WSL Linux Ubuntu / CPython)
-Framework:        FastAPI >= 0.115.0
-Web Server:       Uvicorn (ASGI)
-Validation:       Pydantic v2
-API Protocol:     RESTful JSON API + Binary File Streams (FileResponse)
-PDF Engine:       Playwright Headless Chromium + Jinja2 Templates + Print CSS
-Background Engine: Inngest Python SDK / FastAPI BackgroundTasks + Async IO
-Cron Engine:      Inngest TriggerCron / Async Schedule
-```
-
-### Database & Storage
-```
-Primary DB:       SQLite / LibSQL (custom_topics.db, dictionary.db, reports.db)
-Data Isolation:   Session-based & User-based isolation (session_id, user_id)
-Artifact Storage: Disk-backed storage at `reports/` and `output/` (Store & Link)
-```
-
-### Testing Framework
-```
-Test Runner:      Pytest + Pytest-Asyncio
-Static Analysis:  Ruff, Mypy
-Pipeline Check:   python3 pipeline/scripts/verify.py
+Runtime Backend:     Python 3.11+ (WSL Linux Ubuntu)
+Web Framework:       FastAPI >= 0.115.0 + Uvicorn (ASGI)
+Validation Standard: Pydantic v2 (Single Source of Truth cho toàn bộ LLM outputs)
+LLM Providers:       - Google Gemini (gemini-2.0-flash, gemini-1.5-flash) via responseSchema
+                     - Groq (llama-3.3-70b-versatile, llama-3.1-8b-instant) via json_schema strict
+                     - OpenAI (gpt-4o-mini) via json_schema strict
+                     - Ollama (local fallback: llama3, qwen2.5) via format schema
+Output Token Budget: max_tokens = 2048 (ngăn chặn cắt cụt JSON ở CEFR C1/C2)
+TTS Engine:          Edge-TTS & gTTS (Async audio streaming)
+Client Runtime:      Modern Browser (Chrome/Edge/Safari/PWA)
+Client WASM:         - Silero VAD WASM (Web AudioWorklet PCM 16kHz)
+                     - SQLite3 WASM (Official in-memory database ~1.1MB for 0ms dictionary)
+Primary Database:    SQLite / LibSQL (data/custom_topics.db, data/reports.db)
+Verification Engine: python3 pipeline/scripts/verify.py (Synchronous foreground execution only; Pytest, Ruff, Mypy; use --quick or --test-target for <60s turns)
 ```
 
 ---
 
-## 2. Cấu trúc Thư mục Dự án (Directory Structure)
+## 2. Pydantic Schemas & Constrained Decoding Contracts
+
+Toàn bộ phản hồi có cấu trúc từ các LLM providers bắt buộc phải validate qua Pydantic models tại `app/core/schemas.py`.
+
+### 2.1. Cấu trúc Schema Chuẩn
+
+```python
+from pydantic import BaseModel, Field
+from typing import Literal
+
+class UserFeedbackSchema(BaseModel):
+    grammar_status: str = Field(
+        description="Trạng thái ngữ pháp ngắn gọn (vd: 'Clean & Clear' hoặc ghi chú lỗi nhỏ)"
+    )
+    corrected_text: str = Field(
+        description="Câu của học viên đã được sửa lỗi ngữ pháp, bảo toàn 100% ý định ban đầu"
+    )
+    native_phrasing: str = Field(
+        description="Cách diễn đạt tự nhiên chuẩn bản xứ của câu nói đó"
+    )
+    duo_reaction: Literal["celebrate", "happy", "encouraging"] = Field(
+        default="happy",
+        description="Cảm xúc của nhân vật đại diện Duo"
+    )
+    grammar_explanation: str | None = Field(
+        default=None,
+        description="Giải thích ngắn gọn bằng tiếng Việt về lỗi ngữ pháp hoặc phát âm"
+    )
+
+class RoleplayTurnResponseSchema(BaseModel):
+    natural_draft: str = Field(
+        description="Suy nghĩ nháp súc tích tối đa 20 từ trước khi phản hồi"
+    )
+    vocab_check: str = Field(
+        description="Tự kiểm tra trần từ vựng CEFR Level tối đa 20 từ"
+    )
+    final_response: str = Field(
+        description="Câu thoại tiếng Anh chuẩn 100% của nhân vật, kết thúc bằng 1 câu hỏi mở gợi chuyện"
+    )
+    user_feedback: UserFeedbackSchema
+
+class GreetingResponseSchema(BaseModel):
+    natural_draft: str = Field(description="Ý tưởng mở đầu tình huống (max 20 words)")
+    vocab_check: str = Field(description="Kiểm tra cấp độ CEFR (max 20 words)")
+    final_response: str = Field(description="Lời mở đầu chào hỏi và câu hỏi gợi mở đầu tiên")
+
+class QuickTranslationSchema(BaseModel):
+    vietnamese_translation: str = Field(
+        description="Bản dịch tiếng Việt tự nhiên, trực tiếp, không chứa văn bản râu ria"
+    )
+```
+
+### 2.2. Xử lý Strict JSON Schema (`$defs` & Required Nullable Transformation)
+OpenAI và Groq Strict Mode (`strict: True`) yêu cầu:
+1. `additionalProperties: False` tại mọi node `type: "object"`.
+2. Mọi properties (kể cả optional có `default=None`) đều phải nằm trong mảng `required`.
+3. Các schema con nằm trong `$defs` cũng phải được áp dụng đầy đủ 2 quy tắc trên.
+
+Hàm chuyển đổi tập trung `to_strict_json_schema(model_cls: type[BaseModel]) -> dict[str, Any]` trong `app/core/schemas.py`:
+- Duyệt đệ quy toàn bộ cây schema bao gồm root và mọi nodes trong `$defs` / `definitions`.
+- Ép `node["additionalProperties"] = False`.
+- Gán `node["required"] = list(node["properties"].keys())`.
+- Biến đổi các trường nullable có `default: null` thành `anyOf: [{"type": ...}, {"type": "null"}]`.
+
+### 2.3. Chữ ký Hàm Tầng Provider (Unified Provider Signatures)
+Trong `app/core/ai_engine.py`:
+```python
+def _call_llm_providers(
+    self,
+    prompt: str,
+    schema: type[BaseModel] | None = None,
+    temp: float = 0.8,
+    parse_raw: bool = False
+) -> dict[str, Any] | str | None:
+```
+- Nếu `schema is not None`:
+  - Gemini: `generationConfig["responseSchema"] = schema.model_json_schema()`
+  - Groq/OpenAI: `response_format = {"type": "json_schema", "json_schema": {"name": "...", "strict": True, "schema": to_strict_json_schema(schema)}}`
+  - Parse kết quả: `schema.model_validate_json(raw_text).model_dump()`
+  - Nếu `pydantic.ValidationError` hoặc JSON bị cắt cụt do chạm trần token: Coi là Provider Failure $\rightarrow$ Tự động failover sang provider tiếp theo trong Pool.
+- Nếu `schema is None`: Chạy unconstrained mode trả về raw text.
+
+---
+
+## 3. Prompt Caching (KV-Cache Optimization) Strategy & Caching Thresholds
+
+### 3.1. Phân định Thực tế Caching giữa các Providers
+- **Groq (LLaMA 3.3/3.1) & OpenAI**: Hỗ trợ Automatic Prefix Caching từ **1,024 tokens**.
+  - Cam kết: **TTFT $< 400\text{ms}$** từ lượt thoại thứ 2 trở đi.
+  - Tiết kiệm: $\ge 70\%$ chi phí token đầu vào.
+- **Google Gemini API**: Ngưỡng kích hoạt Prompt Caching tối thiểu là **32,768 tokens** (trên dòng Flash/Pro).
+  - Quyết định kiến trúc: **KHÔNG nhồi nhét 32k tokens** để tránh làm nổ thời gian prefill Turn 1 cold-start (5-8s).
+  - Gemini sẽ chạy ở chế độ **Standard Un-cached Throughput** với `gemini-2.0-flash` (tốc độ sinh 100+ tps, TTFT tự nhiên $\approx 700\text{ms} - 1,000\text{ms}$).
+
+### 3.2. Cấu trúc Prompt Chuẩn (Prompt Partitioning)
+Kích thước Static Prefix được duy trì ở mức $\approx 1,200$ tokens — vừa vặn kích hoạt cache của Groq/OpenAI, vừa nhẹ nhàng để Gemini prefill tức thì:
 
 ```
-Doulingo/
-├── app/
-│   ├── main.py                           # Application entry point & router mounting
-│   ├── api/
-│   │   └── routers/
-│   │       ├── reports_router.py         # [NEW] /api/reports (Generate, Status, Download File)
-│   │       ├── chat_router.py            # Chat & realtime roleplay endpoints
-│   │       ├── feedback_router.py        # Speaking evaluation & feedback endpoints
-│   │       └── ...
-│   ├── services/
-│   │   ├── pdf_report_service.py         # [NEW] Playwright PDF Renderer & Page-break styling
-│   │   ├── background_job_service.py     # [NEW] Inngest client, events & durable job execution
-│   │   ├── cron_service.py               # [NEW] Scheduled audio cache cleanup
-│   │   └── ...
-│   ├── templates/
-│   │   └── reports/
-│   │       └── speaking_report.html      # [NEW] Jinja2 HTML/CSS Template for IELTS/DET scorecards
-│   └── data/                             # SQLite DB files
-├── reports/                              # Generated PDF files (.gitignore)
-├── pipeline/
-│   └── docs/context/                     # Context docs for agent harness
-└── tests/
-    ├── test_pdf_reporting.py             # Unit/Integration tests for PDF generation
-    └── test_background_jobs.py           # Tests for background events & status endpoints
+┌────────────────────────────────────────────────────────────────────────┐
+│ 1. STATIC CACHEABLE PREFIX (~1,200 Tokens - Bất biến trong 1 session)   │
+│    - System Role & Character Persona Identity (Lily, Rajesh...)        │
+│    - Session Scenario Angle (Cố định duy nhất 1 lần lúc init session)  │
+│    - CEFR 20-Level Difficulty Rules & Example Reference Responses       │
+│    - IELTS Book Reference Dialogues & Scoring Rubric                   │
+│    - Output Format Directives (CoT súc tích max 20 words)              │
+└──────────────────────────────────┬─────────────────────────────────────┘
+                                   ▼ [Cached in KV Memory on Groq/OpenAI]
+┌────────────────────────────────────────────────────────────────────────┐
+│ 2. DYNAMIC TURN SUFFIX (Biến đổi theo từng câu thoại của người học)    │
+│    - Conversation History (Rolling window N turns gần nhất)            │
+│    - Current Spoken Transcript từ người học                            │
+│    - Current Turn Number & Immediate Goal                              │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 3. Database Schema & Data Models
+## 4. Client-Side WebAssembly (WASM) & Audio Architecture
 
-```sql
--- Bảng lưu trữ metadata báo cáo PDF (reports.db)
-CREATE TABLE IF NOT EXISTS exam_reports (
-    id TEXT PRIMARY KEY,                  -- UUID or hash (e.g. rep_xxx)
-    session_id TEXT NOT NULL,             -- Mã bài thi IELTS/DET
-    topic_title TEXT NOT NULL,            -- Chủ đề bài thi
-    overall_score REAL NOT NULL,          -- Điểm tổng kết (e.g. 7.5 IELTS / 120 DET)
-    cefr_level TEXT NOT NULL,             -- B1, B2, C1, C2
-    pdf_path TEXT NOT NULL,               -- Đường dẫn file PDF trên đĩa (reports/{id}.pdf)
-    file_size_bytes INTEGER NOT NULL,     -- Dung lượng file
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    created_date TEXT NOT NULL            -- YYYY-MM-DD (dùng cho Idempotency check)
-);
+### 4.1. Silero VAD WASM: Thuần Âm Học (Acoustic-Only Decoupling)
+- **Vị trí tích hợp:** `static/js/speech.js` qua Web AudioWorklet (luồng PCM 16kHz thô).
+- **Nguyên lý đo lường:** Độc lập 100% với Web Speech API, tích lũy biến `accumulated_voiced_duration_ms` (thời gian có xác suất giọng nói $p > 0.5$).
+- **Ngưỡng ngắt lời (Silence Timeout):** Khi phát hiện khoảng lặng $t_{\text{silence}} \ge 3.5\text{s}$:
+  - Nếu `accumulated_voiced_duration_ms >= 1500` ($1.5\text{s}$ âm thanh thực $\approx$ 1 câu nói): Coi là học viên đã kết thúc phát biểu $\rightarrow$ **Tự động đóng mic và gửi request `/api/voice/chat`**.
+  - Nếu `accumulated_voiced_duration_ms < 1500`: Coi là tiếng thở, tiếng ho, tiếng lách cách $\rightarrow$ Reset trạng thái, không đóng mic và không gửi audio rác.
+- **Sanity Bounds & Clamping tại Backend (`app/scoring/tier1_realtime.py`):**
+  - Nhận DTO `AcousticMetricsInput` (kẹp ngưỡng `pause_duration_ms <= 60000`, `wpm <= 350`).
+  - Nếu dữ liệu client bị out-of-bounds: Tự động fallback tính WPM và Pause ratio từ timestamps của STT engine.
 
--- Bảng theo dõi trạng thái Background Jobs
-CREATE TABLE IF NOT EXISTS background_jobs (
-    id TEXT PRIMARY KEY,                  -- job_xxx
-    job_type TEXT NOT NULL,               -- 'deep_evaluation', 'pdf_generation', 'cleanup'
-    status TEXT NOT NULL,                 -- 'pending', 'processing', 'done', 'failed'
-    progress_pct INTEGER DEFAULT 0,
-    result_json TEXT,                     -- Kết quả JSON khi hoàn tất
-    error_message TEXT,
-    attempts INTEGER DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+### 4.2. Audio Engine State Machine (Chống Race Condition)
+Để tránh tiếng nổ audio buffer hoặc xung đột mic trên Safari iOS khi file WASM tải xong lúc đang thu âm, hệ thống tuân theo State Machine tường minh:
+
 ```
-
----
-
-## 4. API Contracts & Specifications
-
-### 1. Endpoint: `POST /api/reports/speaking/{session_id}/generate`
-- **Mục tiêu:** Sinh báo cáo PDF từ kết quả bài thi Speaking (có kiểm tra Idempotency).
-- **Request Body:**
-  ```json
-  {
-    "force": false
-  }
-  ```
-- **Response 201 Created (Tạo mới) / 200 OK (Đã tồn tại trong ngày):**
-  ```json
-  {
-    "id": "rep_a1b2c3d4",
-    "session_id": "sess_987654",
-    "status": "ready",
-    "download_url": "/api/reports/speaking/rep_a1b2c3d4/file",
-    "created_at": "2026-09-06T20:00:00Z"
-  }
-  ```
-
-### 2. Endpoint: `GET /api/reports/speaking/{report_id}/file`
-- **Mục tiêu:** Tải file nhị phân PDF về máy (Header `Content-Type: application/pdf`).
-
-### 3. Endpoint: `POST /api/exams/{session_id}/evaluate-async`
-- **Mục tiêu:** Nhận yêu cầu chấm điểm chuyên sâu, phản hồi 202 Accepted ngay lập tức.
-- **Response 202 Accepted:**
-  ```json
-  {
-    "job_id": "job_eval_12345",
-    "status": "pending",
-    "status_url": "/api/jobs/job_eval_12345/status"
-  }
-  ```
-
-### 4. Endpoint: `GET /api/jobs/{job_id}/status`
-- **Mục tiêu:** Status polling trả về `pending`, `processing`, hoặc `done` + kết quả.
-
----
-
-## 5. Environment & Dependencies
-
-```bash
-# Cài đặt Playwright Chromium
-playwright install chromium
-
-# Chạy server
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
-# Chạy deterministic test
-python3 pipeline/scripts/verify.py
+[AUDIO_ENGINE_STATE]
+  ├── LEGACY_FALLBACK (Trình duyệt dùng Web Speech API / MediaRecorder cũ)
+  ├── WASM_LOADING    (Đang tải bytecode silero_vad.wasm về máy)
+  ├── WASM_STAGED     (WASM đã biên dịch xong, ĐANG ĐỢI MIC IDLE)
+  └── WASM_ACTIVE     (Đã chính thức nâng cấp thành AudioWorklet VAD)
 ```
+- **Luật bất biến:** Quá trình chuyển từ `WASM_STAGED` sang `WASM_ACTIVE` **CHỈ ĐƯỢC PHÉP THỰC HIỆN KHI `MIC_STATE == "IDLE"`** (giữa 2 turns khi micro đã tắt hoàn toàn). Tuyệt đối không can thiệp vào audio stream đang mở.
 
----
-
-## 6. Execution Timeouts & Subprocess Guidelines
-
-- **Playwright Headless Engine:** Playwright Chromium MUST run in headless mode (`headless=True`) with explicit navigation/rendering timeouts (e.g. `timeout=30000` ms) to prevent browser lockups.
-- **Subprocess & Test Timeout Bounds:** All verification commands executed via `verify.py` enforce a default 60-second timeout per tool.
-- **CLI Print Timeout Prevention:** To avoid CLI print timeouts (`Error: timeout waiting for response`), AI agents must avoid running unbounded, blocking tasks without timeouts. For rapid iterative turns, use `python3 pipeline/scripts/verify.py --quick` or `--test-target tests/test_xxx.py`.
-- **Workspace Path Integrity & Dynamic Root Anchoring:** All absolute file URLs and markdown links generated in runtime logs and reports must anchor dynamically to the active workspace project directory (`/home/avandall/project/Doulingo/`), strictly prohibiting hardcoded obsolete template strings (e.g. `boilerplate`).
-- **Log Analysis False-Positive Filtering:** Log analyzers (`ralph-analyze.mjs`) filter out status enum descriptions (`PENDING`, `RUNNING`, `COMPLETED`, `FAILED`) to avoid mistaking status listings for runtime error occurrences.
-
-
+### 4.3. 0ms Local Dictionary (SQLite3 WASM)
+- **Vị trí tích hợp:** `static/js/dict_wasm.js`.
+- **Database Asset:** `static/data/vocab_core.sqlite` (~1.1MB, nén gzip ~400KB) sinh ra bởi offline script `scripts/build_vocab_wasm_db.py`.
+- **Progressive Enhancement:** 
+  - Khi WASM chưa sẵn sàng: Tra từ fallback gọi API `/api/dictionary/lookup`.
+  - Khi WASM đã sẵn sàng: Tra từ trực tiếp trong RAM trình duyệt phản hồi trong **$< 1\text{ms}$** (0ms network delay).
