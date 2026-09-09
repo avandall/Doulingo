@@ -179,7 +179,7 @@ def test_process_turn_structured_cot(monkeypatch):
         "ai_response": "I like green tea. Do you like tea?",
         "user_feedback": {"grammar_status": "Clean & Clear"}
     }
-    monkeypatch.setattr(ai_engine, "_call_llm_providers", lambda prompt, temp=0.8: mock_res)
+    monkeypatch.setattr(ai_engine, "_call_llm_providers", lambda prompt, temp=0.8, **kwargs: mock_res)
 
     res = ai_engine.process_turn(
         scenario_id="coffee_shop",
@@ -192,6 +192,102 @@ def test_process_turn_structured_cot(monkeypatch):
     assert "vocab_check" in res
     assert "final_response" in res
     assert "ai_response" in res
+
+
+def test_parse_raw_json_pydantic_validation_success():
+    """Verify _parse_raw_json parses valid JSON string into dict via Pydantic model_validate_json."""
+    from app.core.schemas import RoleplayTurnResponseSchema
+    valid_json = """
+    {
+      "natural_draft": "Draft for turn 1",
+      "vocab_check": "Level 1 verified",
+      "final_response": "Hello, how can I help you today?",
+      "user_feedback": {
+        "grammar_status": "Clean & Clear",
+        "corrected_text": "I want tea.",
+        "native_phrasing": "I'd like some tea, please.",
+        "duo_reaction": "happy"
+      }
+    }
+    """
+    res = ai_engine._parse_raw_json(valid_json, schema=RoleplayTurnResponseSchema)
+    assert isinstance(res, dict)
+    assert res["final_response"] == "Hello, how can I help you today?"
+    assert res["user_feedback"]["grammar_status"] == "Clean & Clear"
+
+
+def test_parse_raw_json_truncation_raises_validation_error():
+    """Verify _parse_raw_json raises Exception (ValidationError/JSONDecodeError) on truncated or broken JSON."""
+    import pytest
+    from pydantic import ValidationError
+
+    from app.core.schemas import RoleplayTurnResponseSchema
+
+    truncated_json = '{"natural_draft": "Draft for turn 1", "vocab_check": "Level 1'
+    with pytest.raises((ValidationError, Exception)):
+        ai_engine._parse_raw_json(truncated_json, schema=RoleplayTurnResponseSchema)
+
+
+def test_provider_failover_on_truncated_json_or_validation_error(monkeypatch):
+    """Verify system does not crash on truncated JSON, but logs warning and fails over to next provider in pool."""
+    from pydantic import ValidationError
+
+    ai_engine.gemini_keys = ["mock_gemini_key"]
+    ai_engine.groq_keys = ["mock_groq_key"]
+    ai_engine.openai_keys = []
+
+    def mock_gemini_truncated(prompt, api_key, model_name, schema=None, temp=0.8, parse_raw=False):
+        # Simulates Gemini returning truncated JSON causing ValidationError
+        raise ValidationError.from_exception_data("Truncated JSON output", [])
+
+    expected_groq_res = {
+        "natural_draft": "Groq draft",
+        "vocab_check": "Groq vocab check",
+        "final_response": "Hello from Groq failover!",
+        "ai_response": "Hello from Groq failover!",
+        "user_feedback": {"grammar_status": "Clean & Clear"}
+    }
+
+    def mock_groq_success(prompt, api_key, model_name, schema=None, temp=0.8, parse_raw=False):
+        return expected_groq_res
+
+    monkeypatch.setattr(ai_engine, "_call_gemini", mock_gemini_truncated)
+    monkeypatch.setattr(ai_engine, "_call_groq", mock_groq_success)
+
+    res = ai_engine._call_llm_providers("Test prompt")
+    assert res is not None
+    assert res["final_response"] == "Hello from Groq failover!"
+
+
+def test_token_budget_2048_in_provider_payloads(monkeypatch):
+    """Verify max token budget is set to 2048 in provider request payload configurations."""
+    captured_payloads = {}
+
+    def mock_post(url, json=None, headers=None, **kwargs):
+        class DummyResponse:
+            status_code = 200
+            def json(self):
+                if "generativelanguage" in url:
+                    return {"candidates": [{"content": {"parts": [{"text": '{"test": 1}'}]}}]}
+                return {"choices": [{"message": {"content": '{"test": 1}'}}]}
+        if json:
+            captured_payloads[url] = json
+        return DummyResponse()
+
+    monkeypatch.setattr("requests.post", mock_post)
+
+    ai_engine._call_gemini("prompt", "dummy_key", "gemini-2.0-flash", parse_raw=True)
+    ai_engine._call_groq("prompt", "dummy_key", "llama-3.3-70b-versatile", parse_raw=True)
+    ai_engine._call_openai("prompt", "dummy_key", parse_raw=True)
+
+    gemini_key = [k for k in captured_payloads if "generativelanguage" in k][0]
+    groq_key = [k for k in captured_payloads if "groq" in k][0]
+    openai_key = [k for k in captured_payloads if "openai" in k][0]
+
+    assert captured_payloads[gemini_key]["generationConfig"]["maxOutputTokens"] == 2048
+    assert captured_payloads[groq_key]["max_tokens"] == 2048
+    assert captured_payloads[openai_key]["max_tokens"] == 2048
+
 
 
 

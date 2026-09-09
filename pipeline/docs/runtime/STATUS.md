@@ -2,5 +2,5 @@
 # Bảng trạng thái tổng quan vòng lặp
 
 > **Trạng thái:** RUNTIME (Mutable by AI Agent / harness.sh)
-> Trạng thái hiện tại: COMPLETED — TASK-001 đã hoàn thành
-> Active Task: TASK-001 - Khởi tạo Pydantic Schemas, Strict Mode $defs Converter & Provider Signature [x]
+> Trạng thái hiện tại: DONE — TASK-002 đã hoàn thành 100% và PASS verification
+> Active Task: TASK-002 - Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover [x]

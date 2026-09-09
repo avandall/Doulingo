@@ -13,7 +13,7 @@
 | Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Mục tiêu chính |
 |---|---|---|---|---|---|
 | `TASK-001` | Khởi tạo Pydantic Schemas, Strict Mode `$defs` Converter & Provider Signature | Phase 1 | P0-Critical | `[x] DONE` | `to_strict_json_schema` + Multi-provider signature |
-| `TASK-002` | Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover | Phase 1 | P0-Critical | `[ ] TODO` | Xóa `_parse_raw_json`, failover khi vỡ JSON |
+| `TASK-002` | Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover | Phase 1 | P0-Critical | `[x] DONE` | Xóa `_parse_raw_json`, failover khi vỡ JSON |
 | `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[ ] TODO` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
 | `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[ ] TODO` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
 | `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[ ] TODO` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
@@ -77,7 +77,7 @@ Task Name:       Refactor AI Engine Parser, Token Budget 2048 & Truncation Failo
 Phase:           Phase 1 (Constrained Decoding)
 Task Type:       refactor
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-09
 ```
 
@@ -90,16 +90,16 @@ Ngày tạo:        2026-09-09
   4. Bổ sung cơ chế: nếu output bị cắt cụt hoặc `ValidationError`, ghi log cảnh báo và tự động chuyển sang provider kế tiếp trong Pool (Failover Policy).
 
 #### Acceptance Criteria
-- [ ] Xóa bỏ hoàn toàn mã nguồn regex cắt chuỗi JSON trong `_parse_raw_json`.
-- [ ] Khi model trả về chuỗi JSON chuẩn, Pydantic parse thành công 100%.
-- [ ] Giả lập chuỗi JSON bị cắt cụt hoặc lỗi cú pháp: hệ thống không crash mà tự động chuyển sang provider tiếp theo trong Pool.
+- [x] Xóa bỏ hoàn toàn mã nguồn regex cắt chuỗi JSON trong `_parse_raw_json`.
+- [x] Khi model trả về chuỗi JSON chuẩn, Pydantic parse thành công 100%.
+- [x] Giả lập chuỗi JSON bị cắt cụt hoặc lỗi cú pháp: hệ thống không crash mà tự động chuyển sang provider tiếp theo trong Pool.
 
 #### Scope
 - **Files được sửa/tạo:** `app/core/ai_engine.py`, `tests/test_ai_engine.py`
 
 #### Verification Commands
 ```bash
-pytest tests/test_ai_engine.py
+python3 pipeline/scripts/verify.py --test-target tests/test_ai_engine.py
 ```
 
 ---

@@ -1341,7 +1341,7 @@ Output JSON ONLY with Structured CoT fields:
     ) -> dict[str, Any] | None:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
         gen_config: dict[str, Any] = {
-            "maxOutputTokens": 1200,
+            "maxOutputTokens": 2048,
             "temperature": temp,
             "responseMimeType": "application/json"
         }
@@ -1358,7 +1358,7 @@ Output JSON ONLY with Structured CoT fields:
             log_api_trace("Gemini", model_name, api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
-                return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
+                return self._parse_raw_json(text, schema=schema) if parse_raw else self._parse_json_response(text, schema=schema)
             elif res.status_code in [429, 403, 401, 400]:
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
@@ -1381,7 +1381,7 @@ Output JSON ONLY with Structured CoT fields:
         payload: dict[str, Any] = {
             "model": model_name,
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 1200,
+            "max_tokens": 2048,
             "temperature": temp,
             "presence_penalty": 0.6
         }
@@ -1403,7 +1403,7 @@ Output JSON ONLY with Structured CoT fields:
             log_api_trace("Groq", model_name, api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["choices"][0]["message"]["content"]
-                return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
+                return self._parse_raw_json(text, schema=schema) if parse_raw else self._parse_json_response(text, schema=schema)
             elif res.status_code in [429, 403, 401, 400]:
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
@@ -1425,7 +1425,7 @@ Output JSON ONLY with Structured CoT fields:
         payload: dict[str, Any] = {
             "model": "gpt-4o-mini",
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 1200,
+            "max_tokens": 2048,
             "temperature": temp,
             "presence_penalty": 0.6
         }
@@ -1447,7 +1447,7 @@ Output JSON ONLY with Structured CoT fields:
             log_api_trace("OpenAI", "gpt-4o-mini", api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["choices"][0]["message"]["content"]
-                return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
+                return self._parse_raw_json(text, schema=schema) if parse_raw else self._parse_json_response(text, schema=schema)
             elif res.status_code in [429, 403, 401, 400]:
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
@@ -1469,7 +1469,7 @@ Output JSON ONLY with Structured CoT fields:
             "prompt": prompt,
             "stream": False,
             "format": schema.model_json_schema() if schema is not None else "json",
-            "options": {"num_predict": 1200, "temperature": temp, "presence_penalty": 0.6}
+            "options": {"num_predict": 2048, "temperature": temp, "presence_penalty": 0.6}
         }
         t0 = time.time()
         res = requests.post(url, json=payload, timeout=8)
@@ -1477,31 +1477,36 @@ Output JSON ONLY with Structured CoT fields:
         log_api_trace("Ollama", self.ollama_model, "localhost", res.status_code, latency_ms)
         if res.status_code == 200:
             text = res.json()["response"]
-            return self._parse_raw_json(text) if parse_raw else self._parse_json_response(text)
+            return self._parse_raw_json(text, schema=schema) if parse_raw else self._parse_json_response(text, schema=schema)
         return None
 
-    def _parse_raw_json(self, raw_text: str) -> dict[str, Any]:
+    def _parse_raw_json(self, raw_text: str, schema: type[BaseModel] | None = None) -> dict[str, Any]:
         text = raw_text.strip()
-        if "```json" in text:
-            text = text.split("```json")[1].split("```")[0].strip()
-        elif "```" in text:
-            text = text.split("```")[1].split("```")[0].strip()
+        if text.startswith("```"):
+            lines = text.splitlines()
+            if lines and lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].startswith("```"):
+                lines = lines[:-1]
+            text = "\n".join(lines).strip()
 
-        start = text.find('{')
-        end = text.rfind('}')
-        if start != -1 and end != -1:
-            text = text[start:end+1]
+        if schema is not None:
+            try:
+                return schema.model_validate_json(text).model_dump()
+            except Exception as e:
+                logger.warning(f"[AIEngine] Schema validation failed via Pydantic model_validate_json: {e}")
+                raise
 
         try:
             return json.loads(text)
         except Exception as e:
             logger.warning(f"[AIEngine] Failed to parse raw json: {e}")
-            return {}
+            raise
 
-    def _parse_json_response(self, raw_text: str) -> dict[str, Any]:
-        data = self._parse_raw_json(raw_text)
+    def _parse_json_response(self, raw_text: str, schema: type[BaseModel] | None = None) -> dict[str, Any]:
+        data = self._parse_raw_json(raw_text, schema=schema)
         if not data:
-            return {}
+            raise ValueError("Parsed JSON response returned empty dict")
         natural_draft = data.get("natural_draft", "")
         vocab_check = data.get("vocab_check", "")
 
@@ -1553,7 +1558,8 @@ Output JSON ONLY with Structured CoT fields:
                     res = self._call_gemini(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
-                except Exception:
+                except Exception as e:
+                    logger.warning(f"[AIEngine] Gemini ({model}) failed or truncation/validation error: {e}. Failover to next provider.")
                     continue
 
         for key in self.groq_keys:
@@ -1564,7 +1570,8 @@ Output JSON ONLY with Structured CoT fields:
                     res = self._call_groq(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
-                except Exception:
+                except Exception as e:
+                    logger.warning(f"[AIEngine] Groq ({model}) failed or truncation/validation error: {e}. Failover to next provider.")
                     continue
 
         for key in self.openai_keys:
@@ -1574,7 +1581,8 @@ Output JSON ONLY with Structured CoT fields:
                 res = self._call_openai(prompt, key, schema=schema, temp=temp, parse_raw=parse_raw)
                 if res:
                     return res
-            except Exception:
+            except Exception as e:
+                logger.warning(f"[AIEngine] OpenAI failed or truncation/validation error: {e}. Failover to next provider.")
                 continue
 
         if self.ollama_base_url:
@@ -1582,8 +1590,8 @@ Output JSON ONLY with Structured CoT fields:
                 res = self._call_ollama(prompt, schema=schema, temp=temp, parse_raw=parse_raw)
                 if res:
                     return res
-            except Exception:
-                pass
+            except Exception as e:
+                logger.warning(f"[AIEngine] Ollama failed or truncation/validation error: {e}.")
 
         return None
 
