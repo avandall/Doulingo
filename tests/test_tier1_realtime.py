@@ -6,6 +6,7 @@ import time
 
 from app.scoring.features import WordTimestamp
 from app.scoring.tier1_realtime import (
+    AcousticMetricsInput,
     Tier1ScoreResult,
     detect_self_corrections,
     evaluate_tier1,
@@ -186,3 +187,52 @@ def test_evaluate_tier1_custom_config():
 
     result = evaluate_tier1(words, config=custom_config, target_band=6.0)
     assert result.estimated_band >= 4.0
+
+
+def test_acoustic_metrics_input_clamping():
+    """
+    Verifies that AcousticMetricsInput clamps extreme values:
+    - pause_duration_ms > 60000 -> 60000
+    - wpm > 350 -> 350
+    - negative values -> 0.0
+    """
+    # Over-the-limit values
+    inp1 = AcousticMetricsInput(pause_duration_ms=999999.0, wpm=850.0)
+    assert inp1.pause_duration_ms == 60000.0
+    assert inp1.wpm == 350.0
+
+    # Negative values
+    inp2 = AcousticMetricsInput(pause_duration_ms=-100.0, wpm=-50.0)
+    assert inp2.pause_duration_ms == 0.0
+    assert inp2.wpm == 0.0
+
+
+def test_evaluate_tier1_with_acoustic_metrics():
+    """
+    Verifies that evaluate_tier1 incorporates validated acoustic metrics
+    and falls back to ASR values if client metrics are zero or invalid.
+    """
+    token_durations = [
+        (f"word_{i}", float(i) * 0.4, float(i) * 0.4 + 0.35) for i in range(12)
+    ]
+    words = _build_words(token_durations)
+
+    # With valid client acoustic metrics
+    acoustic_data = {
+        "wpm": 140.0,
+        "pause_duration_ms": 1200.0,
+        "accumulated_voiced_duration_ms": 4000.0,
+    }
+    result = evaluate_tier1(words, acoustic_metrics=acoustic_data, target_band=6.0)
+    assert result.wpm == 140.0
+    assert result.pause_ratio > 0.0
+
+    # With extreme out-of-bounds client acoustic metrics (should clamp safely)
+    extreme_data = {
+        "wpm": 9999.0,
+        "pause_duration_ms": 120000.0,
+    }
+    res_extreme = evaluate_tier1(words, acoustic_metrics=extreme_data, target_band=6.0)
+    assert res_extreme.wpm == 350.0
+    assert res_extreme.pause_ratio <= 1.0
+

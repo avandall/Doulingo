@@ -1,42 +1,43 @@
 # CURRENT TASK
 # Task hiện tại đang thực thi — Context cho AI agent
 
-> **Trạng thái:** RUNTIME (Auto-Generated / Synced) | **Cập nhật:** 2026-09-09 23:40
+> **Trạng thái:** RUNTIME (Auto-Generated / Synced) | **Cập nhật:** 2026-09-09 23:45
 
 ---
 
-## 🎯 Task Spec: TASK-003
-### 📌 TASK-003: Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
+## 🎯 Task Spec: TASK-004
+### 📌 TASK-004: Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine
 
 #### Metadata
 ```
-Task ID:         TASK-003
-Task Name:       Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
-Phase:           Phase 2 (Prompt Caching)
-Task Type:       perf
-Priority:        P0-Critical
+Task ID:         TASK-004
+Task Name:       Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine
+Phase:           Phase 3 (WebAssembly Client)
+Task Type:       feat
+Priority:        P1-Normal
 Trạng thái:      [/] IN_PROGRESS
 Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Tối ưu hóa thời gian prefill của Groq/OpenAI xuống < 400ms bằng Prefix Caching, đồng thời giữ Gemini chạy mượt mà ở chế độ throughput tiêu chuẩn.
+- **Why:** Khắc phục tình trạng micro tự ngắt khi học viên ngập ngừng bằng mô hình âm học VAD thuần túy, loại bỏ sự phụ thuộc vào đếm từ của Web Speech API, và chống xung đột mic trên iOS.
 - **What:**
-  1. Tách cấu trúc trong `app/rag/prompt_constructor.py` thành:
-     - `build_static_cacheable_prefix(character_id, level, scenario, scenario_angle)`: Kích thước ~1,200 tokens, giữ nguyên bất biến trong suốt session.
-     - `build_dynamic_turn_suffix(history, user_transcript)`: Chỉ chứa lịch sử đối thoại và câu nói mới nhất.
-  2. Cố định `scenario_angle` ngay từ `start_roleplay_greeting` và lưu vào session, không sinh ngẫu nhiên ở giữa các turns.
-  3. Đảm bảo rolling prune lịch sử chỉ thay đổi phần suffix, không chạm vào prefix.
+  1. Xây dựng State Machine trong `static/js/speech.js`: `LEGACY_FALLBACK` -> `WASM_LOADING` -> `WASM_STAGED` -> `WASM_ACTIVE` (chỉ chuyển trạng thái khi `MIC_STATE == "IDLE"`).
+  2. Tích lũy biến `accumulated_voiced_duration_ms` trong AudioWorklet. Tại $t_{\text{silence}} \ge 3.5\text{s}$:
+     - Nếu $\ge 1500\text{ms}$: Tự động đóng mic và gửi request.
+     - Nếu $< 1500\text{ms}$: Reset trạng thái, không đóng mic.
+  3. Tại backend `app/scoring/tier1_realtime.py`: Thêm Pydantic clamping cho `AcousticMetricsInput` (kẹp `pause_duration_ms <= 60000`, `wpm <= 350`) và fallback về STT timestamps nếu dữ liệu client out-of-bounds.
 
 #### Acceptance Criteria
-- [ ] Static Prefix duy trì độ dài >= 1,024 tokens và nội dung bất biến giữa các turn của cùng một session.
-- [ ] Đo lường TTFT trên Groq/OpenAI giảm xuống < 400ms từ turn 2 trở đi.
-- [ ] Gemini 2.0 Flash xử lý prompt trơn tru mà không bị nghẽn prefill.
+- [ ] Audio Engine State Machine không bao giờ hot-swap AudioWorklet khi mic đang ở trạng thái RECORDING.
+- [ ] Tự động gửi câu trả lời khi khoảng lặng $\ge 3.5\text{s}$ VÀ tổng thời lượng giọng nói $\ge 1.5\text{s}$.
+- [ ] Backend kẹp ngưỡng an toàn, không bị crash bởi dữ liệu âm học bất thường.
 
 #### Scope
-- **Files được sửa/tạo:** `app/rag/prompt_constructor.py`, `app/core/ai_engine.py`, `tests/test_prompt_caching.py`
+- **Files được sửa/tạo:** `static/js/speech.js`, `app/scoring/tier1_realtime.py`, `tests/test_tier1_realtime.py`
 
 #### Verification Commands
 ```bash
-pytest tests/test_prompt_caching.py
+python3 pipeline/scripts/verify.py --quick
 ```
+

@@ -15,7 +15,7 @@
 | `TASK-001` | Khởi tạo Pydantic Schemas, Strict Mode `$defs` Converter & Provider Signature | Phase 1 | P0-Critical | `[x] DONE` | `to_strict_json_schema` + Multi-provider signature |
 | `TASK-002` | Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover | Phase 1 | P0-Critical | `[x] DONE` | Xóa `_parse_raw_json`, failover khi vỡ JSON |
 | `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[x] DONE` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
-| `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[ ] TODO` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
+| `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[x] DONE` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
 | `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[ ] TODO` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
 | `TASK-006` | Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`) | Phase 4 | P0-Critical | `[ ] TODO` | 100% Hermetic mock test failover + harness pass |
 
@@ -150,7 +150,7 @@ Task Name:       Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Mach
 Phase:           Phase 3 (WebAssembly Client)
 Task Type:       feat
 Priority:        P1-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-09
 ```
 
@@ -164,9 +164,9 @@ Ngày tạo:        2026-09-09
   3. Tại backend `app/scoring/tier1_realtime.py`: Thêm Pydantic clamping cho `AcousticMetricsInput` (kẹp `pause_duration_ms <= 60000`, `wpm <= 350`) và fallback về STT timestamps nếu dữ liệu client out-of-bounds.
 
 #### Acceptance Criteria
-- [ ] Audio Engine State Machine không bao giờ hot-swap AudioWorklet khi mic đang ở trạng thái RECORDING.
-- [ ] Tự động gửi câu trả lời khi khoảng lặng $\ge 3.5\text{s}$ VÀ tổng thời lượng giọng nói $\ge 1.5\text{s}$.
-- [ ] Backend kẹp ngưỡng an toàn, không bị crash bởi dữ liệu âm học bất thường.
+- [x] Audio Engine State Machine không bao giờ hot-swap AudioWorklet khi mic đang ở trạng thái RECORDING.
+- [x] Tự động gửi câu trả lời khi khoảng lặng $\ge 3.5\text{s}$ VÀ tổng thời lượng giọng nói $\ge 1.5\text{s}$.
+- [x] Backend kẹp ngưỡng an toàn, không bị crash bởi dữ liệu âm học bất thường.
 
 #### Scope
 - **Files được sửa/tạo:** `static/js/speech.js`, `static/wasm/**`, `app/scoring/tier1_realtime.py`

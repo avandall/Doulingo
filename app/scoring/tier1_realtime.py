@@ -9,6 +9,8 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
+from pydantic import BaseModel, Field, field_validator
+
 from app.scoring.config_loader import get_anchor_points, load_active_anchors
 from app.scoring.features import (
     WordTimestamp,
@@ -20,6 +22,39 @@ from app.scoring.features import (
 )
 
 DifficultyAdjustment = Literal["increase", "hold", "decrease"]
+
+
+class AcousticMetricsInput(BaseModel):
+    """
+    Client-side acoustic metrics received from Silero VAD / AudioWorklet.
+    Implements strict sanity clamping:
+    - pause_duration_ms: clamped <= 60,000ms
+    - wpm: clamped <= 350.0
+    - Fallback to ASR timestamps if client values are completely out of bounds (<0).
+    """
+    pause_duration_ms: float = Field(default=0.0, ge=0.0, le=60000.0)
+    wpm: float = Field(default=0.0, ge=0.0, le=350.0)
+    accumulated_voiced_duration_ms: float = Field(default=0.0, ge=0.0)
+    pauses: int = Field(default=0, ge=0, le=100)
+    pronunciation_score: float = Field(default=85.0, ge=0.0, le=100.0)
+
+    @field_validator("pause_duration_ms", mode="before")
+    @classmethod
+    def clamp_pause_duration(cls, v: Any) -> float:
+        try:
+            val = float(v)
+            return max(0.0, min(60000.0, val))
+        except (ValueError, TypeError):
+            return 0.0
+
+    @field_validator("wpm", mode="before")
+    @classmethod
+    def clamp_wpm(cls, v: Any) -> float:
+        try:
+            val = float(v)
+            return max(0.0, min(350.0, val))
+        except (ValueError, TypeError):
+            return 0.0
 
 SELF_CORRECTION_MARKERS = {
     "i mean",
@@ -94,6 +129,7 @@ def evaluate_tier1(
     avg_asr_confidence: float = 1.0,
     target_band: float = 6.0,
     config: dict[str, Any] | None = None,
+    acoustic_metrics: dict[str, Any] | AcousticMetricsInput | None = None,
 ) -> Tier1ScoreResult:
     """
     Evaluate Tier 1 real-time metrics (<300ms latency requirement).
@@ -104,6 +140,10 @@ def evaluate_tier1(
     - Filler Density (um, uh per 100 words)
     - Self-Correction Count (marker phrases & immediate repetitions)
     - MTLD (Lexical Diversity) if word count >= 10, else None
+
+    Integrates `acoustic_metrics` from Client-side Silero VAD / AudioWorklet when available:
+    - Clamps pause_duration_ms <= 60000, wpm <= 350 via AcousticMetricsInput.
+    - Falls back to ASR timestamps if client acoustic data is out of bounds or missing.
 
     Interpolates sub-bands using active anchor thresholds from `config_loader`.
     Outputs `difficulty_adjustment` signal ("increase" | "hold" | "decrease"):
@@ -117,15 +157,40 @@ def evaluate_tier1(
     if config is None:
         config = load_active_anchors()
 
+    # Parse and validate acoustic metrics with Pydantic sanity bounds
+    validated_acoustic: AcousticMetricsInput | None = None
+    if acoustic_metrics:
+        if isinstance(acoustic_metrics, AcousticMetricsInput):
+            validated_acoustic = acoustic_metrics
+        elif isinstance(acoustic_metrics, dict):
+            try:
+                validated_acoustic = AcousticMetricsInput(**acoustic_metrics)
+            except Exception:
+                validated_acoustic = None
+
+    # Calculate raw feature values from ASR timestamps
+    wpm_asr = compute_wpm(words)
+    pause_ratio_asr = compute_pause_ratio(words)
+
+    # Use client acoustic WPM if valid (>0 and <=350), otherwise fallback to ASR
+    if validated_acoustic and validated_acoustic.wpm > 0.0:
+        wpm = validated_acoustic.wpm
+    else:
+        wpm = wpm_asr
+
+    # Use client pause duration if valid, otherwise fallback to ASR pause ratio
+    if validated_acoustic and validated_acoustic.pause_duration_ms > 0.0 and words:
+        total_duration = max(0.1, (words[-1].end_time - words[0].start_time)) if words else 1.0
+        pause_ratio = min(1.0, (validated_acoustic.pause_duration_ms / 1000.0) / total_duration)
+    else:
+        pause_ratio = pause_ratio_asr
+
     # Extract tokens for MTLD & self-correction
     if transcript:
         tokens = [t for t in transcript.split() if t.strip(".,!?")]
     else:
         tokens = [w.word for w in words if w.word.strip(".,!?")]
 
-    # Calculate raw feature values
-    wpm = compute_wpm(words)
-    pause_ratio = compute_pause_ratio(words)
     filler_density = compute_filler_density(words)
     mtld = compute_mtld(tokens) if len(tokens) >= 10 else None
     self_correction_count = detect_self_corrections(words)

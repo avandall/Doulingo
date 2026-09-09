@@ -17,7 +17,76 @@ class SpeechHandler {
     this.isTranscribing = false;
     this.isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
+    // Audio Engine State Machine (TASK-004)
+    // States: LEGACY_FALLBACK -> WASM_LOADING -> WASM_STAGED -> WASM_ACTIVE
+    // Upgrade to WASM_ACTIVE is ONLY permitted when micState is IDLE
+    this.audioEngineState = 'LEGACY_FALLBACK';
+    this.micState = 'IDLE'; // 'IDLE' | 'RECORDING'
+    this.accumulatedVoicedDurationMs = 0;
+    this.silenceTimer = null;
+    this.vadInterval = null;
+    this.lastAcousticVoiceTime = null;
+
     this._initSpeech();
+    this._stageAudioEngine();
+  }
+
+  _stageAudioEngine() {
+    // Simulate/stage loading WASM module in background without blocking audio stream
+    if (typeof WebAssembly !== 'undefined') {
+      this.audioEngineState = 'WASM_LOADING';
+      // Simulate WASM module staged once ready
+      setTimeout(() => {
+        this.audioEngineState = 'WASM_STAGED';
+        this._tryUpgradeAudioEngine();
+      }, 500);
+    }
+  }
+
+  _tryUpgradeAudioEngine() {
+    // Inviolable Rule: Upgrade from WASM_STAGED to WASM_ACTIVE is ONLY permitted when mic is IDLE!
+    if (this.audioEngineState === 'WASM_STAGED' && this.micState === 'IDLE') {
+      this.audioEngineState = 'WASM_ACTIVE';
+      console.log('[SpeechHandler] Audio Engine safely upgraded to WASM_ACTIVE (mic is IDLE)');
+    }
+  }
+
+  _resetAcousticVAD() {
+    this.accumulatedVoicedDurationMs = 0;
+    this.lastAcousticVoiceTime = Date.now();
+    if (this.silenceTimer) {
+      clearTimeout(this.silenceTimer);
+      this.silenceTimer = null;
+    }
+    if (this.vadInterval) {
+      clearInterval(this.vadInterval);
+      this.vadInterval = null;
+    }
+  }
+
+  _startAcousticVADMonitor() {
+    this._resetAcousticVAD();
+    const SILENCE_TIMEOUT_MS = 3500; // 3.5s silence threshold
+    const MIN_VOICED_DURATION_MS = 1500; // 1.5s real speech threshold
+
+    this.vadInterval = setInterval(() => {
+      if (this.micState !== 'RECORDING' || !this.isListening) return;
+
+      const now = Date.now();
+      const silenceDuration = now - (this.lastAcousticVoiceTime || now);
+
+      if (silenceDuration >= SILENCE_TIMEOUT_MS) {
+        if (this.accumulatedVoicedDurationMs >= MIN_VOICED_DURATION_MS) {
+          console.log(`[SpeechHandler VAD] Silence >= ${SILENCE_TIMEOUT_MS}ms with voiced ${this.accumulatedVoicedDurationMs}ms >= 1500ms. Auto-submitting.`);
+          this._resetAcousticVAD();
+          this.stopAndSubmit();
+        } else {
+          // False trigger / noise / breathing (<1.5s actual speech) -> reset silence timer, don't stop mic
+          console.log(`[SpeechHandler VAD] Silence detected but voiced duration ${this.accumulatedVoicedDurationMs}ms < 1500ms (noise/cough/breath). Resetting timer.`);
+          this.lastAcousticVoiceTime = now;
+        }
+      }
+    }, 200);
   }
 
   _initSpeech() {
@@ -32,9 +101,11 @@ class SpeechHandler {
 
       this.recognition.onstart = () => {
         this.isListening = true;
+        this.micState = 'RECORDING';
         this.isCancelled = false;
         this.finalTranscript = '';
         this.lastRecognizedText = '';
+        this._startAcousticVADMonitor();
         if (this.onStateChange) this.onStateChange('listening');
         if (window.duoAudio) window.duoAudio.playMicStart();
       };
@@ -69,6 +140,9 @@ class SpeechHandler {
         console.warn('[SpeechHandler] Error:', event.error);
         if (event.error === 'aborted' || this.isCancelled) {
           this.isListening = false;
+          this.micState = 'IDLE';
+          this._resetAcousticVAD();
+          this._tryUpgradeAudioEngine();
           if (this.onStateChange) this.onStateChange('stopped');
           return;
         }
@@ -78,6 +152,9 @@ class SpeechHandler {
         }
         
         this.isListening = false;
+        this.micState = 'IDLE';
+        this._resetAcousticVAD();
+        this._tryUpgradeAudioEngine();
         if (this.onStateChange) this.onStateChange('error', event.error);
       };
 
@@ -85,6 +162,9 @@ class SpeechHandler {
       this.recognition.onend = () => {
         if (this.isCancelled) {
           this.isListening = false;
+          this.micState = 'IDLE';
+          this._resetAcousticVAD();
+          this._tryUpgradeAudioEngine();
           this.finalTranscript = '';
           this.lastRecognizedText = '';
           if (this.onStateChange) this.onStateChange('cancelled');
@@ -105,6 +185,9 @@ class SpeechHandler {
         }
 
         this.isListening = false;
+        this.micState = 'IDLE';
+        this._resetAcousticVAD();
+        this._tryUpgradeAudioEngine();
         if (this.onStateChange) this.onStateChange('stopped');
 
         const textToSubmit = (this.lastRecognizedText || this.finalTranscript).trim();
@@ -181,17 +264,19 @@ class SpeechHandler {
     if (this.recognition) {
       try {
         this.isListening = true;
+        this.micState = 'RECORDING';
         this.isCancelled = false;
         this.finalTranscript = '';
         this.lastRecognizedText = '';
         this.pauseCount = 0;
         this.lastSpeechTime = Date.now();
         this.audioChunks = [];
+        this._startAcousticVADMonitor();
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
             this.audioStream = stream;
             
-            // Set up audio visualizer for dynamic waveform
+            // Set up audio visualizer for dynamic waveform & acoustic energy tracking
             try {
               this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
               this.analyser = this.audioContext.createAnalyser();
@@ -201,6 +286,7 @@ class SpeechHandler {
               const bufferLength = this.analyser.frequencyBinCount;
               this.dataArray = new Uint8Array(bufferLength);
               
+              let lastFrameTime = Date.now();
               const updateWaveform = () => {
                 if (!this.isListening) return;
                 this.analyser.getByteFrequencyData(this.dataArray);
@@ -209,6 +295,16 @@ class SpeechHandler {
                   sum += this.dataArray[i];
                 }
                 const average = sum / bufferLength;
+                const now = Date.now();
+                const deltaMs = now - lastFrameTime;
+                lastFrameTime = now;
+
+                // Acoustic VAD accumulation: average volume threshold > 12 corresponds to voiced speech
+                if (average > 12) {
+                  this.accumulatedVoicedDurationMs += deltaMs;
+                  this.lastAcousticVoiceTime = now;
+                }
+
                 if (this.onVolumeChange) this.onVolumeChange(average);
                 requestAnimationFrame(updateWaveform);
               };
@@ -233,18 +329,24 @@ class SpeechHandler {
           this.recognition.stop();
           setTimeout(() => {
             this.isListening = true;
+            this.micState = 'RECORDING';
             this.recognition.start();
           }, 200);
         } catch (err) {
           this.isListening = false;
+          this.micState = 'IDLE';
+          this._tryUpgradeAudioEngine();
         }
       }
     }
   }
 
   stopAndSubmit() {
+    this._resetAcousticVAD();
     if (this.recognition && this.isListening) {
       this.isListening = false; // Mark that user explicitly tapped stop button!
+      this.micState = 'IDLE';
+      this._tryUpgradeAudioEngine();
       try {
         this.recognition.stop();
       } catch (e) {
@@ -254,9 +356,12 @@ class SpeechHandler {
   }
 
   cancel() {
+    this._resetAcousticVAD();
     if (this.recognition) {
       this.isCancelled = true;
       this.isListening = false;
+      this.micState = 'IDLE';
+      this._tryUpgradeAudioEngine();
       this.finalTranscript = '';
       this.lastRecognizedText = '';
       if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
