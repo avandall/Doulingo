@@ -119,10 +119,19 @@ def run_python_checks(
             or os.path.exists("pipeline/tests")
         )
         if has_tests:
+            effective_target = test_target
+            if not effective_target:
+                ct_file = Path("pipeline/docs/runtime/CURRENT_TASK.md")
+                if ct_file.exists():
+                    import re
+                    matches = re.findall(r"tests/test_[a-zA-Z0-9_]+\.py", ct_file.read_text(encoding="utf-8", errors="ignore"))
+                    if matches:
+                        effective_target = matches[0]
+
             pytest_cmd = ["pytest", "--tb=short", "-q"]
-            if test_target:
-                pytest_cmd.append(test_target)
-            timeout_sec = 60 if test_target else 300
+            if effective_target:
+                pytest_cmd.append(effective_target)
+            timeout_sec = 60 if effective_target else 300
             code, out = run_command(pytest_cmd, timeout=timeout_sec)
             results.append(("Python: Pytest (Runtime)", code == 0, "All unit tests passed ✓" if code == 0 else truncate_log(out)))
         else:
