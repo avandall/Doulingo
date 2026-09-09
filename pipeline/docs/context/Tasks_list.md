@@ -16,7 +16,7 @@
 | `TASK-002` | Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover | Phase 1 | P0-Critical | `[x] DONE` | Xóa `_parse_raw_json`, failover khi vỡ JSON |
 | `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[x] DONE` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
 | `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[x] DONE` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
-| `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[ ] TODO` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
+| `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[x] DONE` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
 | `TASK-006` | Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`) | Phase 4 | P0-Critical | `[ ] TODO` | 100% Hermetic mock test failover + harness pass |
 
 > **Quy định trạng thái:**
@@ -187,7 +187,7 @@ Task Name:       Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 
 Phase:           Phase 3 (WebAssembly Client)
 Task Type:       feat
 Priority:        P1-Normal
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-09
 ```
 
@@ -200,9 +200,9 @@ Ngày tạo:        2026-09-09
   4. Cơ chế Progressive Enhancement: nếu WASM chưa sẵn sàng hoặc từ không có trong 3,000 từ cốt lõi $\rightarrow$ tự động gọi API `/api/dictionary/lookup`.
 
 #### Acceptance Criteria
-- [ ] Script `scripts/build_vocab_wasm_db.py` chạy độc lập và sinh ra file SQLite hợp lệ.
-- [ ] Tra cứu 3,000 từ cốt lõi trên client phản hồi $< 1\text{ms}$ (0ms network round-trip).
-- [ ] Tự động fallback về API backend đối với các từ hiếm không nằm trong database RAM.
+- [x] Script `scripts/build_vocab_wasm_db.py` chạy độc lập và sinh ra file SQLite hợp lệ.
+- [x] Tra cứu 3,000 từ cốt lõi trên client phản hồi $< 1\text{ms}$ (0ms network round-trip).
+- [x] Tự động fallback về API backend đối với các từ hiếm không nằm trong database RAM.
 
 #### Scope
 - **Files được sửa/tạo:** `scripts/build_vocab_wasm_db.py`, `static/js/dict_wasm.js`, `static/data/vocab_core.sqlite`, `static/js/app.js`

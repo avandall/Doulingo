@@ -1347,6 +1347,18 @@ class DuoSpeakApp {
       return;
     }
 
+    // TASK-005: 0ms SQLite WASM In-RAM Lookup
+    if (window.dictWasm && typeof window.dictWasm.lookup === 'function') {
+      const wasmMatch = window.dictWasm.lookup(word);
+      if (wasmMatch && wasmMatch.translation) {
+        if (phoneticEl) phoneticEl.textContent = wasmMatch.phonetic || `/${word}/`;
+        if (transEl) transEl.textContent = wasmMatch.translation;
+        this.wordCache.set(cacheKey, wasmMatch);
+        this.updateVocabBadgeCount();
+        return;
+      }
+    }
+
     try {
       const res = await fetch(this.apiUrl(`/api/translate_word?word=${encodeURIComponent(word)}&target_lang=${this.targetLang}`));
       const data = await res.json();
