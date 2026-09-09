@@ -2,5 +2,5 @@
 # Bảng trạng thái tổng quan vòng lặp
 
 > **Trạng thái:** RUNTIME (Mutable by AI Agent / harness.sh)
-> Trạng thái hiện tại: DONE — TASK-002 đã hoàn thành 100% và PASS verification
-> Active Task: TASK-002 - Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover [x]
+> Trạng thái hiện tại: IN_PROGRESS — TASK-003 đang được thực thi
+> Active Task: TASK-003 - Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) [/]

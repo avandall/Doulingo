@@ -1,50 +1,42 @@
 # CURRENT TASK
 # Task hiện tại đang thực thi — Context cho AI agent
 
-> **Trạng thái:** RUNTIME (Auto-Generated / Synced by harness.sh) | **Cập nhật:** 2026-09-09 23:08
+> **Trạng thái:** RUNTIME (Auto-Generated / Synced) | **Cập nhật:** 2026-09-09 23:40
 
 ---
 
-## 🎯 Task Spec: TASK-002
-### 📌 TASK-002: Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover
+## 🎯 Task Spec: TASK-003
+### 📌 TASK-003: Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
 
 #### Metadata
 ```
-Task ID:         TASK-002
-Task Name:       Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover
-Phase:           Phase 1 (Constrained Decoding)
-Task Type:       refactor
+Task ID:         TASK-003
+Task Name:       Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
+Phase:           Phase 2 (Prompt Caching)
+Task Type:       perf
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [/] IN_PROGRESS
 Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Ngân sách token cũ (1200) dễ bị tràn ở CEFR C1/C2 làm cắt cụt JSON. Cần nâng ngân sách lên 2048, bóp gọn CoT, xóa bỏ `_parse_raw_json` regex và xây dựng cơ chế failover khi vỡ schema.
+- **Why:** Tối ưu hóa thời gian prefill của Groq/OpenAI xuống < 400ms bằng Prefix Caching, đồng thời giữ Gemini chạy mượt mà ở chế độ throughput tiêu chuẩn.
 - **What:**
-  1. Nâng `max_tokens = 2048` trong tất cả các payload provider.
-  2. Rút gọn prompt CoT (`natural_draft` và `vocab_check` tối đa 20 từ mỗi trường).
-  3. Xóa bỏ logic regex cắt chuỗi trong `_parse_raw_json`, thay bằng `schema.model_validate_json(raw_text).model_dump()`.
-  4. Bổ sung cơ chế: nếu output bị cắt cụt hoặc `ValidationError`, ghi log cảnh báo và tự động chuyển sang provider kế tiếp trong Pool (Failover Policy).
+  1. Tách cấu trúc trong `app/rag/prompt_constructor.py` thành:
+     - `build_static_cacheable_prefix(character_id, level, scenario, scenario_angle)`: Kích thước ~1,200 tokens, giữ nguyên bất biến trong suốt session.
+     - `build_dynamic_turn_suffix(history, user_transcript)`: Chỉ chứa lịch sử đối thoại và câu nói mới nhất.
+  2. Cố định `scenario_angle` ngay từ `start_roleplay_greeting` và lưu vào session, không sinh ngẫu nhiên ở giữa các turns.
+  3. Đảm bảo rolling prune lịch sử chỉ thay đổi phần suffix, không chạm vào prefix.
 
 #### Acceptance Criteria
-- [ ] Xóa bỏ hoàn toàn mã nguồn regex cắt chuỗi JSON trong `_parse_raw_json`.
-- [ ] Khi model trả về chuỗi JSON chuẩn, Pydantic parse thành công 100%.
-- [ ] Giả lập chuỗi JSON bị cắt cụt hoặc lỗi cú pháp: hệ thống không crash mà tự động chuyển sang provider tiếp theo trong Pool.
+- [ ] Static Prefix duy trì độ dài >= 1,024 tokens và nội dung bất biến giữa các turn của cùng một session.
+- [ ] Đo lường TTFT trên Groq/OpenAI giảm xuống < 400ms từ turn 2 trở đi.
+- [ ] Gemini 2.0 Flash xử lý prompt trơn tru mà không bị nghẽn prefill.
 
 #### Scope
-- **Files được sửa/tạo:** `app/core/ai_engine.py`, `tests/test_ai_engine.py`
+- **Files được sửa/tạo:** `app/rag/prompt_constructor.py`, `app/core/ai_engine.py`, `tests/test_prompt_caching.py`
 
 #### Verification Commands
 ```bash
-pytest tests/test_ai_engine.py
+pytest tests/test_prompt_caching.py
 ```
-
----
-
----
-
-## 🛡️ JIT Environment Context
-- **Tech Stack:** ```,Runtime Backend:     Python 3.11+ (WSL Linux Ubuntu) Web Framework:       FastAPI >= 0.115.0 + Uvicorn (ASGI),Validation Standard: Pydantic v2 (Single Source of Truth cho toàn bộ LLM outputs) LLM Providers:       - Google Gemini (gemini-2.0-flash, gemini-1.5-flash) via responseSchema,                     - Groq (llama-3.3-70b-versatile, llama-3.1-8b-instant) via json_schema strict                      - OpenAI (gpt-4o-mini) via json_schema strict,                     - Ollama (local fallback: llama3, qwen2.5) via format schema
-- **Scope Boundaries:** ```,app/core/schemas.py                      # [TẠO MỚI] Khai báo các Pydantic Schemas & to_strict_json_schema app/core/ai_engine.py                    # [CHỈNH SỬA] Tích hợp responseSchema, strict mode, token budget 2048,app/rag/prompt_constructor.py            # [CHỈNH SỬA] Tách Static Prefix (~1,200 tokens) và Dynamic Suffix app/scoring/tier1_realtime.py            # [CHỈNH SỬA] Tiếp nhận và kẹp ngưỡng acoustic signals từ Client VAD,app/scoring/tier2_deep.py                # [CHỈNH SỬA] Chuẩn hóa output qua Pydantic schema scripts/build_vocab_wasm_db.py           # [TẠO MỚI] Offline script trích xuất SQLite vocab core,static/js/speech.js                      # [CHỈNH SỬA] Nhúng Audio State Machine & Silero VAD WASM
-- **Last Synced:** 2026-09-09 23:08:57

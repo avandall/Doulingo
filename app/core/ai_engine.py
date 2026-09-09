@@ -28,6 +28,10 @@ from app.core.heuristic_checker import HeuristicChecker
 from app.core.micro_llm_rewriter import MicroLLMRewriter
 from app.core.prompt_factory import get_prompt_factory
 from app.core.schemas import to_strict_json_schema
+from app.rag.prompt_constructor import (
+    build_dynamic_turn_suffix,
+    build_static_cacheable_prefix,
+)
 from app.rag.retrieval import retrieve_dialogues
 from app.scenarios import get_scenario
 
@@ -106,6 +110,7 @@ class AIEngine:
         self.reload_keys()
         self.heuristic_checker = HeuristicChecker()
         self.micro_llm_rewriter = MicroLLMRewriter(self.heuristic_checker)
+        self._session_angles: dict[str, str] = {}
         self._load_topic_bank()
 
     def _load_topic_bank(self):
@@ -332,8 +337,11 @@ RULES (same style as the example above):
             raw_angles = topic_info.get("scenario_angles") if isinstance(topic_info, dict) else None
             angles_pool: list[str] = list(raw_angles) if isinstance(raw_angles, (list, tuple)) else list(SCENARIO_ANGLES)
             angle = random.choice(angles_pool)
+            self._session_angles[scenario_id] = angle
             angle_block = f"\nDynamic Session Angle: {angle}\nImprovise an open, creative roleplay! Bring unexpected twists, humorous situations, and vivid character interactions. Never use repetitive templates."
         else:
+            angle = None
+            self._session_angles.pop(scenario_id, None)
             angle_block = "\nKeep the dialogue open, warm, and natural without forcing an artificial roleplay angle."
 
         prompt = f"""{mb_system_prompt}
@@ -1230,23 +1238,8 @@ Output JSON ONLY:
             role = "User" if h.get("role") == "user" else f"{character['name']}"
             hist_str += f"{role}: \"{h.get('content')}\"\n"
 
-        prompt_factory = get_prompt_factory()
-        scenario_key = scenario.get("id") or scenario.get("title", "")
-        mb_system_prompt = prompt_factory.build_system_prompt(
-            topic_id=scenario_key,
-            level=f"{level}",
-            character_id=character.get("id", "lily")
-        )
-
-        level_block = self._build_level_constraint_block(level)
-        cfg = self._get_level_config(level)
-        trait = character.get("trait", "Friendly")
-        style = character.get("speech_style", "Conversational")
-
-        story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
-
-        # RAG Layer Integration (retrieve_dialogues from custom_topics.db)
-        rag_section = ""
+        # RAG dialogues retrieval
+        dialogues = None
         try:
             raw_tags = [scenario.get("id"), scenario.get("title")]
             title = scenario.get("title", "")
@@ -1261,74 +1254,27 @@ Output JSON ONLY:
                 band_max=band_max,
                 limit=3
             )
-            if dialogues:
-                rag_lines = [
-                    f'- [Band {d.band_level}] AI: "{d.ai_line}" | User Model Answer: "{d.user_model_answer}"'
-                    for d in dialogues
-                ]
-                rag_section = (
-                    "=== REFERENCE DIALOGUES FROM BOOKS (Use for vocabulary & topic inspiration) ===\n"
-                    + "\n".join(rag_lines)
-                    + "\n=== END REFERENCE DIALOGUES ===\n\n"
-                )
         except Exception:
-            rag_section = ""
+            dialogues = None
 
-        return f"""{mb_system_prompt}
+        scenario_id = scenario.get("id") or scenario.get("title", "")
+        scenario_angle = self._session_angles.get(scenario_id)
 
-{rag_section}CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
-DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
-DO NOT INTRODUCE YOURSELF IN CONVERSATION.
+        static_prefix = build_static_cacheable_prefix(
+            scenario=scenario,
+            character=character,
+            level=level,
+            scenario_angle=scenario_angle,
+            rag_dialogues=dialogues,
+        )
 
-CRITICAL RULE FOR corrected_text:
-"corrected_text" MUST BE THE DIRECT GRAMMATICAL FIX OF THE USER'S EXACT SPOKEN SENTENCE ("{user_transcript}").
-PRESERVE THE USER'S EXACT MEANING, OPINION, AND DECISION 100%!
+        dynamic_suffix = build_dynamic_turn_suffix(
+            history_str=hist_str.strip(),
+            user_transcript=user_transcript,
+            turn_count=turn_count,
+        )
 
-SMART CONVERSATION DIRECTIVES & OPEN QUESTION MANDATE (MUST OBEY):
-1. ACTIVE LISTENING & EMPATHETIC MIRRORING DIRECTIVE:
-   - Begin your response by actively reflecting the user's emotion or specific idea ("I hear how excited/frustrated you are about...", "That's such a great point about..."). Extract and validate at least 1 specific point or feeling from what the user just said in your opening sentence before adding your own thoughts.
-2. ALWAYS END YOUR TURN WITH AN OPEN-ENDED QUESTION:
-   - NEVER end your turn with just an affirmative statement, agreement, or comment! If you do not ask a question, the conversation dies.
-   - Every single response MUST conclude with a compelling, OPEN-ENDED question (asking 'why', 'how', 'what led to...', 'what would you do if...', etc.) that inspires the user to speak more and share stories/details.
-3. AUTHENTIC DUOLINGO ASR PHONETIC CLARIFICATION ("did you mean X? Is that right?"):
-   - The user's input "{user_transcript}" is transcribed from a microphone via Speech-to-Text (ASR).
-   - Because of learner pronunciation errors or accents, the ASR may transcribe homophones or acoustically similar words (e.g., 'important' -> 'in portal', 'think' -> 'sink', 'beach' -> 'bitch', 'sheet' -> 'seat').
-   - NEVER complain or say you don't understand an STT misrecognition!
-   - Instead, naturally GUESS the user's intended word, politely CONFIRM it in character in your spoken reply (e.g., "Oh, did you mean 'important'? Is that right? Because I agree that..."), and seamlessly continue your response based on your guess!
-   - In "user_feedback", praise their effort and give a gentle tip in Vietnamese on pronouncing that word clearer so ASR hears it accurately next time.
-4. EMPATHETIC FEEDBACK & GENTLE GRAMMAR/PRONUNCIATION GUIDANCE:
-   - Provide warm, supportive feedback in "user_feedback" (grammar_status, corrected_text, native_phrasing). Encourage the learner's effort, celebrate progress, and explain corrections gently without being overly critical or pedantic.
-5. STRICT ANTI-REPETITION (NEVER ASK PREVIOUSLY DISCUSSED TOPICS):
-   - NEVER repeat a question or circle back to an idea that was already asked or answered in the CONVERSATION HISTORY! Re-asking the same question/topic in slightly different words ("hỏi tới hỏi lui 1 vấn đề") is a CRITICAL ERROR.
-   - Actively drive the dialogue FORWARD to a brand-new angle, an unexpected plot twist, or a fresh sub-topic every single turn.
-6. UNSCRIPTED OPEN STORYTELLING: Follow story guide: '{story_guide}'. Improvise dynamic plot twists, humorous surprises, and unscripted developments!
-7. BE PROACTIVE WITH SUGGESTIONS: If the user asks for recommendations or choices, immediately provide specific, interesting suggestions with reasons, then ask an open-ended question about their preference.
-{level_block}
-
-PERMANENT ROLE: You are {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
-PERMANENT TOPIC: "{scenario['title']}" - {scenario.get('description', '')}. Story Guide: {story_guide}.
-TURN NUMBER: {turn_count}.
-
-CONVERSATION HISTORY SO FAR:
-{hist_str}
-USER JUST SAID: "{user_transcript}"
-
-TASK:
-1. Reply in 100% STANDARD NATURAL ENGLISH as {character['name']}. Your response MUST be between {cfg['min_words']} and {cfg['max_words']} words total (strictly obeying Level {level} - {cfg['cefr']} length and vocabulary rules). Express a rich 2-3 sentence thought/reaction matching the Level {level} example above, and end with ONE FRESH OPEN-ENDED QUESTION.
-2. REWRITE USER SENTENCE ACCURATELY: In "corrected_text", fix ONLY grammar/spelling of "{user_transcript}" while preserving their exact meaning 100%. In "native_phrasing", show how a native speaker would say that exact thought.
-
-Output JSON ONLY with Structured CoT fields:
-{{
-  "natural_draft": "Your raw initial draft of response thoughts",
-  "vocab_check": "Self-audit verifying vocabulary against Level {level} ceiling and word count constraints",
-  "final_response": "Polished response in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules",
-  "user_feedback": {{
-    "grammar_status": "Clean & Clear" or brief fix note,
-    "corrected_text": "Grammatically corrected version of user's sentence preserving exact meaning",
-    "native_phrasing": "Direct native speaker English rewrite of user's sentence",
-    "duo_reaction": "celebrate"|"happy"|"encouraging"
-  }}
-}}"""
+        return f"{static_prefix}\n\n{dynamic_suffix}"
 
     def _call_gemini(
         self,

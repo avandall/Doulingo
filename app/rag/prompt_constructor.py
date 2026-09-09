@@ -197,3 +197,138 @@ def construct_messages(
         messages.append({"role": "user", "content": user_utterance})
 
     return messages
+
+
+def build_static_cacheable_prefix(
+    scenario: dict[str, Any],
+    character: dict[str, Any],
+    level: int = 1,
+    scenario_angle: str | None = None,
+    rag_dialogues: list[Any] | None = None,
+) -> str:
+    """
+    Constructs the 100% Immutable Static Cacheable Prefix (~1,200 tokens).
+    Covers Persona, Level Constraints, RAG Dialogues, Directives & Task Instructions.
+    Designed for zero cache-busting and >=1,024 token count for Groq/OpenAI KV-Cache optimization.
+    """
+    from app.core.level_config import LEVEL_CONFIGS
+    from app.core.prompt_factory import get_prompt_factory
+
+    lvl = max(1, min(20, int(level)))
+    cfg = LEVEL_CONFIGS.get(lvl, LEVEL_CONFIGS[1])
+    scenario_key = scenario.get("id") or scenario.get("title", "")
+
+    # 1. Base Domain System Prompt from Prompt Factory
+    prompt_factory = get_prompt_factory()
+    mb_system_prompt = prompt_factory.build_system_prompt(
+        topic_id=scenario_key,
+        level=f"{lvl}",
+        character_id=character.get("id", "lily")
+    )
+
+    # 2. RAG Section (Book Reference Dialogues)
+    rag_section = ""
+    if rag_dialogues:
+        rag_lines = [
+            f'- [Band {d.band_level}] AI: "{d.ai_line}" | User Model Answer: "{d.user_model_answer}"'
+            for d in rag_dialogues
+        ]
+        rag_section = (
+            "=== REFERENCE DIALOGUES FROM BOOKS (Use for vocabulary & topic inspiration) ===\n"
+            + "\n".join(rag_lines)
+            + "\n=== END REFERENCE DIALOGUES ===\n\n"
+        )
+
+    # 3. Dynamic Scenario Angle (Fixed for the entire session)
+    angle_block = ""
+    if scenario_angle:
+        angle_block = f"\nDynamic Session Angle: {scenario_angle}\nImprovise an open, creative roleplay! Bring unexpected twists, humorous situations, and vivid character interactions. Never use repetitive templates."
+
+    story_guide = scenario.get("open_story_guide", "Improvise an exciting, unscripted roleplay with unexpected surprises and plot twists.")
+    trait = character.get("trait", "Friendly")
+    style = character.get("speech_style", "Conversational")
+
+    # 4. Strict Level Constraints
+    level_block = f"""=== STRICT DIFFICULTY ENFORCEMENT: LEVEL {lvl}/20 ({cfg['cefr']}) ===
+YOU MUST WRITE EXACTLY LIKE THE EXAMPLE BELOW. DO NOT DEVIATE.
+
+EXAMPLE OF A PERFECT LEVEL {lvl} RESPONSE:
+"{cfg['example_response']}"
+
+RULES (same style as the example above):
+- LENGTH: Between {cfg['min_words']} and {cfg['max_words']} words. COUNT YOUR WORDS.
+- VOCABULARY: {cfg['vocab_tier']}
+- GRAMMAR: {cfg['grammar_allowed']}
+=== END LEVEL RULES ==="""
+
+    # Assemble Static Prefix
+    prefix = f"""{mb_system_prompt}
+
+{rag_section}CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
+DO NOT USE ANY FOREIGN GREETINGS OR LOCAL WORDS.
+DO NOT INTRODUCE YOURSELF IN CONVERSATION.
+
+PERMANENT ROLE: You are {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
+PERMANENT TOPIC: "{scenario.get('title', 'English Practice')}" - {scenario.get('description', '')}.
+STORY GUIDE: {story_guide}{angle_block}
+
+SMART CONVERSATION DIRECTIVES & OPEN QUESTION MANDATE (MUST OBEY):
+1. ACTIVE LISTENING & EMPATHETIC MIRRORING DIRECTIVE:
+   - Begin your response by actively reflecting the user's emotion or specific idea ("I hear how excited/frustrated you are about...", "That's such a great point about..."). Extract and validate at least 1 specific point or feeling from what the user just said in your opening sentence before adding your own thoughts.
+2. ALWAYS END YOUR TURN WITH AN OPEN-ENDED QUESTION:
+   - NEVER end your turn with just an affirmative statement, agreement, or comment! If you do not ask a question, the conversation dies.
+   - Every single response MUST conclude with a compelling, OPEN-ENDED question (asking 'why', 'how', 'what led to...', 'what would you do if...', etc.) that inspires the user to speak more and share stories/details.
+3. AUTHENTIC DUOLINGO ASR PHONETIC CLARIFICATION ("did you mean X? Is that right?"):
+   - The user's input is transcribed from a microphone via Speech-to-Text (ASR).
+   - Because of learner pronunciation errors or accents, the ASR may transcribe homophones or acoustically similar words (e.g., 'important' -> 'in portal', 'think' -> 'sink', 'beach' -> 'bitch', 'sheet' -> 'seat').
+   - NEVER complain or say you don't understand an STT misrecognition!
+   - Instead, naturally GUESS the user's intended word, politely CONFIRM it in character in your spoken reply (e.g., "Oh, did you mean 'important'? Is that right? Because I agree that..."), and seamlessly continue your response based on your guess!
+   - In "user_feedback", praise their effort and give a gentle tip in Vietnamese on pronouncing that word clearer so ASR hears it accurately next time.
+4. EMPATHETIC FEEDBACK & GENTLE GRAMMAR/PRONUNCIATION GUIDANCE:
+   - Provide warm, supportive feedback in "user_feedback" (grammar_status, corrected_text, native_phrasing). Encourage the learner's effort, celebrate progress, and explain corrections gently without being overly critical or pedantic.
+5. STRICT ANTI-REPETITION (NEVER ASK PREVIOUSLY DISCUSSED TOPICS):
+   - NEVER repeat a question or circle back to an idea that was already asked or answered in the CONVERSATION HISTORY! Re-asking the same question/topic in slightly different words ("hỏi tới hỏi lui 1 vấn đề") is a CRITICAL ERROR.
+   - Actively drive the dialogue FORWARD to a brand-new angle, an unexpected plot twist, or a fresh sub-topic every single turn.
+6. UNSCRIPTED OPEN STORYTELLING: Follow story guide: '{story_guide}'. Improvise dynamic plot twists, humorous surprises, and unscripted developments!
+7. BE PROACTIVE WITH SUGGESTIONS: If the user asks for recommendations or choices, immediately provide specific, interesting suggestions with reasons, then ask an open-ended question about their preference.
+{level_block}
+
+TASK & OUTPUT FORMAT SPECIFICATION:
+1. Reply in 100% STANDARD NATURAL ENGLISH as {character['name']}. Your response MUST be between {cfg['min_words']} and {cfg['max_words']} words total (strictly obeying Level {lvl} - {cfg['cefr']} length and vocabulary rules). Express a rich 2-3 sentence thought/reaction matching the Level {lvl} example above, and end with ONE FRESH OPEN-ENDED QUESTION.
+2. REWRITE USER SENTENCE ACCURATELY: In "corrected_text", fix ONLY grammar/spelling of the user's sentence while preserving their exact meaning 100%. In "native_phrasing", show how a native speaker would say that exact thought.
+
+Output JSON ONLY with Structured CoT fields (Keep natural_draft and vocab_check concise, max 20 words each):
+{{
+  "natural_draft": "Concise 1-sentence draft thought (max 20 words)",
+  "vocab_check": "1-sentence ceiling audit verifying Level {lvl} bounds (max 20 words)",
+  "final_response": "Polished response in 100% STANDARD NATURAL ENGLISH strictly obeying all level rules",
+  "user_feedback": {{
+    "grammar_status": "Clean & Clear" or brief fix note,
+    "corrected_text": "Grammatically corrected version of user's sentence preserving exact meaning",
+    "native_phrasing": "Direct native speaker English rewrite of user's sentence",
+    "duo_reaction": "celebrate"|"happy"|"encouraging"
+  }}
+}}"""
+    return prefix.strip()
+
+
+def build_dynamic_turn_suffix(
+    history_str: str,
+    user_transcript: str,
+    turn_count: int,
+) -> str:
+    """
+    Constructs the Dynamic Turn Suffix that changes per turn.
+    Placed strictly AFTER the static prefix to guarantee uninterrupted KV-cache hits.
+    """
+    clean_transcript = user_transcript.strip() if user_transcript else ""
+    return f"""=== DYNAMIC TURN CONTEXT ===
+TURN NUMBER: {turn_count}
+
+CONVERSATION HISTORY SO FAR:
+{history_str}
+USER JUST SPOKE: "{clean_transcript}"
+
+NOW RESPOND:
+Following all permanent instructions and level constraints above, provide your turn response as JSON."""
+

@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | `TASK-001` | Khởi tạo Pydantic Schemas, Strict Mode `$defs` Converter & Provider Signature | Phase 1 | P0-Critical | `[x] DONE` | `to_strict_json_schema` + Multi-provider signature |
 | `TASK-002` | Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover | Phase 1 | P0-Critical | `[x] DONE` | Xóa `_parse_raw_json`, failover khi vỡ JSON |
-| `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[ ] TODO` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
+| `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[x] DONE` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
 | `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[ ] TODO` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
 | `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[ ] TODO` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
 | `TASK-006` | Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`) | Phase 4 | P0-Critical | `[ ] TODO` | 100% Hermetic mock test failover + harness pass |
@@ -113,7 +113,7 @@ Task Name:       Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Toke
 Phase:           Phase 2 (Prompt Caching)
 Task Type:       perf
 Priority:        P0-Critical
-Trạng thái:      [ ] TODO
+Trạng thái:      [x] DONE
 Ngày tạo:        2026-09-09
 ```
 
@@ -127,9 +127,9 @@ Ngày tạo:        2026-09-09
   3. Đảm bảo rolling prune lịch sử chỉ thay đổi phần suffix, không chạm vào prefix.
 
 #### Acceptance Criteria
-- [ ] Static Prefix duy trì độ dài $\ge 1,024$ tokens và nội dung bất biến giữa các turn của cùng một session.
-- [ ] Đo lường TTFT trên Groq/OpenAI giảm xuống $< 400\text{ms}$ từ turn 2 trở đi.
-- [ ] Gemini 2.0 Flash xử lý prompt trơn tru mà không bị nghẽn prefill.
+- [x] Static Prefix duy trì độ dài $\ge 1,024$ tokens và nội dung bất biến giữa các turn của cùng một session.
+- [x] Đo lường TTFT trên Groq/OpenAI giảm xuống $< 400\text{ms}$ từ turn 2 trở đi.
+- [x] Gemini 2.0 Flash xử lý prompt trơn tru mà không bị nghẽn prefill.
 
 #### Scope
 - **Files được sửa/tạo:** `app/rag/prompt_constructor.py`, `app/core/ai_engine.py`, `tests/test_prompt_caching.py`

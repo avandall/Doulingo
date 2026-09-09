@@ -1,35 +1,33 @@
 # TASK EXECUTION PLAN
-# Task TASK-002: Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover
+# Task TASK-003: Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
 
-> **Trạng thái:** DONE | **Ngày:** 2026-09-09
+> **Trạng thái:** IN_PROGRESS | **Ngày:** 2026-09-09
 
 ---
 
 ## 🎯 Task Goal
-Nâng ngân sách token lên 2048 cho tất cả providers, rút gọn prompt CoT (`natural_draft` và `vocab_check` tối đa 20 từ), xóa bỏ regex cắt chuỗi JSON trong `_parse_raw_json`, sử dụng `schema.model_validate_json(raw_text).model_dump()`, và xây dựng cơ chế failover tự động sang provider tiếp theo trong Pool khi output bị cắt cụt hoặc `ValidationError`.
+Tách cấu trúc prompt thành Static Cacheable Prefix (~1,200 tokens) và Dynamic Suffix, cố định `scenario_angle` ngay từ session init, đảm bảo prefix bất biến 100% qua các turns, đạt tiêu chuẩn Prompt Caching trên Groq/OpenAI.
 
 ---
 
 ## 📋 Atomic Steps
 
-### [x] Step 1: Update Provider Token Budget (2048) & CoT Prompt Length Restrictions (`app/core/ai_engine.py`)
-- Update `maxOutputTokens = 2048` in `_call_gemini`.
-- Update `max_tokens = 2048` in `_call_groq` and `_call_openai`.
-- Update `num_predict = 2048` in `_call_ollama`.
-- Shorten CoT prompt instructions (`natural_draft` and `vocab_check` to max 20 words each).
+### [ ] Step 1: Implement Prompt Partitioning Functions in `app/rag/prompt_constructor.py`
+- Implement `build_static_cacheable_prefix(scenario, character, level, scenario_angle=None)`.
+- Implement `build_dynamic_turn_suffix(history, user_transcript, turn_count, scenario_title)`.
+- Ensure `build_static_cacheable_prefix` yields >= 1,024 tokens.
 
-### [x] Step 2: Refactor JSON Parser & Implement Truncation Failover Policy (`app/core/ai_engine.py`)
-- Removed regex / string slicing logic (`start = text.find('{')`, `end = text.rfind('}')`) from `_parse_raw_json`.
-- Added `schema: type[BaseModel] | None = None` parameter to `_parse_raw_json` and `_parse_json_response`.
-- Used `schema.model_validate_json(text).model_dump()` when `schema` is provided, and `json.loads(text)` when `schema` is `None`.
-- Handle `ValidationError`, `JSONDecodeError`, and `ValueError` in `_call_gemini`, `_call_groq`, `_call_openai`, `_call_ollama` by logging warnings and raising exceptions to trigger automatic failover to the next provider in `_call_llm_providers`.
+### [ ] Step 2: Refactor `ai_engine.py` to use Partitioned Prompt Construction & Fixed Scenario Angle
+- Fix `scenario_angle` per session at `start_roleplay_greeting`, store in session / character context.
+- Use `build_static_cacheable_prefix` + `build_dynamic_turn_suffix` in `_build_token_efficient_prompt`.
+- Verify history pruning only affects suffix, never modifying prefix.
 
-### [x] Step 3: Add Unit Tests for Parser & Truncation Failover (`tests/test_ai_engine.py`)
-- Added unit test verifying `_parse_raw_json` with Pydantic schema validation.
-- Added unit test verifying `ValidationError` / `JSONDecodeError` on truncated JSON.
-- Added unit test simulating truncated JSON or syntax error from Provider 1 and verifying automatic failover to Provider 2.
-- Added unit test verifying 2048 token budget in provider request payloads.
+### [ ] Step 3: Implement Unit Tests in `tests/test_prompt_caching.py`
+- Test `build_static_cacheable_prefix` token count >= 1,024.
+- Test prefix immutability across multiple simulated turns.
+- Test rolling history pruning preserves static prefix 100%.
 
-### [x] Step 4: Verification (`python3 pipeline/scripts/verify.py --test-target tests/test_ai_engine.py`)
-- Executed `python3 pipeline/scripts/verify.py --test-target tests/test_ai_engine.py`.
-- Status: **PASS 100%** (Ruff PASS, Mypy PASS, Bandit PASS, Pytest PASS - 22/22 tests).
+### [ ] Step 4: Verification & Milestone Completion
+- Run `python3 pipeline/scripts/verify.py --test-target tests/test_prompt_caching.py` (ensure PASS 100%).
+- Mark `TASK-003` as `[x] DONE` in `Tasks_list.md`.
+- Commit Git cleanly.
