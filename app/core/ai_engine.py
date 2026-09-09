@@ -21,11 +21,13 @@ from typing import Any
 
 import requests
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 from app.characters import get_character
 from app.core.heuristic_checker import HeuristicChecker
 from app.core.micro_llm_rewriter import MicroLLMRewriter
 from app.core.prompt_factory import get_prompt_factory
+from app.core.schemas import to_strict_json_schema
 from app.rag.retrieval import retrieve_dialogues
 from app.scenarios import get_scenario
 
@@ -1328,15 +1330,26 @@ Output JSON ONLY with Structured CoT fields:
   }}
 }}"""
 
-    def _call_gemini(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
+    def _call_gemini(
+        self,
+        prompt: str,
+        api_key: str,
+        model_name: str,
+        schema: type[BaseModel] | None = None,
+        temp: float = 0.8,
+        parse_raw: bool = False
+    ) -> dict[str, Any] | None:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+        gen_config: dict[str, Any] = {
+            "maxOutputTokens": 1200,
+            "temperature": temp,
+            "responseMimeType": "application/json"
+        }
+        if schema is not None:
+            gen_config["responseSchema"] = schema.model_json_schema()
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "maxOutputTokens": 1200,
-                "temperature": temp,
-                "responseMimeType": "application/json"
-            }
+            "generationConfig": gen_config
         }
         t0 = time.time()
         try:
@@ -1354,17 +1367,35 @@ Output JSON ONLY with Structured CoT fields:
             raise
         return None
 
-    def _call_groq(self, prompt: str, api_key: str, model_name: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
+    def _call_groq(
+        self,
+        prompt: str,
+        api_key: str,
+        model_name: str,
+        schema: type[BaseModel] | None = None,
+        temp: float = 0.8,
+        parse_raw: bool = False
+    ) -> dict[str, Any] | None:
         url = "https://api.groq.com/openai/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        payload = {
+        payload: dict[str, Any] = {
             "model": model_name,
             "messages": [{"role": "user", "content": prompt}],
             "max_tokens": 1200,
             "temperature": temp,
-            "presence_penalty": 0.6,
-            "response_format": {"type": "json_object"}
+            "presence_penalty": 0.6
         }
+        if schema is not None:
+            payload["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": schema.__name__,
+                    "strict": True,
+                    "schema": to_strict_json_schema(schema)
+                }
+            }
+        else:
+            payload["response_format"] = {"type": "json_object"}
         t0 = time.time()
         try:
             res = requests.post(url, headers=headers, json=payload, timeout=3)
@@ -1381,17 +1412,34 @@ Output JSON ONLY with Structured CoT fields:
             raise
         return None
 
-    def _call_openai(self, prompt: str, api_key: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
+    def _call_openai(
+        self,
+        prompt: str,
+        api_key: str,
+        schema: type[BaseModel] | None = None,
+        temp: float = 0.8,
+        parse_raw: bool = False
+    ) -> dict[str, Any] | None:
         url = "https://api.openai.com/v1/chat/completions"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        payload = {
+        payload: dict[str, Any] = {
             "model": "gpt-4o-mini",
             "messages": [{"role": "user", "content": prompt}],
             "max_tokens": 1200,
             "temperature": temp,
-            "presence_penalty": 0.6,
-            "response_format": {"type": "json_object"}
+            "presence_penalty": 0.6
         }
+        if schema is not None:
+            payload["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": schema.__name__,
+                    "strict": True,
+                    "schema": to_strict_json_schema(schema)
+                }
+            }
+        else:
+            payload["response_format"] = {"type": "json_object"}
         t0 = time.time()
         try:
             res = requests.post(url, headers=headers, json=payload, timeout=3)
@@ -1408,13 +1456,19 @@ Output JSON ONLY with Structured CoT fields:
             raise
         return None
 
-    def _call_ollama(self, prompt: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
+    def _call_ollama(
+        self,
+        prompt: str,
+        schema: type[BaseModel] | None = None,
+        temp: float = 0.8,
+        parse_raw: bool = False
+    ) -> dict[str, Any] | None:
         url = f"{self.ollama_base_url}/api/generate"
         payload = {
             "model": self.ollama_model,
             "prompt": prompt,
             "stream": False,
-            "format": "json",
+            "format": schema.model_json_schema() if schema is not None else "json",
             "options": {"num_predict": 1200, "temperature": temp, "presence_penalty": 0.6}
         }
         t0 = time.time()
@@ -1484,13 +1538,19 @@ Output JSON ONLY with Structured CoT fields:
             }
         }
 
-    def _call_llm_providers(self, prompt: str, temp: float = 0.8, parse_raw: bool = False) -> dict[str, Any] | None:
+    def _call_llm_providers(
+        self,
+        prompt: str,
+        schema: type[BaseModel] | None = None,
+        temp: float = 0.8,
+        parse_raw: bool = False
+    ) -> dict[str, Any] | None:
         for key in self.gemini_keys:
             if is_key_exhausted(key):
                 continue
             for model in self.gemini_models:
                 try:
-                    res = self._call_gemini(prompt, key, model, temp=temp, parse_raw=parse_raw)
+                    res = self._call_gemini(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
                 except Exception:
@@ -1501,7 +1561,7 @@ Output JSON ONLY with Structured CoT fields:
                 continue
             for model in self.groq_models:
                 try:
-                    res = self._call_groq(prompt, key, model, temp=temp, parse_raw=parse_raw)
+                    res = self._call_groq(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
                     if res:
                         return res
                 except Exception:
@@ -1511,7 +1571,7 @@ Output JSON ONLY with Structured CoT fields:
             if is_key_exhausted(key):
                 continue
             try:
-                res = self._call_openai(prompt, key, temp=temp, parse_raw=parse_raw)
+                res = self._call_openai(prompt, key, schema=schema, temp=temp, parse_raw=parse_raw)
                 if res:
                     return res
             except Exception:
@@ -1519,7 +1579,7 @@ Output JSON ONLY with Structured CoT fields:
 
         if self.ollama_base_url:
             try:
-                res = self._call_ollama(prompt, temp=temp, parse_raw=parse_raw)
+                res = self._call_ollama(prompt, schema=schema, temp=temp, parse_raw=parse_raw)
                 if res:
                     return res
             except Exception:

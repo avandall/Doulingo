@@ -1,204 +1,251 @@
 # TASKS LIST
-# Danh sách tác vụ & Queue thực thi — Haku Haku's Speaking Platform
+# Danh sách tác vụ & Queue thực thi — Haku Haku's Performance & Reliability Initiative
 
-> **Trạng thái:** CONTEXT (Mutable) | **Cập nhật:** 2026-09-06
+> **Trạng thái:** CONTEXT (Active) | **Cập nhật:** 2026-09-09
 >
-> ✏️ **HUMAN FILLS THIS FILE.** Bạn có thể thêm 1 hoặc nhiều tasks vào danh sách này.
-> 🤖 **AI EXECUTION RULE:** AI sẽ đọc danh sách này từ trên xuống dưới, tìm task đầu tiên có trạng thái `[ ] TODO` hoặc `[/] IN_PROGRESS` để thực thi. Khi hoàn thành task, AI đánh dấu `[x] DONE` và chuyển sang task tiếp theo.
+> ✏️ **HUMAN & ARCHITECT REWRITE (v2.0 Post-Review).** Danh sách tác vụ chuẩn hóa sau rà soát phản biện kỹ thuật, sẵn sàng cho chu trình Ralph Loop thực thi.
+> 🤖 **AI EXECUTION RULE:** AI đọc danh sách từ trên xuống dưới, thực hiện task đầu tiên có trạng thái `[ ] TODO` hoặc `[/] IN_PROGRESS`. Khi hoàn thành và verify pass 100%, đánh dấu `[x] DONE` trước khi chuyển sang task kế tiếp.
 
 ---
 
 ## 1. Task Queue & Backlog Overview
 
-| Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Ghi chú / Blocker |
+| Task ID | Tên Task | Phase | Ưu tiên | Trạng thái | Mục tiêu chính |
 |---|---|---|---|---|---|
-| `TASK-001` | Cài đặt Jinja2 Template & Playwright PDF Reporting Engine | Phase 1 | P0 | `[x] DONE` | HTML/CSS A4 + Page-break defense |
-| `TASK-002` | Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching | Phase 1 | P0 | `[x] DONE` | Store & Link (`/api/reports/.../file`) |
-| `TASK-003` | Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu | Phase 2 | P0 | `[x] DONE` | 202 Accepted + Retries + Polling |
-| `TASK-004` | Xây dựng Cron Job Tự động Dọn dẹp Audio Cache | Phase 2 | P1 | `[x] DONE` | Xóa audio chunks cũ > 24h |
-| `TASK-005` | Test Suite Tích hợp & Deterministic Verification | Phase 3 | P0 | `[ ] TODO` | Pytest + verify.py pass 100% |
+| `TASK-001` | Khởi tạo Pydantic Schemas, Strict Mode `$defs` Converter & Provider Signature | Phase 1 | P0-Critical | `[x] DONE` | `to_strict_json_schema` + Multi-provider signature |
+| `TASK-002` | Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover | Phase 1 | P0-Critical | `[ ] TODO` | Xóa `_parse_raw_json`, failover khi vỡ JSON |
+| `TASK-003` | Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens) | Phase 2 | P0-Critical | `[ ] TODO` | Cố định angle, TTFT < 400ms trên Groq/OpenAI |
+| `TASK-004` | Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine | Phase 3 | P1-Normal | `[ ] TODO` | VAD thuần acoustic, nâng cấp an toàn lúc mic IDLE |
+| `TASK-005` | Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms | Phase 3 | P1-Normal | `[ ] TODO` | `build_vocab_wasm_db.py` + 0ms RAM dictionary |
+| `TASK-006` | Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`) | Phase 4 | P0-Critical | `[ ] TODO` | 100% Hermetic mock test failover + harness pass |
 
-> **Trạng thái hợp lệ:**
-> - `[ ] TODO`: Chưa làm, chờ AI chọn
-> - `[/] IN_PROGRESS`: AI đang thực hiện
-> - `[x] DONE`: Hoàn thành, đã verify & proof
-> - `[!] BLOCKED`: Bị kẹt, cần human intervention
-
----
-
-## 2. Chi tiết các Tasks (Task Specs)
+> **Quy định trạng thái:**
+> - `[ ] TODO`: Chưa thực hiện, sẵn sàng trong queue
+> - `[/] IN_PROGRESS`: Đang được AI thực thi
+> - `[x] DONE`: Hoàn thành, đã pass kiểm thử và có proof
+> - `[!] BLOCKED`: Bị nghẽn, cần can thiệp từ con người
 
 ---
 
-### 📌 TASK-001: Cài đặt Jinja2 Template & Playwright PDF Reporting Engine
+## 2. Chi Tiết Từng Task (Task Specifications)
+
+---
+
+### 📌 TASK-001: Khởi tạo Pydantic Schemas, Strict Mode `$defs` Converter & Provider Signature
 
 #### Metadata
 ```
 Task ID:         TASK-001
-Task Name:       Cài đặt Jinja2 Template & Playwright PDF Reporting Engine
-Phase:           Phase 1
+Task Name:       Khởi tạo Pydantic Schemas, Strict Mode $defs Converter & Provider Signature
+Phase:           Phase 1 (Constrained Decoding)
 Task Type:       feat
 Priority:        P0-Critical
 Trạng thái:      [x] DONE
-Ngày tạo:        2026-09-06
+Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Học viên sau bài thi IELTS/DET cần bảng điểm Speaking Report Card chi tiết, định dạng PDF chuẩn in ấn A4.
-- **What:** Tạo `app/templates/reports/speaking_report.html` và `app/services/pdf_report_service.py` sử dụng Playwright Headless Chromium để render HTML sang PDF. Đảm bảo Print CSS có `@page { size: A4; margin: 12mm; }`, `tr { break-inside: avoid; }`, và `<thead>` tự động lặp lại trên mọi trang.
+- **Why:** Tránh lỗi HTTP 400 từ OpenAI/Groq do thiếu `additionalProperties: false` trong `$defs` hoặc trường nullable bị bỏ quên khỏi `required`, đồng thời chuẩn hóa chữ ký tầng provider để nhận schema linh hoạt.
+- **What:**
+  1. Tạo `app/core/schemas.py` chứa: `UserFeedbackSchema`, `RoleplayTurnResponseSchema`, `GreetingResponseSchema`, `QuickTranslationSchema`.
+  2. Viết hàm đệ quy `to_strict_json_schema(model_cls: type[BaseModel]) -> dict[str, Any]` duyệt qua root và `$defs`, ép `additionalProperties: False`, đưa toàn bộ keys vào `required`, và biến đổi nullable thành `anyOf: [type, "null"]`.
+  3. Refactor chữ ký `_call_llm_providers(prompt, schema=None, temp=0.8, parse_raw=False)` trong `app/core/ai_engine.py` và truyền schema xuống các adapters (`_call_gemini`, `_call_groq`, `_call_openai`, `_call_ollama`).
 
-#### Acceptance Criteria (Tiêu chí hoàn thành)
-- [x] Thư viện `playwright` và `jinja2` sẵn sàng trong project.
-- [x] Template HTML chứa: Header bài thi, Thẻ điểm CEFR / Overall Band, Bảng điểm thành phần (Fluency, Pronunciation, Grammar, Lexical), Bảng chi tiết toàn bộ lượt đối thoại (turn-by-turn).
-- [x] Hàm `generate_speaking_pdf(report_data: dict, output_path: str)` xuất file PDF $\ge 2$ trang đẹp mắt, không cắt ngang dòng chữ.
-- [x] Script test đơn lẻ xuất thử file `reports/sample_report.pdf` thành công.
+#### Acceptance Criteria
+- [ ] `to_strict_json_schema(RoleplayTurnResponseSchema)` tạo ra JSON Schema hợp lệ mà OpenAI/Groq Strict Mode chấp nhận (100% properties in required, no extra props in root & `$defs`).
+- [ ] Các provider adapters tiếp nhận tham số `schema` và đóng gói đúng format của từng hãng.
+- [ ] Chạy unit test kiểm tra schema không có lỗi runtime.
 
-
-#### Scope (Phạm vi)
-- **Files được sửa/tạo:** `app/templates/reports/**`, `app/services/pdf_report_service.py`, `requirements.txt`, `reports/**`
+#### Scope
+- **Files được sửa/tạo:** `app/core/schemas.py`, `app/core/ai_engine.py`, `tests/test_schemas.py`
 - **Files cấm đụng:** `.env`, `pipeline/docs/core/**`
 
 #### Verification Commands
 ```bash
-python3 -c "import playwright; import jinja2; print('Dependencies OK')"
-pytest tests/test_pdf_reporting.py -k "test_render_pdf"
+python3 -c "from app.core.schemas import RoleplayTurnResponseSchema, to_strict_json_schema; print('Strict Schema Valid:', 'required' in to_strict_json_schema(RoleplayTurnResponseSchema))"
+pytest tests/test_schemas.py
 ```
 
 ---
 
-### 📌 TASK-002: Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching
+### 📌 TASK-002: Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover
 
 #### Metadata
 ```
 Task ID:         TASK-002
-Task Name:       Xây dựng Endpoint Xuất Báo Cáo PDF & Idempotent Caching
-Phase:           Phase 1
-Task Type:       feat
+Task Name:       Refactor AI Engine Parser, Token Budget 2048 & Truncation Failover
+Phase:           Phase 1 (Constrained Decoding)
+Task Type:       refactor
 Priority:        P0-Critical
-Trạng thái:      [x] DONE
-Ngày tạo:        2026-09-06
+Trạng thái:      [ ] TODO
+Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Cung cấp API cho Frontend gọi tạo và tải PDF, đồng thời tuân thủ nguyên tắc "Store & Link" và chống tạo file trùng lặp khi người dùng bấm nút nhiều lần (Idempotency).
-- **What:** Tạo bảng `exam_reports` trong SQLite DB (`data/custom_topics.db` hoặc `data/reports.db`), tạo router `app/api/routers/reports_router.py` với các endpoints:
-  - `POST /api/reports/speaking/{session_id}/generate` (hỗ trợ body `{"force": false}`)
-  - `GET /api/reports/speaking/{report_id}/file` (trả về `FileResponse` application/pdf)
-  - `GET /api/reports/speaking/{report_id}` (trả về metadata và URL tải)
+- **Why:** Ngân sách token cũ (1200) dễ bị tràn ở CEFR C1/C2 làm cắt cụt JSON. Cần nâng ngân sách lên 2048, bóp gọn CoT, xóa bỏ `_parse_raw_json` regex và xây dựng cơ chế failover khi vỡ schema.
+- **What:**
+  1. Nâng `max_tokens = 2048` trong tất cả các payload provider.
+  2. Rút gọn prompt CoT (`natural_draft` và `vocab_check` tối đa 20 từ mỗi trường).
+  3. Xóa bỏ logic regex cắt chuỗi trong `_parse_raw_json`, thay bằng `schema.model_validate_json(raw_text).model_dump()`.
+  4. Bổ sung cơ chế: nếu output bị cắt cụt hoặc `ValidationError`, ghi log cảnh báo và tự động chuyển sang provider kế tiếp trong Pool (Failover Policy).
 
 #### Acceptance Criteria
-- [x] `POST /api/reports/speaking/{session_id}/generate` lần đầu trả về 201 Created kèm download link.
-- [x] Gọi lại lần 2 trong cùng ngày với cùng session_id trả về 200 OK với report_id cũ, không sinh thêm file PDF mới.
-- [x] Gọi kèm `{"force": true}` bỏ qua cache và sinh report mới (201 Created).
-- [x] `GET /api/reports/speaking/{report_id}/file` tải về đúng file PDF nhị phân. ID lạ trả về 404.
+- [ ] Xóa bỏ hoàn toàn mã nguồn regex cắt chuỗi JSON trong `_parse_raw_json`.
+- [ ] Khi model trả về chuỗi JSON chuẩn, Pydantic parse thành công 100%.
+- [ ] Giả lập chuỗi JSON bị cắt cụt hoặc lỗi cú pháp: hệ thống không crash mà tự động chuyển sang provider tiếp theo trong Pool.
 
 #### Scope
-- **Files được sửa/tạo:** `app/api/routers/reports_router.py`, `app/main.py`, `app/services/pdf_report_service.py`, `tests/test_pdf_reporting.py`
+- **Files được sửa/tạo:** `app/core/ai_engine.py`, `tests/test_ai_engine.py`
 
 #### Verification Commands
 ```bash
-pytest tests/test_pdf_reporting.py
+pytest tests/test_ai_engine.py
 ```
 
 ---
 
-### 📌 TASK-003: Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu
+### 📌 TASK-003: Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
 
 #### Metadata
 ```
 Task ID:         TASK-003
-Task Name:       Xây dựng Inngest Async Background Job cho Đánh giá Chuyên sâu
-Phase:           Phase 2
-Task Type:       feat
+Task Name:       Phân Vùng Prompt & Tối Ưu Hóa Prompt Caching (~1,200 Tokens)
+Phase:           Phase 2 (Prompt Caching)
+Task Type:       perf
 Priority:        P0-Critical
-Trạng thái:      [x] DONE
-Ngày tạo:        2026-09-06
+Trạng thái:      [ ] TODO
+Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Quá trình đánh giá sâu (AI Deep Scoring, ngữ âm, IELTS/DET rubric) mất nhiều thời gian ($>10\text{s}$). Cần chuyển sang Background Worker để API phản hồi ngay lập tức (202 Accepted).
-- **What:** Tích hợp `inngest` Python SDK vào FastAPI app:
-  - Tạo `app/services/background_job_service.py` với Inngest client (`id: haku-hakus-api`) và function `evaluate-speaking-exam` (trigger `exam/completed`, có retry backoff).
-  - Mount endpoint `/api/inngest` trên FastAPI app.
-  - Endpoint `POST /api/exams/{session_id}/evaluate-async`: phản hồi 202 Accepted trong $<1\text{s}$ kèm `job_id` và `status_url`.
-  - Endpoint `GET /api/jobs/{job_id}/status`: trả về `pending`, `processing`, `done` (kèm kết quả) hoặc `failed`.
+- **Why:** Tối ưu hóa thời gian prefill của Groq/OpenAI xuống $< 400\text{ms}$ bằng Prefix Caching, đồng thời giữ Gemini chạy mượt mà ở chế độ throughput tiêu chuẩn.
+- **What:**
+  1. Tách cấu trúc trong `app/rag/prompt_constructor.py` thành:
+     - `build_static_cacheable_prefix(character_id, level, scenario, scenario_angle)`: Kích thước $\approx 1,200$ tokens, giữ nguyên bất biến trong suốt session.
+     - `build_dynamic_turn_suffix(history, user_transcript)`: Chỉ chứa lịch sử đối thoại và câu nói mới nhất.
+  2. Cố định `scenario_angle` ngay từ `start_roleplay_greeting` và lưu vào session, không sinh ngẫu nhiên ở giữa các turns.
+  3. Đảm bảo rolling prune lịch sử chỉ thay đổi phần suffix, không chạm vào prefix.
 
 #### Acceptance Criteria
-- [x] `POST /api/exams/{session_id}/evaluate-async` trả về 202 Accepted trong $<1\text{s}$.
-- [x] Inngest function thực thi từng step (step.run) và lưu kết quả vào database/state store.
-- [x] Status polling endpoint `GET /api/jobs/{job_id}/status` phản hồi đúng tiến độ chuyển trạng thái từ `pending` sang `done`.
-- [x] Lỗi tạm thời của AI service được tự động retry (tối đa 2 retries với exponential backoff).
+- [ ] Static Prefix duy trì độ dài $\ge 1,024$ tokens và nội dung bất biến giữa các turn của cùng một session.
+- [ ] Đo lường TTFT trên Groq/OpenAI giảm xuống $< 400\text{ms}$ từ turn 2 trở đi.
+- [ ] Gemini 2.0 Flash xử lý prompt trơn tru mà không bị nghẽn prefill.
 
 #### Scope
-- **Files được sửa/tạo:** `app/services/background_job_service.py`, `app/api/routers/reports_router.py` (hoặc `app/api/routers/jobs_router.py`), `app/main.py`, `requirements.txt`
+- **Files được sửa/tạo:** `app/rag/prompt_constructor.py`, `app/core/ai_engine.py`, `tests/test_prompt_caching.py`
 
 #### Verification Commands
 ```bash
-pytest tests/test_background_jobs.py -k "test_async_evaluation"
+pytest tests/test_prompt_caching.py
 ```
 
 ---
 
-### 📌 TASK-004: Xây dựng Cron Job Tự động Dọn dẹp Audio Cache
+### 📌 TASK-004: Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine
 
 #### Metadata
 ```
 Task ID:         TASK-004
-Task Name:       Xây dựng Cron Job Tự động Dọn dẹp Audio Cache
-Phase:           Phase 2
+Task Name:       Tích Hợp Silero VAD WASM Âm Học & Audio Engine State Machine
+Phase:           Phase 3 (WebAssembly Client)
 Task Type:       feat
 Priority:        P1-Normal
-Trạng thái:      [x] DONE
-Ngày tạo:        2026-09-06
+Trạng thái:      [ ] TODO
+Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Các file audio TTS tạm thời trong quá trình luyện nói tích tụ chiếm dung lượng lưu trữ trên server.
-- **What:** Tạo scheduled cron job `cleanup-audio-cache` (chạy hàng ngày hoặc định kỳ qua Inngest `inngest.TriggerCron(cron="0 3 * * *")` hoặc async background scheduler), quét và xóa các file audio tạm thời có thời gian tạo $> 24$ giờ.
+- **Why:** Khắc phục tình trạng micro tự ngắt khi học viên ngập ngừng bằng mô hình âm học VAD thuần túy, loại bỏ sự phụ thuộc vào đếm từ của Web Speech API, và chống xung đột mic trên iOS.
+- **What:**
+  1. Xây dựng State Machine trong `static/js/speech.js`: `LEGACY_FALLBACK` $\rightarrow$ `WASM_LOADING` $\rightarrow$ `WASM_STAGED` $\rightarrow$ `WASM_ACTIVE` (chỉ chuyển trạng thái khi `MIC_STATE == "IDLE"`).
+  2. Tích lũy biến `accumulated_voiced_duration_ms` trong AudioWorklet. Tại $t_{\text{silence}} \ge 3.5\text{s}$:
+     - Nếu $\ge 1500\text{ms}$: Tự động đóng mic và gửi request.
+     - Nếu $< 1500\text{ms}$: Reset trạng thái, không đóng mic.
+  3. Tại backend `app/scoring/tier1_realtime.py`: Thêm Pydantic clamping cho `AcousticMetricsInput` (kẹp `pause_duration_ms <= 60000`, `wpm <= 350`) và fallback về STT timestamps nếu dữ liệu client out-of-bounds.
 
 #### Acceptance Criteria
-- [x] Cron function quét thư mục audio cache/temp mà không gây crash server nếu thư mục rỗng.
-- [x] Chỉ xóa file audio cũ hơn 24 giờ, giữ lại file mới tạo.
-- [x] Ghi log số lượng file đã xóa và dung lượng đã giải phóng.
+- [ ] Audio Engine State Machine không bao giờ hot-swap AudioWorklet khi mic đang ở trạng thái RECORDING.
+- [ ] Tự động gửi câu trả lời khi khoảng lặng $\ge 3.5\text{s}$ VÀ tổng thời lượng giọng nói $\ge 1.5\text{s}$.
+- [ ] Backend kẹp ngưỡng an toàn, không bị crash bởi dữ liệu âm học bất thường.
 
 #### Scope
-- **Files được sửa/tạo:** `app/services/cron_service.py`, `app/services/background_job_service.py`, `tests/test_background_jobs.py`
+- **Files được sửa/tạo:** `static/js/speech.js`, `static/wasm/**`, `app/scoring/tier1_realtime.py`
 
 #### Verification Commands
 ```bash
-pytest tests/test_background_jobs.py -k "test_cron_cleanup"
+python3 pipeline/scripts/verify.py --quick
 ```
 
 ---
 
-### 📌 TASK-005: Test Suite Tích hợp & Deterministic Verification
+### 📌 TASK-005: Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms
 
 #### Metadata
 ```
 Task ID:         TASK-005
-Task Name:       Test Suite Tích hợp & Deterministic Verification
-Phase:           Phase 3
-Task Type:       test
-Priority:        P0-Critical
+Task Name:       Build Script & Tích Hợp SQLite3 WASM Tra Cứu Từ Điển 0ms
+Phase:           Phase 3 (WebAssembly Client)
+Task Type:       feat
+Priority:        P1-Normal
 Trạng thái:      [ ] TODO
-Ngày tạo:        2026-09-06
+Ngày tạo:        2026-09-09
 ```
 
 #### Bối cảnh & Mục tiêu (Why & What)
-- **Why:** Đảm bảo toàn bộ hệ thống (PDF Reporting, Idempotency, Async Background Jobs, Cron Cleanup) hoạt động ổn định và vượt qua bộ kiểm tra chất lượng tự động của Harness (`verify.py`).
-- **What:** Viết đầy đủ unit & integration tests trong `tests/test_pdf_reporting.py` và `tests/test_background_jobs.py`, cấu hình `.gitignore` chuẩn và chạy `verify.py` kiểm tra tĩnh + runtime.
+- **Why:** Loại bỏ độ trễ mạng 100-300ms khi tra nghĩa từ vựng trên bong bóng chat bằng cơ sở dữ liệu SQLite nhúng trực tiếp trong RAM trình duyệt.
+- **What:**
+  1. Tạo offline build script `scripts/build_vocab_wasm_db.py` trích xuất 3,000 từ vựng cốt lõi từ `data/dictionary.db` tạo thành `static/data/vocab_core.sqlite` (~1.1MB, có index `idx_word`).
+  2. Tạo `static/js/dict_wasm.js` nạp `sqlite3.wasm` và mở file DB trong RAM.
+  3. Kết nối sự kiện click từ vựng trên speech bubble với hàm `dict_wasm.lookup(word)`.
+  4. Cơ chế Progressive Enhancement: nếu WASM chưa sẵn sàng hoặc từ không có trong 3,000 từ cốt lõi $\rightarrow$ tự động gọi API `/api/dictionary/lookup`.
 
 #### Acceptance Criteria
-- [ ] `tests/test_pdf_reporting.py` pass 100%.
-- [ ] `tests/test_background_jobs.py` pass 100%.
-- [ ] `python3 pipeline/scripts/verify.py` pass 100% (Tier 1 deterministic check).
-- [ ] Git status sạch sẽ, `reports/*.pdf` và file database tạm thời không bị lọt vào Git.
+- [ ] Script `scripts/build_vocab_wasm_db.py` chạy độc lập và sinh ra file SQLite hợp lệ.
+- [ ] Tra cứu 3,000 từ cốt lõi trên client phản hồi $< 1\text{ms}$ (0ms network round-trip).
+- [ ] Tự động fallback về API backend đối với các từ hiếm không nằm trong database RAM.
 
 #### Scope
-- **Files được sửa/tạo:** `tests/**`, `.gitignore`
+- **Files được sửa/tạo:** `scripts/build_vocab_wasm_db.py`, `static/js/dict_wasm.js`, `static/data/vocab_core.sqlite`, `static/js/app.js`
+
+#### Verification Commands
+```bash
+python3 scripts/build_vocab_wasm_db.py
+python3 pipeline/scripts/verify.py --quick
+```
+
+---
+
+### 📌 TASK-006: Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`)
+
+#### Metadata
+```
+Task ID:         TASK-006
+Task Name:       Test Suite Tích Hợp Hermetic & Deterministic Verification (`verify.py`)
+Phase:           Phase 4 (Quality & Verification)
+Task Type:       test
+Priority:        P0-Critical
+Trạng thái:      [ ] TODO
+Ngày tạo:        2026-09-09
+```
+
+#### Bối cảnh & Mục tiêu (Why & What)
+- **Why:** Đảm bảo toàn bộ hệ thống đạt tiêu chuẩn kỹ thuật Harness Engineering, chạy cô lập không tốn token mạng (Hermetic) và kiểm chứng đầy đủ các kịch bản failover.
+- **What:**
+  1. Viết bộ unit tests `tests/test_schemas.py` và `tests/test_ai_engine.py` với Mock LLM responses (Gemini, Groq, OpenAI).
+  2. Giả lập kịch bản Gemini trả về lỗi 429 Quota $\rightarrow$ kiểm tra hệ thống chuyển sang Groq với cùng schema.
+  3. Giả lập kịch bản model trả về JSON bị cắt cụt (Truncation) $\rightarrow$ kiểm tra cơ chế chuyển provider kế tiếp.
+  4. Viết script benchmark riêng ngoài CI: `scripts/benchmark_prompt_caching.py` để kiểm chứng độ trễ thực tế khi có API key.
+
+#### Acceptance Criteria
+- [ ] Toàn bộ test suite trong `tests/` chạy độc lập không phụ thuộc Internet và pass 100%.
+- [ ] Giả lập lỗi quota và lỗi cắt cụt token được xử lý mượt mà qua failover logic.
+- [ ] `python3 pipeline/scripts/verify.py` pass 100% (Tier 1 check).
+- [ ] Git status sạch sẽ, tuân thủ đúng quy ước commit.
+
+#### Scope
+- **Files được sửa/tạo:** `tests/**`, `scripts/benchmark_prompt_caching.py`, `.gitignore`
 
 #### Verification Commands
 ```bash
 python3 pipeline/scripts/verify.py
 ```
-

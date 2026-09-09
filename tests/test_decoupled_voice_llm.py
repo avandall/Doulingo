@@ -17,7 +17,7 @@ client = TestClient(app)
 @pytest.fixture(autouse=True)
 def mock_llm_providers(monkeypatch):
     """Mock LLM provider calls for fast, deterministic testing without external API timeouts."""
-    def fake_call_llm_providers(self, prompt: str, temp: float = 0.8):
+    def fake_call_llm_providers(self, prompt: str, schema=None, temp: float = 0.8, parse_raw: bool = False, **kwargs):
         if "Respond naturally and directly" in prompt:
             return {"ai_response": "That sounds wonderful! What else do you like to cook?"}
         return {

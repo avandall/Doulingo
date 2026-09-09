@@ -1,35 +1,40 @@
 # TASK EXECUTION PLAN
-# Task TASK-004: Xây dựng Cron Job Tự động Dọn dẹp Audio Cache
+# Task TASK-001: Khởi tạo Pydantic Schemas, Strict Mode $defs Converter & Provider Signature
 
-> **Trạng thái:** COMPLETED | **Ngày:** 2026-09-07
+> **Trạng thái:** COMPLETED | **Ngày:** 2026-09-09
 
 ---
 
 ## 🎯 Task Goal
-Tạo scheduled cron job `cleanup-audio-cache` (chạy định kỳ qua Inngest `inngest.TriggerCron(cron="0 3 * * *")` hoặc function service) để quét và dọn dẹp các file audio tạm thời trong thư mục cache/temp có thời gian tạo > 24 giờ:
-1. Thư mục audio cache/temp rỗng hoặc chưa tồn tại không làm crash server.
-2. Chỉ xóa các file audio cũ hơn 24 giờ (mtime > 24h), giữ nguyên file mới tạo.
-3. Ghi log số lượng file đã xóa và dung lượng đã giải phóng (bytes / MB).
+Tránh lỗi HTTP 400 từ OpenAI/Groq do thiếu `additionalProperties: false` hoặc thiếu `required` trong root và `$defs`, đồng thời chuẩn hóa chữ ký tầng provider trong `app/core/ai_engine.py` để nhận Pydantic schema linh hoạt.
 
 ---
 
 ## 📋 Atomic Steps
 
-### [x] Step 1: Audio Cache Cleanup Service (`app/services/cron_service.py`)
-- Định nghĩa hàm `cleanup_audio_cache(cache_dir: str | None = None, max_age_hours: float = 24.0) -> dict[str, Any]` trong `app/services/cron_service.py`.
-- Xử lý safe check nếu thư mục chưa tồn tại hoặc rỗng.
-- Quét và xóa file có `mtime` > 24h, tính toán số file đã xóa và bytes giải phóng.
-- Ghi log kết quả dọn dẹp audio cache.
+### [x] Step 1: Create Pydantic Schemas & `to_strict_json_schema` Converter (`app/core/schemas.py`)
+- Define `UserFeedbackSchema`, `RoleplayTurnResponseSchema`, `GreetingResponseSchema`, `QuickTranslationSchema` in `app/core/schemas.py`.
+- Write `to_strict_json_schema(model_cls: type[BaseModel]) -> dict[str, Any]` function:
+  - Traverses root schema and any `$defs` / `definitions` recursively.
+  - Sets `additionalProperties: False` on all object schemas.
+  - Ensures all property keys are present in `required`.
+  - Converts nullable fields with `default: None` / `NoneType` to `anyOf: [..., {"type": "null"}]`.
 
-### [x] Step 2: Inngest Cron Background Job (`app/services/background_job_service.py`, `app/main.py`)
-- Khởi tạo Inngest cron job function `cleanup-audio-cache` (trigger `inngest.TriggerCron(cron="0 3 * * *")`) trong `app/services/background_job_service.py`.
-- Đăng ký `cleanup_audio_cache_job` vào `inngest.fast_api.serve` trong `app/main.py`.
+### [x] Step 2: Refactor Provider Signatures in AI Engine (`app/core/ai_engine.py`)
+- Update `_call_llm_providers(self, prompt: str, schema: type[BaseModel] | None = None, temp: float = 0.8, parse_raw: bool = False)` signature.
+- Update `_call_gemini`, `_call_groq`, `_call_openai`, and `_call_ollama` methods to receive `schema` parameter and format response schemas:
+  - Gemini: `responseSchema` in `generationConfig`
+  - Groq & OpenAI: `response_format = {"type": "json_schema", "json_schema": {"name": ..., "strict": True, "schema": to_strict_json_schema(schema)}}`
+  - Ollama: `format` schema dictionary if supported/provided.
 
-### [x] Step 3: Integration Test Suite (`tests/test_background_jobs.py`)
-- Viết unit & integration tests `test_cron_cleanup_*` trong `tests/test_background_jobs.py`:
-  - Test quét thư mục rỗng / không tồn tại không crash.
-  - Test chỉ xóa file > 24h và giữ file < 24h.
-  - Test ghi log và trả về số lượng file + bytes giải phóng.
+### [x] Step 3: Write Unit Test Suite (`tests/test_schemas.py`)
+- Create unit tests for `to_strict_json_schema`:
+  - Test root & `$defs` `additionalProperties == False`.
+  - Test 100% properties in `required`.
+  - Test nullable transformations.
+  - Test model validation for each of the 4 schemas.
 
 ### [x] Step 4: Verification (`python3 pipeline/scripts/verify.py`)
-- Chạy `pytest tests/test_background_jobs.py -k "test_cron_cleanup"` và `python3 pipeline/scripts/verify.py` kiểm định PASS 100%.
+- Run `python3 -c "from app.core.schemas import RoleplayTurnResponseSchema, to_strict_json_schema; print('Strict Schema Valid:', 'required' in to_strict_json_schema(RoleplayTurnResponseSchema))"`
+- Run `pytest tests/test_schemas.py`
+- Run `python3 pipeline/scripts/verify.py` and ensure 100% pass.

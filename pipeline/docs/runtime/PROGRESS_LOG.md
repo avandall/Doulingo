@@ -25,3 +25,11 @@
 - [x] Step 2: Khởi tạo Inngest scheduled cron function `cleanup-audio-cache` (`cron="0 3 * * *"` daily) trong `app/services/background_job_service.py` và đăng ký vào endpoint `/api/inngest` trong `app/main.py`.
 - [x] Step 3: Thêm bộ test suite `test_cron_cleanup_empty_or_missing_directory` và `test_cron_cleanup_deletes_old_files_keeps_new` trong `tests/test_background_jobs.py`.
 - [x] Step 4: Verification report: `python3 pipeline/scripts/verify.py` PASSED 100% (Ruff, Mypy, Bandit, Pytest).
+
+## [2026-09-09] TASK-001 Execution
+- [x] Đã tạo `app/core/schemas.py` chứa `UserFeedbackSchema`, `RoleplayTurnResponseSchema`, `GreetingResponseSchema`, `QuickTranslationSchema`.
+- [x] Triển khai hàm đệ quy `to_strict_json_schema(model_cls: type[BaseModel]) -> dict[str, Any]` ép `additionalProperties: False`, đưa toàn bộ keys vào `required`, và biến đổi nullable fields thành `anyOf: [type, "null"]` hỗ trợ OpenAI/Groq Strict Mode.
+- [x] Refactor chữ ký `_call_llm_providers` và các adapters (`_call_gemini`, `_call_groq`, `_call_openai`, `_call_ollama`) trong `app/core/ai_engine.py` nhận tham số `schema`.
+- [x] Bổ sung test suite trong `tests/test_schemas.py` kiểm tra schema validation, strict json schema generation, và provider adapter schema formatting.
+- [x] Verification report: `python3 pipeline/scripts/verify.py --test-target tests/test_schemas.py` PASSED 100% (Ruff, Mypy, Bandit, Pytest).
+
