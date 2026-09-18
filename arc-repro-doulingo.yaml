@@ -1,0 +1,15 @@
+trace: trace_doulingo_double_reward_001
+determinism_level: L1
+faults:
+- fault_id: fault_da4ab7f9
+  at_step: 2
+  type: timeout_after_commit
+  tool: award_exp_reward
+  params: {}
+  applied: false
+violated: INV-EXP-001
+reproduce_rate: 0.35
+confidence_interval:
+- 0.181
+- 0.567
+cost_usd: 0.03000000000000001

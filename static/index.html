@@ -62,8 +62,9 @@
     .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:9999px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);font-size:11px;font-weight:700;color:var(--violet-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:18px;position:relative;backdrop-filter:blur(8px);}
     .hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,6vw,52px);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:14px;background:linear-gradient(135deg,#F0F4FF 0%,var(--violet-light) 45%,var(--cyan-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;}
     .hero-sub{font-size:15px;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7;position:relative;}
-    .modal-overlay, .modal-box, .modal, .toast { display: none !important; opacity: 0; visibility: hidden; pointer-events: none; position: fixed; }
-    .modal-overlay.active, .modal-box.active, .modal.active, .toast.show { display: flex !important; opacity: 1; visibility: visible; pointer-events: auto; }
+    .modal-overlay, .modal, .toast { display: none !important; opacity: 0; visibility: hidden; pointer-events: none; position: fixed; }
+    .modal-overlay.active, .modal.active, .toast.show { display: flex !important; opacity: 1; visibility: visible; pointer-events: auto; }
+    .modal-overlay.active .modal-box { display: block !important; opacity: 1; visibility: visible; pointer-events: auto; }
     .characters-row{min-height:116px;display:flex;gap:12px;overflow-x:auto;contain:layout paint;}
     .scenarios-grid{min-height:280px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;contain:layout paint;}
     .roleplay-details-container{min-height:240px;contain:layout paint;}

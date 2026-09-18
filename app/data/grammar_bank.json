@@ -1,0 +1,202 @@
+{
+  "level_constraints": {
+    "PRE-A1": { "rank": 0, "max_clauses": 1, "max_sentence_words": 10 },
+    "A1":     { "rank": 1, "max_clauses": 2, "max_sentence_words": 15 },
+    "A1+":    { "rank": 2, "max_clauses": 2, "max_sentence_words": 15 },
+    "A2":     { "rank": 3, "max_clauses": 2, "max_sentence_words": 18 },
+    "A2+":    { "rank": 4, "max_clauses": 3, "max_sentence_words": 20 },
+    "B1-":    { "rank": 5, "max_clauses": 3, "max_sentence_words": 22 },
+    "B1":     { "rank": 6, "max_clauses": 3, "max_sentence_words": 25 },
+    "B1+":    { "rank": 7, "max_clauses": 4, "max_sentence_words": 28 },
+    "B2":     { "rank": 8, "max_clauses": 4, "max_sentence_words": 30 },
+    "B2+":    { "rank": 9, "max_clauses": 5, "max_sentence_words": 35 },
+    "C1":     { "rank": 10, "max_clauses": 6, "max_sentence_words": 40 },
+    "C1+":    { "rank": 11, "max_clauses": 6, "max_sentence_words": 45 },
+    "C2":     { "rank": 12, "max_clauses": 7, "max_sentence_words": 50 },
+    "C2+":    { "rank": 13, "max_clauses": 8, "max_sentence_words": 60 }
+  },
+  "grammar_structures": [
+    {
+      "id": "present_simple_basic",
+      "name": "Present Simple Basic",
+      "introduced_at_level": "PRE-A1",
+      "mastered_at_level": "A1",
+      "category": "tenses",
+      "patterns": [
+        "\\b(am|is|are|do|does|like|likes|want|wants|have|has|go|goes|eat|eats|live|lives)\\b"
+      ],
+      "description": "Basic present simple tense used for facts, habits, and general truths."
+    },
+    {
+      "id": "present_continuous",
+      "name": "Present Continuous Tense",
+      "introduced_at_level": "A1",
+      "mastered_at_level": "A2",
+      "category": "tenses",
+      "patterns": [
+        "\\b(am|is|are|'m|'s|'re)\\s+([a-z]+ing)\\b"
+      ],
+      "description": "Actions happening right now or current situations."
+    },
+    {
+      "id": "modal_can",
+      "name": "Modal Verb - Can / Cannot",
+      "introduced_at_level": "A1",
+      "mastered_at_level": "A1+",
+      "category": "modals",
+      "patterns": [
+        "\\b(can|cannot|can't)\\b\\s+[a-z]+"
+      ],
+      "description": "Ability and permission in present simple."
+    },
+    {
+      "id": "imperatives",
+      "name": "Imperatives & Directives",
+      "introduced_at_level": "A1",
+      "mastered_at_level": "A1+",
+      "category": "imperatives",
+      "patterns": [
+        "^(please\\s+)?(listen|look|come|take|give|tell|read|write|go|stop|remember)\\b"
+      ],
+      "description": "Direct requests, commands, or suggestions."
+    },
+    {
+      "id": "would_like",
+      "name": "Would Like (Polite Requests)",
+      "introduced_at_level": "A1+",
+      "mastered_at_level": "A2",
+      "category": "polite_expressions",
+      "patterns": [
+        "\\b(would\\s+like|'d\\s+like)\\b"
+      ],
+      "description": "Expressing polite desires or requests."
+    },
+    {
+      "id": "past_simple",
+      "name": "Past Simple Tense",
+      "introduced_at_level": "A2",
+      "mastered_at_level": "B1-",
+      "category": "tenses",
+      "patterns": [
+        "\\b(was|were|did|didn't|had|went|visited|came|saw|bought|ate|drank|worked|stayed|played|enjoyed|lived|started|finished|found|won|took|made|got|knew|thought)\\b"
+      ],
+      "description": "Completed actions in the past."
+    },
+    {
+      "id": "future_going_to",
+      "name": "Future with 'going to'",
+      "introduced_at_level": "A2",
+      "mastered_at_level": "A2+",
+      "category": "tenses",
+      "patterns": [
+        "\\b(am|is|are|'m|'s|'re)\\s+going\\s+to\\s+[a-z]+\\b"
+      ],
+      "description": "Intentions and plans for the future."
+    },
+    {
+      "id": "comparatives_basic",
+      "name": "Comparatives",
+      "introduced_at_level": "A2+",
+      "mastered_at_level": "B1-",
+      "category": "modifiers",
+      "patterns": [
+        "\\b(more|less)\\s+[a-z]+\\s+than\\b",
+        "\\b[a-z]+er\\s+than\\b"
+      ],
+      "description": "Comparing two objects, people, or places."
+    },
+    {
+      "id": "future_will",
+      "name": "Future Simple (Will / 'll)",
+      "introduced_at_level": "A2+",
+      "mastered_at_level": "B1-",
+      "category": "tenses",
+      "patterns": [
+        "\\b(will|won't|'ll)\\b\\s+[a-z]+"
+      ],
+      "description": "Spontaneous decisions, promises, and future predictions."
+    },
+    {
+      "id": "present_perfect",
+      "name": "Present Perfect Simple",
+      "introduced_at_level": "B1-",
+      "mastered_at_level": "B1+",
+      "category": "tenses",
+      "patterns": [
+        "\\b(have|has|'ve|'s)\\s+(been|done|seen|gone|eaten|visited|tried|worked|lived|[a-z]+ed)\\b"
+      ],
+      "description": "Actions with relevance to the present or life experiences."
+    },
+    {
+      "id": "first_conditional",
+      "name": "First Conditional (If + Present, Will)",
+      "introduced_at_level": "B1",
+      "mastered_at_level": "B1+",
+      "category": "conditionals",
+      "patterns": [
+        "\\bif\\b.+\\b(will|can|may|'ll)\\b",
+        "\\b(will|can|may|'ll)\\b.+\\bif\\b"
+      ],
+      "description": "Real future possibilities dependent on a condition."
+    },
+    {
+      "id": "modals_obligation",
+      "name": "Modals of Obligation (Must / Have to / Should)",
+      "introduced_at_level": "B1",
+      "mastered_at_level": "B1+",
+      "category": "modals",
+      "patterns": [
+        "\\b(should|shouldn't|must|mustn't|have\\s+to|has\\s+to)\\b\\s+[a-z]+"
+      ],
+      "description": "Expressing necessity, obligation, or advice."
+    },
+    {
+      "id": "second_conditional",
+      "name": "Second Conditional (If + Past, Would)",
+      "introduced_at_level": "B2",
+      "mastered_at_level": "B2+",
+      "category": "conditionals",
+      "patterns": [
+        "\\bif\\b.+\\b(would|could|might|'d)\\b",
+        "\\b(would|could|might|'d)\\b.+\\bif\\b"
+      ],
+      "description": "Hypothetical or unreal situations in the present/future."
+    },
+    {
+      "id": "passive_voice",
+      "name": "Passive Voice",
+      "introduced_at_level": "B2",
+      "mastered_at_level": "C1",
+      "category": "voice",
+      "patterns": [
+        "\\b(am|is|are|was|were|be|been|being)\\s+([a-z]+ed|built|written|made|done|seen|given|told|taken)\\b"
+      ],
+      "description": "Emphasis on the receiver of an action."
+    },
+    {
+      "id": "third_conditional",
+      "name": "Third Conditional (If + Past Perfect, Would Have)",
+      "introduced_at_level": "C1",
+      "mastered_at_level": "C2",
+      "category": "conditionals",
+      "patterns": [
+        "\\bif\\b.+had.+\\bwould\\s+have\\b",
+        "\\bwould\\s+have\\b.+\\bif\\b.+had\\b"
+      ],
+      "description": "Unreal past conditions and hypothetical past outcomes."
+    },
+    {
+      "id": "inverted_conditionals",
+      "name": "Inverted Conditionals & Advanced Subjunctive",
+      "introduced_at_level": "C2",
+      "mastered_at_level": "C2+",
+      "category": "advanced_structures",
+      "patterns": [
+        "\\bhad\\s+i\\b",
+        "\\bwere\\s+it\\s+not\\s+for\\b",
+        "\\bshould\\s+you\\b"
+      ],
+      "description": "Formal inverted conditional expressions."
+    }
+  ]
+}

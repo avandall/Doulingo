@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "description": "Structured Topic Bank for Duolingo Speak — Categorizing Free Conversation vs Structured Roleplay Scenarios",
+  "topics": [
+    {
+      "id": "greeting",
+      "title": "Greeting & Small Talk",
+      "category": "free_conversation",
+      "enable_scenario_angle": false,
+      "description": "Casual greetings, warm-up introductions, and general small talk without forced scenarios."
+    },
+    {
+      "id": "free_chat",
+      "title": "Free Discussion & Chit-Chat",
+      "category": "free_conversation",
+      "enable_scenario_angle": false,
+      "description": "Open-ended natural conversation on any everyday topic."
+    },
+    {
+      "id": "det_childhood_memory",
+      "title": "Childhood Memories",
+      "category": "free_conversation",
+      "enable_scenario_angle": false,
+      "description": "Share memorable childhood stories and family traditions."
+    },
+    {
+      "id": "det_best_friend",
+      "title": "Best Friends & Personality",
+      "category": "free_conversation",
+      "enable_scenario_angle": false,
+      "description": "Discuss friendship, personality traits, and personal values."
+    },
+    {
+      "id": "det_school_life",
+      "title": "School & Education",
+      "category": "free_conversation",
+      "enable_scenario_angle": false,
+      "description": "Talk about favorite subjects, study routines, and student life."
+    },
+    {
+      "id": "hobbies_interests",
+      "title": "Hobbies & Free Time",
+      "category": "free_conversation",
+      "enable_scenario_angle": false,
+      "description": "Discuss leisure activities, sports, music, and weekend fun."
+    },
+    {
+      "id": "ordering_food",
+      "title": "Ordering Food at a Restaurant",
+      "category": "structured_scenario",
+      "enable_scenario_angle": true,
+      "description": "Roleplay ordering meals, asking for menu recommendations, and paying the bill.",
+      "scenario_angles": [
+        "Focus on ordering meals, dietary preferences, and dish recommendations.",
+        "Focus on table reservations, menu specials, and paying the check."
+      ]
+    },
+    {
+      "id": "job_interview",
+      "title": "Job Interview Roleplay",
+      "category": "structured_scenario",
+      "enable_scenario_angle": true,
+      "description": "Professional job interview roleplay discussing skills, experience, and career goals.",
+      "scenario_angles": [
+        "Focus on professional work history, key strengths, and answering behavioral questions.",
+        "Focus on discussing career goals, salary expectations, and company culture fit."
+      ]
+    },
+    {
+      "id": "hotel_booking",
+      "title": "Hotel Reservation & Check-In",
+      "category": "structured_scenario",
+      "enable_scenario_angle": true,
+      "description": "Roleplay reserving rooms, asking about amenities, and checking in at a hotel.",
+      "scenario_angles": [
+        "Focus on hotel reservations, room upgrades, and local transportation tips."
+      ]
+    },
+    {
+      "id": "airport_travel",
+      "title": "Airport & Flight Navigation",
+      "category": "structured_scenario",
+      "enable_scenario_angle": true,
+      "description": "Roleplay checking in for flights, luggage clearance, and airport directions.",
+      "scenario_angles": [
+        "Focus on flight bookings, luggage packing essentials, and airport navigation."
+      ]
+    },
+    {
+      "id": "shopping_bargaining",
+      "title": "Shopping & Local Markets",
+      "category": "structured_scenario",
+      "enable_scenario_angle": true,
+      "description": "Roleplay shopping, bargaining prices, and asking about local souvenirs.",
+      "scenario_angles": [
+        "Focus on shopping deals, market bargaining, and finding unique souvenirs."
+      ]
+    },
+    {
+      "id": "coffee_shop",
+      "title": "Cafe Order & Coffee Tasting",
+      "category": "structured_scenario",
+      "enable_scenario_angle": true,
+      "description": "Roleplay ordering coffee, tasting local roasts, and relaxing at neighborhood cafes.",
+      "scenario_angles": [
+        "Focus on coffee tasting, cozy neighborhood cafes, and ordering custom drinks."
+      ]
+    }
+  ]
+}

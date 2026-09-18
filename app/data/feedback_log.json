@@ -1,0 +1,30 @@
+[
+  {
+    "id": "fb_c06e3301",
+    "timestamp": "2026-08-27T06:15:26.186349+00:00",
+    "response_text": "Good day to you! How may I assist your learning today?",
+    "rating": "good",
+    "dialogue_id": null,
+    "user_id": "test_user_42",
+    "context": {
+      "level": "A2",
+      "persona": "Alex",
+      "topic": "daily_life"
+    },
+    "comments": "Very friendly response"
+  },
+  {
+    "id": "fb_10247d8d",
+    "timestamp": "2026-08-27T06:16:24.421747+00:00",
+    "response_text": "Good day to you! How may I assist your learning today?",
+    "rating": "good",
+    "dialogue_id": null,
+    "user_id": "test_user_42",
+    "context": {
+      "level": "A2",
+      "persona": "Alex",
+      "topic": "daily_life"
+    },
+    "comments": "Very friendly response"
+  }
+]
