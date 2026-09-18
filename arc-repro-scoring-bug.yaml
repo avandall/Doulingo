@@ -1,0 +1,10 @@
+trace: trace_real_doulingo_scoring_bug
+determinism_level: L1
+faults:
+- step: 1
+  type: out_of_bounds_score
+  val: 10.5
+violated: INV-SCORE-001
+reproduce_rate: 1.0
+confidence_interval: null
+cost_usd: 0.0

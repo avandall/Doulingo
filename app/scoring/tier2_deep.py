@@ -27,6 +27,23 @@ from app.scoring.features import (
     interpolate_band,
 )
 
+# Optional ARC SDK Tracing with graceful fallback
+try:
+    from arc.sdk import get_current_trace_context, trace_agent, trace_tool
+except ImportError:
+    def trace_agent(*args: Any, **kwargs: Any) -> Any:
+        def decorator(f: Any) -> Any:
+            return f
+        return decorator
+
+    def trace_tool(*args: Any, **kwargs: Any) -> Any:
+        def decorator(f: Any) -> Any:
+            return f
+        return decorator
+
+    def get_current_trace_context() -> Any:
+        return None
+
 # Attempt importing spacy safely
 try:
     import spacy
@@ -83,8 +100,10 @@ class Tier2ScoreResult:
     latency_ms: float
     grammar_analysis: dict[str, Any] = field(default_factory=dict)
     metrics_detail: dict[str, Any] = field(default_factory=dict)
+    ctf_trace: dict[str, Any] | None = None
 
 
+@trace_tool(name="analyze_grammar_spacy")
 def analyze_grammar_spacy(text: str) -> dict[str, Any]:
     """
     Analyze grammatical complexity and errors using spaCy (or fallback rules).
@@ -165,6 +184,7 @@ def analyze_grammar_spacy(text: str) -> dict[str, Any]:
     }
 
 
+@trace_tool(name="compute_pronunciation_score")
 def compute_pronunciation_score(
     words: Sequence[WordTimestamp], fallback_confidence: float = 1.0
 ) -> float:
@@ -186,6 +206,7 @@ def compute_pronunciation_score(
     return max(4.0, min(9.0, round(score, 2)))
 
 
+@trace_agent(name="doulingo_tier2_scorer", model_provider="spacy", model_id="ielts-eval-v1")
 def evaluate_tier2(
     words: Sequence[WordTimestamp],
     transcript: str,
@@ -277,6 +298,9 @@ def evaluate_tier2(
         "error_count": error_count,
     }
 
+    ctx = get_current_trace_context()
+    ctf_dict = ctx.to_ctf_dict() if ctx is not None else None
+
     return Tier2ScoreResult(
         fluency_score=fc_score,
         lexical_score=lr_score,
@@ -287,4 +311,5 @@ def evaluate_tier2(
         latency_ms=round(elapsed_ms, 3),
         grammar_analysis=grammar_info,
         metrics_detail=metrics_detail,
+        ctf_trace=ctf_dict,
     )

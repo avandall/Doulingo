@@ -21,8 +21,72 @@ from app.core.ai_engine import get_background_evaluation
 from app.rag import PromptContext, compute_band_window, retrieve_dialogues
 from app.storage import get_db_connection
 
+# Optional ARC SDK Tracing with graceful fallback
+try:
+    from arc.sdk import get_current_trace_context, trace_agent, trace_tool
+except ImportError:
+    def trace_agent(*args: Any, **kwargs: Any) -> Any:
+        def decorator(f: Any) -> Any:
+            return f
+        return decorator
+
+    def trace_tool(*args: Any, **kwargs: Any) -> Any:
+        def decorator(f: Any) -> Any:
+            return f
+        return decorator
+
+    def get_current_trace_context() -> Any:
+        return None
+
 logger = logging.getLogger("duolingo_speak.api.chat")
 router = APIRouter(tags=["Chat & Dialogue Engine"])
+
+
+@trace_tool(name="rag_retrieve_dialogues")
+def _traced_retrieve_dialogues(
+    user_id: str,
+    topic_tags: str,
+    band_min: float,
+    band_max: float,
+    limit: int = 4,
+    auto_log_exposure: bool = True,
+) -> list[Any]:
+    return retrieve_dialogues(
+        user_id=user_id,
+        topic_tags=topic_tags,
+        band_min=band_min,
+        band_max=band_max,
+        limit=limit,
+        auto_log_exposure=auto_log_exposure,
+    )
+
+
+@trace_tool(name="conversational_llm_generate")
+def _traced_agent_generate(
+    agent: ConversationalAgent,
+    context: PromptContext,
+    history: list[dict[str, str]],
+    user_utterance: str,
+) -> Any:
+    return agent.generate_response(
+        context=context,
+        history=history,
+        user_utterance=user_utterance,
+    )
+
+
+@trace_tool(name="tts_audio_synthesis")
+def _traced_tts_generate(
+    tts_streamer: TTSStreamer,
+    text: str,
+    char_id: str,
+    text_only_mode: bool,
+) -> Any:
+    return tts_streamer.generate_audio(
+        text=text,
+        char_id=char_id,
+        text_only_mode=text_only_mode,
+    )
 
 
 async def _execute_voice_turn_pipeline(
@@ -36,81 +100,91 @@ async def _execute_voice_turn_pipeline(
     audio_bytes: bytes | None,
     level: int | None = None,
 ) -> dict[str, Any]:
-    # 1. ASR Ingestion & Chunk Processor
-    final_transcript = (user_transcript or "").strip()
-    if audio_bytes and len(audio_bytes) > 0:
-        session = StreamingSessionState()
-        chunk_res = ASRChunkResult(transcript="", words=[])
-        session.process_chunk(audio_bytes, chunk_res)
-        asr_text = session.get_transcript().strip()
-        if asr_text:
-            final_transcript = (
-                asr_text if not final_transcript else f"{final_transcript} {asr_text}".strip()
-            )
+    with trace_agent(
+        name="doulingo_voice_turn_agent",
+        model_provider="gemini",
+        model_id="gemini-1.5-flash",
+    ) as ctx:
+        # 1. ASR Ingestion & Chunk Processor
+        final_transcript = (user_transcript or "").strip()
+        if audio_bytes and len(audio_bytes) > 0:
+            session = StreamingSessionState()
+            chunk_res = ASRChunkResult(transcript="", words=[])
+            session.process_chunk(audio_bytes, chunk_res)
+            asr_text = session.get_transcript().strip()
+            if asr_text:
+                final_transcript = (
+                    asr_text if not final_transcript else f"{final_transcript} {asr_text}".strip()
+                )
 
-    if not final_transcript:
-        final_transcript = "Hello! Let's practice English."
+        if not final_transcript:
+            final_transcript = "Hello! Let's practice English."
 
-    if level is not None:
-        effective_level = max(1, min(20, int(level)))
-        effective_band = round(4.0 + (effective_level - 1) * (5.0 / 19.0), 1)
-    else:
-        effective_band = float(band_level)
-        effective_level = max(1, min(20, round(1.0 + (effective_band - 4.0) * (19.0 / 5.0))))
+        if level is not None:
+            effective_level = max(1, min(20, int(level)))
+            effective_band = round(4.0 + (effective_level - 1) * (5.0 / 19.0), 1)
+        else:
+            effective_band = float(band_level)
+            effective_level = max(1, min(20, round(1.0 + (effective_band - 4.0) * (19.0 / 5.0))))
 
-    # 2. RAG Retrieval Layer
-    band_min, band_max = compute_band_window(effective_band, "hold")
-    retrieved = retrieve_dialogues(
-        user_id=user_id,
-        topic_tags=topic,
-        band_min=band_min,
-        band_max=band_max,
-        limit=4,
-        auto_log_exposure=True,
-    )
+        # 2. RAG Retrieval Layer (Traced by ARC)
+        band_min, band_max = compute_band_window(effective_band, "hold")
+        retrieved = _traced_retrieve_dialogues(
+            user_id=user_id,
+            topic_tags=topic,
+            band_min=band_min,
+            band_max=band_max,
+            limit=4,
+            auto_log_exposure=True,
+        )
 
-    # 3. Prompt Construction
-    context = PromptContext(
-        user_id=user_id,
-        band_estimate=effective_band,
-        level=effective_level,
-        topic_tag=topic,
-        retrieved_dialogues=retrieved,
-        character_name=character_id or "Lily",
-        difficulty_adjustment="hold",
-    )
+        # 3. Prompt Construction
+        context = PromptContext(
+            user_id=user_id,
+            band_estimate=effective_band,
+            level=effective_level,
+            topic_tag=topic,
+            retrieved_dialogues=retrieved,
+            character_name=character_id or "Lily",
+            difficulty_adjustment="hold",
+        )
 
-    # 4. Conversational Agent Execution
-    agent = ConversationalAgent()
-    agent_response = agent.generate_response(
-        context=context,
-        history=conversation_history,
-        user_utterance=final_transcript,
-    )
+        # 4. Conversational Agent Execution (Traced by ARC)
+        agent = ConversationalAgent()
+        agent_response = _traced_agent_generate(
+            agent=agent,
+            context=context,
+            history=conversation_history,
+            user_utterance=final_transcript,
+        )
 
-    # 5. TTS Audio Synthesis
-    tts_streamer = TTSStreamer(default_char_id=character_id or "lily")
-    tts_result = tts_streamer.generate_audio(
-        text=agent_response.ai_utterance,
-        char_id=character_id or "lily",
-        text_only_mode=text_only_mode,
-    )
+        # 5. TTS Audio Synthesis (Traced by ARC)
+        tts_streamer = TTSStreamer(default_char_id=character_id or "lily")
+        tts_result = _traced_tts_generate(
+            tts_streamer=tts_streamer,
+            text=agent_response.ai_utterance,
+            char_id=character_id or "lily",
+            text_only_mode=text_only_mode,
+        )
 
-    audio_b64 = None
-    if tts_result.audio_bytes:
-        audio_b64 = base64.b64encode(tts_result.audio_bytes).decode("utf-8")
+        audio_b64 = None
+        if tts_result.audio_bytes:
+            audio_b64 = base64.b64encode(tts_result.audio_bytes).decode("utf-8")
 
-    return {
-        "user_transcript": final_transcript,
-        "ai_utterance": agent_response.ai_utterance,
-        "internal_band_signal": agent_response.internal_band_signal,
-        "topic_tag": agent_response.topic_tag,
-        "difficulty_adjustment": agent_response.difficulty_adjustment,
-        "audio_base64": audio_b64,
-        "text_only_mode": tts_result.text_only_mode,
-        "retrieved_dialogues_count": len(retrieved),
-        "is_fallback": agent_response.is_fallback,
-    }
+        ctf_dict = ctx.to_ctf_dict() if ctx is not None else None
+
+        return {
+            "user_transcript": final_transcript,
+            "ai_utterance": agent_response.ai_utterance,
+            "internal_band_signal": agent_response.internal_band_signal,
+            "topic_tag": agent_response.topic_tag,
+            "difficulty_adjustment": agent_response.difficulty_adjustment,
+            "audio_base64": audio_b64,
+            "text_only_mode": tts_result.text_only_mode,
+            "retrieved_dialogues_count": len(retrieved),
+            "is_fallback": agent_response.is_fallback,
+            "ctf_trace": ctf_dict,
+        }
 
 
 @router.get("/api/topics")

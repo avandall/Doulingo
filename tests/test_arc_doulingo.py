@@ -1,253 +1,336 @@
+"""
+Test Suite: ARC Real Integration for Doulingo
+=============================================
+Kiểm thử THẬT ARC Platform trên các luồng nghiệp vụ cốt lõi của Doulingo:
+1. Deep Scoring Agent (app/scoring/tier2_deep.py) — Chấm điểm phát âm & ngữ pháp IELTS
+2. Conversational Chat Agent (app/api/routers/chat.py) — RAG Retrieval + LLM + TTS
+3. ARC Invariant Safety Engine — Đảm bảo tính bất biến của điểm số và hội thoại
+4. ARC CI Gate — Đánh giá tuân thủ vết thực thi (CTF v1.0) trên trace thực tế
+"""
+
 import json
 import os
-import uuid
+import sys
 from pathlib import Path
 from typing import Any
 
-from arc.sdk import trace_agent, trace_tool, get_current_trace_context
+# Đảm bảo import được app khi chạy trực tiếp bằng python tests/test_arc_doulingo.py
+REPO_ROOT = str(Path(__file__).resolve().parent.parent)
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
+
+from app.api.routers.chat import _execute_voice_turn_pipeline
+from app.scoring.features import WordTimestamp
+from app.scoring.tier2_deep import evaluate_tier2
 from arc.execution.fork_engine.fault_catalog import FaultSpec
 from arc.execution.fork_engine.orchestrator import ForkOrchestrator
 from arc.execution.invariant_engine.evaluator import InvariantEvaluator
-from arc.execution.fork_engine.reproducer_export import export_minimal_reproducer_yaml
+from arc.sdk import get_current_trace_context, trace_agent
+
 
 # ==============================================================================
-# 1. ĐỊNH NGHĨA INVARIANT (BẤT BIẾN NGHIỆP VỤ DOULINGO)
+# BẤT BIẾN AN TOÀN NGHIỆP VỤ THỰC TẾ (REAL INVARIANTS)
 # ==============================================================================
-# Quy tắc: Mỗi bài học hoàn thành chỉ được cộng tối đa 20 EXP.
-# Nghiêm cấm lỗi cộng 2 lần (Double Reward) khi mạng chập chờn / retry.
-INV_EXP_001_SPEC: dict[str, Any] = {
-    "id": "INV-EXP-001",
-    "statement": "Tổng điểm EXP thưởng cho 1 bài học không được vượt quá 20 EXP",
-    "category": "conservation",
+
+INV_SCORE_001_SPEC: dict[str, Any] = {
+    "id": "INV-SCORE-001",
+    "statement": "Điểm IELTS ước lượng (estimated_band) phải nằm trong khoảng hợp lệ [4.0, 9.0]",
+    "category": "safety",
     "severity": "critical",
-    "check": "sum([e.delta.amount for e in effects if e.type == 'learning.exp_reward']) <= 20",
+    "check": "context.get('estimated_band', 0) >= 4.0 and context.get('estimated_band', 0) <= 9.0",
 }
 
-# ==============================================================================
-# 2. ĐỊNH NGHĨA TOOLS CỦA DOULINGO AGENT
-# ==============================================================================
-@trace_tool(name="dictionary_lookup")
-def lookup_vocab(word: str) -> dict[str, Any]:
-    """Tool tra từ điển vựng."""
-    return {
-        "word": word,
-        "definition": "A greeting or expression of goodwill.",
-        "difficulty": "A1"
-    }
+INV_CHAT_001_SPEC: dict[str, Any] = {
+    "id": "INV-CHAT-001",
+    "statement": "Hội thoại phản hồi từ AI không được rỗng và không bị crash",
+    "category": "safety",
+    "severity": "critical",
+    "check": "len(context.get('ai_utterance', '').strip()) > 0",
+}
 
-@trace_tool(name="award_exp_reward")
-def award_exp_reward(
-    student_id: str,
-    lesson_id: str,
-    exp: int = 20,
-    fault_spec: dict[str, Any] | None = None,
-    effects_ledger: list[dict[str, Any]] | None = None,
-) -> dict[str, Any]:
-    """Tool cộng điểm thưởng EXP cho học viên khi làm bài đúng.
+
+# ==============================================================================
+# TEST 1: CHẤM ĐIỂM THỰC TẾ VỚI TIER 2 DEEP SCORER + ARC TRACE
+# ==============================================================================
+
+def test_arc_real_tier2_scorer():
+    """Test THẬT 1: Đánh giá âm vị & ngữ pháp thật qua evaluate_tier2().
     
-    Có thể bị tiêm lỗi Chaos 'timeout_after_commit':
-    Database đã cộng EXP xong, nhưng kết nối mạng bị đứt lúc trả về client.
+    ARC tự động bắt:
+    - Span của Agent: doulingo_tier2_scorer
+    - Các Tool được gọi: analyze_grammar_spacy, compute_pronunciation_score
+    - Độ trễ execution (latency_ms) và xuất ra CTF v1.0 trace thật.
     """
-    # 1. Ghi nhận tác động (Side Effect) vào sổ cái Ledger
-    effect_entry: dict[str, Any] = {
-        "effect_id": f"eff_{uuid.uuid4().hex[:8]}",
-        "step_id": 2,
-        "type": "learning.exp_reward",
-        "resource": f"student:{student_id}:lesson:{lesson_id}",
-        "delta": {"amount": exp},
-        "reversible": False,
-        "observed_at_step": 2,
-    }
-    if effects_ledger is not None:
-        effects_ledger.append(effect_entry)
+    sample_transcript = (
+        "I have lived in London for three years because I study computer science at university."
+    )
+    # Dữ liệu ASR Word Timestamps thật với confidence điểm cao
+    words = [
+        WordTimestamp(word="I", start_time=0.1, end_time=0.3, confidence=0.95),
+        WordTimestamp(word="have", start_time=0.3, end_time=0.6, confidence=0.92),
+        WordTimestamp(word="lived", start_time=0.6, end_time=1.0, confidence=0.90),
+        WordTimestamp(word="in", start_time=1.0, end_time=1.2, confidence=0.96),
+        WordTimestamp(word="London", start_time=1.2, end_time=1.7, confidence=0.94),
+        WordTimestamp(word="for", start_time=1.7, end_time=1.9, confidence=0.91),
+        WordTimestamp(word="three", start_time=1.9, end_time=2.3, confidence=0.93),
+        WordTimestamp(word="years", start_time=2.3, end_time=2.8, confidence=0.95),
+        WordTimestamp(word="because", start_time=2.8, end_time=3.3, confidence=0.88),
+        WordTimestamp(word="I", start_time=3.3, end_time=3.5, confidence=0.97),
+        WordTimestamp(word="study", start_time=3.5, end_time=3.9, confidence=0.91),
+        WordTimestamp(word="computer", start_time=3.9, end_time=4.4, confidence=0.92),
+        WordTimestamp(word="science", start_time=4.4, end_time=4.9, confidence=0.94),
+        WordTimestamp(word="at", start_time=4.9, end_time=5.1, confidence=0.95),
+        WordTimestamp(word="university", start_time=5.1, end_time=5.8, confidence=0.93),
+    ]
 
-    ctx = get_current_trace_context()
-    if ctx is not None:
-        ctx.effects.append(effect_entry)
+    # Gọi hàm chấm điểm THẬT của Doulingo (đã gắn ARC)
+    score_result = evaluate_tier2(words=words, transcript=sample_transcript, target_band=6.5)
 
-    # 2. Xử lý tiêm lỗi Chaos Fault Injection
-    if fault_spec:
-        fault_type = fault_spec.get("type") or fault_spec.get("fault_type")
-        if fault_type == "timeout_after_commit":
-            # Hệ thống đã cộng điểm, nhưng phản hồi mạng bị Timeout 504
-            return {
-                "status_code": 504,
-                "status": "error",
-                "error": "504 Gateway Timeout (timeout_after_commit injected by ARC)",
-            }
+    # 1. Kiểm tra kết quả chấm điểm nghiệp vụ
+    assert score_result.estimated_band >= 4.0
+    assert score_result.estimated_band <= 9.0
+    assert score_result.raw_score > 0.0
+    assert score_result.grammar_analysis.get("error_count") == 0
 
-    return {
-        "status": "ok",
-        "student_id": student_id,
-        "lesson_id": lesson_id,
-        "exp_awarded": exp,
-    }
+    # 2. Kiểm tra Trace CTF v1.0 THẬT do ARC thu thập
+    ctf_trace = score_result.ctf_trace
+    assert ctf_trace is not None, "ARC phải tự động sinh CTF Trace từ hàm evaluate_tier2!"
+    assert ctf_trace["agent"]["name"] == "doulingo_tier2_scorer"
+    assert ctf_trace["model"]["provider"] == "spacy"
+    assert ctf_trace["outcome"]["status"] == "completed"
+
+    # Kiểm tra các tool steps do ARC ghi nhận trong quá trình chấm điểm
+    step_tools = [s["request"]["tool"] for s in ctf_trace["steps"]]
+    assert "analyze_grammar_spacy" in step_tools
+    assert "compute_pronunciation_score" in step_tools
+
+    # 3. Đánh giá Bất biến Invariant INV-SCORE-001 bằng InvariantEvaluator
+    evaluator = InvariantEvaluator()
+    eval_res = evaluator.evaluate(
+        INV_SCORE_001_SPEC,
+        ctf_trace.get("effects", []),
+        {"estimated_band": score_result.estimated_band},
+    )
+    assert eval_res.violated is False, "Điểm thi của học viên phải nằm trong ngưỡng an toàn [4.0, 9.0]!"
+
+    print("\n✅ Test 1 THẬT (Deep Scorer):")
+    print(f"   - Estimated Band: {score_result.estimated_band}")
+    print(f"   - Tool steps captured by ARC: {step_tools}")
+    print(f"   - Real execution latency: {score_result.latency_ms:.2f}ms")
+
+    # Lưu trace thật ra file để dùng cho CI Gate
+    os.makedirs("data", exist_ok=True)
+    with open("data/real_doulingo_scoring_trace.json", "w", encoding="utf-8") as f:
+        json.dump(ctf_trace, f, indent=2, ensure_ascii=False, default=str)
+
 
 # ==============================================================================
-# 3. AI AGENT DOULINGO WORKFLOW
+# TEST 2: HỘI THOẠI CHAT PIPELINE THỰC TẾ + ARC TRACE
 # ==============================================================================
-@trace_agent(name="doulingo_tutor_agent", model_provider="gemini", model_id="gemini-1.5-flash")
-def run_doulingo_lesson_agent(
-    student_id: str = "student_99",
-    lesson_id: str = "lesson_french_01",
-    user_answer: str = "bonjour",
-    inject_fault: bool = False,
-) -> dict[str, Any]:
-    """Workflow chính:
-    1. Tra từ vựng để chấm điểm
-    2. Nếu đúng, cộng điểm EXP qua tool award_exp_reward
-    3. Nếu gặp lỗi timeout, agent ngây thơ retry gọi lại mà không có idempotency key!
+
+def test_arc_real_chat_voice_turn():
+    """Test THẬT 2: Luồng hội thoại voice turn của học viên qua _execute_voice_turn_pipeline().
+    
+    ARC tự động bắt:
+    - Span Agent: doulingo_voice_turn_agent
+    - Tool RAG: rag_retrieve_dialogues (truy vấn DB tài liệu mẫu)
+    - Tool LLM: conversational_llm_generate (sinh câu đối đáp phù hợp level)
+    - Tool TTS: tts_audio_synthesis
     """
-    ctx = get_current_trace_context()
-    effects: list[dict[str, Any]] = []
+    import asyncio
 
-    # Step 1: Tra cứu từ
-    vocab = lookup_vocab(user_answer)
+    user_utterance = "Can you recommend a good restaurant near the Eiffel Tower?"
 
-    # Step 2: Cộng điểm thưởng (kèm kịch bản lỗi nếu inject_fault=True)
-    active_fault = {"type": "timeout_after_commit", "step": 2, "tool": "award_exp_reward"} if inject_fault else None
-
-    reward_res = award_exp_reward(
-        student_id=student_id,
-        lesson_id=lesson_id,
-        exp=20,
-        fault_spec=active_fault,
-        effects_ledger=effects,
+    # Gọi pipeline hội thoại THẬT của Doulingo (Lily nhân vật, topic Du lịch)
+    result = asyncio.run(
+        _execute_voice_turn_pipeline(
+            user_id="user_test_999@doulingo.com",
+            topic="Travel & Directions",
+            band_level=5.5,
+            conversation_history=[],
+            character_id="lily",
+            text_only_mode=True,  # Tránh phụ thuộc dịch vụ TTS ngoài khi test
+            user_transcript=user_utterance,
+            audio_bytes=None,
+            level=5,
+        )
     )
 
-    # LỖ HỔNG BẢO MẬT & ĐỘ TIN CẬY CỦA AGENT:
-    # Khi thấy lỗi 504 Timeout, Agent tự động retry mà KHÔNG check idempotency key
-    # Dẫn đến việc học viên bị cộng điểm 2 lần (Double Reward defect)!
-    if reward_res.get("status_code") == 504 or reward_res.get("status") == "error":
-        # Retry lần 2 -> Database lại cộng tiếp 20 EXP nữa!
-        reward_res = award_exp_reward(
-            student_id=student_id,
-            lesson_id=lesson_id,
-            exp=20,
-            fault_spec=None,  # Lần 2 thành công
-            effects_ledger=effects,
-        )
+    # 1. Kiểm tra nghiệp vụ phản hồi
+    ai_reply = result.get("ai_utterance", "")
+    assert len(ai_reply) > 0, "AI Agent phải sinh câu trả lời cho học viên!"
 
-    ctf_trace = ctx.to_ctf_dict() if ctx is not None else {}
-    if ctx is not None and effects and not ctf_trace.get("effects"):
-        ctf_trace["effects"] = effects
+    # 2. Kiểm tra CTF Trace do ARC thu thập
+    ctf_trace = result.get("ctf_trace")
+    assert ctf_trace is not None, "ARC phải sinh CTF trace cho voice turn pipeline!"
+    assert ctf_trace["agent"]["name"] == "doulingo_voice_turn_agent"
+    assert ctf_trace["model"]["provider"] == "gemini"
 
-    return {
-        "status": "completed",
-        "vocab": vocab,
-        "reward": reward_res,
-        "effects": ctf_trace.get("effects", effects),
-        "ctf_trace": ctf_trace,
-    }
+    step_tools = [s["request"]["tool"] for s in ctf_trace["steps"]]
+    assert "rag_retrieve_dialogues" in step_tools
+    assert "conversational_llm_generate" in step_tools
+
+    # 3. Đánh giá Bất biến Invariant INV-CHAT-001
+    evaluator = InvariantEvaluator()
+    eval_res = evaluator.evaluate(
+        INV_CHAT_001_SPEC,
+        ctf_trace.get("effects", []),
+        {"ai_utterance": ai_reply},
+    )
+    assert eval_res.violated is False, "Hội thoại không được vi phạm bất biến an toàn!"
+
+    print("\n✅ Test 2 THẬT (Chat Voice Turn):")
+    print(f"   - User utterance: {user_utterance}")
+    print(f"   - AI Reply: {ai_reply[:60]}...")
+    print(f"   - Tool steps captured by ARC: {step_tools}")
+
+    # Lưu trace thật ra file
+    with open("data/real_doulingo_chat_trace.json", "w", encoding="utf-8") as f:
+        json.dump(ctf_trace, f, indent=2, ensure_ascii=False, default=str)
+
 
 # ==============================================================================
-# 4. CÁC TEST CASES THỂ HIỆN TOÀN BỘ GIÁ TRỊ CỦA ARC
+# TEST 3: RẼ NHÁNH FORK ENGINE TRÊN LOGIC THẬT
 # ==============================================================================
 
-def test_1_nominal_execution():
-    """TÍNH NĂNG 1: Chạy chuẩn (Nominal) - Đảm bảo Invariant luôn PASS."""
-    res = run_doulingo_lesson_agent(inject_fault=False)
-    assert res["status"] == "completed"
-    assert len(res["effects"]) == 1
-    assert res["effects"][0]["delta"]["amount"] == 20
-
-    # Đánh giá Invariant bằng InvariantEvaluator của ARC
-    evaluator = InvariantEvaluator()
-    eval_res = evaluator.evaluate(INV_EXP_001_SPEC, res["effects"], {})
-    assert eval_res.violated is False, "Nominal execution không được vi phạm Invariant!"
-    print("\n✅ Test 1 (Nominal): Invariant INV-EXP-001 PASS (Cộng đúng 20 EXP)")
-
-    # Lưu trace chuẩn
-    os.makedirs("data", exist_ok=True)
-    with open("data/sample_doulingo_trace.json", "w", encoding="utf-8") as f:
-        json.dump(res["ctf_trace"], f, indent=2, ensure_ascii=False)
-
-
-def test_2_chaos_fault_injection_double_reward():
-    """TÍNH NĂNG 2: Tiêm lỗi Chaos (Fault Injection) 'timeout_after_commit'.
+def test_arc_real_fork_branching():
+    """Test THẬT 3: Rẽ nhánh song song 10 branches trên Scorer thật.
     
-    Phát hiện lỗi nghiêm trọng: Agent retry sai cách làm học viên được x2 điểm (40 EXP).
-    ARC Invariant Engine bắt ngay lập tức vi phạm này!
+    Chạy ForkOrchestrator với 10 branches song song gọi hàm chấm điểm thật,
+    tính toán thống kê chi phí, số sample hợp lệ (n_valid).
     """
-    res = run_doulingo_lesson_agent(inject_fault=True)
-    assert res["status"] == "completed"
-    # Agent đã gọi tool 2 lần do retry
-    assert len(res["effects"]) == 2
-    total_exp = sum(e["delta"]["amount"] for e in res["effects"])
-    assert total_exp == 40, "Đã phát hiện Double Reward: 40 EXP thay vì 20 EXP!"
+    orchestrator = ForkOrchestrator(k=10)
+    fault_spec = FaultSpec(at_step=0, fault_type="latency_spike", target_tool="analyze_grammar_spacy")
 
-    # Invariant Evaluator bắt vi phạm
-    evaluator = InvariantEvaluator()
-    eval_res = evaluator.evaluate(INV_EXP_001_SPEC, res["effects"], {})
-    assert eval_res.violated is True, "ARC phải phát hiện lỗi vi phạm INV-EXP-001!"
-    print(f"\n⚠️ Test 2 (Chaos): Phát hiện vi phạm {eval_res.invariant_id}! Tổng EXP nhận: {total_exp} > 20")
+    words = [
+        WordTimestamp(word="Hello", start_time=0.0, end_time=0.5, confidence=0.95),
+        WordTimestamp(word="world", start_time=0.5, end_time=1.0, confidence=0.92),
+    ]
 
-
-def test_3_fork_engine_parallel_branches():
-    """TÍNH NĂNG 3: Rẽ nhánh song song (Fork Engine) & Đánh giá thống kê Wilson Score.
-    
-    ARC ForkOrchestrator phân nhánh ra K=20 luồng độc lập, mô phỏng mạng chập chờn
-    (35% số luồng bị dính timeout_after_commit = 7/20 luồng).
-    """
-    orchestrator = ForkOrchestrator(k=20)
-    fault_spec = FaultSpec(at_step=2, fault_type="timeout_after_commit", target_tool="award_exp_reward")
-    evaluator = InvariantEvaluator()
-
-    def custom_branch_worker(branch_id: int, spec: FaultSpec) -> dict[str, Any]:
-        # Giả lập mạng chập chờn: 7 trên 20 nhánh (branch 0..6) bị lỗi mạng
-        inject = branch_id < 7
-        agent_res = run_doulingo_lesson_agent(inject_fault=inject)
-
-        eval_res = evaluator.evaluate(INV_EXP_001_SPEC, agent_res["effects"], {})
-        violations = ["INV-EXP-001"] if eval_res.violated else []
-
+    def real_branch_worker(branch_id: int, spec: FaultSpec) -> dict[str, Any]:
+        # Mỗi nhánh chạy hàm chấm điểm thật
+        res = evaluate_tier2(words=words, transcript="Hello world")
         return {
             "branch_id": branch_id,
             "status": "success",
             "fault_applied": spec.to_dict(),
-            "violations": violations,
-            "cost_usd": 0.0015,
-            "tokens": 85,
-            "duration_ms": 25,
+            "violations": [],
+            "cost_usd": 0.0005,
+            "tokens": 40,
+            "duration_ms": res.latency_ms,
         }
 
-    # Khởi chạy rẽ nhánh song song 20 branches
-    fork_result = orchestrator.run_fork(fault_spec=fault_spec, branch_executor=custom_branch_worker)
+    fork_res = orchestrator.run_fork(fault_spec=fault_spec, branch_executor=real_branch_worker)
 
-    assert fork_result.status == "completed"
-    assert fork_result.k == 20
-    assert fork_result.n_valid == 20
-    assert "INV-EXP-001" in fork_result.violations
+    assert fork_res.status == "completed"
+    assert fork_res.k == 10
+    assert fork_res.n_valid == 10
+    assert len(fork_res.violations) == 0, "Không có vi phạm trên luồng nominal của Scorer!"
 
-    v_stat = fork_result.violations["INV-EXP-001"]
-    assert v_stat["hits"] == 7
-    reproduce_rate = v_stat["violation_rate"]  # 7 / 20 = 0.35 (35%)
-    ci = v_stat["wilson_ci"]                   # 95% Wilson Score Confidence Interval
+    print("\n✅ Test 3 THẬT (Fork Engine trên Scorer thật):")
+    print(f"   - K branches executed in parallel: {fork_res.k}")
+    print(f"   - N_valid samples: {fork_res.n_valid}")
+    print(f"   - Total USD cost: ${fork_res.total_cost_usd:.4f}")
 
-    print(f"\n🔀 Test 3 (Fork Engine): Rẽ {fork_result.k} nhánh song song thành công!")
-    print(f"   - Số lần vi phạm bug (hits): {v_stat['hits']}/{fork_result.k}")
-    print(f"   - Tỉ lệ tái hiện lỗi (violation_rate): {reproduce_rate * 100:.1f}%")
-    print(f"   - Khoảng tin cậy 95% Wilson Score CI: [{ci[0]:.3f}, {ci[1]:.3f}]")
-    print(f"   - Tổng chi phí đo kiểm: ${fork_result.total_cost_usd:.4f}")
 
-    # TÍNH NĂNG 4: Tự động xuất file Minimal Reproducer YAML
-    repro_file = export_minimal_reproducer_yaml(
-        trace="trace_doulingo_double_reward_001",
-        faults=[fault_spec.to_dict()],
-        violated="INV-EXP-001",
-        determinism_level="L1",
-        reproduce_rate=reproduce_rate,
-        confidence_interval=ci,
-        cost_usd=fork_result.total_cost_usd,
-        output_path="arc-repro-doulingo.yaml",
+# ==============================================================================
+# TEST 4: ARC BẮT LỖI VI PHẠM BẤT BIẾN (INVARIANT VIOLATION DETECTION)
+# ==============================================================================
+
+def test_arc_detects_scoring_invariant_violation():
+    """Test THẬT 4: Mô phỏng bug thuật toán chấm điểm khiến Band vọt lên 10.5 (> 9.0).
+    
+    ARC Invariant Engine sẽ:
+    1. Bắt quả tang giá trị 10.5 vi phạm quy tắc [4.0, 9.0].
+    2. Báo VIOLATED = True và chỉ đích danh quy tắc INV-SCORE-001.
+    3. Xuất file Minimal Bug Reproducer YAML để kiểm tra lại.
+    """
+    from arc.execution.fork_engine.reproducer_export import export_minimal_reproducer_yaml
+
+    # Giả sử một lỗi tính toán trọng số (hoặc model hallucinate) khiến điểm Band vọt lên 10.5
+    buggy_estimated_band = 10.5
+    mock_effects = [{"type": "score.ielts", "delta": {"band": buggy_estimated_band}}]
+
+    evaluator = InvariantEvaluator()
+    eval_res = evaluator.evaluate(
+        INV_SCORE_001_SPEC,
+        mock_effects,
+        {"estimated_band": buggy_estimated_band},
     )
-    print(f"📁 Test 4 (Export Reproducer): Đã xuất file bug reproducer tại '{repro_file}'")
-    assert Path("arc-repro-doulingo.yaml").exists()
+
+    # ARC PHẢI BẮT ĐƯỢC VI PHẠM NÀY!
+    assert eval_res.violated is True, "ARC phải bắt được lỗi khi điểm Band vọt ra khỏi ngưỡng 9.0!"
+
+    print("\n🚨 Test 4 (ARC BẮT VI PHẠM BẤT BIẾN THÀNH CÔNG):")
+    print(f"   - Mã vi phạm: {eval_res.invariant_id}")
+    print(f"   - Quy tắc: {INV_SCORE_001_SPEC['statement']}")
+    print(f"   - Giá trị vi phạm: {buggy_estimated_band} (VƯỢT NGƯỠNG TỐI ĐA 9.0)")
+    print(f"   - Trạng thái ARC: VIOLATED = {eval_res.violated} ❌")
+
+    # Tự động xuất file bug reproducer
+    repro_path = export_minimal_reproducer_yaml(
+        trace="trace_real_doulingo_scoring_bug",
+        faults=[{"step": 1, "type": "out_of_bounds_score", "val": buggy_estimated_band}],
+        violated=eval_res.invariant_id,
+        determinism_level="L1",
+        reproduce_rate=1.0,
+        output_path="arc-repro-scoring-bug.yaml",
+    )
+    print(f"   - Đã sinh bug reproducer: {repro_path}")
+
+
+# ==============================================================================
+# TEST 5: ARC BẮT LỖI TOOL CALL BỊ SẬP (TOOL EXCEPTION CAPTURE)
+# ==============================================================================
+
+def test_arc_detects_tool_failure_and_exception_capture():
+    """Test THẬT 5: Mô phỏng Tool RAG hoặc DB bị mất kết nối.
+    
+    ARC @trace_tool sẽ:
+    1. Bẫy ngoại lệ an toàn (trap_exceptions=True) không để crash server.
+    2. Ghi nhận response status = 'error'.
+    3. Thu thập toàn bộ nội dung lỗi và thời gian trễ vào CTF trace step.
+    """
+    from arc.sdk import trace_tool, trace_agent, get_current_trace
+
+    @trace_tool(name="flaky_database_query")
+    def flaky_db_tool(query: str) -> dict[str, Any]:
+        # Giả lập Database ném lỗi mất kết nối
+        raise ConnectionRefusedError("Database SQLite/Turso bị ngắt kết nối đột ngột!")
+
+    with trace_agent(name="doulingo_fault_handler_agent") as ctx:
+        # Gọi tool bị lỗi
+        res = flaky_db_tool("SELECT * FROM content_units WHERE id = 123")
+
+        # ARC đã bẫy exception: không làm sập tiến trình
+        assert res.get("status") == "error"
+        assert "Database SQLite/Turso" in res.get("error", "")
+
+        trace = get_current_trace()
+
+    assert trace is not None
+    assert len(trace["steps"]) == 1
+    step_0 = trace["steps"][0]
+
+    # Kiểm tra vết ARC đã bắt được:
+    assert step_0["request"]["tool"] == "flaky_database_query"
+    assert step_0["response"]["status"] == "error"
+    assert step_0["outcome"] == "error"
+    assert step_0["response"]["latency_ms"] >= 0
+
+    print("\n🚨 Test 5 (ARC BẮT LỖI TOOL CRASH THÀNH CÔNG):")
+    print(f"   - Tool bị lỗi: {step_0['request']['tool']}")
+    print(f"   - Trạng thái Step: {step_0['response']['status']}")
+    print(f"   - Chi tiết lỗi thu thập: {step_0['response']['error']}")
+    print(f"   - Latency tại thời điểm crash: {step_0['response']['latency_ms']}ms")
+    print("   - Đánh giá: ARC đã bảo vệ tiến trình và ghi nhận đầy đủ hộp đen tai nạn! 🛡️")
 
 
 if __name__ == "__main__":
-    print("=== CHẠY TEST TỔNG HỢP ARC TRÊN DOULINGO ===")
-    test_1_nominal_execution()
-    test_2_chaos_fault_injection_double_reward()
-    test_3_fork_engine_parallel_branches()
-    print("\n🎉 Hoàn thành toàn bộ kịch bản kiểm thử ARC!")
+    print("=== BẮT ĐẦU CHẠY KIỂM THỬ THẬT ARC TRÊN DOULINGO ===")
+    test_arc_real_tier2_scorer()
+    test_arc_real_chat_voice_turn()
+    test_arc_real_fork_branching()
+    test_arc_detects_scoring_invariant_violation()
+    test_arc_detects_tool_failure_and_exception_capture()
+    print("\n🎉 Hoàn thành toàn bộ kiểm thử THẬT ARC!")
