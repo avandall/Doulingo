@@ -2,7 +2,7 @@
 import logging
 import os
 
-from fastapi import APIRouter, File, Form, HTTPException, Query, UploadFile
+from fastapi import APIRouter, File, Form, HTTPException, Query, Request, UploadFile
 from fastapi.responses import FileResponse, StreamingResponse
 
 from app.audio import (
@@ -18,15 +18,23 @@ router = APIRouter(tags=["Audio & Voice Synthesis"])
 
 @router.get("/api/tts/stream")
 async def api_tts_stream(
+    request: Request,
     text: str = Query(..., description="Text to synthesize"),
     character_id: str | None = Query(None, description="Character ID"),
     char_id: str | None = Query(None, description="Character ID alias"),
     tld: str = Query("com", description="Top level domain fallback for accent"),
 ):
-    """Sentence-level ultra-low latency audio streaming endpoint (<1.0s TTFA)."""
+    """Sentence-level ultra-low latency audio streaming endpoint (<1.0s TTFA).
+    Supports client barge-in / cancellation detection via request.is_disconnected.
+    """
     selected_char = character_id or char_id or "lily"
     try:
-        audio_generator = stream_sentence_level_tts(text=text, char_id=selected_char, tld=tld)
+        audio_generator = stream_sentence_level_tts(
+            text=text,
+            char_id=selected_char,
+            tld=tld,
+            is_cancelled=request.is_disconnected,
+        )
         headers = {
             "Content-Disposition": "inline; filename=speech_stream.mp3",
             "Accept-Ranges": "bytes",
@@ -41,6 +49,7 @@ async def api_tts_stream(
 
 @router.get("/api/tts")
 async def api_tts(
+    request: Request,
     text: str = Query(..., description="Text to synthesize"),
     character_id: str | None = Query(None, description="Character ID"),
     char_id: str | None = Query(None, description="Character ID alias"),
@@ -50,7 +59,12 @@ async def api_tts(
     selected_char = character_id or char_id or "rajesh"
     try:
         if stream:
-            audio_generator = stream_sentence_level_tts(text=text, char_id=selected_char, tld=tld)
+            audio_generator = stream_sentence_level_tts(
+                text=text,
+                char_id=selected_char,
+                tld=tld,
+                is_cancelled=request.is_disconnected,
+            )
             headers = {
                 "Content-Disposition": "inline; filename=speech_stream.mp3",
                 "Accept-Ranges": "bytes",

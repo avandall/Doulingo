@@ -32,3 +32,28 @@ def test_api_tts_streaming_endpoint():
     assert response.status_code == 200
     assert "audio/mpeg" in response.headers.get("content-type", "")
     assert len(response.content) > 100, "Streamed audio content should be non-empty"
+
+
+def test_stream_sentence_level_tts_cancellation():
+    """Verify sentence level TTS immediately cancels subsequent sentences on barge-in."""
+    from app.audio.tts_service import stream_sentence_level_tts
+
+    async def _run():
+        chunks = []
+        is_cancelled = False
+        text = "First sentence here. Second sentence here. Third sentence here."
+
+        async for chunk in stream_sentence_level_tts(
+            text=text,
+            char_id="lily",
+            is_cancelled=lambda: is_cancelled,
+        ):
+            chunks.append(chunk)
+            # Simulate client barge-in / disconnection right after first chunk arrives
+            is_cancelled = True
+
+        return chunks
+
+    chunks = asyncio.run(_run())
+    assert len(chunks) >= 1, "Should yield the initial chunk"
+

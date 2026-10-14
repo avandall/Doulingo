@@ -253,12 +253,14 @@ async def stream_edge_tts(text: str, char_id: str):
         if chunk["type"] == "audio":
             yield chunk["data"]
 
-def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str):
-    """Yields streaming chunks from ElevenLabs API."""
+async def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str, is_cancelled: Any = None):
+    """Yields streaming chunks from ElevenLabs API using httpx async client for cancellability."""
+    import httpx
+
     profile = CHARACTER_VOICE_MAP.get(char_id, CHARACTER_VOICE_MAP["lily"])
     voice_id = profile["eleven_voice_id"]
     settings = profile.get("eleven_settings", {"stability": 0.5, "similarity_boost": 0.75, "style": 0.5})
-    
+
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/stream?optimize_streaming_latency=3"
     headers = {
         "xi-api-key": api_key,
@@ -275,24 +277,32 @@ def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str):
             "use_speaker_boost": True
         }
     }
-    
-    res = requests.post(url, headers=headers, json=payload, stream=True, timeout=8)
-    if res.status_code == 200:
-        for chunk in res.iter_content(chunk_size=1024):
-            if chunk:
-                yield chunk
-        return
-    elif res.status_code in [400, 422]:
-        # Fallback to multilingual v2 if turbo_v2_5 is not supported on a custom voice
-        payload["model_id"] = "eleven_multilingual_v2"
-        res_fb = requests.post(url, headers=headers, json=payload, stream=True, timeout=8)
-        if res_fb.status_code == 200:
-            for chunk in res_fb.iter_content(chunk_size=1024):
-                if chunk:
-                    yield chunk
-            return
-        
-    raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
+
+    async with httpx.AsyncClient(timeout=8.0) as client:
+        async with client.stream("POST", url, headers=headers, json=payload) as res:
+            if res.status_code == 200:
+                async for chunk in res.aiter_bytes(chunk_size=1024):
+                    if is_cancelled and await _check_cancelled(is_cancelled):
+                        logger.info("[ElevenLabs] Streaming cancelled by client.")
+                        return
+                    if chunk:
+                        yield chunk
+                return
+            elif res.status_code in [400, 422]:
+                # Fallback to multilingual v2 if turbo_v2_5 is not supported on a custom voice
+                payload["model_id"] = "eleven_multilingual_v2"
+                async with client.stream("POST", url, headers=headers, json=payload) as res_fb:
+                    if res_fb.status_code == 200:
+                        async for chunk in res_fb.aiter_bytes(chunk_size=1024):
+                            if is_cancelled and await _check_cancelled(is_cancelled):
+                                logger.info("[ElevenLabs] Streaming cancelled by client.")
+                                return
+                            if chunk:
+                                yield chunk
+                        return
+
+            error_text = await res.aread()
+            raise Exception(f"HTTP {res.status_code}: {error_text.decode('utf-8', errors='ignore')[:100]}")
 
 def stream_gtts(text: str, char_id: str = "lily", tld: str = "com"):
     """Yields MP3 audio chunks from gTTS safety fallback."""
@@ -306,16 +316,34 @@ def stream_gtts(text: str, char_id: str = "lily", tld: str = "com"):
     while chunk := mp3_fp.read(4096):
         yield chunk
 
-async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "com"):
+async def _check_cancelled(is_cancelled: Any) -> bool:
+    """Helper to check cancellation callback (sync or async callable, or boolean)."""
+    if is_cancelled is None:
+        return False
+    if callable(is_cancelled):
+        res = is_cancelled()
+        if asyncio.iscoroutine(res):
+            return await res
+        return bool(res)
+    return bool(is_cancelled)
+
+
+async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "com", is_cancelled: Any = None):
     """
     Asynchronously yields audio MP3 chunks for real-time low-latency streaming (<300ms initial chunk).
     Prioritizes ElevenLabs streaming, then Edge-TTS streaming async generator, then gTTS fallback.
+    Supports early cancellation check to avoid wasting credits/compute when client disconnects.
     """
     logger.info(f"Starting chunked TTS audio stream for char_id='{char_id}', text_len={len(text)}")
     load_dotenv(override=True)
     raw_keys = os.getenv("ELEVENLABS_API_KEY", "").strip()
     keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
-    
+
+    # Early check before making remote calls
+    if is_cancelled and await _check_cancelled(is_cancelled):
+        logger.info("[TTS Service] Cancelled before synthesizing chunk.")
+        return
+
     # 1. Try ElevenLabs Multi-Key Pool streaming if keys are present
     if keys:
         for idx, key in enumerate(keys):
@@ -323,9 +351,12 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
                 continue
             try:
                 chunk_found = False
-                for chunk in stream_elevenlabs_tts_single(text, char_id, key):
+                async for chunk in stream_elevenlabs_tts_single(text, char_id, key, is_cancelled=is_cancelled):
                     chunk_found = True
                     yield chunk
+                    if is_cancelled and await _check_cancelled(is_cancelled):
+                        logger.info("[ElevenLabs] Streaming stopped mid-chunk due to client cancellation.")
+                        return
                 if chunk_found:
                     return
             except Exception as e:
@@ -336,6 +367,9 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
     try:
         chunk_count = 0
         async for chunk in stream_edge_tts(text, char_id):
+            if is_cancelled and await _check_cancelled(is_cancelled):
+                logger.info("[Edge-TTS] Stream cancelled by client disconnect.")
+                return
             chunk_count += 1
             yield chunk
         if chunk_count > 0:
@@ -347,6 +381,8 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
     # 3. Safety Fallback to gTTS
     try:
         for chunk in stream_gtts(text, char_id, tld):
+            if is_cancelled and await _check_cancelled(is_cancelled):
+                return
             yield chunk
         logger.info("Successfully streamed audio chunks via gTTS fallback")
     except Exception as e:
@@ -375,11 +411,12 @@ def split_sentences(text: str) -> list[str]:
     return sentences if sentences else [clean_text]
 
 
-async def stream_sentence_level_tts(text: str, char_id: str = "lily", tld: str = "com"):
+async def stream_sentence_level_tts(text: str, char_id: str = "lily", tld: str = "com", is_cancelled: Any = None):
     """
     Sentence-level async generator for ultra-low latency TTS streaming (<1.0s TTFA).
     Splits the full utterance into sentence chunks, synthesizes and yields audio MP3 chunks
     for sentence 1 immediately, then streams sentence 2, sentence 3, etc. seamlessly.
+    Checks cancellation state between sentences and within chunks to immediately stop resource consumption upon barge-in.
     """
     sentences = split_sentences(text)
     if not sentences:
@@ -387,11 +424,19 @@ async def stream_sentence_level_tts(text: str, char_id: str = "lily", tld: str =
 
     logger.info(f"Starting sentence-level TTS stream ({len(sentences)} sentences) for char_id='{char_id}'")
     for idx, sentence in enumerate(sentences):
+        if is_cancelled and await _check_cancelled(is_cancelled):
+            logger.info(f"[SentenceTTS] Client barge-in / disconnected. Aborting sentence #{idx+1}/{len(sentences)}.")
+            break
+
         t0 = time.time()
         chunk_count = 0
-        async for chunk in stream_tts_mp3_chunks(sentence, char_id=char_id, tld=tld):
+        async for chunk in stream_tts_mp3_chunks(sentence, char_id=char_id, tld=tld, is_cancelled=is_cancelled):
             chunk_count += 1
             yield chunk
+            if is_cancelled and await _check_cancelled(is_cancelled):
+                logger.info(f"[SentenceTTS] Barge-in during sentence #{idx+1}. Halting audio output.")
+                return
+
         latency_ms = (time.time() - t0) * 1000
         logger.debug(
             f"[SentenceTTS] Streamed sentence #{idx+1}/{len(sentences)} "

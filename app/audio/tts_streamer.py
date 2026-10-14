@@ -9,6 +9,7 @@ TTS infrastructure with explicit `text_only_mode` fallback capabilities and erro
 import logging
 from collections.abc import AsyncGenerator
 from dataclasses import dataclass
+from typing import Any
 
 from app.audio.tts_service import (
     generate_tts_mp3,
@@ -115,6 +116,7 @@ class TTSStreamer:
         text: str,
         char_id: str | None = None,
         text_only_mode: bool | None = None,
+        is_cancelled: Any = None,
     ) -> AsyncGenerator[bytes]:
         """Asynchronously stream MP3 audio chunks sentence-by-sentence for <1.0s TTFA playback."""
         is_text_only = self.default_text_only if text_only_mode is None else text_only_mode
@@ -125,7 +127,7 @@ class TTSStreamer:
             return
 
         try:
-            async for chunk in stream_sentence_level_tts(text=text, char_id=character):
+            async for chunk in stream_sentence_level_tts(text=text, char_id=character, is_cancelled=is_cancelled):
                 if chunk:
                     yield chunk
         except Exception as err:

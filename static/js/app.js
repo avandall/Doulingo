@@ -1037,11 +1037,21 @@ class DuoSpeakApp {
       window.duoAudio.stopFiller();
     }
     if (this.currentAudio) {
-      this.currentAudio.pause();
-      this.currentAudio.currentTime = 0;
+      try {
+        this.currentAudio.pause();
+        this.currentAudio.currentTime = 0;
+        // Detach src to immediately trigger TCP FIN / RST and close backend HTTP streaming socket
+        this.currentAudio.removeAttribute('src');
+        this.currentAudio.load();
+      } catch (err) {
+        console.warn('[DuoSpeak] Error stopping current audio:', err);
+      }
       this.currentAudio = null;
     }
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    this._setPlayerReady();
+    const btnPlay = document.getElementById('audio-btn-playpause');
+    if (btnPlay) btnPlay.textContent = '▶️';
   }
 
   _clearTTSCache() {

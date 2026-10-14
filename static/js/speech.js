@@ -108,6 +108,10 @@ class SpeechHandler {
         this._startAcousticVADMonitor();
         if (this.onStateChange) this.onStateChange('listening');
         if (window.duoAudio) window.duoAudio.playMicStart();
+        // BARGE-IN: Immediately cut off any running bot TTS or filler when user begins speaking
+        if (window.duoApp && typeof window.duoApp.stopTTS === 'function') {
+          window.duoApp.stopTTS();
+        }
       };
 
       this.recognition.onresult = (event) => {
@@ -133,6 +137,11 @@ class SpeechHandler {
         // Emit interim results so user sees they are being heard
         if (this.onResult) {
           this.onResult(fullTranscript, false);
+        }
+
+        // BARGE-IN: If speech detected and bot audio is somehow still playing, cut it off immediately
+        if (fullTranscript && window.duoApp && typeof window.duoApp.stopTTS === 'function' && window.duoApp.currentAudio) {
+          window.duoApp.stopTTS();
         }
       };
 
@@ -261,6 +270,14 @@ class SpeechHandler {
   }
 
   start() {
+    // BARGE-IN: Instantly stop bot speech the exact moment the mic is triggered (0ms latency)
+    if (window.duoApp && typeof window.duoApp.stopTTS === 'function') {
+      window.duoApp.stopTTS();
+    }
+    if (window.duoAudio && typeof window.duoAudio.stopFiller === 'function') {
+      window.duoAudio.stopFiller();
+    }
+
     if (this.recognition) {
       try {
         this.isListening = true;
@@ -357,6 +374,9 @@ class SpeechHandler {
 
   cancel() {
     this._resetAcousticVAD();
+    if (window.duoApp && typeof window.duoApp.stopTTS === 'function') {
+      window.duoApp.stopTTS();
+    }
     if (this.recognition) {
       this.isCancelled = true;
       this.isListening = false;
