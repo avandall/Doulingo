@@ -391,17 +391,19 @@ RULES (same style as the example above):
             }
 
         try:
-            topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
-            if topic:
-                return {
-                    "id": topic.topic_id,
-                    "title": topic.topic_name,
-                    "description": f"IELTS Speaking Topic: {topic.topic_name}",
-                    "default_character": character_id or "lily",
-                    "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
-                }
+            from app.rag.material_bank import _global_material_bank
+            if _global_material_bank and _global_material_bank.topics:
+                topic = _global_material_bank.get_topic(scenario_id)
+                if topic:
+                    return {
+                        "id": topic.topic_id,
+                        "title": topic.topic_name,
+                        "description": f"IELTS Speaking Topic: {topic.topic_name}",
+                        "default_character": character_id or "lily",
+                        "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
+                    }
         except Exception as e:
-            logger.warning(f"[_resolve_scenario] Failed to query prompt_factory for topic: {e}")
+            logger.warning(f"[_resolve_scenario] Failed to query material bank for topic: {e}")
 
         return {
             "id": scenario_id,

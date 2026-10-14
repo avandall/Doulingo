@@ -427,25 +427,26 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
         if cs["id"] == scenario_id or str(cs.get("title", "")).strip().lower() == str(scenario_id).strip().lower():
             return cs
 
-    # 3. Check Material Bank topics
+    # 3. Check Material Bank topics (only if already loaded in-memory to prevent disk freeze)
     try:
-        from app.rag.material_bank import get_material_bank
-        mb_topic = get_material_bank().get_topic(scenario_id)
-        if mb_topic:
-            vocab_preview = [v.phrase for v in mb_topic.vocabulary[:5]]
-            return {
-                "id": mb_topic.topic_id,
-                "title": mb_topic.topic_name,
-                "category": "Academic IELTS Bank",
-                "icon": "📖",
-                "color": "#1CB0F6",
-                "description": "Academic IELTS Speaking topic covering key vocabulary, discussion questions, and practice prompts.",
-                "open_story_guide": f"Interactive IELTS Speaking discussion on {mb_topic.topic_name}.",
-                "is_custom": False,
-                "source": "material_bank",
-                "target_levels": mb_topic.target_levels,
-                "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
-            }
+        from app.rag.material_bank import _global_material_bank
+        if _global_material_bank and _global_material_bank.topics:
+            mb_topic = _global_material_bank.get_topic(scenario_id)
+            if mb_topic:
+                vocab_preview = [v.phrase for v in mb_topic.vocabulary[:5]]
+                return {
+                    "id": mb_topic.topic_id,
+                    "title": mb_topic.topic_name,
+                    "category": "Academic IELTS Bank",
+                    "icon": "📖",
+                    "color": "#1CB0F6",
+                    "description": "Academic IELTS Speaking topic covering key vocabulary, discussion questions, and practice prompts.",
+                    "open_story_guide": f"Interactive IELTS Speaking discussion on {mb_topic.topic_name}.",
+                    "is_custom": False,
+                    "source": "material_bank",
+                    "target_levels": mb_topic.target_levels,
+                    "suggested_vocabulary": vocab_preview if vocab_preview else ["IELTS Speaking"]
+                }
     except Exception as e:
         logger.warning(f"[scenarios.py] Error looking up MaterialBank topic: {e}")
 

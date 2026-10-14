@@ -363,8 +363,13 @@ class MaterialBank:
                     return self.topics[cand_norm]
 
         # Tier 3: Keyword & Token Substring Matching
-        STOP_WORDS = {"topic", "custom", "test", "non", "existent", "scenario", "bank", "ielts", "det"}
+        STOP_WORDS = {
+            "topic", "custom", "test", "non", "existent", "scenario", "bank", "ielts", "det",
+            "hello", "hi", "how", "are", "you", "the", "and", "for", "with", "this", "that", "what", "can"
+        }
         tokens = [t for t in re.split(r'[-_\s]+', norm) if len(t) > 2 and t not in STOP_WORDS]
+        if not tokens:
+            return None
         for token in tokens:
             for tid, topic in self.topics.items():
                 if token in tid or token in self.normalize_id(topic.topic_name):
