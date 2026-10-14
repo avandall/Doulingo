@@ -311,7 +311,13 @@ RULES (same style as the example above):
                         "open_story_guide": f"Engage in an authentic discussion about {topic_info.get('title', scenario_id)}."
                     }
                 else:
-                    raise ValueError(f"Unknown scenario: {scenario_id}")
+                    scenario = {
+                        "id": scenario_id,
+                        "title": scenario_id.replace("_", " ").title(),
+                        "description": f"Conversation about {scenario_id.replace('_', ' ')}",
+                        "default_character": character_id or "lily",
+                        "open_story_guide": f"Engage in an authentic discussion about {scenario_id.replace('_', ' ')}."
+                    }
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char
@@ -343,6 +349,33 @@ RULES (same style as the example above):
             angle = None
             self._session_angles.pop(scenario_id, None)
             angle_block = "\nKeep the dialogue open, warm, and natural without forcing an artificial roleplay angle."
+
+        # Ultra-Fast Voice Greeting Path: generates opening statement & question with minimal latency (~300ms)
+        fast_greeting_prompt = f"""You are playing the role of {character['name']} ({character.get('country', '')}, {character.get('role', '')}). Traits: {trait}. Style: {style}.
+SCENARIO TOPIC: "{scenario['title']}" - {scenario.get('description', '')}.
+Level: {level} ({cfg['cefr']}). Target length: {cfg['min_words']}-{cfg['max_words']} words.
+
+CRITICAL MANDATE:
+1. Speak 100% standard natural English. Jump straight into the topic without introduction.
+2. Proactively start the conversation with 1-2 engaging sentences and ask ONE open question to the user about "{scenario['title']}".
+3. Keep response concise (under {cfg['max_words']} words).
+
+Output JSON ONLY:
+{{
+  "ai_response": "Your opening statement and question to start the conversation"
+}}"""
+
+        res = self._call_llm_providers(fast_greeting_prompt, temp=0.7)
+        if res and ("ai_response" in res or "final_response" in res):
+            ai_text = res.get("ai_response") or res.get("final_response", "")
+            if ai_text:
+                return {
+                    "natural_draft": "Fast opening greeting",
+                    "vocab_check": f"CEFR Level {level} fast track",
+                    "final_response": ai_text,
+                    "ai_response": ai_text,
+                    "ai_response_vi": ""
+                }
 
         prompt = f"""{mb_system_prompt}
 

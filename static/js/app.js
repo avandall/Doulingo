@@ -500,18 +500,29 @@ class DuoSpeakApp {
   // SCREEN NAVIGATION
   // ============================================================
   showScreen(screenId) {
+    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(screenId);
     if (target) target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   // ============================================================
   // START SCENARIO (ROLEPLAY)
   // ============================================================
-  async startScenario(scenarioId) {
-    const scenario = this.scenarios.find(s => s.id === scenarioId);
+  async startScenario(scenarioOrId) {
+    let scenario = null;
+    if (scenarioOrId && typeof scenarioOrId === 'object') {
+      scenario = scenarioOrId;
+    } else if (scenarioOrId) {
+      scenario = (this.scenarios || []).find(s => String(s.id) === String(scenarioOrId))
+        || (this.currentDetScenario && String(this.currentDetScenario.id) === String(scenarioOrId) ? this.currentDetScenario : null)
+        || this.currentScenario;
+    }
+
     if (!scenario) {
-      console.error('[DuoSpeak] Scenario not found:', scenarioId);
+      console.error('[DuoSpeak] Scenario not found:', scenarioOrId);
+      this.showToast('⚠️ Could not open scenario. Please choose another topic.');
       return;
     }
 
@@ -525,8 +536,8 @@ class DuoSpeakApp {
     this.currentAITextVi = '';
     this._clearTTSCache();
 
-    const charId = this.selectedCharacter ? this.selectedCharacter.id : 'lily';
-    const charData = this.selectedCharacter || { id: charId, name: 'AI', avatar_icon: '🤖' };
+    const charId = this.selectedCharacter ? this.selectedCharacter.id : (scenario.default_character || 'lily');
+    const charData = this.selectedCharacter || { id: charId, name: 'AI Examiner', avatar_icon: '🤖' };
 
     // Update practice screen UI
     const titleEl = document.getElementById('scenario-stage-title');
@@ -542,7 +553,7 @@ class DuoSpeakApp {
     if (nameEl) nameEl.textContent = `${charData.name || charId} ${charData.accent ? '·' : ''} ${charData.accent || ''}`.trim();
 
     const aiTextEl = document.getElementById('ai-speech-text');
-    if (aiTextEl) aiTextEl.innerHTML = '<div class="loading-spinner"><div class="spinner-ring"></div> Generating opening...</div>';
+    if (aiTextEl) aiTextEl.innerHTML = '<div class="loading-spinner"><div class="spinner-ring"></div> AI Examiner is preparing question...</div>';
 
     const transcriptEl = document.getElementById('transcript-display');
     if (transcriptEl) transcriptEl.textContent = 'Tap the mic to start speaking...';
@@ -569,7 +580,7 @@ class DuoSpeakApp {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          scenario_id: scenarioId,
+          scenario_id: scenario.id,
           character_id: charId,
           level: this.currentLevel
         })
@@ -2247,12 +2258,12 @@ class DuoSpeakApp {
     const btnStartInteractive = document.getElementById('btn-start-det-interactive-room');
     if (btnStartInteractive) {
       btnStartInteractive.addEventListener('click', () => {
-        document.getElementById('modal-det-exam').classList.remove('active');
+        document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
         if (this.currentDetScenario) {
           this.isDetInteractiveMode = true;
           this.maxExamTurns = 4;
           this.detExamStartTime = Date.now();
-          this.startScenario(this.currentDetScenario.id);
+          this.startScenario(this.currentDetScenario);
         }
       });
     }
