@@ -57,3 +57,21 @@ def test_stream_sentence_level_tts_cancellation():
     chunks = asyncio.run(_run())
     assert len(chunks) >= 1, "Should yield the initial chunk"
 
+
+def test_heuristic_split_sentences():
+    """Verify heuristic sentence splitting protects abbreviations and handles clause breaks."""
+    from app.audio.tts_service import heuristic_split_sentences
+
+    # 1. Abbreviation test: Dr. Smith should not be split
+    text_with_abbr = "Dr. Smith went to Paris. He visited Mr. Johnson yesterday."
+    chunks = heuristic_split_sentences(text_with_abbr)
+    assert len(chunks) == 2
+    assert "Dr. Smith went to Paris." in chunks[0]
+    assert "Mr. Johnson" in chunks[1]
+
+    # 2. Long clause chunking test
+    long_clause = "I would really love to visit London during the upcoming summer holiday, but my budget is currently quite limited so I might choose Thailand instead."
+    clause_chunks = heuristic_split_sentences(long_clause, max_clause_words=12)
+    assert len(clause_chunks) >= 2, "Long clause should be segmented at comma boundary"
+
+
