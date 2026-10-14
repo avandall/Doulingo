@@ -3,6 +3,7 @@ import time
 import pytest
 from app.core.ai_engine import (
     _RATE_LIMIT_COOLDOWNS,
+    _GLOBAL_MODEL_DEAD_CACHE,
     KEY_EXHAUSTED_CACHE,
     is_key_exhausted,
     is_model_key_rate_limited,
@@ -14,9 +15,11 @@ from app.core.ai_engine import (
 def clean_circuit_breaker():
     """Clear cooldowns before and after each test."""
     _RATE_LIMIT_COOLDOWNS.clear()
+    _GLOBAL_MODEL_DEAD_CACHE.clear()
     KEY_EXHAUSTED_CACHE.clear()
     yield
     _RATE_LIMIT_COOLDOWNS.clear()
+    _GLOBAL_MODEL_DEAD_CACHE.clear()
     KEY_EXHAUSTED_CACHE.clear()
 
 
@@ -94,3 +97,47 @@ def test_circuit_breaker_pre_flight_latency():
 
     avg_per_check = elapsed / 1000
     assert avg_per_check < 0.00005, f"Check took {avg_per_check*1000:.4f}ms, expected < 0.05ms"
+
+
+def test_circuit_breaker_timeout_trip():
+    """ReadTimeout / 500 trips (model, key) for 60 seconds."""
+    key = "AIzaSyFakeKey1234567890"
+    model = "gemini-3.1-flash-lite"
+
+    assert not is_model_key_rate_limited(model, key)
+    record_model_key_exhausted(model, key, 500, "Read timed out", is_timeout=True)
+
+    assert is_model_key_rate_limited(model, key)
+    expiry = _RATE_LIMIT_COOLDOWNS.get((model, key))
+    assert expiry is not None
+    assert (expiry - time.time()) > 50
+
+
+def test_circuit_breaker_404_global_lockout():
+    """404 locks the model across ALL keys globally."""
+    key1 = "AIzaSyKeyOne111111111"
+    key2 = "AIzaSyKeyTwo222222222"
+    dead_model = "gemini-dead-model-404"
+
+    assert not is_model_key_rate_limited(dead_model, key1)
+    assert not is_model_key_rate_limited(dead_model, key2)
+
+    # Key 1 hits 404
+    record_model_key_exhausted(dead_model, key1, 404, "models/gemini-dead-model-404 is not found")
+
+    # Both Key 1 and Key 2 are immediately locked out in 0ms!
+    assert is_model_key_rate_limited(dead_model, key1)
+    assert is_model_key_rate_limited(dead_model, key2)
+
+
+def test_circuit_breaker_overload_503():
+    """503 temporary overload trips for 60s."""
+    key = "AIzaSyFakeKey1234567890"
+    model = "gemini-3.7-flash"
+
+    record_model_key_exhausted(model, key, 503, "The model is overloaded. Please try again.")
+    assert is_model_key_rate_limited(model, key)
+    expiry = _RATE_LIMIT_COOLDOWNS.get((model, key))
+    assert expiry is not None
+    assert (expiry - time.time()) > 50
+

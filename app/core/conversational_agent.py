@@ -138,7 +138,7 @@ class ConversationalAgent:
     def __init__(
         self,
         llm_client: Callable[[list[dict[str, str]]], str] | Any | None = None,
-        model: str = "groq/llama-3.3-70b-versatile",
+        model: str = "groq/qwen/qwen3.8-27b",
     ):
         self.llm_client = llm_client
         self.model = model
@@ -208,30 +208,35 @@ class ConversationalAgent:
 
 def _call_groq_api_direct(messages: list[dict[str, str]]) -> str | None:
     """Helper to directly call Groq API if GROQ_API_KEY env variable is present."""
-    groq_key = os.getenv("GROQ_API_KEY")
-    if not groq_key:
+    raw_keys = os.getenv("GROQ_API_KEY", "").strip()
+    if not raw_keys:
+        return None
+
+    groq_keys = [k.strip() for k in raw_keys.split(",") if k.strip()]
+    if not groq_keys:
         return None
 
     url = "https://api.groq.com/openai/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {groq_key}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "model": "llama-3.3-70b-versatile",
-        "messages": messages,
-        "temperature": 0.7,
-        "response_format": {"type": "json_object"},
-    }
+    for key in groq_keys:
+        headers = {
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": "qwen/qwen3.8-27b",
+            "messages": messages,
+            "temperature": 0.7,
+            "response_format": {"type": "json_object"},
+        }
 
-    try:
-        res = requests.post(url, headers=headers, json=payload, timeout=10)
-        if res.status_code == 200:
-            data = res.json()
-            return data["choices"][0]["message"]["content"]
-        else:
-            log.error("Groq API returned error status %d: %s", res.status_code, res.text)
-            return None
-    except Exception as err:
-        log.error("Groq direct API call failed: %s", err)
-        return None
+        try:
+            res = requests.post(url, headers=headers, json=payload, timeout=3.0)
+            if res.status_code == 200:
+                data = res.json()
+                return data["choices"][0]["message"]["content"]
+            else:
+                log.error("Groq API returned error status %d: %s", res.status_code, res.text)
+        except Exception as err:
+            log.error("Groq direct API call failed: %s", err)
+
+    return None
