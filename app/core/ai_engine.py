@@ -375,6 +375,42 @@ RULES (same style as the example above):
 === END LEVEL RULES ===
 """
 
+    def _resolve_scenario(self, scenario_id: str, character_id: str | None) -> dict[str, Any]:
+        scenario = get_scenario(scenario_id)
+        if scenario:
+            return scenario
+
+        topic_info = self.get_topic_info(scenario_id)
+        if topic_info:
+            return {
+                "id": topic_info.get("id", scenario_id),
+                "title": topic_info.get("title", scenario_id.replace("_", " ").title()),
+                "description": topic_info.get("description", f"Topic: {scenario_id}"),
+                "default_character": character_id or "lily",
+                "open_story_guide": f"Engage in an authentic discussion about {topic_info.get('title', scenario_id)}."
+            }
+
+        try:
+            topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
+            if topic:
+                return {
+                    "id": topic.topic_id,
+                    "title": topic.topic_name,
+                    "description": f"IELTS Speaking Topic: {topic.topic_name}",
+                    "default_character": character_id or "lily",
+                    "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
+                }
+        except Exception as e:
+            logger.warning(f"[_resolve_scenario] Failed to query prompt_factory for topic: {e}")
+
+        return {
+            "id": scenario_id,
+            "title": scenario_id.replace("_", " ").title(),
+            "description": f"Conversation about {scenario_id.replace('_', ' ')}",
+            "default_character": character_id or "lily",
+            "open_story_guide": f"Engage in an authentic discussion about {scenario_id.replace('_', ' ')}."
+        }
+
     def start_roleplay_greeting(
         self,
         scenario_id: str,
@@ -382,46 +418,11 @@ RULES (same style as the example above):
         level: int = 1
     ) -> dict[str, Any]:
         self.reload_keys()
-        scenario = get_scenario(scenario_id)
-        if not scenario:
-            topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
-            if topic:
-                scenario = {
-                    "id": topic.topic_id,
-                    "title": topic.topic_name,
-                    "description": f"IELTS Speaking Topic: {topic.topic_name}",
-                    "default_character": character_id or "lily",
-                    "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
-                }
-            else:
-                topic_info = self.get_topic_info(scenario_id)
-                if topic_info:
-                    scenario = {
-                        "id": topic_info.get("id", scenario_id),
-                        "title": topic_info.get("title", scenario_id.replace("_", " ").title()),
-                        "description": topic_info.get("description", f"Topic: {scenario_id}"),
-                        "default_character": character_id or "lily",
-                        "open_story_guide": f"Engage in an authentic discussion about {topic_info.get('title', scenario_id)}."
-                    }
-                else:
-                    scenario = {
-                        "id": scenario_id,
-                        "title": scenario_id.replace("_", " ").title(),
-                        "description": f"Conversation about {scenario_id.replace('_', ' ')}",
-                        "default_character": character_id or "lily",
-                        "open_story_guide": f"Engage in an authentic discussion about {scenario_id.replace('_', ' ')}."
-                    }
+        scenario = self._resolve_scenario(scenario_id, character_id)
 
         default_char = scenario.get("default_character", "rajesh")
         char_key = character_id if character_id else default_char
         character = get_character(char_key)
-
-        prompt_factory = get_prompt_factory()
-        mb_system_prompt = prompt_factory.build_system_prompt(
-            topic_id=scenario_id,
-            level=f"{level}",
-            character_id=char_key
-        )
 
         level_block = self._build_level_constraint_block(level)
         cfg = self._get_level_config(level)
@@ -470,6 +471,14 @@ Output JSON ONLY:
                     "ai_response_vi": ""
                 }
 
+        # Fallback path if fast greeting fails: build full material bank prompt
+        prompt_factory = get_prompt_factory()
+        mb_system_prompt = prompt_factory.build_system_prompt(
+            topic_id=scenario_id,
+            level=f"{level}",
+            character_id=char_key
+        )
+
         prompt = f"""{mb_system_prompt}
 
 CRITICAL MANDATE: YOU MUST SPEAK 100% STANDARD NATURAL ENGLISH ONLY.
@@ -509,32 +518,6 @@ Output JSON ONLY with Structured CoT fields:
             "ai_response": fallback_q,
             "ai_response_vi": ""
         }
-
-    def _resolve_scenario(self, scenario_id: str, character_id: str | None) -> dict[str, Any]:
-        scenario = get_scenario(scenario_id)
-        if not scenario:
-            topic = get_prompt_factory()._get_bank().get_topic(scenario_id)
-            if topic:
-                scenario = {
-                    "id": topic.topic_id,
-                    "title": topic.topic_name,
-                    "description": f"IELTS Speaking Topic: {topic.topic_name}",
-                    "default_character": character_id or "lily",
-                    "open_story_guide": f"Engage in an authentic IELTS speaking discussion about {topic.topic_name}."
-                }
-            else:
-                topic_info = self.get_topic_info(scenario_id)
-                if topic_info:
-                    scenario = {
-                        "id": topic_info.get("id", scenario_id),
-                        "title": topic_info.get("title", scenario_id.replace("_", " ").title()),
-                        "description": topic_info.get("description", f"Topic: {scenario_id}"),
-                        "default_character": character_id or "lily",
-                        "open_story_guide": f"Engage in an authentic discussion about {topic_info.get('title', scenario_id)}."
-                    }
-                else:
-                    raise ValueError(f"Unknown scenario ID: {scenario_id}")
-        return scenario
 
     def process_turn_fast(
         self,

@@ -421,10 +421,10 @@ def get_scenario(scenario_id: str) -> dict[str, Any] | None:
         sc["is_custom"] = False
         return sc
 
-    # 2. Check Custom Scenarios from DB
+    # 2. Check Custom Scenarios from DB (by ID or title)
     customs = get_custom_scenarios()
     for cs in customs:
-        if cs["id"] == scenario_id:
+        if cs["id"] == scenario_id or str(cs.get("title", "")).strip().lower() == str(scenario_id).strip().lower():
             return cs
 
     # 3. Check Material Bank topics
