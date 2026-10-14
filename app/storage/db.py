@@ -8,9 +8,20 @@ import json
 import logging
 import os
 import sqlite3
+import time
 from typing import Any
 
 logger = logging.getLogger("duolingo_speak.db")
+
+_IS_DB_INITIALIZED = False
+_CUSTOM_SCENARIOS_CACHE: list[dict[str, Any]] | None = None
+_CUSTOM_SCENARIOS_CACHE_TIME: float = 0.0
+_CUSTOM_SCENARIOS_CACHE_TTL: float = 60.0  # In-memory TTL cache to prevent repeated remote DB roundtrips
+
+
+def invalidate_custom_scenarios_cache():
+    global _CUSTOM_SCENARIOS_CACHE
+    _CUSTOM_SCENARIOS_CACHE = None
 
 try:
     import libsql_experimental as libsql  # type: ignore
@@ -74,8 +85,11 @@ def _fetch_one_dict(cursor) -> dict[str, Any] | None:
     return dict(zip(cols, row))
 
 
-def init_db():
+def init_db(force: bool = False):
     """Initialize database tables for custom scenarios, word dictionary, saved vocabulary, user stats, and 12 schema tables."""
+    global _IS_DB_INITIALIZED
+    if _IS_DB_INITIALIZED and not force:
+        return
     conn = get_db_connection()
     cursor = conn.cursor()
 
@@ -404,6 +418,7 @@ def init_db():
 
     conn.commit()
     conn.close()
+    _IS_DB_INITIALIZED = True
 
 
 
@@ -435,6 +450,7 @@ def add_custom_scenario(scenario_data: dict[str, Any]) -> dict[str, Any]:
 
     conn.commit()
     conn.close()
+    invalidate_custom_scenarios_cache()
     return scenario_data
 
 
@@ -447,10 +463,16 @@ def delete_custom_scenario(sc_id: str) -> bool:
     deleted = cursor.rowcount > 0
     conn.commit()
     conn.close()
+    invalidate_custom_scenarios_cache()
     return deleted
 
 
 def get_custom_scenarios() -> list[dict[str, Any]]:
+    global _CUSTOM_SCENARIOS_CACHE, _CUSTOM_SCENARIOS_CACHE_TIME
+    now = time.time()
+    if _CUSTOM_SCENARIOS_CACHE is not None and (now - _CUSTOM_SCENARIOS_CACHE_TIME) < _CUSTOM_SCENARIOS_CACHE_TTL:
+        return _CUSTOM_SCENARIOS_CACHE
+
     init_db()
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -475,6 +497,8 @@ def get_custom_scenarios() -> list[dict[str, Any]]:
             "mode": "ielts_exam" if str(r["id"]).startswith("det_") else "roleplay",
             "is_custom": True
         })
+    _CUSTOM_SCENARIOS_CACHE = scenarios
+    _CUSTOM_SCENARIOS_CACHE_TIME = now
     return scenarios
 
 

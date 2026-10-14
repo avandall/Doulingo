@@ -67,6 +67,13 @@ async def startup_warmup():
     import asyncio
     def _warm():
         try:
+            from app.storage.db import init_db, get_custom_scenarios
+            init_db()
+            get_custom_scenarios()
+            logger.info("[Startup] Database & custom scenarios successfully pre-warmed.")
+        except Exception as e:
+            logger.warning(f"[Startup] Database warm-up warning: {e}")
+        try:
             from app.rag.material_bank import get_material_bank
             get_material_bank()
             logger.info("[Startup] MaterialBank successfully pre-warmed.")
@@ -82,7 +89,7 @@ async def startup_warmup():
 def health_check():
     """Health check endpoint for Render, uptime monitors, and keep-alive pings."""
     print("[Keep-Alive] Periodic ping received from GitHub Actions!", flush=True)
-    return {"status": "ok", "app": "Haku Haku's", "version": "1.0.1-perf"}
+    return {"status": "ok", "app": "Haku Haku's", "version": "1.0.2-turso-cache"}
 
 class CachedStaticFiles(StaticFiles):
     """StaticFiles with long-lived public immutable caching for maximum PageSpeed score."""
