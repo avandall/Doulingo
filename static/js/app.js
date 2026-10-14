@@ -25,6 +25,7 @@ class DuoSpeakApp {
     this.targetLang = localStorage.getItem('duo_target_lang') || 'vi';
     this.isDetInteractiveMode = false;
     this.currentDetScenario = null;
+    this.isStartingScenario = false;
 
     // Audio/Speech State
     this.speechHandler = null;
@@ -511,6 +512,16 @@ class DuoSpeakApp {
   // START SCENARIO (ROLEPLAY)
   // ============================================================
   async startScenario(scenarioOrId) {
+    if (this.isStartingScenario) {
+      console.warn('[DuoSpeak] Scenario is already starting, ignoring duplicate call.');
+      return;
+    }
+    this.isStartingScenario = true;
+
+    // Stop any ongoing audio/TTS immediately to prevent background audio queueing
+    this.stopTTS();
+    if (this.speechHandler) this.speechHandler.cancel();
+
     let scenario = null;
     if (scenarioOrId && typeof scenarioOrId === 'object') {
       scenario = scenarioOrId;
@@ -523,6 +534,7 @@ class DuoSpeakApp {
     if (!scenario) {
       console.error('[DuoSpeak] Scenario not found:', scenarioOrId);
       this.showToast('⚠️ Could not open scenario. Please choose another topic.');
+      this.isStartingScenario = false;
       return;
     }
 
@@ -541,7 +553,11 @@ class DuoSpeakApp {
 
     // Update practice screen UI
     const titleEl = document.getElementById('scenario-stage-title');
-    if (titleEl) titleEl.textContent = scenario.title || 'Practice';
+    if (titleEl) {
+      titleEl.textContent = this.isDetInteractiveMode
+        ? `🎓 IELTS Exam: ${scenario.title || 'Interactive Speaking'}`
+        : (scenario.title || 'Practice');
+    }
 
     const progressFill = document.getElementById('lesson-progress-fill');
     if (progressFill) progressFill.style.width = '0%';
@@ -605,6 +621,8 @@ class DuoSpeakApp {
       const fallback = "Hello! I'm ready to practice with you. What would you like to talk about?";
       this.displayAITurn(fallback, '');
       await this.playTTS(fallback, charId);
+    } finally {
+      this.isStartingScenario = false;
     }
   }
 
@@ -1604,6 +1622,12 @@ class DuoSpeakApp {
     document.getElementById('det-view-interactive').style.display = 'none';
 
     document.getElementById('modal-det-exam').classList.add('active');
+    this.stopTTS();
+    const btnStartInteractive = document.getElementById('btn-start-det-interactive-room');
+    if (btnStartInteractive) {
+      btnStartInteractive.disabled = false;
+      btnStartInteractive.innerHTML = '🚀 Start Interactive Speaking Exam';
+    }
   }
 
   startDetMonologueTimer() {
@@ -2124,6 +2148,7 @@ class DuoSpeakApp {
       if (window.duoAudio) window.duoAudio.playClick();
       this.stopTTS();
       if (this.speechHandler) this.speechHandler.cancel();
+      this.isDetInteractiveMode = false;
       this.showScreen('home-screen');
     });
 
@@ -2258,12 +2283,24 @@ class DuoSpeakApp {
     const btnStartInteractive = document.getElementById('btn-start-det-interactive-room');
     if (btnStartInteractive) {
       btnStartInteractive.addEventListener('click', () => {
+        if (this.isStartingScenario) return;
+        btnStartInteractive.disabled = true;
+        btnStartInteractive.innerHTML = '⏳ Loading Interactive Room...';
+        this.stopTTS();
+        if (this.speechHandler) this.speechHandler.cancel();
+        this.stopDetMonologueTimer();
         document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
         if (this.currentDetScenario) {
           this.isDetInteractiveMode = true;
           this.maxExamTurns = 4;
           this.detExamStartTime = Date.now();
-          this.startScenario(this.currentDetScenario);
+          this.startScenario(this.currentDetScenario).finally(() => {
+            btnStartInteractive.disabled = false;
+            btnStartInteractive.innerHTML = '🚀 Start Interactive Speaking Exam';
+          });
+        } else {
+          btnStartInteractive.disabled = false;
+          btnStartInteractive.innerHTML = '🚀 Start Interactive Speaking Exam';
         }
       });
     }
