@@ -264,18 +264,12 @@ class AIEngine:
         self.gemini_models = [
             "gemini-3.5-flash-lite",     # 500 RPD, 15 RPM (Verified 200 OK ~1.1s)
             "gemini-flash-lite-latest",  # Stable high-performance alias (Verified 200 OK ~1.3s)
-            "gemini-3.1-flash-lite",     # 500 RPD, 15 RPM
-            "gemini-2.5-flash-lite",     # 20 RPD, 10 RPM
-            "gemini-2.5-flash",          # 20 RPD, 5 RPM
-            "gemini-3-flash-preview",    # 20 RPD, 5 RPM
-            "gemini-3.6-flash",          # 20 RPD, 5 RPM
-            "gemini-3.7-flash",          # 20 RPD, 5 RPM
-            "gemini-3.8-flash"           # 20 RPD, 5 RPM
+            "gemini-3-flash-preview",    # 20 RPD, 5 RPM (Verified 200 OK ~1.9s)
         ]
         self.groq_models = [
-            "qwen/qwen3.8-27b",          # Verified 200 OK ~210ms! RPM 30, RPD 1K
-            "openai/gpt-oss-120b",       # Verified 200 OK ~490ms! RPM 30, RPD 1K
-            "openai/gpt-oss-20b"         # Verified 200 OK ~1000ms! RPM 30, RPD 1K
+            "qwen/qwen3.8-27b",          # Verified 200 OK ~210ms! 131k context, RPM 30, RPD 1K
+            "openai/gpt-oss-120b",       # Verified 200 OK ~1800ms! RPM 30, RPD 1K
+            "openai/gpt-oss-20b"         # Verified 200 OK ~980ms! RPM 30, RPD 1K
         ]
 
     def _normalize_text_for_comparison(self, text: str) -> str:
@@ -464,7 +458,7 @@ Output JSON ONLY:
   "ai_response": "Your opening statement and question to start the conversation"
 }}"""
 
-        res = self._call_llm_providers(fast_greeting_prompt, temp=0.7)
+        res = self._call_llm_providers(fast_greeting_prompt, temp=0.7, prefer_fast_groq=True)
         if res and ("ai_response" in res or "final_response" in res):
             ai_text = res.get("ai_response") or res.get("final_response", "")
             if ai_text:
@@ -571,7 +565,7 @@ Output JSON ONLY:
   "ai_response": "Your spoken reply as {character['name']}"
 }}"""
 
-        raw_res = self._call_llm_providers(fast_prompt, temp=0.7)
+        raw_res = self._call_llm_providers(fast_prompt, temp=0.7, prefer_fast_groq=True)
         if raw_res and ("ai_response" in raw_res or "final_response" in raw_res):
             ai_resp = raw_res.get("ai_response") or raw_res.get("final_response", "")
         else:
@@ -1668,14 +1662,33 @@ Output JSON ONLY:
         prompt: str,
         schema: type[BaseModel] | None = None,
         temp: float = 0.8,
-        parse_raw: bool = False
+        parse_raw: bool = False,
+        prefer_fast_groq: bool = False
     ) -> dict[str, Any] | None:
         t_start = time.time()
+        fast_timeout = 1.8 if prefer_fast_groq else 2.2
+
+        # 0. Fast-Voice Path: if prefer_fast_groq is set, try ultra-fast Groq models first (~250ms)
+        if prefer_fast_groq:
+            for key in self.groq_keys:
+                if is_key_exhausted(key):
+                    continue
+                for model in self.groq_models:
+                    if is_model_key_rate_limited(model, key):
+                        continue
+                    try:
+                        res = self._call_groq(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
+                        if res:
+                            return res
+                    except Exception as e:
+                        logger.warning(f"[AIEngine FastVoice] Groq ({model}) failed or rate limited: {e}. Failover to next.")
+                        continue
+
+        # 1. Gemini attempt with Fast-Failover cap
         gemini_fail_count = 0
         MAX_GEMINI_FAILS = 2
         MAX_GEMINI_TIME_SEC = 2.5
 
-        # 1. Gemini primary attempt with Fast-Failover cap
         for key in self.gemini_keys:
             if is_key_exhausted(key):
                 continue
@@ -1696,20 +1709,23 @@ Output JSON ONLY:
                     logger.warning(f"[AIEngine] Gemini ({model}) failed or timeout: {e}. Failover attempt {gemini_fail_count}/{MAX_GEMINI_FAILS}.")
                     continue
 
-        for key in self.groq_keys:
-            if is_key_exhausted(key):
-                continue
-            for model in self.groq_models:
-                if is_model_key_rate_limited(model, key):
+        # 2. Groq attempt if not already executed under prefer_fast_groq
+        if not prefer_fast_groq:
+            for key in self.groq_keys:
+                if is_key_exhausted(key):
                     continue
-                try:
-                    res = self._call_groq(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
-                    if res:
-                        return res
-                except Exception as e:
-                    logger.warning(f"[AIEngine] Groq ({model}) failed or truncation/validation error: {e}. Failover to next provider.")
-                    continue
+                for model in self.groq_models:
+                    if is_model_key_rate_limited(model, key):
+                        continue
+                    try:
+                        res = self._call_groq(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
+                        if res:
+                            return res
+                    except Exception as e:
+                        logger.warning(f"[AIEngine] Groq ({model}) failed or truncation/validation error: {e}. Failover to next provider.")
+                        continue
 
+        # 3. OpenAI fallback
         for key in self.openai_keys:
             if is_key_exhausted(key):
                 continue
@@ -1721,6 +1737,7 @@ Output JSON ONLY:
                 logger.warning(f"[AIEngine] OpenAI failed or truncation/validation error: {e}. Failover to next provider.")
                 continue
 
+        # 4. Ollama fallback
         if self.ollama_base_url:
             try:
                 res = self._call_ollama(prompt, schema=schema, temp=temp, parse_raw=parse_raw)

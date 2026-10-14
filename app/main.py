@@ -61,6 +61,20 @@ app.include_router(jobs_router)
 inngest.fast_api.serve(app, inngest_client, [evaluate_speaking_exam, cleanup_audio_cache_job])
 
 
+@app.on_event("startup")
+async def startup_warmup():
+    """Asynchronously warm up in-memory caches (MaterialBank, TopicBank) on startup."""
+    import asyncio
+    def _warm():
+        try:
+            from app.rag.material_bank import get_material_bank
+            get_material_bank()
+            logger.info("[Startup] MaterialBank successfully pre-warmed.")
+        except Exception as e:
+            logger.warning(f"[Startup] MaterialBank warm-up warning: {e}")
+    asyncio.get_event_loop().run_in_executor(None, _warm)
+
+
 @app.get("/health")
 @app.head("/health")
 @app.get("/api/health")

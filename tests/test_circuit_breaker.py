@@ -141,3 +141,35 @@ def test_circuit_breaker_overload_503():
     assert expiry is not None
     assert (expiry - time.time()) > 50
 
+
+def test_prefer_fast_groq_prioritization(monkeypatch):
+    """When prefer_fast_groq=True, Groq is called first before Gemini."""
+    from app.core import ai_engine
+    call_order = []
+
+    ai_engine.gemini_keys = ["mock_gemini_key"]
+    ai_engine.groq_keys = ["mock_groq_key"]
+    ai_engine.openai_keys = []
+
+    def mock_gemini(prompt, api_key, model_name, schema=None, temp=0.8, parse_raw=False):
+        call_order.append("gemini")
+        return {"ai_response": "gemini resp"}
+
+    def mock_groq(prompt, api_key, model_name, schema=None, temp=0.8, parse_raw=False):
+        call_order.append("groq")
+        return {"ai_response": "groq resp"}
+
+    monkeypatch.setattr(ai_engine, "_call_gemini", mock_gemini)
+    monkeypatch.setattr(ai_engine, "_call_groq", mock_groq)
+
+    # 1. With prefer_fast_groq=True -> Groq must be called FIRST!
+    res = ai_engine._call_llm_providers("test", prefer_fast_groq=True)
+    assert res == {"ai_response": "groq resp"}
+    assert call_order == ["groq"]
+
+    # 2. Standard call without prefer_fast_groq -> Gemini is called first
+    call_order.clear()
+    res2 = ai_engine._call_llm_providers("test", prefer_fast_groq=False)
+    assert res2 == {"ai_response": "gemini resp"}
+    assert call_order == ["gemini"]
+

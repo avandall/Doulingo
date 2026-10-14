@@ -192,14 +192,16 @@ def generate_elevenlabs_tts_single(text: str, char_id: str, api_key: str) -> io.
     }
     
     t0 = time.time()
-    res = requests.post(url, headers=headers, json=payload, timeout=8)
+    res = requests.post(url, headers=headers, json=payload, timeout=2.0)
     latency_ms = (time.time() - t0) * 1000
     if res.status_code == 200 and len(res.content) > 500:
         log_api_trace("ElevenLabs", "eleven_multilingual_v2", api_key, res.status_code, latency_ms, step="TTS")
         mp3_fp = io.BytesIO(res.content)
         mp3_fp.seek(0)
         return mp3_fp
-        
+
+    if res.status_code in (401, 403, 402, 429):
+        mark_key_exhausted(api_key, cooldown_seconds=43200)
     log_api_trace("ElevenLabs", "eleven_multilingual_v2", api_key, res.status_code, latency_ms, error_msg=res.text[:100], step="TTS")
     raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
 
@@ -310,7 +312,7 @@ async def stream_elevenlabs_tts_ws(text: str, char_id: str, api_key: str, is_can
                 return
 
             try:
-                msg_str = await asyncio.wait_for(ws.recv(), timeout=6.0)
+                msg_str = await asyncio.wait_for(ws.recv(), timeout=2.5)
             except asyncio.TimeoutError:
                 break
 
@@ -338,6 +340,10 @@ async def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str, is
         if ws_yielded:
             return
     except Exception as ws_err:
+        err_msg = str(ws_err).lower()
+        if any(code in err_msg for code in ["401", "403", "unauthorized", "invalid_api_key", "quota", "429", "402"]):
+            mark_key_exhausted(api_key, cooldown_seconds=43200)
+            raise Exception(f"ElevenLabs Auth/Quota error in WebSocket: {ws_err}")
         logger.warning(f"[ElevenLabs WS] WebSocket connection failed ({ws_err}), falling back to HTTP Async Stream...")
 
     # Fallback to HTTP Async Stream if WebSocket fails
@@ -362,7 +368,7 @@ async def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str, is
         }
     }
 
-    async with httpx.AsyncClient(timeout=8.0) as client:
+    async with httpx.AsyncClient(timeout=2.0) as client:
         async with client.stream("POST", url, headers=headers, json=payload) as res:
             if res.status_code == 200:
                 async for chunk in res.aiter_bytes(chunk_size=1024):
@@ -386,6 +392,8 @@ async def stream_elevenlabs_tts_single(text: str, char_id: str, api_key: str, is
                         return
 
             error_text = await res.aread()
+            if res.status_code in (401, 403, 402, 429):
+                mark_key_exhausted(api_key, cooldown_seconds=43200)
             raise Exception(f"HTTP {res.status_code}: {error_text.decode('utf-8', errors='ignore')[:100]}")
 
 def stream_gtts(text: str, char_id: str = "lily", tld: str = "com"):
@@ -444,7 +452,11 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
                 if chunk_found:
                     return
             except Exception as e:
-                mark_key_exhausted(key)
+                err_s = str(e).lower()
+                if any(code in err_s for code in ["401", "403", "unauthorized", "invalid_api_key", "quota", "429", "402"]):
+                    mark_key_exhausted(key, cooldown_seconds=43200)
+                else:
+                    mark_key_exhausted(key, cooldown_seconds=60)
                 logger.warning(f"[ElevenLabs Stream Pool] Key #{idx+1} failed ({e}). Auto-rotating...")
 
     # 2. Try Edge-TTS async stream (<300ms initial chunk)

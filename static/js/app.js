@@ -591,10 +591,17 @@ class DuoSpeakApp {
     this.showScreen('practice-screen');
     this._setPlayerLoading();
 
+    if (this.startScenarioAbortController) {
+      try { this.startScenarioAbortController.abort(); } catch (err) {}
+    }
+    this.startScenarioAbortController = new AbortController();
+    const abortSignal = this.startScenarioAbortController.signal;
+
     try {
       const res = await fetch(this.apiUrl('/api/start_scenario'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: abortSignal,
         body: JSON.stringify({
           scenario_id: scenario.id,
           character_id: charId,
@@ -602,8 +609,10 @@ class DuoSpeakApp {
         })
       });
 
+      if (abortSignal.aborted) return;
       if (!res.ok) throw new Error(`Start scenario failed: ${res.status}`);
       const data = await res.json();
+      if (abortSignal.aborted) return;
 
       const aiResponse = data.ai_response || data.response || data.ai_utterance || "Hello! Let's practice together!";
       const aiResponseVi = data.ai_response_vi || '';
@@ -614,9 +623,15 @@ class DuoSpeakApp {
       this.conversationHistory.push({ role: 'assistant', content: aiResponse });
 
       // Play TTS
-      await this.playTTS(aiResponse, charId);
+      if (!abortSignal.aborted) {
+        await this.playTTS(aiResponse, charId);
+      }
 
     } catch (e) {
+      if (e.name === 'AbortError' || abortSignal.aborted) {
+        console.info('[DuoSpeak] Start scenario aborted by user navigation.');
+        return;
+      }
       console.error('[DuoSpeak] Start scenario error:', e);
       const fallback = "Hello! I'm ready to practice with you. What would you like to talk about?";
       this.displayAITurn(fallback, '');
@@ -1062,6 +1077,10 @@ class DuoSpeakApp {
   }
 
   stopTTS() {
+    if (this.startScenarioAbortController) {
+      try { this.startScenarioAbortController.abort(); } catch (err) {}
+      this.startScenarioAbortController = null;
+    }
     if (window.duoAudio && typeof window.duoAudio.stopFiller === 'function') {
       window.duoAudio.stopFiller();
     }
