@@ -82,7 +82,7 @@ async def startup_warmup():
 def health_check():
     """Health check endpoint for Render, uptime monitors, and keep-alive pings."""
     print("[Keep-Alive] Periodic ping received from GitHub Actions!", flush=True)
-    return {"status": "ok", "app": "Haku Haku's", "version": "1.0.0"}
+    return {"status": "ok", "app": "Haku Haku's", "version": "1.0.1-perf"}
 
 class CachedStaticFiles(StaticFiles):
     """StaticFiles with long-lived public immutable caching for maximum PageSpeed score."""
