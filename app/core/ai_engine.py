@@ -54,20 +54,93 @@ def mask_api_key(key: str | None) -> str:
         return "***"
     return f"{key[:4]}...{key[-4:]}"
 
-# Tracks keys that are currently rate-limited (429/403) to skip on next call
-KEY_EXHAUSTED_CACHE: dict[str, float] = {}  # key -> epoch timestamp when it was exhausted
-KEY_COOLDOWN_SECONDS = 60  # How long before retrying an exhausted key
+# ============================================================
+# CIRCUIT BREAKER & RATE LIMIT TELEMETRY (< 1ms In-Memory)
+# ============================================================
+# Tracks cooldowns by fine-grained (model_name, api_key) -> epoch expiry timestamp
+_RATE_LIMIT_COOLDOWNS: dict[tuple[str, str], float] = {}
+
+# Tracks keys that are globally invalidated (401/403/invalid key): api_key -> epoch expiry timestamp
+KEY_EXHAUSTED_CACHE: dict[str, float] = {}
+KEY_COOLDOWN_SECONDS = 60
 
 def is_key_exhausted(api_key: str) -> bool:
-    """Return True if this key has been rate-limited within the cooldown window."""
-    exhausted_at = KEY_EXHAUSTED_CACHE.get(api_key)
-    if exhausted_at is None:
+    """Return True if this key is globally invalidated within cooldown window."""
+    exhausted_until = KEY_EXHAUSTED_CACHE.get(api_key)
+    if exhausted_until is None:
         return False
-    return (time.time() - exhausted_at) < KEY_COOLDOWN_SECONDS
+    if time.time() >= exhausted_until:
+        del KEY_EXHAUSTED_CACHE[api_key]
+        return False
+    return True
 
-def mark_key_exhausted(api_key: str):
-    """Mark this key as rate-limited."""
-    KEY_EXHAUSTED_CACHE[api_key] = time.time()
+def mark_key_exhausted(api_key: str, cooldown_seconds: float = 43200):
+    """Mark this key as globally exhausted (e.g. 401/403) for cooldown_seconds (default 12h)."""
+    KEY_EXHAUSTED_CACHE[api_key] = time.time() + cooldown_seconds
+
+def is_model_key_rate_limited(model: str, api_key: str) -> bool:
+    """
+    Pre-flight Circuit Breaker Check in memory (< 0.001ms / 0ms network).
+    Returns True if this (model, key) pair or key is currently in cooldown.
+    """
+    if is_key_exhausted(api_key):
+        return True
+
+    expiry = _RATE_LIMIT_COOLDOWNS.get((model, api_key))
+    if expiry is None:
+        return False
+
+    now = time.time()
+    if now >= expiry:
+        del _RATE_LIMIT_COOLDOWNS[(model, api_key)]
+        return False
+    return True
+
+def record_model_key_exhausted(model: str, api_key: str, status_code: int, response_text: str = ""):
+    """
+    Circuit Breaker Trip Handler.
+    Differentiates between:
+    - 401 / 403: Invalid/Suspended Key -> Locks entire key for 12 hours (43,200s).
+    - 404: Model Not Found -> Locks (model, key) for 24 hours (86,400s).
+    - 429 RPD (Requests Per Day): Locks (model, key) for 12 hours (43,200s).
+    - 429 RPM (Requests Per Minute): Locks (model, key) for 60 seconds.
+    - 503 / 502 / 504: Temporary upstream overload -> Backoff for 30 seconds.
+    """
+    now = time.time()
+    resp_lower = (response_text or "").lower()
+    masked = mask_api_key(api_key)
+
+    if status_code in (401, 403):
+        cooldown = 43200  # 12h
+        mark_key_exhausted(api_key, cooldown_seconds=cooldown)
+        logger.warning(f"[CircuitBreaker] GLOBAL KEY TRIP ({status_code}): Key {masked} locked for {cooldown}s (Auth error).")
+        return
+
+    if status_code == 404:
+        cooldown = 86400  # 24h
+        _RATE_LIMIT_COOLDOWNS[(model, api_key)] = now + cooldown
+        logger.warning(f"[CircuitBreaker] MODEL 404: ({model}, {masked}) locked for {cooldown}s (Model not available).")
+        return
+
+    if status_code in (429, 402):
+        is_rpd = any(phr in resp_lower for phr in [
+            "per day", "perday", "daily", "per_day", "quota exceeded for quota metric 'generate content api requests per day'"
+        ])
+        if is_rpd:
+            cooldown = 43200  # 12h
+            reason = "RPD (Daily quota exhausted)"
+        else:
+            cooldown = 60     # 60s
+            reason = "RPM (Rate limit / minute)"
+
+        _RATE_LIMIT_COOLDOWNS[(model, api_key)] = now + cooldown
+        logger.warning(f"[CircuitBreaker] TRIP ({status_code}): ({model}, {masked}) locked for {cooldown}s. Reason: {reason}.")
+        return
+
+    if status_code in (502, 503, 504):
+        cooldown = 30
+        _RATE_LIMIT_COOLDOWNS[(model, api_key)] = now + cooldown
+        logger.warning(f"[CircuitBreaker] OVERLOAD ({status_code}): ({model}, {masked}) backed off for {cooldown}s.")
 
 def log_api_trace(provider: str, model: str, api_key: str, status_code: int, latency_ms: float, error_msg: str = "", step: str = "LLM"):
     """Log LLM/STT/TTS API invocation trace to logs/api_trace.log and console."""
@@ -79,14 +152,14 @@ def log_api_trace(provider: str, model: str, api_key: str, status_code: int, lat
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     masked = mask_api_key(api_key)
     
-    if status_code in [429, 403, 402, 401, 400]:
-        mark_key_exhausted(api_key)
+    if status_code in [429, 404, 403, 402, 401]:
+        record_model_key_exhausted(model, api_key, status_code, error_msg)
 
     KEY_STATUS_CACHE[masked] = {
         "provider": provider,
         "model": model,
         "step": step,
-        "status": "EXHAUSTED" if status_code in [429, 403, 402, 401, 400] or error_msg else "ACTIVE",
+        "status": "EXHAUSTED" if status_code in [429, 403, 402, 401] or error_msg else "ACTIVE",
         "status_code": status_code,
         "last_used": timestamp,
         "error": error_msg
@@ -164,14 +237,16 @@ class AIEngine:
         self.ollama_model = os.getenv("OLLAMA_MODEL", "llama3").strip()
 
         self.gemini_models = [
-            "gemini-3.5-flash-lite",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-2.5-flash-lite",
             "gemini-2.5-flash",
-            "gemini-2.0-flash",
-            "gemini-1.5-flash",
-            "gemini-3.5-flash",
+            "gemini-3-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
             "gemini-3.6-flash",
-            "gemini-1.5-pro"
+            "gemini-2.0-flash",
+            "gemini-1.5-flash"
         ]
         self.groq_models = [
             "llama-3.1-8b-instant",
@@ -1163,28 +1238,32 @@ Output JSON ONLY:
             if is_key_exhausted(key):
                 continue
             for model in self.gemini_models:
+                if is_model_key_rate_limited(model, key):
+                    continue
                 try:
                     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
                     gemini_payload = {
                         "contents": [{"parts": [{"text": translate_prompt}]}],
                         "generationConfig": {"maxOutputTokens": 200, "temperature": 0.35}
                     }
-                    res = requests.post(url, json=gemini_payload, timeout=2)
+                    res = requests.post(url, json=gemini_payload, timeout=4.0)
                     if res.status_code == 200:
                         text = res.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
                         if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
                             text = text[1:-1].strip()
                         if text:
                             return text
-                    elif res.status_code in [401, 403, 429, 400]:
-                        mark_key_exhausted(key)
+                    elif res.status_code in [401, 403, 429, 400, 404]:
+                        record_model_key_exhausted(model, key, res.status_code, res.text)
                 except Exception:
-                    mark_key_exhausted(key)
+                    record_model_key_exhausted(model, key, 500, "Timeout or network failure")
 
         for key in self.groq_keys:
             if is_key_exhausted(key):
                 continue
             for model in self.groq_models:
+                if is_model_key_rate_limited(model, key):
+                    continue
                 try:
                     url = "https://api.groq.com/openai/v1/chat/completions"
                     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
@@ -1194,7 +1273,7 @@ Output JSON ONLY:
                         "max_tokens": 200,
                         "temperature": 0.35,
                     }
-                    res = requests.post(url, headers=headers, json=groq_payload, timeout=2)
+                    res = requests.post(url, headers=headers, json=groq_payload, timeout=4.0)
 
                     if res.status_code == 200:
                         text = res.json()["choices"][0]["message"]["content"].strip()
@@ -1203,9 +1282,9 @@ Output JSON ONLY:
                         if text:
                             return text
                     elif res.status_code in [401, 403, 429, 400]:
-                        mark_key_exhausted(key)
+                        record_model_key_exhausted(model, key, res.status_code, res.text)
                 except Exception:
-                    mark_key_exhausted(key)
+                    record_model_key_exhausted(model, key, 500, "Timeout or network failure")
 
         return ""
 
@@ -1332,13 +1411,14 @@ Output JSON ONLY:
         }
         t0 = time.time()
         try:
-            res = requests.post(url, json=payload, timeout=3)
+            res = requests.post(url, json=payload, timeout=4.0)
             latency_ms = (time.time() - t0) * 1000
             log_api_trace("Gemini", model_name, api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
                 return self._parse_raw_json(text, schema=schema) if parse_raw else self._parse_json_response(text, schema=schema)
-            elif res.status_code in [429, 403, 401, 400]:
+            elif res.status_code in [429, 403, 401, 400, 404]:
+                record_model_key_exhausted(model_name, api_key, res.status_code, res.text)
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
             latency_ms = (time.time() - t0) * 1000
@@ -1377,13 +1457,14 @@ Output JSON ONLY:
             payload["response_format"] = {"type": "json_object"}
         t0 = time.time()
         try:
-            res = requests.post(url, headers=headers, json=payload, timeout=3)
+            res = requests.post(url, headers=headers, json=payload, timeout=4.0)
             latency_ms = (time.time() - t0) * 1000
             log_api_trace("Groq", model_name, api_key, res.status_code, latency_ms)
             if res.status_code == 200:
                 text = res.json()["choices"][0]["message"]["content"]
                 return self._parse_raw_json(text, schema=schema) if parse_raw else self._parse_json_response(text, schema=schema)
             elif res.status_code in [429, 403, 401, 400]:
+                record_model_key_exhausted(model_name, api_key, res.status_code, res.text)
                 raise Exception(f"HTTP {res.status_code}: {res.text[:100]}")
         except Exception as e:
             latency_ms = (time.time() - t0) * 1000
@@ -1533,6 +1614,8 @@ Output JSON ONLY:
             if is_key_exhausted(key):
                 continue
             for model in self.gemini_models:
+                if is_model_key_rate_limited(model, key):
+                    continue
                 try:
                     res = self._call_gemini(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
                     if res:
@@ -1545,6 +1628,8 @@ Output JSON ONLY:
             if is_key_exhausted(key):
                 continue
             for model in self.groq_models:
+                if is_model_key_rate_limited(model, key):
+                    continue
                 try:
                     res = self._call_groq(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
                     if res:
@@ -1874,6 +1959,8 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                 if is_key_exhausted(key):
                     continue
                 for model in self.gemini_models:
+                    if is_model_key_rate_limited(model, key):
+                        continue
                     t0 = time.time()
                     try:
                         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
@@ -2036,11 +2123,21 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                 pass
 
         eleven_keys = [k.strip() for k in os.getenv("ELEVENLABS_API_KEY", "").split(",") if k.strip()]
+        active_cooldowns = [
+            {
+                "model": m,
+                "key": mask_api_key(k),
+                "remaining_seconds": max(0, int(exp - time.time()))
+            }
+            for (m, k), exp in _RATE_LIMIT_COOLDOWNS.items()
+            if exp > time.time()
+        ]
         return {
             "active_groq_keys_count": len(self.groq_keys),
             "active_gemini_keys_count": len(self.gemini_keys),
             "active_openai_keys_count": len(self.openai_keys),
             "active_elevenlabs_keys_count": len(eleven_keys),
+            "circuit_breaker_active_cooldowns": active_cooldowns,
             "key_statuses": KEY_STATUS_CACHE,
             "recent_trace_logs": recent_logs
         }
