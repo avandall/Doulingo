@@ -472,7 +472,6 @@ class DuoSpeakApp {
     await this.checkAuthStatus();
     await Promise.all([this.loadCharacters(), this.loadScenarios()]);
     await this.updateVocabBadgeCount();
-    this.loadUserStats();
   }
 
   // ============================================================
@@ -522,21 +521,6 @@ class DuoSpeakApp {
     ];
     this.scenarios = fallbackScenarios;
     this.renderAllScenarios();
-  }
-
-  async loadUserStats() {
-    try {
-      const res = await fetch(this.apiUrl('/api/user_stats'));
-      if (!res.ok) return;
-      const data = await res.json();
-      const streakEl = document.getElementById('stat-streak-count');
-      const xpEl = document.getElementById('stat-xp-count');
-      if (streakEl) streakEl.textContent = data.streak_days || 5;
-      if (xpEl) xpEl.textContent = data.total_xp || 150;
-      this.totalXP = data.total_xp || 150;
-    } catch (e) {
-      // Silently fail
-    }
   }
 
   // ============================================================
@@ -1161,12 +1145,7 @@ class DuoSpeakApp {
             }
 
             // Show feedback sheet
-            this.showFeedbackSheet(fluencyScore, nativeSuggestion, xpGained, feedback);
-
-            // Update XP display
-            const xpEl = document.getElementById('stat-xp-count');
-            if (xpEl) xpEl.textContent = this.totalXP;
-            fetch(this.apiUrl(`/api/user_stats/add_xp?xp=${xpGained}`), { method: 'POST' }).catch(() => {});
+            this.showFeedbackSheet(fluencyScore, nativeSuggestion, 0, feedback);
 
             if (data.is_completed) {
               setTimeout(() => this.finishAndScoreRoleplay(), 2000);
@@ -1557,7 +1536,6 @@ class DuoSpeakApp {
       }
       nativeEl.textContent = sugText;
     }
-    if (xpEl) xpEl.textContent = `⚡ +${xp} XP`;
 
     if (sheet) {
       if (this._feedbackTimer) clearTimeout(this._feedbackTimer);
@@ -2308,7 +2286,8 @@ class DuoSpeakApp {
     document.getElementById('modal-weekly-report').classList.add('active');
 
     try {
-      const res = await fetch(this.apiUrl('/api/reports/weekly?user_id=user_demo&days=7'));
+      const uid = encodeURIComponent(this.currentUser?.id || this.currentUser?.username || 'user_demo');
+      const res = await fetch(this.apiUrl(`/api/reports/weekly?user_id=${uid}&days=7`));
       if (!res.ok) throw new Error('Weekly report API failed');
       const data = await res.json();
 
@@ -2386,7 +2365,8 @@ class DuoSpeakApp {
     container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">Loading...</div>';
 
     try {
-      const res = await fetch(this.apiUrl('/api/reports/weekly?user_id=user_demo&days=30'));
+      const uid = encodeURIComponent(this.currentUser?.id || this.currentUser?.username || 'user_demo');
+      const res = await fetch(this.apiUrl(`/api/reports/weekly?user_id=${uid}&days=30`));
       if (!res.ok) throw new Error('Error journal API failed');
       const data = await res.json();
       const errs = data.recurring_errors || [];
@@ -2478,8 +2458,19 @@ class DuoSpeakApp {
   bindEvents() {
 
     // === NAVBAR ===
+    const checkGuestAccess = (featureName) => {
+      if (this.currentMode === 'guest' || !this.authToken) {
+        this.showToast(`${featureName} is only available for logged-in accounts. Please sign in or register.`);
+        return false;
+      }
+      return true;
+    };
+
     const btnWeekly = document.getElementById('btn-open-weekly-report');
-    if (btnWeekly) btnWeekly.addEventListener('click', () => this.openWeeklyReport());
+    if (btnWeekly) btnWeekly.addEventListener('click', () => {
+      if (!checkGuestAccess('Weekly Reports')) return;
+      this.openWeeklyReport();
+    });
 
     const btnCloseWeekly = document.getElementById('btn-close-weekly-report');
     if (btnCloseWeekly) btnCloseWeekly.addEventListener('click', () => document.getElementById('modal-weekly-report').classList.remove('active'));
@@ -2487,18 +2478,26 @@ class DuoSpeakApp {
     if (btnCloseWeeklyBtm) btnCloseWeeklyBtm.addEventListener('click', () => document.getElementById('modal-weekly-report').classList.remove('active'));
 
     const btnErr = document.getElementById('btn-open-error-journal');
-    if (btnErr) btnErr.addEventListener('click', () => this.openErrorJournal());
+    if (btnErr) btnErr.addEventListener('click', () => {
+      if (!checkGuestAccess('Error Journal')) return;
+      this.openErrorJournal();
+    });
     const btnCloseErr = document.getElementById('btn-close-error-journal');
     if (btnCloseErr) btnCloseErr.addEventListener('click', () => document.getElementById('modal-error-journal').classList.remove('active'));
     const btnCloseErrBtm = document.getElementById('btn-close-error-journal-bottom');
     if (btnCloseErrBtm) btnCloseErrBtm.addEventListener('click', () => document.getElementById('modal-error-journal').classList.remove('active'));
 
     const btnVocab = document.getElementById('btn-open-vocab-modal');
-    if (btnVocab) btnVocab.addEventListener('click', () => { if (window.duoAudio) window.duoAudio.playClick(); this.openVocabBookModal(); });
+    if (btnVocab) btnVocab.addEventListener('click', () => {
+      if (!checkGuestAccess('Vocabulary Book')) return;
+      if (window.duoAudio) window.duoAudio.playClick();
+      this.openVocabBookModal();
+    });
     const btnCloseVocab = document.getElementById('btn-close-vocab-modal');
     if (btnCloseVocab) btnCloseVocab.addEventListener('click', () => document.getElementById('modal-vocab-book').classList.remove('active'));
     const btnCloseVocabBtm = document.getElementById('btn-close-vocab-bottom');
     if (btnCloseVocabBtm) btnCloseVocabBtm.addEventListener('click', () => document.getElementById('modal-vocab-book').classList.remove('active'));
+
 
     const searchVocab = document.getElementById('input-search-vocab');
     if (searchVocab) searchVocab.addEventListener('input', e => this.renderVocabWordsList(e.target.value.trim().toLowerCase()));

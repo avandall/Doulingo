@@ -97,25 +97,25 @@
 
     <div class="navbar-actions">
       <!-- Auth Status / Mode -->
-      <div id="nav-user-area" style="display:flex;align-items:center;gap:6px;">
-        <span id="nav-mode-badge" class="stat-pill" style="background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-secondary);font-size:11px;font-weight:600;padding:4px 8px;border-radius:4px;">Test Mode</span>
-        <button class="icon-btn" id="btn-nav-auth" title="Sign In or Register" style="padding:4px 10px;font-size:12px;font-weight:600;">
+      <div id="nav-user-area" style="display:flex;align-items:center;gap:8px;">
+        <span id="nav-mode-badge" class="stat-pill" style="background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-secondary);font-size:12px;font-weight:600;padding:5px 10px;border-radius:6px;">Test Mode</span>
+        <button class="icon-btn" id="btn-nav-auth" title="Sign In or Register" style="padding:6px 12px;font-size:13px;font-weight:600;">
           <span>Sign In</span>
         </button>
-        <div id="nav-user-profile" style="display:none;align-items:center;gap:6px;">
-          <span id="nav-user-flag" style="font-size:13px;">🇻🇳</span>
-          <span id="nav-username" style="font-size:12px;font-weight:600;color:var(--text-primary);max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">User</span>
-          <button class="icon-btn" id="btn-open-user-settings" title="Settings & API Keys" style="padding:4px 8px;font-size:11px;">
+        <div id="nav-user-profile" style="display:none;align-items:center;gap:8px;">
+          <span id="nav-user-flag" style="font-size:16px;">🇻🇳</span>
+          <span id="nav-username" style="font-size:14px;font-weight:600;color:var(--text-primary);max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">User</span>
+          <button class="icon-btn" id="btn-open-user-settings" title="Settings & API Keys" style="padding:5px 10px;font-size:12.5px;">
             <span>Settings</span>
           </button>
-          <button class="icon-btn" id="btn-user-signout" title="Sign Out" style="padding:4px 8px;font-size:11px;color:var(--text-muted);">
+          <button class="icon-btn" id="btn-user-signout" title="Sign Out" style="padding:5px 10px;font-size:12.5px;color:var(--text-muted);">
             <span>Sign Out</span>
           </button>
         </div>
       </div>
 
       <button class="icon-btn" id="btn-open-weekly-report" title="Weekly Performance Report">
-        <span>Report</span>
+        <span>Reports</span>
       </button>
       <button class="icon-btn" id="btn-open-error-journal" title="Personal Error Journal">
         <span>Errors</span>
@@ -124,10 +124,8 @@
         <span>Vocab (<span id="vocab-count-badge">0</span>)</span>
       </button>
       <button class="icon-btn" id="btn-open-lang-modal" title="Translation Language Setting" aria-label="Change translation language">
-        <span id="lang-display">🇻🇳</span>
+        <span id="lang-display" style="font-size:16px;">🇻🇳</span>
       </button>
-      <div class="stat-pill streak" title="Day Streak" aria-label="5 day streak">Streak: <span id="stat-streak-count">5</span></div>
-      <div class="stat-pill xp" title="Total XP" aria-label="150 total XP">XP: <span id="stat-xp-count">150</span></div>
     </div>
   </nav>
 
@@ -464,8 +462,7 @@
     </div>
 
     <div class="feedback-footer">
-      <div class="xp-earned" id="feedback-xp-earned">⚡ +10 XP</div>
-      <button class="btn btn-primary" id="btn-continue-feedback">Continue</button>
+      <button class="btn btn-primary" id="btn-continue-feedback" style="width:100%;">Continue</button>
     </div>
   </div>
 

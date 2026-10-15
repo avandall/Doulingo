@@ -65,4 +65,31 @@ async def api_det_evaluate_speech(
         mother_tongue=mother_tongue,
         custom_keys=custom_keys,
     )
+
+    # Automatically record grammar/expression upgrades into user's personal Error Journal
+    if user and isinstance(user, dict) and user.get("id"):
+        user_id = user["id"]
+        upgrades = result.get("sentence_upgrades", [])
+        if isinstance(upgrades, list):
+            for up in upgrades:
+                if isinstance(up, dict):
+                    orig = str(up.get("original", "")).strip()
+                    upgraded = str(up.get("upgraded", "")).strip()
+                    expl = str(up.get("explanation", "")).strip()
+                    if orig and upgraded and orig.lower() != upgraded.lower():
+                        try:
+                            from app.analytics.error_journal import record_error
+                            detail_str = f"Original: \"{orig}\" → Upgraded: \"{upgraded}\""
+                            if expl:
+                                detail_str += f" ({expl})"
+                            record_error(
+                                user_id=user_id,
+                                error_type="grammar",
+                                error_detail=detail_str,
+                                context=scenario.get("title", "Speech Evaluation"),
+                            )
+                        except Exception as e:
+                            logger.warning(f"[Analytics] Error recording to ErrorJournal: {e}")
+
     return result
+
