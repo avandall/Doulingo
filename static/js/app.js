@@ -3102,21 +3102,6 @@ class DuoSpeakApp {
       btnSaveSettings.addEventListener('click', () => this.saveUserSettings());
     }
 
-    const btnTestGroq = document.getElementById('btn-test-groq-key');
-    if (btnTestGroq) {
-      btnTestGroq.addEventListener('click', () => this.testApiKey('groq', 'key-input-groq', 'btn-test-groq-key'));
-    }
-
-    const btnTestGemini = document.getElementById('btn-test-gemini-key');
-    if (btnTestGemini) {
-      btnTestGemini.addEventListener('click', () => this.testApiKey('gemini', 'key-input-gemini', 'btn-test-gemini-key'));
-    }
-
-    const btnTestOpenai = document.getElementById('btn-test-openai-key');
-    if (btnTestOpenai) {
-      btnTestOpenai.addEventListener('click', () => this.testApiKey('openai', 'key-input-openai', 'btn-test-openai-key'));
-    }
-
     // === CLOSE MODALS ON OVERLAY CLICK ===
     ['modal-lang-setting', 'modal-custom-topic', 'modal-vocab-book', 'modal-flashcard-practice',
      'modal-weekly-report', 'modal-error-journal', 'modal-det-exam', 'modal-det-score-report',
