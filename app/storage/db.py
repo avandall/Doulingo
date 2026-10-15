@@ -4,11 +4,14 @@ Persists custom topics, dictionary translations, saved vocabulary, and user stat
 Supports Turso Cloud SQLite (libsql) via TURSO_DATABASE_URL & TURSO_AUTH_TOKEN with local SQLite fallback.
 """
 
+import hashlib
 import json
 import logging
 import os
+import secrets
 import sqlite3
 import time
+import uuid
 from typing import Any
 
 logger = logging.getLogger("duolingo_speak.db")
@@ -51,9 +54,14 @@ def get_db_connection():
             logger.warning(f"[DB Warning] Turso Cloud connection failed: {e}. Falling back to local SQLite.")
 
     os.makedirs(DB_DIR, exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=20.0)
     conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON;")
+    try:
+        conn.execute("PRAGMA journal_mode = WAL;")
+        conn.execute("PRAGMA foreign_keys = ON;")
+        conn.execute("PRAGMA busy_timeout = 20000;")
+    except Exception:
+        pass
     return conn
 
 
@@ -415,6 +423,48 @@ def init_db(force: bool = False):
         )
     """)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_eval_jobs_session ON evaluation_jobs (session_id)")
+
+    # 19. users (Authentication & Profile)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id              TEXT PRIMARY KEY,
+            username        TEXT UNIQUE NOT NULL,
+            password_hash   TEXT NOT NULL,
+            mother_tongue   TEXT DEFAULT 'en',
+            custom_api_keys TEXT DEFAULT '{}',
+            created_at      TEXT DEFAULT (datetime('now')),
+            last_login      TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    cursor.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_users_username ON users (username)")
+
+    # 20. user_vocabulary (Personalized Vocabulary Storage)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_vocabulary (
+            id          TEXT PRIMARY KEY,
+            user_id     TEXT NOT NULL,
+            word        TEXT NOT NULL,
+            phonetic    TEXT,
+            translation TEXT,
+            target_lang TEXT DEFAULT 'en',
+            example     TEXT,
+            created_at  TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        )
+    """)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_user_vocab_user ON user_vocabulary (user_id, created_at)")
+
+    # 21. user_settings (Personalized Settings)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS user_settings (
+            user_id         TEXT PRIMARY KEY,
+            target_band     TEXT DEFAULT 'B2',
+            speech_rate     REAL DEFAULT 1.0,
+            theme           TEXT DEFAULT 'dark',
+            updated_at      TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        )
+    """)
 
     conn.commit()
     conn.close()
@@ -921,6 +971,326 @@ def get_evaluation_job(job_id: str) -> dict[str, Any] | None:
         except Exception:
             pass
     return row
+
+
+# =========================================================================
+# User Authentication & Security Helpers
+# =========================================================================
+
+def hash_password(password: str) -> str:
+    """Hash a password securely using PBKDF2-HMAC-SHA256 with random salt."""
+    salt = secrets.token_hex(16)
+    pw_hash = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt.encode("utf-8"), 100_000).hex()
+    return f"{salt}${pw_hash}"
+
+
+def verify_password(password: str, stored_hash: str) -> bool:
+    """Verify password against salt$hash string."""
+    try:
+        salt, pw_hash = stored_hash.split("$", 1)
+        test_hash = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt.encode("utf-8"), 100_000).hex()
+        return secrets.compare_digest(test_hash, pw_hash)
+    except Exception:
+        return False
+
+
+def create_user(
+    username: str,
+    password: str,
+    mother_tongue: str = "en",
+    custom_api_keys: dict[str, str] | None = None,
+) -> dict[str, Any] | None:
+    """Register a new user account with isolated settings and vocabulary book."""
+    init_db()
+    conn = get_db_connection()
+    try:
+        cursor = conn.cursor()
+        user_id = f"usr_{uuid.uuid4().hex[:12]}"
+        pw_hash = hash_password(password)
+        keys_json = json.dumps(custom_api_keys or {})
+        clean_username = username.strip().lower()
+
+        cursor.execute(
+            """
+            INSERT INTO users (id, username, password_hash, mother_tongue, custom_api_keys, created_at, last_login)
+            VALUES (?, ?, ?, ?, ?, datetime('now'), datetime('now'))
+            """,
+            (user_id, clean_username, pw_hash, mother_tongue or "en", keys_json),
+        )
+
+        # Initialize default user settings
+        cursor.execute(
+            """
+            INSERT OR IGNORE INTO user_settings (user_id, target_band, speech_rate, theme, updated_at)
+            VALUES (?, 'B2', 1.0, 'dark', datetime('now'))
+            """,
+            (user_id,),
+        )
+
+        conn.commit()
+        return {
+            "id": user_id,
+            "username": clean_username,
+            "mother_tongue": mother_tongue or "en",
+            "custom_api_keys": custom_api_keys or {},
+        }
+    except sqlite3.IntegrityError:
+        return None
+    finally:
+        conn.close()
+
+
+def authenticate_user(username: str, password: str) -> dict[str, Any] | None:
+    """Authenticate username and password, returns user dict on success or None."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    clean_username = username.strip().lower()
+    cursor.execute(
+        "SELECT id, username, password_hash, mother_tongue, custom_api_keys FROM users WHERE username = ?",
+        (clean_username,),
+    )
+    user_row = _fetch_one_dict(cursor)
+
+    if not user_row or not verify_password(password, user_row["password_hash"]):
+        conn.close()
+        return None
+
+    # Update last login timestamp
+    cursor.execute("UPDATE users SET last_login = datetime('now') WHERE id = ?", (user_row["id"],))
+    conn.commit()
+    conn.close()
+
+    keys = {}
+    try:
+        keys = json.loads(user_row.get("custom_api_keys") or "{}")
+    except Exception:
+        pass
+
+    return {
+        "id": user_row["id"],
+        "username": user_row["username"],
+        "mother_tongue": user_row.get("mother_tongue") or "en",
+        "custom_api_keys": keys,
+    }
+
+
+def get_user_by_id(user_id: str) -> dict[str, Any] | None:
+    """Retrieve user profile by ID without exposing password hash."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT id, username, mother_tongue, custom_api_keys, created_at FROM users WHERE id = ?",
+        (user_id,),
+    )
+    user_row = _fetch_one_dict(cursor)
+    conn.close()
+
+    if not user_row:
+        return None
+
+    keys = {}
+    try:
+        keys = json.loads(user_row.get("custom_api_keys") or "{}")
+    except Exception:
+        pass
+
+    return {
+        "id": user_row["id"],
+        "username": user_row["username"],
+        "mother_tongue": user_row.get("mother_tongue") or "en",
+        "custom_api_keys": keys,
+        "created_at": user_row.get("created_at"),
+    }
+
+
+def get_user_by_username(username: str) -> dict[str, Any] | None:
+    """Retrieve user by username."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT id, username, mother_tongue, custom_api_keys FROM users WHERE username = ?",
+        (username.strip().lower(),),
+    )
+    user_row = _fetch_one_dict(cursor)
+    conn.close()
+    return user_row
+
+
+def update_user_mother_tongue(user_id: str, mother_tongue: str) -> bool:
+    """Update user's configured mother tongue."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "UPDATE users SET mother_tongue = ? WHERE id = ?",
+        (mother_tongue, user_id),
+    )
+    success = cursor.rowcount > 0
+    conn.commit()
+    conn.close()
+    return success
+
+
+def update_user_api_keys(user_id: str, custom_api_keys: dict[str, str]) -> bool:
+    """Store user BYOK API keys (Groq, Gemini, OpenAI) securely."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    keys_json = json.dumps(custom_api_keys or {})
+    cursor.execute(
+        "UPDATE users SET custom_api_keys = ? WHERE id = ?",
+        (keys_json, user_id),
+    )
+    success = cursor.rowcount > 0
+    conn.commit()
+    conn.close()
+    return success
+
+
+# =========================================================================
+# User Personal Settings CRUD
+# =========================================================================
+
+def get_user_settings(user_id: str) -> dict[str, Any]:
+    """Retrieve user personalized settings."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT user_id, target_band, speech_rate, theme, updated_at FROM user_settings WHERE user_id = ?",
+        (user_id,),
+    )
+    settings = _fetch_one_dict(cursor)
+    conn.close()
+
+    if not settings:
+        return {
+            "user_id": user_id,
+            "target_band": "B2",
+            "speech_rate": 1.0,
+            "theme": "dark",
+        }
+    return settings
+
+
+def update_user_settings(user_id: str, settings_dict: dict[str, Any]) -> dict[str, Any]:
+    """Update user personalized settings."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    target_band = settings_dict.get("target_band", "B2")
+    speech_rate = float(settings_dict.get("speech_rate", 1.0))
+    theme = settings_dict.get("theme", "dark")
+
+    cursor.execute(
+        """
+        INSERT INTO user_settings (user_id, target_band, speech_rate, theme, updated_at)
+        VALUES (?, ?, ?, ?, datetime('now'))
+        ON CONFLICT(user_id) DO UPDATE SET
+            target_band = excluded.target_band,
+            speech_rate = excluded.speech_rate,
+            theme = excluded.theme,
+            updated_at = datetime('now')
+        """,
+        (user_id, target_band, speech_rate, theme),
+    )
+    conn.commit()
+    conn.close()
+    return get_user_settings(user_id)
+
+
+# =========================================================================
+# User-Scoped Vocabulary Notebook CRUD
+# =========================================================================
+
+def save_user_vocabulary_word(
+    user_id: str,
+    word: str,
+    translation: str,
+    phonetic: str | None = None,
+    target_lang: str = "en",
+    example: str | None = None,
+) -> dict[str, Any]:
+    """Save a vocabulary word to a user's isolated notebook."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    word_id = f"w_{uuid.uuid4().hex[:10]}"
+    cursor.execute(
+        """
+        INSERT INTO user_vocabulary (id, user_id, word, phonetic, translation, target_lang, example, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+        """,
+        (word_id, user_id, word.strip(), phonetic or "", translation.strip(), target_lang or "en", example or ""),
+    )
+    conn.commit()
+    conn.close()
+
+    return {
+        "id": word_id,
+        "user_id": user_id,
+        "word": word.strip(),
+        "phonetic": phonetic or "",
+        "translation": translation.strip(),
+        "target_lang": target_lang or "en",
+        "example": example or "",
+    }
+
+
+def get_user_vocabulary(user_id: str, target_lang: str | None = None) -> list[dict[str, Any]]:
+    """Retrieve all vocabulary items saved by a specific user."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    if target_lang:
+        cursor.execute(
+            """
+            SELECT id, user_id, word, phonetic, translation, target_lang, example, created_at
+            FROM user_vocabulary
+            WHERE user_id = ? AND target_lang = ?
+            ORDER BY created_at DESC
+            """,
+            (user_id, target_lang),
+        )
+    else:
+        cursor.execute(
+            """
+            SELECT id, user_id, word, phonetic, translation, target_lang, example, created_at
+            FROM user_vocabulary
+            WHERE user_id = ?
+            ORDER BY created_at DESC
+            """,
+            (user_id,),
+        )
+
+    rows = _fetch_all_dicts(cursor)
+    conn.close()
+    return rows
+
+
+def delete_user_vocabulary_word(user_id: str, word_id: str) -> bool:
+    """Delete a vocabulary word belonging to a specific user."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "DELETE FROM user_vocabulary WHERE id = ? AND user_id = ?",
+        (word_id, user_id),
+    )
+    success = cursor.rowcount > 0
+    conn.commit()
+    conn.close()
+    return success
+
 
 
 

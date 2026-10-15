@@ -2,6 +2,7 @@
 from app.api.feedback_router import router as feedback_router
 from app.api.routers.analytics import router as analytics_router
 from app.api.routers.audio import router as audio_router
+from app.api.routers.auth import router as auth_router
 from app.api.routers.chat import router as chat_router
 from app.api.routers.dictionary import router as dictionary_router
 from app.api.routers.jobs_router import router as jobs_router
@@ -11,6 +12,7 @@ from app.api.routers.scenarios import router as scenarios_router
 __all__ = [
     "analytics_router",
     "audio_router",
+    "auth_router",
     "chat_router",
     "dictionary_router",
     "feedback_router",

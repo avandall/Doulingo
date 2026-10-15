@@ -27,6 +27,19 @@ class DuoSpeakApp {
     this.currentDetScenario = null;
     this.isStartingScenario = false;
 
+    // Auth & Personalization State
+    this.authToken = localStorage.getItem('duo_auth_token') || null;
+    this.currentUser = null;
+    try {
+      const savedUser = localStorage.getItem('duo_user');
+      if (savedUser) this.currentUser = JSON.parse(savedUser);
+    } catch (e) {
+      this.currentUser = null;
+    }
+    this.currentMode = this.authToken ? 'authenticated' : (localStorage.getItem('duo_mode') || 'guest');
+    this.critiqueCurrentLang = 'en';
+    this.lastDetReportData = null;
+
     // Audio/Speech State
     this.speechHandler = null;
     this.currentAudio = null;
@@ -75,6 +88,370 @@ class DuoSpeakApp {
   }
 
   // ============================================================
+  // AUTH & MODE HELPERS
+  // ============================================================
+  getFlagForLang(lang) {
+    const flags = {
+      'vi': '🇻🇳', 'ja': '🇯🇵', 'ko': '🇰🇷', 'zh': '🇨🇳',
+      'es': '🇪🇸', 'fr': '🇫🇷', 'de': '🇩🇪', 'ru': '🇷🇺',
+      'th': '🇹🇭', 'id': '🇮🇩', 'en': '🇺🇸'
+    };
+    return flags[lang] || '🌐';
+  }
+
+  getAuthHeaders(customHeaders = {}) {
+    const headers = { 'Content-Type': 'application/json', ...customHeaders };
+    if (this.authToken) {
+      headers['Authorization'] = `Bearer ${this.authToken}`;
+    }
+    return headers;
+  }
+
+  async checkAuthStatus() {
+    if (this.authToken) {
+      try {
+        const res = await fetch(this.apiUrl('/api/auth/me'), {
+          headers: this.getAuthHeaders()
+        });
+        if (res.ok) {
+          const data = await res.json();
+          this.currentUser = data.user;
+          this.currentMode = 'authenticated';
+          localStorage.setItem('duo_user', JSON.stringify(data.user));
+          localStorage.setItem('duo_mode', 'authenticated');
+        } else {
+          // Token invalid or expired
+          this.authToken = null;
+          this.currentUser = null;
+          this.currentMode = 'guest';
+          localStorage.removeItem('duo_auth_token');
+          localStorage.removeItem('duo_user');
+          localStorage.setItem('duo_mode', 'guest');
+        }
+      } catch (e) {
+        console.warn('[DuoSpeak] Auth check offline or failed:', e);
+      }
+    } else {
+      this.currentMode = 'guest';
+    }
+
+    this.updateAuthUI();
+
+    // Check first visit popup
+    const visited = localStorage.getItem('haku_visited');
+    if (!visited && !this.authToken) {
+      const choiceModal = document.getElementById('modal-auth-choice');
+      if (choiceModal) choiceModal.classList.add('active');
+    }
+  }
+
+  updateAuthUI() {
+    const modeBadge = document.getElementById('nav-mode-badge');
+    const btnNavAuth = document.getElementById('btn-nav-auth');
+    const userProfile = document.getElementById('nav-user-profile');
+    const userFlag = document.getElementById('nav-user-flag');
+    const usernameEl = document.getElementById('nav-username');
+
+    if (this.currentMode === 'authenticated' && this.currentUser) {
+      if (modeBadge) modeBadge.style.display = 'none';
+      if (btnNavAuth) btnNavAuth.style.display = 'none';
+      if (userProfile) userProfile.style.display = 'inline-flex';
+      if (userFlag) userFlag.textContent = this.getFlagForLang(this.currentUser.mother_tongue);
+      if (usernameEl) usernameEl.textContent = this.currentUser.username;
+    } else {
+      if (modeBadge) {
+        modeBadge.style.display = 'inline-block';
+        modeBadge.textContent = 'Test Mode';
+      }
+      if (btnNavAuth) {
+        btnNavAuth.style.display = 'inline-flex';
+      }
+      if (userProfile) userProfile.style.display = 'none';
+    }
+  }
+
+  showAuthModal(tab = 'login') {
+    const modal = document.getElementById('modal-auth-form');
+    if (!modal) return;
+    modal.classList.add('active');
+    this.switchAuthTab(tab);
+  }
+
+  switchAuthTab(tab) {
+    const tabLogin = document.getElementById('tab-auth-login');
+    const tabReg = document.getElementById('tab-auth-register');
+    const formLogin = document.getElementById('form-login');
+    const formReg = document.getElementById('form-register');
+    const errLogin = document.getElementById('login-error-msg');
+    const errReg = document.getElementById('reg-error-msg');
+
+    if (errLogin) { errLogin.style.display = 'none'; errLogin.textContent = ''; }
+    if (errReg) { errReg.style.display = 'none'; errReg.textContent = ''; }
+
+    if (tab === 'register') {
+      if (tabReg) {
+        tabReg.style.borderBottom = '2px solid var(--cyan)';
+        tabReg.style.color = 'var(--text-primary)';
+      }
+      if (tabLogin) {
+        tabLogin.style.borderBottom = '2px solid transparent';
+        tabLogin.style.color = 'var(--text-muted)';
+      }
+      if (formReg) formReg.style.display = 'block';
+      if (formLogin) formLogin.style.display = 'none';
+    } else {
+      if (tabLogin) {
+        tabLogin.style.borderBottom = '2px solid var(--cyan)';
+        tabLogin.style.color = 'var(--text-primary)';
+      }
+      if (tabReg) {
+        tabReg.style.borderBottom = '2px solid transparent';
+        tabReg.style.color = 'var(--text-muted)';
+      }
+      if (formLogin) formLogin.style.display = 'block';
+      if (formReg) formReg.style.display = 'none';
+    }
+  }
+
+  async openUserSettingsModal() {
+    const modal = document.getElementById('modal-user-settings');
+    if (!modal) return;
+    modal.classList.add('active');
+
+    const selectMt = document.getElementById('settings-mother-tongue');
+    if (selectMt && this.currentUser) {
+      selectMt.value = this.currentUser.mother_tongue || 'vi';
+    }
+
+    const groqInput = document.getElementById('key-input-groq');
+    const geminiInput = document.getElementById('key-input-gemini');
+    const openaiInput = document.getElementById('key-input-openai');
+    const statusMsg = document.getElementById('settings-status-msg');
+    if (statusMsg) {
+      statusMsg.style.display = 'none';
+      statusMsg.textContent = '';
+    }
+
+    // Pre-populate placeholders if user has keys configured
+    if (this.currentUser) {
+      if (groqInput) groqInput.placeholder = this.currentUser.has_groq_key ? '•••••••• (configured)' : 'gsk_...';
+      if (geminiInput) geminiInput.placeholder = this.currentUser.has_gemini_key ? '•••••••• (configured)' : 'AIzaSy...';
+      if (openaiInput) openaiInput.placeholder = this.currentUser.has_openai_key ? '•••••••• (configured)' : 'sk-...';
+    }
+  }
+
+  async testApiKey(provider, inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    const key = input ? input.value.trim() : '';
+    if (!key) {
+      this.showToast('Please enter an API key to test.');
+      return;
+    }
+
+    const originalText = btn ? btn.textContent : 'Test Key';
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Testing...';
+    }
+
+    try {
+      const res = await fetch(this.apiUrl('/api/auth/verify_key'), {
+        method: 'POST',
+        headers: this.getAuthHeaders(),
+        body: JSON.stringify({ provider, api_key: key })
+      });
+      const data = await res.json();
+      if (res.ok && data.valid) {
+        this.showToast(`Valid ${provider.toUpperCase()} API key.`);
+      } else {
+        this.showToast(`Invalid key: ${data.detail || 'check permissions'}`);
+      }
+    } catch (e) {
+      this.showToast(`Network error testing ${provider} key.`);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    }
+  }
+
+  async saveUserSettings() {
+    const selectMt = document.getElementById('settings-mother-tongue');
+    const groqInput = document.getElementById('key-input-groq');
+    const geminiInput = document.getElementById('key-input-gemini');
+    const openaiInput = document.getElementById('key-input-openai');
+    const statusMsg = document.getElementById('settings-status-msg');
+
+    if (!this.authToken) {
+      this.showToast('Please sign in to save settings.');
+      return;
+    }
+
+    const motherTongue = selectMt ? selectMt.value : 'vi';
+    const groqKey = groqInput ? groqInput.value.trim() : '';
+    const geminiKey = geminiInput ? geminiInput.value.trim() : '';
+    const openaiKey = openaiInput ? openaiInput.value.trim() : '';
+
+    try {
+      // 1. Update mother tongue
+      await fetch(this.apiUrl('/api/auth/mother_tongue'), {
+        method: 'PUT',
+        headers: this.getAuthHeaders(),
+        body: JSON.stringify({ mother_tongue: motherTongue })
+      });
+
+      // 2. Update keys if any provided
+      const keysPayload = {};
+      if (groqKey) keysPayload.groq_api_key = groqKey;
+      if (geminiKey) keysPayload.gemini_api_key = geminiKey;
+      if (openaiKey) keysPayload.openai_api_key = openaiKey;
+
+      if (Object.keys(keysPayload).length > 0) {
+        await fetch(this.apiUrl('/api/auth/keys'), {
+          method: 'PUT',
+          headers: this.getAuthHeaders(),
+          body: JSON.stringify(keysPayload)
+        });
+      }
+
+      // Refresh user profile
+      const meRes = await fetch(this.apiUrl('/api/auth/me'), { headers: this.getAuthHeaders() });
+      if (meRes.ok) {
+        const meData = await meRes.json();
+        this.currentUser = meData.user;
+        localStorage.setItem('duo_user', JSON.stringify(meData.user));
+      }
+
+      this.updateAuthUI();
+      document.getElementById('modal-user-settings').classList.remove('active');
+      this.showToast('Settings saved successfully.');
+    } catch (e) {
+      console.error('Save settings error:', e);
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.style.color = 'var(--rose)';
+        statusMsg.textContent = 'Failed to save settings. Please try again.';
+      }
+    }
+  }
+
+  async handleLogin(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const usernameInput = document.getElementById('login-username');
+    const passwordInput = document.getElementById('login-password');
+    const errorEl = document.getElementById('login-error-msg');
+    const btnSubmit = document.getElementById('btn-submit-login');
+
+    const username = usernameInput ? usernameInput.value.trim() : '';
+    const password = passwordInput ? passwordInput.value : '';
+
+    if (!username || !password) return;
+    if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
+    if (btnSubmit) { btnSubmit.disabled = true; btnSubmit.textContent = 'Signing in...'; }
+
+    try {
+      const res = await fetch(this.apiUrl('/api/auth/login'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || 'Sign in failed');
+      }
+
+      this.authToken = data.token;
+      this.currentUser = data.user;
+      this.currentMode = 'authenticated';
+      localStorage.setItem('duo_auth_token', this.authToken);
+      localStorage.setItem('duo_user', JSON.stringify(this.currentUser));
+      localStorage.setItem('duo_mode', 'authenticated');
+      localStorage.setItem('haku_visited', 'true');
+
+      this.updateAuthUI();
+      const authModal = document.getElementById('modal-auth-form');
+      if (authModal) authModal.classList.remove('active');
+      await this.updateVocabBadgeCount();
+      this.showToast(`Welcome back, ${this.currentUser.username}!`);
+      if (usernameInput) usernameInput.value = '';
+      if (passwordInput) passwordInput.value = '';
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = err.message || 'Invalid username or password';
+        errorEl.style.display = 'block';
+      }
+    } finally {
+      if (btnSubmit) { btnSubmit.disabled = false; btnSubmit.textContent = 'Sign In'; }
+    }
+  }
+
+  async handleRegister(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const usernameInput = document.getElementById('reg-username');
+    const passwordInput = document.getElementById('reg-password');
+    const mtSelect = document.getElementById('reg-mother-tongue');
+    const errorEl = document.getElementById('reg-error-msg');
+    const btnSubmit = document.getElementById('btn-submit-register');
+
+    const username = usernameInput ? usernameInput.value.trim() : '';
+    const password = passwordInput ? passwordInput.value : '';
+    const mother_tongue = mtSelect ? mtSelect.value : 'vi';
+
+    if (!username || !password) return;
+    if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
+    if (btnSubmit) { btnSubmit.disabled = true; btnSubmit.textContent = 'Creating account...'; }
+
+    try {
+      const res = await fetch(this.apiUrl('/api/auth/register'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, mother_tongue })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || 'Registration failed');
+      }
+
+      this.authToken = data.token;
+      this.currentUser = data.user;
+      this.currentMode = 'authenticated';
+      localStorage.setItem('duo_auth_token', this.authToken);
+      localStorage.setItem('duo_user', JSON.stringify(this.currentUser));
+      localStorage.setItem('duo_mode', 'authenticated');
+      localStorage.setItem('haku_visited', 'true');
+
+      this.updateAuthUI();
+      const authModal = document.getElementById('modal-auth-form');
+      if (authModal) authModal.classList.remove('active');
+      await this.updateVocabBadgeCount();
+      this.showToast(`Account created. Welcome, ${this.currentUser.username}!`);
+      if (usernameInput) usernameInput.value = '';
+      if (passwordInput) passwordInput.value = '';
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = err.message || 'Registration failed';
+        errorEl.style.display = 'block';
+      }
+    } finally {
+      if (btnSubmit) { btnSubmit.disabled = false; btnSubmit.textContent = 'Create Account'; }
+    }
+  }
+
+  logoutUser() {
+    this.authToken = null;
+    this.currentUser = null;
+    this.currentMode = 'guest';
+    localStorage.removeItem('duo_auth_token');
+    localStorage.removeItem('duo_user');
+    localStorage.setItem('duo_mode', 'guest');
+    this.updateAuthUI();
+    this.updateVocabBadgeCount();
+    this.showToast('Signed out. In Test Mode.');
+  }
+
+  // ============================================================
   // INIT
   // ============================================================
   async init() {
@@ -92,6 +469,7 @@ class DuoSpeakApp {
 
     this.bindEvents();
     this.updateLangDisplay();
+    await this.checkAuthStatus();
     await Promise.all([this.loadCharacters(), this.loadScenarios()]);
     await this.updateVocabBadgeCount();
     this.loadUserStats();
@@ -1436,8 +1814,22 @@ class DuoSpeakApp {
       if (phoneticEl) phoneticEl.textContent = data.phonetic || `/${word}/`;
       if (transEl) transEl.textContent = data.translation || word;
       this.wordCache.set(cacheKey, data);
-      // Update vocab count
-      await this.updateVocabBadgeCount();
+
+      // Save to personal notebook if user is authenticated
+      if (this.authToken && data.translation) {
+        fetch(this.apiUrl('/api/user/vocabulary'), {
+          method: 'POST',
+          headers: this.getAuthHeaders(),
+          body: JSON.stringify({
+            word: word.trim(),
+            translation: data.translation,
+            phonetic: data.phonetic || `/${word}/`,
+            target_lang: this.currentUser?.mother_tongue || this.targetLang || 'en'
+          })
+        }).then(() => this.updateVocabBadgeCount()).catch(() => {});
+      } else {
+        await this.updateVocabBadgeCount();
+      }
     } catch (e) {
       if (transEl) transEl.textContent = 'Lookup failed. Try again.';
     }
@@ -1449,7 +1841,9 @@ class DuoSpeakApp {
   async openVocabBookModal() {
     document.getElementById('modal-vocab-book').classList.add('active');
     try {
-      const res = await fetch(this.apiUrl(`/api/saved_words?target_lang=${this.targetLang}`));
+      const res = await fetch(this.apiUrl(`/api/saved_words?target_lang=${this.targetLang}`), {
+        headers: this.getAuthHeaders()
+      });
       const data = await res.json();
       this.savedWords = data.words || [];
       this.renderVocabWordsList('');
@@ -1476,19 +1870,40 @@ class DuoSpeakApp {
       const card = document.createElement('div');
       card.className = 'vocab-word-card';
       card.innerHTML = `
-        <div>
+        <div style="flex:1;">
           <div class="vocab-word-main">${w.word || ''}</div>
           <div class="vocab-phonetic">${w.phonetic || ''}</div>
         </div>
-        <div class="vocab-translation">${w.translation || ''}</div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="vocab-translation">${w.translation || ''}</div>
+          ${w.id && this.authToken ? `<button class="btn-delete-vocab" data-id="${w.id}" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:4px;" title="Delete">✕</button>` : ''}
+        </div>
       `;
       list.appendChild(card);
+    });
+
+    list.querySelectorAll('.btn-delete-vocab').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const wordId = btn.dataset.id;
+        try {
+          await fetch(this.apiUrl(`/api/user/vocabulary/${wordId}`), {
+            method: 'DELETE',
+            headers: this.getAuthHeaders()
+          });
+          this.savedWords = this.savedWords.filter(x => x.id !== wordId);
+          this.renderVocabWordsList(filter);
+          this.updateVocabBadgeCount();
+        } catch (err) {}
+      });
     });
   }
 
   async updateVocabBadgeCount() {
     try {
-      const res = await fetch(this.apiUrl('/api/saved_words'));
+      const res = await fetch(this.apiUrl('/api/saved_words'), {
+        headers: this.getAuthHeaders()
+      });
       const data = await res.json();
       const count = data.count || 0;
       const badge = document.getElementById('vocab-count-badge');
@@ -1581,7 +1996,7 @@ class DuoSpeakApp {
   async deleteTopic(sc) {
     if (!sc) return;
 
-    if (confirm(`Bạn có chắc muốn xoá topic "${sc.title}"?`)) {
+    if (confirm(`Are you sure you want to delete "${sc.title}"?`)) {
       if (sc.is_custom || sc.source === 'custom') {
         try {
           await fetch(this.apiUrl(`/api/custom_scenarios/${sc.id}`), { method: 'DELETE' });
@@ -1592,7 +2007,7 @@ class DuoSpeakApp {
 
       this.scenarios = this.scenarios.filter(item => item.id !== sc.id);
       this.renderAllScenarios();
-      this.showToast(`🗑️ Đã xoá topic "${sc.title}"!`);
+      this.showToast(`Topic "${sc.title}" deleted.`);
     }
   }
 
@@ -1755,7 +2170,7 @@ class DuoSpeakApp {
 
       const res = await fetch(this.apiUrl('/api/det/evaluate_speech'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: this.getAuthHeaders(),
         body: JSON.stringify({
           scenario_id: this.currentDetScenario ? this.currentDetScenario.id : (this.currentScenario ? this.currentScenario.id : 'det_childhood_memory'),
           user_speech: speechText,
@@ -1763,7 +2178,8 @@ class DuoSpeakApp {
           mode: mode || 'read_then_speak',
           wpm, pause_count: 0, filler_count: fillerCount,
           conversation_history: this.conversationHistory,
-          character_id: this.selectedCharacter ? this.selectedCharacter.id : null
+          character_id: this.selectedCharacter ? this.selectedCharacter.id : null,
+          mother_tongue: this.currentUser ? this.currentUser.mother_tongue : 'en'
         })
       });
 
@@ -1805,36 +2221,24 @@ class DuoSpeakApp {
     setEl('det-ac-fillers', `${ac.filler_count || 0} fillers`);
     setEl('det-ac-diagnosis', ac.rhythm_diagnosis || 'Natural, flowing speech.');
 
-    const critiqueEl = document.getElementById('det-report-critique');
-    if (critiqueEl) {
-      const sections = data.examiner_critique_sections;
-      if (sections && (sections.interaction || sections.grammar_vocab || sections.fluency || sections.advice)) {
-        critiqueEl.innerHTML = `
-          <div class="critique-grid">
-            <div class="critique-card interaction">
-              <div class="critique-card-label">🎭 Phản xạ & Tương tác</div>
-              <div class="critique-card-text">${sections.interaction || 'Phản xạ giao tiếp tự nhiên và đúng ngữ cảnh.'}</div>
-            </div>
-            <div class="critique-card grammar">
-              <div class="critique-card-label">🎯 Ngữ pháp & Vốn từ</div>
-              <div class="critique-card-text">${sections.grammar_vocab || 'Kiểm soát từ vựng và câu ổn định.'}</div>
-            </div>
-            <div class="critique-card fluency">
-              <div class="critique-card-label">⏱️ Độ trôi chảy & Nhịp điệu</div>
-              <div class="critique-card-text">${sections.fluency || 'Tốc độ WPM và độ liên tục phù hợp.'}</div>
-            </div>
-            <div class="critique-card advice">
-              <div class="critique-card-label">💡 Lời khuyên bứt phá</div>
-              <div class="critique-card-text">${sections.advice || 'Tiếp tục luyện tập mở rộng ý tưởng.'}</div>
-            </div>
-          </div>
-        `;
+    // Bilingual Examiner Critique Toggle Setup
+    this.critiqueCurrentLang = 'en';
+    const toggleBtn = document.getElementById('btn-toggle-critique-lang');
+    const langTag = document.getElementById('critique-current-lang-tag');
+    const rotateArrow = document.getElementById('critique-rotate-arrow');
+    if (rotateArrow) rotateArrow.style.transform = 'rotate(0deg)';
+
+    const isBilingual = Boolean(data.is_bilingual && data.examiner_critique_sections_target);
+    if (toggleBtn) {
+      if (isBilingual) {
+        toggleBtn.style.display = 'inline-flex';
+        if (langTag) langTag.textContent = 'EN';
       } else {
-        const rawCritique = (data.examiner_critique || 'Good overall performance. Keep practicing!')
-          .replace(/###\s*(.*?)\n/g, '<strong style="color:var(--emerald);display:block;margin-top:10px;font-size:13px;">$1</strong>');
-        critiqueEl.innerHTML = `<div class="critique-text">${rawCritique}</div>`;
+        toggleBtn.style.display = 'none';
       }
     }
+
+    this.renderCritiqueSections(data, 'en');
     setEl('det-report-sample', data.sample_native_response || 'Sample response coming soon.');
 
     const upgradesEl = document.getElementById('det-report-upgrades');
@@ -1850,6 +2254,50 @@ class DuoSpeakApp {
     }
 
     document.getElementById('modal-det-score-report').classList.add('active');
+  }
+
+  renderCritiqueSections(data, lang = 'en') {
+    const critiqueEl = document.getElementById('det-report-critique');
+    if (!critiqueEl) return;
+
+    let sections = null;
+    if (lang === 'target' && data && data.examiner_critique_sections_target) {
+      sections = data.examiner_critique_sections_target;
+    } else if (data) {
+      sections = data.examiner_critique_sections_en || data.examiner_critique_sections;
+    }
+
+    if (sections && (sections.interaction || sections.grammar_vocab || sections.fluency || sections.advice)) {
+      critiqueEl.innerHTML = `
+        <div class="critique-grid">
+          <div class="critique-card interaction">
+            <div class="critique-card-label">Interaction & Context</div>
+            <div class="critique-card-text">${sections.interaction || 'Natural interaction aligned with the scenario context.'}</div>
+          </div>
+          <div class="critique-card grammar">
+            <div class="critique-card-label">Grammar & Vocabulary</div>
+            <div class="critique-card-text">${sections.grammar_vocab || 'Consistent grammatical control and lexical range.'}</div>
+          </div>
+          <div class="critique-card fluency">
+            <div class="critique-card-label">Fluency & Rhythm</div>
+            <div class="critique-card-text">${sections.fluency || 'Appropriate pace and smooth speech flow.'}</div>
+          </div>
+          <div class="critique-card advice">
+            <div class="critique-card-label">Actionable Advice</div>
+            <div class="critique-card-text">${sections.advice || 'Continue practicing complex sentence structures.'}</div>
+          </div>
+        </div>
+      `;
+    } else {
+      let rawCritique = '';
+      if (lang === 'target' && data && data.examiner_critique_target) {
+        rawCritique = data.examiner_critique_target;
+      } else if (data) {
+        rawCritique = data.examiner_critique_en || data.examiner_critique || 'Good overall performance. Keep practicing!';
+      }
+      const formatted = rawCritique.replace(/###\s*(.*?)\n/g, '<strong style="color:var(--emerald);display:block;margin-top:10px;font-size:13px;">$1</strong>');
+      critiqueEl.innerHTML = `<div class="critique-text">${formatted}</div>`;
+    }
   }
 
   // ============================================================
@@ -2402,9 +2850,134 @@ class DuoSpeakApp {
       this.downloadWeeklyPdfReport();
     });
 
+    // === CRITIQUE LANGUAGE TOGGLE ===
+    const btnToggleCritique = document.getElementById('btn-toggle-critique-lang');
+    if (btnToggleCritique) {
+      btnToggleCritique.addEventListener('click', () => {
+        if (!this.lastDetReportData) return;
+        this.critiqueCurrentLang = this.critiqueCurrentLang === 'en' ? 'target' : 'en';
+        const rotateArrow = document.getElementById('critique-rotate-arrow');
+        const langTag = document.getElementById('critique-current-lang-tag');
+        if (rotateArrow) {
+          rotateArrow.style.transform = this.critiqueCurrentLang === 'target' ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+        if (langTag) {
+          const targetCode = (this.lastDetReportData.target_lang || this.currentUser?.mother_tongue || 'TARGET').toUpperCase();
+          langTag.textContent = this.critiqueCurrentLang === 'target' ? targetCode : 'EN';
+        }
+        this.renderCritiqueSections(this.lastDetReportData, this.critiqueCurrentLang);
+      });
+    }
+
+    // === AUTH CHOICE MODAL ===
+    const cardChoiceTest = document.getElementById('card-choice-test');
+    if (cardChoiceTest) {
+      cardChoiceTest.addEventListener('click', () => {
+        localStorage.setItem('haku_visited', 'true');
+        localStorage.setItem('duo_mode', 'guest');
+        this.currentMode = 'guest';
+        this.updateAuthUI();
+        const m = document.getElementById('modal-auth-choice');
+        if (m) m.classList.remove('active');
+        this.showToast('Test Mode active. Welcome!');
+      });
+    }
+
+    const cardChoiceAuth = document.getElementById('card-choice-auth');
+    if (cardChoiceAuth) {
+      cardChoiceAuth.addEventListener('click', () => {
+        localStorage.setItem('haku_visited', 'true');
+        const m = document.getElementById('modal-auth-choice');
+        if (m) m.classList.remove('active');
+        this.showAuthModal('login');
+      });
+    }
+
+    // === AUTH NAVBAR & FORMS ===
+    const btnNavAuth = document.getElementById('btn-nav-auth');
+    if (btnNavAuth) {
+      btnNavAuth.addEventListener('click', () => this.showAuthModal('login'));
+    }
+
+    const tabAuthLogin = document.getElementById('tab-auth-login');
+    if (tabAuthLogin) {
+      tabAuthLogin.addEventListener('click', () => this.switchAuthTab('login'));
+    }
+
+    const tabAuthRegister = document.getElementById('tab-auth-register');
+    if (tabAuthRegister) {
+      tabAuthRegister.addEventListener('click', () => this.switchAuthTab('register'));
+    }
+
+    const btnCloseAuth = document.getElementById('btn-close-auth-modal');
+    if (btnCloseAuth) {
+      btnCloseAuth.addEventListener('click', () => {
+        const m = document.getElementById('modal-auth-form');
+        if (m) m.classList.remove('active');
+      });
+    }
+
+    const formLogin = document.getElementById('form-login');
+    if (formLogin) {
+      formLogin.addEventListener('submit', (e) => this.handleLogin(e));
+    }
+
+    const formRegister = document.getElementById('form-register');
+    if (formRegister) {
+      formRegister.addEventListener('submit', (e) => this.handleRegister(e));
+    }
+
+    const btnSignout = document.getElementById('btn-user-signout');
+    if (btnSignout) {
+      btnSignout.addEventListener('click', () => this.logoutUser());
+    }
+
+    // === USER SETTINGS & BYOK KEYS ===
+    const btnOpenSettings = document.getElementById('btn-open-user-settings');
+    if (btnOpenSettings) {
+      btnOpenSettings.addEventListener('click', () => this.openUserSettingsModal());
+    }
+
+    const btnCloseSettings = document.getElementById('btn-close-user-settings');
+    if (btnCloseSettings) {
+      btnCloseSettings.addEventListener('click', () => {
+        const m = document.getElementById('modal-user-settings');
+        if (m) m.classList.remove('active');
+      });
+    }
+
+    const btnCancelSettings = document.getElementById('btn-cancel-user-settings');
+    if (btnCancelSettings) {
+      btnCancelSettings.addEventListener('click', () => {
+        const m = document.getElementById('modal-user-settings');
+        if (m) m.classList.remove('active');
+      });
+    }
+
+    const btnSaveSettings = document.getElementById('btn-save-user-settings');
+    if (btnSaveSettings) {
+      btnSaveSettings.addEventListener('click', () => this.saveUserSettings());
+    }
+
+    const btnTestGroq = document.getElementById('btn-test-groq-key');
+    if (btnTestGroq) {
+      btnTestGroq.addEventListener('click', () => this.testApiKey('groq', 'key-input-groq', 'btn-test-groq-key'));
+    }
+
+    const btnTestGemini = document.getElementById('btn-test-gemini-key');
+    if (btnTestGemini) {
+      btnTestGemini.addEventListener('click', () => this.testApiKey('gemini', 'key-input-gemini', 'btn-test-gemini-key'));
+    }
+
+    const btnTestOpenai = document.getElementById('btn-test-openai-key');
+    if (btnTestOpenai) {
+      btnTestOpenai.addEventListener('click', () => this.testApiKey('openai', 'key-input-openai', 'btn-test-openai-key'));
+    }
+
     // === CLOSE MODALS ON OVERLAY CLICK ===
     ['modal-lang-setting', 'modal-custom-topic', 'modal-vocab-book', 'modal-flashcard-practice',
-     'modal-weekly-report', 'modal-error-journal', 'modal-det-exam', 'modal-det-score-report'].forEach(id => {
+     'modal-weekly-report', 'modal-error-journal', 'modal-det-exam', 'modal-det-score-report',
+     'modal-auth-choice', 'modal-auth-form', 'modal-user-settings'].forEach(id => {
       const overlay = document.getElementById(id);
       if (overlay) {
         overlay.addEventListener('click', e => {

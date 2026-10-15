@@ -16,6 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from app.api.routers import (
     analytics_router,
     audio_router,
+    auth_router,
     chat_router,
     dictionary_router,
     feedback_router,
@@ -48,6 +49,7 @@ app.add_middleware(
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 # Include Presentation Layer Routers
+app.include_router(auth_router)
 app.include_router(scenarios_router)
 app.include_router(chat_router)
 app.include_router(audio_router)

@@ -5,14 +5,15 @@ import re
 import unicodedata
 from urllib.parse import quote
 
-import requests
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Header, HTTPException, Query
+from pydantic import BaseModel, Field
 
 from app.api.dependencies import (
     IPA_CACHE,
     SENTENCE_TRANSLATION_CACHE,
     TRANSLATION_CACHE,
 )
+from app.api.routers.auth import get_current_user_from_header
 from app.api.schemas.chat import SentenceTranslateRequest
 from app.core import ai_engine
 from app.dictionary import DictionaryService
@@ -20,6 +21,11 @@ from app.storage import (
     get_all_saved_words,
     get_translated_word,
     save_translated_word,
+)
+from app.storage.db import (
+    delete_user_vocabulary_word,
+    get_user_vocabulary,
+    save_user_vocabulary_word,
 )
 
 logger = logging.getLogger("duolingo_speak.api.dictionary")
@@ -97,13 +103,84 @@ def _fetch_online_word_translation(clean_word: str, target_lang: str = "vi") -> 
     return ""
 
 
+class SaveUserVocabRequest(BaseModel):
+    word: str = Field(..., description="Vocabulary word in English")
+    translation: str = Field(..., description="Meaning or definition")
+    phonetic: str | None = Field(None, description="Phonetic / IPA")
+    target_lang: str = Field("en", description="Target language code")
+    example: str | None = Field(None, description="Usage example sentence")
+
+
+@router.post("/api/user/vocabulary")
+def api_save_user_vocabulary(
+    payload: SaveUserVocabRequest,
+    authorization: str | None = Header(None),
+):
+    """Save a word to the authenticated user's isolated vocabulary notebook."""
+    user = get_current_user_from_header(authorization)
+    if not user:
+        raise HTTPException(status_code=401, detail="Authentication required to save to user notebook.")
+
+    item = save_user_vocabulary_word(
+        user_id=user["id"],
+        word=payload.word,
+        translation=payload.translation,
+        phonetic=payload.phonetic,
+        target_lang=payload.target_lang,
+        example=payload.example,
+    )
+    return item
+
+
+@router.get("/api/user/vocabulary")
+def api_get_user_vocabulary(
+    target_lang: str | None = Query(None, description="Optional target language filter"),
+    authorization: str | None = Header(None),
+):
+    """Get all saved vocabulary words for the authenticated user."""
+    user = get_current_user_from_header(authorization)
+    if not user:
+        raise HTTPException(status_code=401, detail="Authentication required.")
+
+    words = get_user_vocabulary(user["id"], target_lang=target_lang)
+    return {"count": len(words), "words": words}
+
+
+@router.delete("/api/user/vocabulary/{word_id}")
+def api_delete_user_vocabulary(
+    word_id: str,
+    authorization: str | None = Header(None),
+):
+    """Delete a word from user's personal notebook."""
+    user = get_current_user_from_header(authorization)
+    if not user:
+        raise HTTPException(status_code=401, detail="Authentication required.")
+
+    success = delete_user_vocabulary_word(user["id"], word_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Vocabulary word not found or access denied.")
+    return {"success": True, "deleted_id": word_id}
+
+
 @router.get("/api/saved_words")
-def api_get_saved_words(target_lang: str | None = Query(None, description="Optional target language filter")):
+def api_get_saved_words(
+    target_lang: str | None = Query(None, description="Optional target language filter"),
+    authorization: str | None = Header(None),
+):
+    """
+    Retrieve saved words. If authenticated, retrieves user-isolated vocabulary.
+    Otherwise retrieves system guest saved vocabulary.
+    """
+    user = get_current_user_from_header(authorization)
+    if user:
+        words = get_user_vocabulary(user["id"], target_lang=target_lang)
+        return {"count": len(words), "words": words, "user_id": user["id"]}
+
     words = get_all_saved_words(target_lang)
     lang_code = target_lang or "vi"
     lang_labels = {"vi": "Tiếng Việt", "en-def": "English Definition", "es": "Spanish", "fr": "French"}
 
-    # Auto-heal any legacy saved words stored with untranslated original text (e.g. mentioned, ties, did)
+    # Auto-heal any legacy saved words stored with untranslated original text
     for w in words:
         word_str = str(w.get("word", "")).strip()
         trans_str = str(w.get("translation", "")).strip()
@@ -119,7 +196,7 @@ def api_get_saved_words(target_lang: str | None = Query(None, description="Optio
                     phonetic=w.get("phonetic", f"/{word_str.lower()}/"),
                 )
 
-    return {"count": len(words), "words": words}
+    return {"count": len(words), "words": words, "user_id": "guest"}
 
 
 @router.post("/api/translate_sentence")

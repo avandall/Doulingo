@@ -1,9 +1,10 @@
 """Analytics, Weekly Reports & User Stats API Router."""
 import logging
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Header, HTTPException, Query
 
 from app.analytics import generate_weekly_report
+from app.api.routers.auth import get_current_user_from_header
 from app.api.schemas.chat import DetSpeechEvalRequest
 from app.core import ai_engine
 from app.scenarios import get_scenario
@@ -39,10 +40,17 @@ def api_get_trace_quota():
 
 
 @router.post("/api/det/evaluate_speech")
-async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
+async def api_det_evaluate_speech(
+    payload: DetSpeechEvalRequest,
+    authorization: str | None = Header(None),
+):
     scenario = get_scenario(payload.scenario_id)
     if not scenario:
         raise HTTPException(status_code=404, detail="DET Scenario not found")
+
+    user = get_current_user_from_header(authorization)
+    mother_tongue = (payload.mother_tongue if payload.mother_tongue and payload.mother_tongue != "en" else None) or (user.get("mother_tongue") if user else "en") or "en"
+    custom_keys = payload.custom_api_keys or (user.get("custom_api_keys") if user else {}) or {}
 
     result = await ai_engine.evaluate_det_speech(
         scenario=scenario,
@@ -54,5 +62,7 @@ async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
         filler_count=payload.filler_count,
         conversation_history=payload.conversation_history,
         character_id=payload.character_id,
+        mother_tongue=mother_tongue,
+        custom_keys=custom_keys,
     )
     return result

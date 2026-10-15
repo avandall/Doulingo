@@ -44,7 +44,8 @@ def test_evaluate_det_speech_short_input(dummy_scenario: dict[str, Any]) -> None
         )
     result = asyncio.run(_run())
     assert result["det_score"] <= 35
-    assert "chỉ có" in result["examiner_critique"] or "quá ngắn" in result["examiner_critique"]
+    critique_lower = result["examiner_critique"].lower()
+    assert any(term in critique_lower for term in ["chỉ có", "quá ngắn", "short", "brief"])
     assert "acoustic_metrics" in result
     assert result["acoustic_metrics"]["wpm"] == 100
 

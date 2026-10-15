@@ -1798,13 +1798,18 @@ Output JSON ONLY:
         schema: type[BaseModel] | None = None,
         temp: float = 0.8,
         parse_raw: bool = False,
-        prefer_fast_groq: bool = True
+        prefer_fast_groq: bool = True,
+        custom_keys: dict[str, str] | None = None,
     ) -> dict[str, Any] | None:
         t_start = time.time()
 
+        groq_keys_to_use = ([custom_keys["groq"].strip()] if custom_keys and custom_keys.get("groq") else []) + self.groq_keys
+        gemini_keys_to_use = ([custom_keys["gemini"].strip()] if custom_keys and custom_keys.get("gemini") else []) + self.gemini_keys
+        openai_keys_to_use = ([custom_keys["openai"].strip()] if custom_keys and custom_keys.get("openai") else []) + self.openai_keys
+
         if prefer_fast_groq:
             # 1. Tier 1: Groq Ultra-Fast Path (~200-300ms)
-            for key in self.groq_keys:
+            for key in groq_keys_to_use:
                 if is_key_exhausted(key):
                     continue
                 for model in self.groq_models:
@@ -1823,7 +1828,7 @@ Output JSON ONLY:
             MAX_GEMINI_FAILS = 2
             MAX_GEMINI_TIME_SEC = 2.5
 
-            for key in self.gemini_keys:
+            for key in gemini_keys_to_use:
                 if is_key_exhausted(key):
                     continue
                 if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
@@ -1848,7 +1853,7 @@ Output JSON ONLY:
             MAX_GEMINI_FAILS = 2
             MAX_GEMINI_TIME_SEC = 2.5
 
-            for key in self.gemini_keys:
+            for key in gemini_keys_to_use:
                 if is_key_exhausted(key):
                     continue
                 if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
@@ -1868,7 +1873,7 @@ Output JSON ONLY:
                         logger.warning(f"[AIEngine] Gemini ({model}) failed or timeout: {e}. Failover attempt {gemini_fail_count}/{MAX_GEMINI_FAILS}.")
                         continue
 
-            for key in self.groq_keys:
+            for key in groq_keys_to_use:
                 if is_key_exhausted(key):
                     continue
                 for model in self.groq_models:
@@ -1883,7 +1888,7 @@ Output JSON ONLY:
                         continue
 
         # 3. OpenAI fallback
-        for key in self.openai_keys:
+        for key in openai_keys_to_use:
             if is_key_exhausted(key):
                 continue
             try:
@@ -2050,6 +2055,8 @@ Output JSON ONLY:
         filler_count: int | None = None,
         conversation_history: list[dict[str, str]] | None = None,
         character_id: str | None = None,
+        mother_tongue: str = "en",
+        custom_keys: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         question_card = scenario.get("question_card", {})
         prompt_text = question_card.get("prompt", scenario.get("description", ""))
@@ -2058,6 +2065,7 @@ Output JSON ONLY:
         words = [w for w in user_speech.strip().split() if len(w) > 0]
         word_count = len(words)
         is_too_short = word_count < 15
+        is_bilingual = bool(mother_tongue and mother_tongue.strip().lower() not in ("en", "none", ""))
 
         acoustic_metrics = self._compute_hybrid_acoustic_metrics(
             user_speech=user_speech,
@@ -2070,59 +2078,59 @@ Output JSON ONLY:
         if is_too_short:
             est_score = min(35, max(10, 10 + int(word_count * 1.5)))
             cefr = "Pre-A1" if est_score < 25 else "A1 Elementary"
-            critique_msg = f"""### 🎭 Phản xạ & Tương tác
-Bài làm quá ngắn (chỉ có {word_count} từ), không đủ dữ liệu phát âm và từ vựng để đánh giá năng lực theo chuẩn Quốc Tế IELTS / CEFR. Thí sinh cần phát triển trọn vẹn dàn ý (tối thiểu 40 - 60 từ) trong thời gian 1 - 3 phút.
+            critique_msg = f"""### Interaction & Context
+The response was too short ({word_count} words) to adequately evaluate proficiency against CEFR standards. Aim for at least 40-60 words.
 
-### 🎯 Ngữ pháp & Vốn từ
-Chưa xuất hiện đủ ngữ liệu câu và từ vựng thực tế để xác định độ chuẩn xác.
+### Grammar & Vocabulary
+Insufficient language sample to assess grammatical precision and lexical variety.
 
-### ⏱️ Nhịp điệu & Độ trôi chảy
-Thời lượng thu âm ({duration_seconds}s) quá ngắn, chưa thể hiện rõ tốc độ WPM và khả năng ngắt nghỉ.
+### Fluency & Rhythm
+Audio duration ({duration_seconds}s) is too brief to analyze continuous pacing and pause distribution.
 
-### 💡 Lời khuyên bứt phá
-Thí sinh cần phát triển trọn vẹn câu trả lời (tối thiểu 40 - 60 từ) trong thời gian 1 - 2 phút để giám khảo có thể ghi nhận năng lực của bạn."""
+### Actionable Advice
+Expand your ideas with authentic reasoning and personal examples for at least 1-2 minutes."""
         elif word_count < 40:
             est_score = min(85, max(45, 40 + int((word_count - 15) * 1.2)))
             cefr = "A2 Elementary" if est_score < 65 else "B1 Intermediate"
-            critique_msg = f"""### 🎭 Phản xạ & Tương tác
-Thí sinh có cố gắng trả lời đề bài '{scenario.get('title')}' ({word_count} từ), tuy nhiên câu trả lời còn ngắn. Để đạt mốc B2/C1, bạn cần mở rộng thêm các ý chi tiết và ví dụ thực tế.
+            critique_msg = f"""### Interaction & Context
+Addressed the prompt '{scenario.get('title')}' with basic relevance, but the response remains brief ({word_count} words). Expand with concrete details.
 
-### 🎯 Ngữ pháp & Vốn từ
-Sử dụng các mẫu câu cơ bản, dễ hiểu nhưng chưa có sự xuất hiện của cấu trúc câu phức hoặc liên từ học thuật.
+### Grammar & Vocabulary
+Basic sentence structures used appropriately, though complex clauses and topic-specific vocabulary are limited.
 
-### ⏱️ Nhịp điệu & Độ trôi chảy
-Tốc độ nói {acoustic_metrics.get('wpm', 100)} WPM ở mức chấp nhận được, nhịp điệu {acoustic_metrics.get('rhythm_diagnosis', 'ổn định')}.
+### Fluency & Rhythm
+Pacing at {acoustic_metrics.get('wpm', 100)} WPM is functional with {acoustic_metrics.get('rhythm_diagnosis', 'moderate continuity')}.
 
-### 💡 Lời khuyên bứt phá
-Để vươn lên band B2/C1, bạn cần mở rộng thêm các ý chi tiết, giải thích lý do tại sao và đưa ra ví dụ thực tế."""
+### Actionable Advice
+Incorporate transitional phrases and elaborate on secondary points to advance to upper bands."""
         elif word_count < 80:
             est_score = min(115, max(85, 80 + int((word_count - 40) * 0.7)))
             cefr = "B1 Intermediate" if est_score < 95 else "B2 Upper-Intermediate"
-            critique_msg = f"""### 🎭 Phản xạ & Tương tác
-Bài nói triển khai tốt ý tưởng ({word_count} từ, {duration_seconds}s). Ngữ pháp và từ vựng đạt mức khá. Để vươn lên band C1, hãy chú ý sử dụng thêm các cấu trúc câu đảo ngữ, liên từ học thuật và từ vựng chủ đề chuyên sâu.
+            critique_msg = f"""### Interaction & Context
+Solid thematic development ({word_count} words, {duration_seconds}s). Ideas are relevant and logically connected to the scenario.
 
-### 🎯 Ngữ pháp & Vốn từ
-Ngữ pháp và từ vựng đạt mức khá, diễn đạt tự nhiên và ít lỗi sai gây cản trở hiểu ý.
+### Grammar & Vocabulary
+Good control of fundamental grammar with growing lexical variety and clear communicative intent.
 
-### ⏱️ Nhịp điệu & Độ trôi chảy
-Tốc độ nói {acoustic_metrics.get('wpm', 115)} WPM đều đặn, khoảng lặng kiểm soát tốt.
+### Fluency & Rhythm
+Delivery is steady at {acoustic_metrics.get('wpm', 115)} WPM with controlled pauses.
 
-### 💡 Lời khuyên bứt phá
-Hãy chú ý sử dụng thêm các cấu trúc câu đảo ngữ, mệnh đề phân từ, liên từ học thuật và từ vựng chủ đề chuyên sâu."""
+### Actionable Advice
+Use more sophisticated cohesive devices and idiomatic collocations to advance toward C1."""
         else:
             est_score = min(160, max(120, 115 + int((word_count - 80) * 0.5)))
             cefr = "C1 Advanced" if est_score >= 130 else "B2 Upper-Intermediate"
-            critique_msg = f"""### 🎭 Phản xạ & Tương tác
-Bài làm xuất sắc ({word_count} từ trong {duration_seconds} giây), lập luận chặt chẽ và từ vựng phong phú, thể hiện trình độ thành thạo ngôn ngữ tốt.
+            critique_msg = f"""### Interaction & Context
+Comprehensive and articulate response ({word_count} words). High communicative competence with nuanced ideas.
 
-### 🎯 Ngữ pháp & Vốn từ
-Kiểm soát rất tốt các cấu trúc ngữ pháp phức tạp và vốn từ vựng phong phú.
+### Grammar & Vocabulary
+Diverse sentence structures and precise vocabulary deployed with confidence and accuracy.
 
-### ⏱️ Nhịp điệu & Độ trôi chảy
-Tốc độ nói {acoustic_metrics.get('wpm', 130)} WPM tự nhiên, ngữ điệu và nhịp điệu phát âm đạt độ thuần thục cao.
+### Fluency & Rhythm
+Natural rhythm at {acoustic_metrics.get('wpm', 130)} WPM with fluid intonation and continuous cadence.
 
-### 💡 Lời khuyên bứt phá
-Tiếp tục tôi luyện các thành ngữ, cụm từ collocation tự nhiên của người bản xứ ở band C2."""
+### Actionable Advice
+Fine-tune idiomatic nuances and advanced discourse markers to maintain mastery."""
 
         # Context-aware roleplay dialogue block
         roleplay_context_block = ""
@@ -2152,6 +2160,25 @@ CRITICAL ROLEPLAY RELEVANCE INSTRUCTION:
 - DO NOT falsely accuse the candidate of off-topic speech or personal attacks when they are naturally responding to character banter!
 """
 
+        bilingual_prompt_instruction = f"""
+CRITICAL CRITIQUE LANGUAGE REQUIREMENT:
+The candidate's configured native language is '{mother_tongue}'.
+You MUST return BOTH of the following critique fields:
+1. "examiner_critique_en": The full critique written in concise, professional English across the 4 sections:
+   ### Interaction & Context
+   ### Grammar & Vocabulary
+   ### Fluency & Rhythm
+   ### Actionable Advice
+2. "examiner_critique_target": The faithful pedagogical translation of the 4 sections above into the candidate's mother tongue ('{mother_tongue}').
+""" if is_bilingual else """
+CRITICAL CRITIQUE LANGUAGE REQUIREMENT:
+Write the complete critique in concise, professional English across the 4 sections in "examiner_critique_en":
+### Interaction & Context
+### Grammar & Vocabulary
+### Fluency & Rhythm
+### Actionable Advice
+"""
+
         eval_prompt = f"""You are an Official International English (IELTS / CEFR) Senior Speaking Examiner.
 Evaluate the candidate's speech for a '{mode}' task.
 
@@ -2159,12 +2186,11 @@ CRITICAL IELTS / CEFR RUBRIC PENALTY RULES:
 1. HYBRID FLUENCY SCORING MANDATE: You MUST evaluate "fluency_score" (0-100) based on BOTH text grammar AND the HYBRID ACOUSTIC METRICS below! If WPM < 75 or Long Pauses >= 5 or Fillers >= 4, penalize fluency_score (do not exceed 65) and comment on the hesitant pace in 'examiner_critique'. If WPM is 105-155 with <= 2 pauses, award 85-98 for fluency.
 2. MINIMUM LENGTH PENALTY: If the candidate speech is under 20 words, or just 1-2 words like "hello" / "test", the maximum possible det_score is 10-35 (Pre-A1 / A1). NEVER assign B1, B2, or C1 to a response under 25 words!
 3. RELEVANCE & MEANING PENALTY: If the speech is gibberish, off-topic, or meaningless, det_score MUST be between 10 and 25 (Pre-A1).
-4. CRITIQUE REQUIREMENTS: If penalized for being too short or irrelevant, state clearly in 'examiner_critique' in Vietnamese: "Bài nói quá ngắn (dưới 20 từ) hoặc không trả lời đúng trọng tâm đề bài..."
-5. ASR/STT PHONETIC RECONSTRUCTION & PRONUNCIATION ANALYSIS:
+4. ASR/STT PHONETIC RECONSTRUCTION & PRONUNCIATION ANALYSIS:
    - The candidate's speech "{user_speech}" is transcribed from a microphone via Speech-to-Text (ASR).
-   - If there are homophone misrecognitions or phonetic substitutions (e.g., learner mispronounced a sound causing ASR to transcribe an acoustically similar word like 'in portal' instead of 'important'), RECONSTRUCT the candidate's intended vocabulary in context.
-   - In 'pronunciation_score' and 'examiner_critique', explicitly point out which specific words the candidate mispronounced that caused the STT engine to hear them incorrectly (e.g. "Từ 'important' bạn phát âm chưa chuẩn âm cuối nên máy bắt thành 'in portal'...").
+   - If there are homophone misrecognitions or phonetic substitutions, reconstruct the candidate's intended vocabulary in context and point them out constructively in the critique.
 {roleplay_context_block}
+{bilingual_prompt_instruction}
 QUESTION PROMPT: "{prompt_text}"
 KEY POINTS TO ADDRESS:
 {chr(10).join(['- ' + bp for bp in bullet_points])}
@@ -2186,42 +2212,43 @@ Return ONLY a valid JSON object with EXACTLY this schema:
   "grammar_score": (integer 0-100),
   "vocabulary_score": (integer 0-100),
   "coherence_score": (integer 0-100),
-  "examiner_critique": "(In Vietnamese 🇻🇳: Detailed examiner critique structured into exactly 4 markdown sections:
-### 🎭 Phản xạ & Tương tác
-(Nhận xét về độ nhạy bén, tương tác hội thoại và ngữ cảnh nhập vai)
-
-### 🎯 Ngữ pháp & Vốn từ
-(Nhận xét cấu trúc câu và từ vựng)
-
-### ⏱️ Nhịp điệu & Độ trôi chảy
-(Nhận xét tốc độ nói, khoảng ngắt nghỉ và độ liền mạch)
-
-### 💡 Lời khuyên bứt phá
-(Lời khuyên cụ thể để đạt band điểm cao hơn))",
+  "examiner_critique_en": "(English critique across the 4 sections)",
+  "examiner_critique_target": "({mother_tongue if is_bilingual else 'en'} critique across the 4 sections if bilingual, else empty string)",
   "sentence_upgrades": [
     {{
       "original": "(A sentence from candidate's speech)",
       "upgraded": "(A C1/C2 academic rewrite of that sentence)",
-      "explanation": "(In Vietnamese 🇻🇳: Explain why the upgraded vocabulary/structure is higher level)"
+      "explanation": "(Brief explanation of the improvement)"
     }}
   ],
   "sample_native_response": "(A full 150-200 word Band-160 sample answer to the prompt)"
 }}
 """
-        raw_res = self._call_llm_providers(eval_prompt, temp=0.2, parse_raw=True)
+        raw_res = self._call_llm_providers(eval_prompt, temp=0.2, parse_raw=True, custom_keys=custom_keys)
 
         if isinstance(raw_res, dict) and ("det_score" in raw_res or "fluency_score" in raw_res):
             det_score = int(raw_res.get("det_score") or est_score)
             raw_res["det_score"] = det_score
+            raw_res["ielts_band"] = raw_res.get("ielts_band") or round(max(3.0, min(9.0, det_score / 15.0)), 1)
             raw_res["cefr_level"] = raw_res.get("cefr_level") or cefr
             raw_res["fluency_score"] = int(raw_res.get("fluency_score") or min(95, max(15, est_score - 10)))
             raw_res["grammar_score"] = int(raw_res.get("grammar_score") or min(95, max(15, est_score - 5)))
             raw_res["vocabulary_score"] = int(raw_res.get("vocabulary_score") or min(95, max(15, est_score)))
             raw_res["coherence_score"] = int(raw_res.get("coherence_score") or min(95, max(15, est_score - 5)))
             raw_res["acoustic_metrics"] = acoustic_metrics
-            critique_str = str(raw_res.get("examiner_critique") or critique_msg)
-            raw_res["examiner_critique"] = critique_str
-            raw_res["examiner_critique_sections"] = self._parse_critique_sections(critique_str)
+
+            critique_en = str(raw_res.get("examiner_critique_en") or raw_res.get("examiner_critique") or critique_msg)
+            critique_target = str(raw_res.get("examiner_critique_target") or "") if is_bilingual else ""
+
+            raw_res["examiner_critique_en"] = critique_en
+            raw_res["examiner_critique_target"] = critique_target
+            raw_res["examiner_critique_sections_en"] = self._parse_critique_sections(critique_en)
+            raw_res["examiner_critique_sections_target"] = self._parse_critique_sections(critique_target) if is_bilingual and critique_target else {}
+            raw_res["examiner_critique"] = critique_en
+            raw_res["examiner_critique_sections"] = raw_res["examiner_critique_sections_en"]
+            raw_res["mother_tongue"] = mother_tongue
+            raw_res["target_lang"] = mother_tongue
+            raw_res["is_bilingual"] = is_bilingual and bool(critique_target)
 
             # Ensure sentence upgrades is a valid list
             if "sentence_upgrades" not in raw_res or not isinstance(raw_res["sentence_upgrades"], list) or len(raw_res["sentence_upgrades"]) == 0:
@@ -2231,7 +2258,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
                     {
                         "original": sample_s,
                         "upgraded": f"To elaborate further, {sample_s.lower()} illustrates a crucial aspect of this subject.",
-                        "explanation": "Bổ sung trạng từ học thuật 'To elaborate further' và cấu trúc câu phức giúp nâng tầm ý tưởng."
+                        "explanation": "Adding discourse marker 'To elaborate further' and complex sentence structure elevates coherence."
                     }
                 ]
 
@@ -2250,20 +2277,29 @@ Return ONLY a valid JSON object with EXACTLY this schema:
         sentences = [s.strip() for s in re.split(r'[.!?]', user_speech) if len(s.strip().split()) >= 3]
         first_sentence = sentences[0] if sentences else (user_speech[:80] + "..." if len(user_speech) > 80 else user_speech)
 
+        parsed_sections = self._parse_critique_sections(critique_msg)
         return {
             "det_score": est_score,
+            "ielts_band": round(max(3.0, min(9.0, est_score / 15.0)), 1),
             "cefr_level": cefr,
             "fluency_score": fluency_fallback,
             "grammar_score": grammar_fallback,
             "vocabulary_score": vocab_fallback,
             "coherence_score": coherence_fallback,
             "examiner_critique": critique_msg,
-            "examiner_critique_sections": self._parse_critique_sections(critique_msg),
+            "examiner_critique_en": critique_msg,
+            "examiner_critique_target": "",
+            "examiner_critique_sections": parsed_sections,
+            "examiner_critique_sections_en": parsed_sections,
+            "examiner_critique_sections_target": {},
+            "mother_tongue": mother_tongue,
+            "target_lang": mother_tongue,
+            "is_bilingual": is_bilingual,
             "sentence_upgrades": [
                 {
                     "original": first_sentence,
                     "upgraded": f"To elaborate on that point, {first_sentence.lower()} illustrates a crucial dimension of this topic.",
-                    "explanation": "Bổ sung trạng từ nối học thuật 'To elaborate' và động từ 'illustrates' giúp câu văn liên kết tự nhiên hơn."
+                    "explanation": "Using introductory transitions and subordinate clauses increases syntactic complexity."
                 }
             ],
             "sample_native_response": f"When addressing {prompt_text}, I believe that careful reflection and structured articulation are essential. In my personal experience, approaching such situations with an open mindset and persuasive reasoning enables clear and impactful communication.",

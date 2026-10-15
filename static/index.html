@@ -96,24 +96,38 @@
     </a>
 
     <div class="navbar-actions">
+      <!-- Auth Status / Mode -->
+      <div id="nav-user-area" style="display:flex;align-items:center;gap:6px;">
+        <span id="nav-mode-badge" class="stat-pill" style="background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-secondary);font-size:11px;font-weight:600;padding:4px 8px;border-radius:4px;">Test Mode</span>
+        <button class="icon-btn" id="btn-nav-auth" title="Sign In or Register" style="padding:4px 10px;font-size:12px;font-weight:600;">
+          <span>Sign In</span>
+        </button>
+        <div id="nav-user-profile" style="display:none;align-items:center;gap:6px;">
+          <span id="nav-user-flag" style="font-size:13px;">🇻🇳</span>
+          <span id="nav-username" style="font-size:12px;font-weight:600;color:var(--text-primary);max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">User</span>
+          <button class="icon-btn" id="btn-open-user-settings" title="Settings & API Keys" style="padding:4px 8px;font-size:11px;">
+            <span>Settings</span>
+          </button>
+          <button class="icon-btn" id="btn-user-signout" title="Sign Out" style="padding:4px 8px;font-size:11px;color:var(--text-muted);">
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+
       <button class="icon-btn" id="btn-open-weekly-report" title="Weekly Performance Report">
-        <span class="icon-btn-icon" aria-hidden="true">📊</span>
         <span>Report</span>
       </button>
       <button class="icon-btn" id="btn-open-error-journal" title="Personal Error Journal">
-        <span class="icon-btn-icon" aria-hidden="true">📕</span>
         <span>Errors</span>
       </button>
       <button class="icon-btn" id="btn-open-vocab-modal" title="Vocabulary Book">
-        <span class="icon-btn-icon" aria-hidden="true">📖</span>
         <span>Vocab (<span id="vocab-count-badge">0</span>)</span>
       </button>
       <button class="icon-btn" id="btn-open-lang-modal" title="Translation Language Setting" aria-label="Change translation language">
-        <span class="icon-btn-icon" aria-hidden="true">🌐</span>
         <span id="lang-display">🇻🇳</span>
       </button>
-      <div class="stat-pill streak" title="Day Streak" aria-label="5 day streak">🔥 <span id="stat-streak-count">5</span></div>
-      <div class="stat-pill xp" title="Total XP" aria-label="150 total XP">⚡ <span id="stat-xp-count">150</span></div>
+      <div class="stat-pill streak" title="Day Streak" aria-label="5 day streak">Streak: <span id="stat-streak-count">5</span></div>
+      <div class="stat-pill xp" title="Total XP" aria-label="150 total XP">XP: <span id="stat-xp-count">150</span></div>
     </div>
   </nav>
 
@@ -943,7 +957,13 @@
 
       <!-- Examiner Critique -->
       <div class="examiner-critique" style="margin-bottom:16px;">
-        <div class="critique-title">👨‍🏫 Examiner Critique</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <div class="critique-title" style="margin-bottom:0;">Examiner Critique</div>
+          <button id="btn-toggle-critique-lang" style="display:none;align-items:center;gap:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:var(--text-secondary);padding:4px 9px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;" title="Switch language">
+            <span id="critique-rotate-arrow" style="display:inline-block;transition:transform 0.3s ease;">↻</span>
+            <span id="critique-current-lang-tag">EN</span>
+          </button>
+        </div>
         <div id="det-report-critique"></div>
       </div>
 
@@ -966,6 +986,170 @@
         </button>
         <button class="btn btn-cyan" id="btn-det-try-again" style="flex:1;">🔄 Try Again</button>
         <button class="btn btn-secondary" id="btn-det-close-report" style="flex:1;">🏠 Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: Welcome / Mode Selection (Test Mode vs Sign In)
+  ============================================================ -->
+  <div class="modal-overlay" id="modal-auth-choice">
+    <div class="modal-box" style="max-width:480px;text-align:center;padding:28px 24px;" role="dialog" aria-modal="true" aria-labelledby="auth-choice-title">
+      <h2 id="auth-choice-title" style="font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text-primary);">Choose Practice Mode</h2>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:24px;line-height:1.5;">Select how you want to experience your speaking session.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+        <!-- Test Mode Card -->
+        <div id="card-choice-test" style="border:1px solid var(--border);background:rgba(255,255,255,0.03);border-radius:10px;padding:20px 14px;cursor:pointer;text-align:left;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--cyan);margin-bottom:6px;">Test Mode</div>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.4;margin-bottom:14px;">Instant guest trial. System quota with English-only examiner evaluations.</p>
+          </div>
+          <button type="button" class="btn btn-secondary" style="width:100%;font-size:12px;padding:8px 0;pointer-events:none;">Quick Trial</button>
+        </div>
+
+        <!-- Auth Card -->
+        <div id="card-choice-auth" style="border:1px solid var(--violet);background:rgba(124,58,237,0.08);border-radius:10px;padding:20px 14px;cursor:pointer;text-align:left;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--violet-light);margin-bottom:6px;">Sign In / Join</div>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.4;margin-bottom:14px;">Personal notebook, BYOK API keys, and bilingual critique toggle.</p>
+          </div>
+          <button type="button" class="btn btn-primary" style="width:100%;font-size:12px;padding:8px 0;pointer-events:none;">Sign In</button>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-muted);">You can switch or sign in anytime from the top bar.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: Authentication Form (Sign In & Register)
+  ============================================================ -->
+  <div class="modal-overlay" id="modal-auth-form">
+    <div class="modal-box" style="max-width:440px;" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="auth-modal-title">Account</h2>
+          <p class="modal-subtitle" id="auth-modal-subtitle">Sign in or register for personalization.</p>
+        </div>
+        <button class="btn-close" id="btn-close-auth-modal" aria-label="Close Authentication Modal">✕</button>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div style="display:flex;border-bottom:1px solid var(--border);margin-bottom:18px;">
+        <button type="button" id="tab-auth-login" style="flex:1;padding:10px 0;background:none;border:none;border-bottom:2px solid var(--cyan);color:var(--text-primary);font-size:13px;font-weight:700;cursor:pointer;">Sign In</button>
+        <button type="button" id="tab-auth-register" style="flex:1;padding:10px 0;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);font-size:13px;font-weight:700;cursor:pointer;">Create Account</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="form-login" style="display:block;">
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label" for="login-username">Username</label>
+          <input type="text" id="login-username" class="form-input" placeholder="Your username" required autocomplete="username">
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label class="form-label" for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
+        </div>
+        <div id="login-error-msg" style="display:none;color:var(--rose);font-size:12px;margin-bottom:12px;"></div>
+        <button type="submit" class="btn btn-primary" id="btn-submit-login" style="width:100%;padding:10px;">Sign In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" style="display:none;">
+        <div class="form-group" style="margin-bottom:12px;">
+          <label class="form-label" for="reg-username">Username</label>
+          <input type="text" id="reg-username" class="form-input" placeholder="Min 3 characters" required minlength="3" autocomplete="username">
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label class="form-label" for="reg-password">Password</label>
+          <input type="password" id="reg-password" class="form-input" placeholder="Min 4 characters" required minlength="4" autocomplete="new-password">
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label class="form-label" for="reg-mother-tongue">Native Language (Mother Tongue)</label>
+          <select id="reg-mother-tongue" class="form-select">
+            <option value="vi">🇻🇳 Vietnamese</option>
+            <option value="ja">🇯🇵 Japanese</option>
+            <option value="ko">🇰🇷 Korean</option>
+            <option value="zh">🇨🇳 Chinese</option>
+            <option value="es">🇪🇸 Spanish</option>
+            <option value="fr">🇫🇷 French</option>
+            <option value="de">🇩🇪 German</option>
+            <option value="ru">🇷🇺 Russian</option>
+            <option value="th">🇹🇭 Thai</option>
+            <option value="id">🇮🇩 Indonesian</option>
+            <option value="en">🇺🇸 English only</option>
+          </select>
+        </div>
+        <div id="reg-error-msg" style="display:none;color:var(--rose);font-size:12px;margin-bottom:12px;"></div>
+        <button type="submit" class="btn btn-primary" id="btn-submit-register" style="width:100%;padding:10px;">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: User Settings & BYOK Keys
+  ============================================================ -->
+  <div class="modal-overlay" id="modal-user-settings">
+    <div class="modal-box" style="max-width:480px;" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="settings-modal-title">Settings & API Keys</h2>
+          <p class="modal-subtitle">Personalize your language and BYOK keys.</p>
+        </div>
+        <button class="btn-close" id="btn-close-user-settings" aria-label="Close Settings Modal">✕</button>
+      </div>
+
+      <div class="form-group" style="margin-bottom:16px;">
+        <label class="form-label" for="settings-mother-tongue">Native Language</label>
+        <select id="settings-mother-tongue" class="form-select">
+          <option value="vi">🇻🇳 Vietnamese</option>
+          <option value="ja">🇯🇵 Japanese</option>
+          <option value="ko">🇰🇷 Korean</option>
+          <option value="zh">🇨🇳 Chinese</option>
+          <option value="es">🇪🇸 Spanish</option>
+          <option value="fr">🇫🇷 French</option>
+          <option value="de">🇩🇪 German</option>
+          <option value="ru">🇷🇺 Russian</option>
+          <option value="th">🇹🇭 Thai</option>
+          <option value="id">🇮🇩 Indonesian</option>
+          <option value="en">🇺🇸 English only</option>
+        </select>
+      </div>
+
+      <div style="border-top:1px solid var(--border);padding-top:14px;margin-bottom:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:2px;">Custom API Keys (BYOK)</div>
+        <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Your keys are given first priority during practice calls.</p>
+
+        <div class="form-group" style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <label class="form-label" for="key-input-groq" style="margin-bottom:0;">Groq API Key (Ultra-fast)</label>
+            <button type="button" class="btn-text-action" id="btn-test-groq-key" style="font-size:11px;color:var(--cyan);background:none;border:none;cursor:pointer;">Test Key</button>
+          </div>
+          <input type="password" id="key-input-groq" class="form-input" placeholder="gsk_...">
+        </div>
+
+        <div class="form-group" style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <label class="form-label" for="key-input-gemini" style="margin-bottom:0;">Google Gemini API Key</label>
+            <button type="button" class="btn-text-action" id="btn-test-gemini-key" style="font-size:11px;color:var(--cyan);background:none;border:none;cursor:pointer;">Test Key</button>
+          </div>
+          <input type="password" id="key-input-gemini" class="form-input" placeholder="AIzaSy...">
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <label class="form-label" for="key-input-openai" style="margin-bottom:0;">OpenAI API Key</label>
+            <button type="button" class="btn-text-action" id="btn-test-openai-key" style="font-size:11px;color:var(--cyan);background:none;border:none;cursor:pointer;">Test Key</button>
+          </div>
+          <input type="password" id="key-input-openai" class="form-input" placeholder="sk-...">
+        </div>
+      </div>
+
+      <div id="settings-status-msg" style="font-size:12px;margin-bottom:12px;display:none;"></div>
+
+      <div style="display:flex;gap:10px;">
+        <button type="button" class="btn btn-primary" id="btn-save-user-settings" style="flex:1;">Save</button>
+        <button type="button" class="btn btn-secondary" id="btn-cancel-user-settings">Close</button>
       </div>
     </div>
   </div>

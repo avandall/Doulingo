@@ -70,3 +70,6 @@ class DetSpeechEvalRequest(BaseModel):
     filler_count: int | None = None
     conversation_history: list[dict[str, str]] | None = None
     character_id: str | None = None
+    mother_tongue: str | None = "en"
+    custom_api_keys: dict[str, str] | None = None
+
