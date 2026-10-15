@@ -262,9 +262,12 @@ class AIEngine:
         self.ollama_model = os.getenv("OLLAMA_MODEL", "llama3").strip()
 
         self.gemini_models = [
-            "gemini-3.5-flash-lite",     # 500 RPD, 15 RPM (Verified 200 OK ~1.1s)
-            "gemini-flash-lite-latest",  # Stable high-performance alias (Verified 200 OK ~1.3s)
-            "gemini-3-flash-preview",    # 20 RPD, 5 RPM (Verified 200 OK ~1.9s)
+            "gemini-3.5-flash-lite",  # 15 RPM, 500 RPD (Tier 1 high-quota)
+            "gemini-3.1-flash-lite",  # 15 RPM, 500 RPD (Tier 1 high-quota)
+            "gemini-2.5-flash-lite",  # 10 RPM, 20 RPD
+            "gemini-2.5-flash",       # 5 RPM, 20 RPD
+            "gemini-3-flash",         # 5 RPM, 20 RPD
+            "gemini-3.6-flash",       # 5 RPM, 20 RPD
         ]
         self.groq_models = [
             "qwen/qwen3.8-27b",          # Verified 200 OK ~210ms! 131k context, RPM 30, RPD 1K
@@ -281,26 +284,139 @@ class AIEngine:
         t = re.sub(r'[^\w\s]', '', t)
         return re.sub(r'\s+', ' ', t).strip()
 
-    def _compute_deterministic_score(self, user_transcript: str, corrected_text: str) -> dict[str, int]:
+    def _compute_deterministic_score(
+        self,
+        user_transcript: str,
+        corrected_text: str,
+        level: int = 1
+    ) -> dict[str, int]:
         u_clean = self._normalize_text_for_comparison(user_transcript)
         c_clean = self._normalize_text_for_comparison(corrected_text)
 
+        words = [w for w in user_transcript.strip().split() if w]
+        w_count = len(words)
+
         if not u_clean:
-            return {"fluency": 50, "grammar": 50, "overall": 50}
+            return {"fluency": 35, "grammar": 35, "overall": 35}
+
+        # Level expectation: higher level expects longer, richer sentences
+        cfg = self._get_level_config(level)
+        expected_min = max(4, cfg.get("min_words", 12) // 3)
 
         if u_clean == c_clean:
-            return {"fluency": 96, "grammar": 98, "overall": 97}
+            ratio = 1.0
+        else:
+            ratio = difflib.SequenceMatcher(None, u_clean, c_clean).ratio()
 
-        ratio = difflib.SequenceMatcher(None, u_clean, c_clean).ratio()
-        grammar = int(70 + ratio * 28)
-        fluency = int(72 + ratio * 26)
-        overall = int((grammar + fluency) / 2)
+        # Calibrated grammar score based on how accurate the sentence is
+        base_grammar = int(35 + ratio * 58)
+
+        # Fluency score: consider sentence length vs level expectations
+        if w_count < 3:
+            len_factor = 0.65
+        elif w_count < expected_min:
+            len_factor = 0.75 + 0.25 * (w_count / expected_min)
+        else:
+            len_factor = min(1.05, 1.0 + (w_count - expected_min) * 0.01)
+
+        fluency = int((30 + ratio * 60) * len_factor)
+        grammar = base_grammar
+
+        # Reward clean utterance appropriately without giving free 98 to short phrases
+        if u_clean == c_clean:
+            if w_count >= expected_min:
+                grammar = min(96, grammar + 5)
+                fluency = min(95, fluency + 5)
+            elif w_count >= 3:
+                grammar = min(88, grammar)
+                fluency = min(82, fluency)
+            else:
+                grammar = min(78, grammar)
+                fluency = min(68, fluency)
+
+        overall = int((grammar * 0.5) + (fluency * 0.5))
 
         return {
-            "fluency": max(50, min(100, fluency)),
-            "grammar": max(50, min(100, grammar)),
-            "overall": max(50, min(100, overall))
+            "fluency": max(25, min(98, fluency)),
+            "grammar": max(25, min(98, grammar)),
+            "overall": max(25, min(98, overall))
         }
+
+    def calculate_adaptive_level(
+        self,
+        current_level: int,
+        user_transcript: str,
+        speech_metrics: dict[str, Any] | None = None,
+        conversation_history: list[dict[str, str]] | None = None
+    ) -> tuple[int, str]:
+        """
+        Gradual Damped Adaptive Leveling:
+        Adjusts level smoothly (at most +-1 level per turn) based on linguistic signals,
+        preserving user level on natural conversational short reactive turns.
+        """
+        lvl = max(1, min(20, int(current_level)))
+        t_clean = (user_transcript or "").strip().lower()
+        words = [w for w in t_clean.split() if w]
+        word_count = len(words)
+
+        if not t_clean:
+            return lvl, "hold (empty transcript)"
+
+        # 1. Natural Short Response Filter
+        natural_short_phrases = {
+            "i agree", "i don't think so", "not really", "i am not afraid", "i'm not afraid",
+            "exactly", "absolutely", "definitely", "why not", "tell me more", "sounds good",
+            "no way", "of course", "yes please", "sure thing", "that is right", "that's right",
+            "you are right", "you're right", "i see", "makes sense", "thank you", "thanks"
+        }
+        for nsp in natural_short_phrases:
+            if t_clean == nsp or t_clean.startswith(nsp + " ") or t_clean.endswith(" " + nsp):
+                return lvl, "hold (natural short conversational response)"
+
+        # 2. Check for Explicit Adjustment Requests
+        harder_signals = ["speak faster", "make it harder", "more advanced", "too easy", "challenge me", "harder level"]
+        if any(sig in t_clean for sig in harder_signals):
+            return min(20, lvl + 1), "increased (user explicit request for higher challenge)"
+
+        easier_signals = ["speak slower", "make it easier", "too hard", "too difficult", "can you speak simpler", "simpler words"]
+        if any(sig in t_clean for sig in easier_signals):
+            return max(1, lvl - 1), "decreased (user explicit request for simpler level)"
+
+        # 3. Check for Confusion / Stumbling Signals
+        confusion_signals = [
+            "i don't understand", "i dont understand", "what does that mean", "what do you mean",
+            "i can't understand", "i cannot understand", "i don't know what you mean", "could you explain"
+        ]
+        has_confusion = any(sig in t_clean for sig in confusion_signals)
+        pauses = int(speech_metrics.get("pauses", 0)) if speech_metrics else 0
+        wpm = float(speech_metrics.get("wpm", 120.0)) if speech_metrics else 120.0
+
+        if has_confusion or (pauses >= 4 and wpm < 60.0):
+            return max(1, lvl - 1), "decreased (confusion / hesitation signal detected)"
+
+        # 4. Check for Advanced Vocabulary & Sophisticated Grammar (Promotion Signal)
+        advanced_markers = {
+            "nevertheless", "furthermore", "consequently", "moreover", "notwithstanding",
+            "predominantly", "substantially", "simultaneously", "indispensable", "paradox",
+            "paradigm", "profound", "articulate", "trajectory", "resilience", "ubiquitous",
+            "metropolis", "obsolescence", "proliferation", "fundamental", "illustrates"
+        }
+        has_advanced_word = any(w in advanced_markers for w in words)
+        has_complex_syntax = any(pat in t_clean for pat in ["if i had", "were i to", "in order to", "not only", "as well as", "despite the fact", "although", "even though"])
+
+        if (has_advanced_word or has_complex_syntax) and word_count >= 12 and pauses <= 1 and wpm >= 90:
+            if lvl < 20:
+                return min(20, lvl + 1), "increased (advanced vocabulary & syntax demonstrated)"
+
+        # 5. Sustained Simplistic Pattern Check (requires 2+ consecutive turns to prevent rash drop)
+        if word_count < 4 and conversation_history and len(conversation_history) >= 2:
+            prev_user_msgs = [m.get("content", "") for m in conversation_history if m.get("role") == "user"]
+            if prev_user_msgs:
+                prev_len = len(prev_user_msgs[-1].split())
+                if prev_len < 4 and lvl > 6:
+                    return max(1, lvl - 1), "decreased (sustained simplistic responses for current high level)"
+
+        return lvl, "hold (steady conversational flow)"
 
     def _get_level_config(self, level: int) -> dict[str, Any]:
         """Return the precise level configuration for levels 1-20."""
@@ -531,8 +647,8 @@ Output JSON ONLY with Structured CoT fields:
     ) -> dict[str, Any]:
         """
         Fast Voice LLM execution path:
-        Generates ONLY the AI spoken utterance (~30-40 tokens plain text) with minimal latency (<400ms).
-        Bypasses heavy JSON CoT & detailed feedback evaluation.
+        Generates ONLY the AI spoken utterance with minimal latency (<400ms).
+        Maintains conversational dialogue context and applies gradual adaptive difficulty.
         """
         self.reload_keys()
         scenario = self._resolve_scenario(scenario_id, character_id)
@@ -540,10 +656,40 @@ Output JSON ONLY with Structured CoT fields:
         char_key = character_id if character_id else default_char
         character = get_character(char_key)
 
-        fast_prompt = f"""You are playing the role of {character['name']} in a conversation about "{scenario.get('title', 'General Conversation')}".
-User said: "{user_transcript}"
+        adapted_level, adapt_reason = self.calculate_adaptive_level(
+            current_level=level,
+            user_transcript=user_transcript,
+            speech_metrics=None,
+            conversation_history=conversation_history
+        )
+        effective_level = adapted_level
+        cfg = self._get_level_config(effective_level)
 
-TASK: Respond naturally and directly as {character['name']} in 1-2 short sentences (CEFR Level {level}). Keep response under 35 words ending with a short open-ended question.
+        recent_dialogue = ""
+        if conversation_history:
+            recent_turns = conversation_history[-6:]
+            d_lines = []
+            for t in recent_turns:
+                r = character['name'] if t.get("role") in ("assistant", "ai") else "User"
+                c = t.get("content", "").strip()
+                if c:
+                    d_lines.append(f'{r}: "{c}"')
+            if d_lines:
+                recent_dialogue = "Recent dialogue:\n" + "\n".join(d_lines) + "\n\n"
+
+        trait = character.get("trait", "Engaging")
+        speech_style = character.get("speech_style", "Natural conversational")
+
+        fast_prompt = f"""You are playing the role of {character['name']} ({character.get('role', 'Partner')}). Trait: {trait}. Style: {speech_style}.
+Permanent Topic: "{scenario.get('title', 'General Conversation')}" - {scenario.get('description', '')}.
+
+{recent_dialogue}User just said: "{user_transcript}"
+
+TASK: Respond naturally and in-character as {character['name']} matching CEFR Level {effective_level} ({cfg['cefr']}).
+Level Instructions:
+- Response Length: Between {cfg['min_words']} and {cfg['max_words']} words.
+- Vocabulary: {cfg['vocab_tier']}
+- End with ONE natural, open-ended question to keep the conversation flowing.
 
 Output JSON ONLY:
 {{
@@ -555,14 +701,16 @@ Output JSON ONLY:
             ai_resp = raw_res.get("ai_response") or raw_res.get("final_response", "")
         else:
             fallback_dict = self._get_context_aware_fallback(
-                scenario, character, user_transcript, level, conversation_history
+                scenario, character, user_transcript, effective_level, conversation_history
             )
             ai_resp = fallback_dict.get("ai_response", "That sounds interesting! What else can you share?")
 
         return {
             "ai_response": ai_resp,
             "status": "fast_voice_ready",
-            "latency_mode": "fast_voice"
+            "latency_mode": "fast_voice",
+            "adapted_level": effective_level,
+            "level_reason": adapt_reason
         }
 
     def evaluate_turn_background(
@@ -635,7 +783,7 @@ Output JSON ONLY:
 
         fb = raw_res.get("user_feedback", {})
         corrected = fb.get("corrected_text", user_transcript)
-        det_scores = self._compute_deterministic_score(user_transcript, corrected)
+        det_scores = self._compute_deterministic_score(user_transcript, corrected, level=level)
 
         fb["fluency_score"] = det_scores["fluency"]
         fb["grammar_score"] = det_scores["grammar"]
@@ -1175,15 +1323,15 @@ Output JSON ONLY:
                 if not full_text.endswith("?") and not full_text.endswith("."):
                     full_text += "."
 
-        det_scores = self._compute_deterministic_score(user_transcript, user_transcript)
+        det_scores = self._compute_deterministic_score(user_transcript, user_transcript, level=level)
 
         return {
             "ai_response": full_text,
             "ai_response_vi": "",
             "user_feedback": {
-                "fluency_score": max(det_scores["fluency"], 85),
-                "grammar_score": max(det_scores["grammar"], 88),
-                "overall_score": max(det_scores["overall"], 86),
+                "fluency_score": det_scores["fluency"],
+                "grammar_score": det_scores["grammar"],
+                "overall_score": det_scores["overall"],
                 "grammar_status": "Clean & Clear",
                 "corrected_text": user_transcript,
                 "native_phrasing": f"Native speakers might say: {user_transcript}" if user_transcript else "Clear sentence.",
@@ -1237,6 +1385,38 @@ Output JSON ONLY:
             f"5. Output ONLY the translated Vietnamese dialogue line without quotes, markdown, or commentary."
         )
 
+        # 1. Try Groq first for ultra-fast translation (~200ms)
+        for key in self.groq_keys:
+            if is_key_exhausted(key):
+                continue
+            for model in self.groq_models:
+                if is_model_key_rate_limited(model, key):
+                    continue
+                try:
+                    url = "https://api.groq.com/openai/v1/chat/completions"
+                    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+                    groq_payload = {
+                        "model": model,
+                        "messages": [{"role": "user", "content": translate_prompt}],
+                        "max_tokens": 200,
+                        "temperature": 0.35,
+                    }
+                    res = requests.post(url, headers=headers, json=groq_payload, timeout=2.5)
+
+                    if res.status_code == 200:
+                        text = res.json()["choices"][0]["message"]["content"].strip()
+                        if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
+                            text = text[1:-1].strip()
+                        if text:
+                            return text
+                    elif res.status_code in [401, 403, 429, 400, 404, 502, 503, 504]:
+                        record_model_key_exhausted(model, key, res.status_code, res.text)
+                except requests.exceptions.Timeout:
+                    record_model_key_exhausted(model, key, 500, "Read timed out", is_timeout=True)
+                except Exception as e:
+                    record_model_key_exhausted(model, key, 500, str(e))
+
+        # 2. Gemini fallback
         t_trans_start = time.time()
         gemini_trans_fails = 0
         MAX_GEMINI_TRANS_FAILS = 2
@@ -1273,36 +1453,6 @@ Output JSON ONLY:
                     record_model_key_exhausted(model, key, 500, "Read timed out", is_timeout=True)
                 except Exception as e:
                     gemini_trans_fails += 1
-                    record_model_key_exhausted(model, key, 500, str(e))
-
-        for key in self.groq_keys:
-            if is_key_exhausted(key):
-                continue
-            for model in self.groq_models:
-                if is_model_key_rate_limited(model, key):
-                    continue
-                try:
-                    url = "https://api.groq.com/openai/v1/chat/completions"
-                    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-                    groq_payload = {
-                        "model": model,
-                        "messages": [{"role": "user", "content": translate_prompt}],
-                        "max_tokens": 200,
-                        "temperature": 0.35,
-                    }
-                    res = requests.post(url, headers=headers, json=groq_payload, timeout=2.5)
-
-                    if res.status_code == 200:
-                        text = res.json()["choices"][0]["message"]["content"].strip()
-                        if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
-                            text = text[1:-1].strip()
-                        if text:
-                            return text
-                    elif res.status_code in [401, 403, 429, 400, 404, 502, 503, 504]:
-                        record_model_key_exhausted(model, key, res.status_code, res.text)
-                except requests.exceptions.Timeout:
-                    record_model_key_exhausted(model, key, 500, "Read timed out", is_timeout=True)
-                except Exception as e:
                     record_model_key_exhausted(model, key, 500, str(e))
 
         return ""
@@ -1583,9 +1733,9 @@ Output JSON ONLY:
         text = raw_text.strip()
         if text.startswith("```"):
             lines = text.splitlines()
-            if lines and lines[0].startswith("```"):
+            if lines and lines[0].strip().startswith("```"):
                 lines = lines[1:]
-            if lines and lines[-1].startswith("```"):
+            if lines and lines[-1].strip().startswith("```"):
                 lines = lines[:-1]
             text = "\n".join(lines).strip()
 
@@ -1648,13 +1798,12 @@ Output JSON ONLY:
         schema: type[BaseModel] | None = None,
         temp: float = 0.8,
         parse_raw: bool = False,
-        prefer_fast_groq: bool = False
+        prefer_fast_groq: bool = True
     ) -> dict[str, Any] | None:
         t_start = time.time()
-        fast_timeout = 1.8 if prefer_fast_groq else 2.2
 
-        # 0. Fast-Voice Path: if prefer_fast_groq is set, try ultra-fast Groq models first (~250ms)
         if prefer_fast_groq:
+            # 1. Tier 1: Groq Ultra-Fast Path (~200-300ms)
             for key in self.groq_keys:
                 if is_key_exhausted(key):
                     continue
@@ -1666,36 +1815,59 @@ Output JSON ONLY:
                         if res:
                             return res
                     except Exception as e:
-                        logger.warning(f"[AIEngine FastVoice] Groq ({model}) failed or rate limited: {e}. Failover to next.")
+                        logger.warning(f"[AIEngine] Groq ({model}) failed or rate limited: {e}. Failover to next.")
                         continue
 
-        # 1. Gemini attempt with Fast-Failover cap
-        gemini_fail_count = 0
-        MAX_GEMINI_FAILS = 2
-        MAX_GEMINI_TIME_SEC = 2.5
+            # 2. Tier 2: Gemini Fallback (High Quota 500 RPD, ~1.1s-1.5s)
+            gemini_fail_count = 0
+            MAX_GEMINI_FAILS = 2
+            MAX_GEMINI_TIME_SEC = 2.5
 
-        for key in self.gemini_keys:
-            if is_key_exhausted(key):
-                continue
-            if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
-                logger.info(f"[FastFailover] Gemini lagging/failing ({gemini_fail_count} errors, {time.time() - t_start:.2f}s). Fast-failover to Groq!")
-                break
-            for model in self.gemini_models:
-                if is_model_key_rate_limited(model, key):
+            for key in self.gemini_keys:
+                if is_key_exhausted(key):
                     continue
                 if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
+                    logger.info(f"[FastFailover] Gemini lagging/failing ({gemini_fail_count} errors, {time.time() - t_start:.2f}s). Failover to OpenAI!")
                     break
-                try:
-                    res = self._call_gemini(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
-                    if res:
-                        return res
-                except Exception as e:
-                    gemini_fail_count += 1
-                    logger.warning(f"[AIEngine] Gemini ({model}) failed or timeout: {e}. Failover attempt {gemini_fail_count}/{MAX_GEMINI_FAILS}.")
-                    continue
+                for model in self.gemini_models:
+                    if is_model_key_rate_limited(model, key):
+                        continue
+                    if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
+                        break
+                    try:
+                        res = self._call_gemini(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
+                        if res:
+                            return res
+                    except Exception as e:
+                        gemini_fail_count += 1
+                        logger.warning(f"[AIEngine] Gemini ({model}) failed or timeout: {e}. Failover attempt {gemini_fail_count}/{MAX_GEMINI_FAILS}.")
+                        continue
+        else:
+            # Explicit prefer_fast_groq=False: Gemini first, then Groq
+            gemini_fail_count = 0
+            MAX_GEMINI_FAILS = 2
+            MAX_GEMINI_TIME_SEC = 2.5
 
-        # 2. Groq attempt if not already executed under prefer_fast_groq
-        if not prefer_fast_groq:
+            for key in self.gemini_keys:
+                if is_key_exhausted(key):
+                    continue
+                if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
+                    logger.info(f"[FastFailover] Gemini lagging/failing ({gemini_fail_count} errors, {time.time() - t_start:.2f}s). Failover to Groq!")
+                    break
+                for model in self.gemini_models:
+                    if is_model_key_rate_limited(model, key):
+                        continue
+                    if gemini_fail_count >= MAX_GEMINI_FAILS or (time.time() - t_start) >= MAX_GEMINI_TIME_SEC:
+                        break
+                    try:
+                        res = self._call_gemini(prompt, key, model, schema=schema, temp=temp, parse_raw=parse_raw)
+                        if res:
+                            return res
+                    except Exception as e:
+                        gemini_fail_count += 1
+                        logger.warning(f"[AIEngine] Gemini ({model}) failed or timeout: {e}. Failover attempt {gemini_fail_count}/{MAX_GEMINI_FAILS}.")
+                        continue
+
             for key in self.groq_keys:
                 if is_key_exhausted(key):
                     continue
@@ -1707,7 +1879,7 @@ Output JSON ONLY:
                         if res:
                             return res
                     except Exception as e:
-                        logger.warning(f"[AIEngine] Groq ({model}) failed or truncation/validation error: {e}. Failover to next provider.")
+                        logger.warning(f"[AIEngine] Groq ({model}) failed: {e}. Failover to next provider.")
                         continue
 
         # 3. OpenAI fallback
@@ -1875,7 +2047,9 @@ Output JSON ONLY:
         mode: str = "read_then_speak",
         wpm: int | None = None,
         pause_count: int | None = None,
-        filler_count: int | None = None
+        filler_count: int | None = None,
+        conversation_history: list[dict[str, str]] | None = None,
+        character_id: str | None = None,
     ) -> dict[str, Any]:
         question_card = scenario.get("question_card", {})
         prompt_text = question_card.get("prompt", scenario.get("description", ""))
@@ -1896,19 +2070,87 @@ Output JSON ONLY:
         if is_too_short:
             est_score = min(35, max(10, 10 + int(word_count * 1.5)))
             cefr = "Pre-A1" if est_score < 25 else "A1 Elementary"
-            critique_msg = f"Bài làm quá ngắn (chỉ có {word_count} từ), không đủ dữ liệu phát âm và từ vựng để đánh giá năng lực theo chuẩn Quốc Tế IELTS / CEFR. Thí sinh cần phát triển trọn vẹn dàn ý (tối thiểu 40 - 60 từ) trong thời gian 1 - 3 phút."
+            critique_msg = f"""### 🎭 Phản xạ & Tương tác
+Bài làm quá ngắn (chỉ có {word_count} từ), không đủ dữ liệu phát âm và từ vựng để đánh giá năng lực theo chuẩn Quốc Tế IELTS / CEFR. Thí sinh cần phát triển trọn vẹn dàn ý (tối thiểu 40 - 60 từ) trong thời gian 1 - 3 phút.
+
+### 🎯 Ngữ pháp & Vốn từ
+Chưa xuất hiện đủ ngữ liệu câu và từ vựng thực tế để xác định độ chuẩn xác.
+
+### ⏱️ Nhịp điệu & Độ trôi chảy
+Thời lượng thu âm ({duration_seconds}s) quá ngắn, chưa thể hiện rõ tốc độ WPM và khả năng ngắt nghỉ.
+
+### 💡 Lời khuyên bứt phá
+Thí sinh cần phát triển trọn vẹn câu trả lời (tối thiểu 40 - 60 từ) trong thời gian 1 - 2 phút để giám khảo có thể ghi nhận năng lực của bạn."""
         elif word_count < 40:
             est_score = min(85, max(45, 40 + int((word_count - 15) * 1.2)))
             cefr = "A2 Elementary" if est_score < 65 else "B1 Intermediate"
-            critique_msg = f"Thí sinh có cố gắng trả lời đề bài '{scenario.get('title')}' ({word_count} từ), tuy nhiên câu trả lời còn ngắn. Để đạt mốc B2/C1, bạn cần mở rộng thêm các ý chi tiết và ví dụ thực tế."
+            critique_msg = f"""### 🎭 Phản xạ & Tương tác
+Thí sinh có cố gắng trả lời đề bài '{scenario.get('title')}' ({word_count} từ), tuy nhiên câu trả lời còn ngắn. Để đạt mốc B2/C1, bạn cần mở rộng thêm các ý chi tiết và ví dụ thực tế.
+
+### 🎯 Ngữ pháp & Vốn từ
+Sử dụng các mẫu câu cơ bản, dễ hiểu nhưng chưa có sự xuất hiện của cấu trúc câu phức hoặc liên từ học thuật.
+
+### ⏱️ Nhịp điệu & Độ trôi chảy
+Tốc độ nói {acoustic_metrics.get('wpm', 100)} WPM ở mức chấp nhận được, nhịp điệu {acoustic_metrics.get('rhythm_diagnosis', 'ổn định')}.
+
+### 💡 Lời khuyên bứt phá
+Để vươn lên band B2/C1, bạn cần mở rộng thêm các ý chi tiết, giải thích lý do tại sao và đưa ra ví dụ thực tế."""
         elif word_count < 80:
             est_score = min(115, max(85, 80 + int((word_count - 40) * 0.7)))
             cefr = "B1 Intermediate" if est_score < 95 else "B2 Upper-Intermediate"
-            critique_msg = f"Bài nói triển khai tốt ý tưởng ({word_count} từ, {duration_seconds}s). Ngữ pháp và từ vựng đạt mức khá. Để vươn lên band C1, hãy chú ý sử dụng thêm các cấu trúc câu đảo ngữ, liên từ học thuật và từ vựng chủ đề chuyên sâu."
+            critique_msg = f"""### 🎭 Phản xạ & Tương tác
+Bài nói triển khai tốt ý tưởng ({word_count} từ, {duration_seconds}s). Ngữ pháp và từ vựng đạt mức khá. Để vươn lên band C1, hãy chú ý sử dụng thêm các cấu trúc câu đảo ngữ, liên từ học thuật và từ vựng chủ đề chuyên sâu.
+
+### 🎯 Ngữ pháp & Vốn từ
+Ngữ pháp và từ vựng đạt mức khá, diễn đạt tự nhiên và ít lỗi sai gây cản trở hiểu ý.
+
+### ⏱️ Nhịp điệu & Độ trôi chảy
+Tốc độ nói {acoustic_metrics.get('wpm', 115)} WPM đều đặn, khoảng lặng kiểm soát tốt.
+
+### 💡 Lời khuyên bứt phá
+Hãy chú ý sử dụng thêm các cấu trúc câu đảo ngữ, mệnh đề phân từ, liên từ học thuật và từ vựng chủ đề chuyên sâu."""
         else:
             est_score = min(160, max(120, 115 + int((word_count - 80) * 0.5)))
             cefr = "C1 Advanced" if est_score >= 130 else "B2 Upper-Intermediate"
-            critique_msg = f"Bài làm xuất sắc ({word_count} từ trong {duration_seconds} giây), lập luận chặt chẽ và từ vựng phong phú, thể hiện trình độ thành thạo ngôn ngữ tốt."
+            critique_msg = f"""### 🎭 Phản xạ & Tương tác
+Bài làm xuất sắc ({word_count} từ trong {duration_seconds} giây), lập luận chặt chẽ và từ vựng phong phú, thể hiện trình độ thành thạo ngôn ngữ tốt.
+
+### 🎯 Ngữ pháp & Vốn từ
+Kiểm soát rất tốt các cấu trúc ngữ pháp phức tạp và vốn từ vựng phong phú.
+
+### ⏱️ Nhịp điệu & Độ trôi chảy
+Tốc độ nói {acoustic_metrics.get('wpm', 130)} WPM tự nhiên, ngữ điệu và nhịp điệu phát âm đạt độ thuần thục cao.
+
+### 💡 Lời khuyên bứt phá
+Tiếp tục tôi luyện các thành ngữ, cụm từ collocation tự nhiên của người bản xứ ở band C2."""
+
+        # Context-aware roleplay dialogue block
+        roleplay_context_block = ""
+        effective_char_key = character_id or scenario.get("default_character", "")
+        if effective_char_key or conversation_history:
+            char_obj = get_character(effective_char_key) if effective_char_key else {}
+            char_name = char_obj.get("name", "AI Partner")
+            char_role = char_obj.get("role", "Conversational Partner")
+            char_trait = char_obj.get("trait", "Engaging")
+            hist_lines: list[str] = []
+            if conversation_history:
+                for turn in conversation_history[-10:]:
+                    r = char_name if turn.get("role") in ("assistant", "ai") else "Candidate"
+                    c = str(turn.get("content", "")).strip()
+                    if c:
+                        hist_lines.append(f"{r}: \"{c}\"")
+            if hist_lines:
+                roleplay_context_block = f"""
+[AUTHENTIC ROLEPLAY INTERACTION CONTEXT]
+The candidate was conversing with character '{char_name}' ({char_role}, Trait: {char_trait}).
+Dialogue exchanges so far:
+{chr(10).join(hist_lines)}
+
+CRITICAL ROLEPLAY RELEVANCE INSTRUCTION:
+- You MUST evaluate candidate utterances in the context of the back-and-forth roleplay above!
+- If the character provoked, challenged, or made dramatic statements (e.g. mob boss Don Luigi asking 'Why should you fear me?'), the candidate answering in-character (e.g. 'I am not afraid, you are just an old man') is 100% RELEVANT, natural, and demonstrates high communicative competence!
+- DO NOT falsely accuse the candidate of off-topic speech or personal attacks when they are naturally responding to character banter!
+"""
 
         eval_prompt = f"""You are an Official International English (IELTS / CEFR) Senior Speaking Examiner.
 Evaluate the candidate's speech for a '{mode}' task.
@@ -1922,7 +2164,7 @@ CRITICAL IELTS / CEFR RUBRIC PENALTY RULES:
    - The candidate's speech "{user_speech}" is transcribed from a microphone via Speech-to-Text (ASR).
    - If there are homophone misrecognitions or phonetic substitutions (e.g., learner mispronounced a sound causing ASR to transcribe an acoustically similar word like 'in portal' instead of 'important'), RECONSTRUCT the candidate's intended vocabulary in context.
    - In 'pronunciation_score' and 'examiner_critique', explicitly point out which specific words the candidate mispronounced that caused the STT engine to hear them incorrectly (e.g. "Từ 'important' bạn phát âm chưa chuẩn âm cuối nên máy bắt thành 'in portal'...").
-
+{roleplay_context_block}
 QUESTION PROMPT: "{prompt_text}"
 KEY POINTS TO ADDRESS:
 {chr(10).join(['- ' + bp for bp in bullet_points])}
@@ -1944,7 +2186,18 @@ Return ONLY a valid JSON object with EXACTLY this schema:
   "grammar_score": (integer 0-100),
   "vocabulary_score": (integer 0-100),
   "coherence_score": (integer 0-100),
-  "examiner_critique": "(In Vietnamese 🇻🇳: Detailed examiner critique of strengths, structure, acoustic pace/pauses, and areas to improve)",
+  "examiner_critique": "(In Vietnamese 🇻🇳: Detailed examiner critique structured into exactly 4 markdown sections:
+### 🎭 Phản xạ & Tương tác
+(Nhận xét về độ nhạy bén, tương tác hội thoại và ngữ cảnh nhập vai)
+
+### 🎯 Ngữ pháp & Vốn từ
+(Nhận xét cấu trúc câu và từ vựng)
+
+### ⏱️ Nhịp điệu & Độ trôi chảy
+(Nhận xét tốc độ nói, khoảng ngắt nghỉ và độ liền mạch)
+
+### 💡 Lời khuyên bứt phá
+(Lời khuyên cụ thể để đạt band điểm cao hơn))",
   "sentence_upgrades": [
     {{
       "original": "(A sentence from candidate's speech)",
@@ -1966,6 +2219,9 @@ Return ONLY a valid JSON object with EXACTLY this schema:
             raw_res["vocabulary_score"] = int(raw_res.get("vocabulary_score") or min(95, max(15, est_score)))
             raw_res["coherence_score"] = int(raw_res.get("coherence_score") or min(95, max(15, est_score - 5)))
             raw_res["acoustic_metrics"] = acoustic_metrics
+            critique_str = str(raw_res.get("examiner_critique") or critique_msg)
+            raw_res["examiner_critique"] = critique_str
+            raw_res["examiner_critique_sections"] = self._parse_critique_sections(critique_str)
 
             # Ensure sentence upgrades is a valid list
             if "sentence_upgrades" not in raw_res or not isinstance(raw_res["sentence_upgrades"], list) or len(raw_res["sentence_upgrades"]) == 0:
@@ -2002,6 +2258,7 @@ Return ONLY a valid JSON object with EXACTLY this schema:
             "vocabulary_score": vocab_fallback,
             "coherence_score": coherence_fallback,
             "examiner_critique": critique_msg,
+            "examiner_critique_sections": self._parse_critique_sections(critique_msg),
             "sentence_upgrades": [
                 {
                     "original": first_sentence,
@@ -2012,6 +2269,34 @@ Return ONLY a valid JSON object with EXACTLY this schema:
             "sample_native_response": f"When addressing {prompt_text}, I believe that careful reflection and structured articulation are essential. In my personal experience, approaching such situations with an open mindset and persuasive reasoning enables clear and impactful communication.",
             "acoustic_metrics": acoustic_metrics
         }
+
+    def _parse_critique_sections(self, critique_text: str) -> dict[str, str]:
+        sections: dict[str, str] = {
+            "interaction": "",
+            "grammar_vocab": "",
+            "fluency": "",
+            "advice": ""
+        }
+        if not critique_text:
+            return sections
+        parts = re.split(r'###\s*', critique_text)
+        for p in parts:
+            p = p.strip()
+            if not p:
+                continue
+            p_lower = p.lower()
+            content = re.sub(r'^[^\n]*\n', '', p).strip() or p
+            if any(k in p_lower for k in ["tương tác", "phản xạ", "roleplay", "interaction"]):
+                sections["interaction"] = content
+            elif any(k in p_lower for k in ["ngữ pháp", "vốn từ", "từ vựng", "grammar", "vocabulary"]):
+                sections["grammar_vocab"] = content
+            elif any(k in p_lower for k in ["nhịp điệu", "trôi chảy", "lưu loát", "fluency", "pronunciation"]):
+                sections["fluency"] = content
+            elif any(k in p_lower for k in ["lời khuyên", "hướng cải thiện", "bứt phá", "advice", "next steps"]):
+                sections["advice"] = content
+        if not any(sections.values()):
+            sections["interaction"] = critique_text
+        return sections
 
     async def transcribe_audio(self, audio_bytes: bytes, filename: str = "speech.webm", fallback_text: str = "") -> dict[str, Any]:
         """

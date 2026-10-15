@@ -372,6 +372,7 @@ def api_process_turn_fast(payload: FastTurnRequest, background_tasks: Background
             level=payload.level or 1,
         )
         ai_response = fast_result.get("ai_response", "")
+        adapted_level = fast_result.get("adapted_level", payload.level or 1)
         background_tasks.add_task(
             ai_engine.evaluate_turn_background,
             turn_id=turn_id,
@@ -380,7 +381,7 @@ def api_process_turn_fast(payload: FastTurnRequest, background_tasks: Background
             user_transcript=payload.user_transcript,
             conversation_history=payload.conversation_history,
             ai_response=ai_response,
-            level=payload.level or 1,
+            level=adapted_level,
             speech_metrics=payload.speech_metrics,
         )
         return {
@@ -388,6 +389,8 @@ def api_process_turn_fast(payload: FastTurnRequest, background_tasks: Background
             "ai_response": ai_response,
             "status": "processing_eval",
             "latency_mode": "fast_voice",
+            "adapted_level": adapted_level,
+            "level_reason": fast_result.get("level_reason", "hold"),
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "arc-agent",
+    "arc-reliability",
     "edge-tts>=7.2.8",
     "fastapi>=0.141.1",
     "google-genai>=0.1.1",

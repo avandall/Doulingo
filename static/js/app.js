@@ -693,6 +693,12 @@ class DuoSpeakApp {
       const aiResponse = data.ai_response || "Interesting! Please continue.";
       const turnId = data.turn_id;
 
+      if (data.adapted_level && data.adapted_level !== this.currentLevel) {
+        console.log(`[DuoSpeak] Adaptive Level adjusted: ${this.currentLevel} -> ${data.adapted_level} (${data.level_reason || ''})`);
+        this.currentLevel = data.adapted_level;
+        this.updateLevelDisplay();
+      }
+
       this.turnCount++;
 
       // Update conversation history
@@ -1176,13 +1182,20 @@ class DuoSpeakApp {
     if (xpEl) xpEl.textContent = `⚡ +${xp} XP`;
 
     if (sheet) {
+      if (this._feedbackTimer) clearTimeout(this._feedbackTimer);
       sheet.classList.add('active');
-      // Auto-close after 5 seconds
-      setTimeout(() => sheet.classList.remove('active'), 5000);
+      // Auto-close after 12 seconds so user has comfortable reading time
+      this._feedbackTimer = setTimeout(() => {
+        sheet.classList.remove('active');
+      }, 12000);
     }
   }
 
   closeFeedbackSheet() {
+    if (this._feedbackTimer) {
+      clearTimeout(this._feedbackTimer);
+      this._feedbackTimer = null;
+    }
     const sheet = document.getElementById('feedback-sheet');
     if (sheet) sheet.classList.remove('active');
   }
@@ -1744,11 +1757,13 @@ class DuoSpeakApp {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          scenario_id: this.currentDetScenario ? this.currentDetScenario.id : 'det_childhood_memory',
+          scenario_id: this.currentDetScenario ? this.currentDetScenario.id : (this.currentScenario ? this.currentScenario.id : 'det_childhood_memory'),
           user_speech: speechText,
           duration_seconds: durationSecs,
           mode: mode || 'read_then_speak',
-          wpm, pause_count: 0, filler_count: fillerCount
+          wpm, pause_count: 0, filler_count: fillerCount,
+          conversation_history: this.conversationHistory,
+          character_id: this.selectedCharacter ? this.selectedCharacter.id : null
         })
       });
 
@@ -1789,7 +1804,37 @@ class DuoSpeakApp {
     setEl('det-ac-pauses', `${ac.pause_count || 0} pauses`);
     setEl('det-ac-fillers', `${ac.filler_count || 0} fillers`);
     setEl('det-ac-diagnosis', ac.rhythm_diagnosis || 'Natural, flowing speech.');
-    setEl('det-report-critique', data.examiner_critique || 'Good overall performance. Keep practicing!');
+
+    const critiqueEl = document.getElementById('det-report-critique');
+    if (critiqueEl) {
+      const sections = data.examiner_critique_sections;
+      if (sections && (sections.interaction || sections.grammar_vocab || sections.fluency || sections.advice)) {
+        critiqueEl.innerHTML = `
+          <div class="critique-grid">
+            <div class="critique-card interaction">
+              <div class="critique-card-label">🎭 Phản xạ & Tương tác</div>
+              <div class="critique-card-text">${sections.interaction || 'Phản xạ giao tiếp tự nhiên và đúng ngữ cảnh.'}</div>
+            </div>
+            <div class="critique-card grammar">
+              <div class="critique-card-label">🎯 Ngữ pháp & Vốn từ</div>
+              <div class="critique-card-text">${sections.grammar_vocab || 'Kiểm soát từ vựng và câu ổn định.'}</div>
+            </div>
+            <div class="critique-card fluency">
+              <div class="critique-card-label">⏱️ Độ trôi chảy & Nhịp điệu</div>
+              <div class="critique-card-text">${sections.fluency || 'Tốc độ WPM và độ liên tục phù hợp.'}</div>
+            </div>
+            <div class="critique-card advice">
+              <div class="critique-card-label">💡 Lời khuyên bứt phá</div>
+              <div class="critique-card-text">${sections.advice || 'Tiếp tục luyện tập mở rộng ý tưởng.'}</div>
+            </div>
+          </div>
+        `;
+      } else {
+        const rawCritique = (data.examiner_critique || 'Good overall performance. Keep practicing!')
+          .replace(/###\s*(.*?)\n/g, '<strong style="color:var(--emerald);display:block;margin-top:10px;font-size:13px;">$1</strong>');
+        critiqueEl.innerHTML = `<div class="critique-text">${rawCritique}</div>`;
+      }
+    }
     setEl('det-report-sample', data.sample_native_response || 'Sample response coming soon.');
 
     const upgradesEl = document.getElementById('det-report-upgrades');
@@ -2181,7 +2226,10 @@ class DuoSpeakApp {
 
     // === MIC ===
     const btnMic = document.getElementById('btn-mic-toggle');
-    if (btnMic) btnMic.addEventListener('click', () => this.speechHandler.toggleListening());
+    if (btnMic) btnMic.addEventListener('click', () => {
+      this.closeFeedbackSheet();
+      this.speechHandler.toggleListening();
+    });
     const btnCancelMic = document.getElementById('btn-cancel-mic');
     if (btnCancelMic) btnCancelMic.addEventListener('click', () => {
       if (window.duoAudio) window.duoAudio.playClick();
@@ -2253,6 +2301,8 @@ class DuoSpeakApp {
     // === FEEDBACK SHEET ===
     const btnContinueFeedback = document.getElementById('btn-continue-feedback');
     if (btnContinueFeedback) btnContinueFeedback.addEventListener('click', () => this.closeFeedbackSheet());
+    const btnCloseFeedback = document.getElementById('btn-close-feedback');
+    if (btnCloseFeedback) btnCloseFeedback.addEventListener('click', () => this.closeFeedbackSheet());
 
     // === VICTORY SCREEN ===
     const btnVictoryCont = document.getElementById('btn-victory-continue');

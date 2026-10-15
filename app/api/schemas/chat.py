@@ -68,3 +68,5 @@ class DetSpeechEvalRequest(BaseModel):
     wpm: int | None = None
     pause_count: int | None = None
     filler_count: int | None = None
+    conversation_history: list[dict[str, str]] | None = None
+    character_id: str | None = None

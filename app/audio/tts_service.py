@@ -462,7 +462,12 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
     # 2. Try Edge-TTS async stream (<300ms initial chunk)
     try:
         chunk_count = 0
-        async for chunk in stream_edge_tts(text, char_id):
+        edge_gen = stream_edge_tts(text, char_id).__aiter__()
+        # Fast-timeout on initial connection / first audio chunk:
+        first_chunk = await asyncio.wait_for(edge_gen.__anext__(), timeout=2.0)
+        chunk_count += 1
+        yield first_chunk
+        async for chunk in edge_gen:
             if is_cancelled and await _check_cancelled(is_cancelled):
                 logger.info("[Edge-TTS] Stream cancelled by client disconnect.")
                 return
@@ -470,6 +475,9 @@ async def stream_tts_mp3_chunks(text: str, char_id: str = "lily", tld: str = "co
             yield chunk
         if chunk_count > 0:
             logger.info(f"Successfully streamed {chunk_count} audio chunks via Edge-TTS")
+            return
+    except StopAsyncIteration:
+        if chunk_count > 0:
             return
     except Exception as e:
         logger.warning(f"[TTS Service] Edge-TTS stream warning ({e}), falling back to gTTS...")
@@ -611,7 +619,7 @@ def generate_tts_mp3(text: str, char_id: str = "lily", tld: str = "com") -> io.B
         profile = CHARACTER_VOICE_MAP.get(char_id, CHARACTER_VOICE_MAP["lily"])
         t0 = time.time()
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            mp3_bytes = executor.submit(lambda: asyncio.run(_generate_edge_tts_async(text, char_id))).result(timeout=7)
+            mp3_bytes = executor.submit(lambda: asyncio.run(_generate_edge_tts_async(text, char_id))).result(timeout=2.0)
             latency_ms = (time.time() - t0) * 1000
             if mp3_bytes and len(mp3_bytes) > 500:
                 log_api_trace("Edge-TTS", profile["azure_voice"], "free", 200, latency_ms, step="TTS_Fallback")

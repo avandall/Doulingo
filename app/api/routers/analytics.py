@@ -52,5 +52,7 @@ async def api_det_evaluate_speech(payload: DetSpeechEvalRequest):
         wpm=payload.wpm,
         pause_count=payload.pause_count,
         filler_count=payload.filler_count,
+        conversation_history=payload.conversation_history,
+        character_id=payload.character_id,
     )
     return result

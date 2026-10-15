@@ -1,0 +1,14 @@
+trace: data/real_doulingo_chat_trace.json
+determinism_level: L1
+faults:
+- step: 0
+  tool: rag_retrieve_dialogues
+  type: database_error
+  params:
+    error: "OperationalError: connection to PostgreSQL server lost"
+violated: INV-CHAT-001
+reproduce_rate: 0.85
+confidence_interval:
+- 0.621
+- 0.968
+cost_usd: 0.045

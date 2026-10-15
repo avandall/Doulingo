@@ -438,7 +438,10 @@
         <span class="feedback-emoji" id="feedback-emoji">🎉</span>
         <span class="feedback-title" id="feedback-title-text">Great Speaking!</span>
       </div>
-      <span class="feedback-score-badge" id="feedback-score-badge">+10 XP</span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="feedback-score-badge" id="feedback-score-badge">+10 XP</span>
+        <button class="btn-close-sheet" id="btn-close-feedback" aria-label="Close feedback sheet">✕</button>
+      </div>
     </div>
 
     <div class="native-rewrite-box">
@@ -941,7 +944,7 @@
       <!-- Examiner Critique -->
       <div class="examiner-critique" style="margin-bottom:16px;">
         <div class="critique-title">👨‍🏫 Examiner Critique</div>
-        <p class="critique-text" id="det-report-critique"></p>
+        <div id="det-report-critique"></div>
       </div>
 
       <!-- Sentence Upgrades -->
