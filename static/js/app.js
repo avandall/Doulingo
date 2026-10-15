@@ -1755,59 +1755,70 @@ class DuoSpeakApp {
     const phoneticEl = document.getElementById('word-phonetic');
     const labelEl = document.getElementById('word-translation-label');
     const transEl = document.getElementById('word-translation-text');
+    const saveBtn = document.getElementById('btn-save-vocab-word');
 
     if (!modal) return;
-    if (titleEl) titleEl.textContent = word;
-    if (phoneticEl) phoneticEl.textContent = `/${word}/`;
+    const cleanWord = word.trim();
+    if (titleEl) titleEl.textContent = cleanWord;
+    if (phoneticEl) phoneticEl.textContent = `/${cleanWord}/`;
     if (transEl) transEl.textContent = 'Loading...';
     if (labelEl) {
-      const labels = { vi: 'Vietnamese', 'en-def': 'English Definition', es: 'Spanish', fr: 'French' };
-      labelEl.textContent = labels[this.targetLang] || 'Translation';
+      const labels = { vi: 'Vietnamese', 'en-def': 'English Definition', es: 'Spanish', fr: 'French', ja: 'Japanese', ko: 'Korean', zh: 'Chinese', de: 'German' };
+      labelEl.textContent = labels[this.currentUser?.mother_tongue || this.targetLang] || 'Translation';
     }
+
+    this.currentWordLookup = {
+      word: cleanWord,
+      phonetic: `/${cleanWord}/`,
+      translation: ''
+    };
+
+    const isAlreadySaved = Array.isArray(this.savedWords) && this.savedWords.some(w => (w.word || '').toLowerCase() === cleanWord.toLowerCase());
+    if (saveBtn) {
+      if (isAlreadySaved) {
+        saveBtn.innerHTML = '<span>✓ Saved</span>';
+        saveBtn.disabled = true;
+        saveBtn.style.opacity = '0.6';
+        saveBtn.style.cursor = 'default';
+      } else {
+        saveBtn.innerHTML = '<span>+ Save to Vocab</span>';
+        saveBtn.disabled = false;
+        saveBtn.style.opacity = '1';
+        saveBtn.style.cursor = 'pointer';
+      }
+    }
+
     modal.classList.add('active');
 
-    const cacheKey = `${word.toLowerCase()}_${this.targetLang}`;
+    const updateLookupData = (phonetic, translation) => {
+      this.currentWordLookup.phonetic = phonetic;
+      this.currentWordLookup.translation = translation;
+      if (phoneticEl) phoneticEl.textContent = phonetic;
+      if (transEl) transEl.textContent = translation;
+    };
+
+    const cacheKey = `${cleanWord.toLowerCase()}_${this.targetLang}`;
     if (this.wordCache.has(cacheKey)) {
       const cached = this.wordCache.get(cacheKey);
-      if (phoneticEl) phoneticEl.textContent = cached.phonetic || `/${word}/`;
-      if (transEl) transEl.textContent = cached.translation;
+      updateLookupData(cached.phonetic || `/${cleanWord}/`, cached.translation || cleanWord);
       return;
     }
 
     // TASK-005: 0ms SQLite WASM In-RAM Lookup
     if (window.dictWasm && typeof window.dictWasm.lookup === 'function') {
-      const wasmMatch = window.dictWasm.lookup(word);
+      const wasmMatch = window.dictWasm.lookup(cleanWord);
       if (wasmMatch && wasmMatch.translation) {
-        if (phoneticEl) phoneticEl.textContent = wasmMatch.phonetic || `/${word}/`;
-        if (transEl) transEl.textContent = wasmMatch.translation;
+        updateLookupData(wasmMatch.phonetic || `/${cleanWord}/`, wasmMatch.translation);
         this.wordCache.set(cacheKey, wasmMatch);
-        this.updateVocabBadgeCount();
         return;
       }
     }
 
     try {
-      const res = await fetch(this.apiUrl(`/api/translate_word?word=${encodeURIComponent(word)}&target_lang=${this.targetLang}`));
+      const res = await fetch(this.apiUrl(`/api/translate_word?word=${encodeURIComponent(cleanWord)}&target_lang=${this.targetLang}`));
       const data = await res.json();
-      if (phoneticEl) phoneticEl.textContent = data.phonetic || `/${word}/`;
-      if (transEl) transEl.textContent = data.translation || word;
+      updateLookupData(data.phonetic || `/${cleanWord}/`, data.translation || cleanWord);
       this.wordCache.set(cacheKey, data);
-
-      // Save to personal notebook if user is authenticated
-      if (this.authToken && data.translation) {
-        fetch(this.apiUrl('/api/user/vocabulary'), {
-          method: 'POST',
-          headers: this.getAuthHeaders(),
-          body: JSON.stringify({
-            word: word.trim(),
-            translation: data.translation,
-            phonetic: data.phonetic || `/${word}/`,
-            target_lang: this.currentUser?.mother_tongue || this.targetLang || 'en'
-          })
-        }).then(() => this.updateVocabBadgeCount()).catch(() => {});
-      } else {
-        await this.updateVocabBadgeCount();
-      }
     } catch (e) {
       if (transEl) transEl.textContent = 'Lookup failed. Try again.';
     }
@@ -2291,9 +2302,36 @@ class DuoSpeakApp {
       if (!res.ok) throw new Error('Weekly report API failed');
       const data = await res.json();
 
-      const band = parseFloat(data.overall_band || 6.0).toFixed(1);
       const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      const hasData = Boolean(data.has_data && (data.evaluations_count > 0 || data.overall_band));
 
+      if (!hasData) {
+        setEl('weekly-overall-band', '—');
+        setEl('weekly-cefr-badge', 'No Sessions Yet');
+        setEl('weekly-summary-text', data.summary || 'No speaking evaluations recorded yet. Complete a speaking session to generate your performance report!');
+        setEl('weekly-strongest-badge', '—');
+        setEl('weekly-weakest-badge', '—');
+
+        const resetBar = (barId, valId) => {
+          const barEl = document.getElementById(barId);
+          const valEl = document.getElementById(valId);
+          if (barEl) barEl.style.width = '0%';
+          if (valEl) valEl.textContent = 'No data';
+        };
+        resetBar('weekly-bar-fluency',       'weekly-val-fluency');
+        resetBar('weekly-bar-lexical',       'weekly-val-lexical');
+        resetBar('weekly-bar-grammar',       'weekly-val-grammar');
+        resetBar('weekly-bar-pronunciation', 'weekly-val-pronunciation');
+
+        const recList = document.getElementById('weekly-recommendations-list');
+        if (recList) recList.innerHTML = '<li style="color:var(--text-muted);font-style:italic;">Complete your first speaking session to unlock personalized AI recommendations.</li>';
+
+        const errList = document.getElementById('weekly-recurring-errors-list');
+        if (errList) errList.innerHTML = '<span style="color:var(--text-muted);font-style:italic;font-size:13px;">No session errors recorded yet.</span>';
+        return;
+      }
+
+      const band = parseFloat(data.overall_band || 6.0).toFixed(1);
       setEl('weekly-overall-band', band);
 
       const b = parseFloat(band);
@@ -2322,6 +2360,7 @@ class DuoSpeakApp {
       setBar('weekly-bar-lexical',       'weekly-val-lexical',       axes.lexical);
       setBar('weekly-bar-grammar',       'weekly-val-grammar',       axes.grammar);
       setBar('weekly-bar-pronunciation', 'weekly-val-pronunciation', axes.pronunciation);
+
 
       const recList = document.getElementById('weekly-recommendations-list');
       if (recList) {
@@ -2457,18 +2496,49 @@ class DuoSpeakApp {
   // ============================================================
   bindEvents() {
 
-    // === NAVBAR ===
-    const checkGuestAccess = (featureName) => {
+    // === NAVBAR & ANCHORED TEST-MODE NOTIFICATION ===
+    const showTestModePopover = (targetBtn, featureName) => {
+      const popover = document.getElementById('nav-feature-popover');
+      if (!popover) return;
+      const titleEl = document.getElementById('nav-popover-title');
+      const descEl = document.getElementById('nav-popover-desc');
+      const arrow = document.getElementById('nav-popover-arrow');
+
+      if (titleEl) titleEl.textContent = `${featureName} (Sign In Required)`;
+      if (descEl) descEl.textContent = `${featureName} is stored in your personal account. Please sign in or register to track your data.`;
+
+      const rect = targetBtn.getBoundingClientRect();
+      const popoverWidth = 290;
+      let left = rect.left + rect.width / 2 - popoverWidth / 2;
+      left = Math.max(12, Math.min(window.innerWidth - popoverWidth - 12, left));
+      const top = rect.bottom + 10;
+
+      popover.style.top = `${top}px`;
+      popover.style.left = `${left}px`;
+      if (arrow) {
+        const arrowLeft = rect.left + rect.width / 2 - left - 6;
+        arrow.style.left = `${Math.max(16, Math.min(popoverWidth - 26, arrowLeft))}px`;
+      }
+
+      popover.style.display = 'block';
+
+      if (this._popoverTimer) clearTimeout(this._popoverTimer);
+      this._popoverTimer = setTimeout(() => {
+        popover.style.display = 'none';
+      }, 7000);
+    };
+
+    const checkGuestAccess = (targetBtn, featureName) => {
       if (this.currentMode === 'guest' || !this.authToken) {
-        this.showToast(`${featureName} is only available for logged-in accounts. Please sign in or register.`);
+        showTestModePopover(targetBtn, featureName);
         return false;
       }
       return true;
     };
 
     const btnWeekly = document.getElementById('btn-open-weekly-report');
-    if (btnWeekly) btnWeekly.addEventListener('click', () => {
-      if (!checkGuestAccess('Weekly Reports')) return;
+    if (btnWeekly) btnWeekly.addEventListener('click', (e) => {
+      if (!checkGuestAccess(e.currentTarget, 'Weekly Reports')) return;
       this.openWeeklyReport();
     });
 
@@ -2478,8 +2548,8 @@ class DuoSpeakApp {
     if (btnCloseWeeklyBtm) btnCloseWeeklyBtm.addEventListener('click', () => document.getElementById('modal-weekly-report').classList.remove('active'));
 
     const btnErr = document.getElementById('btn-open-error-journal');
-    if (btnErr) btnErr.addEventListener('click', () => {
-      if (!checkGuestAccess('Error Journal')) return;
+    if (btnErr) btnErr.addEventListener('click', (e) => {
+      if (!checkGuestAccess(e.currentTarget, 'Error Journal')) return;
       this.openErrorJournal();
     });
     const btnCloseErr = document.getElementById('btn-close-error-journal');
@@ -2488,8 +2558,8 @@ class DuoSpeakApp {
     if (btnCloseErrBtm) btnCloseErrBtm.addEventListener('click', () => document.getElementById('modal-error-journal').classList.remove('active'));
 
     const btnVocab = document.getElementById('btn-open-vocab-modal');
-    if (btnVocab) btnVocab.addEventListener('click', () => {
-      if (!checkGuestAccess('Vocabulary Book')) return;
+    if (btnVocab) btnVocab.addEventListener('click', (e) => {
+      if (!checkGuestAccess(e.currentTarget, 'Vocabulary Book')) return;
       if (window.duoAudio) window.duoAudio.playClick();
       this.openVocabBookModal();
     });
@@ -2497,6 +2567,80 @@ class DuoSpeakApp {
     if (btnCloseVocab) btnCloseVocab.addEventListener('click', () => document.getElementById('modal-vocab-book').classList.remove('active'));
     const btnCloseVocabBtm = document.getElementById('btn-close-vocab-bottom');
     if (btnCloseVocabBtm) btnCloseVocabBtm.addEventListener('click', () => document.getElementById('modal-vocab-book').classList.remove('active'));
+
+    const btnClosePopover = document.getElementById('btn-close-nav-popover');
+    if (btnClosePopover) btnClosePopover.addEventListener('click', () => {
+      const popover = document.getElementById('nav-feature-popover');
+      if (popover) popover.style.display = 'none';
+    });
+
+    const btnPopoverSignin = document.getElementById('btn-popover-signin');
+    if (btnPopoverSignin) btnPopoverSignin.addEventListener('click', () => {
+      const popover = document.getElementById('nav-feature-popover');
+      if (popover) popover.style.display = 'none';
+      this.showAuthModal('login');
+    });
+
+    document.addEventListener('click', (e) => {
+      const popover = document.getElementById('nav-feature-popover');
+      if (popover && popover.style.display === 'block') {
+        if (!popover.contains(e.target) && !e.target.closest('#btn-open-weekly-report, #btn-open-error-journal, #btn-open-vocab-modal')) {
+          popover.style.display = 'none';
+        }
+      }
+    });
+
+    // Save Word button in Word Lookup modal
+    const btnSaveWord = document.getElementById('btn-save-vocab-word');
+    if (btnSaveWord) {
+      btnSaveWord.addEventListener('click', async () => {
+        if (!this.currentWordLookup || !this.currentWordLookup.word) return;
+        if (this.currentMode === 'guest' || !this.authToken) {
+          this.showToast('Please sign in or register to save vocabulary.');
+          return;
+        }
+        if (btnSaveWord.disabled) return;
+
+        try {
+          btnSaveWord.innerHTML = '<span>Saving...</span>';
+          btnSaveWord.disabled = true;
+
+          const res = await fetch(this.apiUrl('/api/user/vocabulary'), {
+            method: 'POST',
+            headers: this.getAuthHeaders(),
+            body: JSON.stringify({
+              word: this.currentWordLookup.word,
+              translation: this.currentWordLookup.translation || this.currentWordLookup.word,
+              phonetic: this.currentWordLookup.phonetic || `/${this.currentWordLookup.word}/`,
+              target_lang: this.currentUser?.mother_tongue || this.targetLang || 'en'
+            })
+          });
+
+          if (res.ok) {
+            btnSaveWord.innerHTML = '<span>✓ Saved</span>';
+            btnSaveWord.style.opacity = '0.6';
+            btnSaveWord.style.cursor = 'default';
+            if (!this.savedWords) this.savedWords = [];
+            this.savedWords.push({
+              word: this.currentWordLookup.word,
+              translation: this.currentWordLookup.translation,
+              phonetic: this.currentWordLookup.phonetic
+            });
+            await this.updateVocabBadgeCount();
+            this.showToast(`Saved "${this.currentWordLookup.word}" to Vocabulary Book!`);
+          } else {
+            btnSaveWord.innerHTML = '<span>+ Save to Vocab</span>';
+            btnSaveWord.disabled = false;
+            this.showToast('Could not save word. Please try again.');
+          }
+        } catch (e) {
+          btnSaveWord.innerHTML = '<span>+ Save to Vocab</span>';
+          btnSaveWord.disabled = false;
+          this.showToast('Error saving word.');
+        }
+      });
+    }
+
 
 
     const searchVocab = document.getElementById('input-search-vocab');

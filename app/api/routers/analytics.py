@@ -66,9 +66,53 @@ async def api_det_evaluate_speech(
         custom_keys=custom_keys,
     )
 
-    # Automatically record grammar/expression upgrades into user's personal Error Journal
+    # Automatically record evaluation record and errors into user's personal profile
     if user and isinstance(user, dict) and user.get("id"):
-        user_id = user["id"]
+        user_id = str(user["id"])
+
+        # 1. Log evaluation session to history and update profile bands
+        try:
+            det_score = float(result.get("det_score") or 60)
+            ielts_band = float(result.get("ielts_band") or round(max(3.0, min(9.0, det_score / 15.0)), 1))
+            f_score = float(result.get("fluency_score") or 60)
+            g_score = float(result.get("grammar_score") or 60)
+            v_score = float(result.get("vocabulary_score") or 60)
+            c_score = float(result.get("coherence_score") or 60)
+
+            fluency_band = round(max(1.0, min(9.0, f_score / 100.0 * 9.0)), 1)
+            grammar_band = round(max(1.0, min(9.0, g_score / 100.0 * 9.0)), 1)
+            lexical_band = round(max(1.0, min(9.0, v_score / 100.0 * 9.0)), 1)
+            pronunciation_band = round(max(1.0, min(9.0, c_score / 100.0 * 9.0)), 1)
+
+            from app.analytics.reporting import save_tier2_evaluation
+            save_tier2_evaluation(
+                user_id=user_id,
+                score_result={
+                    "fluency_score": fluency_band,
+                    "lexical_score": lexical_band,
+                    "grammar_score": grammar_band,
+                    "pronunciation_score": pronunciation_band,
+                    "raw_score": ielts_band,
+                },
+            )
+
+            from app.storage.db import get_user_profile, save_user_profile
+            cur_profile = get_user_profile(user_id)
+            save_user_profile(
+                user_id=user_id,
+                profile_data={
+                    "band_estimate_overall": ielts_band,
+                    "band_fluency": fluency_band,
+                    "band_lexical": lexical_band,
+                    "band_grammar": grammar_band,
+                    "band_pronunciation": pronunciation_band,
+                    "recurring_errors": cur_profile.get("recurring_errors", []),
+                },
+            )
+        except Exception as e:
+            logger.warning(f"[Analytics] Error saving tier2 evaluation record: {e}")
+
+        # 2. Record grammar upgrades into Error Journal
         upgrades = result.get("sentence_upgrades", [])
         if isinstance(upgrades, list):
             for up in upgrades:

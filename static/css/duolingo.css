@@ -3238,3 +3238,36 @@ body {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+/* ============================================================
+   NAVBAR FEATURE POPOVER (ANCHORED TEST MODE NOTIFICATION)
+   ============================================================ */
+.nav-feature-popover {
+  position: fixed;
+  z-index: 10000;
+  width: 290px;
+  background: rgba(13, 13, 24, 0.98);
+  border: 1.5px solid #f59e0b;
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: popoverFadeIn 0.18s ease-out;
+}
+
+.nav-feature-popover-arrow {
+  position: absolute;
+  top: -7px;
+  width: 12px;
+  height: 12px;
+  background: #0d0d18;
+  border-left: 1.5px solid #f59e0b;
+  border-top: 1.5px solid #f59e0b;
+  transform: rotate(45deg);
+}
+
+@keyframes popoverFadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

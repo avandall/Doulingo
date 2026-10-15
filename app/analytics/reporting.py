@@ -130,27 +130,33 @@ def generate_weekly_report(
         ]
         recommendations.append(f"Review recurring errors logged: {', '.join(error_strs[:3])}.")
 
-    summary = (
-        f"Weekly summary for user '{user_id}': {eval_count} evaluations completed over last {days} days. "
-        f"Overall estimated band: {overall_band}. Strongest area: {strongest_axis} ({axis_scores[strongest_axis]}), "
-        f"Target area: {weakest_axis} ({axis_scores[weakest_axis]})."
-    )
+    has_data = bool(eval_count > 0 or profile.get("updated_at"))
+
+    if has_data:
+        summary = (
+            f"Weekly summary for user '{user_id}': {eval_count} evaluations completed over last {days} days. "
+            f"Overall estimated band: {overall_band}. Strongest area: {strongest_axis} ({axis_scores[strongest_axis]}), "
+            f"Target area: {weakest_axis} ({axis_scores[weakest_axis]})."
+        )
+    else:
+        summary = f"No speaking evaluations recorded yet for '{user_id}'. Complete a speaking session to generate your performance report!"
 
     return {
         "user_id": user_id,
         "reporting_period_days": days,
         "evaluations_count": eval_count,
-        "overall_band": overall_band,
+        "has_data": has_data,
+        "overall_band": overall_band if has_data else None,
         "axes_scores": {
-            "fluency": avg_fluency,
-            "lexical": avg_lexical,
-            "grammar": avg_grammar,
-            "pronunciation": avg_pronunciation,
+            "fluency": avg_fluency if has_data else 0.0,
+            "lexical": avg_lexical if has_data else 0.0,
+            "grammar": avg_grammar if has_data else 0.0,
+            "pronunciation": avg_pronunciation if has_data else 0.0,
         },
-        "strongest_axis": strongest_axis,
-        "weakest_axis": weakest_axis,
+        "strongest_axis": strongest_axis if has_data else None,
+        "weakest_axis": weakest_axis if has_data else None,
         "recurring_errors": recurring_errors,
-        "recommendations": recommendations,
+        "recommendations": recommendations if has_data else ["Complete your first speaking session to receive personalized recommendations."],
         "summary": summary,
         "latest_evaluation": latest_eval,
     }

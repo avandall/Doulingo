@@ -521,7 +521,7 @@
   <!-- MODAL: Word Lookup -->
   <div class="modal-overlay" id="modal-word-lookup">
     <div class="modal-box" style="max-width:380px;text-align:center;" role="dialog" aria-modal="true" aria-labelledby="word-title">
-      <div class="modal-header" style="justify-content:flex-end;margin-bottom:12px;">
+      <div class="modal-header" style="justify-content:flex-end;margin-bottom:8px;">
         <button class="btn-close" id="btn-close-word-modal" aria-label="Close Word Lookup Modal">✕</button>
       </div>
       <div class="word-lookup-word" id="word-title">Word</div>
@@ -530,9 +530,33 @@
         <div class="word-lookup-lang-label" id="word-translation-label">Vietnamese</div>
         <div class="word-lookup-translation" id="word-translation-text">Loading...</div>
       </div>
-      <button class="btn btn-primary btn-full" id="btn-close-word-modal-2">Close</button>
+      <div style="display:flex;gap:10px;margin-top:14px;">
+        <button class="btn btn-primary" id="btn-save-vocab-word" style="flex:1;padding:10px;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;">
+          <span>+ Save to Vocab</span>
+        </button>
+        <button class="btn btn-secondary" id="btn-close-word-modal-2" style="flex:1;padding:10px;font-size:13.5px;">Close</button>
+      </div>
     </div>
   </div>
+
+  <!-- Anchored Test Mode Feature Popover -->
+  <div id="nav-feature-popover" class="nav-feature-popover" style="display:none;" role="alert">
+    <div class="nav-feature-popover-arrow" id="nav-popover-arrow"></div>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#f59e0b;">
+        <span>🔒</span>
+        <span id="nav-popover-title">Sign In Required</span>
+      </div>
+      <button id="btn-close-nav-popover" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:14px;padding:0 2px;" aria-label="Close">✕</button>
+    </div>
+    <p id="nav-popover-desc" style="margin:8px 0 12px;font-size:12.5px;line-height:1.45;color:#e2e8f0;text-align:left;">
+      This feature is saved to your personal account. Sign in or create an account to start tracking.
+    </p>
+    <div style="display:flex;gap:8px;">
+      <button class="btn" id="btn-popover-signin" style="flex:1;padding:7px 12px;font-size:12.5px;background:#f59e0b;color:#0b0b14;font-weight:700;border:none;border-radius:6px;cursor:pointer;">Sign In / Join</button>
+    </div>
+  </div>
+
 
   <!-- MODAL: Create Custom Topic -->
   <div class="modal-overlay" id="modal-custom-topic">
