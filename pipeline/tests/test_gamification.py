@@ -43,6 +43,16 @@ class TestStreakEngine:
         assert res2.current_streak == 1  # Streak stayed 1!
         assert res2.total_xp == 25  # XP still awarded!
 
+        # Invariant hardening: Even if in-memory last_completed_date is lost/tampered,
+        # daily_activities set MUST independently block duplicate streak increment
+        user = engine.get_or_create_user(user_id)
+        user.last_completed_date = None
+        res3 = engine.process_activity(
+            user_id=user_id, earned_xp=5, activity_timestamp=later_same_day
+        )
+        assert res3.streak_incremented is False
+        assert res3.same_day_duplicate is True
+
     def test_consecutive_day_increments_streak(self):
         engine = StreakEngine()
         user_id = "learner_003"
@@ -76,6 +86,10 @@ class TestStreakEngine:
         assert res_after_freeze.freeze_used is True
         assert res_after_freeze.streak_incremented is True
         assert res_after_freeze.current_streak == 2
+
+        # Verify streak freeze was consumed
+        user = engine.get_or_create_user(user_id)
+        assert user.freeze_count == 0
 
     def test_streak_resets_if_gap_exceeds_freeze(self):
         engine = StreakEngine()
