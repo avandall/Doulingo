@@ -4,10 +4,10 @@ Unified lightweight orchestrator (<50MB RAM footprint) coordinating
 Ingestion, Resilience, Dialogue FSM, and Gamification contexts.
 """
 
-from .app import UnifiedPronunciationGateway, SubmissionRequest, SubmissionResponse
+from .app import SubmissionRequest, SubmissionResponse, UnifiedPronunciationGateway
 
 __all__ = [
-    "UnifiedPronunciationGateway",
     "SubmissionRequest",
     "SubmissionResponse",
+    "UnifiedPronunciationGateway",
 ]

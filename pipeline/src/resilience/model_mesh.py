@@ -13,10 +13,12 @@ from __future__ import annotations
 
 import enum
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Callable, Optional, Any
-from .circuit_breaker import CircuitBreaker, CircuitBreakerOpenException
+from typing import Any, Optional
+
 from ..dialogue.fsm_engine import DialogueFSMEngine, FSMResponse
+from .circuit_breaker import CircuitBreaker, CircuitBreakerOpenException
 
 
 class ModelProvider(str, enum.Enum):
@@ -34,7 +36,7 @@ class ExecutionResult:
     model_name: str
     latency_ms: float
     is_fallback: bool
-    fsm_response: Optional[FSMResponse] = None
+    fsm_response: FSMResponse | None = None
 
 
 class ModelMeshRouter:
@@ -60,8 +62,8 @@ class ModelMeshRouter:
 
     def __init__(
         self,
-        fsm_engine: Optional[DialogueFSMEngine] = None,
-        circuit_breaker: Optional[CircuitBreaker] = None,
+        fsm_engine: DialogueFSMEngine | None = None,
+        circuit_breaker: CircuitBreaker | None = None,
     ) -> None:
         self.fsm_engine = fsm_engine or DialogueFSMEngine()
         self.circuit_breaker = circuit_breaker or CircuitBreaker(
@@ -72,9 +74,9 @@ class ModelMeshRouter:
     def route_turn(
         self,
         scenario_id: str,
-        current_node_id: Optional[str],
+        current_node_id: str | None,
         user_text: str,
-        cloud_caller: Optional[Callable[[str, str], str]] = None,
+        cloud_caller: Callable[[str, str], str] | None = None,
         preferred_provider: ModelProvider = ModelProvider.GROQ,
     ) -> ExecutionResult:
         """Executes a dialogue turn with automated circuit breaker failover.
@@ -91,7 +93,9 @@ class ModelMeshRouter:
         """
         t0 = time.time()
         selected_model = (
-            self.GROQ_MODELS[0] if preferred_provider == ModelProvider.GROQ else self.GEMINI_MODELS[0]
+            self.GROQ_MODELS[0]
+            if preferred_provider == ModelProvider.GROQ
+            else self.GEMINI_MODELS[0]
         )
 
         # Attempt primary Cloud LLM execution via Circuit Breaker
@@ -116,9 +120,7 @@ class ModelMeshRouter:
                 pass
 
         # Tertiary Fallback: Immediate In-Memory FSM (Sub-15ms, 0ms network latency)
-        t_fsm_start = time.time()
         fsm_res = self.fsm_engine.process_turn(scenario_id, current_node_id, user_text)
-        fsm_latency_ms = (time.time() - t_fsm_start) * 1000.0
         total_latency_ms = (time.time() - t0) * 1000.0
 
         return ExecutionResult(

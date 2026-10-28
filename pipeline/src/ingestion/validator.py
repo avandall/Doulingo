@@ -47,7 +47,9 @@ class AudioPayloadValidator:
     def validate_duration(cls, duration_seconds: float) -> None:
         """Validates audio duration in seconds."""
         if duration_seconds <= 0.0:
-            raise ValidationError("Audio duration must be greater than 0 seconds", status_code=400)
+            raise ValidationError(
+                "Audio duration must be greater than 0 seconds", status_code=400
+            )
         if duration_seconds > cls.MAX_DURATION_SECONDS:
             raise ValidationError(
                 f"Audio duration ({duration_seconds:.1f}s) exceeds maximum allowed 30.0 seconds",
@@ -62,7 +64,9 @@ class AudioPayloadValidator:
         Raises ValidationError if format is invalid or unsupported.
         """
         if len(audio_bytes) < 12:
-            raise ValidationError("Audio payload header too short to verify format", status_code=400)
+            raise ValidationError(
+                "Audio payload header too short to verify format", status_code=400
+            )
 
         # Check OGG / Opus
         if audio_bytes.startswith(cls.OGG_MAGIC):
@@ -99,7 +103,7 @@ class AudioPayloadValidator:
     def validate_all(
         cls,
         audio_bytes: bytes,
-        reported_duration: Optional[float] = None,
+        reported_duration: float | None = None,
     ) -> str:
         """Runs full validation pipeline within < 15ms.
 

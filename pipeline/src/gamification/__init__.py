@@ -6,14 +6,14 @@ Enforces:
 - Transactional Outbox pattern for asynchronous event consistency
 """
 
+from .outbox import OutboxEvent, OutboxEventStatus, TransactionalOutbox
 from .streak_engine import StreakEngine, StreakState, StreakUpdateResult
-from .outbox import TransactionalOutbox, OutboxEvent, OutboxEventStatus
 
 __all__ = [
+    "OutboxEvent",
+    "OutboxEventStatus",
     "StreakEngine",
     "StreakState",
     "StreakUpdateResult",
     "TransactionalOutbox",
-    "OutboxEvent",
-    "OutboxEventStatus",
 ]

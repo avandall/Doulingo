@@ -1,9 +1,11 @@
 """Tests for Gamification and Monotonic Streak Bounded Context."""
 
 import datetime
+
 import pytest
+
+from pipeline.src.gamification.outbox import OutboxEventStatus, TransactionalOutbox
 from pipeline.src.gamification.streak_engine import StreakEngine
-from pipeline.src.gamification.outbox import TransactionalOutbox, OutboxEventStatus
 
 
 class TestStreakEngine:
@@ -24,13 +26,17 @@ class TestStreakEngine:
         now = datetime.datetime.now(datetime.timezone.utc)
 
         # First turn today
-        res1 = engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=now)
+        res1 = engine.process_activity(
+            user_id=user_id, earned_xp=10, activity_timestamp=now
+        )
         assert res1.streak_incremented is True
         assert res1.current_streak == 1
 
         # Second turn today (e.g. 1 hour later)
         later_same_day = now + datetime.timedelta(hours=2)
-        res2 = engine.process_activity(user_id=user_id, earned_xp=15, activity_timestamp=later_same_day)
+        res2 = engine.process_activity(
+            user_id=user_id, earned_xp=15, activity_timestamp=later_same_day
+        )
 
         assert res2.streak_incremented is False
         assert res2.same_day_duplicate is True
@@ -43,10 +49,14 @@ class TestStreakEngine:
         day1 = datetime.datetime(2026, 10, 27, 20, 0, 0, tzinfo=datetime.timezone.utc)
         day2 = datetime.datetime(2026, 10, 28, 20, 0, 0, tzinfo=datetime.timezone.utc)
 
-        res1 = engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=day1)
+        res1 = engine.process_activity(
+            user_id=user_id, earned_xp=10, activity_timestamp=day1
+        )
         assert res1.current_streak == 1
 
-        res2 = engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=day2)
+        res2 = engine.process_activity(
+            user_id=user_id, earned_xp=10, activity_timestamp=day2
+        )
         assert res2.streak_incremented is True
         assert res2.current_streak == 2
 
@@ -54,10 +64,14 @@ class TestStreakEngine:
         engine = StreakEngine()
         user_id = "learner_004"
         day1 = datetime.datetime(2026, 10, 25, 20, 0, 0, tzinfo=datetime.timezone.utc)
-        day3 = datetime.datetime(2026, 10, 27, 20, 0, 0, tzinfo=datetime.timezone.utc)  # Missed Oct 26
+        day3 = datetime.datetime(
+            2026, 10, 27, 20, 0, 0, tzinfo=datetime.timezone.utc
+        )  # Missed Oct 26
 
         engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=day1)
-        res_after_freeze = engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=day3)
+        res_after_freeze = engine.process_activity(
+            user_id=user_id, earned_xp=10, activity_timestamp=day3
+        )
 
         assert res_after_freeze.freeze_used is True
         assert res_after_freeze.streak_incremented is True
@@ -73,7 +87,9 @@ class TestStreakEngine:
         day4 = datetime.datetime(2026, 10, 24, 20, 0, 0, tzinfo=datetime.timezone.utc)
 
         engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=day1)
-        res_reset = engine.process_activity(user_id=user_id, earned_xp=10, activity_timestamp=day4)
+        res_reset = engine.process_activity(
+            user_id=user_id, earned_xp=10, activity_timestamp=day4
+        )
 
         assert res_reset.current_streak == 1  # Reset to 1
 

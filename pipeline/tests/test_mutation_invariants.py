@@ -10,13 +10,14 @@ Validates the 5 Vital Invariants against AST mutation testing:
 
 import datetime
 import time
+
 import pytest
 
-from pipeline.src.ingestion.validator import AudioPayloadValidator, ValidationError
-from pipeline.src.ingestion.idempotency import IdempotencyStore
-from pipeline.src.resilience.circuit_breaker import CircuitBreaker, CircuitState
 from pipeline.src.gamification.streak_engine import StreakEngine
-from pipeline.src.gateway.app import UnifiedPronunciationGateway, SubmissionRequest
+from pipeline.src.gateway.app import SubmissionRequest, UnifiedPronunciationGateway
+from pipeline.src.ingestion.idempotency import IdempotencyStore
+from pipeline.src.ingestion.validator import AudioPayloadValidator, ValidationError
+from pipeline.src.resilience.circuit_breaker import CircuitBreaker, CircuitState
 
 
 class TestMutationInvariants:
@@ -120,11 +121,15 @@ class TestMutationInvariants:
         user_id = "mut_user_5"
 
         # Monday 23:00 local time
-        t_monday = datetime.datetime(2026, 10, 26, 16, 0, 0, tzinfo=datetime.timezone.utc)
+        t_monday = datetime.datetime(
+            2026, 10, 26, 16, 0, 0, tzinfo=datetime.timezone.utc
+        )
         res_mon = engine.process_activity(user_id, activity_timestamp=t_monday)
         assert res_mon.current_streak == 1
 
         # Tuesday 01:00 local time (only 2 hours later, but next calendar day!)
-        t_tuesday = datetime.datetime(2026, 10, 26, 18, 0, 0, tzinfo=datetime.timezone.utc)
+        t_tuesday = datetime.datetime(
+            2026, 10, 26, 18, 0, 0, tzinfo=datetime.timezone.utc
+        )
         res_tue = engine.process_activity(user_id, activity_timestamp=t_tuesday)
         assert res_tue.current_streak == 2  # Monotonic increment verified!

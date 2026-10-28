@@ -24,13 +24,13 @@ class IdempotencyRecord:
     """Represents a cached or in-flight submission idempotency record."""
 
     __slots__ = (
-        "key",
-        "user_id",
         "audio_hash",
-        "status",
-        "response_payload",
-        "created_at",
         "completed_at",
+        "created_at",
+        "key",
+        "response_payload",
+        "status",
+        "user_id",
     )
 
     def __init__(
@@ -39,7 +39,7 @@ class IdempotencyRecord:
         user_id: str,
         audio_hash: str,
         status: IdempotencyStatus = IdempotencyStatus.PENDING,
-        response_payload: Optional[dict[str, Any]] = None,
+        response_payload: dict[str, Any] | None = None,
     ) -> None:
         self.key = key
         self.user_id = user_id
@@ -47,7 +47,7 @@ class IdempotencyRecord:
         self.status = status
         self.response_payload = response_payload
         self.created_at = time.time()
-        self.completed_at: Optional[float] = None
+        self.completed_at: float | None = None
 
     def mark_completed(self, response_payload: dict[str, Any]) -> None:
         self.status = IdempotencyStatus.COMPLETED
@@ -66,11 +66,15 @@ class IdempotencyStore:
     and evicting oldest completed records when capacity is reached.
     """
 
-    def __init__(self, max_records: int = 10_000, ttl_seconds: float = 86_400.0) -> None:
+    def __init__(
+        self, max_records: int = 10_000, ttl_seconds: float = 86_400.0
+    ) -> None:
         self.max_records = max_records
         self.ttl_seconds = ttl_seconds
         self._lock = threading.RLock()
-        self._records: collections.OrderedDict[str, IdempotencyRecord] = collections.OrderedDict()
+        self._records: collections.OrderedDict[str, IdempotencyRecord] = (
+            collections.OrderedDict()
+        )
 
     @staticmethod
     def compute_audio_hash(audio_bytes: bytes) -> str:
@@ -82,7 +86,7 @@ class IdempotencyStore:
         user_id: str,
         idempotency_key: str,
         audio_hash: str,
-    ) -> tuple[bool, Optional[dict[str, Any]]]:
+    ) -> tuple[bool, dict[str, Any] | None]:
         """Checks if a request is already processed or acquires a pending lock.
 
         Returns:
@@ -110,7 +114,9 @@ class IdempotencyStore:
                     return True, record.response_payload
                 elif record.status == IdempotencyStatus.PENDING:
                     # In-flight concurrent duplicate request
-                    raise RuntimeError("Concurrent request in progress for this idempotency key")
+                    raise RuntimeError(
+                        "Concurrent request in progress for this idempotency key"
+                    )
 
             # Check capacity and evict oldest if needed
             while len(self._records) >= self.max_records:

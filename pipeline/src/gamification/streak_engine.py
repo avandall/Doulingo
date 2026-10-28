@@ -20,7 +20,7 @@ class StreakState:
 
     user_id: str
     current_streak: int = 0
-    last_completed_date: Optional[datetime.date] = None
+    last_completed_date: datetime.date | None = None
     user_timezone: str = "Asia/Ho_Chi_Minh"
     freeze_count: int = 1
     total_xp: int = 0
@@ -48,7 +48,9 @@ class StreakEngine:
         # Stores composite constraint: set of (user_id, calendar_date)
         self._daily_activities: set[tuple[str, datetime.date]] = set()
 
-    def get_or_create_user(self, user_id: str, timezone_str: str = "Asia/Ho_Chi_Minh") -> StreakState:
+    def get_or_create_user(
+        self, user_id: str, timezone_str: str = "Asia/Ho_Chi_Minh"
+    ) -> StreakState:
         with self._lock:
             if user_id not in self._user_streaks:
                 self._user_streaks[user_id] = StreakState(
@@ -58,7 +60,9 @@ class StreakEngine:
             return self._user_streaks[user_id]
 
     @staticmethod
-    def calculate_local_date(timestamp: Optional[datetime.datetime], timezone_str: str) -> datetime.date:
+    def calculate_local_date(
+        timestamp: datetime.datetime | None, timezone_str: str
+    ) -> datetime.date:
         """Converts UTC or native timestamp to user's localized calendar date."""
         dt = timestamp or datetime.datetime.now(datetime.timezone.utc)
         if dt.tzinfo is None:
@@ -73,7 +77,7 @@ class StreakEngine:
         self,
         user_id: str,
         earned_xp: int = 10,
-        activity_timestamp: Optional[datetime.datetime] = None,
+        activity_timestamp: datetime.datetime | None = None,
     ) -> StreakUpdateResult:
         """Processes qualifying activity and evaluates streak state transitions.
 
@@ -82,7 +86,9 @@ class StreakEngine:
         """
         with self._lock:
             user = self.get_or_create_user(user_id)
-            current_local_date = self.calculate_local_date(activity_timestamp, user.user_timezone)
+            current_local_date = self.calculate_local_date(
+                activity_timestamp, user.user_timezone
+            )
 
             # Invariant 1 check: Duplicate submission for the same user and calendar day
             activity_key = (user_id, current_local_date)

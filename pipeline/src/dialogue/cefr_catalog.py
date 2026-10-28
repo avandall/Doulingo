@@ -20,7 +20,7 @@ class DialogueNode:
     intent: str = "general_response"
     response_template: str = ""
     slot_keys: list[str] = field(default_factory=list)
-    next_node_id: Optional[str] = None
+    next_node_id: str | None = None
 
 
 @dataclass(slots=True)
@@ -54,7 +54,15 @@ class CEFRScenarioCatalog:
             "order_drink": DialogueNode(
                 node_id="order_drink",
                 prompt="Welcome to Sunshine Cafe! What would you like to drink today?",
-                expected_keywords=["coffee", "latte", "espresso", "tea", "cappuccino", "juice", "water"],
+                expected_keywords=[
+                    "coffee",
+                    "latte",
+                    "espresso",
+                    "tea",
+                    "cappuccino",
+                    "juice",
+                    "water",
+                ],
                 intent="order_drink",
                 response_template="A {item}! Excellent choice. What size would you like: small, medium, or large?",
                 slot_keys=["item"],
@@ -72,7 +80,14 @@ class CEFRScenarioCatalog:
             "customization": DialogueNode(
                 node_id="customization",
                 prompt="Would you like to add milk or sugar?",
-                expected_keywords=["milk", "sugar", "sweetener", "nothing", "black", "no"],
+                expected_keywords=[
+                    "milk",
+                    "sugar",
+                    "sweetener",
+                    "nothing",
+                    "black",
+                    "no",
+                ],
                 intent="customization",
                 response_template="Perfect. Your drink will be ready in just a few minutes. Anything else?",
                 slot_keys=["custom"],
@@ -94,7 +109,13 @@ class CEFRScenarioCatalog:
             "checkin_start": DialogueNode(
                 node_id="checkin_start",
                 prompt="Good evening! Welcome to the Grand Palace Hotel. How may I assist you?",
-                expected_keywords=["check in", "reservation", "booking", "room", "have a room"],
+                expected_keywords=[
+                    "check in",
+                    "reservation",
+                    "booking",
+                    "room",
+                    "have a room",
+                ],
                 intent="check_in",
                 response_template="Welcome! May I please have your full name and reservation number?",
                 slot_keys=["name"],
@@ -125,7 +146,15 @@ class CEFRScenarioCatalog:
             "ask_direction": DialogueNode(
                 node_id="ask_direction",
                 prompt="Excuse me, you look a bit lost. Where are you trying to go?",
-                expected_keywords=["museum", "station", "train", "airport", "hospital", "bank", "library"],
+                expected_keywords=[
+                    "museum",
+                    "station",
+                    "train",
+                    "airport",
+                    "hospital",
+                    "bank",
+                    "library",
+                ],
                 intent="ask_location",
                 response_template="The {destination} is just two blocks down this street on your left. Can I help you with anything else?",
                 slot_keys=["destination"],
@@ -143,7 +172,7 @@ class CEFRScenarioCatalog:
         )
 
     @classmethod
-    def get_scenario(cls, scenario_id: str) -> Optional[DialogueScenario]:
+    def get_scenario(cls, scenario_id: str) -> DialogueScenario | None:
         """Retrieves a scenario by its ID, initializing catalog if empty."""
         cls.initialize_defaults()
         return cls._SCENARIOS.get(scenario_id)

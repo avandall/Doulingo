@@ -1,16 +1,18 @@
 """Tests for Resilience and Non-Sticky Circuit Breaker Bounded Context."""
 
 import time
+
 import pytest
+
 from pipeline.src.resilience.circuit_breaker import (
     CircuitBreaker,
-    CircuitState,
     CircuitBreakerOpenException,
+    CircuitState,
 )
 from pipeline.src.resilience.model_mesh import (
+    ExecutionResult,
     ModelMeshRouter,
     ModelProvider,
-    ExecutionResult,
 )
 
 
@@ -21,7 +23,9 @@ class TestCircuitBreaker:
         assert cb.can_execute() is True
 
     def test_trip_to_open_after_repeated_failures(self):
-        cb = CircuitBreaker(failure_rate_threshold=0.5, sliding_window_size=6, min_calls_to_evaluate=4)
+        cb = CircuitBreaker(
+            failure_rate_threshold=0.5, sliding_window_size=6, min_calls_to_evaluate=4
+        )
         for _ in range(4):
             cb.record_failure()
         assert cb.state == CircuitState.OPEN

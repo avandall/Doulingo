@@ -13,7 +13,8 @@ import collections
 import enum
 import threading
 import time
-from typing import Callable, TypeVar, Any
+from collections.abc import Callable
+from typing import Any, TypeVar
 
 T = TypeVar("T")
 
@@ -45,18 +46,18 @@ class CircuitBreaker:
 
         self._state: CircuitState = CircuitState.CLOSED
         self._lock = threading.RLock()
-        self._window: collections.deque[bool] = collections.deque(maxlen=sliding_window_size)
+        self._window: collections.deque[bool] = collections.deque(
+            maxlen=sliding_window_size
+        )
         self._opened_at: float = 0.0
         self._half_open_in_flight: bool = False
 
     @property
     def state(self) -> CircuitState:
         with self._lock:
-            if self._state == CircuitState.OPEN:
-                # Check if cool-down period has elapsed
-                if time.time() - self._opened_at >= self.cool_down_seconds:
-                    self._state = CircuitState.HALF_OPEN
-                    self._half_open_in_flight = False
+            if self._state == CircuitState.OPEN and time.time() - self._opened_at >= self.cool_down_seconds:
+                self._state = CircuitState.HALF_OPEN
+                self._half_open_in_flight = False
             return self._state
 
     def record_success(self) -> None:
@@ -80,13 +81,12 @@ class CircuitBreaker:
                 self._half_open_in_flight = False
                 return
 
-            if self._state == CircuitState.CLOSED:
-                if len(self._window) >= self.min_calls_to_evaluate:
-                    failures = sum(1 for success in self._window if not success)
-                    failure_rate = failures / len(self._window)
-                    if failure_rate >= self.failure_rate_threshold:
-                        self._state = CircuitState.OPEN
-                        self._opened_at = time.time()
+            if self._state == CircuitState.CLOSED and len(self._window) >= self.min_calls_to_evaluate:
+                failures = sum(1 for success in self._window if not success)
+                failure_rate = failures / len(self._window)
+                if failure_rate >= self.failure_rate_threshold:
+                    self._state = CircuitState.OPEN
+                    self._opened_at = time.time()
 
     def can_execute(self) -> bool:
         """Returns True if a request is allowed through; False if circuit is OPEN."""
@@ -102,7 +102,9 @@ class CircuitBreaker:
         """Executes a function protected by the circuit breaker."""
         with self._lock:
             if not self.can_execute():
-                raise CircuitBreakerOpenException("Circuit is OPEN; fast-failing to fallback")
+                raise CircuitBreakerOpenException(
+                    "Circuit is OPEN; fast-failing to fallback"
+                )
             if self.state == CircuitState.HALF_OPEN:
                 self._half_open_in_flight = True
 

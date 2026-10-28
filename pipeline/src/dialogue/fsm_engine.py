@@ -10,7 +10,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from typing import Optional
-from .cefr_catalog import CEFRScenarioCatalog, DialogueScenario, DialogueNode
+
+from .cefr_catalog import CEFRScenarioCatalog, DialogueNode, DialogueScenario
 
 
 @dataclass(slots=True)
@@ -20,7 +21,7 @@ class FSMResponse:
     reply_text: str
     matched_intent: str
     detected_slots: dict[str, str] = field(default_factory=dict)
-    next_node_id: Optional[str] = None
+    next_node_id: str | None = None
     is_fallback: bool = False
     confidence: float = 1.0
 
@@ -41,7 +42,7 @@ class DialogueFSMEngine:
     def process_turn(
         self,
         scenario_id: str,
-        current_node_id: Optional[str],
+        current_node_id: str | None,
         user_text: str,
     ) -> FSMResponse:
         """Processes a single conversational turn in < 15ms.
@@ -67,7 +68,7 @@ class DialogueFSMEngine:
         words = set(cleaned_user_text.split())
 
         # Determine target node
-        active_node: Optional[DialogueNode] = None
+        active_node: DialogueNode | None = None
         if current_node_id and current_node_id in scenario.nodes:
             active_node = scenario.nodes[current_node_id]
         elif scenario.nodes:
@@ -83,7 +84,7 @@ class DialogueFSMEngine:
             )
 
         # Keyword matching and slot filling
-        matched_keyword: Optional[str] = None
+        matched_keyword: str | None = None
         for keyword in active_node.expected_keywords:
             kw_cleaned = self._clean_text(keyword)
             if " " in kw_cleaned:

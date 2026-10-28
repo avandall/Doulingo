@@ -1,8 +1,10 @@
 """Tests for Ingestion and Idempotency Bounded Context."""
 
 import time
+
 import pytest
-from pipeline.src.ingestion.idempotency import IdempotencyStore, IdempotencyStatus
+
+from pipeline.src.ingestion.idempotency import IdempotencyStatus, IdempotencyStore
 from pipeline.src.ingestion.validator import AudioPayloadValidator, ValidationError
 
 
@@ -10,7 +12,9 @@ class TestAudioPayloadValidator:
     def test_validate_valid_wav_header(self):
         # Construct valid minimal WAV PCM header
         # RIFF + length + WAVE + fmt + size(16) + format(1=PCM) + channels(1=mono) + sample_rate(16000) + byte_rate + block_align + bits_per_sample(16) + data
-        header = bytearray(b"RIFF\x24\x00\x00\x00WAVEfmt \x10\x00\x00\x00\x01\x00\x01\x00\x80\x3e\x00\x00\x00\x7d\x00\x00\x02\x00\x10\x00data\x00\x00\x00\x00")
+        header = bytearray(
+            b"RIFF\x24\x00\x00\x00WAVEfmt \x10\x00\x00\x00\x01\x00\x01\x00\x80\x3e\x00\x00\x00\x7d\x00\x00\x02\x00\x10\x00data\x00\x00\x00\x00"
+        )
         fmt = AudioPayloadValidator.validate_all(bytes(header), reported_duration=5.0)
         assert fmt == "wav_pcm"
 

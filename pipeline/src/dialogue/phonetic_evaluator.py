@@ -28,7 +28,7 @@ class PhonemeFeedback:
 
     word: str
     target_phoneme: str
-    detected_phoneme: Optional[str]
+    detected_phoneme: str | None
     error_type: ErrorType
     timestamp_ms: tuple[int, int]
     guidance: str
@@ -81,7 +81,7 @@ class PhoneticEvaluator:
         cls,
         word: str,
         target_phoneme: str,
-        detected_phoneme: Optional[str],
+        detected_phoneme: str | None,
         timestamp_ms: tuple[int, int] = (0, 0),
     ) -> PhonemeFeedback:
         """Analyzes a single phoneme comparison and generates articulatory guidance."""
@@ -130,7 +130,7 @@ class PhoneticEvaluator:
     def evaluate_utterance(
         cls,
         target_phonemes: list[tuple[str, str]],  # [(word, target_ipa), ...]
-        detected_phonemes: list[Optional[str]],
+        detected_phonemes: list[str | None],
     ) -> EvaluationResult:
         """Evaluates a full sequence of phonemes against observed detections."""
         feedbacks: list[PhonemeFeedback] = []

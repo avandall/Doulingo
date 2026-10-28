@@ -1,18 +1,22 @@
 """Tests for Dialogue and Phonetic Evaluation Bounded Context."""
 
 import time
+
 import pytest
+
 from pipeline.src.dialogue.cefr_catalog import CEFRScenarioCatalog
-from pipeline.src.dialogue.scenario_compiler import ScenarioCompiler
 from pipeline.src.dialogue.fsm_engine import DialogueFSMEngine
-from pipeline.src.dialogue.phonetic_evaluator import PhoneticEvaluator, ErrorType
+from pipeline.src.dialogue.phonetic_evaluator import ErrorType, PhoneticEvaluator
+from pipeline.src.dialogue.scenario_compiler import ScenarioCompiler
 
 
 class TestDialogueFSMEngine:
     def test_process_turn_sub_15ms_latency(self):
         engine = DialogueFSMEngine()
         t0 = time.time()
-        res = engine.process_turn("cafe_order", "order_drink", "I would like a hot latte please")
+        res = engine.process_turn(
+            "cafe_order", "order_drink", "I would like a hot latte please"
+        )
         latency_ms = (time.time() - t0) * 1000.0
 
         assert latency_ms < 15.0  # Must be sub-15ms
@@ -24,7 +28,9 @@ class TestDialogueFSMEngine:
 
     def test_dialogue_transition_to_size(self):
         engine = DialogueFSMEngine()
-        res = engine.process_turn("cafe_order", "select_size", "Make it a medium size please")
+        res = engine.process_turn(
+            "cafe_order", "select_size", "Make it a medium size please"
+        )
         assert res.matched_intent == "select_size"
         assert res.detected_slots.get("size") == "medium"
         assert "medium" in res.reply_text
@@ -63,7 +69,9 @@ class TestDialogueFSMEngine:
         assert compiled.scenario_id == "taxi_ride"
 
         engine = DialogueFSMEngine()
-        res = engine.process_turn("taxi_ride", "destination", "Please drive me to the airport")
+        res = engine.process_turn(
+            "taxi_ride", "destination", "Please drive me to the airport"
+        )
         assert res.detected_slots.get("dest") == "airport"
         assert "Heading to airport" in res.reply_text
 

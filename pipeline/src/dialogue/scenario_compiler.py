@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import json
 from typing import Any
-from .cefr_catalog import DialogueScenario, DialogueNode, CEFRScenarioCatalog
+
+from .cefr_catalog import CEFRScenarioCatalog, DialogueNode, DialogueScenario
 
 
 class ScenarioCompiler:

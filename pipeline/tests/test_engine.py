@@ -20,7 +20,10 @@ except ImportError:
 
 
 def test_log_compactor():
-    verbose_log = "\n".join([f"Line {i}" for i in range(100)]) + "\nTraceback (most recent call last):\nE   ValueError: Invalid input"
+    verbose_log = (
+        "\n".join([f"Line {i}" for i in range(100)])
+        + "\nTraceback (most recent call last):\nE   ValueError: Invalid input"
+    )
     truncated = truncate_log(verbose_log, max_lines=5)
     assert "ValueError: Invalid input" in truncated
     assert len(truncated.split("\n")) <= 5
@@ -56,7 +59,9 @@ def test_vault_proxy():
 
 def test_cost_tracker():
     tracker = CostTracker()
-    cost = tracker.record_usage("gemini-3.6-flash", prompt_tokens=1000, completion_tokens=500)
+    cost = tracker.record_usage(
+        "gemini-3.6-flash", prompt_tokens=1000, completion_tokens=500
+    )
     assert cost > 0
     summary = tracker.get_summary()
     assert summary["total_tokens"] == 1500

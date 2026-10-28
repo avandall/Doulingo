@@ -11,17 +11,18 @@ Engineered for Render Free Tier: memory footprint remains < 50MB RAM.
 from __future__ import annotations
 
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Optional, Callable, Any
+from typing import Any, Optional
 
+from ..dialogue.fsm_engine import DialogueFSMEngine
+from ..dialogue.phonetic_evaluator import EvaluationResult, PhoneticEvaluator
+from ..gamification.outbox import TransactionalOutbox
+from ..gamification.streak_engine import StreakEngine, StreakUpdateResult
 from ..ingestion.idempotency import IdempotencyStore
 from ..ingestion.validator import AudioPayloadValidator
-from ..dialogue.fsm_engine import DialogueFSMEngine
-from ..dialogue.phonetic_evaluator import PhoneticEvaluator, EvaluationResult
 from ..resilience.circuit_breaker import CircuitBreaker
-from ..resilience.model_mesh import ModelMeshRouter, ModelProvider, ExecutionResult
-from ..gamification.streak_engine import StreakEngine, StreakUpdateResult
-from ..gamification.outbox import TransactionalOutbox
+from ..resilience.model_mesh import ExecutionResult, ModelMeshRouter, ModelProvider
 
 
 @dataclass(slots=True)
@@ -31,13 +32,13 @@ class SubmissionRequest:
     user_id: str
     exercise_id: str
     scenario_id: str
-    current_node_id: Optional[str]
+    current_node_id: str | None
     idempotency_key: str
     audio_bytes: bytes
-    reported_duration: Optional[float] = None
-    transcribed_text: Optional[str] = None
+    reported_duration: float | None = None
+    transcribed_text: str | None = None
     target_phonemes: list[tuple[str, str]] = field(default_factory=list)
-    detected_phonemes: list[Optional[str]] = field(default_factory=list)
+    detected_phonemes: list[str | None] = field(default_factory=list)
 
 
 @dataclass(slots=True)
@@ -65,14 +66,16 @@ class UnifiedPronunciationGateway:
 
     def __init__(
         self,
-        idempotency_store: Optional[IdempotencyStore] = None,
-        fsm_engine: Optional[DialogueFSMEngine] = None,
-        circuit_breaker: Optional[CircuitBreaker] = None,
-        model_mesh_router: Optional[ModelMeshRouter] = None,
-        streak_engine: Optional[StreakEngine] = None,
-        outbox: Optional[TransactionalOutbox] = None,
+        idempotency_store: IdempotencyStore | None = None,
+        fsm_engine: DialogueFSMEngine | None = None,
+        circuit_breaker: CircuitBreaker | None = None,
+        model_mesh_router: ModelMeshRouter | None = None,
+        streak_engine: StreakEngine | None = None,
+        outbox: TransactionalOutbox | None = None,
     ) -> None:
-        self.idempotency_store = idempotency_store or IdempotencyStore(max_records=10_000)
+        self.idempotency_store = idempotency_store or IdempotencyStore(
+            max_records=10_000
+        )
         self.fsm_engine = fsm_engine or DialogueFSMEngine()
         self.circuit_breaker = circuit_breaker or CircuitBreaker(cool_down_seconds=10.0)
         self.model_mesh_router = model_mesh_router or ModelMeshRouter(
@@ -85,7 +88,7 @@ class UnifiedPronunciationGateway:
     def process_submission(
         self,
         request: SubmissionRequest,
-        cloud_caller: Optional[Callable[[str, str], str]] = None,
+        cloud_caller: Callable[[str, str], str] | None = None,
     ) -> SubmissionResponse:
         """Executes the complete submission workflow within p95 <= 2,200ms."""
         t0 = time.time()

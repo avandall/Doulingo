@@ -8,9 +8,14 @@ Simulates:
 
 import concurrent.futures
 import time
+
 import pytest
 
-from pipeline.src.gateway.app import UnifiedPronunciationGateway, SubmissionRequest, SubmissionResponse
+from pipeline.src.gateway.app import (
+    SubmissionRequest,
+    SubmissionResponse,
+    UnifiedPronunciationGateway,
+)
 
 
 class TestChaosFaultInjection:
@@ -39,15 +44,12 @@ class TestChaosFaultInjection:
             # Use local FSM fast-path
             return gateway.process_submission(req, cloud_caller=None)
 
-        t0 = time.time()
         results: list[SubmissionResponse] = []
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
             futures = [executor.submit(single_worker, i) for i in range(concurrency)]
             for future in concurrent.futures.as_completed(futures):
                 results.append(future.result())
-
-        total_elapsed_ms = (time.time() - t0) * 1000.0
 
         # Assertions
         assert len(results) == concurrency
@@ -106,7 +108,6 @@ class TestChaosFaultInjection:
         same_key = "hammered_token_xyz"
         same_user = "hammer_user"
 
-        success_count = 0
         duplicate_hits = 0
 
         # First request finishes

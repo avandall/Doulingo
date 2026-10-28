@@ -8,9 +8,9 @@ from .idempotency import IdempotencyRecord, IdempotencyStatus, IdempotencyStore
 from .validator import AudioPayloadValidator, ValidationError
 
 __all__ = [
-    "IdempotencyStore",
+    "AudioPayloadValidator",
     "IdempotencyRecord",
     "IdempotencyStatus",
-    "AudioPayloadValidator",
+    "IdempotencyStore",
     "ValidationError",
 ]

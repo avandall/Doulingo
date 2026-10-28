@@ -30,7 +30,7 @@ class OutboxEvent:
     payload: dict[str, Any]
     status: OutboxEventStatus = OutboxEventStatus.PENDING
     created_at: float = field(default_factory=time.time)
-    published_at: Optional[float] = None
+    published_at: float | None = None
     retry_count: int = 0
 
 
@@ -40,7 +40,9 @@ class TransactionalOutbox:
     def __init__(self, max_retained_events: int = 10_000) -> None:
         self.max_retained_events = max_retained_events
         self._lock = threading.RLock()
-        self._events: collections.OrderedDict[str, OutboxEvent] = collections.OrderedDict()
+        self._events: collections.OrderedDict[str, OutboxEvent] = (
+            collections.OrderedDict()
+        )
 
     def record_event(self, event_type: str, payload: dict[str, Any]) -> OutboxEvent:
         """Atomically inserts an event into the outbox buffer."""
