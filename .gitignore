@@ -40,3 +40,8 @@ pipeline/.ralph/
 pipeline/docs/runtime/session_*.jsonl
 production_artifacts
 .agents
+
+# Mutation testing scratch & cache
+mutants/
+.mutmut-cache/
+
